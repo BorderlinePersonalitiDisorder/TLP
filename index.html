@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TLP: Viaje Interior y Recursos | Dra. Mayra Schwarzschild</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif; /* Montserrat para el cuerpo por su claridad */
+            scroll-behavior: smooth;
+            --text-dark: #222;
+            background-color: #1a1a2e; /* Fondo oscuro principal para resaltar colores */
+        }
+        /* Aplicar Orbitron a títulos principales y elementos destacados */
+        h1, h2, .font-orbitron {
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Paleta Psicodélica Vibrante */
+        :root {
+            --glow-purple: #ff00ff; /* Magenta Neón */
+            --glow-cyan: #00ffff;   /* Cyan Neón */
+            --glow-lime: #39ff14;   /* Lima Neón */
+            --deep-space: #1a1a2e;  /* Azul noche profundo (fondo) */
+            --nebula-pink: #da70d6; /* Orquídea/Rosa Nebulosa */
+            --star-yellow: #ffd700; /* Amarillo Estrella/Dorado */
+            --cosmic-blue: #4a4ae6; /* Azul Cósmico */
+            --text-glow: #f0f0f0;   /* Texto claro con ligero resplandor */
+            --card-bg: rgba(40, 40, 70, 0.8); /* Fondo de tarjeta semi-transparente */
+        }
+
+        .hero-bg-psychedelic {
+            background: radial-gradient(circle, var(--cosmic-blue) 0%, var(--nebula-pink) 40%, var(--glow-purple) 70%, var(--deep-space) 100%);
+            position: relative;
+            overflow: hidden; 
+        }
+
+        .hero-bg-psychedelic::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, rgba(255,0,255,0.1) 0%, rgba(0,255,255,0.1) 50%, rgba(57,255,20,0.1) 100%);
+            animation: psychedelic-flow 20s ease infinite alternate;
+            z-index: 0;
+        }
+        @keyframes psychedelic-flow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+
+        .nav-link {
+            @apply px-2 py-2 rounded-full text-xs font-semibold text-[var(--text-glow)] transition-all duration-300 ease-in-out; 
+            text-shadow: 0 0 5px var(--glow-cyan); 
+        }
+        .nav-link:hover {
+            background-color: var(--glow-cyan);
+            color: var(--deep-space);
+            text-shadow: 0 0 8px var(--deep-space);
+        }
+        .nav-link-active {
+            background-color: var(--glow-lime);
+            color: var(--deep-space);
+            text-shadow: 0 0 8px var(--deep-space);
+            box-shadow: 0 0 15px var(--glow-lime);
+        }
+
+        .footer-bg-psychedelic {
+            background-color: #111; 
+            border-top: 2px solid var(--glow-purple);
+        }
+        .section-card-psychedelic {
+            background-color: var(--card-bg);
+            backdrop-filter: blur(10px); 
+            border: 1px solid var(--glow-cyan);
+            border-radius: 20px; 
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(255,0,255,0.2);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            margin-bottom: 3rem; 
+        }
+        .section-card-psychedelic:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 0 35px var(--glow-lime), inset 0 0 15px var(--glow-purple);
+            border-color: var(--glow-lime);
+        }
+
+        .btn-primary-psychedelic {
+            @apply inline-block text-white font-bold py-4 px-10 rounded-full shadow-xl transition-all duration-300 ease-in-out text-lg tracking-wider font-orbitron;
+            background: linear-gradient(45deg, var(--glow-purple), var(--nebula-pink), var(--glow-cyan));
+            background-size: 200% 200%; 
+            border: 2px solid var(--text-glow);
+            text-shadow: 0 0 8px rgba(0,0,0,0.7);
+        }
+        .btn-primary-psychedelic:hover {
+            background-position: right center; 
+            box-shadow: 0 0 25px var(--glow-cyan);
+            transform: scale(1.05);
+        }
+        .btn-secondary-psychedelic {
+            @apply inline-block text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out font-orbitron;
+            background: linear-gradient(45deg, var(--cosmic-blue), var(--glow-lime));
+            background-size: 200% 200%;
+            border: 1px solid var(--glow-lime);
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .btn-secondary-psychedelic:hover {
+            background-position: right center;
+            box-shadow: 0 0 20px var(--glow-lime);
+            transform: scale(1.05);
+        }
+        .btn-tertiary-psychedelic { 
+            @apply inline-block text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out font-orbitron;
+            background: linear-gradient(45deg, var(--star-yellow), var(--nebula-pink));
+            background-size: 200% 200%;
+            border: 1px solid var(--star-yellow);
+            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        }
+        .btn-tertiary-psychedelic:hover {
+            background-position: right center;
+            box-shadow: 0 0 20px var(--star-yellow);
+            transform: scale(1.05);
+        }
+
+
+        .section-image-container {
+            @apply h-60 md:h-72 w-full overflow-hidden relative;
+            border-bottom: 2px solid var(--glow-purple);
+        }
+        .section-image {
+            @apply w-full h-full object-cover transition-all duration-700 ease-in-out;
+            filter: saturate(1.5) contrast(1.1); 
+        }
+        .group:hover .section-image { 
+            transform: scale(1.15) rotate(-3deg);
+            filter: saturate(2) contrast(1.2) hue-rotate(45deg); 
+        }
+
+        .section-title-psychedelic {
+            @apply text-4xl md:text-5xl font-black mb-8 tracking-wider;
+            color: var(--text-glow);
+            text-shadow: 0 0 10px var(--glow-cyan), 0 0 20px var(--glow-purple), 0 0 30px var(--glow-lime);
+        }
+        .header-psychedelic {
+            background-color: rgba(26, 26, 46, 0.8); 
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glow-purple);
+        }
+        .text-glow-strong {
+            color: var(--text-glow);
+            text-shadow: 0 0 8px var(--glow-lime), 0 0 15px var(--glow-lime);
+        }
+    </style>
+</head>
+<body class="bg-deep-space text-text-glow antialiased">
+
+    <header class="header-psychedelic shadow-2xl sticky top-0 z-50">
+        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center">
+                    <a href="#" class="text-3xl font-black text-glow-strong hover:text-[var(--glow-lime)] transition-colors duration-300 font-orbitron">
+                        TLP: Viaje Interior
+                    </a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-2"> 
+                        <a href="#psicoeducacion" class="nav-link nav-link-active font-orbitron">Psicoeducación</a>
+                        <a href="#dbt" class="nav-link font-orbitron">DBT</a>
+                        <a href="#blog" class="nav-link font-orbitron">Blog</a>
+                        <a href="#foro" class="nav-link font-orbitron">Foro</a> 
+                        <a href="#premium" class="nav-link font-orbitron">Premium</a> 
+                        <a href="#contacto" class="nav-link font-orbitron">Contacto</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-white/10 inline-flex items-center justify-center p-2 rounded-md text-[var(--text-glow)] hover:text-[var(--glow-lime)] hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--glow-lime)]" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Abrir menú principal</span>
+                        <svg class="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-3 pt-2 pb-4 space-y-2 sm:px-4 border-t border-[var(--glow-purple)]/50">
+                <a href="#psicoeducacion" class="block nav-link nav-link-active text-sm text-center font-orbitron">Psicoeducación</a>
+                <a href="#dbt" class="block nav-link text-sm text-center font-orbitron">DBT</a>
+                <a href="#blog" class="block nav-link text-sm text-center font-orbitron">Blog</a>
+                <a href="#foro" class="block nav-link text-sm text-center font-orbitron">Foro</a> 
+                <a href="#premium" class="block nav-link text-sm text-center font-orbitron">Premium</a> 
+                <a href="#contacto" class="block nav-link text-sm text-center font-orbitron">Contacto</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-bg-psychedelic py-24 md:py-40 text-white relative"> 
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-8 text-glow-strong animate-pulse-slow">
+                Explora las Profundidades del Ser
+            </h1>
+            <p class="mt-4 text-xl sm:text-2xl text-[var(--text-glow)] max-w-3xl mx-auto mb-12 opacity-90">
+                Un portal de conocimiento, transformación y comunidad para el viaje con el Trastorno Límite de la Personalidad.
+            </p>
+            <div>
+                <a href="#psicoeducacion" class="btn-primary-psychedelic">
+                    Iniciar Exploración
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+        
+        <section id="psicoeducacion" class="section-card-psychedelic group">
+            <div class="section-image-container">
+                <img src="https://placehold.co/800x400/ff00ff/00ffff?text=Mente+Fractal&font=orbitron&font-size=40" alt="[Visualización abstracta y psicodélica del conocimiento para TLP]" class="section-image">
+            </div>
+            <div class="p-8 md:p-12 text-center">
+                <h2 class="section-title-psychedelic">Psicoeducación Cósmica</h2>
+                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Desvela los misterios del TLP: síntomas, orígenes, y las constelaciones de tratamientos. El entendimiento es una estrella guía.
+                </p>
+                <div class="mt-10">
+                     <a href="#" class="text-lg font-semibold text-[var(--glow-lime)] hover:text-[var(--star-yellow)] transition-colors duration-300 group font-orbitron tracking-wider">
+                        Ilumínate <span class="inline-block transform group-hover:translate-x-2 transition-transform duration-300">&rarr;</span>
+                     </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="dbt" class="section-card-psychedelic group">
+            <div class="section-image-container">
+                <img src="https://placehold.co/800x400/00ffff/ff00ff?text=Equilibrio+Dimensional&font=orbitron&font-size=38" alt="[Representación psicodélica del equilibrio y la calma para DBT y TLP]" class="section-image">
+            </div>
+            <div class="p-8 md:p-12 text-center">
+                 <h2 class="section-title-psychedelic">DBT: Alquimia Emocional</h2>
+                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Domina las artes de la Terapia Dialéctico Conductual. Transforma emociones, navega el malestar y forja conexiones interdimensionales.
+                </p>
+                 <div class="mt-10">
+                     <a href="#" class="text-lg font-semibold text-[var(--glow-lime)] hover:text-[var(--star-yellow)] transition-colors duration-300 group font-orbitron tracking-wider">
+                        Transfórmate <span class="inline-block transform group-hover:translate-x-2 transition-transform duration-300">&rarr;</span>
+                     </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section-card-psychedelic group">
+            <div class="section-image-container">
+                 <img src="https://placehold.co/800x400/39ff14/da70d6?text=Cr%C3%B3nicas+Lis%C3%A9rgicas&font=orbitron&font-size=36" alt="[Visual psicodélico para blog TLP: ideas fluidas y conexión]" class="section-image">
+            </div>
+            <div class="p-8 md:p-12 text-center">
+                <h2 class="section-title-psychedelic">Blog Multiversal</h2>
+                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Viaja por artículos, reflexiones y noticias de otras dimensiones sobre TLP y bienestar. Un caleidoscopio de voces y sabidurías.
+                </p>
+                 <div class="mt-10">
+                     <a href="#" class="text-lg font-semibold text-[var(--glow-lime)] hover:text-[var(--star-yellow)] transition-colors duration-300 group font-orbitron tracking-wider">
+                        Explora Relatos <span class="inline-block transform group-hover:translate-x-2 transition-transform duration-300">&rarr;</span>
+                     </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="foro" class="section-card-psychedelic group">
+            <div class="section-image-container">
+                <img src="https://placehold.co/800x400/da70d6/39ff14?text=Foro+C%C3%B3smico&font=orbitron&font-size=40" alt="[Concepto psicodélico de comunidad y apoyo para foro TLP]" class="section-image">
+            </div>
+            <div class="p-8 md:p-12 text-center">
+                <h2 class="section-title-psychedelic">Foro: Convergencia de Almas</h2> 
+                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Un santuario para compartir, preguntar y conectar con otros viajeros del TLP en un espacio seguro, vibrante y de libre acceso.
+                </p>
+                 <div class="mt-10">
+                     <a href="#" class="btn-secondary-psychedelic"> 
+                        Entrar al Círculo
+                     </a>
+                </div>
+            </div>
+        </section>
+
+        <section id="premium" class="section-card-psychedelic group">
+            <div class="section-image-container">
+                <img src="https://placehold.co/800x400/ffd700/4a4ae6?text=Tesoro+Gal%C3%A1ctico&font=orbitron&font-size=38" alt="[Visualización de contenido exclusivo y premium con estética psicodélica]" class="section-image">
+            </div>
+            <div class="p-8 md:p-12 text-center">
+                <h2 class="section-title-psychedelic">Acceso Premium: Elixir Estelar</h2>
+                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
+                    Desbloquea artefactos cósmicos: contenido exclusivo, herramientas avanzadas, meditaciones guiadas y experiencias transformadoras reservadas para iniciados.
+                </p>
+                 <div class="mt-10">
+                     <a href="#" class="btn-tertiary-psychedelic"> 
+                        Revelar Tesoros
+                     </a>
+                </div>
+            </div>
+        </section>
+        
+        <section id="contacto" class="py-16 md:py-24 bg-gradient-to-br from-[var(--deep-space)] via-[var(--cosmic-blue)] to-[var(--glow-purple)] text-white rounded-3xl shadow-2xl border-2 border-[var(--glow-cyan)]">
+            <div class="max-w-4xl mx-auto px-4 text-center">
+                <svg class="w-24 h-24 mx-auto mb-8 opacity-90" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="contactIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:var(--glow-lime);stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:var(--glow-cyan);stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:var(--glow-purple);stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path fill="url(#contactIconGradient)" d="M50,10c-22.09,0-40,17.91-40,40s17.91,40,40,40s40-17.91,40-40S72.09,10,50,10z M50,22.5 c4.14,0,7.5,3.36,7.5,7.5s-3.36,7.5-7.5,7.5s-7.5-3.36-7.5-7.5S45.86,22.5,50,22.5z M72.5,70h-45 C24.16,70,22,67.84,22,64.5v-1c0-6.9,5.6-12.5,12.5-12.5h21c6.9,0,12.5,5.6,12.5,12.5v1C78,67.84,75.84,70,72.5,70z"/>
+                </svg>
+                <h2 class="text-4xl md:text-5xl font-black mb-6 text-glow-strong font-orbitron">Contacta el Oráculo</h2>
+                <p class="text-xl mb-8 max-w-xl mx-auto text-[var(--text-glow)] opacity-90">
+                    ¿Ecos del universo? ¿Ideas brillantes? ¿Deseos de colaborar? Envía tus señales.
+                </p>
+                <p class="text-3xl font-semibold hover:text-[var(--star-yellow)] transition-colors duration-300 font-orbitron">
+                    <a href="mailto:itfrombit.w74@gmail.com">itfrombit.w74@gmail.com</a>
+                </p>
+                <p class="mt-8 text-lg text-[var(--text-glow)] opacity-70 font-orbitron">
+                    Canalizado por: Dra. Mayra Schwarzschild
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer-bg-psychedelic text-[var(--text-glow)] opacity-80 py-12">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p class="text-lg font-orbitron">
+                &copy; <span id="currentYear"></span> TLP: Viaje Interior. Todos los derechos reservados a la expansión de la conciencia.
+            </p>
+            <p class="text-md mt-2">
+                Una creación de la Dra. Mayra Schwarzschild para explorar nuevas realidades.
+            </p>
+            <p class="text-md mt-1">
+                <a href="mailto:itfrombit.w74@gmail.com" class="hover:underline text-[var(--glow-lime)] hover:text-[var(--star-yellow)]">itfrombit.w74@gmail.com</a>
+            </p>
+            <p class="text-sm mt-8 text-[var(--text-glow)] opacity-60 max-w-lg mx-auto">
+                Este portal es una herramienta para la introspección y el apoyo. No sustituye el consejo de guías terrestres cualificados.
+                En momentos de turbulencia dimensional, busca asistencia profesional.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Script para el menú móvil
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const iconHamburger = mobileMenuButton.querySelector('svg:first-child');
+        const iconX = mobileMenuButton.querySelector('svg:last-child');
+
+        mobileMenuButton.addEventListener('click', () => {
+            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
+            mobileMenuButton.setAttribute('aria-expanded', !expanded);
+            mobileMenu.classList.toggle('hidden');
+            iconHamburger.classList.toggle('hidden');
+            iconX.classList.toggle('hidden');
+        });
+
+        // Script para el año actual en el footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        // Smooth scroll y active link
+        const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+        const sections = document.querySelectorAll('main section');
+        const header = document.querySelector('header');
+        let headerHeight = header.offsetHeight;
+
+        window.addEventListener('resize', () => {
+            headerHeight = header.offsetHeight;
+        });
+        
+        function setActiveLink(targetId) {
+            navLinks.forEach(link => {
+                link.classList.remove('nav-link-active', 'bg-[var(--glow-lime)]', 'text-[var(--deep-space)]', 'shadow-[0_0_15px_var(--glow-lime)]');
+                link.classList.add('text-[var(--text-glow)]');
+                link.style.textShadow = '0 0 5px var(--glow-cyan)';
+
+
+                if (link.getAttribute('href') === `#${targetId}`) {
+                    link.classList.add('nav-link-active', 'bg-[var(--glow-lime)]', 'text-[var(--deep-space)]', 'shadow-[0_0_15px_var(--glow-lime)]');
+                    link.style.textShadow = '0 0 8px var(--deep-space)';
+                }
+            });
+        }
+
+        function handleScroll() {
+            let currentSectionId = '';
+            const scrollPosition = window.pageYOffset;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - headerHeight - 60; 
+                const sectionBottom = sectionTop + section.offsetHeight;
+                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+                    currentSectionId = section.getAttribute('id');
+                }
+            });
+            
+            if (!currentSectionId && scrollPosition < sections[0].offsetTop - headerHeight) {
+                 currentSectionId = sections[0].getAttribute('id');
+            } else if (!currentSectionId && (window.innerHeight + scrollPosition) >= document.body.offsetHeight - document.querySelector('footer').offsetHeight - 50) {
+                 currentSectionId = sections[sections.length -1].getAttribute('id');
+            }
+
+            if (currentSectionId) {
+                setActiveLink(currentSectionId);
+            } else if (navLinks.length > 0 && scrollPosition < sections[0].offsetTop - headerHeight) {
+                 setActiveLink(navLinks[0].getAttribute('href').substring(1));
+            }
+        }
+        
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        document.addEventListener('DOMContentLoaded', () => {
+            headerHeight = header.offsetHeight;
+            handleScroll(); 
+
+            const heroTitle = document.querySelector('.hero-bg-psychedelic h1');
+            if (heroTitle) {
+                heroTitle.classList.add('animate-pulse-slow-custom');
+            }
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - headerHeight,
+                        behavior: 'smooth'
+                    });
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenuButton.click();
+                    }
+                }
+            });
+        });
+
+        const styleSheet = document.createElement("style");
+        styleSheet.type = "text/css";
+        styleSheet.innerText = `
+            @keyframes psychedelic-flow {
+                0% { background-position: 0% 50%; transform: scale(1); }
+                50% { background-position: 100% 50%; transform: scale(1.05); }
+                100% { background-position: 0% 50%; transform: scale(1); }
+            }
+            .animate-pulse-slow-custom {
+                animation: pulse-opacity 3s infinite ease-in-out;
+            }
+            @keyframes pulse-opacity {
+                0%, 100% { opacity: 0.8; text-shadow: 0 0 10px var(--glow-cyan), 0 0 20px var(--glow-purple), 0 0 30px var(--glow-lime); }
+                50% { opacity: 1; text-shadow: 0 0 15px var(--glow-lime), 0 0 25px var(--glow-cyan), 0 0 35px var(--glow-purple); }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
+
+</body>
+</html>
