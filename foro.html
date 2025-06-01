@@ -127,7 +127,7 @@
 		
 		@keyframes logoPulse {
 			0% { transform: scale(1); color: var(--accent-green); }
-			50% { transform: scale(1.1); color: var(--secondary-cyan); } /* Changed from --accent-cyan to --secondary-cyan as --accent-cyan is not defined */
+			50% { transform: scale(1.1); color: var(--secondary-cyan); }
 			100% { transform: scale(1); color: var(--accent-blue); }
 		}
 		
@@ -233,7 +233,7 @@
 			border-radius: 15px;
 			padding: 25px;
 			box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-			transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.6s ease-out; /* Added opacity transition */
+			transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.6s ease-out;
 			border: 1px solid var(--border-color);
 			display: flex;
 			flex-direction: column;
@@ -371,7 +371,7 @@
 			margin-top: 2rem;
 			opacity: 0; 
 			transform: translateY(30px); 
-			transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Added transition */
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 		}
 		.forum-guidelines.visible { 
 			opacity: 1;
@@ -778,9 +778,6 @@
 				}, observerOptions);
 
 				animatedElements.forEach(element => {
-					// Initial styles (opacity: 0, transform: translateY(30px)) are set in CSS
-					// Transition is also set in CSS for .visible state or direct style change
-					// Ensure transition is applied via CSS or here if needed. The CSS already has transitions for these classes.
 					observer.observe(element);
 				});
 			}
