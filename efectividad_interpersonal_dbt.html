@@ -349,6 +349,10 @@
             text-align: center;
             margin-top: 2.5rem; 
             margin-bottom: 1rem; 
+            display: flex; /* Added for button layout */
+            justify-content: center; /* Added for button layout */
+            gap: 1rem; /* Added for spacing between buttons */
+            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
         }
         .back-to-btn {
             display: inline-flex; 
@@ -801,8 +805,9 @@
             </section>
             
             <div class="back-to-link-container">
-                <a href="dbt.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver a DBT</a>
-            </div>
+                <a href="tolerancia_malestar_dbt.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver a Tolerancia al Malestar</a>
+                <a href="dbt.html" class="back-to-btn"><i class="fas fa-check-circle"></i> Finalizar y Volver a DBT</a>
+                </div>
 
         </div>
     </main>
@@ -905,8 +910,8 @@
                      currentPageFilename === 'activacion_conductual_cbt.html' ||
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
                      currentPageFilename === 'resolucion_problemas_cbt.html'
-                     )) {
-                     link.classList.add('active'); 
+                    )) {
+                    link.classList.add('active'); 
                 } else if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
                 }
