@@ -27,6 +27,8 @@
             --accent-blue-rgb: 30, 144, 255;
             --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
+            --accent-green-rgb: 0, 255, 127;
+            --accent-red-rgb: 255, 69, 0; /* Added for featured plan button */
         }
         
         * {
@@ -158,6 +160,7 @@
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
+            border-radius: 20px;
         }
         
         nav a:hover::before, 
@@ -185,20 +188,37 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
-            color: var(--accent-yellow); /* Changed color for premium */
+            /* Typography changed here */
+            font-family: 'Playfair Display', serif; 
+            font-size: 3rem; /* Adjusted for Playfair Display */
+            font-weight: 700; /* Playfair often looks good bold */
+            color: var(--accent-yellow); 
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--accent-yellow-rgb), 0.5);
+            text-transform: none; /* Playfair looks better without uppercase for this style */
+            letter-spacing: 0.5px; /* Adjusted letter spacing */
+            text-shadow: 0 0 8px rgba(var(--accent-yellow-rgb), 0.4); /* Softer shadow */
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
+        .page-header h2 i {
+            font-size: 2.6rem; /* Adjusted icon size */
+            animation: iconShine 3s infinite alternate;
+        }
+
+        @keyframes iconShine {
+            0% { color: var(--accent-yellow); text-shadow: 0 0 10px rgba(var(--accent-yellow-rgb), 0.5);}
+            50% { color: var(--text-color-light); text-shadow: 0 0 20px rgba(var(--accent-yellow-rgb), 0.8);}
+            100% { color: var(--accent-yellow); text-shadow: 0 0 10px rgba(var(--accent-yellow-rgb), 0.5);}
+        }
+
 
         .page-header p {
             font-size: 1.2rem;
             color: var(--text-color-medium);
             max-width: 700px;
             margin: 0 auto;
+            font-style: italic;
         }
 
         .premium-features-grid {
@@ -211,7 +231,7 @@
         .feature-card {
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px 25px; 
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid var(--border-color);
@@ -219,26 +239,35 @@
             flex-direction: column;
             align-items: center;
             text-align: center;
+            opacity: 0; 
+            transform: translateY(20px); 
+        }
+         .feature-card.visible { 
+            opacity: 1;
+            transform: translateY(0);
         }
 
+
         .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 25px rgba(var(--accent-yellow-rgb), 0.3);
+            transform: translateY(-8px) scale(1.02); 
+            box-shadow: 0 12px 30px rgba(var(--accent-yellow-rgb), 0.4); 
         }
 
         .feature-card .icon-container {
-            font-size: 2.8rem; /* Slightly smaller than course icons */
-            margin-bottom: 1rem;
-            padding: 15px;
+            font-size: 2.8rem; 
+            margin-bottom: 1.2rem; 
+            padding: 18px; 
             border-radius: 50%;
-            background: linear-gradient(135deg, rgba(var(--accent-yellow-rgb),0.15), rgba(var(--accent-red-rgb, 255,69,0),0.15));
+            background: linear-gradient(135deg, rgba(var(--accent-yellow-rgb),0.2), rgba(var(--accent-red-rgb),0.2));
             color: var(--accent-yellow);
             display: inline-flex;
+            transition: background 0.3s ease, color 0.3s ease;
         }
-         /* Define RGB versions of colors if not already in :root */
-        :root {
-            --accent-red-rgb: 255, 69, 0;
+        .feature-card:hover .icon-container {
+            background: linear-gradient(135deg, var(--accent-yellow), var(--accent-red));
+            color: var(--dark-bg);
         }
+
 
         .feature-card h3 {
             font-family: 'Krona One', sans-serif;
@@ -249,31 +278,32 @@
 
         .feature-card p {
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.7; 
             color: var(--text-color-light);
-            flex-grow: 1; /* Allows cards with less text to still align buttons if needed */
+            flex-grow: 1; 
         }
 
         .pricing-section {
-            background: rgba(var(--primary-violet-rgb), 0.1);
-            padding: 3rem 0;
+            background: rgba(var(--primary-violet-rgb), 0.05); 
+            padding: 3.5rem 0; 
             border-radius: 20px;
             margin-bottom: 3rem;
-            border: 1px solid rgba(var(--primary-violet-rgb), 0.3);
+            border: 1px solid rgba(var(--primary-violet-rgb), 0.2); 
         }
         .pricing-section h2{
             font-family: 'Major Mono Display', monospace;
-            font-size: 2.3rem;
+            font-size: 2.5rem; 
             color: var(--accent-magenta);
             text-align: center;
-            margin-bottom: 2.5rem;
+            margin-bottom: 3rem; 
+            text-shadow: 0 0 8px rgba(var(--accent-magenta-rgb), 0.4);
         }
 
 
         .pricing-table {
             display: flex;
             justify-content: center;
-            align-items: stretch; /* Make cards same height */
+            align-items: stretch; 
             flex-wrap: wrap;
             gap: 2rem;
         }
@@ -283,25 +313,50 @@
             border-radius: 15px;
             padding: 30px;
             width: 320px;
+            max-width: calc(100% - 40px); 
             box-shadow: 0 8px 25px rgba(0,0,0,0.5);
             border: 2px solid var(--accent-blue);
             display: flex;
             flex-direction: column;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; 
+            transform: translateY(20px); 
         }
+        .pricing-plan.visible { 
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
         .pricing-plan:hover{
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-5px); 
             box-shadow: 0 12px 35px rgba(var(--accent-blue-rgb),0.5);
         }
 
         .pricing-plan.featured {
             border-color: var(--accent-yellow);
-            transform: scale(1.05); /* Make featured plan stand out */
+            transform: scale(1.05); 
+            position: relative; 
+            overflow: hidden; 
         }
          .pricing-plan.featured:hover{
-            transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(var(--accent-yellow-rgb),0.5);
+            transform: scale(1.1) translateY(-5px);
+            box-shadow: 0 15px 40px rgba(var(--accent-yellow-rgb),0.6); 
+        }
+        
+        .featured-badge {
+            background-color: var(--accent-yellow);
+            color: var(--dark-bg);
+            font-family: 'Fredoka One', cursive;
+            padding: 5px 30px;
+            font-size: 0.9rem;
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            transform: rotate(45deg);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1;
         }
 
 
@@ -317,12 +372,19 @@
 
 
         .pricing-plan .price {
-            font-size: 2.5rem;
+            font-size: 3rem; 
             font-weight: bold;
             color: var(--accent-green);
             margin-bottom: 0.5rem;
+            font-family: 'Monoton', cursive; 
         }
+         .pricing-plan .price span.currency {
+            font-size: 1.5rem;
+            vertical-align: super;
+            margin-right: 2px;
+         }
          .pricing-plan .price span.term {
+            font-family: 'Comfortaa', sans-serif; 
             font-size: 0.9rem;
             color: var(--text-color-medium);
             font-weight: normal;
@@ -340,36 +402,52 @@
         .pricing-plan ul li {
             margin-bottom: 0.8rem;
             font-size: 0.95rem;
+            display: flex; 
+            align-items: flex-start; 
         }
         .pricing-plan ul li i {
             color: var(--accent-green);
-            margin-right: 8px;
+            margin-right: 10px; 
+            margin-top: 4px; 
+            min-width: 16px; 
         }
+        .pricing-plan ul li.unavailable i { 
+            color: var(--accent-red);
+        }
+        .pricing-plan ul li.unavailable {
+            color: var(--text-color-medium);
+            text-decoration: line-through;
+        }
+
 
         .subscribe-btn {
             display: inline-block;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
             color: white;
-            padding: 12px 30px;
+            padding: 14px 35px; 
             border-radius: 30px;
             text-decoration: none;
             font-family: 'Fredoka One', cursive;
-            font-size: 1.1rem;
+            font-size: 1.2rem; 
             transition: all 0.3s ease;
             border: none;
-            margin-top: auto; /* Push to bottom */
+            margin-top: auto; 
+            box-shadow: 0 4px 10px rgba(var(--accent-magenta-rgb), 0.3);
         }
 
         .subscribe-btn:hover {
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
             transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(var(--accent-magenta-rgb), 0.5);
         }
          .pricing-plan.featured .subscribe-btn {
             background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));
             color: var(--dark-bg);
+            box-shadow: 0 4px 10px rgba(var(--accent-red-rgb), 0.4);
         }
         .pricing-plan.featured .subscribe-btn:hover {
              background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow));
+             box-shadow: 0 6px 15px rgba(var(--accent-red-rgb), 0.6);
         }
         
         footer { 
@@ -484,22 +562,26 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
-            .pricing-plan { width: calc(50% - 1rem); } /* Two columns for tablets */
+            .page-header h2 { font-size: 2.4rem; } /* Adjusted for Playfair */
+            .pricing-plan { width: calc(50% - 1rem); } 
         }
         
-        @media (max-width: 650px) { /* Adjusted breakpoint for pricing plans */
+        @media (max-width: 700px) { 
+             .pricing-plan { width: 80%; max-width: 350px; margin-left: auto; margin-right: auto;}
+        }
+
+        @media (max-width: 650px) { 
             .main-page-content { padding-top: 130px; } 
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } /* Adjusted for Playfair */
             .page-header p { font-size: 1rem; }
             .premium-features-grid { grid-template-columns: 1fr; }
             .feature-card h3 {font-size: 1.3rem;}
-            .pricing-plan { width: 100%; } /* Single column for pricing on small mobiles */
+            .pricing-plan { width: 90%; max-width: 350px; } 
             .pricing-plan h3 {font-size: 1.5rem;}
-            .pricing-plan .price {font-size: 2.2rem;}
+            .pricing-plan .price {font-size: 2.5rem;} 
             .subscribe-btn { padding: 10px 25px; font-size: 1rem;}
         }
     </style>
@@ -510,8 +592,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
-                <i class="fas fa-brain"></i>
+            <a href="index.html" class="logo" > <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
             <nav>
@@ -531,87 +612,92 @@
             <div class="page-header">
                 <h2><i class="fas fa-crown"></i> Experiencia Premium Borderline Journey</h2>
                 <p>
-                    Eleva tu viaje de sanación y autoconocimiento con acceso exclusivo a contenido, herramientas avanzadas y una comunidad de apoyo más cercana.
+                    Eleva tu viaje de sanación y autoconocimiento con acceso exclusivo a contenido, herramientas avanzadas y una comunidad de apoyo más cercana y profunda.
                 </p>
             </div>
 
             <section class="premium-features-grid">
                 <article class="feature-card">
-                    <div class="icon-container"><i class="fas fa-book-open"></i></div>
-                    <h3>Cursos Avanzados y Talleres</h3>
-                    <p>Accede a módulos de profundización en DBT y CBT, talleres especializados en manejo de crisis, mindfulness avanzado y efectividad interpersonal.</p>
+                    <div class="icon-container"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Cursos Avanzados y Talleres Exclusivos</h3>
+                    <p>Sumérgete en módulos de profundización en DBT, CBT y ACT. Accede a talleres especializados en manejo de crisis emocionales, mindfulness avanzado, comunicación asertiva y construcción de relaciones saludables.</p>
                 </article>
                 <article class="feature-card">
-                    <div class="icon-container"><i class="fas fa-users"></i></div>
-                    <h3>Comunidad Privada y Foros Exclusivos</h3>
-                    <p>Participa en foros moderados solo para miembros premium, con grupos de apoyo temáticos y un espacio más íntimo para compartir.</p>
+                    <div class="icon-container"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Comunidad Privada y Segura</h3>
+                    <p>Participa en foros exclusivos moderados activamente, con grupos de apoyo temáticos más pequeños y un espacio íntimo y seguro para compartir sin juicios y recibir contención experta.</p>
                 </article>
                 <article class="feature-card">
-                    <div class="icon-container"><i class="fas fa-tools"></i></div>
-                    <h3>Herramientas Interactivas y Recursos</h3>
-                    <p>Utiliza diarios de emociones mejorados, hojas de trabajo descargables, meditaciones guiadas exclusivas y planificadores de habilidades.</p>
+                    <div class="icon-container"><i class="fas fa-cogs"></i></div>
+                    <h3>Herramientas Interactivas Pro</h3>
+                    <p>Utiliza nuestro diario de emociones inteligente con análisis de patrones, hojas de trabajo interactivas y descargables, una biblioteca ampliada de meditaciones guiadas y planificadores de habilidades personalizables.</p>
                 </article>
                  <article class="feature-card">
-                    <div class="icon-container"><i class="fas fa-headset"></i></div>
-                    <h3>Soporte Prioritario</h3>
-                    <p>Recibe respuestas más rápidas a tus consultas y un canal de soporte dedicado para miembros premium.</p>
+                    <div class="icon-container"><i class="fas fa-comments-dollar"></i></div>
+                    <h3>Sesiones Grupales de Coaching DBT</h3>
+                    <p>Participa en sesiones grupales de coaching online (limitadas por mes) con terapeutas especializados en DBT para resolver dudas, practicar habilidades y recibir feedback personalizado en un entorno de apoyo.</p>
                 </article>
                  <article class="feature-card">
-                    <div class="icon-container"><i class="fas fa-calendar-check"></i></div>
-                    <h3>Eventos y Q&A en Vivo</h3>
-                    <p>Participa en sesiones de preguntas y respuestas en vivo con profesionales y eventos especiales solo para la comunidad premium.</p>
+                    <div class="icon-container"><i class="fas fa-calendar-alt"></i></div>
+                    <h3>Eventos Exclusivos y Q&A con Expertos</h3>
+                    <p>Acceso prioritario y gratuito a webinars, talleres y sesiones de preguntas y respuestas en vivo con psicólogos, psiquiatras y coaches especializados en TLP y DBT.</p>
                 </article>
                  <article class="feature-card">
-                    <div class="icon-container"><i class="fas fa-gift"></i></div>
-                    <h3>Contenido Anticipado y Sin Publicidad</h3>
-                    <p>Disfruta de una experiencia libre de publicidad y accede a nuevo contenido y funcionalidades antes que nadie.</p>
+                    <div class="icon-container"><i class="fas fa-rocket"></i></div>
+                    <h3>Contenido Anticipado y Sin Interrupciones</h3>
+                    <p>Disfruta de una experiencia 100% libre de publicidad. Sé el primero en acceder a nuevos cursos, herramientas y funcionalidades de la plataforma antes de su lanzamiento público.</p>
                 </article>
             </section>
 
             <section class="pricing-section">
                 <div class="container">
-                    <h2>Elige Tu Plan Premium</h2>
+                    <h2><i class="fas fa-gem"></i> Elige Tu Plan Premium y Transforma Tu Viaje</h2>
                     <div class="pricing-table">
                         <div class="pricing-plan">
                             <h3>Mensual</h3>
-                            <div class="price">$19 <span class="term">/mes</span></div>
+                            <div class="price"><span class="currency">ARS</span> 10.000 <span class="term">/mes</span></div>
                             <ul>
-                                <li><i class="fas fa-check"></i> Acceso a todos los cursos base</li>
-                                <li><i class="fas fa-check"></i> Foros de comunidad general</li>
-                                <li><i class="fas fa-times"></i> Cursos avanzados y talleres</li>
-                                <li><i class="fas fa-times"></i> Comunidad privada premium</li>
-                                <li><i class="fas fa-check"></i> Herramientas básicas</li>
-                            </ul>
-                            <a href="#" class="subscribe-btn">Suscribirme Ahora</a>
-                        </div>
-
-                        <div class="pricing-plan featured">
-                             <h3>Anual <span style="font-size:0.7em; color: var(--accent-green);">(Más Popular)</span></h3>
-                            <div class="price">$149 <span class="term">/año</span></div>
-                            <p style="color:var(--accent-green); font-weight:bold; margin-bottom:1rem;">¡Ahorra un 35%!</p>
-                            <ul>
-                                <li><i class="fas fa-check"></i> Todo lo del plan Mensual</li>
                                 <li><i class="fas fa-check"></i> Acceso a Cursos Avanzados</li>
                                 <li><i class="fas fa-check"></i> Talleres Especializados</li>
                                 <li><i class="fas fa-check"></i> Comunidad Privada Premium</li>
-                                <li><i class="fas fa-check"></i> Herramientas Interactivas Completas</li>
-                                <li><i class="fas fa-check"></i> Eventos y Q&A en Vivo</li>
-                                <li><i class="fas fa-check"></i> Soporte Prioritario</li>
+                                <li><i class="fas fa-check"></i> Herramientas Interactivas Básicas</li>
+                                <li class="unavailable"><i class="fas fa-times"></i> Sesiones Grupales de Coaching DBT</li>
+                                <li class="unavailable"><i class="fas fa-times"></i> Eventos Exclusivos Q&A (Acceso Limitado)</li>
+                                <li><i class="fas fa-check"></i> Soporte por Email</li>
+                            </ul>
+                            <a href="#" class="subscribe-btn">Comenzar Ahora</a>
+                        </div>
+
+                        <div class="pricing-plan featured">
+                            <div class="featured-badge">Popular</div>
+                            <h3>Anual</h3>
+                            <div class="price"><span class="currency">ARS</span> 90.000 <span class="term">/año</span></div>
+                            <p style="color:var(--accent-green); font-weight:bold; margin-bottom:1rem;">¡Ahorra 25% (ARS 30.000)!</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> <strong>Todos los beneficios del Plan Mensual</strong></li>
+                                <li><i class="fas fa-check"></i> Herramientas Interactivas PRO Completas</li>
+                                <li><i class="fas fa-check"></i> Acceso Prioritario a Eventos y Q&A</li>
+                                <li><i class="fas fa-check"></i> 2 Sesiones Grupales de Coaching DBT al Mes</li>
+                                <li><i class="fas fa-check"></i> Contenido Anticipado</li>
+                                <li><i class="fas fa-check"></i> Soporte Prioritario 24/7</li>
+                                <li><i class="fas fa-check"></i> Experiencia Sin Publicidad</li>
                             </ul>
                             <a href="#" class="subscribe-btn">Elegir Plan Anual</a>
                         </div>
 
                         <div class="pricing-plan">
-                            <h3>Vitalicio</h3>
-                            <div class="price">$399 <span class="term">/pago único</span></div>
+                             <h3>Vitalicio</h3>
+                            <div class="price"><span class="currency">ARS</span> 270.000 <span class="term">/pago único</span></div>
+                             <p style="color:var(--accent-cyan); font-weight:bold; margin-bottom:1rem;">¡Acceso Para Siempre!</p>
                              <ul>
-                                <li><i class="fas fa-check"></i> Todos los beneficios Anuales</li>
-                                <li><i class="fas fa-star"></i> Acceso de por vida a todo el contenido</li>
-                                <li><i class="fas fa-star"></i> Actualizaciones futuras incluidas</li>
-                                <li><i class="fas fa-star"></i> Insignia de Fundador en foros</li>
-                                <li><i class="fas fa-gift"></i> Regalo de bienvenida exclusivo</li>
+                                <li><i class="fas fa-check"></i> <strong>Todos los beneficios del Plan Anual</strong></li>
+                                <li><i class="fas fa-star"></i> Acceso ILIMITADO de por vida</li>
+                                <li><i class="fas fa-star"></i> Todas las Actualizaciones Futuras Incluidas</li>
+                                <li><i class="fas fa-star"></i> 4 Sesiones Grupales de Coaching DBT al Mes</li>
+                                <li><i class="fas fa-id-badge"></i> Insignia de Fundador Distinguido</li>
+                                <li><i class="fas fa-gift"></i> Pack de Bienvenida Digital Exclusivo</li>
                             </ul>
-                            <a href="#" class="subscribe-btn">Acceso Vitalicio</a>
+                            <a href="#" class="subscribe-btn">Inversión Única</a>
                         </div>
                     </div>
                 </div>
@@ -723,27 +809,27 @@
                 });
             }
             
+            // Animation for feature cards and pricing plans
             const animatedElements = document.querySelectorAll('.feature-card, .pricing-plan'); 
             if (animatedElements.length > 0) {
                  const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
-                    threshold: 0.1 
+                    threshold: 0.1 // Trigger when 10% of the element is visible
                 };
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            // obs.unobserve(entry.target); // Optional
+                            entry.target.classList.add('visible'); 
+                            // obs.unobserve(entry.target); // Optional: stop observing after animation
                         }
                     });
                 }, observerOptions);
 
                 animatedElements.forEach(element => {
-                    element.style.opacity = '0';
-                    element.style.transform = 'translateY(30px)';
-                    element.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+                    // Initial styles (opacity: 0, transform) are in CSS.
+                    // Add transition for the 'visible' class effect.
+                    element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out .2s'; // Added delay to transform
                     observer.observe(element);
                 });
             }
