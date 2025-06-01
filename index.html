@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borderline Journey - Inspiración Diaria</title>
+    <title>Borderline Journey - DBT y TLP Profundizado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -24,7 +24,6 @@
             --border-color: rgba(138, 43, 226, 0.7);
             
             --dark-bg: #0A0A20;
-            --hero-overlay: rgba(10, 10, 32, 0.75);
         }
         
         * {
@@ -63,7 +62,7 @@
             z-index: 1;
         }
         
-        /* Navegación con efecto borderline */
+        /* Header */
         header {
             background: rgba(10, 10, 32, 0.85); 
             backdrop-filter: blur(12px); 
@@ -95,6 +94,7 @@
             gap: 15px; 
             cursor: pointer;
             transition: all 0.4s ease;
+            text-decoration: none; /* Ensure logo itself is not underlined if it's an anchor */
         }
         
         .logo:hover {
@@ -168,176 +168,26 @@
             border: 1px solid var(--accent-blue); 
             transform: translateY(-3px); 
         }
-        
-        /* HERO SECTION con imagen diaria */
-        .hero-apod {
-            position: relative;
-            height: 100vh;
-            min-height: 650px;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 4rem;
-        }
-        
-        .apod-background {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            transition: background-image 1.5s ease-in-out;
-            z-index: -1;
-            transform: scale(1.05);
-            filter: blur(5px) brightness(0.8);
-        }
-        
-        .apod-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(0deg, rgba(10,10,32,0.9) 0%, rgba(10,10,32,0.3) 50%, rgba(10,10,32,0.9) 100%);
-            z-index: 0;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            max-width: 900px;
-            padding: 2rem;
-            color: white;
-            background: rgba(10, 10, 32, 0.6);
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(138, 43, 226, 0.5);
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
-            margin-top: 4rem;
-            animation: contentAppear 1.5s ease-out;
-            border-top-left-radius: 50px;
-            border-bottom-right-radius: 50px;
-        }
-        
-        @keyframes contentAppear {
-            0% { opacity: 0; transform: translateY(50px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-        
-        .hero-content h1 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 3px;
-            animation: titleGlow 3s infinite alternate;
-        }
-        
-        @keyframes titleGlow {
-            0% { text-shadow: 0 0 10px var(--accent-magenta); }
-            50% { text-shadow: 0 0 15px var(--accent-blue), 0 0 20px var(--accent-green); }
-            100% { text-shadow: 0 0 12px var(--accent-magenta), 0 0 25px var(--accent-yellow); }
-        }
-        
-        .hero-content p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
-            line-height: 1.7;
-            color: var(--text-color-light);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .apod-title {
-            font-family: 'Krona One', sans-serif;
-            font-size: 2rem;
-            color: var(--accent-yellow);
-            margin-bottom: 1rem;
-            animation: textPulse 2s infinite alternate;
-        }
-        
-        @keyframes textPulse {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.03); }
-        }
-        
-        .apod-date {
-            font-family: 'Major Mono Display', monospace;
-            color: var(--accent-green);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-        }
-        
-        .apod-nav {
-            position: absolute;
-            bottom: 40px;
-            left: 0;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            z-index: 10;
-        }
-        
-        .apod-nav-btn {
-            background: rgba(10, 10, 32, 0.7);
-            color: var(--accent-cyan);
-            border: 2px solid var(--accent-blue);
-            border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
-            animation: buttonFloat 3s infinite ease-in-out;
-        }
-        
-        .apod-nav-btn:nth-child(1) { animation-delay: 0.2s; }
-        .apod-nav-btn:nth-child(2) { animation-delay: 0.4s; }
-        
-        @keyframes buttonFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .apod-nav-btn:hover {
-            background: var(--accent-blue);
-            color: var(--dark-bg);
-            transform: translateY(-5px);
-            box-shadow: 0 0 25px var(--accent-blue);
-            animation: none;
-        }
-        
-        /* Sección DBT */
+
+        /* Main Content Area */
         .main-page-content { 
-            padding: 0 0 6rem 0; 
+            padding: 100px 0 2rem 0; /* Adjusted top padding for fixed header, bottom padding reduced */
         }
         
+        /* Content Block Styling (used for DBT and APOD sections) */
         .content-block-qs { 
             background: var(--card-bg); 
-            padding: 40px; 
+            padding: 35px; /* Slightly reduced padding */
             border-radius: 20px; 
-            margin-bottom: 3.5rem;
+            margin-bottom: 2.5rem; /* Reduced margin */
             border: 1px solid var(--border-color);
-            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3), 0 4px 15px rgba(0,0,0,0.5); 
+            box-shadow: 0 0 25px rgba(138, 43, 226, 0.25), 0 4px 12px rgba(0,0,0,0.4); 
             backdrop-filter: blur(10px);
-            transform: translateY(50px);
+            transform: translateY(40px);
             opacity: 0;
-            transition: all 1s ease;
-            border-top-right-radius: 50px;
-            border-bottom-left-radius: 50px;
+            transition: all 0.9s ease-out; /* Slightly faster transition */
+            border-top-right-radius: 40px;
+            border-bottom-left-radius: 40px;
         }
         
         .content-block-qs.visible {
@@ -347,13 +197,13 @@
         
         .content-block-qs h2 {
             font-family: 'Major Mono Display', monospace; 
-            font-size: 2.5rem; 
+            font-size: 2.3rem; /* Adjusted size */
             color: var(--accent-blue); 
             text-align: center; 
-            margin-bottom: 2.5rem; 
+            margin-bottom: 2rem; 
             text-transform: uppercase;
             position: relative;
-            padding-bottom: 20px;
+            padding-bottom: 15px;
         }
         
         .content-block-qs h2::after {
@@ -362,32 +212,33 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 150px;
-            height: 4px;
+            width: 120px; /* Adjusted width */
+            height: 3px; /* Adjusted height */
             background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
             border-radius: 2px;
         }
         
         .content-block-qs h2 i {
-            margin-right: 15px;
+            margin-right: 12px; /* Adjusted margin */
             color: var(--accent-magenta); 
         }
         
         .content-block-qs h4 { 
             font-family: 'Krona One', sans-serif;
             color: var(--accent-green);
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            font-size: 1.5rem;
-            border-left: 4px solid var(--accent-green);
-            padding-left: 15px;
+            margin-top: 2rem;
+            margin-bottom: 1.2rem;
+            font-size: 1.4rem; /* Adjusted size */
+            border-left: 3px solid var(--accent-green); /* Adjusted border */
+            padding-left: 12px;
         }
         
+        /* DBT Info Section Specifics */
         #dbt-info-section p {
-            font-size: 1.2rem; 
+            font-size: 1.15rem; /* Adjusted size */
             color: var(--text-color-light); 
-            margin-bottom: 25px; 
-            line-height: 1.9; 
+            margin-bottom: 20px; 
+            line-height: 1.85; 
             text-align: justify;
         }
         
@@ -409,151 +260,263 @@
         #dbt-info-section ul:not(.external-wiki-links) { 
             list-style: none; 
             padding-left: 0;
-            margin-top: 2rem;
+            margin-top: 1.8rem;
         }
         
         #dbt-info-section ul:not(.external-wiki-links) li {
-            background: rgba(0, 206, 209, 0.1); 
-            padding: 20px;
-            margin-bottom: 20px;
+            background: rgba(0, 206, 209, 0.08); /* Slightly more subtle */
+            padding: 18px; /* Adjusted padding */
+            margin-bottom: 18px;
             border-left: 4px solid var(--accent-blue); 
-            border-radius: 0 12px 12px 0;
+            border-radius: 0 10px 10px 0; /* Adjusted radius */
             position: relative;
             overflow: hidden;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, background-color 0.3s ease;
         }
         
         #dbt-info-section ul:not(.external-wiki-links) li:hover {
-            transform: translateX(10px);
+            transform: translateX(8px); /* Adjusted hover effect */
+            background-color: rgba(0, 206, 209, 0.15);
         }
         
         #dbt-info-section ul:not(.external-wiki-links) li strong {
             color: var(--accent-magenta); 
             font-family: 'Krona One', sans-serif;
             display: block;
-            margin-bottom: 10px;
-            font-size: 1.3rem;
+            margin-bottom: 8px;
+            font-size: 1.25rem; /* Adjusted size */
         }
         
         #dbt-info-section ul.external-wiki-links {
             list-style: none;
             padding-left: 0;
-            margin-top: 1.5rem;
+            margin-top: 1.3rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
+            gap: 12px; /* Adjusted gap */
         }
         
         #dbt-info-section ul.external-wiki-links li {
             margin-bottom: 0;
-            background: rgba(0, 255, 127, 0.08);
-            padding: 15px;
-            border-radius: 8px;
-            border: 1px solid rgba(0, 255, 127, 0.3);
+            background: rgba(0, 255, 127, 0.07);
+            padding: 12px;
+            border-radius: 6px;
+            border: 1px solid rgba(0, 255, 127, 0.25);
             transition: all 0.3s ease;
         }
         
         #dbt-info-section ul.external-wiki-links li:hover {
-            background: rgba(0, 255, 127, 0.15);
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px rgba(0, 255, 127, 0.3);
+            background: rgba(0, 255, 127, 0.12);
+            transform: translateY(-2px);
+            box-shadow: 0 0 12px rgba(0, 255, 127, 0.25);
         }
         
         #dbt-info-section ul.external-wiki-links li i {
-            margin-right: 12px;
+            margin-right: 10px;
             color: var(--accent-green); 
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
-        
-        /* Descripción de la imagen */
-        .image-description {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 15px;
-            margin: 2rem auto;
-            max-width: 900px;
-            border: 1px solid var(--accent-blue);
-            box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+
+        /* APOD Section (Now at the end) */
+        #apod-section {
+            /* Uses .content-block-qs for general styling */
+            margin-top: 3rem; /* Add some space if it's the last content block before footer */
         }
-        
-        .image-description h3 {
-            font-family: 'Krona One', sans-serif;
-            color: var(--accent-yellow);
-            margin-bottom: 1rem;
+
+        .apod-title-container h1 { /* For "Inspiración Diaria" title if kept separate */
+            font-family: 'Major Mono Display', monospace;
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+            animation: titleGlow 3s infinite alternate;
+            text-align: center;
+        }
+         @keyframes titleGlow { /* Re-declared for clarity, ensure it's the same as header one if used */
+            0% { text-shadow: 0 0 10px var(--accent-magenta); }
+            50% { text-shadow: 0 0 15px var(--accent-blue), 0 0 20px var(--accent-green); }
+            100% { text-shadow: 0 0 12px var(--accent-magenta), 0 0 25px var(--accent-yellow); }
+        }
+
+        .apod-title-container p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: var(--text-color-medium);
+            max-width: 600px;
+            margin: 0 auto 1.5rem auto; /* Center and add bottom margin */
             text-align: center;
         }
         
+        .hero-apod-image-container { /* Container for the image itself */
+            position: relative;
+            width: 100%;
+            height: 65vh; /* Adjust as needed, can be responsive */
+            min-height: 400px;
+            overflow: hidden;
+            margin-bottom: 1.5rem; /* Space before description block */
+            background-color: var(--dark-bg); /* Fallback */
+            border-radius: 10px; /* Optional: rounded corners for the image container */
+        }
+        
+        .apod-background { /* The image itself */
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover; 
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 1.2s ease-in-out;
+        }
+        
+        .image-details-block { /* Container for title, date, explanation, download, nav */
+            background: rgba(15, 15, 35, 0.8); /* Slightly different background for this block */
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid rgba(var(--accent-blue-rgb, 30, 144, 255), 0.4); /* Define --accent-blue-rgb or use direct values */
+            box-shadow: 0 0 15px rgba(var(--accent-blue-rgb, 30, 144, 255), 0.2);
+        }
+        
+        .apod-title-text { /* For the APOD image's own title */
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.7rem; 
+            color: var(--accent-yellow);
+            margin-bottom: 0.6rem; 
+            animation: textPulse 2s infinite alternate;
+            text-align: center;
+        }
+        
+        @keyframes textPulse { /* Re-declared for clarity */
+            0% { transform: scale(1); }
+            100% { transform: scale(1.02); }
+        }
+        
+        .apod-date-text { /* For the APOD image's date */
+            font-family: 'Major Mono Display', monospace;
+            color: var(--accent-green);
+            font-size: 0.95rem; 
+            margin-bottom: 1.3rem; 
+            text-align: center;
+        }
+
+        .image-details-block .desc-title-img { /* "Descripción de la Imagen del Día" */
+            font-family: 'Krona One', sans-serif;
+            color: var(--accent-cyan); /* Different color for this title */
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            margin-bottom: 0.8rem;
+            text-align: center;
+            border-bottom: 1px dashed var(--accent-cyan);
+            padding-bottom: 0.5rem;
+        }
+        
         .image-explanation {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            border: 1px solid rgba(0, 206, 209, 0.2);
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-            max-height: 200px;
+            font-size: 1.05rem; /* Slightly smaller for this context */
+            line-height: 1.75;
+            padding: 12px;
+            background: rgba(0, 0, 0, 0.25);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 206, 209, 0.15);
+            box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
+            max-height: 180px; 
             overflow-y: auto;
+            margin-bottom: 1.3rem; 
         }
         
-        .image-explanation::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .image-explanation::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-        
-        .image-explanation::-webkit-scrollbar-thumb {
-            background: var(--accent-blue);
-            border-radius: 10px;
-        }
+        .image-explanation::-webkit-scrollbar { width: 7px; }
+        .image-explanation::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.15); border-radius: 8px; }
+        .image-explanation::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 8px; }
         
         .download-button {
             display: block;
             width: fit-content;
-            margin: 20px auto 0;
+            margin: 18px auto; /* Centered, adjusted margin */
             background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));
             color: var(--dark-bg);
-            padding: 12px 30px;
-            border-radius: 50px;
+            padding: 10px 25px; /* Adjusted padding */
+            border-radius: 40px;
             text-decoration: none;
             font-family: 'Fredoka One', cursive;
-            font-size: 1.1rem;
+            font-size: 1.05rem; /* Adjusted size */
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 3px 12px rgba(255, 215, 0, 0.45);
+            border: 2px solid rgba(255, 255, 255, 0.4);
             text-align: center;
         }
         
         .download-button:hover {
             background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow));
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 20px rgba(255, 69, 0, 0.7);
+            transform: translateY(-2px) scale(1.03);
+            box-shadow: 0 6px 18px rgba(255, 69, 0, 0.65);
+        }
+        
+        .apod-nav-footer { 
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-top: 20px; 
+        }
+
+        .apod-nav-btn {
+            background: rgba(10, 10, 32, 0.65);
+            color: var(--accent-cyan);
+            border: 1.5px solid var(--accent-blue);
+            border-radius: 50%;
+            width: 50px; 
+            height: 50px; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem; 
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 12px rgba(30, 144, 255, 0.45);
+            animation: buttonFloat 3s infinite ease-in-out;
+        }
+        
+        .apod-nav-btn:nth-child(1) { animation-delay: 0.15s; }
+        .apod-nav-btn:nth-child(2) { animation-delay: 0.35s; }
+        
+        @keyframes buttonFloat { /* Re-declared for clarity */
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-6px); } 
+        }
+        
+        .apod-nav-btn:hover {
+            background: var(--accent-blue);
+            color: var(--dark-bg);
+            transform: translateY(-3px); 
+            box-shadow: 0 0 20px var(--accent-blue);
+            animation: none;
         }
         
         /* Footer */
         footer { 
             background: rgba(10,10,32,0.97); 
             color: white; 
-            padding: 4.5rem 0 2.5rem; 
+            padding: 4rem 0 2rem; 
             position: relative; 
             border-top: 2px solid var(--accent-blue); 
+            margin-top: 3rem; /* Ensure space above footer */
         }
         
         .footer-grid { 
             display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
-            gap: 45px; 
-            margin-bottom: 3.5rem; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
         }
         
         .footer-column h3 { 
             color: var(--accent-yellow); 
-            margin-bottom: 1.7rem; 
+            margin-bottom: 1.5rem; 
             position: relative; 
-            padding-bottom: 12px; 
-            font-size: 1.5rem; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
             font-family: 'Fredoka One', cursive;
         }
         
@@ -562,228 +525,112 @@
             position: absolute; 
             bottom: 0; 
             left: 0; 
-            width: 55px; 
-            height: 4px; 
+            width: 50px; 
+            height: 3.5px; 
             background: var(--accent-blue); 
-            border-radius: 2px; 
+            border-radius: 1.5px; 
         }
         
-        .footer-links { 
-            list-style: none; 
-        } 
-        
-        .footer-links li { 
-            margin-bottom: 14px; 
-        }
-        
+        .footer-links { list-style: none; } 
+        .footer-links li { margin-bottom: 12px; }
         .footer-links a { 
             color: var(--text-color-medium); 
             text-decoration: none; 
             transition: all 0.3s ease; 
             display: inline-block; 
-            padding: 5px 0; 
+            padding: 4px 0; 
             font-weight: 300; 
         }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
         
-        .footer-links a:hover { 
-            color: var(--accent-blue); 
-            transform: translateX(10px); 
-        }
-        
-        .contact-info { 
-            margin-top: 22px; 
-        }
-        
+        .contact-info { margin-top: 20px; }
         .contact-info p { 
             display: flex; 
             align-items: center; 
-            gap: 12px; 
-            margin-bottom: 14px; 
-            font-size: 1.1rem; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
             color: var(--text-color-medium); 
         }
+        .contact-info i { color: var(--accent-blue); } 
         
-        .contact-info i { 
-            color: var(--accent-blue); 
-        } 
-        
-        .social-links { 
-            display: flex; 
-            gap: 18px; 
-            margin-top: 25px; 
-        }
-        
+        .social-links { display: flex; gap: 15px; margin-top: 22px; }
         .social-links a { 
             display: inline-flex; 
             align-items: center; 
             justify-content: center; 
-            width: 50px; 
-            height: 50px; 
-            background: rgba(255, 255, 255, 0.05); 
+            width: 45px; 
+            height: 45px; 
+            background: rgba(255, 255, 255, 0.04); 
             color: var(--accent-blue); 
             border-radius: 50%; 
             transition: all 0.4s ease; 
-            font-size: 1.3rem; 
+            font-size: 1.2rem; 
             border: 1px solid var(--accent-blue); 
         }
-        
-        .social-links a:hover { 
-            background: var(--accent-blue); 
-            color: var(--dark-bg); 
-            transform: translateY(-5px) rotate(15deg); 
-        }
+        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
         
         .copyright { 
             text-align: center; 
-            padding-top: 2.5rem; 
-            border-top: 1px solid rgba(255, 255, 255, 0.08); 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
             color: #a090b0; 
-            font-size: 1rem; 
+            font-size: 0.95rem; 
         }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
         
-        .copyright a { 
-            color: var(--accent-yellow); 
-            text-decoration: none; 
-            transition: all 0.3s ease; 
-        } 
-        
-        .copyright a:hover { 
-            color: var(--text-color-light); 
-        }
-        
-        /* Animación de estrellas */
+        /* Background Animations */
         .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: -2; 
         }
-        
         .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0;
-            animation: twinkle 5s infinite;
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
         }
-        
         @keyframes twinkle {
             0% { opacity: 0; transform: scale(1); }
             50% { opacity: 1; transform: scale(1.5); }
             100% { opacity: 0; transform: scale(1); }
         }
-        
-        /* Galaxia animada */
         .galaxy {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
-            z-index: -1;
-            opacity: 0.3;
-            animation: rotateGalaxy 120s infinite linear;
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
         }
-        
         @keyframes rotateGalaxy {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
         
-        /* Responsive */
+        /* Responsive Adjustments */
         @media (max-width: 900px) {
-            .header-container { 
-                flex-direction: column; 
-                gap: 15px;
-            }
-            
-            nav ul { 
-                flex-wrap: wrap; 
-                justify-content: center; 
-                gap: 8px;
-            }
-            
-            nav a {
-                font-size: 0.85rem;
-                padding: 8px 12px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.2rem;
-            }
-            
-            .apod-title {
-                font-size: 1.7rem;
-            }
-            
-            .content-block-qs h2 {
-                font-size: 2rem;
-            }
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .content-block-qs h2 { font-size: 2rem; }
+            .apod-title-container h1 { font-size: 2.2rem; }
+            .apod-title-text { font-size: 1.5rem; }
         }
         
         @media (max-width: 600px) {
-            .logo h1 {
-                font-size: 1.5rem;
-            }
-            
-            nav ul {
-                gap: 6px;
-            }
-            
-            nav a { 
-                font-size: 0.75rem;
-                padding: 6px 8px;
-            }
-            
-            .hero-content {
-                padding: 1.5rem;
-                margin-top: 2rem;
-            }
-            
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .hero-content p {
-                font-size: 1rem;
-            }
-            
-            .apod-title {
-                font-size: 1.4rem;
-            }
-            
-            .apod-date {
-                font-size: 1rem;
-            }
-            
-            .download-button {
-                padding: 10px 20px;
-                font-size: 1rem;
-            }
-            
-            .apod-nav-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
-            }
-            
-            .content-block-qs h2 {
-                font-size: 1.7rem;
-            }
-            
-            #dbt-info-section p {
-                font-size: 1.05rem;
-            }
+            .main-page-content { padding-top: 130px; } /* More space for stacked header */
+            .logo h1 { font-size: 1.5rem; }
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .content-block-qs { padding: 25px; }
+            .content-block-qs h2 { font-size: 1.7rem; }
+            #dbt-info-section p { font-size: 1rem; }
+            .apod-title-container h1 { font-size: 1.8rem; }
+            .apod-title-container p { font-size: 1rem; }
+            .hero-apod-image-container { height: 55vh; min-height: 300px; }
+            .apod-title-text { font-size: 1.3rem; }
+            .apod-date-text { font-size: 0.85rem; }
+            .image-details-block .desc-title-img { font-size: 1.15rem; }
+            .image-explanation { font-size: 0.95rem; max-height: 150px; }
+            .download-button { padding: 9px 20px; font-size: 0.95rem; }
+            .apod-nav-btn { width: 42px; height: 42px; font-size: 1.15rem; }
         }
     </style>
 </head>
@@ -793,12 +640,10 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <div class="logo" id="logo-link">
-                <div style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
-                    <i class="fas fa-brain"></i>
-                    <h1>BORDERLINE JOURNEY</h1>
-                </div>
-            </div>
+            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+                <i class="fas fa-brain"></i>
+                <h1>BORDERLINE JOURNEY</h1>
+            </a>
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">Inicio</a></li>
@@ -811,89 +656,83 @@
         </div>
     </header>
 
-    <!-- Hero Section con imagen diaria -->
-    <section class="hero-apod">
-        <div class="apod-background" id="apod-background"></div>
-        <div class="apod-overlay"></div>
-        
-        <div class="hero-content">
-            <h1><i class="fas fa-mountain"></i> INSPIRACIÓN DIARIA</h1>
-            <p>Descubre nuestra imagen inspiradora del día</p>
-            
-            <div class="apod-title" id="apod-title">Cargando...</div>
-            <div class="apod-date" id="apod-date">Cargando fecha...</div>
-        </div>
-        
-        <div class="apod-nav">
-            <div class="apod-nav-btn" id="prev-apod">
-                <i class="fas fa-chevron-left"></i>
-            </div>
-            <div class="apod-nav-btn" id="next-apod">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-        </div>
-    </section>
-
-    <!-- Descripción de la imagen al pie de página -->
-    <div class="container">
-        <div class="image-description">
-            <h3>Descripción de la imagen</h3>
-            <div class="image-explanation" id="image-explanation">
-                Cargando descripción...
-            </div>
-            <a href="#" id="apod-download" class="download-button">
-                <i class="fas fa-download"></i> DESCARGAR IMAGEN EN HD
-            </a>
-        </div>
-    </div>
-
     <main class="main-page-content">
         <div class="container">
             <section id="dbt-info-section" class="content-block-qs">
-                <h2><i class="fas fa-brain"></i> Explorando la Terapia Dialéctico Conductual (DBT)</h2>
+                <h2><i class="fas fa-brain"></i> Explorando TLP y DBT</h2>
                 <p>
-                    La Terapia Dialéctico Conductual (DBT), desarrollada por Marsha M. Linehan, es un tratamiento cognitivo-conductual que originalmente fue diseñado para individuos con <a href="https://es.wikipedia.org/wiki/Trastorno_l%C3%ADmite_de_la_personalidad" class="keyword-link" target="_blank">Trastorno Límite de la Personalidad (TLP)</a>, especialmente aquellos con ideación suicida crónica. Con el tiempo, su eficacia se ha demostrado en una variedad de otros trastornos y problemas, incluyendo trastornos alimentarios, abuso de sustancias, y <a href="https://es.wikipedia.org/wiki/Trastorno_de_estr%C3%A9s_postraum%C3%A1tico" class="keyword-link" target="_blank">TEPT</a>.
+                    El <a href="https://es.wikipedia.org/wiki/Trastorno_l%C3%ADmite_de_la_personalidad" class="keyword-link" target="_blank" rel="noopener noreferrer">Trastorno Límite de la Personalidad (TLP)</a> es una condición de salud mental caracterizada por una marcada inestabilidad en las emociones, las relaciones interpersonales, la autoimagen y los comportamientos. Las personas con TLP pueden experimentar cambios de humor intensos y dificultades para manejar sus impulsos. A menudo, temen el abandono y pueden tener relaciones tumultuosas.
                 </p>
                 <p>
-                    El término "dialéctica" se refiere a la síntesis o integración de opuestos. En DBT, esto implica un equilibrio entre la aceptación y el cambio. Se valida la experiencia emocional del individuo mientras se fomenta la adquisición de nuevas habilidades para gestionar emociones intensas y mejorar las relaciones interpersonales. Nuestros <a href="cursos.html">cursos</a> profundizan en estos módulos.
+                    La Terapia Dialéctico Conductual (DBT), desarrollada por Marsha M. Linehan, es un tratamiento cognitivo-conductual integral que originalmente fue diseñado para individuos con TLP, especialmente aquellos con <a href="https://es.wikipedia.org/wiki/Ideaci%C3%B3n_suicida" class="keyword-link" target="_blank" rel="noopener noreferrer">ideación suicida</a> crónica y conductas autolesivas. Con el tiempo, su eficacia se ha demostrado en una variedad de otros trastornos y problemas, incluyendo <a href="https://es.wikipedia.org/wiki/Trastorno_alimentario" class="keyword-link" target="_blank" rel="noopener noreferrer">trastornos alimentarios</a>, <a href="https://es.wikipedia.org/wiki/Abuso_de_sustancias" class="keyword-link" target="_blank" rel="noopener noreferrer">abuso de sustancias</a>, y <a href="https://es.wikipedia.org/wiki/Trastorno_de_estr%C3%A9s_postraum%C3%A1tico" class="keyword-link" target="_blank" rel="noopener noreferrer">Trastorno de Estrés Postraumático (TEPT)</a>.
+                </p>
+                <p>
+                    El término "dialéctica" se refiere a la síntesis o integración de opuestos. En DBT, esto implica un equilibrio fundamental entre la <strong>aceptación</strong> (validar las experiencias y emociones del individuo tal como son) y el <strong>cambio</strong> (fomentar la adquisición de nuevas habilidades y estrategias para una vida más saludable). Se valida la experiencia emocional del individuo mientras se fomenta la adquisición de nuevas habilidades para gestionar <a href="https://es.wikipedia.org/wiki/Desregulaci%C3%B3n_emocional" class="keyword-link" target="_blank" rel="noopener noreferrer">emociones intensas</a> y mejorar las <a href="https://es.wikipedia.org/wiki/Relaciones_interpersonales" class="keyword-link" target="_blank" rel="noopener noreferrer">relaciones interpersonales</a>. Nuestros <a href="cursos.html" class="keyword-link">cursos</a> profundizan en estos módulos.
                 </p>
                 
+                <h4>Módulos Principales de Habilidades DBT</h4>
                 <ul>
                     <li>
-                        <strong><a href="https://es.wikipedia.org/wiki/Atenci%C3%B3n_plena" class="keyword-link" target="_blank">Mindfulness (Atención Plena)</a>:</strong> Aprender a observar y experimentar el momento presente sin juzgar. Ayuda a tomar control de la mente y a reducir la reactividad emocional.
+                        <strong><a href="https://es.wikipedia.org/wiki/Atenci%C3%B3n_plena" class="keyword-link" target="_blank" rel="noopener noreferrer">Mindfulness (Atención Plena)</a>:</strong> Es la base de todas las habilidades DBT. Implica aprender a observar y experimentar el momento presente (pensamientos, emociones, sensaciones físicas, entorno) de manera consciente y sin juzgar. Ayuda a tomar control de la mente, reducir la reactividad emocional y aumentar la autoconciencia.
                     </li>
                     <li>
-                        <strong><a href="https://es.wikipedia.org/wiki/Regulaci%C3%B3n_emocional" class="keyword-link" target="_blank">Regulación Emocional</a>:</strong> Identificar y cambiar emociones que se quieren modificar, reducir la vulnerabilidad a la mente emocional y aumentar las experiencias emocionales positivas.
+                        <strong><a href="https://es.wikipedia.org/wiki/Regulaci%C3%B3n_emocional" class="keyword-link" target="_blank" rel="noopener noreferrer">Regulación Emocional</a>:</strong> Se enfoca en identificar, comprender y cambiar las emociones que resultan problemáticas o desadaptativas. Incluye habilidades para reducir la vulnerabilidad a la "mente emocional" (estado donde las emociones controlan el pensamiento y comportamiento), aumentar las experiencias emocionales positivas y manejar emociones difíciles sin empeorarlas.
                     </li>
                     <li>
-                        <strong><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" class="keyword-link" target="_blank">Tolerancia al Malestar</a>:</strong> Aprender a aceptar y tolerar el malestar emocional sin recurrir a conductas desadaptativas. Incluye técnicas para sobrevivir a crisis emocionales.
+                        <strong><a href="https://es.wikipedia.org/wiki/Tolerancia_al_malestar" class="keyword-link" target="_blank" rel="noopener noreferrer">Tolerancia al Malestar</a>:</strong> Consiste en aprender a aceptar y tolerar el malestar emocional y las situaciones difíciles sin recurrir a conductas impulsivas o desadaptativas que podrían empeorar la situación a largo plazo. Incluye técnicas para sobrevivir a crisis emocionales y aceptar la realidad tal como es, sin juicios.
                     </li>
                     <li>
-                        <strong><a href="https://es.wikipedia.org/wiki/Habilidad_social" class="keyword-link" target="_blank">Efectividad Interpersonal</a>:</strong> Aprender a pedir lo que se necesita, decir no de manera efectiva y mantener el autorespeto y las relaciones importantes.
+                        <strong><a href="https://es.wikipedia.org/wiki/Asertividad" class="keyword-link" target="_blank" rel="noopener noreferrer">Efectividad Interpersonal</a>:</strong> Enseña estrategias para interactuar con otros de manera más efectiva. Esto incluye aprender a pedir lo que se necesita, decir no de manera respetuosa, manejar conflictos interpersonales y mantener el autorespeto y las relaciones importantes. Se busca un equilibrio entre alcanzar los objetivos personales y mantener buenas relaciones.
                     </li>
                 </ul>
                 
                 <p>
-                    DBT típicamente incluye terapia individual, entrenamiento en habilidades grupales, coaching telefónico (según sea necesario) y un equipo de consulta para los terapeutas. El objetivo final es ayudar a las personas a construir una "vida que valga la pena vivir".
+                    La DBT típicamente incluye terapia individual, entrenamiento en habilidades grupales, coaching telefónico (según sea necesario entre sesiones para la generalización de habilidades) y un equipo de consulta para los terapeutas (para asegurar la adherencia al modelo y proveer apoyo). El objetivo final es ayudar a las personas a construir una "vida que valga la pena vivir", definida por el propio individuo.
                 </p>
 
                 <h4><i class="fas fa-link"></i> Conceptos Relacionados y Recursos Adicionales</h4>
-                <p>Para complementar tu aprendizaje sobre los temas que abordamos en nuestras secciones, aquí tienes algunos enlaces informativos generales:</p>
+                <p>Para complementar tu aprendizaje sobre los temas que abordamos en nuestras secciones, aquí tienes algunos enlaces informativos generales de Wikipedia:</p>
                 
                 <ul class="external-wiki-links">
-                    <li>
-                        <i class="fab fa-wikipedia-w"></i> 
-                        <a href="https://es.wikipedia.org/wiki/Blog" target="_blank" rel="noopener noreferrer">¿Qué es un Blog? (Wikipedia)</a>
-                    </li>
-                    <li>
-                        <i class="fab fa-wikipedia-w"></i> 
-                        <a href="https://es.wikipedia.org/wiki/Foro_de_discusi%C3%B3n" target="_blank" rel="noopener noreferrer">¿Qué es un Foro de Discusión? (Wikipedia)</a>
-                    </li>
-                    <li>
-                        <i class="fab fa-wikipedia-w"></i> 
-                        <a href="https://es.wikipedia.org/wiki/Freemium" target="_blank" rel="noopener noreferrer">Modelo Freemium/Premium (Wikipedia)</a>
-                    </li>
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Psicoterapia" target="_blank" rel="noopener noreferrer">Psicoterapia (General)</a></li>
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Salud_mental" target="_blank" rel="noopener noreferrer">Salud Mental</a></li>
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" target="_blank" rel="noopener noreferrer">Terapia Cognitivo-Conductual (TCC)</a></li>
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Blog" target="_blank" rel="noopener noreferrer">¿Qué es un Blog?</a></li>
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Foro_de_discusi%C3%B3n" target="_blank" rel="noopener noreferrer">Foro de Discusión</a></li>
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Freemium" target="_blank" rel="noopener noreferrer">Modelo Freemium/Premium</a></li>
                 </ul>
+            </section>
+
+            <section id="apod-section" class="content-block-qs">
+                <div class="apod-title-container">
+                     <h2><i class="fas fa-mountain"></i> Inspiración Diaria del Cosmos</h2>
+                     <p>Descubre una imagen astronómica o astrofotografía inspiradora cada día.</p>
+                </div>
+
+                <div class="hero-apod-image-container">
+                    <div class="apod-background" id="apod-background-main"></div>
+                </div>
+                
+                <div class="image-details-block">
+                    <h3 id="apod-title-text-main" class="apod-title-text">Cargando título...</h3>
+                    <div id="apod-date-text-main" class="apod-date-text">Cargando fecha...</div>
+                    
+                    <h4 class="desc-title-img">Acerca de esta Imagen</h4>
+                    <div class="image-explanation" id="image-explanation-main">
+                        Cargando descripción...
+                    </div>
+                    <a href="#" id="apod-download-main" class="download-button" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-download"></i> DESCARGAR IMAGEN EN HD
+                    </a>
+                    <div class="apod-nav-footer">
+                        <div class="apod-nav-btn" id="prev-apod-main">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="apod-nav-btn" id="next-apod-main">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
             </section>
         </div>
     </main>
@@ -926,10 +765,10 @@
                 <div class="footer-column">
                     <h3>Recursos DBT</h3>
                     <ul class="footer-links">
-                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank">¿Qué es DBT?</a></li> 
-                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank">Mindfulness</a></li> 
-                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank">Encontrar un Terapeuta DBT</a></li>
-                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank">Info sobre TLP (NIMH)</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
                 
@@ -956,42 +795,34 @@
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            // Create stars animation
+            // Star animation
             const starsContainer = document.getElementById('stars');
-            const starsCount = 200;
-            
-            for (let i = 0; i < starsCount; i++) {
-                const star = document.createElement('div');
-                star.classList.add('star');
-                
-                // Random position and size
-                const size = Math.random() * 3;
-                star.style.width = `${size}px`;
-                star.style.height = `${size}px`;
-                star.style.left = `${Math.random() * 100}%`;
-                star.style.top = `${Math.random() * 100}%`;
-                
-                // Random animation delay and duration
-                star.style.animationDelay = `${Math.random() * 5}s`;
-                star.style.animationDuration = `${2 + Math.random() * 8}s`;
-                
-                // Random color for some stars
-                if (Math.random() > 0.7) {
-                    const colors = ['#8A2BE2', '#00CED1', '#FF00FF', '#00FF7F'];
-                    star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            if (starsContainer) { // Check if element exists
+                const starsCount = 150; // Reduced count for potentially better performance
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 6}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
+                    if (Math.random() > 0.65) {
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
+                    }
+                    starsContainer.appendChild(star);
                 }
-                
-                starsContainer.appendChild(star);
             }
             
-            // Logo link to fundacion foro
-            document.getElementById('logo-link').addEventListener('click', function() {
-                window.location.href = 'https://fundacionforo.org';
-            });
-            
-            // Active Nav Link
+            // Active Nav Link (assuming nav structure is consistent)
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
-            const navLinks = document.querySelectorAll('nav a');
+            const navLinks = document.querySelectorAll('header nav a'); // More specific selector
             navLinks.forEach(link => {
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 if (linkFilename === currentPageFilename) {
@@ -1003,129 +834,150 @@
             
             // Header scroll effect
             const header = document.getElementById('main-header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
+            if(header){ // Check if header exists
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) { // Slightly lower threshold
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            // Show content on scroll (Intersection Observer)
+            const contentBlocks = document.querySelectorAll('.content-block-qs'); 
+             const observerOptions = {
+                root: null, 
+                rootMargin: '0px',
+                threshold: 0.08 // Lower threshold for earlier trigger
+            };
+
+            const observer = new IntersectionObserver((entries, obs) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        obs.unobserve(entry.target); 
+                    }
+                });
+            }, observerOptions);
+
+            contentBlocks.forEach(block => {
+                observer.observe(block);
             });
             
-            // Show content on scroll
-            const contentBlock = document.querySelector('.content-block-qs');
-            window.addEventListener('scroll', () => {
-                if (contentBlock.getBoundingClientRect().top < window.innerHeight * 0.8) {
-                    contentBlock.classList.add('visible');
-                }
-            });
-            
-            // NASA APOD Fetch (sin mencionar la fuente)
-            const apiKey = "KLRQ3WhMwiyQ2tZNpU8kXuHJabsmBLVeb6NFF9fx"; 
+            // NASA APOD Fetch (for the section at the end)
+            const apiKey = "FQFsse8Fnb3JvqPYnekskHSXtqeU2qLYXf86ZsKT"; 
             const today = new Date();
-            const apodDate = new Date();
-            let currentApodDate = today;
+            let currentApodDate = new Date(today); 
             
-            const apodBackground = document.getElementById('apod-background');
-            const apodTitle = document.getElementById('apod-title');
-            const apodDateEl = document.getElementById('apod-date');
-            const apodExplanation = document.getElementById('image-explanation');
-            const apodDownload = document.getElementById('apod-download');
-            const prevApodBtn = document.getElementById('prev-apod');
-            const nextApodBtn = document.getElementById('next-apod');
-            
-            // Format date to YYYY-MM-DD
-            function formatDate(date) {
-                const year = date.getFullYear();
-                const month = String(date.getMonth() + 1).padStart(2, '0');
-                const day = String(date.getDate()).padStart(2, '0');
-                return `${year}-${month}-${day}`;
-            }
-            
-            // Format date to readable string
-            function formatDateReadable(date) {
-                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                return date.toLocaleDateString('es-ES', options);
-            }
-            
-            // Fetch image for a specific date
-            function fetchDailyImage(date) {
-                const formattedDate = formatDate(date);
-                const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
-                
-                // Show loading state
-                apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A20, #1a1a32)";
-                apodTitle.textContent = "Cargando...";
-                apodDateEl.textContent = "";
-                apodExplanation.textContent = "Cargando descripción...";
-                
-                fetch(apiUrl)
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error(`Error: ${response.status}`);
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        if (data.media_type === 'image') {
-                            // Set background image
-                            apodBackground.style.backgroundImage = `url(${data.hdurl || data.url})`;
-                            
-                            // Set content
-                            apodTitle.textContent = data.title;
-                            apodDateEl.textContent = `Fecha: ${formatDateReadable(date)}`;
-                            apodExplanation.textContent = data.explanation;
-                            
-                            // Set download link
-                            apodDownload.href = data.hdurl || data.url;
-                            apodDownload.setAttribute('download', `Imagen_${formattedDate}.jpg`);
-                            
-                            currentApodDate = date;
-                        } else {
-                            // If it's a video, show a placeholder and message
-                            apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
-                            apodTitle.textContent = "Contenido del día";
-                            apodDateEl.textContent = `Fecha: ${formatDateReadable(date)}`;
-                            apodExplanation.textContent = "El contenido de hoy es un video. Visita nuestro sitio para verlo.";
-                            apodDownload.style.display = 'none';
-                        }
-                    })
-                    .catch(error => {
-                        console.error('Error fetching daily image:', error);
-                        // Fallback to placeholder image
-                        apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
-                        apodTitle.textContent = "Imagen del día";
-                        apodDateEl.textContent = "Fecha: " + formatDateReadable(today);
-                        apodExplanation.textContent = "Disfruta de nuestra imagen inspiradora diaria.";
-                        apodDownload.style.display = 'none';
-                    });
-            }
-            
-            // Initial fetch for today
-            fetchDailyImage(today);
-            
-            // Navigation buttons
-            prevApodBtn.addEventListener('click', () => {
-                const prevDate = new Date(currentApodDate);
-                prevDate.setDate(prevDate.getDate() - 1);
-                fetchDailyImage(prevDate);
-            });
-            
-            nextApodBtn.addEventListener('click', () => {
-                const nextDate = new Date(currentApodDate);
-                nextDate.setDate(nextDate.getDate() + 1);
-                
-                // Don't allow future dates
-                if (nextDate <= today) {
-                    fetchDailyImage(nextDate);
-                } else {
-                    // Show message for future dates
-                    apodTitle.textContent = "Contenido futuro";
-                    apodDateEl.textContent = "Fecha: " + formatDateReadable(nextDate);
-                    apodExplanation.textContent = "El contenido para esta fecha aún no está disponible. Por favor, selecciona una fecha anterior.";
-                    apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
-                    apodDownload.style.display = 'none';
+            const apodBackground = document.getElementById('apod-background-main');
+            const apodTitleEl = document.getElementById('apod-title-text-main'); 
+            const apodDateEl = document.getElementById('apod-date-text-main');   
+            const apodExplanation = document.getElementById('image-explanation-main');
+            const apodDownload = document.getElementById('apod-download-main');
+            const prevApodBtn = document.getElementById('prev-apod-main');
+            const nextApodBtn = document.getElementById('next-apod-main');
+
+            // Check if all APOD elements exist before proceeding
+            if (apodBackground && apodTitleEl && apodDateEl && apodExplanation && apodDownload && prevApodBtn && nextApodBtn) {
+                function formatDate(date) {
+                    const year = date.getFullYear();
+                    const month = String(date.getMonth() + 1).padStart(2, '0');
+                    const day = String(date.getDate()).padStart(2, '0');
+                    return `${year}-${month}-${day}`;
                 }
-            });
+                
+                function formatDateReadable(date) {
+                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                    return date.toLocaleDateString('es-ES', options);
+                }
+                
+                function fetchDailyImage(dateToFetch) {
+                    const formattedDate = formatDate(dateToFetch);
+                    const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
+                    
+                    apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A20, #1a1a32)"; 
+                    apodTitleEl.textContent = "Consultando el cosmos...";
+                    apodDateEl.textContent = "Aguarde un momento...";
+                    apodExplanation.textContent = "Recuperando los secretos del universo...";
+                    apodDownload.style.display = 'none'; 
+                    
+                    fetch(apiUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                return response.json().then(errData => {
+                                    throw new Error(`Error ${response.status}: ${errData.msg || 'No se pudo obtener la imagen para esta fecha.'}`);
+                                }).catch(() => {
+                                    throw new Error(`Error ${response.status}: No se pudo obtener la imagen para esta fecha.`);
+                                });
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            if (data.media_type === 'image') {
+                                apodBackground.style.backgroundImage = `url(${data.hdurl || data.url})`;
+                                apodTitleEl.textContent = data.title;
+                                apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
+                                apodExplanation.textContent = data.explanation;
+                                apodDownload.href = data.hdurl || data.url;
+                                apodDownload.setAttribute('download', `Cosmos_${formattedDate}.jpg`);
+                                apodDownload.style.display = 'block'; 
+                            } else if (data.media_type === 'video') {
+                                apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Video+Cósmico+del+Día')`;
+                                apodTitleEl.textContent = data.title || "Video Cósmico del Día";
+                                apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
+                                apodExplanation.innerHTML = `${data.explanation}<br><br>El contenido de hoy es un video. <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="keyword-link">Haz clic aquí para verlo en su fuente original</a>.`;
+                                apodDownload.style.display = 'none';
+                            } else {
+                                 apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Misterio+Cósmico')`;
+                                apodTitleEl.textContent = "Misterio Cósmico";
+                                apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
+                                apodExplanation.textContent = "El tipo de contenido para hoy no es una imagen o video estándar, o no está disponible en este momento.";
+                                apodDownload.style.display = 'none';
+                            }
+                            currentApodDate = new Date(dateToFetch); 
+                        })
+                        .catch(error => {
+                            console.error('Error al obtener la imagen cósmica:', error);
+                            apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FF0000?text=Fallo+en+la+Transmisión')`; 
+                            apodTitleEl.textContent = "Fallo en la Transmisión Cósmica";
+                            apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
+                            apodExplanation.textContent = error.message || "No pudimos conectar con el observatorio estelar para esta fecha. Intenta más tarde o selecciona otra coordenada temporal.";
+                            apodDownload.style.display = 'none';
+                        });
+                }
+                
+                fetchDailyImage(today);
+                
+                prevApodBtn.addEventListener('click', () => {
+                    const prevDate = new Date(currentApodDate);
+                    prevDate.setDate(prevDate.getDate() - 1);
+                    fetchDailyImage(prevDate);
+                });
+                
+                nextApodBtn.addEventListener('click', () => {
+                    const nextDate = new Date(currentApodDate);
+                    nextDate.setDate(nextDate.getDate() + 1);
+                    
+                    const todayForComparison = new Date();
+                    todayForComparison.setHours(0,0,0,0); 
+                    const tempNextDate = new Date(nextDate); // Create a temporary date for comparison to avoid modifying nextDate directly
+                    tempNextDate.setHours(0,0,0,0);
+
+                    if (tempNextDate <= todayForComparison) {
+                        fetchDailyImage(nextDate);
+                    } else {
+                        apodTitleEl.textContent = "Viaje al Futuro No Disponible";
+                        apodDateEl.textContent = `Fecha: ${formatDateReadable(nextDate)}`;
+                        apodExplanation.textContent = "Las crónicas cósmicas para esta fecha futura aún no han sido escritas. Por favor, mantente en el presente o explora el pasado.";
+                        apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Coordenada+Temporal+Futura')`;
+                        apodDownload.style.display = 'none';
+                    }
+                });
+            } else {
+                console.warn("Algunos elementos para la sección APOD no fueron encontrados en el DOM. La funcionalidad APOD podría estar incompleta.");
+            }
+
         });
     </script>
 </body>
