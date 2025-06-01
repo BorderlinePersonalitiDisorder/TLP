@@ -3,28 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borderline Journey - NASA APOD Portada</title>
+    <title>Borderline Journey - APOD Portada</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Neón Espacial */
-            --primary-neon-violet: #8F00FF;
-            --secondary-dark-cyan-contrast: #003333;
-            --accent-neon-magenta: #FF00FF;
-            --accent-neon-cyan: #00FFFF;
-            --accent-neon-yellow: #FFFF00;
-            --accent-neon-sea-green: #39FF14;
-            --accent-space-blue: #1a1a2e;
+            /* Paleta Borderline */
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
             
-            --card-bg-neon: rgba(10, 5, 20, 0.92);
-            --border-color-neon: rgba(143, 0, 255, 0.7);
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
             
-            --dark-bg-neon-theme: #0A0A10;
-            --hero-overlay: rgba(10, 10, 16, 0.75);
+            --dark-bg: #0A0A20;
+            --hero-overlay: rgba(10, 10, 32, 0.75);
         }
         
         * {
@@ -34,30 +34,21 @@
         }
         
         body {
-            background: var(--dark-bg-neon-theme);
+            background: var(--dark-bg);
             color: var(--text-color-light);
             line-height: 1.8;
             font-family: 'Raleway', sans-serif;
             overflow-x: hidden;
             min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
         }
         
-        .creative-bg { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            z-index: -1; 
-            opacity: 0.15;
-            background: 
-                radial-gradient(circle at 10% 20%, rgba(143, 0, 255, 0.15) 0%, transparent 30%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 30%);
-            background-size: 300% 300%; 
-            animation: creativeBackground 25s infinite ease-in-out;
-        }
-        
-        @keyframes creativeBackground {
+        @keyframes gradientBackground {
             0% { background-position: 0% 50%; } 
             50% { background-position: 100% 50%; } 
             100% { background-position: 0% 50%; }
@@ -72,9 +63,9 @@
             z-index: 1;
         }
         
-        /* Navegación con efecto neón */
+        /* Navegación con efecto borderline */
         header {
-            background: rgba(10, 10, 16, 0.85); 
+            background: rgba(10, 10, 32, 0.85); 
             backdrop-filter: blur(12px); 
             color: white; 
             padding: 1rem 0; 
@@ -82,14 +73,13 @@
             top: 0; 
             width: 100%;
             z-index: 1000;
-            border-bottom: 2px solid var(--accent-neon-cyan); 
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.35);
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
             transition: all 0.4s ease;
         }
         
         header.scrolled {
-            background: rgba(10, 10, 16, 0.95);
-            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+            background: rgba(10, 10, 32, 0.95);
             padding: 0.7rem 0;
         }
         
@@ -103,24 +93,35 @@
             display: flex; 
             align-items: center; 
             gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
         }
         
         .logo h1 { 
-            font-family: 'Monoton', cursive; 
-            font-size: 2.2rem; 
+            font-family: 'Krona One', sans-serif; 
+            font-size: 1.8rem; 
             font-weight: 400;
-            background: linear-gradient(45deg, var(--accent-neon-magenta), var(--accent-neon-yellow), var(--accent-neon-cyan));
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
             -webkit-background-clip: text; 
             background-clip: text; 
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px var(--accent-neon-magenta), 0 0 15px var(--accent-neon-yellow); 
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
         
         .logo i { 
             font-size: 2.2rem; 
-            color: var(--accent-neon-cyan); 
-            text-shadow: 0 0 12px var(--accent-neon-cyan); 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse {
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--accent-cyan); }
+            100% { transform: scale(1); color: var(--accent-blue); }
         }
         
         nav ul { 
@@ -132,10 +133,10 @@
         nav a { 
             color: var(--text-color-light); 
             text-decoration: none; 
-            font-family: 'Krona One', sans-serif; 
+            font-family: 'Comfortaa', sans-serif; 
             font-size: 0.9rem; 
             padding: 10px 15px; 
-            border-radius: 6px; 
+            border-radius: 20px; 
             transition: all 0.3s ease-out; 
             position: relative;
             background: transparent; 
@@ -146,28 +147,26 @@
             content: ''; 
             position: absolute; 
             top: 0; 
-            left: -100%; 
-            width: 100%; 
+            left: 0; 
+            width: 0%; 
             height: 100%;
-            background: linear-gradient(90deg, transparent, var(--accent-neon-cyan), var(--accent-neon-magenta), transparent);
-            opacity: 0; 
-            transition: left 0.4s ease, opacity 0.4s ease; 
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
             z-index: -1;
         }
         
         nav a:hover::before, 
         nav a.active::before { 
-            left: 0; 
-            opacity: 0.25; 
+            width: 100%; 
         } 
         
         nav a:hover, 
         nav a.active {
-            color: var(--accent-neon-yellow); 
+            color: var(--accent-yellow); 
             background-color: rgba(0, 255, 255, 0.1); 
-            border: 1px solid var(--accent-neon-cyan); 
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); 
-            transform: translateY(-1px); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
         }
         
         /* HERO SECTION CON APOD */
@@ -193,7 +192,7 @@
             transition: background-image 1.5s ease-in-out;
             z-index: -1;
             transform: scale(1.05);
-            filter: blur(5px);
+            filter: blur(5px) brightness(0.8);
         }
         
         .apod-overlay {
@@ -202,7 +201,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(0deg, rgba(10,10,16,0.9) 0%, rgba(10,10,16,0.3) 50%, rgba(10,10,16,0.9) 100%);
+            background: linear-gradient(0deg, rgba(10,10,32,0.9) 0%, rgba(10,10,32,0.3) 50%, rgba(10,10,32,0.9) 100%);
             z-index: 0;
         }
         
@@ -213,13 +212,15 @@
             max-width: 900px;
             padding: 2rem;
             color: white;
-            background: rgba(10, 10, 16, 0.6);
-            border-radius: 20px;
+            background: rgba(10, 10, 32, 0.6);
+            border-radius: 15px;
             backdrop-filter: blur(10px);
-            border: 2px solid rgba(143, 0, 255, 0.5);
-            box-shadow: 0 0 50px rgba(143, 0, 255, 0.5);
+            border: 2px solid rgba(138, 43, 226, 0.5);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.4);
             margin-top: 4rem;
             animation: contentAppear 1.5s ease-out;
+            border-top-left-radius: 50px;
+            border-bottom-right-radius: 50px;
         }
         
         @keyframes contentAppear {
@@ -229,10 +230,9 @@
         
         .hero-content h1 {
             font-family: 'Major Mono Display', monospace;
-            font-size: 3.5rem;
+            font-size: 3rem;
             margin-bottom: 1.5rem;
-            text-shadow: 0 0 15px var(--accent-neon-cyan);
-            background: linear-gradient(45deg, var(--accent-neon-magenta), var(--accent-neon-cyan));
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
             -webkit-background-clip: text;
             background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -241,28 +241,26 @@
         }
         
         @keyframes titleGlow {
-            0% { text-shadow: 0 0 15px var(--accent-neon-cyan); }
-            50% { text-shadow: 0 0 25px var(--accent-neon-magenta), 0 0 30px var(--accent-neon-yellow); }
-            100% { text-shadow: 0 0 20px var(--accent-neon-cyan), 0 0 35px var(--accent-neon-sea-green); }
+            0% { text-shadow: 0 0 10px var(--accent-magenta); }
+            50% { text-shadow: 0 0 15px var(--accent-blue), 0 0 20px var(--accent-green); }
+            100% { text-shadow: 0 0 12px var(--accent-magenta), 0 0 25px var(--accent-yellow); }
         }
         
         .hero-content p {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             margin-bottom: 2rem;
             line-height: 1.7;
             color: var(--text-color-light);
             max-width: 700px;
             margin-left: auto;
             margin-right: auto;
-            text-shadow: 0 0 5px rgba(0,0,0,0.7);
         }
         
         .apod-title {
             font-family: 'Krona One', sans-serif;
-            font-size: 2.2rem;
-            color: var(--accent-neon-yellow);
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 10px var(--accent-neon-yellow);
+            font-size: 2rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
             animation: textPulse 2s infinite alternate;
         }
         
@@ -273,10 +271,9 @@
         
         .apod-date {
             font-family: 'Major Mono Display', monospace;
-            color: var(--accent-neon-sea-green);
-            font-size: 1.2rem;
+            color: var(--accent-green);
+            font-size: 1.1rem;
             margin-bottom: 2rem;
-            text-shadow: 0 0 5px var(--accent-neon-sea-green);
         }
         
         .apod-explanation {
@@ -288,7 +285,7 @@
             padding: 15px;
             background: rgba(0, 0, 0, 0.3);
             border-radius: 10px;
-            border: 1px solid rgba(0, 255, 255, 0.2);
+            border: 1px solid rgba(0, 206, 209, 0.2);
             box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
         
@@ -302,21 +299,21 @@
         }
         
         .apod-explanation::-webkit-scrollbar-thumb {
-            background: var(--accent-neon-cyan);
+            background: var(--accent-blue);
             border-radius: 10px;
         }
         
         .download-button {
             display: inline-block;
-            background: linear-gradient(45deg, var(--accent-neon-yellow), var(--accent-neon-magenta));
-            color: var(--dark-bg-neon-theme);
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));
+            color: var(--dark-bg);
             padding: 15px 35px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Fredoka One', cursive;
             font-size: 1.2rem;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(255, 255, 0, 0.5), 0 0 15px var(--accent-neon-magenta);
+            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.5);
             border: 2px solid rgba(255, 255, 255, 0.5);
             margin-top: 1rem;
             position: relative;
@@ -339,9 +336,9 @@
         }
         
         .download-button:hover {
-            background: linear-gradient(45deg, var(--accent-neon-magenta), var(--accent-neon-yellow));
+            background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow));
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 0, 255, 0.8), 0 0 25px var(--accent-neon-yellow);
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.7);
         }
         
         .apod-nav {
@@ -356,9 +353,9 @@
         }
         
         .apod-nav-btn {
-            background: rgba(10, 10, 16, 0.7);
-            color: var(--accent-neon-cyan);
-            border: 2px solid var(--accent-neon-cyan);
+            background: rgba(10, 10, 32, 0.7);
+            color: var(--accent-cyan);
+            border: 2px solid var(--accent-blue);
             border-radius: 50%;
             width: 60px;
             height: 60px;
@@ -368,7 +365,7 @@
             font-size: 1.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.5);
             animation: buttonFloat 3s infinite ease-in-out;
         }
         
@@ -381,10 +378,10 @@
         }
         
         .apod-nav-btn:hover {
-            background: var(--accent-neon-cyan);
-            color: var(--dark-bg-neon-theme);
+            background: var(--accent-blue);
+            color: var(--dark-bg);
             transform: translateY(-5px);
-            box-shadow: 0 0 25px var(--accent-neon-cyan);
+            box-shadow: 0 0 25px var(--accent-blue);
             animation: none;
         }
         
@@ -394,16 +391,18 @@
         }
         
         .content-block-qs { 
-            background: var(--card-bg-neon); 
+            background: var(--card-bg); 
             padding: 40px; 
             border-radius: 20px; 
             margin-bottom: 3.5rem;
-            border: 1px solid var(--border-color-neon);
-            box-shadow: 0 0 30px rgba(143, 0, 255, 0.3), 0 4px 15px rgba(0,0,0,0.5); 
+            border: 1px solid var(--border-color);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.3), 0 4px 15px rgba(0,0,0,0.5); 
             backdrop-filter: blur(10px);
             transform: translateY(50px);
             opacity: 0;
             transition: all 1s ease;
+            border-top-right-radius: 50px;
+            border-bottom-left-radius: 50px;
         }
         
         .content-block-qs.visible {
@@ -414,11 +413,10 @@
         .content-block-qs h2 {
             font-family: 'Major Mono Display', monospace; 
             font-size: 2.5rem; 
-            color: var(--accent-neon-cyan); 
+            color: var(--accent-blue); 
             text-align: center; 
             margin-bottom: 2.5rem; 
             text-transform: uppercase;
-            text-shadow: 0 0 15px var(--accent-neon-cyan);
             position: relative;
             padding-bottom: 20px;
         }
@@ -431,25 +429,22 @@
             transform: translateX(-50%);
             width: 150px;
             height: 4px;
-            background: linear-gradient(to right, transparent, var(--accent-neon-cyan), transparent);
+            background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
             border-radius: 2px;
-            box-shadow: 0 0 10px var(--accent-neon-cyan);
         }
         
         .content-block-qs h2 i {
             margin-right: 15px;
-            color: var(--accent-neon-yellow); 
-            text-shadow: 0 0 10px var(--accent-neon-yellow);
+            color: var(--accent-magenta); 
         }
         
         .content-block-qs h4 { 
             font-family: 'Krona One', sans-serif;
-            color: var(--accent-neon-sea-green);
-            text-shadow: 0 0 8px var(--accent-neon-sea-green);
+            color: var(--accent-green);
             margin-top: 2.5rem;
             margin-bottom: 1.5rem;
             font-size: 1.5rem;
-            border-left: 4px solid var(--accent-neon-sea-green);
+            border-left: 4px solid var(--accent-green);
             padding-left: 15px;
         }
         
@@ -461,38 +456,21 @@
             text-align: justify;
         }
         
-        #dbt-info-section p a, 
-        #dbt-info-section ul.external-wiki-links a { 
-            color: var(--accent-neon-yellow); 
+        .keyword-link {
+            color: var(--accent-yellow);
             text-decoration: none;
-            text-shadow: 0 0 4px var(--accent-neon-yellow);
-            transition: color 0.3s ease, text-shadow 0.3s ease;
-            position: relative;
+            font-weight: bold;
+            border-bottom: 2px dashed var(--accent-yellow);
+            transition: all 0.3s ease;
+            padding: 0 2px;
         }
         
-        #dbt-info-section p a::after,
-        #dbt-info-section ul.external-wiki-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--accent-neon-sea-green);
-            transition: width 0.3s ease;
+        .keyword-link:hover {
+            color: var(--accent-green);
+            border-bottom: 2px solid var(--accent-green);
+            background-color: rgba(0, 255, 127, 0.1);
         }
         
-        #dbt-info-section p a:hover, 
-        #dbt-info-section ul.external-wiki-links a:hover {
-            color: var(--accent-neon-sea-green);
-            text-shadow: 0 0 8px var(--accent-neon-sea-green);
-        }
-        
-        #dbt-info-section p a:hover::after,
-        #dbt-info-section ul.external-wiki-links a:hover::after {
-            width: 100%;
-        }
-
         #dbt-info-section ul:not(.external-wiki-links) { 
             list-style: none; 
             padding-left: 0;
@@ -500,26 +478,14 @@
         }
         
         #dbt-info-section ul:not(.external-wiki-links) li {
-            background: rgba(0, 255, 255, 0.1); 
+            background: rgba(0, 206, 209, 0.1); 
             padding: 20px;
             margin-bottom: 20px;
-            border-left: 4px solid var(--accent-neon-cyan); 
+            border-left: 4px solid var(--accent-blue); 
             border-radius: 0 12px 12px 0;
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease;
-        }
-        
-        #dbt-info-section ul:not(.external-wiki-links) li::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 5px;
-            height: 100%;
-            background: var(--accent-neon-cyan);
-            box-shadow: 0 0 10px var(--accent-neon-cyan);
-            z-index: 1;
         }
         
         #dbt-info-section ul:not(.external-wiki-links) li:hover {
@@ -527,11 +493,10 @@
         }
         
         #dbt-info-section ul:not(.external-wiki-links) li strong {
-            color: var(--accent-neon-yellow); 
+            color: var(--accent-magenta); 
             font-family: 'Krona One', sans-serif;
             display: block;
             margin-bottom: 10px;
-            text-shadow: 0 0 8px var(--accent-neon-yellow);
             font-size: 1.3rem;
         }
         
@@ -546,33 +511,32 @@
         
         #dbt-info-section ul.external-wiki-links li {
             margin-bottom: 0;
-            background: rgba(57, 255, 20, 0.08);
+            background: rgba(0, 255, 127, 0.08);
             padding: 15px;
             border-radius: 8px;
-            border: 1px solid rgba(57, 255, 20, 0.3);
+            border: 1px solid rgba(0, 255, 127, 0.3);
             transition: all 0.3s ease;
         }
         
         #dbt-info-section ul.external-wiki-links li:hover {
-            background: rgba(57, 255, 20, 0.15);
+            background: rgba(0, 255, 127, 0.15);
             transform: translateY(-3px);
-            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+            box-shadow: 0 0 15px rgba(0, 255, 127, 0.3);
         }
         
         #dbt-info-section ul.external-wiki-links li i {
             margin-right: 12px;
-            color: var(--accent-neon-sea-green); 
+            color: var(--accent-green); 
             font-size: 1.2rem;
         }
         
         /* Footer */
         footer { 
-            background: rgba(10,10,16,0.97); 
+            background: rgba(10,10,32,0.97); 
             color: white; 
             padding: 4.5rem 0 2.5rem; 
             position: relative; 
-            border-top: 2px solid var(--secondary-dark-cyan-contrast); 
-            box-shadow: 0 -5px 25px rgba(0, 51, 51, 0.3); 
+            border-top: 2px solid var(--accent-blue); 
         }
         
         .footer-grid { 
@@ -583,13 +547,12 @@
         }
         
         .footer-column h3 { 
-            color: var(--accent-neon-yellow); 
+            color: var(--accent-yellow); 
             margin-bottom: 1.7rem; 
             position: relative; 
             padding-bottom: 12px; 
             font-size: 1.5rem; 
             font-family: 'Fredoka One', cursive;
-            text-shadow: 0 0 8px var(--accent-neon-yellow);
         }
         
         .footer-column h3::after { 
@@ -599,9 +562,8 @@
             left: 0; 
             width: 55px; 
             height: 4px; 
-            background: var(--accent-neon-cyan); 
+            background: var(--accent-blue); 
             border-radius: 2px; 
-            box-shadow: 0 0 12px var(--accent-neon-cyan); 
         }
         
         .footer-links { 
@@ -622,9 +584,8 @@
         }
         
         .footer-links a:hover { 
-            color: var(--accent-neon-cyan); 
+            color: var(--accent-blue); 
             transform: translateX(10px); 
-            text-shadow: 0 0 5px var(--accent-neon-cyan);
         }
         
         .contact-info { 
@@ -641,8 +602,7 @@
         }
         
         .contact-info i { 
-            color: var(--accent-neon-cyan); 
-            text-shadow: 0 0 5px var(--accent-neon-cyan); 
+            color: var(--accent-blue); 
         } 
         
         .social-links { 
@@ -658,20 +618,17 @@
             width: 50px; 
             height: 50px; 
             background: rgba(255, 255, 255, 0.05); 
-            color: var(--accent-neon-cyan); 
+            color: var(--accent-blue); 
             border-radius: 50%; 
             transition: all 0.4s ease; 
             font-size: 1.3rem; 
-            border: 1px solid var(--accent-neon-cyan); 
-            text-shadow: 0 0 5px var(--accent-neon-cyan);
+            border: 1px solid var(--accent-blue); 
         }
         
         .social-links a:hover { 
-            background: var(--accent-neon-cyan); 
-            color: var(--dark-bg-neon-theme); 
+            background: var(--accent-blue); 
+            color: var(--dark-bg); 
             transform: translateY(-5px) rotate(15deg); 
-            box-shadow: 0 0 25px var(--accent-neon-cyan); 
-            text-shadow: none;
         }
         
         .copyright { 
@@ -683,14 +640,13 @@
         }
         
         .copyright a { 
-            color: var(--accent-neon-yellow); 
+            color: var(--accent-yellow); 
             text-decoration: none; 
             transition: all 0.3s ease; 
         } 
         
         .copyright a:hover { 
             color: var(--text-color-light); 
-            text-shadow: 0 0 5px var(--accent-neon-yellow); 
         }
         
         /* Animación de estrellas */
@@ -727,7 +683,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at center, transparent 20%, rgba(143, 0, 255, 0.1) 70%, transparent 100%);
+            background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
             z-index: -1;
             opacity: 0.3;
             animation: rotateGalaxy 120s infinite linear;
@@ -757,7 +713,7 @@
             }
             
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             .hero-content p {
@@ -765,7 +721,7 @@
             }
             
             .apod-title {
-                font-size: 1.8rem;
+                font-size: 1.7rem;
             }
             
             .content-block-qs h2 {
@@ -775,7 +731,7 @@
         
         @media (max-width: 600px) {
             .logo h1 {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
             }
             
             nav ul {
@@ -793,7 +749,7 @@
             }
             
             .hero-content h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .hero-content p {
@@ -801,7 +757,7 @@
             }
             
             .apod-title {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
             
             .apod-date {
@@ -835,17 +791,16 @@
     </style>
 </head>
 <body>
-    <div class="creative-bg"></div>
     <div class="stars" id="stars"></div>
     <div class="galaxy"></div>
     
     <header id="main-header">
         <div class="container header-container">
-            <div class="logo">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
+            <div class="logo" id="logo-link">
+                <div style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
                     <i class="fas fa-brain"></i>
                     <h1>BORDERLINE JOURNEY</h1>
-                </a>
+                </div>
             </div>
             <nav>
                 <ul>
@@ -866,7 +821,7 @@
         
         <div class="hero-content">
             <h1><i class="fas fa-rocket"></i> EXPLORA EL UNIVERSO</h1>
-            <p>Descubre la belleza del cosmos con la imagen astronómica del día de la NASA</p>
+            <p>Descubre la belleza del cosmos con nuestra imagen astronómica diaria</p>
             
             <div class="apod-title" id="apod-title">Cargando título...</div>
             <div class="apod-date" id="apod-date">Cargando fecha...</div>
@@ -895,7 +850,7 @@
             <section id="dbt-info-section" class="content-block-qs">
                 <h2><i class="fas fa-brain"></i> Explorando la Terapia Dialéctico Conductual (DBT)</h2>
                 <p>
-                    La Terapia Dialéctico Conductual (DBT), desarrollada por Marsha M. Linehan, es un tratamiento cognitivo-conductual que originalmente fue diseñado para individuos con Trastorno Límite de la Personalidad (TLP), especialmente aquellos con ideación suicida crónica. Con el tiempo, su eficacia se ha demostrado en una variedad de otros trastornos y problemas, incluyendo trastornos alimentarios, abuso de sustancias, y TEPT.
+                    La Terapia Dialéctico Conductual (DBT), desarrollada por Marsha M. Linehan, es un tratamiento cognitivo-conductual que originalmente fue diseñado para individuos con <a href="https://es.wikipedia.org/wiki/Trastorno_l%C3%ADmite_de_la_personalidad" class="keyword-link" target="_blank">Trastorno Límite de la Personalidad (TLP)</a>, especialmente aquellos con ideación suicida crónica. Con el tiempo, su eficacia se ha demostrado en una variedad de otros trastornos y problemas, incluyendo trastornos alimentarios, abuso de sustancias, y <a href="https://es.wikipedia.org/wiki/Trastorno_de_estr%C3%A9s_postraum%C3%A1tico" class="keyword-link" target="_blank">TEPT</a>.
                 </p>
                 <p>
                     El término "dialéctica" se refiere a la síntesis o integración de opuestos. En DBT, esto implica un equilibrio entre la aceptación y el cambio. Se valida la experiencia emocional del individuo mientras se fomenta la adquisición de nuevas habilidades para gestionar emociones intensas y mejorar las relaciones interpersonales. Nuestros <a href="cursos.html">cursos</a> profundizan en estos módulos.
@@ -903,16 +858,16 @@
                 
                 <ul>
                     <li>
-                        <strong>Mindfulness (Atención Plena):</strong> Aprender a observar y experimentar el momento presente sin juzgar. Ayuda a tomar control de la mente y a reducir la reactividad emocional.
+                        <strong><a href="https://es.wikipedia.org/wiki/Atenci%C3%B3n_plena" class="keyword-link" target="_blank">Mindfulness (Atención Plena)</a>:</strong> Aprender a observar y experimentar el momento presente sin juzgar. Ayuda a tomar control de la mente y a reducir la reactividad emocional.
                     </li>
                     <li>
-                        <strong>Regulación Emocional:</strong> Identificar y cambiar emociones que se quieren modificar, reducir la vulnerabilidad a la mente emocional y aumentar las experiencias emocionales positivas.
+                        <strong><a href="https://es.wikipedia.org/wiki/Regulaci%C3%B3n_emocional" class="keyword-link" target="_blank">Regulación Emocional</a>:</strong> Identificar y cambiar emociones que se quieren modificar, reducir la vulnerabilidad a la mente emocional y aumentar las experiencias emocionales positivas.
                     </li>
                     <li>
-                        <strong>Tolerancia al Malestar:</strong> Aprender a aceptar y tolerar el malestar emocional sin recurrir a conductas desadaptativas. Incluye técnicas para sobrevivir a crisis emocionales.
+                        <strong><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" class="keyword-link" target="_blank">Tolerancia al Malestar</a>:</strong> Aprender a aceptar y tolerar el malestar emocional sin recurrir a conductas desadaptativas. Incluye técnicas para sobrevivir a crisis emocionales.
                     </li>
                     <li>
-                        <strong>Efectividad Interpersonal:</strong> Aprender a pedir lo que se necesita, decir no de manera efectiva y mantener el autorespeto y las relaciones importantes.
+                        <strong><a href="https://es.wikipedia.org/wiki/Habilidad_social" class="keyword-link" target="_blank">Efectividad Interpersonal</a>:</strong> Aprender a pedir lo que se necesita, decir no de manera efectiva y mantener el autorespeto y las relaciones importantes.
                     </li>
                 </ul>
                 
@@ -1020,12 +975,17 @@
                 
                 // Random color for some stars
                 if (Math.random() > 0.7) {
-                    const colors = ['#8F00FF', '#00FFFF', '#FFFF00', '#FF00FF'];
+                    const colors = ['#8A2BE2', '#00CED1', '#FF00FF', '#00FF7F'];
                     star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
                 }
                 
                 starsContainer.appendChild(star);
             }
+            
+            // Logo link to fundacion foro
+            document.getElementById('logo-link').addEventListener('click', function() {
+                window.location.href = 'https://fundacionforo.org';
+            });
             
             // Active Nav Link
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
@@ -1079,16 +1039,22 @@
                 return `${year}-${month}-${day}`;
             }
             
+            // Format date to readable string
+            function formatDateReadable(date) {
+                const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+                return date.toLocaleDateString('es-ES', options);
+            }
+            
             // Fetch APOD for a specific date
             function fetchApod(date) {
                 const formattedDate = formatDate(date);
                 const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
                 
                 // Show loading state
-                apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A10, #1a1a2e)";
+                apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A20, #1a1a32)";
                 apodTitle.textContent = "Cargando...";
                 apodDateEl.textContent = "";
-                apodExplanation.textContent = "Obteniendo la imagen del día desde la NASA...";
+                apodExplanation.textContent = "Obteniendo la imagen del día...";
                 
                 fetch(apiUrl)
                     .then(response => {
@@ -1104,20 +1070,20 @@
                             
                             // Set content
                             apodTitle.textContent = data.title;
-                            apodDateEl.textContent = `Fecha: ${formattedDate}`;
+                            apodDateEl.textContent = `Fecha: ${formatDateReadable(date)}`;
                             apodExplanation.textContent = data.explanation;
                             
                             // Set download link
                             apodDownload.href = data.hdurl || data.url;
-                            apodDownload.setAttribute('download', `NASA_APOD_${formattedDate}.jpg`);
+                            apodDownload.setAttribute('download', `Astronomy_Image_${formattedDate}.jpg`);
                             
                             currentApodDate = date;
                         } else {
                             // If it's a video, show a placeholder and message
                             apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
                             apodTitle.textContent = "Video del Día";
-                            apodDateEl.textContent = `Fecha: ${formattedDate}`;
-                            apodExplanation.textContent = "El APOD de hoy es un video. Visita el sitio oficial de la NASA para verlo.";
+                            apodDateEl.textContent = `Fecha: ${formatDateReadable(date)}`;
+                            apodExplanation.textContent = "La imagen de hoy es un video. Visita nuestro sitio para verlo.";
                             apodDownload.style.display = 'none';
                         }
                     })
@@ -1126,8 +1092,8 @@
                         // Fallback to placeholder image
                         apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
                         apodTitle.textContent = "Imagen Astronómica del Día";
-                        apodDateEl.textContent = "Fecha: " + formatDate(today);
-                        apodExplanation.textContent = "Explora la belleza del universo con las imágenes más impresionantes capturadas por la NASA y telescopios alrededor del mundo.";
+                        apodDateEl.textContent = "Fecha: " + formatDateReadable(today);
+                        apodExplanation.textContent = "Explora la belleza del universo con las imágenes más impresionantes capturadas por telescopios alrededor del mundo.";
                         apodDownload.style.display = 'none';
                     });
             }
@@ -1152,7 +1118,7 @@
                 } else {
                     // Show message for future dates
                     apodTitle.textContent = "Imagen Futura";
-                    apodDateEl.textContent = "Fecha: " + formatDate(nextDate);
+                    apodDateEl.textContent = "Fecha: " + formatDateReadable(nextDate);
                     apodExplanation.textContent = "La imagen para esta fecha aún no está disponible. Por favor, selecciona una fecha anterior.";
                     apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
                     apodDownload.style.display = 'none';
