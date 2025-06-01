@@ -29,6 +29,7 @@
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209;
+            --accent-red-rgb: 255, 69, 0;
         }
         
         * {
@@ -160,6 +161,7 @@
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
+            border-radius: 20px;
         }
         
         nav a:hover::before, 
@@ -182,38 +184,58 @@
 
         .page-header {
             text-align: center;
-            margin-bottom: 2rem; /* Reduced margin */
+            margin-bottom: 2rem; 
             padding-top: 2rem;
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
-            color: var(--primary-violet); /* DBT color */
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--primary-violet-rgb),0.5);
+            /* Typography updated for DBT main page title */
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem; /* Adjusted for Playfair */
+            font-weight: 700;
+            color: var(--primary-violet); 
+            margin-bottom: 0.75rem; /* Increased margin */
+            text-transform: none; 
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 12px rgba(var(--primary-violet-rgb),0.5); /* Enhanced shadow */
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .page-header h2 i {
+            font-size: 2.8rem; /* Adjusted icon size */
+            animation: subtleRotate 8s infinite linear; /* Added animation to main icon */
+        }
+        @keyframes subtleRotate { /* Re-added subtleRotate for main icon */
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(4deg) scale(1.03); }
+            50% { transform: rotate(0deg) scale(1.06); }
+            75% { transform: rotate(-4deg) scale(1.03); }
+            100% { transform: rotate(0deg) scale(1); }
         }
 
+
         .page-header p.subtitle {
-            font-size: 1.2rem;
+            font-size: 1.25rem; /* Slightly larger subtitle */
             color: var(--text-color-medium);
-            max-width: 750px;
-            margin: 0 auto 2rem auto;
+            max-width: 800px; /* Wider subtitle */
+            margin: 0 auto 2.5rem auto; /* Increased bottom margin */
+            font-style: italic; /* Added italic style */
         }
         
         .intro-dbt-section {
-            background: rgba(var(--primary-violet-rgb), 0.05);
-            padding: 25px;
+            background: rgba(var(--primary-violet-rgb), 0.08); /* Slightly more prominent background */
+            padding: 30px; /* Increased padding */
             border-radius: 15px;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(var(--primary-violet-rgb),0.2);
+            margin-bottom: 3.5rem; /* Increased margin */
+            border: 1px solid rgba(var(--primary-violet-rgb),0.3); /* Slightly more visible border */
+            box-shadow: 0 4px 15px rgba(var(--primary-violet-rgb), 0.1); /* Added subtle shadow */
         }
         .intro-dbt-section p {
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; /* Increased margin */
+            line-height: 1.9;
         }
          .intro-dbt-section p:last-child {
             margin-bottom: 0;
@@ -223,36 +245,48 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 2.5rem;
+            margin-bottom: 3rem; /* Space before back button */
         }
 
         .module-card {
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px; /* Increased padding */
             box-shadow: 0 7px 22px rgba(0,0,0,0.35);
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; /* Added border-color transition */
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             text-align: center;
-            opacity: 0; /* Initial for animation */
-            transform: translateY(30px); /* Initial for animation */
+            opacity: 0; 
+            transform: translateY(30px); 
         }
-        .module-card.visible { /* For animation */
+        .module-card.visible { 
             opacity: 1;
             transform: translateY(0);
         }
 
         .module-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(var(--primary-violet-rgb), 0.5);
+            transform: translateY(-12px) scale(1.03); /* Enhanced hover */
+            box-shadow: 0 15px 35px rgba(var(--primary-violet-rgb), 0.6); /* Enhanced shadow */
         }
+        /* Specific hover border colors for each module */
+        .module-card.mindfulness:hover { border-color: var(--accent-cyan); }
+        .module-card.emotion-regulation:hover { border-color: var(--accent-green); }
+        .module-card.distress-tolerance:hover { border-color: var(--accent-red); }
+        .module-card.interpersonal-effectiveness:hover { border-color: var(--accent-blue); }
+
 
         .module-card .icon-container {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem; /* Slightly larger icons */
+            margin-bottom: 1.2rem; /* Increased margin */
             color: var(--accent-yellow);
+            transition: color 0.3s ease, transform 0.3s ease; /* Added transform transition */
         }
+        .module-card:hover .icon-container {
+            transform: scale(1.1) rotate(-5deg); /* Icon animation on card hover */
+        }
+
         /* Specific icon colors for each module */
         .module-card.mindfulness .icon-container { color: var(--accent-cyan); }
         .module-card.emotion-regulation .icon-container { color: var(--accent-green); }
@@ -265,12 +299,16 @@
             font-size: 1.6rem;
             color: var(--text-color-light);
             margin-bottom: 1rem;
+            transition: color 0.3s ease; /* Added transition */
         }
-        /* Specific heading colors for each module */
+        /* Specific heading colors for each module - already defined, but ensure they override base if needed */
         .module-card.mindfulness h3 { color: var(--accent-cyan); }
         .module-card.emotion-regulation h3 { color: var(--accent-green); }
         .module-card.distress-tolerance h3 { color: var(--accent-red); }
         .module-card.interpersonal-effectiveness h3 { color: var(--accent-blue); }
+        .module-card:hover h3 {
+            text-shadow: 0 0 8px currentColor; /* Add text shadow on hover based on current color */
+        }
 
 
         .module-card p.description {
@@ -283,34 +321,61 @@
         
         .explore-module-btn {
             display: inline-block;
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
-            color: white;
-            padding: 10px 22px;
+            color: white; /* Default text color for buttons */
+            padding: 12px 25px; /* Increased padding */
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             font-family: 'Comfortaa', sans-serif;
-            transition: background 0.3s ease, transform 0.3s ease;
-            margin-top: auto; /* Pushes button to bottom */
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: auto; 
+            border: 2px solid transparent; /* Base for hover effect */
         }
 
         .explore-module-btn:hover {
-            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-2px); /* Enhanced hover */
         }
-        /* Specific button colors for each module */
-        .module-card.mindfulness .explore-module-btn { background: linear-gradient(45deg, var(--accent-cyan), var(--primary-violet)); color:white;}
-        .module-card.mindfulness .explore-module-btn:hover { background: linear-gradient(45deg, var(--primary-violet), var(--accent-cyan));}
+        /* Specific button colors and hover effects for each module */
+        .module-card.mindfulness .explore-module-btn { background: linear-gradient(45deg, var(--accent-cyan), var(--primary-violet)); box-shadow: 0 4px 12px rgba(var(--accent-cyan-rgb),0.4);}
+        .module-card.mindfulness .explore-module-btn:hover { background: linear-gradient(45deg, var(--primary-violet), var(--accent-cyan)); border-color: var(--accent-cyan);}
 
-        .module-card.emotion-regulation .explore-module-btn { background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); color:var(--dark-bg);}
-        .module-card.emotion-regulation .explore-module-btn:hover { background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));}
+        .module-card.emotion-regulation .explore-module-btn { background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); color:var(--dark-bg); box-shadow: 0 4px 12px rgba(var(--accent-green-rgb),0.4);}
+        .module-card.emotion-regulation .explore-module-btn:hover { background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); border-color: var(--accent-green);}
         
-        .module-card.distress-tolerance .explore-module-btn { background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow)); color:var(--dark-bg);}
-        .module-card.distress-tolerance .explore-module-btn:hover { background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));}
+        .module-card.distress-tolerance .explore-module-btn { background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow)); color:var(--dark-bg); box-shadow: 0 4px 12px rgba(var(--accent-red-rgb),0.4);}
+        .module-card.distress-tolerance .explore-module-btn:hover { background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red)); border-color: var(--accent-red);}
 
-        .module-card.interpersonal-effectiveness .explore-module-btn { background: linear-gradient(45deg, var(--accent-blue), var(--accent-green)); color:var(--dark-bg);}
-        .module-card.interpersonal-effectiveness .explore-module-btn:hover { background: linear-gradient(45deg, var(--accent-green), var(--accent-blue));}
+        .module-card.interpersonal-effectiveness .explore-module-btn { background: linear-gradient(45deg, var(--accent-blue), var(--accent-green)); color:var(--dark-bg); box-shadow: 0 4px 12px rgba(var(--accent-blue-rgb),0.4);}
+        .module-card.interpersonal-effectiveness .explore-module-btn:hover { background: linear-gradient(45deg, var(--accent-green), var(--accent-blue)); border-color: var(--accent-blue);}
 
+        /* Back to Courses Button Styles */
+        .back-to-link-container {
+            text-align: center;
+            margin-top: 3rem; 
+            margin-bottom: 1rem; 
+        }
+        .back-to-btn {
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red)); 
+            color: var(--dark-bg); 
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 10px rgba(var(--accent-yellow-rgb), 0.3);
+        }
+        .back-to-btn:hover {
+            background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--accent-red-rgb), 0.4); 
+        }
+        .back-to-btn i {
+            font-size: 1em; 
+        }
 
         footer { 
             background: rgba(10,10,32,0.97); 
@@ -424,7 +489,7 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
+            .page-header h2 { font-size: 2.4rem; } /* Adjusted for Playfair */
             .module-card h3 {font-size: 1.4rem;}
         }
         
@@ -433,14 +498,15 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } /* Adjusted for Playfair */
             .page-header p.subtitle { font-size: 1rem; }
             .dbt-modules-grid { grid-template-columns: 1fr; }
             .module-card { padding: 20px; }
             .module-card .icon-container { font-size: 2.5rem; }
             .module-card h3 {font-size: 1.3rem;}
             .module-card p.description {font-size: 0.9rem;}
-            .explore-module-btn { padding: 8px 18px; font-size: 0.9rem;}
+            .explore-module-btn { padding: 10px 20px; font-size: 0.9rem;} /* Adjusted button padding */
+            .back-to-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -450,8 +516,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
-                <i class="fas fa-brain"></i>
+            <a href="index.html" rel="noopener noreferrer" class="logo"> <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
             <nav>
@@ -476,8 +541,9 @@
             </div>
 
             <section class="intro-dbt-section">
-                <p>La Terapia Dialéctico Conductual (DBT), desarrollada por Marsha M. Linehan, es un tratamiento basado en la evidencia, originalmente diseñado para personas con Trastorno Límite de la Personalidad (TLP) y desregulación emocional severa. Su núcleo es la "dialéctica" – la síntesis o integración de opuestos, principalmente la aceptación y el cambio.</p>
-                <p>La DBT enseña que es posible aceptar la realidad tal como es, y al mismo tiempo, trabajar activamente para cambiar comportamientos y construir una vida que se sienta plena y significativa. Se estructura en torno a cuatro conjuntos principales de habilidades que se aprenden y practican para mejorar la capacidad de una persona para manejar emociones, tolerar el malestar, ser consciente del momento presente y navegar las relaciones de manera efectiva.</p>
+                <p>La <strong>Terapia Dialéctico Conductual (DBT)</strong>, desarrollada por <em>Marsha M. Linehan</em>, es un tratamiento complejo y basado en la evidencia, diseñado originalmente para individuos con Trastorno Límite de la Personalidad (TLP), especialmente aquellos con conductas suicidas crónicas y desregulación emocional severa. Sin embargo, su eficacia se ha demostrado en una variedad de otros trastornos y problemas, incluyendo abuso de sustancias, trastornos alimentarios y TEPT.</p>
+                <p>El núcleo filosófico de la DBT es la <strong>"dialéctica"</strong> – la síntesis o integración de opuestos. En DBT, la dialéctica central es entre la <em>aceptación</em> y el <em>cambio</em>. Esto significa que la terapia ayuda a los individuos a aceptarse a sí mismos, su historia y sus emociones tal como son en el momento presente, y al mismo tiempo, les enseña habilidades y estrategias para cambiar comportamientos, pensamientos y emociones disfuncionales para construir una vida que valga la pena ser vivida.</p>
+                <p>La DBT se estructura en torno a cuatro conjuntos principales de habilidades (o módulos) que se aprenden y practican sistemáticamente para mejorar la capacidad de una persona para manejar emociones intensas, tolerar el malestar sin empeorar la situación, ser consciente y estar presente en el momento, y navegar las relaciones interpersonales de manera más efectiva y satisfactoria.</p>
             </section>
 
             <div class="dbt-modules-grid">
@@ -486,41 +552,46 @@
                         <i class="fas fa-spa"></i> </div>
                     <h3>Mindfulness (Atención Plena)</h3>
                     <p class="description">
-                        Aprende a observar tus pensamientos, emociones y sensaciones sin juzgar, anclándote en el momento presente. Estas habilidades son fundamentales para reducir la reactividad y aumentar la autoconciencia.
+                        Aprende a observar tus pensamientos, emociones y sensaciones sin juzgar, anclándote en el momento presente. Estas habilidades son fundamentales para reducir la reactividad y aumentar la autoconciencia, formando la base de toda la DBT.
                     </p>
                     <a href="mindfulness_dbt.html" class="explore-module-btn">Explorar Mindfulness <i class="fas fa-arrow-right"></i></a>
                 </article>
 
                 <article class="module-card emotion-regulation">
                     <div class="icon-container">
-                        <i class="fas fa-heartbeat"></i> </div>
+                        <i class="fas fa-heart-pulse"></i> </div>
                     <h3>Regulación Emocional</h3>
                     <p class="description">
-                        Identifica y comprende tus emociones, reduce la vulnerabilidad a la "mente emocional" y aprende a cambiar las emociones no deseadas de manera efectiva, fomentando experiencias positivas.
+                        Identifica y comprende tus emociones, reduce la vulnerabilidad a la "mente emocional" y aprende estrategias para cambiar las emociones no deseadas de manera efectiva, fomentando un mayor equilibrio y experiencias positivas.
                     </p>
                     <a href="regulacion_emocional_dbt.html" class="explore-module-btn">Explorar Regulación Emocional <i class="fas fa-arrow-right"></i></a>
                 </article>
 
                 <article class="module-card distress-tolerance">
                      <div class="icon-container">
-                        <i class="fas fa-shield-alt"></i> </div>
+                        <i class="fas fa-mountain"></i> </div>
                     <h3>Tolerancia al Malestar</h3>
                     <p class="description">
-                        Desarrolla la capacidad de aceptar y sobrevivir a momentos de crisis y emociones intensas sin recurrir a conductas impulsivas o dañinas, aprendiendo a gestionar el dolor inevitable de la vida.
+                        Desarrolla la capacidad de aceptar y sobrevivir a momentos de crisis y emociones intensas sin recurrir a conductas impulsivas o dañinas, aprendiendo a gestionar el dolor inevitable de la vida con resiliencia.
                     </p>
                     <a href="tolerancia_malestar_dbt.html" class="explore-module-btn">Explorar Tolerancia al Malestar <i class="fas fa-arrow-right"></i></a>
                 </article>
 
                 <article class="module-card interpersonal-effectiveness">
                     <div class="icon-container">
-                        <i class="fas fa-users"></i> </div>
+                        <i class="fas fa-users-cog"></i> </div>
                     <h3>Efectividad Interpersonal</h3>
                     <p class="description">
-                        Aprende a pedir lo que necesitas, decir no de forma asertiva, y mantener relaciones saludables y el autorespeto, equilibrando tus objetivos con las necesidades de los demás.
+                        Aprende a pedir lo que necesitas, decir no de forma asertiva, y mantener relaciones saludables y el autorespeto, equilibrando tus objetivos con las necesidades de los demás de manera habilidosa.
                     </p>
                     <a href="efectividad_interpersonal_dbt.html" class="explore-module-btn">Explorar Efectividad Interpersonal <i class="fas fa-arrow-right"></i></a>
                 </article>
             </div>
+            
+            <div class="back-to-link-container">
+                <a href="cursos.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver a Cursos</a>
+            </div>
+
         </div>
     </main>
 
@@ -610,9 +681,9 @@
             navLinks.forEach(link => {
                 link.classList.remove('active'); 
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                // Special handling for dbt.html as it's linked from cursos.html
+                
                 if (currentPageFilename === 'dbt.html' && linkFilename === 'cursos.html') {
-                     link.classList.add('active'); // Keep Cursos active when on dbt.html
+                     link.classList.add('active'); 
                 } else if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
                 }
@@ -640,7 +711,8 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            // obs.unobserve(entry.target); // Optional
+                        } else {
+                            // entry.target.classList.remove('visible'); // Optional: re-animate on scroll
                         }
                     });
                 }, observerOptions);
