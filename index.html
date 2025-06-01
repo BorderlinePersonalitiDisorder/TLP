@@ -3,466 +3,1087 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TLP: Viaje Interior y Recursos | Dra. Mayra Schwarzschild</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Borderline Journey - Recursos para el TLP</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Montserrat', sans-serif; /* Montserrat para el cuerpo por su claridad */
-            scroll-behavior: smooth;
-            --text-dark: #222;
-            background-color: #1a1a2e; /* Fondo oscuro principal para resaltar colores */
-        }
-        /* Aplicar Orbitron a títulos principales y elementos destacados */
-        h1, h2, .font-orbitron {
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        /* Paleta Psicodélica Vibrante */
         :root {
-            --glow-purple: #ff00ff; /* Magenta Neón */
-            --glow-cyan: #00ffff;   /* Cyan Neón */
-            --glow-lime: #39ff14;   /* Lima Neón */
-            --deep-space: #1a1a2e;  /* Azul noche profundo (fondo) */
-            --nebula-pink: #da70d6; /* Orquídea/Rosa Nebulosa */
-            --star-yellow: #ffd700; /* Amarillo Estrella/Dorado */
-            --cosmic-blue: #4a4ae6; /* Azul Cósmico */
-            --text-glow: #f0f0f0;   /* Texto claro con ligero resplandor */
-            --card-bg: rgba(40, 40, 70, 0.8); /* Fondo de tarjeta semi-transparente */
+            --color-1: #ff00cc;
+            --color-2: #00ffff;
+            --color-3: #ffff00;
+            --color-4: #ff00ff;
+            --color-5: #00ff00;
+            --dark-bg: #0f0f1b;
         }
-
-        .hero-bg-psychedelic {
-            background: radial-gradient(circle, var(--cosmic-blue) 0%, var(--nebula-pink) 40%, var(--glow-purple) 70%, var(--deep-space) 100%);
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: white;
+            line-height: 1.7;
+            font-family: 'Comfortaa', cursive;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(255, 0, 204, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 30% 50%, rgba(255, 255, 0, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 70% 30%, rgba(255, 0, 255, 0.15) 0%, transparent 30%);
+        }
+        
+        .creative-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            opacity: 0.5;
+            background: 
+                radial-gradient(circle, var(--color-1) 0%, transparent 20%),
+                radial-gradient(circle, var(--color-2) 0%, transparent 20%),
+                radial-gradient(circle, var(--color-3) 0%, transparent 20%),
+                radial-gradient(circle, var(--color-4) 0%, transparent 20%),
+                radial-gradient(circle, var(--color-5) 0%, transparent 20%);
+            background-size: 300% 300%;
+            background-position: 0% 0%;
+            animation: creativeBackground 30s infinite linear;
+        }
+        
+        @keyframes creativeBackground {
+            0% { background-position: 0% 0%; }
+            25% { background-position: 100% 0%; }
+            50% { background-position: 100% 100%; }
+            75% { background-position: 0% 100%; }
+            100% { background-position: 0% 0%; }
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
             position: relative;
-            overflow: hidden; 
+            z-index: 1;
         }
-
-        .hero-bg-psychedelic::before {
+        
+        /* Header Styles */
+        header {
+            background: rgba(15, 15, 27, 0.85);
+            backdrop-filter: blur(10px);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid var(--color-2);
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo h1 {
+            font-family: 'Monoton', cursive;
+            font-size: 2.2rem;
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
+            letter-spacing: 2px;
+        }
+        
+        .logo i {
+            font-size: 2.2rem;
+            color: var(--color-2);
+            text-shadow: 0 0 15px var(--color-2);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-family: 'Krona One', sans-serif;
+            font-size: 1rem;
+            padding: 8px 15px;
+            border-radius: 30px;
+            transition: all 0.4s ease;
+            position: relative;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--color-4);
+            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+        }
+        
+        nav a:hover, nav a.active {
+            background: var(--color-4);
+            box-shadow: 0 0 15px var(--color-4);
+            transform: scale(1.1);
+        }
+        
+        nav a::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(45deg, rgba(255,0,255,0.1) 0%, rgba(0,255,255,0.1) 50%, rgba(57,255,20,0.1) 100%);
-            animation: psychedelic-flow 20s ease infinite alternate;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--color-2);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover::after {
+            width: 80%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: rgba(15, 15, 27, 0.6);
+            backdrop-filter: blur(5px);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            margin: 2rem 0;
+            border-radius: 20px;
+            border: 2px solid var(--color-1);
+            box-shadow: 
+                0 0 30px rgba(255, 0, 204, 0.3),
+                inset 0 0 30px rgba(255, 0, 204, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--color-1) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--color-3) 50%, transparent 52%);
+            background-size: 20px 20px;
+            z-index: -1;
+            opacity: 0.4;
+            animation: creativePattern 20s linear infinite;
+        }
+        
+        @keyframes creativePattern {
+            to { background-position: 0 1000px; }
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            text-shadow: 
+                0 0 10px var(--color-2),
+                0 0 20px var(--color-4);
+            background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: creativeText 8s infinite linear;
+        }
+        
+        @keyframes creativeText {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--color-1), var(--color-4));
+            color: white;
+            padding: 16px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 5px 20px rgba(255, 0, 204, 0.5);
+            border: none;
+            cursor: pointer;
+            margin: 10px;
+            position: relative;
+            overflow: hidden;
+            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+            letter-spacing: 1px;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px var(--color-4);
+            filter: brightness(1.2);
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .cta-button:hover::before {
+            left: 100%;
+        }
+        
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid var(--color-2);
+            box-shadow: 0 0 15px var(--color-2);
+        }
+        
+        .cta-button.secondary:hover {
+            background: rgba(0, 255, 255, 0.2);
+        }
+        
+        /* Features Section */
+        .features {
+            padding: 5.5rem 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+        
+        .section-title h2 {
+            font-family: 'Major Mono Display', monospace;
+            font-size: 2.8rem;
+            color: var(--color-3);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: var(--color-4);
+            border-radius: 3px;
+            box-shadow: 0 0 10px var(--color-4);
+        }
+        
+        .section-title p {
+            color: #bbb;
+            font-size: 1.3rem;
+            max-width: 750px;
+            margin: 0 auto;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 2.5rem;
+        }
+        
+        .feature-card {
+            background: rgba(30, 30, 50, 0.7);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            position: relative;
+            height: 100%;
+            border: 1px solid var(--color-5);
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
+            backdrop-filter: blur(5px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-15px) rotate(2deg);
+            box-shadow: 0 15px 40px var(--color-5);
+            border-color: var(--color-1);
+        }
+        
+        .feature-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        
+        .feature-img::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 0, 204, 0.3), rgba(0, 255, 255, 0.3));
+            mix-blend-mode: overlay;
+        }
+        
+        .feature-content {
+            padding: 30px;
+        }
+        
+        .feature-content h3 {
+            color: var(--color-2);
+            margin-bottom: 20px;
+            font-size: 1.7rem;
+            font-family: 'Lobster', cursive;
+            letter-spacing: 1px;
+        }
+        
+        .feature-content p {
+            color: #ddd;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-size: 1.1rem;
+            font-weight: 300;
+        }
+        
+        .feature-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-3);
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            text-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
+        }
+        
+        .feature-link:hover {
+            color: var(--color-1);
+            gap: 15px;
+            text-shadow: 0 0 10px rgba(255, 0, 204, 0.5);
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 5.5rem 0;
+            position: relative;
+        }
+        
+        .testimonials::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                linear-gradient(45deg, transparent 48%, var(--color-3) 50%, transparent 52%),
+                linear-gradient(-45deg, transparent 48%, var(--color-4) 50%, transparent 52%);
+            background-size: 40px 40px;
+            z-index: -1;
+            opacity: 0.1;
+            animation: creativePattern 30s linear infinite;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
+            margin-top: 3rem;
+        }
+        
+        .testimonial-card {
+            background: rgba(20, 20, 35, 0.8);
+            padding: 35px 30px;
+            border-radius: 20px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--color-1);
+            box-shadow: 0 0 25px rgba(255, 0, 204, 0.3);
+            backdrop-filter: blur(5px);
+            transition: all 0.4s ease;
+        }
+        
+        .testimonial-card:hover {
+            transform: scale(1.03);
+            box-shadow: 0 0 35px var(--color-1);
+        }
+        
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(255, 0, 204, 0.1);
+            font-family: Georgia, serif;
+            line-height: 1;
             z-index: 0;
         }
-        @keyframes psychedelic-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        
+        .testimonial-content {
+            margin-bottom: 25px;
+            color: #ddd;
+            position: relative;
+            z-index: 1;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            font-style: italic;
         }
-
-
-        .nav-link {
-            @apply px-2 py-2 rounded-full text-xs font-semibold text-[var(--text-glow)] transition-all duration-300 ease-in-out; 
-            text-shadow: 0 0 5px var(--glow-cyan); 
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-top: auto;
         }
-        .nav-link:hover {
-            background-color: var(--glow-cyan);
-            color: var(--deep-space);
-            text-shadow: 0 0 8px var(--deep-space);
+        
+        .author-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--color-1), var(--color-4));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+            box-shadow: 0 0 15px var(--color-1);
         }
-        .nav-link-active {
-            background-color: var(--glow-lime);
-            color: var(--deep-space);
-            text-shadow: 0 0 8px var(--deep-space);
-            box-shadow: 0 0 15px var(--glow-lime);
+        
+        .author-info h4 {
+            color: var(--color-2);
+            margin-bottom: 4px;
+            font-size: 1.3rem;
         }
-
-        .footer-bg-psychedelic {
-            background-color: #111; 
-            border-top: 2px solid var(--glow-purple);
+        
+        .author-info p {
+            color: var(--color-3);
+            font-size: 1rem;
         }
-        .section-card-psychedelic {
-            background-color: var(--card-bg);
-            backdrop-filter: blur(10px); 
-            border: 1px solid var(--glow-cyan);
-            border-radius: 20px; 
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3), inset 0 0 10px rgba(255,0,255,0.2);
+        
+        /* Premium Section */
+        .premium {
+            padding: 7rem 0;
+            text-align: center;
+            position: relative;
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
-            margin-bottom: 3rem; 
+            background: rgba(15, 15, 27, 0.7);
+            border-radius: 20px;
+            margin: 3rem 0;
+            border: 2px solid var(--color-2);
+            box-shadow: 
+                0 0 30px rgba(0, 255, 255, 0.3),
+                inset 0 0 30px rgba(0, 255, 255, 0.2);
         }
-        .section-card-psychedelic:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 0 35px var(--glow-lime), inset 0 0 15px var(--glow-purple);
-            border-color: var(--glow-lime);
-        }
-
-        .btn-primary-psychedelic {
-            @apply inline-block text-white font-bold py-4 px-10 rounded-full shadow-xl transition-all duration-300 ease-in-out text-lg tracking-wider font-orbitron;
-            background: linear-gradient(45deg, var(--glow-purple), var(--nebula-pink), var(--glow-cyan));
-            background-size: 200% 200%; 
-            border: 2px solid var(--text-glow);
-            text-shadow: 0 0 8px rgba(0,0,0,0.7);
-        }
-        .btn-primary-psychedelic:hover {
-            background-position: right center; 
-            box-shadow: 0 0 25px var(--glow-cyan);
-            transform: scale(1.05);
-        }
-        .btn-secondary-psychedelic {
-            @apply inline-block text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out font-orbitron;
-            background: linear-gradient(45deg, var(--cosmic-blue), var(--glow-lime));
+        
+        .premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle, var(--color-2) 0%, transparent 70%),
+                radial-gradient(circle, var(--color-5) 0%, transparent 70%);
             background-size: 200% 200%;
-            border: 1px solid var(--glow-lime);
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+            background-position: center;
+            animation: creativeBackground 20s infinite linear;
+            z-index: -1;
+            opacity: 0.2;
         }
-        .btn-secondary-psychedelic:hover {
-            background-position: right center;
-            box-shadow: 0 0 20px var(--glow-lime);
-            transform: scale(1.05);
+        
+        .premium-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
-        .btn-tertiary-psychedelic { 
-            @apply inline-block text-white font-semibold py-3 px-8 rounded-full shadow-lg transition-all duration-300 ease-in-out font-orbitron;
-            background: linear-gradient(45deg, var(--star-yellow), var(--nebula-pink));
-            background-size: 200% 200%;
-            border: 1px solid var(--star-yellow);
-            text-shadow: 0 0 5px rgba(0,0,0,0.5);
+        
+        .premium h2 {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(45deg, var(--color-3), var(--color-5), var(--color-2));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
+            animation: creativeText 5s infinite linear;
         }
-        .btn-tertiary-psychedelic:hover {
-            background-position: right center;
-            box-shadow: 0 0 20px var(--star-yellow);
-            transform: scale(1.05);
+        
+        .premium p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #ddd;
         }
-
-
-        .section-image-container {
-            @apply h-60 md:h-72 w-full overflow-hidden relative;
-            border-bottom: 2px solid var(--glow-purple);
+        
+        .benefits {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 4rem 0;
         }
-        .section-image {
-            @apply w-full h-full object-cover transition-all duration-700 ease-in-out;
-            filter: saturate(1.5) contrast(1.1); 
+        
+        .benefit {
+            background: rgba(40, 40, 60, 0.7);
+            padding: 30px 25px;
+            border-radius: 20px;
+            width: 240px;
+            border: 1px solid var(--color-4);
+            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
+            transition: all 0.4s ease;
+            backdrop-filter: blur(5px);
         }
-        .group:hover .section-image { 
-            transform: scale(1.15) rotate(-3deg);
-            filter: saturate(2) contrast(1.2) hue-rotate(45deg); 
+        
+        .benefit:hover {
+            transform: translateY(-10px) rotate(3deg);
+            box-shadow: 0 10px 30px var(--color-4);
+            background: rgba(60, 0, 60, 0.5);
         }
-
-        .section-title-psychedelic {
-            @apply text-4xl md:text-5xl font-black mb-8 tracking-wider;
-            color: var(--text-glow);
-            text-shadow: 0 0 10px var(--glow-cyan), 0 0 20px var(--glow-purple), 0 0 30px var(--glow-lime);
+        
+        .benefit i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--color-3);
+            text-shadow: 0 0 15px var(--color-3);
         }
-        .header-psychedelic {
-            background-color: rgba(26, 26, 46, 0.8); 
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--glow-purple);
+        
+        .benefit h3 {
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+            color: var(--color-2);
+            font-family: 'Krona One', sans-serif;
         }
-        .text-glow-strong {
-            color: var(--text-glow);
-            text-shadow: 0 0 8px var(--glow-lime), 0 0 15px var(--glow-lime);
+        
+        .benefit p {
+            font-size: 1.1rem;
+            margin-bottom: 0;
+            opacity: 0.85;
+        }
+        
+        /* Footer */
+        footer {
+            background: rgba(10, 10, 20, 0.9);
+            color: white;
+            padding: 4.5rem 0 2.5rem;
+            position: relative;
+            border-top: 2px solid var(--color-5);
+            box-shadow: 0 -5px 20px rgba(0, 255, 0, 0.2);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 45px;
+            margin-bottom: 3.5rem;
+        }
+        
+        .footer-column h3 {
+            color: var(--color-3);
+            margin-bottom: 1.7rem;
+            position: relative;
+            padding-bottom: 12px;
+            font-size: 1.5rem;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 55px;
+            height: 4px;
+            background: var(--color-2);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--color-2);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 14px;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-block;
+            padding: 5px 0;
+            font-weight: 300;
+        }
+        
+        .footer-links a:hover {
+            color: var(--color-1);
+            transform: translateX(10px);
+            text-shadow: 0 0 10px var(--color-1);
+        }
+        
+        .contact-info {
+            margin-top: 22px;
+        }
+        
+        .contact-info p {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 14px;
+            font-size: 1.1rem;
+            color: #ddd;
+        }
+        
+        .contact-info i {
+            color: var(--color-2);
+            text-shadow: 0 0 5px var(--color-2);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 18px;
+            margin-top: 25px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--color-2);
+            border-radius: 50%;
+            transition: all 0.4s ease;
+            font-size: 1.3rem;
+            border: 1px solid var(--color-2);
+        }
+        
+        .social-links a:hover {
+            background: var(--color-2);
+            color: black;
+            transform: translateY(-5px) rotate(15deg);
+            box-shadow: 0 0 20px var(--color-2);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #888;
+            font-size: 1rem;
+        }
+        
+        .copyright a {
+            color: var(--color-3);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .copyright a:hover {
+            color: var(--color-1);
+            text-shadow: 0 0 10px var(--color-1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 900px) {
+            .header-container {
+                flex-direction: column;
+                gap: 25px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h2 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .benefit {
+                width: 100%;
+                max-width: 350px;
+            }
+        }
+        
+        @media (max-width: 600px) {
+            .hero {
+                padding: 3.5rem 0;
+            }
+            
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            
+            nav ul {
+                gap: 8px;
+            }
+            
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.9rem;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 15px auto;
+                width: 90%;
+                max-width: 300px;
+            }
         }
     </style>
 </head>
-<body class="bg-deep-space text-text-glow antialiased">
-
-    <header class="header-psychedelic shadow-2xl sticky top-0 z-50">
-        <nav class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-20">
-                <div class="flex items-center">
-                    <a href="#" class="text-3xl font-black text-glow-strong hover:text-[var(--glow-lime)] transition-colors duration-300 font-orbitron">
-                        TLP: Viaje Interior
-                    </a>
-                </div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-2"> 
-                        <a href="#psicoeducacion" class="nav-link nav-link-active font-orbitron">Psicoeducación</a>
-                        <a href="#dbt" class="nav-link font-orbitron">DBT</a>
-                        <a href="#blog" class="nav-link font-orbitron">Blog</a>
-                        <a href="#foro" class="nav-link font-orbitron">Foro</a> 
-                        <a href="#premium" class="nav-link font-orbitron">Premium</a> 
-                        <a href="#contacto" class="nav-link font-orbitron">Contacto</a>
-                    </div>
-                </div>
-                <div class="-mr-2 flex md:hidden">
-                    <button type="button" id="mobile-menu-button" class="bg-white/10 inline-flex items-center justify-center p-2 rounded-md text-[var(--text-glow)] hover:text-[var(--glow-lime)] hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[var(--glow-lime)]" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Abrir menú principal</span>
-                        <svg class="block h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg class="hidden h-7 w-7" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
+<body>
+    <div class="creative-bg"></div>
+    
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <i class="fas fa-brain"></i>
+                <h1>BORDERLINE JOURNEY</h1>
             </div>
-        </nav>
-
-        <div class="md:hidden hidden" id="mobile-menu">
-            <div class="px-3 pt-2 pb-4 space-y-2 sm:px-4 border-t border-[var(--glow-purple)]/50">
-                <a href="#psicoeducacion" class="block nav-link nav-link-active text-sm text-center font-orbitron">Psicoeducación</a>
-                <a href="#dbt" class="block nav-link text-sm text-center font-orbitron">DBT</a>
-                <a href="#blog" class="block nav-link text-sm text-center font-orbitron">Blog</a>
-                <a href="#foro" class="block nav-link text-sm text-center font-orbitron">Foro</a> 
-                <a href="#premium" class="block nav-link text-sm text-center font-orbitron">Premium</a> 
-                <a href="#contacto" class="block nav-link text-sm text-center font-orbitron">Contacto</a>
-            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">Inicio</a></li>
+                    <li><a href="#">Psicoeducación</a></li>
+                    <li><a href="#">DBT</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">Foro</a></li>
+                    <li><a href="#">Premium</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <section class="hero-bg-psychedelic py-24 md:py-40 text-white relative"> 
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <h1 class="text-5xl sm:text-6xl md:text-7xl font-black leading-tight mb-8 text-glow-strong animate-pulse-slow">
-                Explora las Profundidades del Ser
-            </h1>
-            <p class="mt-4 text-xl sm:text-2xl text-[var(--text-glow)] max-w-3xl mx-auto mb-12 opacity-90">
-                Un portal de conocimiento, transformación y comunidad para el viaje con el Trastorno Límite de la Personalidad.
-            </p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <h2>EXPLORANDO LA MENTE BORDERLINE</h2>
+            <p>Un viaje creativo a través de recursos, comunidad y herramientas para comprender y gestionar el Trastorno Límite de la Personalidad</p>
             <div>
-                <a href="#psicoeducacion" class="btn-primary-psychedelic">
-                    Iniciar Exploración
-                </a>
+                <a href="#premium" class="cta-button">INICIAR EXPERIENCIA</a>
+                <a href="#" class="cta-button secondary">RECURSOS GRATUITOS</a>
             </div>
         </div>
     </section>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
-        
-        <section id="psicoeducacion" class="section-card-psychedelic group">
-            <div class="section-image-container">
-                <img src="https://placehold.co/800x400/ff00ff/00ffff?text=Mente+Fractal&font=orbitron&font-size=40" alt="[Visualización abstracta y psicodélica del conocimiento para TLP]" class="section-image">
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">
+                <h2>RECURSOS VISUALES</h2>
+                <p>Explora nuestras secciones con un enfoque creativo para el aprendizaje</p>
             </div>
-            <div class="p-8 md:p-12 text-center">
-                <h2 class="section-title-psychedelic">Psicoeducación Cósmica</h2>
-                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
-                    Desvela los misterios del TLP: síntomas, orígenes, y las constelaciones de tratamientos. El entendimiento es una estrella guía.
-                </p>
-                <div class="mt-10">
-                     <a href="#" class="text-lg font-semibold text-[var(--glow-lime)] hover:text-[var(--star-yellow)] transition-colors duration-300 group font-orbitron tracking-wider">
-                        Ilumínate <span class="inline-block transform group-hover:translate-x-2 transition-transform duration-300">&rarr;</span>
-                     </a>
+            
+            <div class="features-grid">
+                <!-- Psicoeducación -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="feature-content">
+                        <h3>Psicoeducación</h3>
+                        <p>Información visual sobre síntomas, causas y estrategias de afrontamiento para el TLP. Aprende con infografías creativas.</p>
+                        <a href="#" class="feature-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- DBT -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717406-1c69efaf1dd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="feature-content">
+                        <h3>DBT Visual</h3>
+                        <p>Técnicas de Terapia Dialéctica Conductual presentadas de forma creativa y experiencial. Mindfulness con enfoque sensorial.</p>
+                        <a href="#" class="feature-link">Ver ejercicios <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Blog -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="feature-content">
+                        <h3>Blog Experiencial</h3>
+                        <p>Relatos personales, arte terapéutico y exploraciones creativas sobre la experiencia de vivir con TLP.</p>
+                        <a href="#" class="feature-link">Leer artículos <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Foro -->
+                <div class="feature-card">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="feature-content">
+                        <h3>Foro de Apoyo</h3>
+                        <p>Comunidad segura para compartir experiencias, obtener apoyo y conectar con personas que comprenden el TLP.</p>
+                        <a href="#" class="feature-link">Unirse al foro <i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="dbt" class="section-card-psychedelic group">
-            <div class="section-image-container">
-                <img src="https://placehold.co/800x400/00ffff/ff00ff?text=Equilibrio+Dimensional&font=orbitron&font-size=38" alt="[Representación psicodélica del equilibrio y la calma para DBT y TLP]" class="section-image">
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>EXPERIENCIAS</h2>
+                <p>Voces de nuestra comunidad creativa</p>
             </div>
-            <div class="p-8 md:p-12 text-center">
-                 <h2 class="section-title-psychedelic">DBT: Alquimia Emocional</h2>
-                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
-                    Domina las artes de la Terapia Dialéctico Conductual. Transforma emociones, navega el malestar y forja conexiones interdimensionales.
-                </p>
-                 <div class="mt-10">
-                     <a href="#" class="text-lg font-semibold text-[var(--glow-lime)] hover:text-[var(--star-yellow)] transition-colors duration-300 group font-orbitron tracking-wider">
-                        Transfórmate <span class="inline-block transform group-hover:translate-x-2 transition-transform duration-300">&rarr;</span>
-                     </a>
+            
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Este enfoque visual y experiencial me ha permitido conectar con mis emociones de una forma completamente nueva. Las herramientas de DBT presentadas de esta manera son mucho más accesibles."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">L</div>
+                        <div class="author-info">
+                            <h4>Laura M.</h4>
+                            <p>Artista, 28 años</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "Como terapeuta, he encontrado que este enfoque creativo ayuda a mis pacientes a comprender conceptos complejos de una manera más intuitiva y emocional."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">D</div>
+                        <div class="author-info">
+                            <h4>Dr. Carlos R.</h4>
+                            <p>Psicólogo clínico</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        "La comunidad aquí es increíble. Compartir arte y experiencias a través de este enfoque visual ha sido terapéutico y me ha ayudado a sentirme menos solo en este viaje."
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-img">M</div>
+                        <div class="author-info">
+                            <h4>Miguel Á.</h4>
+                            <p>Diseñador, 35 años</p>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <section id="blog" class="section-card-psychedelic group">
-            <div class="section-image-container">
-                 <img src="https://placehold.co/800x400/39ff14/da70d6?text=Cr%C3%B3nicas+Lis%C3%A9rgicas&font=orbitron&font-size=36" alt="[Visual psicodélico para blog TLP: ideas fluidas y conexión]" class="section-image">
-            </div>
-            <div class="p-8 md:p-12 text-center">
-                <h2 class="section-title-psychedelic">Blog Multiversal</h2>
-                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
-                    Viaja por artículos, reflexiones y noticias de otras dimensiones sobre TLP y bienestar. Un caleidoscopio de voces y sabidurías.
-                </p>
-                 <div class="mt-10">
-                     <a href="#" class="text-lg font-semibold text-[var(--glow-lime)] hover:text-[var(--star-yellow)] transition-colors duration-300 group font-orbitron tracking-wider">
-                        Explora Relatos <span class="inline-block transform group-hover:translate-x-2 transition-transform duration-300">&rarr;</span>
-                     </a>
+    <!-- Premium Section -->
+    <section class="premium" id="premium">
+        <div class="container premium-container">
+            <h2>EXPERIENCIA PREMIUM</h2>
+            <p>Acceso completo a nuestro universo de recursos creativos para el manejo del TLP</p>
+            
+            <div class="benefits">
+                <div class="benefit">
+                    <i class="fas fa-vr-cardboard"></i>
+                    <h3>Realidad Virtual</h3>
+                    <p>Experiencias inmersivas para practicar habilidades DBT en entornos controlados</p>
+                </div>
+                
+                <div class="benefit">
+                    <i class="fas fa-palette"></i>
+                    <h3>Talleres de Arte</h3>
+                    <p>Sesiones guiadas de arte terapia con enfoque en la expresión emocional</p>
+                </div>
+                
+                <div class="benefit">
+                    <i class="fas fa-headset"></i>
+                    <h3>Soporte 24/7</h3>
+                    <p>Acceso prioritario a nuestro equipo de apoyo en momentos críticos</p>
+                </div>
+                
+                <div class="benefit">
+                    <i class="fas fa-music"></i>
+                    <h3>Meditaciones Sonoras</h3>
+                    <p>Experiencias auditivas diseñadas para la regulación emocional</p>
                 </div>
             </div>
-        </section>
+            
+            <a href="#" class="cta-button">UNIRME AL VIAJE</a>
+        </div>
+    </section>
 
-        <section id="foro" class="section-card-psychedelic group">
-            <div class="section-image-container">
-                <img src="https://placehold.co/800x400/da70d6/39ff14?text=Foro+C%C3%B3smico&font=orbitron&font-size=40" alt="[Concepto psicodélico de comunidad y apoyo para foro TLP]" class="section-image">
-            </div>
-            <div class="p-8 md:p-12 text-center">
-                <h2 class="section-title-psychedelic">Foro: Convergencia de Almas</h2> 
-                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
-                    Un santuario para compartir, preguntar y conectar con otros viajeros del TLP en un espacio seguro, vibrante y de libre acceso.
-                </p>
-                 <div class="mt-10">
-                     <a href="#" class="btn-secondary-psychedelic"> 
-                        Entrar al Círculo
-                     </a>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Borderline Journey</h3>
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Galería Visual</a></li>
+                        <li><a href="#">Meditaciones Guiadas</a></li>
+                        <li><a href="#">Diario Emocional Interactivo</a></li>
+                        <li><a href="#">Arte Terapéutico</a></li>
+                        <li><a href="#">Recursos de Crisis</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Explorar</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Psicoeducación</a></li>
+                        <li><a href="#">DBT Visual</a></li>
+                        <li><a href="#">Blog Experiencial</a></li>
+                        <li><a href="#">Foro de Arte</a></li>
+                        <li><a href="#">Eventos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> itfrombit.w74@gmail.com</p>
+                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                    </div>
                 </div>
             </div>
-        </section>
-
-        <section id="premium" class="section-card-psychedelic group">
-            <div class="section-image-container">
-                <img src="https://placehold.co/800x400/ffd700/4a4ae6?text=Tesoro+Gal%C3%A1ctico&font=orbitron&font-size=38" alt="[Visualización de contenido exclusivo y premium con estética psicodélica]" class="section-image">
+            
+            <div class="copyright">
+                <p>&copy; 2023 Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional.</p>
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
-            <div class="p-8 md:p-12 text-center">
-                <h2 class="section-title-psychedelic">Acceso Premium: Elixir Estelar</h2>
-                <p class="text-[var(--text-glow)] opacity-80 mb-8 text-lg leading-relaxed max-w-2xl mx-auto">
-                    Desbloquea artefactos cósmicos: contenido exclusivo, herramientas avanzadas, meditaciones guiadas y experiencias transformadoras reservadas para iniciados.
-                </p>
-                 <div class="mt-10">
-                     <a href="#" class="btn-tertiary-psychedelic"> 
-                        Revelar Tesoros
-                     </a>
-                </div>
-            </div>
-        </section>
-        
-        <section id="contacto" class="py-16 md:py-24 bg-gradient-to-br from-[var(--deep-space)] via-[var(--cosmic-blue)] to-[var(--glow-purple)] text-white rounded-3xl shadow-2xl border-2 border-[var(--glow-cyan)]">
-            <div class="max-w-4xl mx-auto px-4 text-center">
-                <svg class="w-24 h-24 mx-auto mb-8 opacity-90" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-                        <linearGradient id="contactIconGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                            <stop offset="0%" style="stop-color:var(--glow-lime);stop-opacity:1" />
-                            <stop offset="50%" style="stop-color:var(--glow-cyan);stop-opacity:1" />
-                            <stop offset="100%" style="stop-color:var(--glow-purple);stop-opacity:1" />
-                        </linearGradient>
-                    </defs>
-                    <path fill="url(#contactIconGradient)" d="M50,10c-22.09,0-40,17.91-40,40s17.91,40,40,40s40-17.91,40-40S72.09,10,50,10z M50,22.5 c4.14,0,7.5,3.36,7.5,7.5s-3.36,7.5-7.5,7.5s-7.5-3.36-7.5-7.5S45.86,22.5,50,22.5z M72.5,70h-45 C24.16,70,22,67.84,22,64.5v-1c0-6.9,5.6-12.5,12.5-12.5h21c6.9,0,12.5,5.6,12.5,12.5v1C78,67.84,75.84,70,72.5,70z"/>
-                </svg>
-                <h2 class="text-4xl md:text-5xl font-black mb-6 text-glow-strong font-orbitron">Contacta el Oráculo</h2>
-                <p class="text-xl mb-8 max-w-xl mx-auto text-[var(--text-glow)] opacity-90">
-                    ¿Ecos del universo? ¿Ideas brillantes? ¿Deseos de colaborar? Envía tus señales.
-                </p>
-                <p class="text-3xl font-semibold hover:text-[var(--star-yellow)] transition-colors duration-300 font-orbitron">
-                    <a href="mailto:itfrombit.w74@gmail.com">itfrombit.w74@gmail.com</a>
-                </p>
-                <p class="mt-8 text-lg text-[var(--text-glow)] opacity-70 font-orbitron">
-                    Canalizado por: Dra. Mayra Schwarzschild
-                </p>
-            </div>
-        </section>
-
-    </main>
-
-    <footer class="footer-bg-psychedelic text-[var(--text-glow)] opacity-80 py-12">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-lg font-orbitron">
-                &copy; <span id="currentYear"></span> TLP: Viaje Interior. Todos los derechos reservados a la expansión de la conciencia.
-            </p>
-            <p class="text-md mt-2">
-                Una creación de la Dra. Mayra Schwarzschild para explorar nuevas realidades.
-            </p>
-            <p class="text-md mt-1">
-                <a href="mailto:itfrombit.w74@gmail.com" class="hover:underline text-[var(--glow-lime)] hover:text-[var(--star-yellow)]">itfrombit.w74@gmail.com</a>
-            </p>
-            <p class="text-sm mt-8 text-[var(--text-glow)] opacity-60 max-w-lg mx-auto">
-                Este portal es una herramienta para la introspección y el apoyo. No sustituye el consejo de guías terrestres cualificados.
-                En momentos de turbulencia dimensional, busca asistencia profesional.
-            </p>
         </div>
     </footer>
 
     <script>
-        // Script para el menú móvil
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const iconHamburger = mobileMenuButton.querySelector('svg:first-child');
-        const iconX = mobileMenuButton.querySelector('svg:last-child');
-
-        mobileMenuButton.addEventListener('click', () => {
-            const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true' || false;
-            mobileMenuButton.setAttribute('aria-expanded', !expanded);
-            mobileMenu.classList.toggle('hidden');
-            iconHamburger.classList.toggle('hidden');
-            iconX.classList.toggle('hidden');
-        });
-
-        // Script para el año actual en el footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-
-        // Smooth scroll y active link
-        const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-        const sections = document.querySelectorAll('main section');
-        const header = document.querySelector('header');
-        let headerHeight = header.offsetHeight;
-
-        window.addEventListener('resize', () => {
-            headerHeight = header.offsetHeight;
-        });
-        
-        function setActiveLink(targetId) {
-            navLinks.forEach(link => {
-                link.classList.remove('nav-link-active', 'bg-[var(--glow-lime)]', 'text-[var(--deep-space)]', 'shadow-[0_0_15px_var(--glow-lime)]');
-                link.classList.add('text-[var(--text-glow)]');
-                link.style.textShadow = '0 0 5px var(--glow-cyan)';
-
-
-                if (link.getAttribute('href') === `#${targetId}`) {
-                    link.classList.add('nav-link-active', 'bg-[var(--glow-lime)]', 'text-[var(--deep-space)]', 'shadow-[0_0_15px_var(--glow-lime)]');
-                    link.style.textShadow = '0 0 8px var(--deep-space)';
-                }
-            });
-        }
-
-        function handleScroll() {
-            let currentSectionId = '';
-            const scrollPosition = window.pageYOffset;
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop - headerHeight - 60; 
-                const sectionBottom = sectionTop + section.offsetHeight;
-                if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
-                    currentSectionId = section.getAttribute('id');
-                }
+        // JavaScript para efectos interactivos
+        document.addEventListener('DOMContentLoaded', function() {
+            // Efecto de movimiento en elementos al pasar el mouse
+            const cards = document.querySelectorAll('.feature-card, .testimonial-card, .benefit');
+            cards.forEach(card => {
+                card.addEventListener('mousemove', function(e) {
+                    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+                    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+                    this.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                });
+                
+                card.addEventListener('mouseenter', function() {
+                    this.style.transition = 'none';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transition = 'all 0.5s ease';
+                    this.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                });
             });
             
-            if (!currentSectionId && scrollPosition < sections[0].offsetTop - headerHeight) {
-                 currentSectionId = sections[0].getAttribute('id');
-            } else if (!currentSectionId && (window.innerHeight + scrollPosition) >= document.body.offsetHeight - document.querySelector('footer').offsetHeight - 50) {
-                 currentSectionId = sections[sections.length -1].getAttribute('id');
-            }
-
-            if (currentSectionId) {
-                setActiveLink(currentSectionId);
-            } else if (navLinks.length > 0 && scrollPosition < sections[0].offsetTop - headerHeight) {
-                 setActiveLink(navLinks[0].getAttribute('href').substring(1));
-            }
-        }
-        
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        document.addEventListener('DOMContentLoaded', () => {
-            headerHeight = header.offsetHeight;
-            handleScroll(); 
-
-            const heroTitle = document.querySelector('.hero-bg-psychedelic h1');
-            if (heroTitle) {
-                heroTitle.classList.add('animate-pulse-slow-custom');
-            }
-        });
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href').substring(1);
-                const targetElement = document.getElementById(targetId);
-                
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - headerHeight,
-                        behavior: 'smooth'
-                    });
-                    if (!mobileMenu.classList.contains('hidden')) {
-                        mobileMenuButton.click();
+            // Cambio de color en títulos
+            const creativeTexts = document.querySelectorAll('.hero h2, .premium h2, .section-title h2');
+            let hue = 0;
+            
+            setInterval(() => {
+                hue = (hue + 1) % 360;
+                creativeTexts.forEach(text => {
+                    text.style.filter = `hue-rotate(${hue}deg)`;
+                });
+            }, 100);
+            
+            // Efecto de partículas en botones
+            const buttons = document.querySelectorAll('.cta-button');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    const x = e.clientX - e.target.offsetLeft;
+                    const y = e.clientY - e.target.offsetTop;
+                    
+                    const ripples = document.createElement('span');
+                    ripples.classList.add('ripple');
+                    ripples.style.left = x + 'px';
+                    ripples.style.top = y + 'px';
+                    this.appendChild(ripples);
+                    
+                    setTimeout(() => {
+                        ripples.remove();
+                    }, 1000);
+                });
+            });
+            
+            // Scroll suave
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
                     }
-                }
+                });
             });
         });
-
-        const styleSheet = document.createElement("style");
-        styleSheet.type = "text/css";
-        styleSheet.innerText = `
-            @keyframes psychedelic-flow {
-                0% { background-position: 0% 50%; transform: scale(1); }
-                50% { background-position: 100% 50%; transform: scale(1.05); }
-                100% { background-position: 0% 50%; transform: scale(1); }
-            }
-            .animate-pulse-slow-custom {
-                animation: pulse-opacity 3s infinite ease-in-out;
-            }
-            @keyframes pulse-opacity {
-                0%, 100% { opacity: 0.8; text-shadow: 0 0 10px var(--glow-cyan), 0 0 20px var(--glow-purple), 0 0 30px var(--glow-lime); }
-                50% { opacity: 1; text-shadow: 0 0 15px var(--glow-lime), 0 0 25px var(--glow-cyan), 0 0 35px var(--glow-purple); }
-            }
-        `;
-        document.head.appendChild(styleSheet);
     </script>
-
 </body>
 </html>
