@@ -155,6 +155,7 @@
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
+            border-radius: 20px; /* Added for consistency */
         }
         
         nav a:hover::before, 
@@ -182,12 +183,29 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
+            /* Changed font-family here */
+            font-family: 'Caveat', cursive; 
+            font-size: 3.2rem; /* Adjusted size for Caveat */
             color: var(--accent-cyan);
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            text-transform: none; /* Caveat looks better without uppercase */
+            letter-spacing: 1px; /* Adjusted spacing */
+            display: inline-flex; 
+            align-items: center;
+            gap: 15px; 
+        }
+
+        .page-header h2 i {
+            font-size: 2.8rem; /* Adjusted icon size */
+            animation: subtleRotate 8s infinite linear;
+        }
+
+        @keyframes subtleRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.05); }
+            50% { transform: rotate(0deg) scale(1.1); }
+            75% { transform: rotate(-5deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1); }
         }
 
         .page-header p {
@@ -195,6 +213,53 @@
             color: var(--text-color-medium);
             max-width: 700px;
             margin: 0 auto;
+        }
+
+        /* Categories Section */
+        .categories-section {
+            margin-bottom: 3rem;
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+            border: 1px solid var(--accent-blue);
+            box-shadow: 0 0 15px rgba(30, 144, 255, 0.2);
+        }
+
+        .categories-section h3 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--accent-green);
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .category-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            list-style: none;
+            padding: 0;
+        }
+
+        .category-list li a {
+            display: inline-block;
+            padding: 8px 18px;
+            background-color: var(--card-bg);
+            color: var(--accent-yellow);
+            border: 1px solid var(--accent-magenta);
+            border-radius: 20px;
+            text-decoration: none;
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .category-list li a:hover {
+            background-color: var(--accent-magenta);
+            color: var(--dark-bg);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 5px 10px rgba(255, 0, 255, 0.4);
         }
         
         .blog-grid {
@@ -216,17 +281,18 @@
 
         .blog-post-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5); /* Using direct RGBA for primary-violet */
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5); 
         }
 
         .blog-post-thumbnail {
             width: 100%;
             height: 220px;
             object-fit: cover;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s ease, transform 0.4s ease; 
         }
          .blog-post-card:hover .blog-post-thumbnail {
             opacity: 0.85;
+            transform: scale(1.03); 
         }
 
 
@@ -242,7 +308,12 @@
             font-size: 1.5rem;
             color: var(--accent-yellow);
             margin-bottom: 1rem;
-            line-height: 1.3; /* Added for better heading readability */
+            line-height: 1.3; 
+            transition: color 0.3s ease, text-shadow 0.3s ease; 
+        }
+        .blog-post-content h3:hover {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 8px var(--accent-cyan);
         }
         
         .blog-post-meta {
@@ -252,12 +323,16 @@
             display: flex;
             align-items: center;
             gap: 15px;
-            flex-wrap: wrap; /* Allow meta items to wrap */
+            flex-wrap: wrap; 
         }
 
         .blog-post-meta i {
             margin-right: 5px;
             color: var(--accent-green);
+            transition: transform 0.3s ease; 
+        }
+        .blog-post-meta span:hover i { 
+            transform: scale(1.2) rotate(-10deg);
         }
         
         .blog-post-excerpt {
@@ -276,15 +351,16 @@
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
             text-align: center;
             align-self: flex-start; 
-            margin-top: auto; /* Pushes button to bottom if content is short */
+            margin-top: auto; 
         }
 
         .read-more-btn:hover {
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(var(--accent-magenta), 0.4);
         }
         
         footer { 
@@ -399,8 +475,11 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
+            .page-header h2 { font-size: 2.8rem; } /* Adjusted for Caveat */
+            .page-header h2 i { font-size: 2.2rem; } /* Adjusted icon size */
             .blog-post-content h3 {font-size: 1.3rem;}
+            .categories-section h3 { font-size: 1.6rem; }
+            .category-list li a { font-size: 0.85rem; padding: 7px 15px; }
         }
         
         @media (max-width: 600px) {
@@ -408,13 +487,16 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2.2rem; } /* Adjusted for Caveat */
+            .page-header h2 i { font-size: 1.8rem; } /* Adjusted icon size */
             .page-header p { font-size: 1rem; }
-            .blog-grid { grid-template-columns: 1fr; /* Single column on small screens */ }
+            .blog-grid { grid-template-columns: 1fr; }
             .blog-post-thumbnail { height: 180px; }
             .blog-post-content h3 {font-size: 1.2rem;}
             .blog-post-excerpt {font-size: 0.9rem;}
             .read-more-btn { padding: 8px 16px; font-size: 0.9rem;}
+            .categories-section h3 { font-size: 1.4rem; }
+            .category-list li a { font-size: 0.8rem; padding: 6px 12px; }
         }
     </style>
 </head>
@@ -449,6 +531,17 @@
                 </p>
             </div>
 
+            <section class="categories-section">
+                <h3><i class="fas fa-tags"></i> Explora por Categorías</h3>
+                <ul class="category-list">
+                    <li><a href="#dbt-skills">Habilidades DBT</a></li>
+                    <li><a href="#personal-stories">Historias Personales</a></li>
+                    <li><a href="#mental-health-news">Noticias Salud Mental</a></li>
+                    <li><a href="#mindfulness-practices">Prácticas Mindfulness</a></li>
+                    <li><a href="#emotional-regulation">Regulación Emocional</a></li>
+                    <li><a href="#relationships">Relaciones</a></li>
+                </ul>
+            </section>
             <div class="blog-grid">
                 <article class="blog-post-card">
                     <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Mindfulness+en+DBT" alt="Persona meditando en un entorno sereno" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
@@ -539,8 +632,52 @@
                         <a href="blog-post-tolerancia-crisis.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
+                
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/FF4500/FFFFFF?text=Autocompasión+y+TLP" alt="Corazón luminoso sostenido por manos cuidadosas" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>El Viaje hacia la Autocompasión: Un Bálsamo para el TLP</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 15 de Julio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Dra. Ana Torres</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            La autocrítica severa es una compañera frecuente en el TLP. Aprender a cultivar la autocompasión puede transformar la relación con uno mismo, ofreciendo calidez y comprensión en lugar de juicio. Exploramos cómo practicar la autocompasión y sus beneficios para la sanación y el bienestar emocional...
+                        </p>
+                        <a href="blog-post-autocompasion.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
 
-            </div>
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=DBT+para+Familias" alt="Grupo de personas diversas unidas en apoyo" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>DBT y el Entorno Familiar: Apoyando a Seres Queridos con TLP</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 22 de Julio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Psic. Laura Méndez</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            El TLP no solo afecta a quien lo vive, sino también a su entorno. La DBT ofrece herramientas valiosas para familiares y amigos, ayudándoles a comprender mejor el trastorno, mejorar la comunicación, establecer límites saludables y ofrecer un apoyo más efectivo. Descubre cómo la familia puede ser parte activa del proceso de recuperación...
+                        </p>
+                        <a href="blog-post-dbt-familias.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/00CED1/0A0A20?text=Estigma+Salud+Mental" alt="Manos rompiendo cadenas simbólicas" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>Rompiendo Cadenas: Cómo Combatir el Estigma en Salud Mental</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 30 de Julio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Colectivo Voces Conscientes</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            El estigma asociado a los trastornos mentales, y en particular al TLP, sigue siendo una barrera importante para la búsqueda de ayuda y la recuperación. Este artículo explora las raíces del estigma, su impacto y, lo más importante, qué podemos hacer como individuos y sociedad para desafiarlo, promover la comprensión y crear un entorno más compasivo y solidario para todos...
+                        </p>
+                        <a href="blog-post-estigma.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+                </div>
         </div>
     </main>
 
@@ -599,11 +736,13 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
+            // Star generation
             const starsContainer = document.getElementById('stars');
             if (starsContainer) {
-                const starsCount = 150;
+                const starsCount = 150; 
                 for (let i = 0; i < starsCount; i++) {
                     const star = document.createElement('div');
                     star.classList.add('star');
@@ -612,19 +751,20 @@
                     star.style.height = `${size}px`;
                     star.style.left = `${Math.random() * 100}%`;
                     star.style.top = `${Math.random() * 100}%`;
-                    star.style.animationDelay = `${Math.random() * 6}s`; 
-                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
-                    if (Math.random() > 0.65) {
-                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
+                    star.style.animationDelay = `${Math.random() * 7}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 7.5}s`; 
+                    if (Math.random() > 0.6) { 
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)', 'var(--accent-blue)', 'var(--accent-yellow)'];
                         star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
+                        star.style.boxShadow = `0 0 ${Math.random() * 3 + 0.8}px ${star.style.backgroundColor}`; 
                     } else {
-                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
+                        star.style.boxShadow = `0 0 ${Math.random() * 2 + 0.5}px rgba(255,255,255,0.7)`; 
                     }
                     starsContainer.appendChild(star);
                 }
             }
             
+            // Active navigation link highlighting
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
             const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
@@ -635,6 +775,7 @@
                 }
             });
             
+            // Header scroll effect
             const header = document.getElementById('main-header');
             if(header){
                 window.addEventListener('scroll', () => {
@@ -646,9 +787,10 @@
                 });
             }
             
-            const animatedSection = document.querySelector('.blog-grid'); 
-            if (animatedSection) {
-                 const observerOptions = {
+            // Intersection Observer for fade-in animations
+            const animatedSections = document.querySelectorAll('.blog-grid, .categories-section'); 
+            if (animatedSections.length > 0) {
+                const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
                     threshold: 0.1 
@@ -658,14 +800,21 @@
                         if (entry.isIntersecting) {
                             entry.target.style.opacity = '1';
                             entry.target.style.transform = 'translateY(0)';
-                            // obs.unobserve(entry.target); // Descomentar si solo se anima una vez
+                            // obs.unobserve(entry.target); 
+                        } else { 
+                            // Optional: Reset animation
+                            // entry.target.style.opacity = '0';
+                            // entry.target.style.transform = 'translateY(40px)';
                         }
                     });
                 }, observerOptions);
-                animatedSection.style.opacity = '0';
-                animatedSection.style.transform = 'translateY(40px)';
-                animatedSection.style.transition = 'opacity 0.9s ease-out, transform 0.9s ease-out';
-                observer.observe(animatedSection);
+
+                animatedSections.forEach(section => {
+                    section.style.opacity = '0';
+                    section.style.transform = 'translateY(40px)';
+                    section.style.transition = 'opacity 0.9s ease-out, transform 0.9s ease-out';
+                    observer.observe(section);
+                });
             }
         });
     </script>
