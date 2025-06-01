@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borderline Journey - Recursos para el TLP</title>
+    <title>Quiénes Somos - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-1: #ff00cc;
-            --color-2: #00ffff;
-            --color-3: #ffff00;
-            --color-4: #ff00ff;
-            --color-5: #00ff00;
-            --dark-bg: #0f0f1b;
+            --color-1: #ff00cc; /* Rosa neón */
+            --color-2: #00ffff; /* Cyan neón */
+            --color-3: #ffff00; /* Amarillo neón */
+            --color-4: #ff00ff; /* Magenta neón */
+            --color-5: #00ff00; /* Verde neón */
+            --dark-bg: #0f0f1b; 
+            --card-bg: rgba(25, 25, 45, 0.85); 
         }
         
         * {
@@ -64,7 +65,7 @@
         
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: 1100px; /* Adjusted for content */
             margin: 0 auto;
             padding: 0 20px;
             position: relative;
@@ -79,7 +80,7 @@
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 1000; 
+            z-index: 1000;
             border-bottom: 2px solid var(--color-2);
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
@@ -117,15 +118,15 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 10px; /* Adjusted gap for more links */
+            gap: 10px; 
         }
         
         nav a {
             color: #e0e0e0; 
             text-decoration: none;
             font-family: 'Krona One', sans-serif;
-            font-size: 0.9rem; /* Adjusted font size for more links */
-            padding: 10px 15px; /* Adjusted padding */
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
             border-radius: 8px; 
             transition: all 0.3s ease-out;
             position: relative;
@@ -166,420 +167,132 @@
             display: none;
         }
         
-        /* Hero Section */
-        .hero {
-            background: rgba(15, 15, 27, 0.6);
-            backdrop-filter: blur(5px);
-            color: white;
-            padding: 6rem 0;
-            text-align: center;
-            margin: 2rem 0;
-            border-radius: 20px;
-            border: 2px solid var(--color-1);
-            box-shadow: 
-                0 0 30px rgba(255, 0, 204, 0.3),
-                inset 0 0 30px rgba(255, 0, 204, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: -10px;
-            right: -10px;
-            bottom: -10px;
-            background: 
-                linear-gradient(45deg, transparent 48%, var(--color-1) 50%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, var(--color-3) 50%, transparent 52%);
-            background-size: 20px 20px;
-            z-index: -1;
-            opacity: 0.4;
-            animation: creativePattern 20s linear infinite;
-        }
-        
-        @keyframes creativePattern {
-            to { background-position: 0 1000px; }
-        }
-        
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
-        }
-        
-        .hero h2 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-            text-shadow: 
-                0 0 10px var(--color-2),
-                0 0 20px var(--color-4);
-            background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-5));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: creativeText 8s infinite linear;
-        }
-        
-        @keyframes creativeText {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-        
-        .hero p {
-            font-size: 1.3rem;
-            margin-bottom: 2.5rem;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0.9;
-            font-weight: 300;
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--color-1), var(--color-4));
-            color: white;
-            padding: 16px 40px;
-            border-radius: 30px;
-            text-decoration: none;
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.2rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 5px 20px rgba(255, 0, 204, 0.5);
-            border: none;
-            cursor: pointer;
-            margin: 10px;
-            position: relative;
-            overflow: hidden;
-            text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
-            letter-spacing: 1px;
-        }
-        
-        .cta-button:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px var(--color-4);
-            filter: brightness(1.2);
-        }
-        
-        .cta-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-            transition: 0.5s;
-        }
-        
-        .cta-button:hover::before {
-            left: 100%;
-        }
-        
-        .cta-button.secondary {
-            background: transparent;
-            border: 2px solid var(--color-2);
-            box-shadow: 0 0 15px var(--color-2);
-        }
-        
-        .cta-button.secondary:hover {
-            background: rgba(0, 255, 255, 0.2);
-        }
-        
-        /* Features Section (Recursos Destacados) */
-        .features {
+        /* Quienes Somos Section Styles */
+        .quienes-somos-section {
             padding: 5.5rem 0;
         }
-        
-        .section-title {
+
+        .section-title-qs { /* Specific title for this page */
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
         }
-        
-        .section-title h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
-            color: var(--color-3);
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
+
+        .section-title-qs h2 {
+            font-family: 'Monoton', cursive; /* Using Monoton like the logo */
+            font-size: 3.5rem;
+            color: var(--color-1); /* Pink accent */
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 15px var(--color-1), 0 0 25px var(--color-4);
             letter-spacing: 3px;
         }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: var(--color-4);
-            border-radius: 3px;
-            box-shadow: 0 0 10px var(--color-4);
-        }
-        
-        .section-title p {
-            color: #bbb;
+
+        .section-title-qs p.subtitle {
+            font-family: 'Krona One', sans-serif;
             font-size: 1.3rem;
-            max-width: 750px;
-            margin: 0 auto;
-            opacity: 0.85;
-            font-weight: 300;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 35px;
-            margin-top: 2.5rem;
-        }
-        
-        .feature-card {
-            background: rgba(30, 30, 50, 0.7);
-            border-radius: 20px;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            position: relative;
-            height: 100%;
-            border: 1px solid var(--color-5);
-            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
-            backdrop-filter: blur(5px);
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-15px) rotate(2deg);
-            box-shadow: 0 15px 40px var(--color-5);
-            border-color: var(--color-1);
-        }
-        
-        .feature-img {
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            position: relative;
-        }
-        
-        .feature-img::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 0, 204, 0.3), rgba(0, 255, 255, 0.3));
-            mix-blend-mode: overlay;
-        }
-        
-        .feature-content {
-            padding: 30px;
-        }
-        
-        .feature-content h3 {
             color: var(--color-2);
-            margin-bottom: 20px;
-            font-size: 1.7rem;
-            font-family: 'Lobster', cursive;
-            letter-spacing: 1px;
-        }
-        
-        .feature-content p {
-            color: #ddd;
-            margin-bottom: 25px;
+            text-shadow: 0 0 8px var(--color-2);
             opacity: 0.9;
-            font-size: 1.1rem;
-            font-weight: 300;
         }
-        
-        .feature-link {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            color: var(--color-3);
-            font-weight: 600;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.1rem;
-            text-shadow: 0 0 5px rgba(255, 255, 0, 0.3);
-        }
-        
-        .feature-link:hover {
-            color: var(--color-1);
-            gap: 15px;
-            text-shadow: 0 0 10px rgba(255, 0, 204, 0.5);
-        }
-        
-        /* Testimonials */
-        .testimonials {
-            padding: 5.5rem 0;
-            position: relative;
-        }
-        
-        .testimonials::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                linear-gradient(45deg, transparent 48%, var(--color-3) 50%, transparent 52%),
-                linear-gradient(-45deg, transparent 48%, var(--color-4) 50%, transparent 52%);
-            background-size: 40px 40px;
-            z-index: -1;
-            opacity: 0.1;
-            animation: creativePattern 30s linear infinite;
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 35px;
-            margin-top: 3rem;
-        }
-        
-        .testimonial-card {
-            background: rgba(20, 20, 35, 0.8);
-            padding: 35px 30px;
-            border-radius: 20px;
-            position: relative;
+
+        .profile-container-qs {
             display: flex;
             flex-direction: column;
-            border: 1px solid var(--color-1);
-            box-shadow: 0 0 25px rgba(255, 0, 204, 0.3);
-            backdrop-filter: blur(5px);
-            transition: all 0.4s ease;
-        }
-        
-        .testimonial-card:hover {
-            transform: scale(1.03);
-            box-shadow: 0 0 35px var(--color-1);
-        }
-        
-        .testimonial-card::before {
-            content: '"'; 
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            font-size: 5rem;
-            color: rgba(255, 0, 204, 0.1);
-            font-family: Georgia, serif;
-            line-height: 1;
-            z-index: 0;
-        }
-        
-        .testimonial-content {
-            margin-bottom: 25px;
-            color: #ddd;
-            position: relative;
-            z-index: 1;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            font-style: italic;
-        }
-        
-        .testimonial-author {
-            display: flex;
             align-items: center;
-            gap: 18px;
-            margin-top: auto;
-        }
-        
-        .author-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--color-1), var(--color-4));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-            box-shadow: 0 0 15px var(--color-1);
-        }
-        
-        .author-info h4 {
-            color: var(--color-2);
-            margin-bottom: 4px;
-            font-size: 1.3rem;
-        }
-        
-        .author-info p {
-            color: var(--color-3);
-            font-size: 1rem;
-        }
-        
-        /* Premium Section (Index Page Version - CTA) */
-        .premium-cta-section { 
-            padding: 7rem 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            background: rgba(15, 15, 27, 0.7);
+            gap: 30px;
+            background: var(--card-bg);
+            padding: 40px;
             border-radius: 20px;
-            margin: 3rem 0;
-            border: 2px solid var(--color-2);
-            box-shadow: 
-                0 0 30px rgba(0, 255, 255, 0.3),
-                inset 0 0 30px rgba(0, 255, 255, 0.2);
+            border: 2px solid var(--color-5); /* Green border */
+            box-shadow: 0 0 30px rgba(0, 255, 0, 0.25), inset 0 0 20px rgba(0, 255, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        @media (min-width: 768px) {
+            .profile-container-qs {
+                flex-direction: row;
+                align-items: flex-start; /* Align items to the start for varying text lengths */
+            }
+        }
+
+
+        .profile-image-qs {
+            flex-shrink: 0;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 5px solid var(--color-1); /* Pink border for image */
+            box-shadow: 0 0 25px var(--color-1);
+            margin-bottom: 20px;
         }
         
-        .premium-cta-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
+         @media (min-width: 768px) {
+            .profile-image-qs {
+                margin-bottom: 0;
+                margin-right: 30px; /* Add margin for larger screens */
+            }
+        }
+
+
+        .profile-image-qs img {
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle, var(--color-2) 0%, transparent 70%),
-                radial-gradient(circle, var(--color-5) 0%, transparent 70%);
-            background-size: 200% 200%;
-            background-position: center;
-            animation: creativeBackground 20s infinite linear; 
-            z-index: -1;
-            opacity: 0.2;
+            object-fit: cover;
+        }
+
+        .profile-info-qs {
+            text-align: left; /* Left align text */
+            max-width: 650px; /* Control text width */
         }
         
-        .premium-cta-container { 
-            max-width: 800px;
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
+        @media (max-width: 767px) {
+             .profile-info-qs {
+                text-align: center; /* Center text on smaller screens */
+            }
         }
-        
-        .premium-cta-section h2 {
+
+
+        .profile-info-qs h3 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, var(--color-3), var(--color-5), var(--color-2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
-            animation: creativeText 5s infinite linear; 
+            font-size: 2rem;
+            color: var(--color-3); /* Yellow name */
+            margin-bottom: 10px;
+            text-shadow: 0 0 10px var(--color-3);
+        }
+
+        .profile-info-qs .role-qs {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.1rem;
+            color: var(--color-2);
+            margin-bottom: 20px;
+            display: block; /* Make it a block to take full width before paragraph */
         }
         
-        .premium-cta-section p {
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #ddd;
+        .profile-info-qs p {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin-bottom: 15px;
+            line-height: 1.8;
         }
         
-        /* Footer */
+        .profile-info-qs p strong {
+            color: var(--color-5); /* Green for emphasis */
+            font-weight: 700; /* Ensure Comfortaa bold is used */
+        }
+
+        .profile-quote-qs {
+            font-family: 'Caveat', cursive;
+            font-size: 1.6rem;
+            color: var(--color-1);
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid var(--color-1);
+            background: rgba(255,0,204, 0.05);
+            border-radius: 0 8px 8px 0;
+            font-style: italic;
+        }
+
+        /* Footer Styles */
         footer {
             background: rgba(10, 10, 20, 0.9);
             color: white;
@@ -705,16 +418,6 @@
         }
         
         /* Responsive */
-        @media (max-width: 1024px) { /* Adjusted breakpoint for more links */
-             nav ul {
-                gap: 8px;
-            }
-            nav a {
-                font-size: 0.85rem;
-                padding: 8px 12px;
-            }
-        }
-
         @media (max-width: 900px) {
             .header-container {
                 flex-direction: column;
@@ -724,46 +427,45 @@
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
-                gap: 5px; /* Further reduce gap */
             }
-             nav a {
-                font-size: 0.8rem; /* Further reduce font size */
-                padding: 8px 10px; /* Further reduce padding */
+            .section-title-qs h2 {
+                font-size: 2.8rem;
             }
-            
-            .hero h2 {
+            .profile-info-qs h3 {
                 font-size: 1.8rem;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-            .premium-cta-section h2 {
-                font-size: 2rem;
             }
         }
         
         @media (max-width: 600px) {
-            .hero {
-                padding: 3.5rem 0;
+            .section-title-qs h2 {
+                font-size: 2.2rem; 
             }
-            
-            .hero h2 {
-                font-size: 1.5rem;
+            .section-title-qs p.subtitle {
+                font-size: 1.1rem;
             }
-            .premium-cta-section h2 {
-                font-size: 1.8rem;
+            .profile-image-qs {
+                width: 180px;
+                height: 180px;
             }
-            
-            .cta-button {
-                display: block;
-                margin: 15px auto;
-                width: 90%;
-                max-width: 300px;
+            .profile-info-qs h3 {
+                font-size: 1.6rem;
+            }
+            .profile-info-qs p {
+                font-size: 1rem;
+            }
+            .profile-quote-qs {
+                font-size: 1.4rem;
+            }
+            nav ul {
+                gap: 8px;
+            }
+            nav a {
+                padding: 6px 12px;
+                font-size: 0.85rem; /* Adjusted for more links */
             }
         }
 
-        .ripple {
+        .ripple { /* Keep ripple if used on other potential buttons */
             position: absolute;
             border-radius: 50%;
             background-color: rgba(255, 255, 255, 0.7);
@@ -785,141 +487,62 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                 <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
+                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
                     <i class="fas fa-brain"></i>
                     <h1>BORDERLINE JOURNEY</h1>
                 </a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="index.html">Inicio</a></li>
                     <li><a href="psicoeducacion.html">Psicoeducación</a></li>
                     <li><a href="dbt.html">DBT</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="foro.html">Foro</a></li>
                     <li><a href="up_download.html">Up/Download</a></li>
-                    <li><a href="quienes_somos.html">Quiénes Somos</a></li>
+                    <li><a href="quienes_somos.html" class="active">Quiénes Somos</a></li>
                     <li><a href="premium.html">Premium</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <section class="hero" id="inicio">
-        <div class="container hero-content">
-            <h2>EXPLORANDO LA MENTE BORDERLINE</h2>
-            <p>Un viaje creativo a través de recursos, comunidad y herramientas para comprender y gestionar el Trastorno Límite de la Personalidad</p>
-            <div>
-                <a href="premium.html" class="cta-button">INICIAR EXPERIENCIA</a>
-                <a href="premium.html" class="cta-button secondary">ACCESO PREMIUM</a>
-            </div>
-        </div>
-    </section>
+    <main>
+        <section class="quienes-somos-section" id="quienes-somos-contenido">
+            <div class="container">
+                <div class="section-title-qs">
+                    <h2>Nuestra Esencia</h2>
+                    <p class="subtitle">Detrás del Viaje Borderline</p>
+                </div>
 
-    <section class="features" id="recursos-destacados"> 
-        <div class="container">
-            <div class="section-title">
-                <h2>RECURSOS VISUALES</h2>
-                <p>Explora nuestras secciones con un enfoque creativo para el aprendizaje</p>
-            </div>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="feature-content">
-                        <h3>Psicoeducación</h3>
-                        <p>Información visual sobre síntomas, causas y estrategias de afrontamiento para el TLP. Aprende con infografías creativas.</p>
-                        <a href="psicoeducacion.html" class="feature-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                <div class="profile-container-qs">
+                    <div class="profile-image-qs">
+                        <img src="https://placehold.co/300x300/ff00cc/ffffff?text=Mayra+S." alt="Mayra Schwarzschild">
                     </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717406-1c69efaf1dd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="feature-content">
-                        <h3>DBT</h3>
-                        <p>Técnicas de Terapia Dialéctica Conductual presentadas de forma creativa y experiencial. Mindfulness con enfoque sensorial.</p>
-                        <a href="dbt.html" class="feature-link">Ver ejercicios <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="feature-content">
-                        <h3>Blog</h3>
-                        <p>Relatos personales, arte terapéutico y exploraciones creativas sobre la experiencia de vivir con TLP.</p>
-                        <a href="blog.html" class="feature-link">Leer artículos <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
-                    <div class="feature-content">
-                        <h3>Foro</h3>
-                        <p>Comunidad segura para compartir experiencias, obtener apoyo y conectar con personas que comprenden el TLP.</p>
-                        <a href="foro.html" class="feature-link">Unirse al foro <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="testimonials" id="testimonios"> 
-        <div class="container">
-            <div class="section-title">
-                <h2>EXPERIENCIAS</h2>
-                <p>Voces de nuestra comunidad creativa</p>
-            </div>
-            
-            <div class="testimonial-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "Este enfoque visual y experiencial me ha permitido conectar con mis emociones de una forma completamente nueva. Las herramientas de DBT presentadas de esta manera son mucho más accesibles."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">L</div>
-                        <div class="author-info">
-                            <h4>Laura M.</h4>
-                            <p>Artista, 28 años</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "Como terapeuta, he encontrado que este enfoque creativo ayuda a mis pacientes a comprender conceptos complejos de una manera más intuitiva y emocional."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">D</div>
-                        <div class="author-info">
-                            <h4>Dr. Carlos R.</h4>
-                            <p>Psicólogo clínico</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-content">
-                        "La comunidad aquí es increíble. Compartir arte y experiencias a través de este enfoque visual ha sido terapéutico y me ha ayudado a sentirme menos solo en este viaje."
-                    </div>
-                    <div class="testimonial-author">
-                        <div class="author-img">M</div>
-                        <div class="author-info">
-                            <h4>Miguel Á.</h4>
-                            <p>Diseñador, 35 años</p>
+                    <div class="profile-info-qs">
+                        <h3>Mayra Schwarzschild</h3>
+                        <span class="role-qs">Fundadora y Corazón de Borderline Journey</span>
+                        <p>
+                            ¡Hola! Soy Mayra, y este espacio nació de una profunda necesidad personal y un deseo ardiente de transformar la conversación sobre el Trastorno Límite de la Personalidad. 
+                            Impulsada por mi propio viaje con el <strong>TLP</strong> y una pasión inagotable por la <strong>expresión creativa</strong>, creé Borderline Journey como un faro de comprensión, un lienzo de recursos visuales y una comunidad vibrante y llena de color.
+                        </p>
+                        <p>
+                            Soy una amante del arte en todas sus formas, desde el diseño digital que da vida a esta web, hasta la poesía que a veces brota en momentos de intensa introspección. Creo firmemente en el poder transformador de la creatividad para sanar, conectar y dar sentido a las complejidades de nuestra mente.
+                        </p>
+                        <p>
+                            Mi diagnóstico no me define, pero sí ha modelado una profunda <strong>empatía</strong> y una perspectiva única sobre la intensidad emocional y la constante búsqueda de equilibrio. Este espacio es un reflejo de esa búsqueda: un lugar para encontrar <strong>belleza en la complejidad y fortaleza en la vulnerabilidad.</strong>
+                        </p>
+                        <p>
+                            Borderline Journey es más que un sitio web; es una invitación a explorar, a aprender, a compartir sin miedo y a sentir que no estás solo/a en esta travesía. Mi visión es construir un refugio donde la información sea accesible y visualmente estimulante, donde las herramientas sean prácticas y donde cada voz pueda ser escuchada y validada.
+                        </p>
+                        <div class="profile-quote-qs">
+                            "En el caos de la emoción, reside una creatividad feroz y una capacidad de amar profundamente. Abracemos nuestra intensidad."
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="premium-cta-section" id="premium-cta"> 
-        <div class="container premium-cta-container">
-            <h2>EXPERIENCIA PREMIUM</h2>
-            <p>Acceso completo a nuestro universo de recursos creativos para el manejo del TLP</p>
-            <a href="premium.html" class="cta-button">DESCUBRE PREMIUM</a> 
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
         <div class="container">
@@ -939,23 +562,23 @@
                     <h3>Recursos</h3>
                     <ul class="footer-links">
                         <li><a href="psicoeducacion.html">Galería Visual</a></li>
-                        <li><a href="dbt.html">Meditaciones Guiadas</a></li>
-                        <li><a href="blog.html">Diario Emocional</a></li>
-                        <li><a href="foro.html">Arte Terapéutico</a></li>
-                        <li><a href="premium.html">Recursos de Crisis</a></li>
+                        <li><a href="dbt.html">Meditaciones Guiadas (DBT)</a></li> 
+                        <li><a href="blog.html">Diario Emocional (Blog)</a></li> 
+                        <li><a href="foro.html">Comunidad (Foro)</a></li> 
+                        <li><a href="premium.html">Recursos de Crisis (Premium)</a></li> 
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Explorar</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Psicoeducación</a></li>
-                        <li><a href="dbt.html">DBT</a></li>
-                        <li><a href="blog.html">Blog</a></li>
-                        <li><a href="foro.html">Foro</a></li>
+                        <li><a href="psicoeducacion.html">Psicoeducación</a></li> 
+                        <li><a href="dbt.html">DBT</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foro</a></li> 
                         <li><a href="up_download.html">Up/Download</a></li>
                         <li><a href="quienes_somos.html">Quiénes Somos</a></li>
-                        <li><a href="premium.html">Eventos</a></li>
+                        <li><a href="premium.html">Eventos (Premium)</a></li> 
                     </ul>
                 </div>
                 
@@ -979,8 +602,21 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const cards = document.querySelectorAll('.feature-card, .testimonial-card');
-            cards.forEach(card => {
+            // Activar enlace de navegación
+            const currentPageFilename = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => {
+                const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            // Efecto de hover para tarjetas (si se añaden más tarjetas en esta página)
+            const cards = document.querySelectorAll('.profile-container-qs'); // Placeholder si se añaden más tarjetas
+             cards.forEach(card => {
                 card.addEventListener('mousemove', function(e) {
                     const rect = card.getBoundingClientRect();
                     const cardX = rect.left + rect.width / 2;
@@ -988,126 +624,24 @@
                     const mouseX = e.clientX;
                     const mouseY = e.clientY;
                     
-                    const rotateX = (mouseY - cardY) / 20; 
-                    const rotateY = (mouseX - cardX) / -20; 
+                    let rotateX = (mouseY - cardY) / 25; 
+                    let rotateY = (mouseX - cardX) / -25;
                     
-                    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
+                    rotateX = Math.min(Math.max(rotateX, -5), 5); // Sutil efecto para el profile card
+                    rotateY = Math.min(Math.max(rotateY, -5), 5);
+                    
+                    // No aplicar scale aquí para evitar que la imagen se distorsione demasiado
+                    this.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
                 });
                 
                 card.addEventListener('mouseenter', function() {
-                    this.style.transition = 'transform 0.1s ease-out'; 
+                    this.style.transition = 'transform 0.1s ease-out';
                 });
                 
                 card.addEventListener('mouseleave', function() {
                     this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; 
-                    this.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
+                    this.style.transform = 'perspective(1500px) rotateY(0deg) rotateX(0deg)';
                 });
-            });
-            
-            const sectionTitleH2s = document.querySelectorAll('.section-title h2');
-            let hue = 0;
-
-            if (sectionTitleH2s.length > 0) {
-                 setInterval(() => {
-                    hue = (hue + 1) % 360;
-                    sectionTitleH2s.forEach(text => {
-                        const parentSection = text.closest('section');
-                        if (!text.closest('.hero') && !text.closest('.premium-cta-section')) {
-                           text.style.filter = `hue-rotate(${hue}deg)`;
-                        }
-                    });
-                }, 100); 
-            }
-            
-            const buttons = document.querySelectorAll('.cta-button');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    const x = e.clientX - e.target.getBoundingClientRect().left; 
-                    const y = e.clientY - e.target.getBoundingClientRect().top;  
-                    
-                    const ripples = document.createElement('span');
-                    ripples.classList.add('ripple');
-                    ripples.style.left = x + 'px';
-                    ripples.style.top = y + 'px';
-                    this.appendChild(ripples);
-                    
-                    setTimeout(() => {
-                        ripples.remove();
-                    }, 600); 
-                });
-            });
-            
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId !== "#" && document.querySelector(targetId)) {
-                        e.preventDefault();
-                        const targetElement = document.querySelector(targetId);
-                        
-                        if (targetElement) {
-                            let headerOffset = 80; 
-                            const header = document.querySelector('header');
-                            if (header) {
-                                headerOffset = header.offsetHeight + 20; 
-                            }
-                            
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-            
-            const sections = document.querySelectorAll('section[id]'); 
-            const navLinks = document.querySelectorAll('nav a');
-            const header = document.querySelector('header');
-            
-            const inicioLink = document.querySelector('nav a[href="index.html"]');
-            if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html') || window.location.pathname === '') {
-                 navLinks.forEach(link => link.classList.remove('active'));
-                 if(inicioLink) inicioLink.classList.add('active');
-            }
-
-
-            window.addEventListener('scroll', () => {
-                // Only run scroll-based active link highlighting on index.html
-                if (!(window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html') || window.location.pathname === '')) {
-                    return;
-                }
-
-                let currentId = 'inicio'; 
-                const scrollY = window.pageYOffset;
-                const offset = header ? header.offsetHeight + 60 : 120; 
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    if (scrollY >= sectionTop - offset) {
-                        currentId = section.getAttribute('id');
-                    }
-                });
-                
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    const linkHref = link.getAttribute('href');
-
-                    if (linkHref === `index.html#${currentId}` || (currentId === 'inicio' && (linkHref === 'index.html' || linkHref === 'index.html#inicio'))) {
-                        link.classList.add('active');
-                    } else if (linkHref === `#${currentId}` ) { // Fallback for simple anchor links
-                         link.classList.add('active');
-                    }
-                });
-
-                 // Ensure "Inicio" is active if at the very top or no other section matches
-                if (scrollY < (sections[0]?.offsetTop - offset || 300)) {
-                    navLinks.forEach(link => link.classList.remove('active'));
-                    if(inicioLink) inicioLink.classList.add('active');
-                }
-
             });
         });
     </script>
