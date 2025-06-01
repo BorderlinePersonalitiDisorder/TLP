@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Técnicas de Exposición en TCC - Borderline Journey</title>
+    <title>Técnicas de Exposición en TCC - Guía Detallada - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-violet: #8A2BE2;
-            --secondary-cyan: #00CED1;
+            --secondary-cyan: #00CED1; /* Primary accent for this page */
             --accent-magenta: #FF00FF;
             --accent-green: #00FF7F;
             --accent-blue: #1E90FF;
@@ -18,6 +18,7 @@
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
@@ -28,7 +29,7 @@
             --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
-            --secondary-cyan-rgb: 0, 206, 209;
+            --secondary-cyan-rgb: 0, 206, 209; /* Primary accent for this page */
             --accent-red-rgb: 255, 69, 0;
         }
         
@@ -188,14 +189,22 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif; /* Updated font */
+            font-size: 2.8rem; 
+            font-weight: 700;
             color: var(--secondary-cyan); /* Component specific color */
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--secondary-cyan-rgb),0.5);
+            text-transform: none; 
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(var(--secondary-cyan-rgb),0.4); 
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
+        .page-header h2 i {
+            font-size: 2.5rem; 
+        }
+
 
         .page-header p.subtitle {
             font-size: 1.2rem;
@@ -206,9 +215,9 @@
         
         .component-content-section { 
             background: var(--card-bg);
-            padding: 30px;
+            padding: 30px 35px; 
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem; 
             border: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(30px);
@@ -220,49 +229,116 @@
         }
 
         .component-content-section h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.8rem;
-            color: var(--secondary-cyan); /* Component specific color */
-            margin-bottom: 1.5rem;
+            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-weight: 700; 
+            font-size: 1.9rem; 
+            color: var(--secondary-cyan); 
+            margin-top: 1rem; 
+            margin-bottom: 1.8rem; 
             text-align: center;
-            border-bottom: 2px dashed var(--secondary-cyan);
-            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--secondary-cyan); 
+            padding-bottom: 0.8rem; 
         }
          .component-content-section h4 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.3rem;
+            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-weight: 700; 
+            font-size: 1.5rem; 
             color: var(--accent-yellow);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--accent-yellow);
-            padding-left: 10px;
+            margin-top: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            border-left: 4px solid var(--accent-yellow); 
+            padding-left: 15px; 
+        }
+        .component-content-section h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-green); 
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .component-content-section p {
+        .component-content-section p, 
+        .component-content-section li { 
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; 
             color: var(--text-color-light);
+            line-height: 1.9; 
         }
-        .component-content-section ul {
+        .component-content-section ul,
+        .component-content-section ol {
             list-style: none;
-            padding-left: 0;
+            padding-left: 0; 
             margin-bottom: 1.5rem;
         }
         .component-content-section ul li {
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-            padding-left: 25px;
+            padding-left: 30px; 
             position: relative;
         }
         .component-content-section ul li::before {
-            content: '\f00c'; /* FontAwesome check icon */
+            content: '\f00c'; 
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
-            color: var(--secondary-cyan); /* Component specific color */
+            color: var(--secondary-cyan); 
             position: absolute;
             left: 0;
-            top: 2px;
+            top: 4px; 
+            font-size: 1em; 
+        }
+         .component-content-section ol li {
+            padding-left: 10px; 
+            margin-left: 20px; 
+            list-style-position: outside;
+        }
+        .component-content-section ol {
+            list-style-type: decimal; 
+        }
+        .component-content-section strong {
+            color: var(--accent-green); 
+            font-weight: 700;
+        }
+        .component-content-section em {
+            color: var(--accent-yellow); 
+            font-style: italic;
+        }
+        .component-content-section blockquote {
+            border-left: 5px solid var(--accent-blue);
+            padding: 15px 25px;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+            background-color: rgba(var(--accent-blue-rgb), 0.08);
+            border-radius: 0 10px 10px 0;
+            font-size: 1.05rem;
+        }
+        .component-content-section blockquote p {
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .example-box {
+            background-color: rgba(var(--accent-green-rgb), 0.05); /* Changed for variety */
+            border: 1px dashed var(--accent-green);
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .example-box h5 {
+            color: var(--accent-green);
+            margin-top: 0;
+            font-family: 'Raleway', sans-serif; 
+            font-weight: 700;
+        }
+        .keyword-link { 
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px dashed var(--accent-yellow);
+            transition: all 0.3s ease;
+        }
+        .keyword-link:hover {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
         }
         
         .breadcrumb {
@@ -280,6 +356,59 @@
         }
         .breadcrumb span {
             color: var(--text-color-medium);
+        }
+
+        .navigation-buttons-container {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: wrap; 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+            margin-bottom: 1.5rem; 
+            padding: 1rem 0;
+            border-top: 1px dashed rgba(var(--primary-violet-rgb), 0.3);
+        }
+
+        .nav-btn {
+            display: inline-flex; 
+            align-items: center;
+            justify-content: center; 
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            flex-grow: 1; 
+            min-width: 220px; 
+            text-align: center;
+        }
+        .nav-btn i {
+            font-size: 1em; 
+        }
+
+        .back-btn {
+            background: linear-gradient(45deg, var(--accent-blue), var(--primary-violet)); 
+            color: white; 
+            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.4);
+        }
+        .back-btn:hover {
+            background: linear-gradient(45deg, var(--primary-violet), var(--accent-blue)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--primary-violet-rgb), 0.5); 
+        }
+
+        .continue-btn {
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
+            color: var(--dark-bg); 
+            box-shadow: 0 3px 10px rgba(var(--accent-green-rgb), 0.4);
+        }
+        .continue-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--secondary-cyan-rgb), 0.5); 
         }
         
         footer { 
@@ -394,8 +523,12 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
-            .component-content-section h3 {font-size: 1.6rem;}
+            .page-header h2 { font-size: 2.2rem; } 
+            .component-content-section h3 {font-size: 1.7rem;} 
+            .component-content-section h4 {font-size: 1.3rem;} 
+            .navigation-buttons-container { flex-direction: column; } 
+            .nav-btn { width: 100%; max-width: 300px; } 
+
         }
         
         @media (max-width: 600px) {
@@ -403,12 +536,14 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } 
             .page-header p.subtitle { font-size: 1rem; }
             .component-content-section { padding: 20px; }
-            .component-content-section h3 {font-size: 1.5rem;}
-            .component-content-section p {font-size: 1rem;}
-            .component-content-section ul li {font-size: 0.95rem;}
+            .component-content-section h3 {font-size: 1.6rem;} 
+            .component-content-section h4 {font-size: 1.2rem;} 
+            .component-content-section p,
+            .component-content-section li {font-size: 1rem;} 
+            .nav-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -418,7 +553,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+            <a href="index.html" rel="noopener noreferrer" class="logo">
                 <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
@@ -446,39 +581,160 @@
             <div class="page-header">
                 <h2><i class="fas fa-eye"></i> Técnicas de Exposición en TCC</h2>
                 <p class="subtitle">
-                    Afrontando gradualmente los miedos para reducir la ansiedad y recuperar el control.
+                    Afrontando gradualmente los miedos para reducir la ansiedad y recuperar el control. Una guía completa.
                 </p>
             </div>
 
             <section class="component-content-section">
-                <h3>Enfrentando los Miedos Paso a Paso</h3>
+                <h3><i class="fas fa-shield-virus"></i> Enfrentando los Miedos Paso a Paso: El Corazón de la Terapia de Exposición</h3>
                 <p>
-                    Las Técnicas de Exposición son un conjunto de estrategias fundamentales dentro de la Terapia Cognitivo Conductual (TCC), especialmente eficaces para el tratamiento de los <a href="https://es.wikipedia.org/wiki/Trastornos_de_ansiedad" class="keyword-link" target="_blank" rel="noopener noreferrer">trastornos de ansiedad</a>, como las fobias específicas, el trastorno de pánico, la agorafobia, el trastorno de ansiedad social, el trastorno obsesivo-compulsivo (TOC) y el trastorno de estrés postraumático (TEPT).
+                    Las <strong>Técnicas de Exposición</strong> constituyen un conjunto de estrategias terapéuticas fundamentales y altamente eficaces dentro del marco de la <strong>Terapia Cognitivo Conductual (TCC)</strong>. Son consideradas el tratamiento de elección, con un robusto respaldo empírico, para una amplia variedad de <a href="https://es.wikipedia.org/wiki/Trastornos_de_ansiedad" class="keyword-link" target="_blank" rel="noopener noreferrer">trastornos de ansiedad</a>. Esto incluye, pero no se limita a, fobias específicas (ej. miedo a volar, a las alturas, a ciertos animales), trastorno de pánico (con o sin agorafobia), trastorno de ansiedad social (fobia social), trastorno obsesivo-compulsivo (TOC), y el trastorno de estrés postraumático (TEPT).
                 </p>
                 <p>
-                    El principio básico de la terapia de exposición es que, al enfrentar de manera sistemática y controlada las situaciones, objetos, pensamientos o recuerdos temidos (estímulos ansiógenos) –en lugar de evitarlos–, la persona aprende que sus miedos son a menudo desproporcionados y que la ansiedad disminuye con el tiempo (habituación). También permite desconfirmar creencias catastróficas asociadas al estímulo temido.
+                    El principio básico y la lógica subyacente a la terapia de exposición son directos pero profundos: al <strong>enfrentar de manera sistemática, gradual y controlada</strong> aquellas situaciones, objetos, pensamientos, recuerdos o sensaciones físicas temidas (denominados estímulos ansiógenos o condicionados) –en lugar de recurrir a la evitación o a conductas de escape–, la persona tiene la oportunidad de aprender varias cosas cruciales. Primero, que sus miedos y las predicciones catastróficas asociadas son a menudo <em>desproporcionados</em> con respecto al peligro real. Segundo, que la ansiedad, aunque inicialmente intensa, tiende a <em>disminuir con el tiempo</em> si se permanece en la situación temida sin escapar (proceso de <strong>habituación</strong>). Y tercero, se pueden <em>desconfirmar creencias negativas</em> y aprender nuevas formas de afrontamiento más adaptativas.
                 </p>
+                 <blockquote>
+                    <p>"El coraje no es la ausencia de miedo, sino la decisión de que algo más es más importante que el miedo." - Ambrose Redmoon (Adaptado para reflejar el espíritu de la exposición).</p>
+                </blockquote>
+            </section>
 
-                <h4>Tipos Comunes de Exposición:</h4>
+            <section class="component-content-section">
+                <h3><i class="fas fa-layer-group"></i> Tipos Comunes de Técnicas de Exposición</h3>
+                <p>Existen diversas modalidades de exposición, adaptadas a la naturaleza del miedo y las necesidades del individuo:</p>
+                
+                <h4>1. Exposición en Vivo (In Vivo)</h4>
+                <p>
+                    Implica <strong>enfrentar directamente la situación, objeto o actividad temida en la vida real</strong>. Es a menudo la forma más potente de exposición.
+                </p>
                 <ul>
-                    <li><strong>Exposición en Vivo (In Vivo):</strong> Implica enfrentar directamente la situación u objeto temido en la vida real. Por ejemplo, una persona con miedo a los ascensores usaría gradualmente un ascensor.</li>
-                    <li><strong>Exposición Imaginaria:</strong> Consiste en visualizar vívidamente la situación temida. Es útil cuando la exposición en vivo es impráctica o imposible (ej. un trauma pasado) o como paso previo.</li>
-                    <li><strong>Exposición Interoceptiva:</strong> Se enfoca en provocar deliberadamente sensaciones físicas temidas (ej. palpitaciones, mareos) que se asocian con ataques de pánico, para aprender que no son peligrosas.</li>
-                    <li><strong>Exposición y Prevención de Respuesta (EyPR):</strong> Esencial en el TOC. La persona se expone a sus obsesiones (pensamientos, imágenes o impulsos temidos) y se abstiene de realizar las compulsiones o rituales que normalmente usaría para reducir la ansiedad.</li>
+                    <li><em>Ejemplo para fobia a los perros:</em> Acercarse gradualmente a un perro amigable, primero a distancia, luego más cerca, hasta poder acariciarlo (si ese es el objetivo).</li>
+                    <li><em>Ejemplo para ansiedad social:</em> Iniciar una conversación breve con un desconocido, luego participar en una reunión pequeña, y así sucesivamente.</li>
+                    <li><em>Ejemplo para agorafobia:</em> Salir de casa por periodos cortos, ir a lugares concurridos gradualmente.</li>
                 </ul>
 
-                <h4>Proceso General de la Terapia de Exposición:</h4>
-                <ol style="list-style-type: decimal; padding-left: 20px; text-align: left;">
-                    <li style="margin-bottom: 0.5rem;"><strong>Psicoeducación:</strong> Entender el modelo de la ansiedad, el papel de la evitación y la lógica de la exposición.</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>Creación de una Jerarquía de Miedo/Exposición:</strong> Se elabora una lista de situaciones o estímulos temidos, ordenados de menor a mayor grado de ansiedad que provocan.</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>Exposición Gradual:</strong> Se comienza con ítems de la jerarquía que provocan una ansiedad moderada y se avanza progresivamente a medida que la persona se habitúa y su miedo disminuye.</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>Exposición Prolongada y Repetida:</strong> Las sesiones de exposición deben ser lo suficientemente largas para que la ansiedad disminuya y deben repetirse regularmente.</li>
-                    <li style="margin-bottom: 0.5rem;"><strong>Eliminación de Conductas de Seguridad:</strong> Identificar y reducir las conductas sutiles que la persona utiliza para sentirse "segura" durante la exposición, ya que pueden interferir con el aprendizaje de que la situación no es peligrosa.</li>
-                </ol>
+                <h4>2. Exposición Imaginaria (o en Imaginación)</h4>
                 <p>
-                    Es crucial que la terapia de exposición se realice bajo la guía de un terapeuta capacitado, quien puede ayudar a diseñar un plan adecuado, proporcionar apoyo y asegurar que el proceso sea seguro y efectivo. Aunque puede generar ansiedad a corto plazo, la exposición es una de las intervenciones más poderosas para superar los trastornos de ansiedad a largo plazo.
+                    Consiste en <strong>visualizar vívidamente la situación o estímulo temido</strong> con el mayor detalle sensorial posible. Es particularmente útil cuando:
+                </p>
+                <ul>
+                    <li>La exposición en vivo es impráctica, imposible o peligrosa (ej. revivir un evento traumático para TEPT, miedo a un desastre natural).</li>
+                    <li>Como un paso previo para reducir la ansiedad antes de la exposición en vivo.</li>
+                    <li>Para miedos relacionados con pensamientos o imágenes intrusivas (como en algunas formas de TOC).</li>
+                </ul>
+                <div class="example-box">
+                    <h5>Ejemplo de Exposición Imaginaria:</h5>
+                    <p>Una persona con TEPT debido a un accidente de tráfico podría ser guiada por el terapeuta para revivir mentalmente el evento, describiendo los detalles sensoriales y emocionales en un entorno seguro, hasta que la angustia asociada disminuya.</p>
+                </div>
+
+                <h4>3. Exposición Interoceptiva</h4>
+                <p>
+                    Se enfoca en <strong>provocar deliberadamente sensaciones físicas internas</strong> que son temidas porque la persona las asocia erróneamente con una catástrofe inminente (ej. un ataque al corazón, volverse loco, desmayarse). Estas sensaciones son comunes en el trastorno de pánico.
+                </p>
+                <ul>
+                    <li><em>Ejemplos de ejercicios interoceptivos:</em> Hiperventilar controladamente para inducir mareo o falta de aliento, correr en el sitio para aumentar el ritmo cardíaco, girar en una silla para provocar mareo, respirar a través de una pajita para simular dificultad respiratoria.</li>
+                </ul>
+                <p>El objetivo es aprender que estas sensaciones, aunque incómodas, no son peligrosas y que se pueden tolerar sin que ocurra la catástrofe temida.</p>
+
+                <h4>4. Exposición y Prevención de Respuesta (EyPR)</h4>
+                <p>
+                    Es el tratamiento de elección para el <strong>Trastorno Obsesivo-Compulsivo (TOC)</strong>. Implica dos componentes:
+                </p>
+                <ul>
+                    <li><strong>Exposición:</strong> Exponerse deliberadamente a los pensamientos, imágenes, objetos o situaciones que desencadenan las obsesiones y la ansiedad (ej. tocar un objeto "contaminado" para alguien con TOC de contaminación).</li>
+                    <li><strong>Prevención de Respuesta:</strong> Abstenerse activamente de realizar las conductas compulsivas o rituales que la persona normalmente usaría para reducir la ansiedad o prevenir un resultado temido (ej. no lavarse las manos después de tocar el objeto "contaminado").</li>
+                </ul>
+                <p>La EyPR ayuda a la persona a aprender que la ansiedad disminuye por sí sola sin necesidad del ritual y que las consecuencias temidas de no realizar la compulsión generalmente no ocurren.</p>
+
+                <h4>5. Exposición Gradual vs. Inundación (Flooding)</h4>
+                <ul>
+                    <li><strong>Exposición Gradual:</strong> Es el enfoque más común. Se comienza con ítems de la jerarquía de miedo que provocan niveles bajos o moderados de ansiedad y se avanza progresivamente.</li>
+                    <li><strong>Inundación (Flooding):</strong> Implica una exposición prolongada a un estímulo altamente ansiógeno desde el principio, hasta que la ansiedad disminuye significativamente. Aunque puede ser más rápida, también puede ser más angustiante y tiene un mayor riesgo de abandono del tratamiento si no se maneja con extrema habilidad y preparación. Generalmente se prefiere la exposición gradual.</li>
+                </ul>
+                 <h4>6. Exposición Asistida por Realidad Virtual (RV)</h4>
+                <p>
+                    Una modalidad más reciente que utiliza entornos de realidad virtual para simular situaciones temidas. Puede ser útil para miedos donde la exposición en vivo es difícil de organizar o controlar (ej. miedo a volar, alturas, combate para TEPT). Ofrece un entorno seguro y controlable para la práctica.
                 </p>
             </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-list-ol"></i> Proceso General de la Terapia de Exposición: Un Camino Estructurado</h3>
+                <p>Aunque los detalles varían según el tipo de exposición y el problema específico, el proceso general suele incluir los siguientes elementos:</p>
+                <ol>
+                    <li>
+                        <strong>Evaluación Exhaustiva y Diagnóstico:</strong> El terapeuta realiza una evaluación completa para entender la naturaleza de los miedos, los patrones de evitación, la historia del problema y cualquier condición coexistente.
+                    </li>
+                    <li>
+                        <strong>Psicoeducación Detallada:</strong> Se explica al paciente el modelo cognitivo-conductual de la ansiedad, cómo se desarrollan y mantienen los miedos (especialmente el papel crucial de la evitación y las conductas de seguridad), y la lógica de la terapia de exposición (habituación, desconfirmación de creencias, aprendizaje inhibitorio). Es fundamental que el paciente entienda <em>por qué</em> la exposición funciona.
+                    </li>
+                    <li>
+                        <strong>Desarrollo de una Jerarquía de Miedo/Exposición:</strong> Este es un paso colaborativo. El paciente y el terapeuta crean una lista de situaciones, objetos o estímulos temidos, ordenándolos desde los que provocan una ansiedad leve o moderada (ej. 20-30 en una escala SUDS de 0-100, donde SUDS significa Subjective Units of Distress Scale) hasta los que generan una ansiedad muy alta (ej. 80-100 SUDS).
+                        <div class="example-box">
+                            <h5>Ejemplo de Jerarquía (Miedo a hablar en público):</h5>
+                            <ol type="a">
+                                <li>Pensar en tener que dar una charla (SUDS: 30).</li>
+                                <li>Preparar el material para la charla (SUDS: 40).</li>
+                                <li>Practicar la charla solo en casa (SUDS: 50).</li>
+                                <li>Practicar la charla frente a un amigo (SUDS: 65).</li>
+                                <li>Dar una breve presentación a un grupo pequeño y conocido (SUDS: 80).</li>
+                                <li>Dar la charla principal a una audiencia más grande (SUDS: 95).</li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>Enseñanza de Habilidades de Afrontamiento (Opcional pero Frecuente):</strong> Aunque el núcleo de la exposición es enfrentar el miedo sin neutralizarlo, a veces se enseñan habilidades básicas de manejo de la ansiedad (ej. respiración diafragmática) para ayudar al paciente a tolerar la angustia inicial, con la advertencia de no usarlas como conductas de seguridad que impidan la habituación.
+                    </li>
+                    <li>
+                        <strong>Exposición Gradual y Sistemática:</strong> Se comienza con ítems de la parte inferior o media de la jerarquía. La exposición debe ser:
+                        <ul>
+                            <li><strong>Prolongada:</strong> La persona debe permanecer en la situación temida el tiempo suficiente para que la ansiedad comience a disminuir notablemente (habituación). Salir prematuramente puede reforzar el miedo.</li>
+                            <li><strong>Repetida:</strong> Las sesiones de exposición deben realizarse con regularidad (ej. varias veces por semana, tanto en sesión como en tareas para casa) para consolidar el aprendizaje.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Eliminación de Conductas de Seguridad:</strong> Se identifican y se anima al paciente a eliminar gradualmente cualquier conducta sutil que utilice para sentirse "seguro" durante la exposición (ej. llevar una pastilla "por si acaso", evitar el contacto visual, tener una vía de escape preparada). Estas conductas pueden impedir el aprendizaje de que la situación es manejable sin ellas.
+                    </li>
+                    <li>
+                        <strong>Procesamiento Cognitivo Post-Exposición:</strong> Después de cada ejercicio de exposición, se discute la experiencia: ¿Qué pasó? ¿Se cumplieron las predicciones catastróficas? ¿Qué aprendió? ¿Cómo se compara la ansiedad experimentada con la anticipada? Esto ayuda a consolidar el aprendizaje y a reestructurar creencias erróneas.</li>
+                    <li>
+                        <strong>Tareas para Casa:</strong> La práctica regular de la exposición entre sesiones es crucial para la generalización de los aprendizajes a la vida cotidiana.</li>
+                    <li>
+                        <strong>Prevención de Recaídas:</strong> Una vez que se han logrado los objetivos, se discuten estrategias para mantener los avances y manejar posibles contratiempos futuros.</li>
+                </ol>
+                <p>
+                    Es crucial que la terapia de exposición se realice bajo la guía de un terapeuta capacitado, quien puede ayudar a diseñar un plan adecuado, proporcionar apoyo y motivación, y asegurar que el proceso sea terapéutico y no traumatizante. Aunque puede generar ansiedad a corto plazo, la exposición es una de las intervenciones más poderosas y con mayor respaldo científico para superar los trastornos de ansiedad y problemas relacionados a largo plazo.
+                </p>
+            </section>
+
+             <section class="component-content-section">
+                <h3><i class="fas-chart-line"></i> Principios Clave para una Exposición Exitosa</h3>
+                <ul>
+                    <li><strong>Gradualidad:</strong> Empezar por lo manejable y avanzar paso a paso.</li>
+                    <li><strong>Prolongación:</strong> Permanecer en la situación hasta que la ansiedad disminuya significativamente.</li>
+                    <li><strong>Repetición:</strong> Practicar de forma regular y consistente.</li>
+                    <li><strong>Eliminación de Conductas de Seguridad:</strong> Para permitir el aprendizaje completo.</li>
+                    <li><strong>Variabilidad:</strong> Practicar en diferentes contextos y con diferentes variaciones del estímulo temido para promover la generalización.</li>
+                    <li><strong>Procesamiento Cognitivo:</strong> Reflexionar sobre lo aprendido después de cada exposición.</li>
+                    <li><strong>Colaboración Terapéutica:</strong> Una fuerte alianza con el terapeuta es esencial.</li>
+                </ul>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-user-md"></i> Consideraciones Éticas y de Seguridad</h3>
+                <p>La terapia de exposición debe ser siempre conducida de manera ética y segura:</p>
+                <ul>
+                    <li><strong>Consentimiento Informado:</strong> El paciente debe entender completamente el proceso, sus fundamentos, los posibles malestares temporales y los beneficios esperados.</li>
+                    <li><strong>Colaboración:</strong> El paciente es un participante activo en el diseño de la jerarquía y el ritmo de la exposición. Nunca se le debe forzar.</li>
+                    <li><strong>Competencia del Terapeuta:</strong> Es fundamental que el terapeuta esté debidamente capacitado en técnicas de exposición.</li>
+                    <li><strong>No Empeorar la Situación:</strong> La exposición mal manejada podría, en raras ocasiones, sensibilizar en lugar de habituar. El terapeuta debe saber cómo manejar esto.</li>
+                </ul>
+                <p>Cuando se realiza correctamente, la terapia de exposición empodera a las personas al demostrarles que pueden enfrentar sus miedos y que estos no tienen el poder que les atribuían.</p>
+            </section>
+
+            <div class="navigation-buttons-container">
+                <a href="activacion_conductual_cbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a Activación Conductual</a>
+                <a href="resolucion_problemas_cbt.html" class="nav-btn continue-btn">Continuar con Resolución de Problemas <i class="fas fa-arrow-right"></i></a>
+            </div>
+
         </div>
     </main>
 
@@ -576,9 +832,9 @@
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
+                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
                      currentPageFilename === 'activacion_conductual_cbt.html' ||
-                     currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
+                     currentPageFilename === 'tecnicas_exposicion_cbt.html' || // Current page
                      currentPageFilename === 'resolucion_problemas_cbt.html'
                      )) {
                      link.classList.add('active'); 
@@ -598,22 +854,25 @@
                 });
             }
             
-            const animatedSection = document.querySelector('.component-content-section'); 
-            if (animatedSection) {
+            const animatedSections = document.querySelectorAll('.component-content-section'); 
+            if (animatedSections.length > 0) {
                  const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
-                    threshold: 0.1 
+                    threshold: 0.05 
                 };
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            obs.unobserve(entry.target); 
+                        } else {
+                            // entry.target.classList.remove('visible');
                         }
                     });
                 }, observerOptions);
-                observer.observe(animatedSection);
+                animatedSections.forEach(section => {
+                    observer.observe(section);
+                });
             }
         });
     </script>
