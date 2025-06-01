@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mindfulness (Atención Plena) en DBT - Borderline Journey</title>
+    <title>Mindfulness (Atención Plena) en DBT - Guía Exhaustiva - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-violet: #8A2BE2;
-            --secondary-cyan: #00CED1;
+            --secondary-cyan: #00CED1; /* Primary accent for this page */
             --accent-magenta: #FF00FF;
             --accent-green: #00FF7F;
             --accent-blue: #1E90FF;
             --accent-yellow: #FFD700;
-            --accent-red: #FF4500;
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
@@ -28,7 +28,7 @@
             --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
-            --secondary-cyan-rgb: 0, 206, 209;
+            --secondary-cyan-rgb: 0, 206, 209; /* Primary accent for this page */
         }
         
         * {
@@ -187,13 +187,20 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
-            color: var(--accent-cyan); /* Module specific color */
+            font-family: 'Playfair Display', serif; /* Changed font */
+            font-size: 2.8rem; 
+            font-weight: 700; /* Added weight */
+            color: var(--secondary-cyan); /* Module specific color */
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--secondary-cyan-rgb),0.5);
+            text-transform: none; /* Removed uppercase for Playfair */
+            letter-spacing: 0.5px; /* Adjusted spacing */
+            text-shadow: 0 0 8px rgba(var(--secondary-cyan-rgb),0.4); 
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .page-header h2 i {
+            font-size: 2.5rem; 
         }
 
         .page-header p.subtitle {
@@ -203,11 +210,11 @@
             margin: 0 auto 2rem auto;
         }
         
-        .module-content-section {
+        .module-content-section { 
             background: var(--card-bg);
-            padding: 30px;
+            padding: 30px 35px; 
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem; 
             border: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(30px);
@@ -219,51 +226,107 @@
         }
 
         .module-content-section h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.8rem;
-            color: var(--accent-cyan); /* Module specific color */
-            margin-bottom: 1.5rem;
+            font-family: 'Raleway', sans-serif; /* Changed font */
+            font-weight: 700; 
+            font-size: 1.9rem; 
+            color: var(--secondary-cyan); /* Module specific color */
+            margin-top: 1rem; 
+            margin-bottom: 1.8rem; 
             text-align: center;
-            border-bottom: 2px dashed var(--accent-cyan);
-            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--secondary-cyan); 
+            padding-bottom: 0.8rem; 
         }
          .module-content-section h4 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.3rem;
+            font-family: 'Raleway', sans-serif; /* Changed font */
+            font-weight: 700; 
+            font-size: 1.5rem; 
             color: var(--accent-yellow);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--accent-yellow);
-            padding-left: 10px;
+            margin-top: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            border-left: 4px solid var(--accent-yellow); 
+            padding-left: 15px; 
+        }
+        .module-content-section h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--accent-green); /* Changed for variety */
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .module-content-section p {
+        .module-content-section p, 
+        .module-content-section li { 
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; 
             color: var(--text-color-light);
+            line-height: 1.9; 
         }
-        .module-content-section ul {
+        .module-content-section ul,
+        .module-content-section ol {
             list-style: none;
-            padding-left: 0;
+            padding-left: 0; 
             margin-bottom: 1.5rem;
         }
         .module-content-section ul li {
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-            padding-left: 25px;
+            padding-left: 30px; 
             position: relative;
         }
         .module-content-section ul li::before {
-            content: '\f00c'; /* FontAwesome check icon */
+            content: '\f00c'; 
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
-            color: var(--accent-cyan);
+            color: var(--secondary-cyan); /* Module specific color */
             position: absolute;
             left: 0;
-            top: 2px;
+            top: 4px; 
+            font-size: 1em; 
         }
-
+         .module-content-section ol li {
+            padding-left: 10px; 
+            margin-left: 20px; 
+            list-style-position: outside;
+        }
+        .module-content-section ol {
+            list-style-type: decimal; 
+        }
+        .module-content-section strong {
+            color: var(--accent-green); 
+            font-weight: 700;
+        }
+        .module-content-section em {
+            color: var(--accent-yellow); /* Changed for variety */
+            font-style: italic;
+        }
+        .module-content-section blockquote {
+            border-left: 5px solid var(--accent-magenta); 
+            padding: 15px 25px;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+            background-color: rgba(var(--accent-magenta-rgb), 0.08);
+            border-radius: 0 10px 10px 0;
+            font-size: 1.05rem;
+        }
+        .module-content-section blockquote p {
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .example-box {
+            background-color: rgba(var(--accent-blue-rgb), 0.05); /* Changed for variety */
+            border: 1px dashed var(--accent-blue);
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .example-box h5 {
+            color: var(--accent-blue);
+            margin-top: 0;
+            font-family: 'Raleway', sans-serif; 
+            font-weight: 700;
+        }
+        
         .breadcrumb {
             text-align: center;
             margin-bottom: 2rem;
@@ -393,8 +456,9 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
-            .module-content-section h3 {font-size: 1.6rem;}
+            .page-header h2 { font-size: 2.2rem; } 
+            .module-content-section h3 {font-size: 1.7rem;} 
+            .module-content-section h4 {font-size: 1.3rem;} 
         }
         
         @media (max-width: 600px) {
@@ -402,12 +466,13 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } 
             .page-header p.subtitle { font-size: 1rem; }
             .module-content-section { padding: 20px; }
-            .module-content-section h3 {font-size: 1.5rem;}
-            .module-content-section p {font-size: 1rem;}
-            .module-content-section ul li {font-size: 0.95rem;}
+            .module-content-section h3 {font-size: 1.6rem;} 
+            .module-content-section h4 {font-size: 1.2rem;} 
+            .module-content-section p,
+            .module-content-section li {font-size: 1rem;} 
         }
     </style>
 </head>
@@ -417,7 +482,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+            <a href="index.html" rel="noopener noreferrer" class="logo">
                 <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
@@ -445,43 +510,223 @@
             <div class="page-header">
                 <h2><i class="fas fa-spa"></i> Mindfulness (Atención Plena)</h2>
                 <p class="subtitle">
-                    La habilidad fundamental para observar el presente, reducir la reactividad y cultivar la sabiduría interior.
+                    La habilidad fundamental para observar el presente, reducir la reactividad y cultivar la sabiduría interior. Una exploración profunda.
                 </p>
             </div>
 
             <section class="module-content-section">
-                <h3>¿Qué es Mindfulness en DBT?</h3>
+                <h3><i class="fas fa-seedling"></i> ¿Qué es Mindfulness en DBT? El Corazón de la Terapia</h3>
                 <p>
-                    En el contexto de la Terapia Dialéctico Conductual (DBT), Mindfulness no es simplemente meditación, aunque puede incluirla. Es un conjunto de habilidades centrales que nos enseñan a prestar atención, de manera intencional, al momento presente, sin juzgarlo. Implica tomar el control de nuestra mente en lugar de que nuestra mente nos controle a nosotros. Es la base sobre la cual se construyen todas las demás habilidades de DBT.
+                    En el contexto de la Terapia Dialéctico Conductual (DBT), <strong>Mindfulness</strong> (o Atención Plena) trasciende la noción popular de ser simplemente una técnica de meditación, aunque ciertamente puede incluir prácticas meditativas. Se erige como un <em>conjunto de habilidades centrales y fundamentales</em>, enseñándonos el arte de prestar atención de manera <strong>intencional, en el momento presente, y sin juzgar</strong>. Este último componente, "sin juzgar", es particularmente crucial y a menudo el más desafiante. Mindfulness en DBT es, en esencia, aprender a tomar las riendas de nuestra mente en lugar de permitir que nuestros pensamientos y emociones errantes nos controlen. Actúa como el cimiento sobre el cual se construyen y se potencian todas las demás habilidades de DBT: Regulación Emocional, Tolerancia al Malestar y Efectividad Interpersonal.
                 </p>
                 <p>
-                    El objetivo principal de las habilidades de Mindfulness en DBT es ayudarnos a participar plenamente en la vida, experimentar la realidad tal como es, reducir el sufrimiento innecesario causado por juicios o por rumiar sobre el pasado o preocuparse por el futuro, y aumentar nuestra capacidad para tomar decisiones sabias.
+                    El objetivo primordial de cultivar las habilidades de Mindfulness en DBT es multifacético: busca ayudarnos a <strong>participar plenamente en la vida</strong>, a experimentar la realidad tal como se presenta (en lugar de cómo tememos que sea o cómo desearíamos que fuera), a <strong>reducir el sufrimiento innecesario</strong> que a menudo surge de nuestros juicios, de rumiar sobre el pasado o de la ansiedad anticipatoria sobre el futuro, y a <strong>incrementar nuestra capacidad para tomar decisiones sabias y efectivas</strong>, alineadas con nuestros valores y metas a largo plazo. Es aprender a estar presentes en nuestra propia vida.
                 </p>
+                 <blockquote>
+                    <p>"Mindfulness es la conciencia que emerge a través de prestar atención a propósito, en el momento presente, y sin juzgar, al despliegue de la experiencia momento a momento." - Jon Kabat-Zinn (Una definición influyente en el campo)</p>
+                </blockquote>
+            </section>
 
-                <h4>Habilidades "Qué" (What Skills): Observar, Describir, Participar</h4>
-                <p>Estas habilidades nos enseñan a qué prestar atención:</p>
-                <ul>
-                    <li><strong>Observar:</strong> Simplemente notar la experiencia sin reaccionar a ella. Prestar atención a las sensaciones corporales, los pensamientos que vienen y van, las emociones, y lo que vemos, oímos, olemos, saboreamos y tocamos. Es como ser un científico curioso de nuestra propia experiencia interna y externa.</li>
-                    <li><strong>Describir:</strong> Poner palabras a lo que observamos. Etiquetar los pensamientos como "pensamientos", las emociones como "emociones" (ej. "tristeza", "ira"), y las sensaciones como "sensaciones". Esto ayuda a crear una distancia entre nosotros y nuestras experiencias, evitando que nos fusionemos con ellas.</li>
-                    <li><strong>Participar:</strong> Sumergirse completamente en la actividad del momento presente, sin separación. Es estar totalmente absorto, actuando intuitivamente desde la Mente Sabia, ya sea lavando los platos, conversando con alguien o caminando.</li>
-                </ul>
-
-                <h4>Habilidades "Cómo" (How Skills): Sin Juzgar, Unidireccionalmente, Efectivamente</h4>
-                <p>Estas habilidades nos enseñan cómo practicar las habilidades "Qué":</p>
-                <ul>
-                    <li><strong>Sin Juzgar (Non-judgmentally):</strong> Ver y aceptar la realidad tal como es, sin evaluarla como buena o mala, justa o injusta. Simplemente observar los hechos, reconociendo las consecuencias pero sin añadir juicios de valor que aumentan el sufrimiento.</li>
-                    <li><strong>Unidireccionalmente (One-mindfully):</strong> Hacer una cosa a la vez. Cuando estamos comiendo, solo comemos. Cuando estamos escuchando, solo escuchamos. Esto contrasta con la multitarea, que a menudo nos saca del momento presente y reduce nuestra efectividad.</li>
-                    <li><strong>Efectivamente (Effectively):</strong> Hacer lo que funciona, lo que es necesario en la situación para alcanzar nuestros objetivos, en lugar de hacer lo que "debería ser" o lo que es "justo". Implica dejar de lado el orgullo o la terquedad para actuar de manera pragmática.</li>
-                </ul>
+            <section class="module-content-section">
+                <h3><i class="fas fa-binoculars"></i> Habilidades "Qué" (What Skills): El Foco de la Atención</h3>
+                <p>Estas habilidades nos enseñan <em>a qué</em> dirigir nuestra atención cuando practicamos mindfulness. Son las acciones fundamentales de la atención plena:</p>
                 
-                <h4>La Mente Sabia (Wise Mind)</h4>
+                <h4>1. Observar: Ser un Testigo Silencioso de la Experiencia</h4>
                 <p>
-                    Un concepto central en Mindfulness DBT es la "Mente Sabia". Se considera la síntesis de la "Mente Emocional" (donde las emociones controlan el pensamiento y el comportamiento) y la "Mente Racional" (donde la lógica y el análisis dominan). La Mente Sabia es esa parte intuitiva y profunda de nosotros que conoce la verdad, que integra la lógica y la emoción, permitiéndonos tomar decisiones equilibradas y efectivas. Las habilidades de Mindfulness nos ayudan a acceder y actuar desde nuestra Mente Sabia.
+                    Observar implica simplemente <strong>notar la experiencia</strong> a medida que surge y pasa, sin aferrarse a ella ni rechazarla. Es un acto de atención pasiva pero alerta. Podemos observar:
                 </p>
+                <ul>
+                    <li><strong>Sensaciones Corporales:</strong> Desde el contacto de los pies con el suelo, la sensación de la ropa sobre la piel, la tensión en los hombros, hasta las mariposas en el estómago o el latido del corazón.</li>
+                    <li><strong>Pensamientos:</strong> Notar los pensamientos como eventos mentales que vienen y van, como nubes en el cielo, sin engancharse en su contenido ni creerlos automáticamente.</li>
+                    <li><strong>Emociones:</strong> Reconocer la presencia de una emoción (tristeza, alegría, miedo) y observar cómo se siente en el cuerpo, sin ser arrastrado por ella.</li>
+                    <li><strong>Impulsos de Acción:</strong> Notar el impulso de hacer algo (ej. gritar, comer, evitar) sin necesariamente actuar sobre ese impulso.</li>
+                    <li><strong>El Entorno Externo:</strong> Prestar atención a lo que vemos (colores, formas, luz), oímos (sonidos cercanos y lejanos), olemos, saboreamos y tocamos en nuestro entorno inmediato.</li>
+                </ul>
+                <p>La clave es ser como un <strong>científico curioso</strong> de nuestra propia experiencia, observando con interés pero sin interferir ni analizar en exceso.</p>
+                <div class="example-box">
+                    <h5>Ejemplo de Observar:</h5>
+                    <p>Sentado en silencio, notas un pensamiento de "no soy lo suficientemente bueno". En lugar de luchar contra él o creerlo, simplemente lo observas como un pensamiento, notando su aparición y, eventualmente, su desaparición, como cualquier otro evento mental.</p>
+                </div>
+
+                <h4>2. Describir: Poniendo Palabras a la Experiencia</h4>
                 <p>
-                    Practicar estas habilidades de Mindfulness de manera regular puede transformar nuestra relación con nuestras experiencias internas y con el mundo que nos rodea, llevándonos a una vida con mayor paz, claridad y propósito.
+                    Describir implica <strong>etiquetar verbalmente</strong> (interna o externamente) lo que hemos observado. Es un paso más activo que la simple observación. Poner palabras a nuestras experiencias nos ayuda a:
+                </p>
+                <ul>
+                    <li><strong>Diferenciar entre la experiencia y nuestra interpretación de ella.</strong></li>
+                    <li><strong>Crear una "distancia psicológica"</strong> que nos permite no fusionarnos con nuestros pensamientos o emociones.</li>
+                    <li><strong>Comunicar nuestra experiencia interna</strong> a otros (y a nosotros mismos) con mayor claridad.</li>
+                </ul>
+                <p>Cuando describimos, nos ceñimos a los hechos de nuestra observación. Por ejemplo:</p>
+                <ul>
+                    <li>"Estoy notando un pensamiento de que voy a fallar." (En lugar de "Voy a fallar.")</li>
+                    <li>"Siento una sensación de opresión en el pecho." (En lugar de "Estoy teniendo un ataque al corazón.")</li>
+                    <li>"Estoy sintiendo la emoción de la tristeza." (En lugar de "Soy una persona triste.")</li>
+                </ul>
+                <p>Es crucial que la descripción sea <strong>no valorativa</strong> y se base en lo observado.</p>
+
+                <h4>3. Participar: Inmersión Total en el Momento Presente</h4>
+                <p>
+                    Participar es la habilidad de <strong>sumergirse completamente</strong> en la actividad del momento presente, sin separación entre uno mismo y la experiencia. Es entrar en el "fluir" de la vida, actuando de manera espontánea e intuitiva desde la Mente Sabia. Esto puede ocurrir durante actividades formales de mindfulness (como una meditación caminando) o en cualquier actividad cotidiana:
+                </p>
+                <ul>
+                    <li>Al lavar los platos: sentir el agua, el jabón, el movimiento de las manos.</li>
+                    <li>Al conversar con alguien: escuchar plenamente, estar presente con la otra persona.</li>
+                    <li>Al practicar un hobby: estar completamente absorto en la tarea.</li>
+                </ul>
+                <p>Participar implica dejar de lado la autoconciencia excesiva, los juicios y las distracciones para estar plenamente en el aquí y ahora.</p>
+            </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-sliders-h"></i> Habilidades "Cómo" (How Skills): La Manera de Prestar Atención</h3>
+                <p>Estas habilidades nos enseñan <em>cómo</em> aplicar las habilidades "Qué" (Observar, Describir, Participar) de una manera que sea verdaderamente mindful y efectiva:</p>
+
+                <h4>1. Sin Juzgar (Non-judgmentally): Aceptando la Realidad Tal Como Es</h4>
+                <p>
+                    Esta es una de las habilidades más desafiantes y transformadoras. Implica <strong>ver y aceptar la realidad</strong> (pensamientos, sentimientos, eventos, personas) tal como es, sin evaluarla constantemente como "buena" o "mala", "correcta" o "incorrecta", "justa" o "injusta".
+                </p>
+                <ul>
+                    <li><strong>Reconocer los hechos:</strong> Separar los hechos observables de nuestras opiniones, creencias y juicios sobre esos hechos.</li>
+                    <li><strong>Dejar ir los "debería":</strong> Soltar las expectativas rígidas sobre cómo deberían ser las cosas o cómo deberíamos sentirnos.</li>
+                    <li><strong>Aceptar las consecuencias:</strong> Reconocer las consecuencias de los eventos sin añadir una capa de juicio sobre ellas (ej. "Perdí el autobús, lo que significa que llegaré tarde" vs. "Perdí el autobús, ¡qué desastre! Soy un fracasado y todo me sale mal.").</li>
+                </ul>
+                <p>No juzgar no significa aprobar o resignarse pasivamente a situaciones dañinas. Significa ver claramente la realidad para poder responder a ella de manera más efectiva, en lugar de reaccionar a nuestros juicios sobre ella. La aceptación sin juicio reduce el sufrimiento añadido.</p>
+                <div class="example-box">
+                    <h5>Ejemplo de No Juzgar:</h5>
+                    <p>Sientes ansiedad antes de una presentación. En lugar de juzgarte ("Soy un cobarde por sentir esto"), simplemente observas y describes: "Estoy sintiendo ansiedad; noto mi corazón latiendo más rápido y tensión en mis hombros."</p>
+                </div>
+
+                <h4>2. Unidireccionalmente (One-Mindfully): Una Cosa a la Vez</h4>
+                <p>
+                    Esta habilidad implica <strong>enfocar toda nuestra atención en una sola cosa en el momento presente</strong>. En un mundo lleno de distracciones y la glorificación de la multitarea, practicar la atención unifocal puede ser un poderoso antídoto.
+                </p>
+                <ul>
+                    <li><strong>Elegir un foco:</strong> Puede ser la respiración, una sensación corporal, un sonido, una tarea que estamos realizando.</li>
+                    <li><strong>Mantener la atención:</strong> Intentar mantener la atención en ese único foco.</li>
+                    <li><strong>Manejar las distracciones:</strong> Cuando la mente inevitablemente divague (lo cual es completamente normal), notar suavemente hacia dónde se fue y, con amabilidad, redirigir la atención de nuevo al foco elegido. Repetir este proceso cuantas veces sea necesario.</li>
+                </ul>
+                <p>Cuando estamos comiendo, solo comemos (sin ver TV o revisar el teléfono). Cuando estamos escuchando a alguien, solo escuchamos. Esto aumenta la profundidad de nuestra experiencia y nuestra efectividad.</p>
+
+                <h4>3. Efectivamente (Effectively): Haciendo lo que Funciona</h4>
+                <p>
+                    Ser efectivo significa <strong>hacer lo que es necesario en una situación particular para alcanzar nuestros objetivos y vivir de acuerdo con nuestros valores</strong>, en lugar de actuar impulsados por emociones intensas, el orgullo, la terquedad, o la idea de lo que "debería ser" o lo que es "justo" en un sentido rígido.
+                </p>
+                <ul>
+                    <li><strong>Clarificar el objetivo:</strong> ¿Qué quiero lograr en esta situación?</li>
+                    <li><strong>Considerar las opciones:</strong> ¿Qué acciones me acercarán a mi objetivo?</li>
+                    <li><strong>Actuar con habilidad:</strong> Aplicar las habilidades de DBT (u otras habilidades relevantes) que sean más apropiadas para la situación.</li>
+                    <li><strong>Soltar la necesidad de "tener razón":</strong> A veces, para ser efectivos, necesitamos dejar de lado la necesidad de demostrar que tenemos razón o que la otra persona está equivocada.</li>
+                    <li><strong>Jugar según las reglas:</strong> Si la situación lo requiere (ej. interactuar con una figura de autoridad), actuar de la manera que aumente las probabilidades de un resultado favorable, incluso si no nos parece "justo".</li>
+                </ul>
+                <p>La efectividad es pragmática y flexible, enfocada en los resultados deseados a largo plazo.</p>
+            </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-brain"></i> La Mente Sabia (Wise Mind): Integrando Razón y Emoción</h3>
+                <p>
+                    Un concepto absolutamente central y distintivo del Mindfulness en DBT es el de la <strong>Mente Sabia</strong>. Marsha Linehan describe la Mente Sabia como la síntesis dialéctica de dos estados mentales que a menudo experimentamos por separado: la <strong>Mente Emocional</strong> y la <strong>Mente Racional</strong>.
+                </p>
+                <ul>
+                    <li><strong>Mente Emocional:</strong> En este estado, nuestros pensamientos y comportamientos están predominantemente controlados por nuestras emociones actuales. La lógica y la razón tienen poco peso. Las decisiones pueden ser impulsivas y basadas en la intensidad del sentimiento del momento (ej. gritarle a alguien cuando estamos enfadados, evitar algo que nos da miedo aunque sea importante).</li>
+                    <li><strong>Mente Racional (o Lógica):</strong> En este estado, nos acercamos a las situaciones de manera fría, analítica y lógica. Los hechos, las reglas y las consecuencias pragmáticas son lo principal. Las emociones son ignoradas o minimizadas (ej. tomar una decisión puramente basada en datos sin considerar el impacto emocional en uno mismo o en otros).</li>
+                </ul>
+                <p>
+                    Ambos estados mentales tienen su lugar y pueden ser útiles en ciertos contextos, pero vivir predominantemente en uno de los extremos puede llevar a problemas. La <strong>Mente Sabia</strong> es ese lugar interno donde la lógica de la Mente Racional se integra con la información y la energía de la Mente Emocional. Es una sabiduría profunda, a menudo intuitiva, que va más allá de la simple suma de razón y emoción.
+                </p>
+                <h4>Características de la Mente Sabia:</h4>
+                <ul>
+                    <li><strong>Intuición:</strong> A menudo se experimenta como un "saber interno", una corazonada o una sensación de lo que es correcto o verdadero para nosotros en una situación.</li>
+                    <li><strong>Equilibrio:</strong> Encuentra el punto medio, la síntesis, entre los extremos.</li>
+                    <li><strong>Perspectiva Amplia:</strong> Ve la "imagen completa", considerando tanto los hechos como los sentimientos, tanto el corto como el largo plazo.</li>
+                    <li><strong>Paz Interior:</strong> Actuar desde la Mente Sabia suele ir acompañado de una sensación de calma, certeza y paz, incluso si la decisión es difícil.</li>
+                    <li><strong>Conexión con Valores:</strong> Las decisiones de la Mente Sabia suelen estar alineadas con nuestros valores más profundos.</li>
+                </ul>
+                <h4>Accediendo a la Mente Sabia:</h4>
+                <p>No hay una fórmula única, pero algunas prácticas pueden ayudar:</p>
+                <ol>
+                    <li><strong>Centrarse en la Respiración:</strong> Llevar la atención a la respiración, especialmente a la exhalación, puede calmar el sistema nervioso y crear un espacio para que emerja la Mente Sabia. Imagina que inhalas hacia el centro de tu ser y exhalas desde allí.</li>
+                    <li><strong>Preguntar a la Mente Sabia:</strong> Una vez centrado, puedes formular una pregunta a tu Mente Sabia (ej. "¿Qué es lo sabio hacer aquí?") y esperar una respuesta, que puede venir como una sensación, una imagen, una palabra o una comprensión súbita.</li>
+                    <li><strong>Practicar Mindfulness Regularmente:</strong> Cuanto más practicamos observar nuestros pensamientos y emociones sin juicio, más fácil se vuelve acceder a ese espacio de sabiduría interna.</li>
+                </ol>
+                 <div class="example-box">
+                    <h5>Ejemplo de Decisión desde Diferentes Mentes:</h5>
+                    <p><strong>Situación:</strong> Un amigo cancela planes contigo a último momento.</p>
+                    <p><strong>Mente Emocional:</strong> "¡Qué desconsiderado! Nunca le importo. ¡No volveré a hablarle!" (Ira, tristeza).</p>
+                    <p><strong>Mente Racional:</strong> "Estadísticamente, la gente cancela planes a veces. Debo analizar las posibles razones logísticas. No hay base para una reacción emocional." (Fría, distante).</p>
+                    <p><strong>Mente Sabia:</strong> "Siento decepción y un poco de enfado, es natural. Quizás tuvo un imprevisto. Le preguntaré si todo está bien y expresaré cómo me siento de manera calmada, buscando entender y mantener la amistad si es posible, pero también cuidando mis propios sentimientos." (Integra emoción, lógica, valores de amistad y autorespeto).</p>
+                </div>
+                <p>
+                    Las habilidades de Mindfulness son, en última instancia, el camino para cultivar y acceder a nuestra Mente Sabia, permitiéndonos vivir vidas más conscientes, equilibradas y significativas.
                 </p>
             </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-heartbeat"></i> Beneficios Detallados de la Práctica de Mindfulness</h3>
+                <p>La práctica regular y consistente de mindfulness, tal como se enseña en DBT, ofrece una amplia gama de beneficios que impactan positivamente múltiples áreas de la vida:</p>
+                <h4>Beneficios Psicológicos y Emocionales:</h4>
+                <ul>
+                    <li><strong>Reducción del Estrés y la Ansiedad:</strong> Al centrarnos en el presente, disminuimos la tendencia a rumiar sobre el pasado o preocuparnos excesivamente por el futuro, dos grandes fuentes de estrés y ansiedad.</li>
+                    <li><strong>Mejora de la Regulación Emocional:</strong> Mindfulness nos permite observar nuestras emociones sin reaccionar impulsivamente, creando un espacio para elegir respuestas más adaptativas.</li>
+                    <li><strong>Mayor Autoconciencia:</strong> Aumenta la comprensión de nuestros propios patrones de pensamiento, sentimientos, sensaciones corporales e impulsos, lo que facilita la identificación de desencadenantes y señales tempranas de malestar.</li>
+                    <li><strong>Disminución de la Reactividad Emocional:</strong> Aprendemos a no ser "secuestrados" por nuestras emociones, experimentándolas plenamente pero sin que nos dominen.</li>
+                    <li><strong>Aumento de la Autoaceptación y Autocompasión:</strong> La práctica de la observación sin juicio fomenta una actitud más amable y compasiva hacia uno mismo.</li>
+                    <li><strong>Reducción de Síntomas Depresivos:</strong> Al romper ciclos de rumiación negativa y aumentar la conexión con experiencias placenteras o significativas del presente.</li>
+                    <li><strong>Mejora de la Concentración y la Atención:</strong> Entrenar la mente para enfocarse fortalece la capacidad de atención sostenida.</li>
+                </ul>
+                <h4>Beneficios Físicos:</h4>
+                <ul>
+                    <li><strong>Reducción de la Presión Arterial y el Ritmo Cardíaco:</strong> Asociado a la disminución del estrés.</li>
+                    <li><strong>Mejora del Sistema Inmunológico:</strong> Algunos estudios sugieren que la reducción del estrés mediante mindfulness puede tener efectos positivos en la inmunidad.</li>
+                    <li><strong>Alivio del Dolor Crónico:</strong> Aunque no elimina el dolor, mindfulness puede cambiar la relación con el dolor, reduciendo el sufrimiento asociado.</li>
+                    <li><strong>Mejora de la Calidad del Sueño:</strong> Al calmar la mente y reducir la rumiación antes de dormir.</li>
+                </ul>
+                <h4>Beneficios Interpersonales:</h4>
+                <ul>
+                    <li><strong>Mejora de la Escucha Activa:</strong> Al estar más presentes en las conversaciones.</li>
+                    <li><strong>Mayor Empatía:</strong> Al estar más sintonizados con nuestras propias emociones, podemos entender mejor las de los demás.</li>
+                    <li><strong>Reducción de Conflictos:</strong> Al responder de manera menos reactiva y más reflexiva.</li>
+                </ul>
+            </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-hands-helping"></i> Formas Prácticas de Integrar Mindfulness en la Vida Diaria</h3>
+                <p>Mindfulness no se limita a la meditación formal. Se puede (¡y se debe!) integrar en las actividades cotidianas. Distinguimos entre prácticas formales e informales:</p>
+                <h4>Prácticas Formales de Mindfulness:</h4>
+                <p>Implican dedicar un tiempo específico a la práctica, generalmente en un entorno tranquilo.</p>
+                <ul>
+                    <li><strong>Meditación Sentada Enfocada en la Respiración:</strong> Sentarse cómodamente y llevar la atención a las sensaciones de la respiración, notando cómo entra y sale el aire. Cuando la mente divaga, redirigirla suavemente a la respiración.</li>
+                    <li><strong>Escaneo Corporal (Body Scan):</strong> Acostado o sentado, llevar la atención secuencialmente a diferentes partes del cuerpo, notando cualquier sensación presente (hormigueo, calor, tensión, etc.) sin juzgarla.</li>
+                    <li><strong>Meditación Caminando:</strong> Prestar atención plena a las sensaciones de caminar: el contacto de los pies con el suelo, el movimiento de las piernas, el balanceo de los brazos, los sonidos del entorno.</li>
+                    <li><strong>Meditación de Observación de Pensamientos/Emociones:</strong> Sentarse y simplemente observar los pensamientos y emociones que surgen, como si fueran nubes pasando por el cielo, sin engancharse ni juzgarlos.</li>
+                </ul>
+                <h4>Prácticas Informales de Mindfulness:</h4>
+                <p>Consisten en llevar la conciencia plena a las actividades rutinarias.</p>
+                <ul>
+                    <li><strong>Comer con Atención Plena (Mindful Eating):</strong> Prestar atención a los colores, olores, texturas y sabores de la comida. Comer despacio, saboreando cada bocado.</li>
+                    <li><strong>Ducharse o Cepillarse los Dientes con Atención Plena:</strong> Sentir la temperatura del agua, el olor del jabón, las sensaciones en la piel o en la boca.</li>
+                    <li><strong>Lavar los Platos con Atención Plena:</strong> Notar la temperatura del agua, la sensación del jabón, el sonido de los platos.</li>
+                    <li><strong>Escucha Atenta en Conversaciones:</strong> Realmente escuchar lo que la otra persona dice, tanto verbal como no verbalmente, sin planear la respuesta mientras habla.</li>
+                    <li><strong>Momentos de Transición:</strong> Usar momentos como esperar en una fila, caminar de un lugar a otro, o el semáforo en rojo, para conectar con la respiración o las sensaciones del momento.</li>
+                    <li><strong>Observar la Naturaleza:</strong> Prestar atención detallada a una flor, una hoja, el cielo, el sonido de los pájaros.</li>
+                </ul>
+                <div class="example-box">
+                    <h5>Pequeño Ejercicio Informal: El Minuto de Mindfulness</h5>
+                    <p>En cualquier momento del día, detente por un minuto. Cierra los ojos si te sientes cómodo. Lleva tu atención a tu respiración. Siente cómo el aire entra y sale. No intentes cambiar nada, solo observa. Si tu mente se distrae, tráela de vuelta suavemente. Este simple ejercicio puede ayudarte a recentrarte.</p>
+                </div>
+            </section>
+
+            <section class="module-content-section">
+                 <h3><i class="fas fa-question-circle"></i> Mitos Comunes sobre Mindfulness</h3>
+                <p>Existen varias ideas erróneas sobre el mindfulness que pueden dificultar su comprensión y práctica:</p>
+                <ul>
+                    <li><strong>Mito 1: Mindfulness es tener la mente en blanco.</strong> <em>Realidad:</em> Mindfulness no se trata de detener los pensamientos, sino de cambiar nuestra relación con ellos, observándolos sin juicio y sin ser arrastrados. La mente genera pensamientos constantemente; el objetivo es no fusionarse con ellos.</li>
+                    <li><strong>Mito 2: Mindfulness es solo para relajarse o eliminar el estrés.</strong> <em>Realidad:</em> Si bien la relajación y la reducción del estrés pueden ser efectos secundarios positivos, el objetivo principal es desarrollar la conciencia del momento presente y la aceptación. A veces, mindfulness implica estar presente con emociones difíciles, no solo con las placenteras.</li>
+                    <li><strong>Mito 3: Mindfulness es una práctica religiosa o espiritual.</strong> <em>Realidad:</em> Aunque tiene raíces en tradiciones contemplativas, el mindfulness tal como se enseña en contextos terapéuticos como DBT es una habilidad psicológica secular. Puede ser practicado por personas de cualquier creencia o sin ninguna creencia específica.</li>
+                    <li><strong>Mito 4: Si me distraigo, estoy fallando en mindfulness.</strong> <em>Realidad:</em> La distracción es una parte natural del funcionamiento de la mente. La práctica de mindfulness incluye el acto de notar la distracción y redirigir amablemente la atención. Cada vez que haces esto, estás fortaleciendo tu "músculo" de la atención.</li>
+                    <li><strong>Mito 5: Mindfulness es egoísta o auto-indulgente.</strong> <em>Realidad:</em> Al cultivar una mayor conciencia y compasión hacia uno mismo, a menudo nos volvemos más capaces de estar presentes y ser compasivos con los demás. Cuidar de nuestro mundo interior nos permite interactuar de manera más saludable con el mundo exterior.</li>
+                </ul>
+            </section>
+
         </div>
     </main>
 
@@ -575,7 +820,7 @@
                 if (linkFilename === 'cursos.html' && 
                     (currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
-                     currentPageFilename === 'mindfulness_dbt.html' ||
+                     currentPageFilename === 'mindfulness_dbt.html' || // Current page
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
@@ -601,22 +846,25 @@
                 });
             }
             
-            const animatedSection = document.querySelector('.module-content-section'); 
-            if (animatedSection) {
+            const animatedSections = document.querySelectorAll('.module-content-section'); 
+            if (animatedSections.length > 0) {
                  const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
-                    threshold: 0.1 
+                    threshold: 0.05 
                 };
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            obs.unobserve(entry.target); 
+                        } else {
+                            // entry.target.classList.remove('visible'); // Optional: re-animate on scroll
                         }
                     });
                 }, observerOptions);
-                observer.observe(animatedSection);
+                animatedSections.forEach(section => {
+                    observer.observe(section);
+                });
             }
         });
     </script>
