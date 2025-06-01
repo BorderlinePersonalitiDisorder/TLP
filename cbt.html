@@ -12,9 +12,9 @@
             --secondary-cyan: #00CED1;
             --accent-magenta: #FF00FF;
             --accent-green: #00FF7F;
-            --accent-blue: #1E90FF;
+            --accent-blue: #1E90FF; /* Primary accent for TCC page */
             --accent-yellow: #FFD700;
-            --accent-red: #FF4500;
+            --accent-red: #FF4500; /* Used for Behavioral Activation */
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
@@ -24,11 +24,12 @@
             --dark-bg: #0A0A20;
 
             --primary-violet-rgb: 138, 43, 226;
-            --accent-blue-rgb: 30, 144, 255;
+            --accent-blue-rgb: 30, 144, 255; /* Primary accent for TCC page */
             --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209;
+            --accent-red-rgb: 255, 69, 0;
         }
         
         * {
@@ -160,6 +161,7 @@
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
+            border-radius: 20px;
         }
         
         nav a:hover::before, 
@@ -182,55 +184,75 @@
 
         .page-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 2rem; 
             padding-top: 2rem;
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
-            color: var(--accent-blue); /* CBT color */
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--accent-blue-rgb),0.5);
+            font-family: 'Playfair Display', serif; /* Updated font */
+            font-size: 3rem; 
+            font-weight: 700;
+            color: var(--accent-blue); /* TCC color */
+            margin-bottom: 0.75rem;
+            text-transform: none; 
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 12px rgba(var(--accent-blue-rgb),0.5); 
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .page-header h2 i {
+            font-size: 2.8rem; 
+            animation: subtleRotate 8s infinite linear; 
+        }
+        @keyframes subtleRotate { 
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(4deg) scale(1.03); }
+            50% { transform: rotate(0deg) scale(1.06); }
+            75% { transform: rotate(-4deg) scale(1.03); }
+            100% { transform: rotate(0deg) scale(1); }
         }
 
         .page-header p.subtitle {
-            font-size: 1.2rem;
+            font-size: 1.25rem; 
             color: var(--text-color-medium);
-            max-width: 750px;
-            margin: 0 auto 2rem auto;
+            max-width: 800px; 
+            margin: 0 auto 2.5rem auto; 
+            font-style: italic; 
         }
         
-        .intro-cbt-section { /* Changed from intro-dbt-section */
-            background: rgba(var(--accent-blue-rgb), 0.05); /* CBT color scheme */
-            padding: 25px;
+        .intro-cbt-section { 
+            background: rgba(var(--accent-blue-rgb), 0.08); 
+            padding: 30px; 
             border-radius: 15px;
-            margin-bottom: 3rem;
-            border: 1px solid rgba(var(--accent-blue-rgb),0.2);
+            margin-bottom: 3.5rem; 
+            border: 1px solid rgba(var(--accent-blue-rgb),0.3); 
+            box-shadow: 0 4px 15px rgba(var(--accent-blue-rgb), 0.1); 
         }
         .intro-cbt-section p {
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; 
+            line-height: 1.9;
         }
          .intro-cbt-section p:last-child {
             margin-bottom: 0;
         }
 
-        .cbt-components-grid { /* Changed from dbt-modules-grid */
+        .cbt-components-grid { 
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 340px)); 
             gap: 2.5rem;
+            margin-bottom: 3rem; 
+            justify-content: center;
         }
 
-        .component-card { /* Changed from module-card */
+        .component-card { 
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 25px;
+            padding: 30px; 
             box-shadow: 0 7px 22px rgba(0,0,0,0.35);
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease; 
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
@@ -244,17 +266,25 @@
         }
 
         .component-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            box-shadow: 0 12px 30px rgba(var(--accent-blue-rgb), 0.5); /* CBT color scheme */
+            transform: translateY(-12px) scale(1.03); 
+            box-shadow: 0 15px 35px rgba(var(--accent-blue-rgb), 0.5); 
         }
+        .component-card.cognitive-restructuring:hover { border-color: var(--accent-magenta); }
+        .component-card.behavioral-activation:hover { border-color: var(--accent-red); }
+        .component-card.exposure-techniques:hover { border-color: var(--secondary-cyan); }
+        .component-card.problem-solving:hover { border-color: var(--primary-violet); }
+
 
         .component-card .icon-container {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            color: var(--accent-yellow); /* Default icon color */
+            font-size: 3.2rem; 
+            margin-bottom: 1.2rem; 
+            color: var(--accent-yellow); 
+            transition: color 0.3s ease, transform 0.3s ease; 
+        }
+        .component-card:hover .icon-container {
+            transform: scale(1.1) rotate(-5deg); 
         }
         
-        /* Specific icon colors for each component */
         .component-card.cognitive-restructuring .icon-container { color: var(--accent-magenta); }
         .component-card.behavioral-activation .icon-container { color: var(--accent-red); }
         .component-card.exposure-techniques .icon-container { color: var(--secondary-cyan); }
@@ -262,16 +292,20 @@
 
 
         .component-card h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.6rem;
+            font-family: 'Raleway', sans-serif; /* Changed to Raleway */
+            font-weight: 700; /* Made bold */
+            font-size: 1.7rem; /* Adjusted size */
             color: var(--text-color-light);
             margin-bottom: 1rem;
+            transition: color 0.3s ease, text-shadow 0.3s ease; 
         }
-        /* Specific heading colors for each component */
         .component-card.cognitive-restructuring h3 { color: var(--accent-magenta); }
         .component-card.behavioral-activation h3 { color: var(--accent-red); }
         .component-card.exposure-techniques h3 { color: var(--secondary-cyan); }
         .component-card.problem-solving h3 { color: var(--primary-violet); }
+        .component-card:hover h3 {
+            text-shadow: 0 0 8px currentColor; 
+        }
 
 
         .component-card p.description {
@@ -282,36 +316,62 @@
             flex-grow: 1;
         }
         
-        .explore-component-btn { /* Changed from explore-module-btn */
+        .explore-component-btn { 
             display: inline-block;
-            background: linear-gradient(45deg, var(--accent-green), var(--accent-yellow));
-            color: var(--dark-bg);
-            padding: 10px 22px;
+            color: white; 
+            padding: 12px 25px; 
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             font-family: 'Comfortaa', sans-serif;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
             margin-top: auto; 
+            border: 2px solid transparent; 
         }
 
         .explore-component-btn:hover {
-            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-green));
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-2px); 
         }
-         /* Specific button colors for each component */
-        .component-card.cognitive-restructuring .explore-component-btn { background: linear-gradient(45deg, var(--accent-magenta), var(--primary-violet)); color:white;}
-        .component-card.cognitive-restructuring .explore-component-btn:hover { background: linear-gradient(45deg, var(--primary-violet), var(--accent-magenta));}
+        .component-card.cognitive-restructuring .explore-component-btn { background: linear-gradient(45deg, var(--accent-magenta), var(--primary-violet)); box-shadow: 0 4px 12px rgba(var(--accent-magenta-rgb),0.4);}
+        .component-card.cognitive-restructuring .explore-component-btn:hover { background: linear-gradient(45deg, var(--primary-violet), var(--accent-magenta)); border-color: var(--accent-magenta);}
 
-        .component-card.behavioral-activation .explore-component-btn { background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow)); color:var(--dark-bg);}
-        .component-card.behavioral-activation .explore-component-btn:hover { background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));}
+        .component-card.behavioral-activation .explore-component-btn { background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow)); color:var(--dark-bg); box-shadow: 0 4px 12px rgba(var(--accent-red-rgb),0.4);}
+        .component-card.behavioral-activation .explore-component-btn:hover { background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red)); border-color: var(--accent-red);}
         
-        .component-card.exposure-techniques .explore-component-btn { background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-blue)); color:white;}
-        .component-card.exposure-techniques .explore-component-btn:hover { background: linear-gradient(45deg, var(--accent-blue), var(--secondary-cyan));}
+        .component-card.exposure-techniques .explore-component-btn { background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-blue)); color:white; box-shadow: 0 4px 12px rgba(var(--secondary-cyan-rgb),0.4);}
+        .component-card.exposure-techniques .explore-component-btn:hover { background: linear-gradient(45deg, var(--accent-blue), var(--secondary-cyan)); border-color: var(--secondary-cyan);}
 
-        .component-card.problem-solving .explore-component-btn { background: linear-gradient(45deg, var(--primary-violet), var(--accent-magenta)); color:white;}
-        .component-card.problem-solving .explore-component-btn:hover { background: linear-gradient(45deg, var(--accent-magenta), var(--primary-violet));}
+        .component-card.problem-solving .explore-component-btn { background: linear-gradient(45deg, var(--primary-violet), var(--accent-magenta)); color:white; box-shadow: 0 4px 12px rgba(var(--primary-violet-rgb),0.4);}
+        .component-card.problem-solving .explore-component-btn:hover { background: linear-gradient(45deg, var(--accent-magenta), var(--primary-violet)); border-color: var(--primary-violet);}
 
+        /* Back to Courses Button Styles */
+        .back-to-link-container {
+            text-align: center;
+            margin-top: 3rem; 
+            margin-bottom: 1rem; 
+        }
+        .back-to-btn {
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red)); 
+            color: var(--dark-bg); 
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 10px rgba(var(--accent-yellow-rgb), 0.3);
+        }
+        .back-to-btn:hover {
+            background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--accent-red-rgb), 0.4); 
+        }
+        .back-to-btn i {
+            font-size: 1em; 
+        }
 
         footer { 
             background: rgba(10,10,32,0.97); 
@@ -425,7 +485,7 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
+            .page-header h2 { font-size: 2.4rem; } 
             .component-card h3 {font-size: 1.4rem;}
         }
         
@@ -434,14 +494,15 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } 
             .page-header p.subtitle { font-size: 1rem; }
             .cbt-components-grid { grid-template-columns: 1fr; }
             .component-card { padding: 20px; }
             .component-card .icon-container { font-size: 2.5rem; }
             .component-card h3 {font-size: 1.3rem;}
             .component-card p.description {font-size: 0.9rem;}
-            .explore-component-btn { padding: 8px 18px; font-size: 0.9rem;}
+            .explore-component-btn { padding: 10px 20px; font-size: 0.9rem;} 
+            .back-to-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -451,7 +512,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+            <a href="index.html" rel="noopener noreferrer" class="logo"> 
                 <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
@@ -477,51 +538,57 @@
             </div>
 
             <section class="intro-cbt-section">
-                <p>La Terapia Cognitivo Conductual (TCC, o CBT por sus siglas en inglés) es un enfoque psicoterapéutico altamente efectivo y respaldado por la investigación, centrado en la poderosa conexión entre nuestros pensamientos, emociones y acciones. La TCC nos enseña que no son las situaciones en sí mismas las que determinan cómo nos sentimos, sino la interpretación que hacemos de ellas.</p>
-                <p>Al aprender a identificar y desafiar patrones de pensamiento negativos o poco realistas (distorsiones cognitivas), y al modificar conductas que no nos sirven, podemos generar cambios significativos en nuestro bienestar emocional y en nuestra capacidad para afrontar los desafíos de la vida. La TCC es colaborativa, orientada a objetivos y equipa a las personas con herramientas prácticas para el cambio duradero.</p>
+                <p>La <strong>Terapia Cognitivo Conductual (TCC, o CBT por sus siglas en inglés)</strong> es un enfoque psicoterapéutico altamente efectivo y respaldado por una vasta investigación científica. Se centra en la poderosa e intrincada conexión entre nuestros <em>pensamientos (cogniciones)</em>, nuestras <em>emociones (sentimientos)</em> y nuestras <em>acciones (comportamientos)</em>. La premisa fundamental de la TCC es que no son las situaciones o eventos externos en sí mismos los que determinan cómo nos sentimos o cómo actuamos, sino más bien la <strong>interpretación y el significado</strong> que les atribuimos a través de nuestros pensamientos.</p>
+                <p>Al aprender a identificar, cuestionar y modificar patrones de pensamiento negativos, distorsionados o poco realistas (a menudo llamados "distorsiones cognitivas" o "pensamientos automáticos negativos"), y al mismo tiempo cambiar conductas que no nos sirven o que perpetúan el malestar, podemos generar cambios significativos y duraderos en nuestro bienestar emocional y en nuestra capacidad para afrontar los desafíos de la vida de manera más adaptativa. La TCC es un enfoque colaborativo, estructurado, orientado a objetivos y enfocado en el presente, que busca equipar a las personas con un conjunto de herramientas prácticas y habilidades para convertirse en sus propios terapeutas.</p>
             </section>
 
             <div class="cbt-components-grid">
                 <article class="component-card cognitive-restructuring">
                     <div class="icon-container">
-                        <i class="fas fa-brain-circuit"></i> </div>
+                        <i class="fas fa-project-diagram"></i> </div>
                     <h3>Reestructuración Cognitiva</h3>
                     <p class="description">
-                        Aprende a identificar pensamientos automáticos negativos y distorsiones cognitivas. Desarrolla habilidades para evaluar y modificar estos patrones por pensamientos más realistas y adaptativos.
+                        Aprende a identificar pensamientos automáticos negativos y distorsiones cognitivas comunes. Desarrolla habilidades para evaluar la evidencia a favor y en contra de estos pensamientos, y modifícalos por alternativas más realistas, equilibradas y adaptativas.
                     </p>
                     <a href="restructuracion_cognitiva_cbt.html" class="explore-component-btn">Explorar Componente <i class="fas fa-arrow-right"></i></a>
                 </article>
 
                 <article class="component-card behavioral-activation">
                     <div class="icon-container">
-                        <i class="fas fa-running"></i> </div>
+                        <i class="fas fa-running"></i> 
+                    </div>
                     <h3>Activación Conductual</h3>
                     <p class="description">
-                        Descubre cómo aumentar la participación en actividades positivas y significativas puede combatir la inercia, mejorar el estado de ánimo y romper ciclos de evitación y depresión.
+                        Descubre cómo aumentar la participación en actividades positivas, placenteras y significativas puede combatir la inercia, mejorar el estado de ánimo y romper los ciclos de evitación y depresión que a menudo acompañan al malestar.
                     </p>
                     <a href="activacion_conductual_cbt.html" class="explore-component-btn">Explorar Componente <i class="fas fa-arrow-right"></i></a>
                 </article>
 
                 <article class="component-card exposure-techniques">
                      <div class="icon-container">
-                        <i class="fas fa-eye"></i> </div>
+                        <i class="fas fa-shield-virus"></i> </div>
                     <h3>Técnicas de Exposición</h3>
                     <p class="description">
-                        Enfrenta gradualmente miedos y ansiedades en un entorno seguro y controlado. Aprende a reducir la evitación y a desarrollar nuevas formas de responder a situaciones temidas.
+                        Enfrenta gradualmente miedos, ansiedades y situaciones evitadas en un entorno seguro y controlado. Aprende a reducir la evitación y a desarrollar nuevas formas de responder a situaciones temidas, disminuyendo la respuesta de ansiedad.
                     </p>
                     <a href="tecnicas_exposicion_cbt.html" class="explore-component-btn">Explorar Componente <i class="fas fa-arrow-right"></i></a>
                 </article>
 
                 <article class="component-card problem-solving">
                     <div class="icon-container">
-                        <i class="fas fa-puzzle-piece"></i> </div>
+                        <i class="fas fa-tasks"></i> </div>
                     <h3>Resolución de Problemas y Habilidades</h3>
                     <p class="description">
-                        Adquiere un enfoque estructurado para identificar problemas, generar soluciones alternativas, tomar decisiones efectivas y desarrollar otras habilidades de afrontamiento.
+                        Adquiere un enfoque estructurado y práctico para identificar problemas de manera clara, generar múltiples soluciones alternativas, evaluar sus pros y contras, tomar decisiones efectivas e implementar y revisar los planes de acción.
                     </p>
                     <a href="resolucion_problemas_cbt.html" class="explore-component-btn">Explorar Componente <i class="fas fa-arrow-right"></i></a>
                 </article>
             </div>
+            
+            <div class="back-to-link-container">
+                <a href="cursos.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver a Cursos</a>
+            </div>
+
         </div>
     </main>
 
@@ -611,9 +678,9 @@
             navLinks.forEach(link => {
                 link.classList.remove('active'); 
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                // Special handling for cbt.html as it's linked from cursos.html
-                if (currentPageFilename === 'cbt.html' && linkFilename === 'cursos.html') {
-                     link.classList.add('active'); // Keep Cursos active when on cbt.html
+                
+                if (currentPageFilename === 'cbt.html' && linkFilename === 'cursos.html') { // Highlight Cursos when on cbt.html
+                     link.classList.add('active'); 
                 } else if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
                 }
@@ -641,7 +708,8 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            // obs.unobserve(entry.target); // Optional
+                        } else {
+                            // entry.target.classList.remove('visible'); // Optional: re-animate on scroll
                         }
                     });
                 }, observerOptions);
