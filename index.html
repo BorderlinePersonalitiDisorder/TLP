@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borderline Journey - APOD Portada</title>
+    <title>Borderline Journey - Inspiración Diaria</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -169,7 +169,7 @@
             transform: translateY(-3px); 
         }
         
-        /* HERO SECTION CON APOD */
+        /* HERO SECTION con imagen diaria */
         .hero-apod {
             position: relative;
             height: 100vh;
@@ -274,71 +274,6 @@
             color: var(--accent-green);
             font-size: 1.1rem;
             margin-bottom: 2rem;
-        }
-        
-        .apod-explanation {
-            font-size: 1.1rem;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            max-height: 150px;
-            overflow-y: auto;
-            padding: 15px;
-            background: rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-            border: 1px solid rgba(0, 206, 209, 0.2);
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
-        }
-        
-        .apod-explanation::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        .apod-explanation::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-        }
-        
-        .apod-explanation::-webkit-scrollbar-thumb {
-            background: var(--accent-blue);
-            border-radius: 10px;
-        }
-        
-        .download-button {
-            display: inline-block;
-            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));
-            color: var(--dark-bg);
-            padding: 15px 35px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 20px rgba(255, 215, 0, 0.5);
-            border: 2px solid rgba(255, 255, 255, 0.5);
-            margin-top: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .download-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: 0.5s;
-        }
-        
-        .download-button:hover::before {
-            left: 100%;
-        }
-        
-        .download-button:hover {
-            background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow));
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.7);
         }
         
         .apod-nav {
@@ -528,6 +463,73 @@
             margin-right: 12px;
             color: var(--accent-green); 
             font-size: 1.2rem;
+        }
+        
+        /* Descripción de la imagen */
+        .image-description {
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 2rem auto;
+            max-width: 900px;
+            border: 1px solid var(--accent-blue);
+            box-shadow: 0 0 20px rgba(30, 144, 255, 0.3);
+        }
+        
+        .image-description h3 {
+            font-family: 'Krona One', sans-serif;
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+        
+        .image-explanation {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 206, 209, 0.2);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .image-explanation::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        .image-explanation::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        .image-explanation::-webkit-scrollbar-thumb {
+            background: var(--accent-blue);
+            border-radius: 10px;
+        }
+        
+        .download-button {
+            display: block;
+            width: fit-content;
+            margin: 20px auto 0;
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));
+            color: var(--dark-bg);
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            text-align: center;
+        }
+        
+        .download-button:hover {
+            background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow));
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 69, 0, 0.7);
         }
         
         /* Footer */
@@ -764,13 +766,8 @@
                 font-size: 1rem;
             }
             
-            .apod-explanation {
-                font-size: 0.95rem;
-                max-height: 120px;
-            }
-            
             .download-button {
-                padding: 12px 25px;
+                padding: 10px 20px;
                 font-size: 1rem;
             }
             
@@ -814,25 +811,17 @@
         </div>
     </header>
 
-    <!-- Hero Section con NASA APOD -->
+    <!-- Hero Section con imagen diaria -->
     <section class="hero-apod">
         <div class="apod-background" id="apod-background"></div>
         <div class="apod-overlay"></div>
         
         <div class="hero-content">
-            <h1><i class="fas fa-rocket"></i> EXPLORA EL UNIVERSO</h1>
-            <p>Descubre la belleza del cosmos con nuestra imagen astronómica diaria</p>
+            <h1><i class="fas fa-mountain"></i> INSPIRACIÓN DIARIA</h1>
+            <p>Descubre nuestra imagen inspiradora del día</p>
             
-            <div class="apod-title" id="apod-title">Cargando título...</div>
+            <div class="apod-title" id="apod-title">Cargando...</div>
             <div class="apod-date" id="apod-date">Cargando fecha...</div>
-            
-            <div class="apod-explanation" id="apod-explanation">
-                Cargando explicación de la imagen astronómica del día...
-            </div>
-            
-            <a href="#" id="apod-download" class="download-button">
-                <i class="fas fa-download"></i> DESCARGAR IMAGEN EN HD
-            </a>
         </div>
         
         <div class="apod-nav">
@@ -844,6 +833,19 @@
             </div>
         </div>
     </section>
+
+    <!-- Descripción de la imagen al pie de página -->
+    <div class="container">
+        <div class="image-description">
+            <h3>Descripción de la imagen</h3>
+            <div class="image-explanation" id="image-explanation">
+                Cargando descripción...
+            </div>
+            <a href="#" id="apod-download" class="download-button">
+                <i class="fas fa-download"></i> DESCARGAR IMAGEN EN HD
+            </a>
+        </div>
+    </div>
 
     <main class="main-page-content">
         <div class="container">
@@ -1017,7 +1019,7 @@
                 }
             });
             
-            // NASA APOD Fetch
+            // NASA APOD Fetch (sin mencionar la fuente)
             const apiKey = "KLRQ3WhMwiyQ2tZNpU8kXuHJabsmBLVeb6NFF9fx"; 
             const today = new Date();
             const apodDate = new Date();
@@ -1026,7 +1028,7 @@
             const apodBackground = document.getElementById('apod-background');
             const apodTitle = document.getElementById('apod-title');
             const apodDateEl = document.getElementById('apod-date');
-            const apodExplanation = document.getElementById('apod-explanation');
+            const apodExplanation = document.getElementById('image-explanation');
             const apodDownload = document.getElementById('apod-download');
             const prevApodBtn = document.getElementById('prev-apod');
             const nextApodBtn = document.getElementById('next-apod');
@@ -1045,8 +1047,8 @@
                 return date.toLocaleDateString('es-ES', options);
             }
             
-            // Fetch APOD for a specific date
-            function fetchApod(date) {
+            // Fetch image for a specific date
+            function fetchDailyImage(date) {
                 const formattedDate = formatDate(date);
                 const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
                 
@@ -1054,12 +1056,12 @@
                 apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A20, #1a1a32)";
                 apodTitle.textContent = "Cargando...";
                 apodDateEl.textContent = "";
-                apodExplanation.textContent = "Obteniendo la imagen del día...";
+                apodExplanation.textContent = "Cargando descripción...";
                 
                 fetch(apiUrl)
                     .then(response => {
                         if (!response.ok) {
-                            throw new Error(`HTTP error! status: ${response.status}`);
+                            throw new Error(`Error: ${response.status}`);
                         }
                         return response.json();
                     })
@@ -1075,37 +1077,37 @@
                             
                             // Set download link
                             apodDownload.href = data.hdurl || data.url;
-                            apodDownload.setAttribute('download', `Astronomy_Image_${formattedDate}.jpg`);
+                            apodDownload.setAttribute('download', `Imagen_${formattedDate}.jpg`);
                             
                             currentApodDate = date;
                         } else {
                             // If it's a video, show a placeholder and message
                             apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
-                            apodTitle.textContent = "Video del Día";
+                            apodTitle.textContent = "Contenido del día";
                             apodDateEl.textContent = `Fecha: ${formatDateReadable(date)}`;
-                            apodExplanation.textContent = "La imagen de hoy es un video. Visita nuestro sitio para verlo.";
+                            apodExplanation.textContent = "El contenido de hoy es un video. Visita nuestro sitio para verlo.";
                             apodDownload.style.display = 'none';
                         }
                     })
                     .catch(error => {
-                        console.error('Error fetching APOD:', error);
+                        console.error('Error fetching daily image:', error);
                         // Fallback to placeholder image
                         apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
-                        apodTitle.textContent = "Imagen Astronómica del Día";
+                        apodTitle.textContent = "Imagen del día";
                         apodDateEl.textContent = "Fecha: " + formatDateReadable(today);
-                        apodExplanation.textContent = "Explora la belleza del universo con las imágenes más impresionantes capturadas por telescopios alrededor del mundo.";
+                        apodExplanation.textContent = "Disfruta de nuestra imagen inspiradora diaria.";
                         apodDownload.style.display = 'none';
                     });
             }
             
             // Initial fetch for today
-            fetchApod(today);
+            fetchDailyImage(today);
             
             // Navigation buttons
             prevApodBtn.addEventListener('click', () => {
                 const prevDate = new Date(currentApodDate);
                 prevDate.setDate(prevDate.getDate() - 1);
-                fetchApod(prevDate);
+                fetchDailyImage(prevDate);
             });
             
             nextApodBtn.addEventListener('click', () => {
@@ -1114,12 +1116,12 @@
                 
                 // Don't allow future dates
                 if (nextDate <= today) {
-                    fetchApod(nextDate);
+                    fetchDailyImage(nextDate);
                 } else {
                     // Show message for future dates
-                    apodTitle.textContent = "Imagen Futura";
+                    apodTitle.textContent = "Contenido futuro";
                     apodDateEl.textContent = "Fecha: " + formatDateReadable(nextDate);
-                    apodExplanation.textContent = "La imagen para esta fecha aún no está disponible. Por favor, selecciona una fecha anterior.";
+                    apodExplanation.textContent = "El contenido para esta fecha aún no está disponible. Por favor, selecciona una fecha anterior.";
                     apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
                     apodDownload.style.display = 'none';
                 }
