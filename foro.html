@@ -3,19 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foro - Comunidad de Apoyo - Borderline Journey</title>
+    <title>Foros de Comunidad - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-1: #ff00cc; /* Rosa neón */
-            --color-2: #00ffff; /* Cyan neón */
-            --color-3: #ffff00; /* Amarillo neón */
-            --color-4: #ff00ff; /* Magenta neón */
-            --color-5: #00ff00; /* Verde neón */
-            --dark-bg: #0f0f1b; /* Fondo oscuro principal */
-            --card-bg: rgba(25, 25, 45, 0.75); /* Fondo para tarjetas */
-            --card-border-glow: rgba(0, 255, 255, 0.5); 
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+            --accent-yellow-rgb: 255, 215, 0;
+            --accent-green-rgb: 0, 255, 127;
         }
         
         * {
@@ -26,573 +38,506 @@
         
         body {
             background: var(--dark-bg);
-            color: white;
-            line-height: 1.7;
-            font-family: 'Comfortaa', cursive;
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 204, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 30% 50%, rgba(255, 255, 0, 0.15) 0%, transparent 30%),
-                radial-gradient(circle at 70% 30%, rgba(255, 0, 255, 0.15) 0%, transparent 30%);
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
         }
         
-        .creative-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.5;
-            background: 
-                radial-gradient(circle, var(--color-1) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-2) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-3) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-4) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-5) 0%, transparent 20%);
-            background-size: 300% 300%;
-            background-position: 0% 0%;
-            animation: creativeBackground 30s infinite linear;
-        }
-        
-        @keyframes creativeBackground {
-            0% { background-position: 0% 0%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 0%; }
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
         }
         
         .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
             z-index: 1;
         }
         
-        /* Header Styles */
         header {
-            background: rgba(15, 15, 27, 0.85);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
             z-index: 1000;
-            border-bottom: 2px solid var(--color-2);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo h1 {
-            font-family: 'Monoton', cursive;
-            font-size: 2.2rem;
-            font-weight: 400;
-            background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
-            letter-spacing: 2px;
-        }
-        
-        .logo i {
-            font-size: 2.2rem;
-            color: var(--color-2);
-            text-shadow: 0 0 15px var(--color-2);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Krona One', sans-serif;
-            font-size: 1rem;
-            padding: 8px 15px;
-            border-radius: 30px;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
             transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Krona One', sans-serif; 
+            font-size: 1.8rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse {
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--accent-cyan); }
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
             position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--color-4);
-            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+            background: transparent; 
+            border: 1px solid transparent; 
         }
         
-        nav a:hover, nav a.active {
-            background: var(--color-4);
-            box-shadow: 0 0 15px var(--color-4);
-            transform: scale(1.1);
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
         }
         
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: var(--color-2);
-            transition: width 0.3s ease;
-        }
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
         
-        nav a:hover::after, nav a.active::after {
-            width: 80%;
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
         }
-        
-        /* Section Title Styles (reusable) */
-        .section-title {
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+
+        .page-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
+            padding-top: 2rem;
         }
-        
-        .section-title h2 {
+
+        .page-header h2 {
             font-family: 'Major Mono Display', monospace;
             font-size: 2.8rem;
-            color: var(--color-3); 
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1.5rem;
+            color: var(--accent-green); 
+            margin-bottom: 0.5rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: var(--color-4); 
-            border-radius: 3px;
-            box-shadow: 0 0 10px var(--color-4); 
-        }
-        
-        .section-title p {
-            color: #bbb;
-            font-size: 1.3rem;
-            max-width: 750px;
-            margin: 0 auto;
-            opacity: 0.85;
-            font-weight: 300;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(var(--accent-green-rgb),0.4);
         }
 
-        /* Forum Section Styles */
-        .forum-section {
-            padding: 5.5rem 0;
-            background: var(--dark-bg); 
-        }
-
-        .forum-section .section-title h2 {
-            color: var(--color-4); /* Magenta for Forum section title */
-            font-family: 'Press Start 2P', cursive; 
-            font-size: 2.5rem; 
-        }
-        .forum-section .section-title h2::after {
-            background: var(--color-4);
-            box-shadow: 0 0 10px var(--color-4);
-            width: 180px; 
-        }
-
-        .forum-intro {
-            text-align: center;
+        .page-header p {
             font-size: 1.2rem;
-            color: #ccc;
-            max-width: 800px;
-            margin: -2rem auto 3rem auto;
-            font-weight: 300;
-            line-height: 1.8;
-            font-family: 'Comfortaa', cursive;
+            color: var(--text-color-medium);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .forum-category-grid {
+        .forum-categories-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
         }
 
         .forum-category-card {
             background: var(--card-bg);
             border-radius: 15px;
-            padding: 30px;
-            border: 1px solid var(--color-2); /* Cyan border for forum category cards */
-            box-shadow: 0 5px 25px rgba(0,0,0,0.3), 0 0 15px var(--card-border-glow) inset;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content */
-            text-align: center; /* Center text */
-            backdrop-filter: blur(8px);
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px); /* Initial state for animation */
         }
+        .forum-category-card.visible { /* State after animation */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
 
         .forum-category-card:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5), 0 0 25px var(--color-4) inset, 0 0 20px var(--color-4);
-            border-color: var(--color-4);
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(var(--accent-green-rgb), 0.4);
         }
 
-        .forum-category-icon {
-            font-size: 3.5rem; /* Larger icon */
-            margin-bottom: 20px;
+        .forum-category-card .icon-container {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-green);
+            text-align: center;
         }
-        /* Assigning specific colors to icons for visual appeal */
-        .forum-category-card:nth-child(4n+1) .forum-category-icon { color: var(--color-4); text-shadow: 0 0 12px var(--color-4);}
-        .forum-category-card:nth-child(4n+2) .forum-category-icon { color: var(--color-1); text-shadow: 0 0 12px var(--color-1);}
-        .forum-category-card:nth-child(4n+3) .forum-category-icon { color: var(--color-5); text-shadow: 0 0 12px var(--color-5);}
-        .forum-category-card:nth-child(4n+4) .forum-category-icon { color: var(--color-3); text-shadow: 0 0 12px var(--color-3);}
 
-
-        .forum-category-title {
+        .forum-category-card h3 {
             font-family: 'Krona One', sans-serif;
-            font-size: 1.6rem;
-            color: white;
-            margin-bottom: 10px;
+            font-size: 1.4rem;
+            color: var(--accent-yellow);
+            margin-bottom: 0.8rem;
+            text-align: center;
         }
-        .forum-category-card:nth-child(4n+1) .forum-category-title { color: var(--color-4); }
-        .forum-category-card:nth-child(4n+2) .forum-category-title { color: var(--color-1); }
-        .forum-category-card:nth-child(4n+3) .forum-category-title { color: var(--color-5); }
-        .forum-category-card:nth-child(4n+4) .forum-category-title { color: var(--color-3); }
 
-        .forum-category-description {
-            color: #bbb;
-            font-size: 1rem;
+        .forum-category-card p.description {
+            font-size: 0.95rem;
             line-height: 1.6;
-            margin-bottom: 25px;
-            font-weight: 300;
+            color: var(--text-color-light);
+            margin-bottom: 1.5rem;
+            text-align: center;
             flex-grow: 1;
         }
         
-        .forum-category-stats {
-            font-size: 0.9rem;
-            color: var(--color-2);
-            margin-bottom: 20px;
-            width: 100%;
-        }
-        .forum-category-stats span {
-            margin: 0 10px;
-        }
-         .forum-category-stats i {
-            margin-right: 5px;
-        }
-
-
-        .forum-category-enter {
-            display: inline-block;
-            margin-top: auto; 
-            padding: 12px 30px;
-            background: linear-gradient(45deg, var(--color-4), var(--color-1)); /* Magenta/Pink gradient */
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-family: 'Fredoka One', cursive;
-            font-weight: bold;
+        .forum-stats {
+            font-size: 0.85rem;
+            color: var(--text-color-medium);
+            margin-bottom: 1.5rem;
             text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px var(--color-4);
         }
+        .forum-stats span { margin: 0 10px; }
+        .forum-stats i { margin-right: 5px; }
 
-        .forum-category-enter:hover {
-            background: linear-gradient(45deg, var(--color-2), var(--color-5)); /* Cyan/Green hover */
+
+        .enter-forum-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
             color: var(--dark-bg);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            align-self: center; 
+            margin-top: auto; 
+        }
+
+        .enter-forum-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
             transform: scale(1.05);
-            box-shadow: 0 0 15px var(--color-2);
+        }
+
+        .forum-guidelines {
+            background: rgba(var(--accent-blue-rgb), 0.05);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px dashed rgba(var(--accent-blue-rgb), 0.3);
+            margin-top: 2rem;
+            opacity: 0; /* Initial state for animation */
+            transform: translateY(30px); /* Initial state for animation */
+        }
+        .forum-guidelines.visible { /* State after animation */
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .forum-guidelines h3 {
+            font-family: 'Krona One', sans-serif;
+            color: var(--accent-blue);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+        .forum-guidelines ul {
+            list-style-position: inside;
+            padding-left: 0;
+        }
+        .forum-guidelines ul li {
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .forum-guidelines ul li i {
+            color: var(--accent-blue);
+            margin-right: 8px;
         }
         
-        /* Footer Styles */
-        footer {
-            background: rgba(10, 10, 20, 0.9);
-            color: white;
-            padding: 4.5rem 0 2.5rem;
-            position: relative;
-            border-top: 2px solid var(--color-5);
-            box-shadow: 0 -5px 20px rgba(0, 255, 0, 0.2);
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
         }
         
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 45px;
-            margin-bottom: 3.5rem;
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
         }
         
-        .footer-column h3 {
-            color: var(--color-3);
-            margin-bottom: 1.7rem;
-            position: relative;
-            padding-bottom: 12px;
-            font-size: 1.5rem;
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
             font-family: 'Fredoka One', cursive;
         }
         
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 55px;
-            height: 4px;
-            background: var(--color-2);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--color-2);
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
         }
         
-        .footer-links {
-            list-style: none;
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .social-links { display: flex; gap: 15px; margin-top: 22px; }
+        .social-links a { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 45px; 
+            height: 45px; 
+            background: rgba(255, 255, 255, 0.04); 
+            color: var(--accent-blue); 
+            border-radius: 50%; 
+            transition: all 0.4s ease; 
+            font-size: 1.2rem; 
+            border: 1px solid var(--accent-blue); 
+        }
+        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        .footer-links li {
-            margin-bottom: 14px;
-        }
-        
-        .footer-links a {
-            color: #bbb;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            padding: 5px 0;
-            font-weight: 300;
-        }
-        
-        .footer-links a:hover {
-            color: var(--color-1);
-            transform: translateX(10px);
-            text-shadow: 0 0 10px var(--color-1);
-        }
-        
-        .contact-info {
-            margin-top: 22px;
-        }
-        
-        .contact-info p {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-            font-size: 1.1rem;
-            color: #ddd;
-        }
-        
-        .contact-info i {
-            color: var(--color-2);
-            text-shadow: 0 0 5px var(--color-2);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 18px;
-            margin-top: 25px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--color-2);
-            border-radius: 50%;
-            transition: all 0.4s ease;
-            font-size: 1.3rem;
-            border: 1px solid var(--color-2);
-        }
-        
-        .social-links a:hover {
-            background: var(--color-2);
-            color: black;
-            transform: translateY(-5px) rotate(15deg);
-            box-shadow: 0 0 20px var(--color-2);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
-            font-size: 1rem;
-        }
-        
-        .copyright a {
-            color: var(--color-3);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .copyright a:hover {
-            color: var(--color-1);
-            text-shadow: 0 0 10px var(--color-1);
-        }
-        
-        /* Responsive */
         @media (max-width: 900px) {
-            .header-container {
-                flex-direction: column;
-                gap: 25px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-             .forum-section .section-title h2 {
-                font-size: 2.2rem; 
-            }
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .page-header h2 { font-size: 2.2rem; }
+            .forum-category-card h3 {font-size: 1.3rem;}
         }
         
         @media (max-width: 600px) {
-            .forum-section .section-title h2 {
-                font-size: 1.8rem; 
-            }
-            .forum-category-title {
-                font-size: 1.4rem; 
-            }
-            .forum-category-icon {
-                font-size: 3rem;
-            }
-             .forum-intro {
-                font-size: 1rem;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-            
-            nav a {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-        }
-
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.7);
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-        }
-
-        @keyframes ripple {
-            to {
-                transform: scale(2.5);
-                opacity: 0;
-            }
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.5rem; }
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .page-header h2 { font-size: 1.8rem; }
+            .page-header p { font-size: 1rem; }
+            .forum-categories-grid { grid-template-columns: 1fr; }
+            .forum-category-card { padding: 20px; }
+            .forum-category-card h3 {font-size: 1.2rem;}
+            .forum-category-card p.description {font-size: 0.9rem;}
+            .enter-forum-btn { padding: 8px 16px; font-size: 0.9rem;}
         }
     </style>
 </head>
 <body>
-    <div class="creative-bg"></div>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
     
-    <header>
+    <header id="main-header">
         <div class="container header-container">
-            <div class="logo">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
-                    <i class="fas fa-brain"></i>
-                    <h1>BORDERLINE JOURNEY</h1>
-                </a>
-            </div>
+            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+                <i class="fas fa-brain"></i>
+                <h1>BORDERLINE JOURNEY</h1>
+            </a>
             <nav>
                 <ul>
-                    <li><a href="index.html#inicio">Inicio</a></li>
-                    <li><a href="psicoeducacion.html">Psicoeducación</a></li>
-                    <li><a href="dbt.html">DBT</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="foro.html" class="active">Foro</a></li>
-                    <li><a href="index.html#premium">Premium</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html" class="active">Foros</a></li> 
+                    <li><a href="premium.html">Premium</a></li> 
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="forum-section" id="forum-contenido">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Comunidad Borderline Journey</h2>
-                    <p>Un Espacio Seguro para Conectar, Compartir y Crecer Juntos</p>
-                </div>
-                <p class="forum-intro">
-                    ¡Bienvenido/a a nuestro foro! Este es un lugar de encuentro y apoyo mutuo, donde puedes compartir tus experiencias, hacer preguntas, ofrecer tu perspectiva y conectar con otras personas que entienden el viaje del TLP. Recuerda ser respetuoso/a y empático/a.
+    <main class="main-page-content">
+        <div class="container">
+            <div class="page-header">
+                <h2><i class="fas fa-comments"></i> Comunidad Borderline Journey</h2>
+                <p>
+                    Un espacio seguro y de apoyo para conectar, compartir experiencias, hacer preguntas y aprender unos de otros en el viaje hacia el bienestar emocional.
                 </p>
-    
-                <div class="forum-category-grid">
-                    <article class="forum-category-card">
-                        <i class="fas fa-comments forum-category-icon"></i>
-                        <h3 class="forum-category-title">Compartiendo Experiencias</h3>
-                        <p class="forum-category-description">
-                            Un lugar para relatar vivencias personales, desafíos diarios y momentos de superación.
-                        </p>
-                        <p class="forum-category-stats">
-                            <span><i class="fas fa-comments"></i> 125 Hilos</span>
-                            <span><i class="fas fa-pen"></i> 870 Posts</span>
-                        </p>
-                        <a href="categoria_experiencias.html" class="forum-category-enter">Acceder <i class="fas fa-arrow-right"></i></a>
-                    </article>
-    
-                    <article class="forum-category-card">
-                        <i class="fas fa-book-medical forum-category-icon"></i>
-                        <h3 class="forum-category-title">Recursos y Terapias</h3>
-                         <p class="forum-category-description">
-                            Discute sobre diferentes enfoques terapéuticos, comparte recursos útiles y estrategias de afrontamiento.
-                        </p>
-                        <p class="forum-category-stats">
-                            <span><i class="fas fa-comments"></i> 98 Hilos</span>
-                            <span><i class="fas fa-pen"></i> 650 Posts</span>
-                        </p>
-                        <a href="categoria_recursos.html" class="forum-category-enter">Acceder <i class="fas fa-arrow-right"></i></a>
-                    </article>
-
-                    <article class="forum-category-card">
-                         <i class="fas fa-palette forum-category-icon"></i>
-                        <h3 class="forum-category-title">Arte y Expresión Creativa</h3>
-                        <p class="forum-category-description">
-                            Muestra tu arte, poesía, música o cualquier forma de expresión creativa inspirada en tu viaje.
-                        </p>
-                         <p class="forum-category-stats">
-                            <span><i class="fas fa-comments"></i> 75 Hilos</span>
-                            <span><i class="fas fa-pen"></i> 430 Posts</span>
-                        </p>
-                        <a href="categoria_arte.html" class="forum-category-enter">Acceder <i class="fas fa-arrow-right"></i></a>
-                    </article>
-                    
-                    <article class="forum-category-card">
-                        <i class="fas fa-question-circle forum-category-icon"></i>
-                        <h3 class="forum-category-title">Preguntas y Apoyo General</h3>
-                        <p class="forum-category-description">
-                           ¿Tienes dudas? ¿Necesitas un consejo o simplemente desahogarte? Este es tu espacio.
-                        </p>
-                        <p class="forum-category-stats">
-                            <span><i class="fas fa-comments"></i> 150 Hilos</span>
-                            <span><i class="fas fa-pen"></i> 990 Posts</span>
-                        </p>
-                        <a href="categoria_preguntas.html" class="forum-category-enter">Acceder <i class="fas fa-arrow-right"></i></a>
-                    </article>
-                </div>
             </div>
-        </section>
+
+            <div class="forum-categories-grid">
+                <article class="forum-category-card">
+                    <div class="icon-container"><i class="fas fa-hand-holding-heart"></i></div>
+                    <h3>Apoyo General y Bienvenida</h3>
+                    <p class="description">Preséntate a la comunidad, comparte tus desafíos y logros generales, y encuentra un espacio de escucha y comprensión.</p>
+                    <div class="forum-stats">
+                        <span><i class="fas fa-comments"></i> 125 Temas</span>
+                        <span><i class="fas fa-reply"></i> 872 Respuestas</span>
+                    </div>
+                    <a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="forum-category-card">
+                    <div class="icon-container"><i class="fas fa-yin-yang"></i></div>
+                    <h3>Habilidades DBT en Práctica</h3>
+                    <p class="description">Discute cómo aplicas las habilidades de Mindfulness, Regulación Emocional, Tolerancia al Malestar y Efectividad Interpersonal en tu vida diaria.</p>
+                     <div class="forum-stats">
+                        <span><i class="fas fa-comments"></i> 88 Temas</span>
+                        <span><i class="fas fa-reply"></i> 630 Respuestas</span>
+                    </div>
+                    <a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
+                </article>
+
+                <article class="forum-category-card">
+                    <div class="icon-container"><i class="fas fa-users"></i></div>
+                    <h3>Relaciones y Familia</h3>
+                    <p class="description">Un espacio para hablar sobre los desafíos y éxitos en las relaciones interpersonales, familiares y de pareja desde la perspectiva del TLP y la DBT.</p>
+                     <div class="forum-stats">
+                        <span><i class="fas fa-comments"></i> 62 Temas</span>
+                        <span><i class="fas fa-reply"></i> 415 Respuestas</span>
+                    </div>
+                    <a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
+                </article>
+                
+                <article class="forum-category-card">
+                    <div class="icon-container"><i class="fas fa-lightbulb"></i></div> <h3>Recursos y Herramientas</h3>
+                    <p class="description">Comparte libros, artículos, aplicaciones, videos y otras herramientas útiles que te hayan ayudado en tu proceso de recuperación y aprendizaje.</p>
+                     <div class="forum-stats">
+                        <span><i class="fas fa-comments"></i> 45 Temas</span>
+                        <span><i class="fas fa-reply"></i> 280 Respuestas</span>
+                    </div>
+                    <a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
+                </article>
+            </div>
+
+            <section class="forum-guidelines">
+                <h3><i class="fas fa-shield-alt"></i> Normas de la Comunidad</h3>
+                <ul>
+                    <li><i class="fas fa-check"></i> Sé respetuoso y empático con todos los miembros.</li>
+                    <li><i class="fas fa-check"></i> No compartas información personal identificable.</li>
+                    <li><i class="fas fa-check"></i> Evita el lenguaje ofensivo o discriminatorio.</li>
+                    <li><i class="fas fa-check"></i> No se permite la promoción de servicios o productos no autorizados.</li>
+                    <li><i class="fas fa-check"></i> Reporta cualquier contenido que viole estas normas a los moderadores.</li>
+                    <li><i class="fas fa-check"></i> Recuerda que este foro es de apoyo entre pares y no sustituye la terapia profesional.</li>
+                </ul>
+            </section>
+
+        </div>
     </main>
 
     <footer>
@@ -600,7 +545,7 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Borderline Journey</h3>
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad.</p>
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -610,22 +555,23 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Recursos</h3>
+                    <h3>Navegación</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Galería Visual</a></li>
-                        <li><a href="dbt.html">Meditaciones Guiadas (DBT)</a></li> 
-                        <li><a href="blog.html">Diario Emocional (Blog)</a></li> 
-                        <li><a href="foro.html">Comunidad (Foro)</a></li> <li><a href="index.html#premium">Recursos de Crisis</a></li>
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="premium.html">Premium</a></li> 
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Explorar</h3>
+                    <h3>Recursos DBT</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Psicoeducación</a></li> 
-                        <li><a href="dbt.html">DBT</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foro</a></li> <li><a href="index.html#premium">Eventos</a></li>
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
                 
@@ -641,7 +587,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional.</p>
+                <p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
                 <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
@@ -649,70 +595,75 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Efecto de movimiento en tarjetas de categorías del foro
-            const forumCategoryCards = document.querySelectorAll('.forum-category-card');
-            forumCategoryCards.forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const rect = card.getBoundingClientRect();
-                    const cardX = rect.left + rect.width / 2;
-                    const cardY = rect.top + rect.height / 2;
-                    const mouseX = e.clientX;
-                    const mouseY = e.clientY;
-                    
-                    let rotateX = (mouseY - cardY) / 22; 
-                    let rotateY = (mouseX - cardX) / -22;
-                    
-                    rotateX = Math.min(Math.max(rotateX, -9), 9); 
-                    rotateY = Math.min(Math.max(rotateY, -9), 9);
-                    
-                    this.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.025)`;
-                });
-                
-                card.addEventListener('mouseenter', function() {
-                    this.style.transition = 'transform 0.1s ease-out';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; 
-                    this.style.transform = 'perspective(1100px) rotateY(0deg) rotateX(0deg) scale(1)';
-                });
-            });
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            // Efecto de ripple en botones "Acceder"
-            const buttons = document.querySelectorAll('.forum-category-enter');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // No prevenir si es un enlace real
-                    // if (this.getAttribute('href') === '#') { 
-                    //     e.preventDefault();
-                    // }
-
-                    const x = e.clientX - e.target.getBoundingClientRect().left; 
-                    const y = e.clientY - e.target.getBoundingClientRect().top;  
-                    
-                    const ripples = document.createElement('span');
-                    ripples.classList.add('ripple');
-                    ripples.style.left = x + 'px';
-                    ripples.style.top = y + 'px';
-                    this.appendChild(ripples);
-                    
-                    setTimeout(() => {
-                        ripples.remove();
-                    }, 600); 
-                });
-            });
-
-            // Script para activar el enlace de navegación correspondiente a esta página
-            const currentPageFilename = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('nav a');
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150;
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 6}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
+                    if (Math.random() > 0.65) {
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
+            const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
+                link.classList.remove('active'); 
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
                 }
             });
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            const animatedElements = document.querySelectorAll('.forum-category-card, .forum-guidelines'); 
+            if (animatedElements.length > 0) {
+                 const observerOptions = {
+                    root: null, 
+                    rootMargin: '0px',
+                    threshold: 0.1 
+                };
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible'); // Use class for animation
+                            // obs.unobserve(entry.target); // Optional
+                        }
+                    });
+                }, observerOptions);
+
+                animatedElements.forEach(element => {
+                    // Initial styles are now handled by CSS (.forum-category-card, .forum-guidelines)
+                    // and the .visible class will trigger the animation.
+                    observer.observe(element);
+                });
+            }
         });
     </script>
 </body>
