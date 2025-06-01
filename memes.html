@@ -14,9 +14,8 @@
             color: #F3F4F6; /* text-gray-100 */
         }
         .header-title-main {
-            /* Tipografía del título principal cambiada a Fredoka One */
             font-family: 'Fredoka One', cursive;
-            font-weight: 400; /* Fredoka One es naturalmente audaz */
+            font-weight: 400; 
             animation: breatheColor 5s infinite alternate;
         }
 
@@ -38,8 +37,10 @@
             overflow: hidden;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            opacity: 0; /* Initial state for animation */
-            transform: translateY(20px); /* Initial state for animation */
+            opacity: 0; 
+            transform: translateY(20px); 
+            display: flex; /* Added for button alignment */
+            flex-direction: column; /* Added for button alignment */
         }
         .meme-card.is-visible {
             opacity: 1;
@@ -47,18 +48,29 @@
         }
         .meme-card:hover {
             transform: translateY(-8px) scale(1.05);
-            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.5); /* Indigo shadow more pronounced */
+            box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.5); 
         }
         .meme-card img {
             width: 100%;
-            height: 300px; /* Fixed height for consistency */
-            object-fit: cover; /* Ensures image covers the area, might crop */
-            background-color: #374151; /* Color de fondo para placeholders */
+            height: 300px; 
+            object-fit: cover; 
+            background-color: #374151; 
         }
         .meme-card h3 {
             font-family: 'Oswald', sans-serif;
             font-weight: 500; 
         }
+        .meme-card-content { /* New class for content below image */
+            padding: 1.25rem; /* p-5 */
+            flex-grow: 1; /* Allows content to grow */
+            display: flex;
+            flex-direction: column;
+        }
+        .meme-card-buttons { /* New class for button container */
+            margin-top: auto; /* Pushes buttons to the bottom */
+            padding-top: 0.75rem; /* pt-3 */
+        }
+
 
         .platform-title {
             background: linear-gradient(90deg, #4F46E5, #EC4899, #10B981, #4F46E5);
@@ -116,42 +128,62 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                 <div class="meme-card">
                     <img src="https://placehold.co/400x300/4F46E5/FFFFFF?text=Meme+Gracioso+Reddit+1" alt="Meme gracioso sobre la vida y el cerebro" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-indigo-300">Mi Cerebro y Yo</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: r/MentalHealthMemes</p>
-                        <a href="https://www.reddit.com/r/MentalHealthMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.reddit.com/r/MentalHealthMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/4F46E5/FFFFFF?text=Meme+Gracioso+Reddit+1" download="meme_cerebro_vida.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="meme-card">
                     <img src="https://placehold.co/400x300/10B981/FFFFFF?text=Meme+Gracioso+Reddit+2" alt="Meme gracioso sobre la procrastinación con estilo" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-emerald-300">Procrastinación Épica</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: r/FunnyAndSad</p>
-                         <a href="https://www.reddit.com/r/FunnyAndSad/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.reddit.com/r/FunnyAndSad/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/10B981/FFFFFF?text=Meme+Gracioso+Reddit+2" download="meme_procrastinacion.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="meme-card">
                     <img src="https://placehold.co/400x300/F59E0B/FFFFFF?text=Meme+Gracioso+Reddit+3" alt="Meme gracioso sobre pequeñas victorias diarias" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-amber-300">Logro Desbloqueado</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: r/WholesomeMemes</p>
-                        <a href="https://www.reddit.com/r/WholesomeMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.reddit.com/r/WholesomeMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/F59E0B/FFFFFF?text=Meme+Gracioso+Reddit+3" download="meme_logro_desbloqueado.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="meme-card">
                      <img src="https://placehold.co/400x300/EC4899/FFFFFF?text=Meme+Gracioso+Reddit+4" alt="Meme gracioso sobre la batería social" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-pink-400">Batería Social: 2%</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: r/IntrovertMemes</p>
-                        <a href="https://www.reddit.com/r/IntrovertMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.reddit.com/r/IntrovertMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/EC4899/FFFFFF?text=Meme+Gracioso+Reddit+4" download="meme_bateria_social.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -162,44 +194,64 @@
                 Perlas de <span class="platform-title">Facebook</span> <i class="fab fa-facebook text-blue-600 ml-2"></i>
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                <div class="meme-card">
+                 <div class="meme-card">
                     <img src="https://placehold.co/400x300/60A5FA/FFFFFF?text=Meme+Gracioso+Facebook+1" alt="Meme gracioso sobre el café y la ansiedad" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-indigo-300">Café vs. Ansiedad</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: Página "Humor Terapéutico"</p>
-                         <a href="https://www.facebook.com/search/top/?q=memes%20salud%20mental" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.facebook.com/search/top/?q=memes%20salud%20mental" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/60A5FA/FFFFFF?text=Meme+Gracioso+Facebook+1" download="meme_cafe_ansiedad_fb.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="meme-card">
                      <img src="https://placehold.co/400x300/34D399/FFFFFF?text=Meme+Gracioso+Facebook+2" alt="Meme gracioso sobre ser adulto" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-cyan-300">Adulting: Expectativa</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: Grupo "Sobreviviendo la Semana"</p>
-                         <a href="https://www.facebook.com/search/top/?q=mental%20health%20humor" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.facebook.com/search/top/?q=mental%20health%20humor" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/34D399/FFFFFF?text=Meme+Gracioso+Facebook+2" download="meme_adulting_fb.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                 <div class="meme-card">
+                <div class="meme-card">
                     <img src="https://placehold.co/400x300/A78BFA/FFFFFF?text=Meme+Gracioso+Facebook+3" alt="Meme gracioso sobre planes vs realidad" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-purple-300">Mis Planes / La Vida</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: "Memes que Curan el Alma"</p>
-                         <a href="https://www.facebook.com/search/top/?q=funny%20mental%20health%20quotes" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.facebook.com/search/top/?q=funny%20mental%20health%20quotes" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/A78BFA/FFFFFF?text=Meme+Gracioso+Facebook+3" download="meme_planes_vida_fb.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                 <div class="meme-card">
+                <div class="meme-card">
                     <img src="https://placehold.co/400x300/F472B6/FFFFFF?text=Meme+Gracioso+Facebook+4" alt="Meme gracioso de apoyo emocional" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-rose-300">Abrazo de Meme</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: "Comunidad de Bienestar"</p>
-                         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-rose-500 hover:bg-rose-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Ir a Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-rose-500 hover:bg-rose-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Ir a Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/F472B6/FFFFFF?text=Meme+Gracioso+Facebook+4" download="meme_abrazo_fb.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -212,42 +264,62 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                 <div class="meme-card">
                     <img src="https://placehold.co/400x300/EF4444/FFFFFF?text=Meme+Gracioso+Pinterest+1" alt="Meme gracioso sobre la calma" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-red-400">Modo Zen (Intentando)</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: Tablero "Calma Interior"</p>
-                         <a href="https://www.pinterest.com/search/pins/?q=mental%20health%20memes" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.pinterest.com/search/pins/?q=mental%20health%20memes" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/EF4444/FFFFFF?text=Meme+Gracioso+Pinterest+1" download="meme_zen_pinterest.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="meme-card">
                     <img src="https://placehold.co/400x300/D946EF/FFFFFF?text=Meme+Gracioso+Pinterest+2" alt="Meme gracioso sobre el amor propio" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-fuchsia-400">Yo, Mi Mejor Cita</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: Pin "Amor Propio Club"</p>
-                         <a href="https://www.pinterest.com/search/pins/?q=self%20care%20quotes%20funny" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.pinterest.com/search/pins/?q=self%20care%20quotes%20funny" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/D946EF/FFFFFF?text=Meme+Gracioso+Pinterest+2" download="meme_amor_propio_pinterest.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="meme-card">
                     <img src="https://placehold.co/400x300/84CC16/FFFFFF?text=Meme+Gracioso+Pinterest+3" alt="Meme gracioso sobre ir un día a la vez" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-lime-400">Sobreviviendo Hoy</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: "Inspiración Diaria"</p>
-                         <a href="https://www.pinterest.com/search/pins/?q=funny%20relatable%20mental%20health" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-lime-500 hover:bg-lime-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.pinterest.com/search/pins/?q=funny%20relatable%20mental%20health" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-lime-500 hover:bg-lime-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/84CC16/FFFFFF?text=Meme+Gracioso+Pinterest+3" download="meme_un_dia_a_la_vez_pinterest.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                 <div class="meme-card">
+                <div class="meme-card">
                     <img src="https://placehold.co/400x300/3B82F6/FFFFFF?text=Meme+Gracioso+Pinterest+4" alt="Meme gracioso sobre validar emociones" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-blue-400">Sentir es de Valientes</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: "Salud Emocional Visual"</p>
-                         <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Ir a Pinterest <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                         <div class="meme-card-buttons">
+                            <a href="https://www.pinterest.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Ir a Pinterest <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/3B82F6/FFFFFF?text=Meme+Gracioso+Pinterest+4" download="meme_sentir_valientes_pinterest.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -260,42 +332,62 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
                 <div class="meme-card">
                     <img src="https://placehold.co/400x300/C084FC/FFFFFF?text=Meme+Gracioso+Instagram+1" alt="Meme gracioso sobre paz mental" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-purple-400">Mi Paz No Se Negocia</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: @PsicoConHumor (Ejemplo)</p>
-                         <a href="https://www.instagram.com/explore/tags/mentalhealthmemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.instagram.com/explore/tags/mentalhealthmemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/C084FC/FFFFFF?text=Meme+Gracioso+Instagram+1" download="meme_paz_insta.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 <div class="meme-card">
                      <img src="https://placehold.co/400x300/FB923C/FFFFFF?text=Meme+Gracioso+Instagram+2" alt="Meme gracioso sobre la terapia" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-orange-400">Mi Terapeuta y Yo</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: @LaVidaEnTerapia (Ejemplo)</p>
-                         <a href="https://www.instagram.com/explore/tags/therapymemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.instagram.com/explore/tags/therapymemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/FB923C/FFFFFF?text=Meme+Gracioso+Instagram+2" download="meme_terapeuta_insta.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                 <div class="meme-card">
+                <div class="meme-card">
                     <img src="https://placehold.co/400x300/0EA5E9/FFFFFF?text=Meme+Gracioso+Instagram+3" alt="Meme gracioso sobre el autocuidado" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-sky-400">Autocuidado Nivel Dios</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: @BienestarCreativo (Ejemplo)</p>
-                         <a href="https://www.instagram.com/explore/tags/selfcare/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.instagram.com/explore/tags/selfcare/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/0EA5E9/FFFFFF?text=Meme+Gracioso+Instagram+3" download="meme_autocuidado_insta.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                 <div class="meme-card">
+                <div class="meme-card">
                      <img src="https://placehold.co/400x300/8B5CF6/FFFFFF?text=Meme+Gracioso+Instagram+4" alt="Meme gracioso sobre procesar emociones" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Imagen';">
-                    <div class="p-5">
+                    <div class="meme-card-content">
                         <h3 class="text-xl mb-2 text-violet-400">Error 404: Emociones</h3>
                         <p class="text-sm text-gray-400 mb-3">Fuente: @MentalHealthAwareness (Ejemplo)</p>
-                         <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                            Ir a Instagram <i class="fas fa-external-link-alt ml-1"></i>
-                        </a>
+                        <div class="meme-card-buttons">
+                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm mb-2">
+                                Ir a Instagram <i class="fas fa-external-link-alt ml-1"></i>
+                            </a>
+                            <a href="https://placehold.co/400x300/8B5CF6/FFFFFF?text=Meme+Gracioso+Instagram+4" download="meme_error_emociones_insta.png" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                Descargar <i class="fas fa-download ml-1"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
