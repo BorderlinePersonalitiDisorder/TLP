@@ -29,6 +29,7 @@
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209;
+            --accent-red-rgb: 255, 69, 0; /* Keep for consistency, though not primary here */
         }
         
         * {
@@ -213,9 +214,9 @@
         
         .component-content-section { 
             background: var(--card-bg);
-            padding: 30px 35px; /* Increased padding */
+            padding: 30px 35px; 
             border-radius: 15px;
-            margin-bottom: 2.5rem; /* Increased margin */
+            margin-bottom: 2.5rem; 
             border: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(30px);
@@ -229,23 +230,23 @@
         .component-content-section h3 {
             font-family: 'Raleway', sans-serif;
             font-weight: 700; 
-            font-size: 1.9rem; /* Slightly larger */
+            font-size: 1.9rem; 
             color: var(--accent-magenta); 
-            margin-top: 1rem; /* Added top margin */
-            margin-bottom: 1.8rem; /* Increased margin */
+            margin-top: 1rem; 
+            margin-bottom: 1.8rem; 
             text-align: center;
             border-bottom: 2px dashed var(--accent-magenta); 
-            padding-bottom: 0.8rem; /* Increased padding */
+            padding-bottom: 0.8rem; 
         }
          .component-content-section h4 {
             font-family: 'Raleway', sans-serif;
             font-weight: 700; 
-            font-size: 1.5rem; /* Slightly larger */
+            font-size: 1.5rem; 
             color: var(--accent-yellow);
-            margin-top: 2.5rem; /* Increased margin */
-            margin-bottom: 1.2rem; /* Increased margin */
-            border-left: 4px solid var(--accent-yellow); /* Thicker border */
-            padding-left: 15px; /* Increased padding */
+            margin-top: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            border-left: 4px solid var(--accent-yellow); 
+            padding-left: 15px; 
         }
         .component-content-section h5 {
             font-family: 'Raleway', sans-serif;
@@ -257,21 +258,21 @@
         }
 
         .component-content-section p, 
-        .component-content-section li { /* Applied consistent styling to list items */
+        .component-content-section li { 
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1.2rem; /* Increased margin */
+            margin-bottom: 1.2rem; 
             color: var(--text-color-light);
-            line-height: 1.9; /* Increased line height */
+            line-height: 1.9; 
         }
         .component-content-section ul,
         .component-content-section ol {
             list-style: none;
-            padding-left: 0; /* Removed default padding */
+            padding-left: 0; 
             margin-bottom: 1.5rem;
         }
         .component-content-section ul li {
-            padding-left: 30px; /* Increased padding for icon */
+            padding-left: 30px; 
             position: relative;
         }
         .component-content-section ul li::before {
@@ -281,23 +282,23 @@
             color: var(--accent-magenta); 
             position: absolute;
             left: 0;
-            top: 4px; /* Adjusted for better alignment */
-            font-size: 1em; /* Relative to li font-size */
+            top: 4px; 
+            font-size: 1em; 
         }
          .component-content-section ol li {
-            padding-left: 10px; /* Space for number */
-            margin-left: 20px; /* Indent ordered list */
+            padding-left: 10px; 
+            margin-left: 20px; 
             list-style-position: outside;
         }
         .component-content-section ol {
-            list-style-type: decimal; /* Ensure numbers are shown */
+            list-style-type: decimal; 
         }
         .component-content-section strong {
-            color: var(--accent-green); /* Highlight strong text */
+            color: var(--accent-green); 
             font-weight: 700;
         }
         .component-content-section em {
-            color: var(--secondary-cyan); /* Highlight emphasized text */
+            color: var(--secondary-cyan); 
             font-style: italic;
         }
         .component-content-section blockquote {
@@ -324,6 +325,8 @@
         .example-box h5 {
             color: var(--accent-yellow);
             margin-top: 0;
+            font-family: 'Raleway', sans-serif; 
+            font-weight: 700;
         }
         
         .breadcrumb {
@@ -341,6 +344,34 @@
         }
         .breadcrumb span {
             color: var(--text-color-medium);
+        }
+
+        .back-to-link-container {
+            text-align: center;
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .back-to-btn {
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); 
+            color: var(--dark-bg); 
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 10px rgba(var(--secondary-cyan-rgb), 0.4); 
+        }
+        .back-to-btn:hover {
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--accent-green-rgb), 0.5); 
+        }
+        .back-to-btn i {
+            font-size: 1em; 
         }
         
         footer { 
@@ -456,8 +487,8 @@
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
             .page-header h2 { font-size: 2.2rem; } 
-            .component-content-section h3 {font-size: 1.7rem;} /* Adjusted */
-            .component-content-section h4 {font-size: 1.3rem;} /* Adjusted */
+            .component-content-section h3 {font-size: 1.7rem;} 
+            .component-content-section h4 {font-size: 1.3rem;} 
         }
         
         @media (max-width: 600px) {
@@ -468,10 +499,11 @@
             .page-header h2 { font-size: 2rem; } 
             .page-header p.subtitle { font-size: 1rem; }
             .component-content-section { padding: 20px; }
-            .component-content-section h3 {font-size: 1.6rem;} /* Adjusted */
-            .component-content-section h4 {font-size: 1.2rem;} /* Adjusted */
+            .component-content-section h3 {font-size: 1.6rem;} 
+            .component-content-section h4 {font-size: 1.2rem;} 
             .component-content-section p,
-            .component-content-section li {font-size: 1rem;} /* Adjusted */
+            .component-content-section li {font-size: 1rem;} 
+            .back-to-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -757,7 +789,10 @@
                     La AC es una herramienta poderosa, pero como cualquier intervención, su efectividad puede maximizarse con la guía adecuada, especialmente si el malestar es severo, persistente o coexiste con otras dificultades.
                 </p>
             </section>
-
+            
+            <div class="back-to-link-container">
+                <a href="cbt.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver a TCC</a>
+            </div>
 
         </div>
     </main>
@@ -878,21 +913,18 @@
                 });
             }
             
-            // Animate all sections with class .component-content-section
             const animatedSections = document.querySelectorAll('.component-content-section'); 
             if (animatedSections.length > 0) {
                  const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
-                    threshold: 0.05 // Trigger a bit earlier
+                    threshold: 0.05 
                 };
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            // obs.unobserve(entry.target); // Keep observing if you want re-animation on scroll up/down
                         } else {
-                            // Optional: remove 'visible' to re-animate if scrolling out of view
                             // entry.target.classList.remove('visible');
                         }
                     });
@@ -904,4 +936,4 @@
         });
     </script>
 </body>
-</html>
+</ht
