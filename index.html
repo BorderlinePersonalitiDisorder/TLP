@@ -79,7 +79,7 @@
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000; /* Ensure header is above other content */
             border-bottom: 2px solid var(--color-2);
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
@@ -102,6 +102,7 @@
             font-weight: 400;
             background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-2));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
             letter-spacing: 2px;
@@ -116,43 +117,54 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 20px;
+            gap: 15px; /* Slightly reduced gap */
         }
         
         nav a {
-            color: white;
+            color: #e0e0e0; /* Slightly softer white */
             text-decoration: none;
             font-family: 'Krona One', sans-serif;
-            font-size: 1rem;
-            padding: 8px 15px;
-            border-radius: 30px;
-            transition: all 0.4s ease;
+            font-size: 0.95rem; /* Slightly smaller font */
+            padding: 10px 18px; /* Adjusted padding */
+            border-radius: 8px; /* Less rounded */
+            transition: all 0.3s ease-out;
             position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--color-4);
-            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+            background: transparent; /* Transparent by default */
+            border: 1px solid transparent; /* Transparent border by default */
+            text-shadow: none; /* Remove default text shadow */
+            overflow: hidden; /* For pseudo-element effect */
         }
-        
-        nav a:hover, nav a.active {
-            background: var(--color-4);
-            box-shadow: 0 0 15px var(--color-4);
-            transform: scale(1.1);
-        }
-        
-        nav a::after {
+
+        nav a::before { /* New pseudo-element for background effect */
             content: '';
             position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: var(--color-2);
-            transition: width 0.3s ease;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--color-2), var(--color-1), transparent);
+            opacity: 0;
+            transition: left 0.4s ease, opacity 0.4s ease;
+            z-index: -1;
         }
         
-        nav a:hover::after, nav a.active::after { /* MODIFIED: Added nav a.active::after */
-            width: 80%;
+        nav a:hover::before, nav a.active::before {
+            left: 0;
+            opacity: 0.2; /* Subtle background glow */
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--color-3); /* Yellow text on hover/active */
+            background-color: rgba(0, 255, 255, 0.05); /* Very subtle cyan background */
+            border: 1px solid var(--color-2); /* Cyan border */
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.4); /* Cyan glow */
+            transform: translateY(-2px); /* Slight lift */
+            text-shadow: 0 0 5px var(--color-3);
+        }
+        
+        /* Removing the old underline effect */
+        nav a::after { 
+            display: none;
         }
         
         /* Hero Section */
@@ -209,6 +221,7 @@
                 0 0 20px var(--color-4);
             background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-5));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             animation: creativeText 8s infinite linear;
         }
@@ -279,7 +292,7 @@
             background: rgba(0, 255, 255, 0.2);
         }
         
-        /* Features Section */
+        /* Features Section (Recursos Destacados) */
         .features {
             padding: 5.5rem 0;
         }
@@ -452,7 +465,7 @@
         }
         
         .testimonial-card::before {
-            content: '"'; /* Corrected quote character */
+            content: '"'; 
             position: absolute;
             top: 20px;
             left: 20px;
@@ -506,8 +519,8 @@
             font-size: 1rem;
         }
         
-        /* Premium Section */
-        .premium {
+        /* Premium Section (Index Page Version - CTA) */
+        .premium-cta-section { /* Renamed to avoid conflict with premium.html styles */
             padding: 7rem 0;
             text-align: center;
             position: relative;
@@ -521,7 +534,7 @@
                 inset 0 0 30px rgba(0, 255, 255, 0.2);
         }
         
-        .premium::before {
+        .premium-cta-section::before {
             content: '';
             position: absolute;
             top: 0;
@@ -533,30 +546,31 @@
                 radial-gradient(circle, var(--color-5) 0%, transparent 70%);
             background-size: 200% 200%;
             background-position: center;
-            animation: creativeBackground 20s infinite linear;
+            animation: creativeBackground 20s infinite linear; /* Reusing existing animation */
             z-index: -1;
             opacity: 0.2;
         }
         
-        .premium-container {
+        .premium-cta-container { /* Renamed to avoid conflict */
             max-width: 800px;
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
         
-        .premium h2 {
+        .premium-cta-section h2 {
             font-family: 'Press Start 2P', cursive;
             font-size: 2.5rem;
             margin-bottom: 2rem;
             background: linear-gradient(45deg, var(--color-3), var(--color-5), var(--color-2));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
-            animation: creativeText 5s infinite linear;
+            animation: creativeText 5s infinite linear; /* Reusing existing animation */
         }
         
-        .premium p {
+        .premium-cta-section p {
             font-size: 1.3rem;
             margin-bottom: 3rem;
             opacity: 0.9;
@@ -565,51 +579,7 @@
             margin-right: auto;
             color: #ddd;
         }
-        
-        .benefits {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin: 4rem 0;
-        }
-        
-        .benefit {
-            background: rgba(40, 40, 60, 0.7);
-            padding: 30px 25px;
-            border-radius: 20px;
-            width: 240px;
-            border: 1px solid var(--color-4);
-            box-shadow: 0 0 20px rgba(255, 0, 255, 0.3);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(5px);
-        }
-        
-        .benefit:hover {
-            transform: translateY(-10px) rotate(3deg);
-            box-shadow: 0 10px 30px var(--color-4);
-            background: rgba(60, 0, 60, 0.5);
-        }
-        
-        .benefit i {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            color: var(--color-3);
-            text-shadow: 0 0 15px var(--color-3);
-        }
-        
-        .benefit h3 {
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            color: var(--color-2);
-            font-family: 'Krona One', sans-serif;
-        }
-        
-        .benefit p {
-            font-size: 1.1rem;
-            margin-bottom: 0;
-            opacity: 0.85;
-        }
+        /* No .benefits grid here, it's on premium.html */
         
         /* Footer */
         footer {
@@ -755,10 +725,8 @@
             .section-title h2 {
                 font-size: 2rem;
             }
-            
-            .benefit {
-                width: 100%;
-                max-width: 350px;
+            .premium-cta-section h2 {
+                font-size: 2rem;
             }
         }
         
@@ -769,6 +737,9 @@
             
             .hero h2 {
                 font-size: 1.5rem;
+            }
+            .premium-cta-section h2 {
+                font-size: 1.8rem;
             }
             
             nav ul {
@@ -788,7 +759,6 @@
             }
         }
 
-        /* Corrección: Estilo para efecto ripple */
         .ripple {
             position: absolute;
             border-radius: 50%;
@@ -811,17 +781,19 @@
     <header>
         <div class="container header-container">
             <div class="logo">
-                <i class="fas fa-brain"></i>
-                <h1>BORDERLINE JOURNEY</h1>
+                 <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
+                    <i class="fas fa-brain"></i>
+                    <h1>BORDERLINE JOURNEY</h1>
+                </a>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#inicio" class="active">Inicio</a></li>
-                    <li><a href="#psicoeducacion">Psicoeducación</a></li>
-                    <li><a href="#dbt">DBT</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#foro">Foro</a></li>
-                    <li><a href="#premium">Premium</a></li>
+                    <li><a href="index.html" class="active">Inicio</a></li>
+                    <li><a href="psicoeducacion.html">Psicoeducación</a></li>
+                    <li><a href="dbt.html">DBT</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="foro.html">Foro</a></li>
+                    <li><a href="premium.html">Premium</a></li>
                 </ul>
             </nav>
         </div>
@@ -832,14 +804,13 @@
             <h2>EXPLORANDO LA MENTE BORDERLINE</h2>
             <p>Un viaje creativo a través de recursos, comunidad y herramientas para comprender y gestionar el Trastorno Límite de la Personalidad</p>
             <div>
-                <a href="#premium" class="cta-button">INICIAR EXPERIENCIA</a>
-                <a href="#premium" class="cta-button secondary">ACCESO PREMIUM</a>
+                <a href="premium.html" class="cta-button">INICIAR EXPERIENCIA</a>
+                <a href="premium.html" class="cta-button secondary">ACCESO PREMIUM</a>
             </div>
         </div>
     </section>
 
-    <section class="features" id="psicoeducacion">
-        <div class="container">
+    <section class="features" id="recursos-destacados"> <div class="container">
             <div class="section-title">
                 <h2>RECURSOS VISUALES</h2>
                 <p>Explora nuestras secciones con un enfoque creativo para el aprendizaje</p>
@@ -851,42 +822,41 @@
                     <div class="feature-content">
                         <h3>Psicoeducación</h3>
                         <p>Información visual sobre síntomas, causas y estrategias de afrontamiento para el TLP. Aprende con infografías creativas.</p>
-                        <a href="#psicoeducacion" class="feature-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                        <a href="psicoeducacion.html" class="feature-link">Explorar <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
-                <div class="feature-card" id="dbt">
+                <div class="feature-card">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717406-1c69efaf1dd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
                         <h3>DBT</h3>
                         <p>Técnicas de Terapia Dialéctica Conductual presentadas de forma creativa y experiencial. Mindfulness con enfoque sensorial.</p>
-                        <a href="#dbt" class="feature-link">Ver ejercicios <i class="fas fa-arrow-right"></i></a>
+                        <a href="dbt.html" class="feature-link">Ver ejercicios <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
-                <div class="feature-card" id="blog">
+                <div class="feature-card">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
                         <h3>Blog</h3>
                         <p>Relatos personales, arte terapéutico y exploraciones creativas sobre la experiencia de vivir con TLP.</p>
-                        <a href="#blog" class="feature-link">Leer artículos <i class="fas fa-arrow-right"></i></a>
+                        <a href="blog.html" class="feature-link">Leer artículos <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
-                <div class="feature-card" id="foro">
+                <div class="feature-card">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
                         <h3>Foro</h3>
                         <p>Comunidad segura para compartir experiencias, obtener apoyo y conectar con personas que comprenden el TLP.</p>
-                        <a href="#foro" class="feature-link">Unirse al foro <i class="fas fa-arrow-right"></i></a>
+                        <a href="foro.html" class="feature-link">Unirse al foro <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
-        <div class="container">
+    <section class="testimonials" id="testimonios"> <div class="container">
             <div class="section-title">
                 <h2>EXPERIENCIAS</h2>
                 <p>Voces de nuestra comunidad creativa</p>
@@ -935,39 +905,10 @@
         </div>
     </section>
 
-    <section class="premium" id="premium">
-        <div class="container premium-container">
+    <section class="premium-cta-section" id="premium-cta"> <div class="container premium-cta-container">
             <h2>EXPERIENCIA PREMIUM</h2>
             <p>Acceso completo a nuestro universo de recursos creativos para el manejo del TLP</p>
-            
-            <div class="benefits">
-                <div class="benefit">
-                    <i class="fas fa-vr-cardboard"></i>
-                    <h3>Realidad Virtual</h3>
-                    <p>Experiencias inmersivas para practicar habilidades DBT en entornos controlados</p>
-                </div>
-                
-                <div class="benefit">
-                    <i class="fas fa-palette"></i>
-                    <h3>Talleres de Arte</h3>
-                    <p>Sesiones guiadas de arte terapia con enfoque en la expresión emocional</p>
-                </div>
-                
-                <div class="benefit">
-                    <i class="fas fa-headset"></i>
-                    <h3>Soporte 24/7</h3>
-                    <p>Acceso prioritario a nuestro equipo de apoyo en momentos críticos</p>
-                </div>
-                
-                <div class="benefit">
-                    <i class="fas fa-music"></i>
-                    <h3>Meditaciones Sonoras</h3>
-                    <p>Experiencias auditivas diseñadas para la regulación emocional</p>
-                </div>
-            </div>
-            
-            <a href="#premium" class="cta-button">UNIRME AL VIAJE</a>
-        </div>
+            <a href="premium.html" class="cta-button">DESCUBRE PREMIUM</a> </div>
     </section>
 
     <footer>
@@ -987,22 +928,22 @@
                 <div class="footer-column">
                     <h3>Recursos</h3>
                     <ul class="footer-links">
-                        <li><a href="#psicoeducacion">Galería Visual</a></li>
-                        <li><a href="#dbt">Meditaciones Guiadas</a></li>
-                        <li><a href="#blog">Diario Emocional</a></li>
-                        <li><a href="#foro">Arte Terapéutico</a></li>
-                        <li><a href="#premium">Recursos de Crisis</a></li>
+                        <li><a href="psicoeducacion.html">Galería Visual</a></li>
+                        <li><a href="dbt.html">Meditaciones Guiadas</a></li>
+                        <li><a href="blog.html">Diario Emocional</a></li>
+                        <li><a href="foro.html">Arte Terapéutico</a></li>
+                        <li><a href="premium.html">Recursos de Crisis</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Explorar</h3>
                     <ul class="footer-links">
-                        <li><a href="#psicoeducacion">Psicoeducación</a></li>
-                        <li><a href="#dbt">DBT</a></li>
-                        <li><a href="#blog">Blog</a></li>
-                        <li><a href="#foro">Foro</a></li>
-                        <li><a href="#premium">Eventos</a></li>
+                        <li><a href="psicoeducacion.html">Psicoeducación</a></li>
+                        <li><a href="dbt.html">DBT</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="foro.html">Foro</a></li>
+                        <li><a href="premium.html">Eventos</a></li>
                     </ul>
                 </div>
                 
@@ -1025,63 +966,61 @@
     </footer>
 
     <script>
-        // JavaScript para efectos interactivos
         document.addEventListener('DOMContentLoaded', function() {
             // Efecto de movimiento en elementos al pasar el mouse
-            const cards = document.querySelectorAll('.feature-card, .testimonial-card, .benefit');
+            const cards = document.querySelectorAll('.feature-card, .testimonial-card, .benefit-card'); // .benefit-card es de premium.html, aquí no aplica
             cards.forEach(card => {
                 card.addEventListener('mousemove', function(e) {
-                    // Calculate rotation values based on mouse position relative to the card center
                     const rect = card.getBoundingClientRect();
                     const cardX = rect.left + rect.width / 2;
                     const cardY = rect.top + rect.height / 2;
                     const mouseX = e.clientX;
                     const mouseY = e.clientY;
                     
-                    const rotateX = (mouseY - cardY) / 20; // Adjust divisor for sensitivity
-                    const rotateY = (mouseX - cardX) / -20; // Adjust divisor for sensitivity
+                    const rotateX = (mouseY - cardY) / 20; 
+                    const rotateY = (mouseX - cardX) / -20; 
                     
                     this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
                 });
                 
                 card.addEventListener('mouseenter', function() {
-                    this.style.transition = 'transform 0.1s ease-out'; // Quick transition for entering
+                    this.style.transition = 'transform 0.1s ease-out'; 
                 });
                 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; // Smooth transition for leaving
+                    this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; 
                     this.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
                 });
             });
             
             // Cambio de color en títulos (JS version, complements CSS animation)
-            const creativeTexts = document.querySelectorAll('.hero h2, .premium h2, .section-title h2');
-            let hue = 0;
-            
-            // Only apply JS hue rotation if not already animated by CSS to avoid conflicts
-            // The CSS animation 'creativeText' is on .hero h2 and .premium h2
-            // .section-title h2 does not have this CSS animation by default.
             const sectionTitleH2s = document.querySelectorAll('.section-title h2');
+            let hue = 0;
 
             if (sectionTitleH2s.length > 0) {
                  setInterval(() => {
                     hue = (hue + 1) % 360;
                     sectionTitleH2s.forEach(text => {
-                        // Check if it already has a CSS animation that handles hue-rotate
-                        const computedStyle = window.getComputedStyle(text);
-                        if (!computedStyle.animationName || computedStyle.animationName === 'none') {
+                        const parentSection = text.closest('section');
+                        if (!text.closest('.hero') && !text.closest('.premium-cta-section') && // Excluir hero y premium-cta
+                            (!parentSection || !parentSection.classList.contains('psicoeducacion-detailed-section'))) { // Excluir si es de psicoeducacion.html
                            text.style.filter = `hue-rotate(${hue}deg)`;
                         }
                     });
-                }, 100); // Reduced interval for smoother JS animation if used
+                }, 100); 
             }
             
             // Efecto de partículas en botones
             const buttons = document.querySelectorAll('.cta-button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    const x = e.clientX - e.target.getBoundingClientRect().left; // Corrected offset calculation
-                    const y = e.clientY - e.target.getBoundingClientRect().top;  // Corrected offset calculation
+                    // No prevenir si es un enlace real a otra página
+                    // if (this.getAttribute('href').startsWith('#')) {
+                    //     e.preventDefault(); 
+                    // }
+
+                    const x = e.clientX - e.target.getBoundingClientRect().left; 
+                    const y = e.clientY - e.target.getBoundingClientRect().top;  
                     
                     const ripples = document.createElement('span');
                     ripples.classList.add('ripple');
@@ -1091,45 +1030,55 @@
                     
                     setTimeout(() => {
                         ripples.remove();
-                    }, 600); // Match ripple animation duration
+                    }, 600); 
                 });
             });
             
-            // Scroll suave
+            // Scroll suave para enlaces internos de la página (si los hubiera)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
                     const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    
-                    if (targetElement) {
-                        let headerOffset = 80; // Default offset
-                        const header = document.querySelector('header');
-                        if (header) {
-                            headerOffset = header.offsetHeight + 20; // Dynamic header height + buffer
-                        }
+                    // Solo prevenir y hacer scroll suave si es un ancla real en ESTA página
+                    if (targetId !== "#" && document.querySelector(targetId)) {
+                        e.preventDefault();
+                        const targetElement = document.querySelector(targetId);
                         
-                        const elementPosition = targetElement.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-            
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: 'smooth'
-                        });
+                        if (targetElement) {
+                            let headerOffset = 80; 
+                            const header = document.querySelector('header');
+                            if (header) {
+                                headerOffset = header.offsetHeight + 20; 
+                            }
+                            
+                            const elementPosition = targetElement.getBoundingClientRect().top;
+                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                            window.scrollTo({
+                                top: offsetPosition,
+                                behavior: 'smooth'
+                            });
+                        }
                     }
                 });
             });
             
-            // Destacar sección actual en navegación
-            const sections = document.querySelectorAll('section[id]'); // Ensure sections have IDs
+            // Destacar sección actual en navegación (para index.html)
+            const sections = document.querySelectorAll('section[id]'); 
             const navLinks = document.querySelectorAll('nav a');
             const header = document.querySelector('header');
             
+            // Set "Inicio" as active by default on index.html
+            const inicioLink = document.querySelector('nav a[href="index.html"]');
+            if (inicioLink) {
+                navLinks.forEach(link => link.classList.remove('active')); // Clear others first
+                inicioLink.classList.add('active');
+            }
+
+
             window.addEventListener('scroll', () => {
-                let currentId = '';
+                let currentId = 'inicio'; // Default to 'inicio'
                 const scrollY = window.pageYOffset;
-                // Use a smaller offset, considering the sticky header height for better accuracy
-                const offset = header ? header.offsetHeight + 40 : 100; // Dynamic header height + small buffer or fallback
+                const offset = header ? header.offsetHeight + 60 : 120; // Adjusted offset
 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
@@ -1140,21 +1089,11 @@
                 
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    // More precise matching of href with current section ID
-                    if (link.getAttribute('href') === `#${currentId}`) {
+                    // For index.html, anclas internas son #id, no archivos.html#id
+                    if (link.getAttribute('href') === `#${currentId}` || (currentId === 'inicio' && link.getAttribute('href') === 'index.html')) {
                         link.classList.add('active');
                     }
                 });
-
-                // If no section is "current" (e.g., at the very top before any section or between sections)
-                // default to "inicio" if scroll is near the top.
-                if (!document.querySelector('nav a.active') && scrollY < (sections[0]?.offsetTop - offset || 300) ) {
-                    navLinks.forEach(link => {
-                        if (link.getAttribute('href') === '#inicio') {
-                            link.classList.add('active');
-                        }
-                    });
-                }
             });
         });
     </script>
