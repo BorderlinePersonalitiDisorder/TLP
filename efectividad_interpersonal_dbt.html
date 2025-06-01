@@ -29,6 +29,7 @@
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209;
+            --accent-red-rgb: 255, 69, 0;
         }
         
         * {
@@ -187,11 +188,10 @@
         }
 
         .page-header h2 {
-            /* Typography changed for main title */
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', serif; 
             font-size: 2.8rem; 
             font-weight: 700;
-            color: var(--accent-blue); /* Module specific color */
+            color: var(--accent-blue); 
             margin-bottom: 0.5rem;
             text-transform: none; 
             letter-spacing: 0.5px;
@@ -227,11 +227,10 @@
         }
 
         .module-content-section h3 {
-            /* Typography changed for section titles */
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.9rem; 
-            color: var(--accent-blue); /* Module specific color */
+            color: var(--accent-blue); 
             margin-top: 1rem; 
             margin-bottom: 1.8rem; 
             text-align: center;
@@ -239,8 +238,7 @@
             padding-bottom: 0.8rem; 
         }
          .module-content-section h4 {
-            /* Typography changed for sub-section titles */
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.5rem; 
             color: var(--accent-yellow);
@@ -253,7 +251,7 @@
             font-family: 'Raleway', sans-serif;
             font-weight: 700;
             font-size: 1.2rem;
-            color: var(--secondary-cyan);
+            color: var(--secondary-cyan); 
             margin-top: 1.5rem;
             margin-bottom: 0.8rem;
         }
@@ -280,7 +278,7 @@
             content: '\f00c'; 
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
-            color: var(--accent-blue); /* Module specific color */
+            color: var(--accent-blue); 
             position: absolute;
             left: 0;
             top: 4px; 
@@ -303,7 +301,7 @@
             font-style: italic;
         }
         .module-content-section blockquote {
-            border-left: 5px solid var(--accent-green); /* Changed color for variety */
+            border-left: 5px solid var(--accent-green); 
             padding: 15px 25px;
             margin: 2rem 0;
             font-style: italic;
@@ -317,7 +315,7 @@
             text-align: left;
         }
         .example-box {
-            background-color: rgba(var(--accent-yellow-rgb), 0.05);
+            background-color: rgba(var(--accent-yellow-rgb), 0.05); 
             border: 1px dashed var(--accent-yellow);
             padding: 20px;
             margin: 1.5rem 0;
@@ -326,7 +324,7 @@
         .example-box h5 {
             color: var(--accent-yellow);
             margin-top: 0;
-            font-family: 'Raleway', sans-serif; /* Ensure consistency */
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700;
         }
         
@@ -345,6 +343,34 @@
         }
         .breadcrumb span {
             color: var(--text-color-medium);
+        }
+
+        .back-to-link-container {
+            text-align: center;
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .back-to-btn {
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); 
+            color: var(--dark-bg); 
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 10px rgba(var(--secondary-cyan-rgb), 0.4); 
+        }
+        .back-to-btn:hover {
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--accent-green-rgb), 0.5); 
+        }
+        .back-to-btn i {
+            font-size: 1em; 
         }
         
         footer { 
@@ -476,6 +502,7 @@
             .module-content-section h4 {font-size: 1.2rem;} 
             .module-content-section p,
             .module-content-section li {font-size: 1rem;} 
+            .back-to-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -485,8 +512,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="index.html" rel="noopener noreferrer" class="logo">
-                <i class="fas fa-brain"></i>
+            <a href="index.html" rel="noopener noreferrer" class="logo"> <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
             <nav>
@@ -642,65 +668,141 @@
             </section>
 
             <section class="module-content-section">
-                <h3><i class="fas fa-balance-scale"></i> La Dialéctica de la Efectividad Interpersonal</h3>
-                <p>Un aspecto central de la DBT es la <strong>dialéctica</strong>, que implica encontrar la síntesis o el equilibrio entre dos polos aparentemente opuestos. En la efectividad interpersonal, la dialéctica principal es entre:</p>
+                <h3><i class="fas fa-balance-scale"></i> La Dialéctica de la Efectividad Interpersonal: Encontrando el Equilibrio</h3>
+                <p>Un aspecto central y sofisticado de la DBT es la <strong>dialéctica</strong>, que implica la búsqueda constante de la síntesis o el equilibrio entre dos polos que, a primera vista, pueden parecer opuestos o irreconciliables. En el contexto de la efectividad interpersonal, la dialéctica principal se manifiesta en la necesidad de balancear los tres objetivos clave:</p>
                 <ul>
-                    <li><strong>Conseguir tus objetivos</strong> (DEAR MAN)</li>
-                    <li><strong>Mantener la relación</strong> (GIVE)</li>
-                    <li><strong>Mantener tu autorespeto</strong> (FAST)</li>
+                    <li><strong>Conseguir tus objetivos legítimos</strong> (usando principalmente DEAR MAN).</li>
+                    <li><strong>Mantener y mejorar la relación</strong> (usando principalmente GIVE).</li>
+                    <li><strong>Mantener tu autorespeto y actuar según tus valores</strong> (usando principalmente FAST).</li>
                 </ul>
-                <p>No siempre es posible maximizar los tres objetivos simultáneamente en cada interacción. A veces, puede ser necesario priorizar uno sobre los otros. Por ejemplo:</p>
+                <p>La realidad de las interacciones humanas es que no siempre es posible maximizar los tres objetivos simultáneamente en cada situación. Aquí es donde entra en juego la <em>sabiduría interpersonal</em>: la capacidad de evaluar el contexto, nuestras prioridades y las posibles consecuencias para decidir qué objetivo (o combinación de objetivos) es más importante en ese momento específico.</p>
+                
+                <h5>Consideraciones para Priorizar Objetivos:</h5>
                 <ul>
-                    <li>Si tu objetivo es muy importante y la relación no tanto (o es una interacción única), podrías enfocarte más en DEAR MAN.</li>
-                    <li>Si la relación es crucial y a largo plazo, podrías priorizar GIVE, incluso si eso significa no obtener exactamente lo que querías en ese momento.</li>
-                    <li>Si una situación amenaza tus valores fundamentales, FAST será prioritario, incluso si eso significa arriesgar el objetivo o la relación.</li>
+                    <li><strong>Importancia del Objetivo:</strong> ¿Qué tan crucial es para ti lograr esta petición específica o que se respete este límite? Si es algo vital, DEAR MAN podría tener más peso.</li>
+                    <li><strong>Importancia de la Relación:</strong> ¿Es esta una relación a largo plazo que valoras profundamente (ej. pareja, familiar cercano, amigo íntimo)? Si es así, GIVE será fundamental. ¿Es una interacción única o con alguien con quien no tienes un vínculo fuerte?</li>
+                    <li><strong>Importancia del Autorespeto:</strong> ¿La situación implica comprometer tus valores fundamentales o sentirte degradado? En estos casos, FAST debe ser prioritario.</li>
+                    <li><strong>Consecuencias a Corto y Largo Plazo:</strong> ¿Qué pasará inmediatamente si priorizas un objetivo sobre otro? ¿Y cuáles serán las consecuencias a largo plazo para ti, para la otra persona y para la relación?</li>
+                    <li><strong>Derechos y Responsabilidades:</strong> ¿Tienes derecho a lo que pides? ¿Tienes la responsabilidad de decir no? ¿La otra persona está violando tus derechos?</li>
                 </ul>
-                <p>La sabiduría interpersonal implica evaluar cada situación y decidir qué objetivo es más importante en ese contexto particular, y luego aplicar las habilidades correspondientes de manera flexible.</p>
+
+                <div class="example-box">
+                    <h5>Ejemplo de Dialéctica en Acción:</h5>
+                    <p><strong>Situación:</strong> Tu jefe te pide constantemente que te quedes hasta tarde, afectando tu vida personal, un valor importante para ti (Autorespeto - FAST).</p>
+                    <p><strong>Posible Enfoque Dialéctico:</strong></p>
+                    <ol>
+                        <li><strong>Objetivo (DEAR MAN):</strong> "Me gustaría establecer un límite más claro sobre las horas extra."</li>
+                        <li><strong>Relación (GIVE):</strong> "Entiendo que a veces hay picos de trabajo y estoy dispuesto/a a colaborar, pero necesito un mejor equilibrio." (Validación, gentileza).</li>
+                        <li><strong>Autorespeto (FAST):</strong> "No puedo seguir comprometiendo mi salud y mi tiempo personal de esta manera de forma rutinaria; es importante para mí tener un balance." (Apégate a tus valores, sé justo contigo mismo).</li>
+                    </ol>
+                    <p>Aquí, podrías negociar (N de DEAR MAN) una solución, como planificar mejor las tareas o establecer un límite de horas extra semanales, logrando parte de tu objetivo, manteniendo una relación laboral funcional y respetando tu necesidad de descanso.</p>
+                </div>
+                <p>La práctica constante de evaluar estas prioridades en diferentes contextos te ayudará a volverte más flexible y sabio en tus interacciones.</p>
             </section>
 
             <section class="module-content-section">
-                <h3><i class="fas fa-user-cog"></i> Factores que Pueden Reducir la Efectividad Interpersonal</h3>
-                <p>La DBT también nos ayuda a ser conscientes de los factores que pueden obstaculizar nuestra capacidad para ser efectivos en las relaciones. Identificarlos es el primer paso para abordarlos:</p>
+                <h3><i class="fas fa-user-cog"></i> Factores que Pueden Reducir la Efectividad Interpersonal y Cómo Abordarlos</h3>
+                <p>La DBT reconoce que, incluso conociendo las habilidades, diversos factores pueden obstaculizar nuestra capacidad para ser efectivos. Ser consciente de ellos es el primer paso para superarlos:</p>
                 <ul>
-                    <li><strong>Falta de Habilidad:</strong> Simplemente no saber qué hacer o cómo hacerlo. Esto se soluciona aprendiendo y practicando las habilidades DEAR MAN, GIVE y FAST.</li>
-                    <li><strong>Mitos Interpersonales que se Interponen:</strong> Creencias erróneas sobre las relaciones o sobre uno mismo que dificultan la aplicación de las habilidades.
-                        <div class="example-box">
-                            <h5>Ejemplos de Mitos:</h5>
-                            <p>"Pedir ayuda es un signo de debilidad."<br>"Si digo 'no', la gente se enfadará conmigo y me abandonará."<br>"Debo complacer a los demás para que me quieran."</p>
-                        </div>
+                    <li>
+                        <strong>Falta de Habilidad o Conocimiento:</strong> A veces, simplemente no sabemos <em>qué</em> hacer o <em>cómo</em> decirlo.
+                        <ul>
+                            <li><em>Solución:</em> Aprendizaje activo de las habilidades DEAR MAN, GIVE, FAST. Buscar ejemplos, practicar con hojas de trabajo, y considerar el role-playing.</li>
+                        </ul>
                     </li>
-                    <li><strong>Emociones Intensas que Interfieren:</strong> Cuando emociones como la ira, el miedo, la vergüenza o la tristeza son muy intensas, pueden "secuestrar" nuestra capacidad de pensar con claridad y aplicar las habilidades. Aquí es donde las habilidades de Regulación Emocional y Tolerancia al Malestar de DBT se vuelven cruciales como apoyo.</li>
-                    <li><strong>Indecisión o Conflicto de Objetivos:</strong> No estar seguro de lo que se quiere, si se tiene derecho a pedirlo, o tener objetivos contradictorios (ej. querer que alguien cambie pero también temer su reacción).</li>
-                    <li><strong>El Entorno o la Otra Persona:</strong> A veces, el entorno puede ser invalidante o la otra persona puede no ser receptiva o ser habilidosa en la manipulación. En estos casos, la efectividad puede implicar establecer límites firmes, buscar apoyo externo o, en última instancia, decidir si la relación es sostenible.</li>
-                    <li><strong>Preocupaciones a Corto vs. Largo Plazo:</strong> A veces, ceder a corto plazo para evitar un conflicto puede parecer efectivo, pero puede dañar la relación o el autorespeto a largo plazo. La efectividad implica considerar las consecuencias a más largo alcance.</li>
+                    <li>
+                        <strong>Mitos Interpersonales que se Interponen:</strong> Creencias disfuncionales sobre uno mismo, los demás o las relaciones.
+                        <div class="example-box">
+                            <h5>Ejemplos de Mitos y Contrapuntos DBT:</h5>
+                            <p><strong>Mito:</strong> "Pedir lo que necesito es egoísta." <br/><em>Contrapunto DBT:</em> "Tengo derecho a pedir mis necesidades de forma respetuosa; no hacerlo puede llevar al resentimiento."</p>
+                            <p><strong>Mito:</strong> "Si digo 'no', la gente se enfadará y me abandonará." <br/><em>Contrapunto DBT:</em> "Las personas que me respetan entenderán mis límites; establecerlos es parte de una relación sana."</p>
+                            <p><strong>Mito:</strong> "Debo complacer a los demás para que me quieran o acepten." <br/><em>Contrapunto DBT:</em> "Mi valía no depende de la aprobación constante de los demás; el autorespeto es clave."</p>
+                        </div>
+                        <ul>
+                            <li><em>Solución:</em> Identificar y desafiar estos mitos usando técnicas de reestructuración cognitiva y experimentación conductual (probar actuar de forma diferente y ver qué pasa).</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Emociones Intensas que Interfieren (Mente Emocional):</strong> Cuando emociones como la ira, el miedo intenso, la vergüenza paralizante o la tristeza abrumadora son muy fuertes, pueden "secuestrar" nuestra capacidad de pensar con claridad y aplicar las habilidades.
+                        <ul>
+                            <li><em>Solución:</em> Utilizar habilidades de Regulación Emocional para reducir la intensidad de la emoción antes de la interacción (ej. Acción Opuesta, habilidad PLEASE) y/o habilidades de Tolerancia al Malestar para sobrellevar la emoción durante la interacción sin actuar impulsivamente (ej. habilidades TIPP, ACEPTAS, Autocalma). A veces, posponer la conversación hasta estar más calmado es lo más efectivo.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Indecisión o Conflicto Interno de Objetivos:</strong> No estar seguro de lo que se quiere, si se tiene el derecho a pedirlo, o tener objetivos que entran en conflicto (ej. querer cercanía pero temer la intimidad).
+                        <ul>
+                            <li><em>Solución:</em> Usar habilidades de Mindfulness para conectar con la Mente Sabia y clarificar valores y prioridades. Realizar un análisis de pros y contras para diferentes cursos de acción.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>El Entorno o las Características de la Otra Persona:</strong> A veces, el entorno puede ser invalidante, o la otra persona puede ser particularmente difícil, no receptiva, o habilidosa en la manipulación.
+                        <ul>
+                            <li><em>Solución:</em> Evaluar el poder relativo en la situación. A veces, la efectividad puede implicar aceptar que no se puede cambiar a la otra persona, establecer límites muy firmes, buscar apoyo externo (ej. un supervisor, un mediador), o, en casos extremos y si es posible, decidir reducir el contacto o terminar la relación si es consistentemente dañina.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Preocupaciones a Corto Plazo vs. Consecuencias a Largo Plazo:</strong> A veces, ceder a corto plazo para evitar un conflicto inmediato puede parecer la opción "fácil", pero puede llevar a un patrón de sumisión que daña la relación y el autorespeto a largo plazo.
+                        <ul>
+                            <li><em>Solución:</em> Practicar la visión a largo plazo. Preguntarse: "¿Cómo me sentiré conmigo mismo/a mañana, la próxima semana, el próximo año si actúo de esta manera?" Considerar los efectos acumulativos de nuestras elecciones interpersonales.</li>
+                        </ul>
+                    </li>
+                     <li>
+                        <strong>Fatiga o Agotamiento:</strong> Cuando estamos física o emocionalmente agotados, nuestra capacidad para ser efectivos disminuye.
+                        <ul>
+                            <li><em>Solución:</em> Priorizar el autocuidado (habilidad PLEASE). Reconocer cuándo necesitamos descansar y recargar energías antes de abordar interacciones difíciles.</li>
+                        </ul>
+                    </li>
                 </ul>
             </section>
 
             <section class="module-content-section">
-                <h3><i class="fas fa-hands-helping"></i> Practicando y Fortaleciendo tus Habilidades Interpersonales</h3>
-                <p>Como cualquier habilidad, la efectividad interpersonal mejora con la práctica constante y deliberada:</p>
+                <h3><i class="fas fa-hands-helping"></i> Practicando y Fortaleciendo tus Habilidades Interpersonales: Un Proceso Continuo</h3>
+                <p>Como cualquier conjunto de habilidades complejas, la efectividad interpersonal no se domina de la noche a la mañana. Requiere práctica constante, paciencia y autocompasión. Aquí hay algunas estrategias para fortalecer estas habilidades:</p>
                 <ul>
-                    <li><strong>Comienza con Situaciones de Bajo Riesgo:</strong> Practica las habilidades en interacciones menos cargadas emocionalmente o con personas con las que te sientas más seguro.</li>
-                    <li><strong>Usa Hojas de Trabajo y Planificación:</strong> Antes de una interacción importante, planifica cómo usarás las habilidades DEAR MAN, GIVE o FAST. Escribirlo puede ayudar a clarificar tus objetivos y estrategias.</li>
-                    <li><strong>Role-Playing (Juego de Roles):</strong> Practica con un terapeuta, un amigo de confianza o un grupo de habilidades. Esto te permite ensayar y recibir feedback en un entorno seguro.</li>
-                    <li><strong>Mindfulness Antes y Durante:</strong> Practica la atención plena para ser consciente de tus objetivos, tus emociones y las de la otra persona durante la interacción. Esto te ayuda a mantenerte enfocado y a responder con habilidad en lugar de reaccionar impulsivamente.</li>
-                    <li><strong>Revisa y Aprende de Cada Interacción:</strong> Después de una interacción, reflexiona sobre qué funcionó, qué no funcionó y qué podrías hacer diferente la próxima vez. Sé autocompasivo; el aprendizaje es un proceso.</li>
-                    <li><strong>Pide Feedback (si es apropiado):</strong> De personas de confianza, pregunta cómo perciben tu estilo de comunicación.</li>
+                    <li><strong>Comienza con Situaciones de Bajo Riesgo:</strong> No intentes aplicar DEAR MAN por primera vez en una confrontación con tu jefe sobre un tema crítico. Practica pidiendo cosas pequeñas a amigos o familiares, o diciendo "no" a peticiones menores donde las consecuencias no sean tan altas.</li>
+                    <li><strong>Usa Hojas de Trabajo y Planificación Escrita:</strong> Antes de una interacción importante, tómate el tiempo para planificar. Escribe tus puntos DEAR MAN, considera qué habilidades GIVE y FAST serán relevantes. Esto ayuda a clarificar tus objetivos y a sentirte más preparado.</li>
+                    <li><strong>Role-Playing (Juego de Roles):</strong> Esta es una herramienta invaluable. Practica la interacción con un terapeuta, un amigo de confianza, un familiar comprensivo o en un grupo de habilidades DBT. El role-playing te permite ensayar diferentes enfoques, recibir feedback constructivo y reducir la ansiedad antes de la situación real.</li>
+                    <li><strong>Visualización:</strong> Imagina la interacción desarrollándose de manera efectiva. Visualízate aplicando las habilidades con calma y confianza. Esto puede aumentar tu autoeficacia.</li>
+                    <li><strong>Mindfulness Antes, Durante y Después:</strong>
+                        <ul>
+                            <li><strong>Antes:</strong> Usa mindfulness para calmarte, conectar con tu Mente Sabia y clarificar tus objetivos y valores.</li>
+                            <li><strong>Durante:</strong> Intenta mantener una conciencia mindful de tus emociones, pensamientos e impulsos, así como de las reacciones de la otra persona. Esto te ayuda a mantenerte enfocado (M de DEAR MAN) y a ajustar tu enfoque si es necesario.</li>
+                            <li><strong>Después:</strong> Dedica un momento a observar cómo te sientes, qué pensamientos surgen, sin juicio.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Revisa y Aprende de Cada Interacción (Análisis en Cadena Interpersonal):</strong> Después de una interacción, especialmente si fue difícil o no salió como esperabas, reflexiona (quizás por escrito):
+                        <ul>
+                            <li>¿Cuál era mi objetivo? ¿Lo logré?</li>
+                            <li>¿Qué habilidades usé? ¿Cuáles fueron efectivas? ¿Cuáles no?</li>
+                            <li>¿Qué factores internos (emociones, pensamientos, mitos) interfirieron?</li>
+                            <li>¿Qué factores externos influyeron?</li>
+                            <li>¿Qué podría hacer diferente la próxima vez para ser más efectivo?</li>
+                        </ul>
+                        Sé autocompasivo en este proceso; cada interacción es una oportunidad de aprendizaje.
+                    </li>
+                    <li><strong>Pide Feedback (si es apropiado y seguro):</strong> De personas de confianza que presenciaron la interacción o con quienes tienes una relación sólida, puedes pedir feedback específico sobre cómo te comunicaste (ej. "¿Fui claro?", "¿Parecía respetuoso?").</li>
+                    <li><strong>Celebra los Pequeños Éxitos:</strong> Reconoce y refuerza tus propios esfuerzos y progresos, por pequeños que sean. Cada vez que intentas ser más efectivo, estás fortaleciendo estas habilidades.</li>
                 </ul>
             </section>
 
             <section class="module-content-section">
                 <h3><i class="fas fa-road"></i> Beneficios a Largo Plazo de una Mayor Efectividad Interpersonal</h3>
-                <p>Invertir tiempo y esfuerzo en desarrollar estas habilidades puede transformar profundamente tu vida:</p>
+                <p>Invertir tiempo y esfuerzo constante en desarrollar y aplicar estas habilidades puede transformar profundamente la calidad de tu vida y tus relaciones:</p>
                 <ul>
-                    <li><strong>Relaciones Más Saludables y Estables:</strong> Menos conflictos, mayor comprensión mutua y conexiones más genuinas.</li>
-                    <li><strong>Reducción del Estrés Interpersonal:</strong> Mayor capacidad para manejar desacuerdos y situaciones difíciles sin un coste emocional excesivo.</li>
-                    <li><strong>Aumento de la Autoestima y el Autorespeto:</strong> Sentirse competente y actuar de acuerdo con los propios valores en las relaciones.</li>
-                    <li><strong>Mayor Capacidad para Satisfacer Necesidades:</strong> Ser capaz de pedir lo que necesitas y establecer límites de manera efectiva.</li>
-                    <li><strong>Mejora General del Bienestar Emocional:</strong> Las relaciones positivas son un pilar fundamental de la salud mental.</li>
+                    <li><strong>Relaciones Más Saludables, Estables y Satisfactorias:</strong> Menos conflictos destructivos, mayor comprensión mutua, conexiones más genuinas y profundas, y una mayor capacidad para reparar rupturas cuando ocurren.</li>
+                    <li><strong>Reducción Significativa del Estrés Interpersonal:</strong> Mayor capacidad para manejar desacuerdos, críticas y situaciones sociales difíciles sin un coste emocional excesivo o conductas desadaptativas.</li>
+                    <li><strong>Aumento Sostenido de la Autoestima y el Autorespeto:</strong> Sentirse competente, capaz y actuar de acuerdo con los propios valores en las relaciones refuerza una imagen positiva de uno mismo.</li>
+                    <li><strong>Mayor Capacidad para Satisfacer Necesidades Legítimas:</strong> Ser capaz de pedir lo que necesitas, establecer límites saludables y decir "no" de manera efectiva te empodera.</li>
+                    <li><strong>Mejora General del Bienestar Emocional y la Calidad de Vida:</strong> Las relaciones positivas y el sentido de competencia interpersonal son pilares fundamentales de la salud mental y la felicidad.</li>
+                    <li><strong>Disminución de Sentimientos de Soledad y Aislamiento:</strong> Al construir y mantener conexiones más auténticas.</li>
+                    <li><strong>Reducción de la Impulsividad en las Relaciones:</strong> Al tener un repertorio de habilidades más adaptativas para manejar situaciones difíciles.</li>
                 </ul>
-                <p>Al practicar consistentemente las habilidades de efectividad interpersonal, las personas pueden aprender a navegar el complejo y a menudo desafiante mundo de las relaciones humanas con mayor confianza, habilidad y satisfacción, fomentando conexiones más profundas y un mayor sentido de bienestar personal.</p>
+                <p>Al practicar consistentemente las habilidades de efectividad interpersonal, las personas pueden aprender a navegar el complejo y a menudo desafiante mundo de las relaciones humanas con mayor confianza, sabiduría y satisfacción, fomentando conexiones más profundas y un mayor sentido de bienestar personal y comunitario.</p>
             </section>
+            
+            <div class="back-to-link-container">
+                <a href="dbt.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver a DBT</a>
+            </div>
 
         </div>
     </main>
@@ -795,7 +897,7 @@
                 if (linkFilename === 'cursos.html' && 
                     (currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
-                     currentPageFilename === 'mindfulness_dbt.html' ||
+                     currentPageFilename === 'mindfulness_dbt.html' || 
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' || // Current page
