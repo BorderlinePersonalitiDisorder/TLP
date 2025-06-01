@@ -29,6 +29,7 @@
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209; /* Primary accent for this page */
+            --accent-red-rgb: 255, 69, 0; /* Kept for other potential uses, but not for this button now */
         }
         
         * {
@@ -187,13 +188,13 @@
         }
 
         .page-header h2 {
-            font-family: 'Playfair Display', serif; /* Changed font */
+            font-family: 'Playfair Display', serif; 
             font-size: 2.8rem; 
-            font-weight: 700; /* Added weight */
-            color: var(--secondary-cyan); /* Module specific color */
+            font-weight: 700; 
+            color: var(--secondary-cyan); 
             margin-bottom: 0.5rem;
-            text-transform: none; /* Removed uppercase for Playfair */
-            letter-spacing: 0.5px; /* Adjusted spacing */
+            text-transform: none; 
+            letter-spacing: 0.5px; 
             text-shadow: 0 0 8px rgba(var(--secondary-cyan-rgb),0.4); 
             display: inline-flex;
             align-items: center;
@@ -226,10 +227,10 @@
         }
 
         .module-content-section h3 {
-            font-family: 'Raleway', sans-serif; /* Changed font */
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.9rem; 
-            color: var(--secondary-cyan); /* Module specific color */
+            color: var(--secondary-cyan); 
             margin-top: 1rem; 
             margin-bottom: 1.8rem; 
             text-align: center;
@@ -237,7 +238,7 @@
             padding-bottom: 0.8rem; 
         }
          .module-content-section h4 {
-            font-family: 'Raleway', sans-serif; /* Changed font */
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.5rem; 
             color: var(--accent-yellow);
@@ -250,7 +251,7 @@
             font-family: 'Raleway', sans-serif;
             font-weight: 700;
             font-size: 1.2rem;
-            color: var(--accent-green); /* Changed for variety */
+            color: var(--accent-green); 
             margin-top: 1.5rem;
             margin-bottom: 0.8rem;
         }
@@ -277,7 +278,7 @@
             content: '\f00c'; 
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
-            color: var(--secondary-cyan); /* Module specific color */
+            color: var(--secondary-cyan); 
             position: absolute;
             left: 0;
             top: 4px; 
@@ -296,7 +297,7 @@
             font-weight: 700;
         }
         .module-content-section em {
-            color: var(--accent-yellow); /* Changed for variety */
+            color: var(--accent-yellow); 
             font-style: italic;
         }
         .module-content-section blockquote {
@@ -314,7 +315,7 @@
             text-align: left;
         }
         .example-box {
-            background-color: rgba(var(--accent-blue-rgb), 0.05); /* Changed for variety */
+            background-color: rgba(var(--accent-blue-rgb), 0.05); 
             border: 1px dashed var(--accent-blue);
             padding: 20px;
             margin: 1.5rem 0;
@@ -342,6 +343,35 @@
         }
         .breadcrumb span {
             color: var(--text-color-medium);
+        }
+
+        /* UPDATED: Back to Courses Button Styles for better contrast */
+        .back-to-link-container {
+            text-align: center;
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .back-to-btn {
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); /* New gradient */
+            color: var(--dark-bg); 
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 3px 10px rgba(var(--secondary-cyan-rgb), 0.4); /* Shadow with cyan */
+        }
+        .back-to-btn:hover {
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); /* Reversed gradient on hover */
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--accent-green-rgb), 0.5); /* Shadow with green */
+        }
+        .back-to-btn i {
+            font-size: 1em; 
         }
         
         footer { 
@@ -473,6 +503,7 @@
             .module-content-section h4 {font-size: 1.2rem;} 
             .module-content-section p,
             .module-content-section li {font-size: 1rem;} 
+            .back-to-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -726,6 +757,10 @@
                     <li><strong>Mito 5: Mindfulness es egoísta o auto-indulgente.</strong> <em>Realidad:</em> Al cultivar una mayor conciencia y compasión hacia uno mismo, a menudo nos volvemos más capaces de estar presentes y ser compasivos con los demás. Cuidar de nuestro mundo interior nos permite interactuar de manera más saludable con el mundo exterior.</li>
                 </ul>
             </section>
+            
+            <div class="back-to-link-container">
+                <a href="cursos.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver a Cursos</a>
+            </div>
 
         </div>
     </main>
@@ -820,7 +855,7 @@
                 if (linkFilename === 'cursos.html' && 
                     (currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
-                     currentPageFilename === 'mindfulness_dbt.html' || // Current page
+                     currentPageFilename === 'mindfulness_dbt.html' || 
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
@@ -858,7 +893,7 @@
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
                         } else {
-                            // entry.target.classList.remove('visible'); // Optional: re-animate on scroll
+                            // entry.target.classList.remove('visible'); 
                         }
                     });
                 }, observerOptions);
