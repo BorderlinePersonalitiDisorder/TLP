@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Reestructuración Cognitiva en TCC - Borderline Journey</title>
+    <title>Reestructuración Cognitiva en TCC - Guía Detallada - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-violet: #8A2BE2;
             --secondary-cyan: #00CED1;
-            --accent-magenta: #FF00FF;
+            --accent-magenta: #FF00FF; /* Primary accent for this page */
             --accent-green: #00FF7F;
             --accent-blue: #1E90FF;
             --accent-yellow: #FFD700;
-            --accent-red: #FF4500;
+            --accent-red: #FF4500; 
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
@@ -25,7 +26,7 @@
 
             --primary-violet-rgb: 138, 43, 226;
             --accent-blue-rgb: 30, 144, 255;
-            --accent-magenta-rgb: 255, 0, 255;
+            --accent-magenta-rgb: 255, 0, 255; /* Primary accent for this page */
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209;
@@ -188,13 +189,20 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif; /* Updated font */
+            font-size: 2.8rem; 
+            font-weight: 700;
             color: var(--accent-magenta); /* Component specific color */
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--accent-magenta-rgb),0.5);
+            text-transform: none; 
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(var(--accent-magenta-rgb),0.4); 
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .page-header h2 i {
+            font-size: 2.5rem; 
         }
 
         .page-header p.subtitle {
@@ -204,11 +212,11 @@
             margin: 0 auto 2rem auto;
         }
         
-        .component-content-section { /* Changed from module-content-section */
+        .component-content-section { 
             background: var(--card-bg);
-            padding: 30px;
+            padding: 30px 35px; 
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem; 
             border: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(30px);
@@ -220,63 +228,118 @@
         }
 
         .component-content-section h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.8rem;
-            color: var(--accent-magenta); /* Component specific color */
-            margin-bottom: 1.5rem;
+            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-weight: 700; 
+            font-size: 1.9rem; 
+            color: var(--accent-magenta); 
+            margin-top: 1rem; 
+            margin-bottom: 1.8rem; 
             text-align: center;
-            border-bottom: 2px dashed var(--accent-magenta);
-            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--accent-magenta); 
+            padding-bottom: 0.8rem; 
         }
          .component-content-section h4 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.3rem;
+            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-weight: 700; 
+            font-size: 1.5rem; 
             color: var(--accent-yellow);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--accent-yellow);
-            padding-left: 10px;
+            margin-top: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            border-left: 4px solid var(--accent-yellow); 
+            padding-left: 15px; 
+        }
+        .component-content-section h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-cyan);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .component-content-section p {
+        .component-content-section p, 
+        .component-content-section li { 
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; 
             color: var(--text-color-light);
+            line-height: 1.9; 
         }
-        .component-content-section ul {
+        .component-content-section ul,
+        .component-content-section ol {
             list-style: none;
-            padding-left: 0;
+            padding-left: 0; 
             margin-bottom: 1.5rem;
         }
         .component-content-section ul li {
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-            padding-left: 25px;
+            padding-left: 30px; 
             position: relative;
         }
         .component-content-section ul li::before {
-            content: '\f00c'; /* FontAwesome check icon */
+            content: '\f00c'; 
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
-            color: var(--accent-magenta); /* Component specific color */
+            color: var(--accent-magenta); 
             position: absolute;
             left: 0;
-            top: 2px;
+            top: 4px; 
+            font-size: 1em; 
         }
-        .component-content-section .keyword-link { /* Reusing keyword-link style */
+         .component-content-section ol li {
+            padding-left: 10px; 
+            margin-left: 20px; 
+            list-style-position: outside;
+        }
+        .component-content-section ol {
+            list-style-type: decimal; 
+        }
+        .component-content-section strong {
+            color: var(--accent-green); 
+            font-weight: 700;
+        }
+        .component-content-section em {
+            color: var(--secondary-cyan); 
+            font-style: italic;
+        }
+        .component-content-section blockquote {
+            border-left: 5px solid var(--accent-blue);
+            padding: 15px 25px;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+            background-color: rgba(var(--accent-blue-rgb), 0.08);
+            border-radius: 0 10px 10px 0;
+            font-size: 1.05rem;
+        }
+        .component-content-section blockquote p {
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .example-box {
+            background-color: rgba(var(--accent-yellow-rgb), 0.05);
+            border: 1px dashed var(--accent-yellow);
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .example-box h5 {
+            color: var(--accent-yellow);
+            margin-top: 0;
+            font-family: 'Raleway', sans-serif; 
+            font-weight: 700;
+        }
+        .keyword-link { 
             color: var(--accent-yellow);
             text-decoration: none;
             font-weight: bold;
             border-bottom: 1px dashed var(--accent-yellow);
             transition: all 0.3s ease;
         }
-        .component-content-section .keyword-link:hover {
+        .keyword-link:hover {
             color: var(--accent-green);
             border-bottom-color: var(--accent-green);
         }
-
-
+        
         .breadcrumb {
             text-align: center;
             margin-bottom: 2rem;
@@ -292,6 +355,59 @@
         }
         .breadcrumb span {
             color: var(--text-color-medium);
+        }
+
+        .navigation-buttons-container {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: wrap; 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+            margin-bottom: 1.5rem; 
+            padding: 1rem 0;
+            border-top: 1px dashed rgba(var(--primary-violet-rgb), 0.3);
+        }
+
+        .nav-btn {
+            display: inline-flex; 
+            align-items: center;
+            justify-content: center; 
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            flex-grow: 1; 
+            min-width: 220px; 
+            text-align: center;
+        }
+        .nav-btn i {
+            font-size: 1em; 
+        }
+
+        .back-btn {
+            background: linear-gradient(45deg, var(--accent-blue), var(--primary-violet)); /* Adjusted for TCC theme */
+            color: white; 
+            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.4);
+        }
+        .back-btn:hover {
+            background: linear-gradient(45deg, var(--primary-violet), var(--accent-blue)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--primary-violet-rgb), 0.5); 
+        }
+
+        .continue-btn {
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
+            color: var(--dark-bg); 
+            box-shadow: 0 3px 10px rgba(var(--accent-green-rgb), 0.4);
+        }
+        .continue-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--secondary-cyan-rgb), 0.5); 
         }
         
         footer { 
@@ -406,8 +522,12 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
-            .component-content-section h3 {font-size: 1.6rem;}
+            .page-header h2 { font-size: 2.2rem; } 
+            .component-content-section h3 {font-size: 1.7rem;} 
+            .component-content-section h4 {font-size: 1.3rem;} 
+            .navigation-buttons-container { flex-direction: column; } 
+            .nav-btn { width: 100%; max-width: 300px; } 
+
         }
         
         @media (max-width: 600px) {
@@ -415,12 +535,14 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } 
             .page-header p.subtitle { font-size: 1rem; }
             .component-content-section { padding: 20px; }
-            .component-content-section h3 {font-size: 1.5rem;}
-            .component-content-section p {font-size: 1rem;}
-            .component-content-section ul li {font-size: 0.95rem;}
+            .component-content-section h3 {font-size: 1.6rem;} 
+            .component-content-section h4 {font-size: 1.2rem;} 
+            .component-content-section p,
+            .component-content-section li {font-size: 1rem;} 
+            .nav-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -430,7 +552,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+            <a href="index.html" rel="noopener noreferrer" class="logo">
                 <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
@@ -458,46 +580,197 @@
             <div class="page-header">
                 <h2><i class="fas fa-brain-circuit"></i> Reestructuración Cognitiva en TCC</h2>
                 <p class="subtitle">
-                    Transformando pensamientos negativos y distorsiones para un mayor bienestar emocional.
+                    Transformando pensamientos negativos y distorsiones para un mayor bienestar emocional. Una guía detallada.
                 </p>
             </div>
 
             <section class="component-content-section">
-                <h3>Cambiando la Forma en que Pensamos</h3>
+                <h3><i class="fas fa-lightbulb"></i> Cambiando la Forma en que Pensamos: El Poder de la Mente</h3>
                 <p>
-                    La Reestructuración Cognitiva es una técnica fundamental dentro de la Terapia Cognitivo Conductual (TCC). Su objetivo principal es ayudar a las personas a identificar, desafiar y modificar patrones de pensamiento inútiles, negativos o irracionales (conocidos como <a href="https://es.wikipedia.org/wiki/Distorsi%C3%B3n_cognitiva" class="keyword-link" target="_blank" rel="noopener noreferrer">distorsiones cognitivas</a>) que contribuyen al malestar emocional y a comportamientos problemáticos.
+                    La <strong>Reestructuración Cognitiva</strong> es una de las piedras angulares y técnicas fundamentales dentro del amplio paraguas de la <strong>Terapia Cognitivo Conductual (TCC)</strong>. Su objetivo principal y más transformador es ayudar a las personas a tomar conciencia, identificar, analizar críticamente, desafiar y, finalmente, modificar aquellos patrones de pensamiento que son inútiles, persistentemente negativos, irracionales o distorsionados. Estos patrones, a menudo denominados <a href="https://es.wikipedia.org/wiki/Distorsi%C3%B3n_cognitiva" class="keyword-link" target="_blank" rel="noopener noreferrer">distorsiones cognitivas</a> o pensamientos automáticos negativos (PANs), son cruciales porque, según la TCC, no son los eventos en sí mismos los que causan nuestro malestar emocional, sino la <em>interpretación</em> que hacemos de ellos.
                 </p>
                 <p>
-                    La premisa es que nuestros pensamientos automáticos, a menudo arraigados y no examinados, pueden no reflejar con precisión la realidad y, sin embargo, tienen un impacto poderoso en cómo nos sentimos y actuamos. Al aprender a "reestructurar" estos pensamientos, podemos desarrollar una perspectiva más equilibrada, realista y útil.
+                    Nuestros pensamientos automáticos, que surgen de manera rápida y a menudo sin que seamos plenamente conscientes de ellos, están profundamente arraigados y moldeados por nuestras experiencias pasadas, creencias centrales y esquemas sobre nosotros mismos, los demás y el mundo. El problema surge cuando estos pensamientos no reflejan con precisión la realidad objetiva, sino que la tiñen con un sesgo negativo. A pesar de su posible inexactitud, estos pensamientos tienen un impacto poderoso y directo en cómo nos sentimos (nuestras emociones) y cómo actuamos (nuestros comportamientos). Al aprender el proceso de "reestructurar" estos pensamientos, es decir, examinarlos críticamente y reemplazarlos por alternativas más equilibradas, realistas y útiles, podemos fomentar un cambio significativo en nuestro estado emocional y en nuestra conducta.
                 </p>
+                 <blockquote>
+                    <p>"No son los hechos los que nos perturban, sino nuestras interpretaciones de los hechos." - Epicteto (Una idea central en la TCC).</p>
+                </blockquote>
+            </section>
 
-                <h4>Pasos Clave en la Reestructuración Cognitiva:</h4>
+            <section class="component-content-section">
+                <h3><i class="fas fa-search"></i> Pasos Clave en el Proceso de Reestructuración Cognitiva</h3>
+                <p>La reestructuración cognitiva es un proceso activo y colaborativo que generalmente sigue una serie de pasos estructurados:</p>
+                
+                <h4>1. Identificación de Pensamientos Automáticos Negativos (PANs)</h4>
+                <p>El primer paso es aprender a sintonizar y "atrapar" esos pensamientos fugaces que cruzan nuestra mente, especialmente en situaciones que nos provocan malestar emocional. Algunas estrategias incluyen:</p>
                 <ul>
-                    <li><strong>Identificación de Pensamientos Automáticos:</strong> Aprender a reconocer los pensamientos que surgen espontáneamente en respuesta a situaciones específicas, especialmente aquellas que provocan emociones negativas. Esto a menudo se hace mediante <a href="https://es.wikipedia.org/wiki/Diario_de_pensamientos_disfuncionales" class="keyword-link" target="_blank" rel="noopener noreferrer">registros de pensamientos</a>.</li>
-                    <li><strong>Reconocimiento de Distorsiones Cognitivas:</strong> Familiarizarse con los tipos comunes de errores de pensamiento, como:
+                    <li><strong>Prestar atención a los cambios en el estado de ánimo:</strong> Un cambio repentino en cómo te sientes (ej. pasar de estar tranquilo a ansioso) a menudo indica la presencia de un PAN. Pregúntate: "¿Qué estaba pensando justo antes de empezar a sentirme así?"</li>
+                    <li><strong>Uso de Registros de Pensamientos Disfuncionales (RPD):</strong> Esta es una herramienta clásica de la TCC. Consiste en una tabla donde se anota la situación, la emoción sentida (y su intensidad), el pensamiento automático asociado, la evidencia a favor y en contra de ese pensamiento, y un pensamiento alternativo más equilibrado.</li>
+                    <li><strong>Identificar "palabras clave" o temas recurrentes:</strong> Palabras como "siempre", "nunca", "debería", "terrible", "fracaso" pueden señalar la presencia de pensamientos problemáticos.</li>
+                </ul>
+                <div class="example-box">
+                    <h5>Ejemplo de Identificación de PAN:</h5>
+                    <p><strong>Situación:</strong> Recibes un email de tu jefe pidiendo una reunión.</p>
+                    <p><strong>Emoción:</strong> Ansiedad (8/10).</p>
+                    <p><strong>Pensamiento Automático (PAN):</strong> "Seguro que es para despedirme. He hecho algo mal."</p>
+                </div>
+
+                <h4>2. Reconocimiento y Comprensión de las Distorsiones Cognitivas</h4>
+                <p>Una vez identificados los PANs, el siguiente paso es analizar si contienen errores de pensamiento o "distorsiones cognitivas". Familiarizarse con los tipos comunes de distorsiones es crucial. Aquí se detallan algunas de las más frecuentes, con ejemplos ampliados:</p>
+                <ul>
+                    <li>
+                        <strong>Pensamiento de Todo o Nada (Dicotómico o Polarizado):</strong> Ver las cosas en categorías absolutas, blanco o negro, sin matices.
                         <ul>
-                            <li><strong>Pensamiento de Todo o Nada (Polarizado):</strong> Ver las cosas en extremos, sin términos medios (ej. "Si no soy perfecto, soy un fracaso").</li>
-                            <li><strong>Generalización Excesiva:</strong> Tomar un evento negativo aislado y generalizarlo a todas las situaciones (ej. "Reprobé este examen, nunca tendré éxito en nada").</li>
-                            <li><strong>Filtro Mental:</strong> Centrarse solo en los aspectos negativos de una situación e ignorar los positivos.</li>
-                            <li><strong>Descalificar lo Positivo:</strong> Rechazar las experiencias positivas insistiendo en que "no cuentan".</li>
-                            <li><strong>Saltar a Conclusiones (Adivinación del Pensamiento y Error del Adivino):</strong> Interpretar negativamente sin hechos que lo respalden (ej. "Sé que están pensando mal de mí" o "Esto va a ser un desastre").</li>
-                            <li><strong>Magnificación (Catastrofización) y Minimización:</strong> Exagerar la importancia de los problemas o errores, o minimizar las propias cualidades positivas.</li>
-                            <li><strong>Razonamiento Emocional:</strong> Creer que algo debe ser verdad porque se siente así (ej. "Me siento ansioso, por lo tanto, algo malo va a pasar").</li>
-                            <li><strong>Deberías (Imperativos):</strong> Tener reglas rígidas sobre cómo uno mismo y los demás "deberían" actuar.</li>
-                            <li><strong>Etiquetado y Mal Etiquetado:</strong> Asignar etiquetas globales y negativas a uno mismo o a otros en lugar de describir el comportamiento específico.</li>
-                            <li><strong>Personalización:</strong> Atribuirse la responsabilidad de eventos externos sin base para hacerlo.</li>
+                            <li><em>Ejemplo 1:</em> "Si no obtengo un 10 en este examen, soy un completo fracaso."</li>
+                            <li><em>Ejemplo 2:</em> "Esta relación no es perfecta, así que no vale la pena."</li>
+                            <li><em>Ejemplo 3:</em> "O hago dieta estricta y pierdo peso, o no tiene sentido intentarlo."</li>
                         </ul>
                     </li>
-                    <li><strong>Examen de la Evidencia:</strong> Cuestionar la validez de los pensamientos automáticos buscando evidencia a favor y en contra. Preguntas como "¿Qué pruebas tengo de que este pensamiento es cierto/falso?" son cruciales.</li>
-                    <li><strong>Generación de Pensamientos Alternativos:</strong> Desarrollar interpretaciones más equilibradas, realistas y útiles de la situación. Esto no se trata de "pensamiento positivo" forzado, sino de encontrar una perspectiva más objetiva.</li>
-                    <li><strong>Experimentos Conductuales:</strong> Diseñar y llevar a cabo "experimentos" en la vida real para poner a prueba la validez de los viejos pensamientos y la utilidad de los nuevos.</li>
+                    <li>
+                        <strong>Generalización Excesiva:</strong> Tomar un evento negativo aislado y extraer una conclusión general y universal, aplicándola a todas las situaciones futuras o similares. A menudo se usan palabras como "siempre", "nunca", "nadie", "todos".
+                        <ul>
+                            <li><em>Ejemplo 1:</em> Después de una cita que no fue bien: "Nunca encontraré a alguien. Siempre estaré solo/a."</li>
+                            <li><em>Ejemplo 2:</em> Cometer un error en el trabajo: "Soy un incompetente en todo lo que hago."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Filtro Mental (Abstracción Selectiva):</strong> Centrarse exclusivamente en los detalles negativos de una situación e ignorar o descartar todos los aspectos positivos. Es como ver el mundo a través de unas gafas oscuras que solo dejan pasar lo malo.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> Recibes una evaluación de desempeño con muchos elogios y una pequeña sugerencia de mejora, y te obsesionas únicamente con la sugerencia, sintiéndote un desastre.</li>
+                            <li><em>Ejemplo 2:</em> Disfrutas de una fiesta, pero un breve comentario incómodo de alguien te hace concluir que "toda la noche fue horrible".</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Descalificar lo Positivo:</strong> Rechazar activamente las experiencias, logros o cualidades positivas, insistiendo en que "no cuentan" por alguna razón.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> Alguien te felicita por un trabajo bien hecho y piensas: "Solo lo dice por ser amable, en realidad no fue para tanto."</li>
+                            <li><em>Ejemplo 2:</em> Logras una meta importante y piensas: "Tuve suerte, cualquiera podría haberlo hecho."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Saltar a Conclusiones:</strong> Llegar a interpretaciones negativas sin tener hechos o evidencia suficiente que las respalden. Esto tiene dos subtipos comunes:
+                        <ul>
+                            <li><strong>Lectura de Mente (Adivinación del Pensamiento):</strong> Asumir que sabes lo que otras personas están pensando (generalmente de forma negativa sobre ti) sin tener pruebas. <em>Ejemplo:</em> "Me miró raro, seguro que piensa que soy estúpido/a."</li>
+                            <li><strong>Error del Adivino (Predicción Negativa del Futuro):</strong> Predecir que las cosas saldrán mal, convencido de que tu predicción es un hecho establecido. <em>Ejemplo:</em> "Sé que voy a suspender el examen, así que ¿para qué estudiar?" o "Esta relación está condenada al fracaso."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Magnificación (Catastrofización) y Minimización:</strong> Exagerar la importancia o el impacto de los problemas, errores o eventos negativos (catastrofizar), o, por el contrario, minimizar o infravalorar las propias cualidades positivas, logros o las cosas buenas que suceden.
+                        <ul>
+                            <li><em>Ejemplo de Magnificación:</em> "Cometí un pequeño error en el informe, ¡seguro que me despiden! Será una catástrofe."</li>
+                            <li><em>Ejemplo de Minimización:</em> "Sí, me ascendieron, pero es un puesto menor, no es gran cosa."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Razonamiento Emocional:</strong> Creer que algo debe ser verdad porque se <em>siente</em> así con mucha intensidad. Las emociones se toman como evidencia de la realidad.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> "Me siento culpable, por lo tanto, debo haber hecho algo malo."</li>
+                            <li><em>Ejemplo 2:</em> "Siento mucha ansiedad al pensar en hablar en público, eso significa que es realmente peligroso y voy a hacer el ridículo."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>"Deberías" y "Tengo que" (Imperativos Categóricos):</strong> Tener reglas internas rígidas y exigentes sobre cómo uno mismo y los demás "deberían" o "tienen que" actuar. Cuando estas reglas no se cumplen, generan culpa (si se aplican a uno mismo) o ira y resentimiento (si se aplican a otros).
+                        <ul>
+                            <li><em>Ejemplo 1:</em> "Debería ser siempre amable y complaciente con todos."</li>
+                            <li><em>Ejemplo 2:</em> "Él debería saber lo que necesito sin que se lo pida."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Etiquetado y Mal Etiquetado:</strong> Es una forma extrema de generalización excesiva. En lugar de describir un error o un comportamiento específico, se asigna una etiqueta global y negativa a uno mismo o a otra persona.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> En lugar de "Cometí un error", pensar "Soy un perdedor".</li>
+                            <li><em>Ejemplo 2:</em> Si alguien comete un error, pensar "Es un idiota".</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Personalización y Culpa:</strong> Atribuirse la responsabilidad personal por eventos externos sobre los cuales no se tiene control, o culpar a otros desproporcionadamente sin considerar el propio papel.
+                        <ul>
+                            <li><em>Ejemplo de Personalización:</em> "Mi hijo suspendió matemáticas, soy una mala madre."</li>
+                            <li><em>Ejemplo de Culpa:</em> "Es culpa tuya que yo esté siempre de mal humor."</li>
+                        </ul>
+                    </li>
                 </ul>
-                
-                <h4>Beneficios de la Reestructuración Cognitiva:</h4>
+            </section>
+
+            <section class="component-content-section">
+                <h4>3. Examen Crítico de la Evidencia (El Juicio al Pensamiento)</h4>
+                <p>Una vez identificado el PAN y la posible distorsión, se procede a cuestionar su validez. Esto implica actuar como un detective o un juez imparcial, buscando evidencia objetiva:</p>
+                <ul>
+                    <li><strong>Evidencia a favor del pensamiento:</strong> "¿Qué hechos concretos apoyan esta idea? ¿Son interpretaciones o hechos?"</li>
+                    <li><strong>Evidencia en contra del pensamiento:</strong> "¿Qué hechos concretos contradicen esta idea o sugieren una perspectiva diferente? ¿He tenido experiencias pasadas que no encajan con este pensamiento?"</li>
+                    <li><strong>Preguntas Socráticas:</strong> Utilizar una serie de preguntas guiadas para explorar la lógica, las implicaciones y las alternativas al pensamiento. Ejemplos:
+                        <ul>
+                            <li>"¿Hay alguna otra forma de ver esta situación?"</li>
+                            <li>"¿Qué es lo peor que podría pasar? ¿Podría sobrevivirlo?"</li>
+                            <li>"¿Qué es lo mejor que podría pasar?"</li>
+                            <li>"¿Qué es lo más realista que podría pasar?"</li>
+                            <li>"¿Qué le diría a un amigo que tuviera este pensamiento en una situación similar?"</li>
+                            <li>"Si este pensamiento fuera cierto, ¿qué significaría sobre mí o sobre el mundo? ¿Es esa una conclusión válida?"</li>
+                        </ul>
+                    </li>
+                    <li><strong>Análisis Costo-Beneficio:</strong> "¿Cuáles son las ventajas y desventajas de seguir creyendo este pensamiento? ¿Cómo me ayuda y cómo me perjudica?"</li>
+                </ul>
+            </section>
+
+            <section class="component-content-section">
+                <h4>4. Generación de Pensamientos Alternativos Equilibrados y Adaptativos</h4>
+                <p>El objetivo no es simplemente reemplazar un pensamiento negativo por uno positivo irrealista, sino desarrollar una <strong>perspectiva más equilibrada, realista y útil</strong>. Un pensamiento alternativo efectivo debería ser:</p>
+                <ul>
+                    <li><strong>Basado en la evidencia:</strong> Considera todos los hechos, no solo los negativos.</li>
+                    <li><strong>Más flexible:</strong> Evita los extremos del "todo o nada".</li>
+                    <li><strong>Menos emocionalmente cargado:</strong> Reduce la intensidad de las emociones negativas.</li>
+                    <li><strong>Orientado a la acción (si es apropiado):</strong> Sugiere formas constructivas de afrontar la situación.</li>
+                    <li><strong>Autocompasivo:</strong> Trata de ser tan amable y comprensivo contigo mismo como lo serías con un buen amigo.</li>
+                </ul>
+                <div class="example-box">
+                    <h5>Ejemplo de Pensamiento Alternativo:</h5>
+                    <p><strong>PAN:</strong> "Seguro que es para despedirme. He hecho algo mal." (Lectura de mente, catastrofización).</p>
+                    <p><strong>Evidencia en contra:</strong> "Mi último informe fue bien recibido. No he cometido errores graves recientemente. Las reuniones pueden ser para muchos temas."</p>
+                    <p><strong>Pensamiento Alternativo:</strong> "No sé con certeza por qué mi jefe quiere reunirse. Podría ser por varios motivos, incluyendo temas rutinarios o nuevos proyectos. Aunque me sienta ansioso/a, esperaré a tener más información antes de sacar conclusiones negativas. Me centraré en prepararme por si es algo importante."</p>
+                </div>
+            </section>
+
+            <section class="component-content-section">
+                <h4>5. Experimentos Conductuales: Poniendo a Prueba los Pensamientos</h4>
+                <p>A veces, la mejor manera de cambiar una creencia arraigada es ponerla a prueba en la vida real. Los <strong>experimentos conductuales</strong> son actividades planificadas diseñadas para contrastar un pensamiento o creencia con la experiencia directa.</p>
+                <ul>
+                    <li><strong>Diseño del experimento:</strong> Se define claramente qué pensamiento se va a probar, qué se hará, qué se predice que sucederá (basado en el viejo pensamiento) y qué se consideraría evidencia a favor o en contra.</li>
+                    <li><strong>Realización del experimento:</strong> Llevar a cabo la actividad planificada.</li>
+                    <li><strong>Observación y registro de resultados:</strong> Anotar objetivamente lo que sucedió.</li>
+                    <li><strong>Conclusiones y aprendizaje:</strong> Comparar los resultados con la predicción inicial y extraer conclusiones. ¿El viejo pensamiento se sostuvo? ¿Qué aprendí? ¿Cómo afecta esto a mi creencia?</li>
+                </ul>
+                <div class="example-box">
+                    <h5>Ejemplo de Experimento Conductual:</h5>
+                    <p><strong>Pensamiento a Probar:</strong> "Si expreso mi opinión en la reunión, todos pensarán que soy tonto/a y me criticarán."</p>
+                    <p><strong>Experimento:</strong> En la próxima reunión, expresar una opinión bien pensada sobre un tema relevante.</p>
+                    <p><strong>Predicción (basada en el PAN):</strong> "La gente me mirará mal, me interrumpirán o desestimarán mi idea."</p>
+                    <p><strong>Resultado (hipotético):</strong> "Expresé mi opinión. Nadie me interrumpió. Un colega asintió y otro hizo un comentario constructivo. No hubo críticas negativas."</p>
+                    <p><strong>Conclusión:</strong> "Mi miedo a ser criticado duramente fue exagerado. Puedo expresar opiniones y ser escuchado."</p>
+                </div>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-cogs"></i> Integración con Otras Técnicas y Consideraciones</h3>
+                <ul>
+                    <li><strong>Mindfulness:</strong> Ser consciente de los pensamientos a medida que surgen (habilidad de "observar" y "describir") es un prerrequisito para la reestructuración cognitiva.</li>
+                    <li><strong>Activación Conductual:</strong> A veces, actuar de manera diferente (a través de la activación) puede proporcionar nueva evidencia que desafía viejos pensamientos.</li>
+                    <li><strong>Práctica Constante:</strong> La reestructuración cognitiva es una habilidad que se fortalece con la práctica regular. No es un cambio de la noche a la mañana.</li>
+                    <li><strong>Autocompasión:</strong> Es importante ser amable y paciente consigo mismo durante este proceso. Habrá momentos en que los viejos patrones de pensamiento resurjan.</li>
+                </ul>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas-chart-line"></i> Beneficios de la Reestructuración Cognitiva</h3>
                 <p>
-                    Al practicar consistentemente la reestructuración cognitiva, las personas pueden experimentar una reducción en la intensidad y frecuencia de emociones negativas como la ansiedad, la tristeza y la ira. También puede llevar a una mejora en la autoestima, una mayor capacidad para resolver problemas y relaciones interpersonales más saludables. Es una herramienta poderosa para tomar el control de la propia narrativa interna y fomentar un cambio positivo duradero.
+                    Al practicar consistentemente la reestructuración cognitiva, las personas pueden experimentar una notable reducción en la intensidad y frecuencia de emociones negativas como la ansiedad, la tristeza, la ira y la culpa. También puede llevar a una mejora significativa en la autoestima, una mayor sensación de control sobre la propia vida, una mayor capacidad para resolver problemas de manera efectiva y, en última instancia, relaciones interpersonales más saludables y satisfactorias. Es una herramienta poderosa y empoderadora para tomar el control de la propia narrativa interna y fomentar un cambio positivo y duradero hacia un mayor bienestar.
                 </p>
             </section>
+            
+            <div class="navigation-buttons-container">
+                <a href="cbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a TCC</a>
+                <a href="activacion_conductual_cbt.html" class="nav-btn continue-btn">Continuar con Activación Conductual <i class="fas fa-arrow-right"></i></a>
+            </div>
+
         </div>
     </main>
 
@@ -595,7 +868,7 @@
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
+                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || // Current page
                      currentPageFilename === 'activacion_conductual_cbt.html' ||
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
                      currentPageFilename === 'resolucion_problemas_cbt.html'
@@ -617,22 +890,25 @@
                 });
             }
             
-            const animatedSection = document.querySelector('.component-content-section'); 
-            if (animatedSection) {
+            const animatedSections = document.querySelectorAll('.component-content-section'); 
+            if (animatedSections.length > 0) {
                  const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
-                    threshold: 0.1 
+                    threshold: 0.05 
                 };
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            obs.unobserve(entry.target); 
+                        } else {
+                            // entry.target.classList.remove('visible');
                         }
                     });
                 }, observerOptions);
-                observer.observe(animatedSection);
+                animatedSections.forEach(section => {
+                    observer.observe(section);
+                });
             }
         });
     </script>
