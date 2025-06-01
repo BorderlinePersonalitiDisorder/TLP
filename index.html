@@ -151,7 +151,7 @@
             transition: width 0.3s ease;
         }
         
-        nav a:hover::after {
+        nav a:hover::after, nav a.active::after { /* MODIFIED: Added nav a.active::after */
             width: 80%;
         }
         
@@ -452,7 +452,7 @@
         }
         
         .testimonial-card::before {
-            content: """;
+            content: '"'; /* Corrected quote character */
             position: absolute;
             top: 20px;
             left: 20px;
@@ -808,7 +808,6 @@
 <body>
     <div class="creative-bg"></div>
     
-    <!-- Header -->
     <header>
         <div class="container header-container">
             <div class="logo">
@@ -828,7 +827,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero" id="inicio">
         <div class="container hero-content">
             <h2>EXPLORANDO LA MENTE BORDERLINE</h2>
@@ -840,7 +838,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="psicoeducacion">
         <div class="container">
             <div class="section-title">
@@ -849,7 +846,6 @@
             </div>
             
             <div class="features-grid">
-                <!-- Psicoeducación -->
                 <div class="feature-card">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
@@ -859,7 +855,6 @@
                     </div>
                 </div>
                 
-                <!-- DBT -->
                 <div class="feature-card" id="dbt">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717406-1c69efaf1dd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
@@ -869,7 +864,6 @@
                     </div>
                 </div>
                 
-                <!-- Blog -->
                 <div class="feature-card" id="blog">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
@@ -879,7 +873,6 @@
                     </div>
                 </div>
                 
-                <!-- Foro -->
                 <div class="feature-card" id="foro">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
@@ -892,7 +885,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
             <div class="section-title">
@@ -943,7 +935,6 @@
         </div>
     </section>
 
-    <!-- Premium Section -->
     <section class="premium" id="premium">
         <div class="container premium-container">
             <h2>EXPERIENCIA PREMIUM</h2>
@@ -979,7 +970,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-grid">
@@ -1041,38 +1031,57 @@
             const cards = document.querySelectorAll('.feature-card, .testimonial-card, .benefit');
             cards.forEach(card => {
                 card.addEventListener('mousemove', function(e) {
-                    const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
-                    const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
-                    this.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+                    // Calculate rotation values based on mouse position relative to the card center
+                    const rect = card.getBoundingClientRect();
+                    const cardX = rect.left + rect.width / 2;
+                    const cardY = rect.top + rect.height / 2;
+                    const mouseX = e.clientX;
+                    const mouseY = e.clientY;
+                    
+                    const rotateX = (mouseY - cardY) / 20; // Adjust divisor for sensitivity
+                    const rotateY = (mouseX - cardX) / -20; // Adjust divisor for sensitivity
+                    
+                    this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.05)`;
                 });
                 
                 card.addEventListener('mouseenter', function() {
-                    this.style.transition = 'none';
+                    this.style.transition = 'transform 0.1s ease-out'; // Quick transition for entering
                 });
                 
                 card.addEventListener('mouseleave', function() {
-                    this.style.transition = 'all 0.5s ease';
-                    this.style.transform = 'rotateY(0deg) rotateX(0deg)';
+                    this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; // Smooth transition for leaving
+                    this.style.transform = 'perspective(1000px) rotateY(0deg) rotateX(0deg) scale(1)';
                 });
             });
             
-            // Cambio de color en títulos
+            // Cambio de color en títulos (JS version, complements CSS animation)
             const creativeTexts = document.querySelectorAll('.hero h2, .premium h2, .section-title h2');
             let hue = 0;
             
-            setInterval(() => {
-                hue = (hue + 1) % 360;
-                creativeTexts.forEach(text => {
-                    text.style.filter = `hue-rotate(${hue}deg)`;
-                });
-            }, 100);
+            // Only apply JS hue rotation if not already animated by CSS to avoid conflicts
+            // The CSS animation 'creativeText' is on .hero h2 and .premium h2
+            // .section-title h2 does not have this CSS animation by default.
+            const sectionTitleH2s = document.querySelectorAll('.section-title h2');
+
+            if (sectionTitleH2s.length > 0) {
+                 setInterval(() => {
+                    hue = (hue + 1) % 360;
+                    sectionTitleH2s.forEach(text => {
+                        // Check if it already has a CSS animation that handles hue-rotate
+                        const computedStyle = window.getComputedStyle(text);
+                        if (!computedStyle.animationName || computedStyle.animationName === 'none') {
+                           text.style.filter = `hue-rotate(${hue}deg)`;
+                        }
+                    });
+                }, 100); // Reduced interval for smoother JS animation if used
+            }
             
             // Efecto de partículas en botones
             const buttons = document.querySelectorAll('.cta-button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    const x = e.clientX - e.target.offsetLeft;
-                    const y = e.clientY - e.target.offsetTop;
+                    const x = e.clientX - e.target.getBoundingClientRect().left; // Corrected offset calculation
+                    const y = e.clientY - e.target.getBoundingClientRect().top;  // Corrected offset calculation
                     
                     const ripples = document.createElement('span');
                     ripples.classList.add('ripple');
@@ -1082,7 +1091,7 @@
                     
                     setTimeout(() => {
                         ripples.remove();
-                    }, 1000);
+                    }, 600); // Match ripple animation duration
                 });
             });
             
@@ -1090,10 +1099,21 @@
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        let headerOffset = 80; // Default offset
+                        const header = document.querySelector('header');
+                        if (header) {
+                            headerOffset = header.offsetHeight + 20; // Dynamic header height + buffer
+                        }
+                        
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+            
                         window.scrollTo({
-                            top: target.offsetTop - 80,
+                            top: offsetPosition,
                             behavior: 'smooth'
                         });
                     }
@@ -1101,27 +1121,40 @@
             });
             
             // Destacar sección actual en navegación
-            const sections = document.querySelectorAll('section');
+            const sections = document.querySelectorAll('section[id]'); // Ensure sections have IDs
             const navLinks = document.querySelectorAll('nav a');
+            const header = document.querySelector('header');
             
             window.addEventListener('scroll', () => {
-                let current = '';
-                
+                let currentId = '';
+                const scrollY = window.pageYOffset;
+                // Use a smaller offset, considering the sticky header height for better accuracy
+                const offset = header ? header.offsetHeight + 40 : 100; // Dynamic header height + small buffer or fallback
+
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (pageYOffset >= (sectionTop - 300)) {
-                        current = section.getAttribute('id');
+                    if (scrollY >= sectionTop - offset) {
+                        currentId = section.getAttribute('id');
                     }
                 });
                 
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href').includes(current)) {
+                    // More precise matching of href with current section ID
+                    if (link.getAttribute('href') === `#${currentId}`) {
                         link.classList.add('active');
                     }
                 });
+
+                // If no section is "current" (e.g., at the very top before any section or between sections)
+                // default to "inicio" if scroll is near the top.
+                if (!document.querySelector('nav a.active') && scrollY < (sections[0]?.offsetTop - offset || 300) ) {
+                    navLinks.forEach(link => {
+                        if (link.getAttribute('href') === '#inicio') {
+                            link.classList.add('active');
+                        }
+                    });
+                }
             });
         });
     </script>
