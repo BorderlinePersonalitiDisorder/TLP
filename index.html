@@ -3,34 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borderline Journey - DBT & APOD</title>
+    <title>Borderline Journey - NASA APOD Portada</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Neón Experimental */
-            --primary-neon-violet: #8F00FF; /* Violeta Neón Principal */
-            --secondary-dark-cyan-contrast: #003333; /* Cian Oscuro para Contraste */
-            --accent-neon-magenta: #FF00FF;   /* Magenta Neón */
-            --accent-neon-cyan: #00FFFF;      /* Cian Neón */
-            --accent-neon-yellow: #FFFF00;    /* Amarillo Neón */
-            --accent-neon-sea-green: #39FF14; /* Verde Mar Neón */
+            /* Paleta Neón Espacial */
+            --primary-neon-violet: #8F00FF;
+            --secondary-dark-cyan-contrast: #003333;
+            --accent-neon-magenta: #FF00FF;
+            --accent-neon-cyan: #00FFFF;
+            --accent-neon-yellow: #FFFF00;
+            --accent-neon-sea-green: #39FF14;
+            --accent-space-blue: #1a1a2e;
             
-            --text-color-light: #F0F0F0;      /* Blanco Hueso para texto principal */
-            --text-color-medium: #A0A0A0;     /* Gris Medio para subtextos */
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
             
-            --card-bg-neon: rgba(10, 5, 20, 0.92); /* Fondo de tarjeta muy oscuro con tinte violeta */
-            --border-color-neon: rgba(143, 0, 255, 0.7); /* Borde Violeta Neón translúcido */
+            --card-bg-neon: rgba(10, 5, 20, 0.92);
+            --border-color-neon: rgba(143, 0, 255, 0.7);
             
-            --highlight-text-bg-neon: linear-gradient(to right, var(--accent-neon-magenta), var(--accent-neon-cyan));
-            --dark-bg-neon-theme: #0A0A10; /* Fondo general muy oscuro, casi negro */
-
-            /* Variables originales para referencia (serán reemplazadas o adaptadas) */
-            /* --primary-deep-purple: #4A148C;  */
-            /* --secondary-dark-blue: #303F9F;  */
-            /* --accent-magenta-soft: #C2185B;  */
-            /* --accent-teal: #00796B;       */
-            /* --accent-gold: #FFB300;       */
+            --dark-bg-neon-theme: #0A0A10;
+            --hero-overlay: rgba(10, 10, 16, 0.75);
         }
         
         * {
@@ -40,245 +34,812 @@
         }
         
         body {
-            background: var(--dark-bg-neon-theme); 
+            background: var(--dark-bg-neon-theme);
             color: var(--text-color-light);
-            line-height: 1.8; 
-            font-family: 'Raleway', sans-serif; 
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(143, 0, 255, 0.15) 0%, transparent 30%), /* Violeta Neón */
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 30%), /* Cian Neón */
-                linear-gradient(0deg, rgba(10,10,16,0.97), rgba(10,10,16,0.97)), /* Fondo oscuro casi opaco */
-                url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%238F00FF' fill-opacity='0.05'%3E%3Cpath d='M0 0h40v40H0zM40 40h40v40H40z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E"); 
+            min-height: 100vh;
         }
         
         .creative-bg { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.25; 
-            background: radial-gradient(circle, var(--accent-neon-magenta) 0%, transparent 35%),
-                        radial-gradient(circle, var(--accent-neon-sea-green) 0%, transparent 35%);
-            background-size: 300% 300%; animation: creativeBackground 25s infinite ease-in-out;
+            position: fixed; 
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%; 
+            z-index: -1; 
+            opacity: 0.15;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(143, 0, 255, 0.15) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 30%);
+            background-size: 300% 300%; 
+            animation: creativeBackground 25s infinite ease-in-out;
         }
         
         @keyframes creativeBackground {
-            0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; }
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
         }
         
         .container {
-            width: 100%; max-width: 1100px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 1;
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
         }
         
+        /* Navegación con efecto neón */
         header {
-            background: rgba(10, 10, 16, 0.9); /* Fondo de header más oscuro */
-            backdrop-filter: blur(12px); color: white; padding: 1rem 0; position: sticky; top: 0; z-index: 1000;
+            background: rgba(10, 10, 16, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
             border-bottom: 2px solid var(--accent-neon-cyan); 
-            box-shadow: 0 0 25px rgba(0, 255, 255, 0.35); /* Sombra Cian Neón */
+            box-shadow: 0 0 25px rgba(0, 255, 255, 0.35);
+            transition: all 0.4s ease;
         }
         
-        .header-container { display: flex; justify-content: space-between; align-items: center; }
-        .logo { display: flex; align-items: center; gap: 15px; }
+        header.scrolled {
+            background: rgba(10, 10, 16, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 255, 255, 0.4);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+        }
+        
         .logo h1 { 
-            font-family: 'Monoton', cursive; font-size: 2.2rem; font-weight: 400;
+            font-family: 'Monoton', cursive; 
+            font-size: 2.2rem; 
+            font-weight: 400;
             background: linear-gradient(45deg, var(--accent-neon-magenta), var(--accent-neon-yellow), var(--accent-neon-cyan));
-            -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px var(--accent-neon-magenta), 0 0 15px var(--accent-neon-yellow); /* Sombras Neón */
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 10px var(--accent-neon-magenta), 0 0 15px var(--accent-neon-yellow); 
             letter-spacing: 2px;
         }
-        .logo i { font-size: 2.2rem; color: var(--accent-neon-cyan); text-shadow: 0 0 12px var(--accent-neon-cyan); }
         
-        nav ul { display: flex; list-style: none; gap: 10px; }
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-neon-cyan); 
+            text-shadow: 0 0 12px var(--accent-neon-cyan); 
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
         nav a { 
-            color: var(--text-color-light); text-decoration: none; font-family: 'Krona One', sans-serif; font-size: 0.9rem; 
-            padding: 10px 15px; border-radius: 6px; transition: all 0.3s ease-out; position: relative;
-            background: transparent; border: 1px solid transparent; 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Krona One', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 6px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
         }
+        
         nav a::before { 
-            content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: -100%; 
+            width: 100%; 
+            height: 100%;
             background: linear-gradient(90deg, transparent, var(--accent-neon-cyan), var(--accent-neon-magenta), transparent);
-            opacity: 0; transition: left 0.4s ease, opacity 0.4s ease; z-index: -1;
+            opacity: 0; 
+            transition: left 0.4s ease, opacity 0.4s ease; 
+            z-index: -1;
         }
-        nav a:hover::before, nav a.active::before { left: 0; opacity: 0.25; } /* Más opacidad para el brillo */
-        nav a:hover, nav a.active {
-            color: var(--accent-neon-yellow); background-color: rgba(0, 255, 255, 0.1); /* Fondo Cian Neón tenue */
-            border: 1px solid var(--accent-neon-cyan); box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); 
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            left: 0; 
+            opacity: 0.25; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-neon-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-neon-cyan); 
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5); 
             transform: translateY(-1px); 
         }
-
-        /* Page Specific Styles */
-        .main-page-content { padding: 4rem 0 6rem 0; }
-
-        .content-block-qs { 
-            background: var(--card-bg-neon); padding: 30px 40px; border-radius: 15px; margin-bottom: 3.5rem;
-            border: 1px solid var(--border-color-neon);
-            box-shadow: 0 0 30px rgba(143, 0, 255, 0.3), 0 4px 15px rgba(0,0,0,0.5); /* Sombra violeta y oscura */
+        
+        /* HERO SECTION CON APOD */
+        .hero-apod {
+            position: relative;
+            height: 100vh;
+            min-height: 650px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 4rem;
+        }
+        
+        .apod-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: background-image 1.5s ease-in-out;
+            z-index: -1;
+            transform: scale(1.05);
+            filter: blur(5px);
+        }
+        
+        .apod-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(0deg, rgba(10,10,16,0.9) 0%, rgba(10,10,16,0.3) 50%, rgba(10,10,16,0.9) 100%);
+            z-index: 0;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+            padding: 2rem;
+            color: white;
+            background: rgba(10, 10, 16, 0.6);
+            border-radius: 20px;
             backdrop-filter: blur(10px);
+            border: 2px solid rgba(143, 0, 255, 0.5);
+            box-shadow: 0 0 50px rgba(143, 0, 255, 0.5);
+            margin-top: 4rem;
+            animation: contentAppear 1.5s ease-out;
         }
-        .content-block-qs h2 {
-            font-family: 'Major Mono Display', monospace; font-size: 2rem; color: var(--accent-neon-cyan); /* Títulos en Cian Neón */
-            text-align: center; margin-bottom: 2.5rem; text-transform: uppercase;
-            text-shadow: 0 0 8px var(--accent-neon-cyan);
+        
+        @keyframes contentAppear {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-         .content-block-qs h2 i {
-            margin-right: 10px;
-            color: var(--accent-neon-yellow); /* Iconos en Amarillo Neón */
-            text-shadow: 0 0 8px var(--accent-neon-yellow);
+        
+        .hero-content h1 {
+            font-family: 'Major Mono Display', monospace;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 15px var(--accent-neon-cyan);
+            background: linear-gradient(45deg, var(--accent-neon-magenta), var(--accent-neon-cyan));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 3px;
+            animation: titleGlow 3s infinite alternate;
         }
-
-        #apod-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            border: 3px solid var(--accent-neon-cyan); /* Borde Cian Neón */
-            margin-bottom: 15px;
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); /* Sombra Cian Neón */
+        
+        @keyframes titleGlow {
+            0% { text-shadow: 0 0 15px var(--accent-neon-cyan); }
+            50% { text-shadow: 0 0 25px var(--accent-neon-magenta), 0 0 30px var(--accent-neon-yellow); }
+            100% { text-shadow: 0 0 20px var(--accent-neon-cyan), 0 0 35px var(--accent-neon-sea-green); }
         }
-        #apod-container h3 { /* Title of APOD image */
-            color: var(--accent-neon-yellow); 
-            font-family: 'Krona One', sans-serif; 
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-            text-shadow: 0 0 6px var(--accent-neon-yellow);
+        
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+            color: var(--text-color-light);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            text-shadow: 0 0 5px rgba(0,0,0,0.7);
         }
-        #apod-container #apod-explanation-text { 
-            color: var(--text-color-light); 
-            margin-bottom: 20px; 
-            text-align: left;
+        
+        .apod-title {
+            font-family: 'Krona One', sans-serif;
+            font-size: 2.2rem;
+            color: var(--accent-neon-yellow);
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 10px var(--accent-neon-yellow);
+            animation: textPulse 2s infinite alternate;
+        }
+        
+        @keyframes textPulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.03); }
+        }
+        
+        .apod-date {
+            font-family: 'Major Mono Display', monospace;
+            color: var(--accent-neon-sea-green);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 5px var(--accent-neon-sea-green);
+        }
+        
+        .apod-explanation {
             font-size: 1.1rem;
-            line-height: 1.9;
-        }
-        #apod-container #apod-copyright {
-            font-size: 0.9rem; 
-            color: var(--text-color-medium); 
-            margin-top: 15px;
-            margin-bottom: 20px; 
-        }
-        #apod-error {
-            color: var(--accent-neon-magenta);
-            background-color: rgba(255, 0, 255, 0.1);
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            max-height: 150px;
+            overflow-y: auto;
             padding: 15px;
-            border-radius: 8px;
-            border: 1px solid var(--accent-neon-magenta);
-            text-shadow: 0 0 5px var(--accent-neon-magenta);
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            border: 1px solid rgba(0, 255, 255, 0.2);
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.5);
         }
-
-        .download-button-style a { 
-            display: inline-block; background: linear-gradient(45deg, var(--accent-neon-yellow), var(--accent-neon-magenta));
-            color: var(--dark-bg-neon-theme); padding: 12px 25px; border-radius: 8px; text-decoration: none;
-            font-family: 'Fredoka One', cursive; font-size: 1rem; transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 255, 0, 0.5), 0 0 10px var(--accent-neon-magenta); /* Sombras Amarillo y Magenta */
+        
+        .apod-explanation::-webkit-scrollbar {
+            width: 8px;
         }
-        .download-button-style a:hover {
+        
+        .apod-explanation::-webkit-scrollbar-track {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+        
+        .apod-explanation::-webkit-scrollbar-thumb {
+            background: var(--accent-neon-cyan);
+            border-radius: 10px;
+        }
+        
+        .download-button {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-neon-yellow), var(--accent-neon-magenta));
+            color: var(--dark-bg-neon-theme);
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(255, 255, 0, 0.5), 0 0 15px var(--accent-neon-magenta);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            margin-top: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .download-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transition: 0.5s;
+        }
+        
+        .download-button:hover::before {
+            left: 100%;
+        }
+        
+        .download-button:hover {
             background: linear-gradient(45deg, var(--accent-neon-magenta), var(--accent-neon-yellow));
-            transform: translateY(-2px) scale(1.03); 
-            box-shadow: 0 6px 20px rgba(255, 0, 255, 0.6), 0 0 15px var(--accent-neon-yellow);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 0, 255, 0.8), 0 0 25px var(--accent-neon-yellow);
         }
-        .download-button-style a i { margin-right: 8px; }
+        
+        .apod-nav {
+            position: absolute;
+            bottom: 40px;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            z-index: 10;
+        }
+        
+        .apod-nav-btn {
+            background: rgba(10, 10, 16, 0.7);
+            color: var(--accent-neon-cyan);
+            border: 2px solid var(--accent-neon-cyan);
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+            animation: buttonFloat 3s infinite ease-in-out;
+        }
+        
+        .apod-nav-btn:nth-child(1) { animation-delay: 0.2s; }
+        .apod-nav-btn:nth-child(2) { animation-delay: 0.4s; }
+        
+        @keyframes buttonFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .apod-nav-btn:hover {
+            background: var(--accent-neon-cyan);
+            color: var(--dark-bg-neon-theme);
+            transform: translateY(-5px);
+            box-shadow: 0 0 25px var(--accent-neon-cyan);
+            animation: none;
+        }
+        
+        /* Sección DBT */
+        .main-page-content { 
+            padding: 0 0 6rem 0; 
+        }
+        
+        .content-block-qs { 
+            background: var(--card-bg-neon); 
+            padding: 40px; 
+            border-radius: 20px; 
+            margin-bottom: 3.5rem;
+            border: 1px solid var(--border-color-neon);
+            box-shadow: 0 0 30px rgba(143, 0, 255, 0.3), 0 4px 15px rgba(0,0,0,0.5); 
+            backdrop-filter: blur(10px);
+            transform: translateY(50px);
+            opacity: 0;
+            transition: all 1s ease;
+        }
+        
+        .content-block-qs.visible {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .content-block-qs h2 {
+            font-family: 'Major Mono Display', monospace; 
+            font-size: 2.5rem; 
+            color: var(--accent-neon-cyan); 
+            text-align: center; 
+            margin-bottom: 2.5rem; 
+            text-transform: uppercase;
+            text-shadow: 0 0 15px var(--accent-neon-cyan);
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .content-block-qs h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 4px;
+            background: linear-gradient(to right, transparent, var(--accent-neon-cyan), transparent);
+            border-radius: 2px;
+            box-shadow: 0 0 10px var(--accent-neon-cyan);
+        }
+        
+        .content-block-qs h2 i {
+            margin-right: 15px;
+            color: var(--accent-neon-yellow); 
+            text-shadow: 0 0 10px var(--accent-neon-yellow);
+        }
+        
+        .content-block-qs h4 { 
+            font-family: 'Krona One', sans-serif;
+            color: var(--accent-neon-sea-green);
+            text-shadow: 0 0 8px var(--accent-neon-sea-green);
+            margin-top: 2.5rem;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            border-left: 4px solid var(--accent-neon-sea-green);
+            padding-left: 15px;
+        }
         
         #dbt-info-section p {
-            font-size: 1.15rem; color: var(--text-color-light); 
-            margin-bottom: 18px; line-height: 1.9; text-align: justify;
+            font-size: 1.2rem; 
+            color: var(--text-color-light); 
+            margin-bottom: 25px; 
+            line-height: 1.9; 
+            text-align: justify;
         }
-        #dbt-info-section p a { /* Enlace a cursos dentro de DBT */
+        
+        #dbt-info-section p a, 
+        #dbt-info-section ul.external-wiki-links a { 
             color: var(--accent-neon-yellow); 
-            text-decoration: underline;
+            text-decoration: none;
             text-shadow: 0 0 4px var(--accent-neon-yellow);
             transition: color 0.3s ease, text-shadow 0.3s ease;
+            position: relative;
         }
-        #dbt-info-section p a:hover {
+        
+        #dbt-info-section p a::after,
+        #dbt-info-section ul.external-wiki-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-neon-sea-green);
+            transition: width 0.3s ease;
+        }
+        
+        #dbt-info-section p a:hover, 
+        #dbt-info-section ul.external-wiki-links a:hover {
             color: var(--accent-neon-sea-green);
-            text-shadow: 0 0 6px var(--accent-neon-sea-green);
+            text-shadow: 0 0 8px var(--accent-neon-sea-green);
+        }
+        
+        #dbt-info-section p a:hover::after,
+        #dbt-info-section ul.external-wiki-links a:hover::after {
+            width: 100%;
         }
 
-        #dbt-info-section ul {
-            list-style: none; padding-left: 0;
+        #dbt-info-section ul:not(.external-wiki-links) { 
+            list-style: none; 
+            padding-left: 0;
+            margin-top: 2rem;
         }
-        #dbt-info-section li {
-            background: rgba(0, 255, 255, 0.07); /* Fondo Cian Neón muy tenue */
-            padding: 15px;
-            margin-bottom: 15px;
-            border-left: 4px solid var(--accent-neon-cyan); /* Borde Cian Neón */
-            border-radius: 0 8px 8px 0;
+        
+        #dbt-info-section ul:not(.external-wiki-links) li {
+            background: rgba(0, 255, 255, 0.1); 
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid var(--accent-neon-cyan); 
+            border-radius: 0 12px 12px 0;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease;
         }
-        #dbt-info-section li strong {
-            color: var(--accent-neon-yellow); /* Textos strong en Amarillo Neón */
+        
+        #dbt-info-section ul:not(.external-wiki-links) li::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--accent-neon-cyan);
+            box-shadow: 0 0 10px var(--accent-neon-cyan);
+            z-index: 1;
+        }
+        
+        #dbt-info-section ul:not(.external-wiki-links) li:hover {
+            transform: translateX(10px);
+        }
+        
+        #dbt-info-section ul:not(.external-wiki-links) li strong {
+            color: var(--accent-neon-yellow); 
             font-family: 'Krona One', sans-serif;
             display: block;
-            margin-bottom: 5px;
-            text-shadow: 0 0 5px var(--accent-neon-yellow);
+            margin-bottom: 10px;
+            text-shadow: 0 0 8px var(--accent-neon-yellow);
+            font-size: 1.3rem;
         }
-
-
+        
+        #dbt-info-section ul.external-wiki-links {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1.5rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        #dbt-info-section ul.external-wiki-links li {
+            margin-bottom: 0;
+            background: rgba(57, 255, 20, 0.08);
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(57, 255, 20, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        #dbt-info-section ul.external-wiki-links li:hover {
+            background: rgba(57, 255, 20, 0.15);
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px rgba(57, 255, 20, 0.3);
+        }
+        
+        #dbt-info-section ul.external-wiki-links li i {
+            margin-right: 12px;
+            color: var(--accent-neon-sea-green); 
+            font-size: 1.2rem;
+        }
+        
+        /* Footer */
         footer { 
-            background: rgba(10,10,16,0.97); /* Fondo de footer más oscuro */
-            color: white; padding: 4.5rem 0 2.5rem; position: relative; 
+            background: rgba(10,10,16,0.97); 
+            color: white; 
+            padding: 4.5rem 0 2.5rem; 
+            position: relative; 
             border-top: 2px solid var(--secondary-dark-cyan-contrast); 
             box-shadow: 0 -5px 25px rgba(0, 51, 51, 0.3); 
         }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 45px; margin-bottom: 3.5rem; }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+            gap: 45px; 
+            margin-bottom: 3.5rem; 
+        }
+        
         .footer-column h3 { 
-            color: var(--accent-neon-yellow); /* Títulos footer en Amarillo Neón */
-            margin-bottom: 1.7rem; position: relative; padding-bottom: 12px; 
-            font-size: 1.5rem; font-family: 'Fredoka One', cursive;
-            text-shadow: 0 0 6px var(--accent-neon-yellow);
+            color: var(--accent-neon-yellow); 
+            margin-bottom: 1.7rem; 
+            position: relative; 
+            padding-bottom: 12px; 
+            font-size: 1.5rem; 
+            font-family: 'Fredoka One', cursive;
+            text-shadow: 0 0 8px var(--accent-neon-yellow);
         }
+        
         .footer-column h3::after { 
-            content: ''; position: absolute; bottom: 0; left: 0; width: 55px; height: 4px; 
-            background: var(--accent-neon-cyan); /* Línea Cian Neón */
-            border-radius: 2px; box-shadow: 0 0 12px var(--accent-neon-cyan); 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 55px; 
+            height: 4px; 
+            background: var(--accent-neon-cyan); 
+            border-radius: 2px; 
+            box-shadow: 0 0 12px var(--accent-neon-cyan); 
         }
-        .footer-links { list-style: none; } .footer-links li { margin-bottom: 14px; }
+        
+        .footer-links { 
+            list-style: none; 
+        } 
+        
+        .footer-links li { 
+            margin-bottom: 14px; 
+        }
+        
         .footer-links a { 
-            color: var(--text-color-medium); text-decoration: none; 
-            transition: all 0.3s ease; display: inline-block; padding: 5px 0; font-weight: 300; 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 5px 0; 
+            font-weight: 300; 
         }
+        
         .footer-links a:hover { 
-            color: var(--accent-neon-cyan); /* Hover en Cian Neón */
+            color: var(--accent-neon-cyan); 
             transform: translateX(10px); 
             text-shadow: 0 0 5px var(--accent-neon-cyan);
         }
-        .contact-info { margin-top: 22px; }
-        .contact-info p { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; font-size: 1.1rem; color: var(--text-color-medium); }
-        .contact-info i { color: var(--accent-neon-cyan); text-shadow: 0 0 5px var(--accent-neon-cyan); } /* Iconos de contacto en Cian Neón */
         
-        .social-links { display: flex; gap: 18px; margin-top: 25px; }
+        .contact-info { 
+            margin-top: 22px; 
+        }
+        
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 12px; 
+            margin-bottom: 14px; 
+            font-size: 1.1rem; 
+            color: var(--text-color-medium); 
+        }
+        
+        .contact-info i { 
+            color: var(--accent-neon-cyan); 
+            text-shadow: 0 0 5px var(--accent-neon-cyan); 
+        } 
+        
+        .social-links { 
+            display: flex; 
+            gap: 18px; 
+            margin-top: 25px; 
+        }
+        
         .social-links a { 
-            display: inline-flex; align-items: center; justify-content: center; 
-            width: 50px; height: 50px; background: rgba(255, 255, 255, 0.05); 
-            color: var(--accent-neon-cyan); /* Iconos sociales en Cian Neón */
-            border-radius: 50%; transition: all 0.4s ease; font-size: 1.3rem; 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 50px; 
+            height: 50px; 
+            background: rgba(255, 255, 255, 0.05); 
+            color: var(--accent-neon-cyan); 
+            border-radius: 50%; 
+            transition: all 0.4s ease; 
+            font-size: 1.3rem; 
             border: 1px solid var(--accent-neon-cyan); 
             text-shadow: 0 0 5px var(--accent-neon-cyan);
         }
+        
         .social-links a:hover { 
-            background: var(--accent-neon-cyan); color: var(--dark-bg-neon-theme); 
+            background: var(--accent-neon-cyan); 
+            color: var(--dark-bg-neon-theme); 
             transform: translateY(-5px) rotate(15deg); 
             box-shadow: 0 0 25px var(--accent-neon-cyan); 
             text-shadow: none;
         }
-        .copyright { text-align: center; padding-top: 2.5rem; border-top: 1px solid rgba(255, 255, 255, 0.08); color: #a090b0; font-size: 1rem; }
-        .copyright a { color: var(--accent-neon-yellow); text-decoration: none; transition: all 0.3s ease; } /* Enlaces copyright en Amarillo Neón */
-        .copyright a:hover { color: var(--text-color-light); text-shadow: 0 0 5px var(--accent-neon-yellow); }
         
+        .copyright { 
+            text-align: center; 
+            padding-top: 2.5rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.08); 
+            color: #a090b0; 
+            font-size: 1rem; 
+        }
+        
+        .copyright a { 
+            color: var(--accent-neon-yellow); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+        } 
+        
+        .copyright a:hover { 
+            color: var(--text-color-light); 
+            text-shadow: 0 0 5px var(--accent-neon-yellow); 
+        }
+        
+        /* Animación de estrellas */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+            animation: twinkle 5s infinite;
+        }
+        
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        
+        /* Galaxia animada */
+        .galaxy {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, transparent 20%, rgba(143, 0, 255, 0.1) 70%, transparent 100%);
+            z-index: -1;
+            opacity: 0.3;
+            animation: rotateGalaxy 120s infinite linear;
+        }
+        
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive */
         @media (max-width: 900px) {
-            .header-container { flex-direction: column; gap: 25px; }
-            nav ul { flex-wrap: wrap; justify-content: center; }
-            .content-block-qs h2 { font-size: 1.8rem; }
+            .header-container { 
+                flex-direction: column; 
+                gap: 15px;
+            }
+            
+            nav ul { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 8px;
+            }
+            
+            nav a {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.2rem;
+            }
+            
+            .apod-title {
+                font-size: 1.8rem;
+            }
+            
+            .content-block-qs h2 {
+                font-size: 2rem;
+            }
         }
+        
         @media (max-width: 600px) {
-            .logo h1 {font-size: 1.8rem;}
-            nav a { font-size: 0.8rem; padding: 8px 10px; }
-            .content-block-qs h2 { font-size: 1.6rem; }
-            #apod-container h3 { font-size: 1.3rem;}
-            #apod-container #apod-explanation-text { font-size: 1rem;} 
-            .download-button-style a { font-size: 0.9rem; padding: 10px 20px;}
-            #dbt-info-section p {font-size: 1rem;}
+            .logo h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav ul {
+                gap: 6px;
+            }
+            
+            nav a { 
+                font-size: 0.75rem;
+                padding: 6px 8px;
+            }
+            
+            .hero-content {
+                padding: 1.5rem;
+                margin-top: 2rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+            }
+            
+            .apod-title {
+                font-size: 1.5rem;
+            }
+            
+            .apod-date {
+                font-size: 1rem;
+            }
+            
+            .apod-explanation {
+                font-size: 0.95rem;
+                max-height: 120px;
+            }
+            
+            .download-button {
+                padding: 12px 25px;
+                font-size: 1rem;
+            }
+            
+            .apod-nav-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+            
+            .content-block-qs h2 {
+                font-size: 1.7rem;
+            }
+            
+            #dbt-info-section p {
+                font-size: 1.05rem;
+            }
         }
-
     </style>
 </head>
 <body>
     <div class="creative-bg"></div>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
     
-    <header>
+    <header id="main-header">
         <div class="container header-container">
             <div class="logo">
                 <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
@@ -290,17 +851,47 @@
                 <ul>
                     <li><a href="index.html" class="active">Inicio</a></li>
                     <li><a href="cursos.html">Cursos</a></li> 
-                    <li><a href="https://es.wikipedia.org/wiki/Blog" target="_blank">Blog</a></li>
-                    <li><a href="https://es.wikipedia.org/wiki/Foro_de_discusi%C3%B3n" target="_blank">Foros</a></li>
-                    <li><a href="https://es.wikipedia.org/wiki/Freemium" target="_blank">Premium</a></li>
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="premium.html">Premium</a></li> 
                 </ul>
             </nav>
         </div>
     </header>
 
+    <!-- Hero Section con NASA APOD -->
+    <section class="hero-apod">
+        <div class="apod-background" id="apod-background"></div>
+        <div class="apod-overlay"></div>
+        
+        <div class="hero-content">
+            <h1><i class="fas fa-rocket"></i> EXPLORA EL UNIVERSO</h1>
+            <p>Descubre la belleza del cosmos con la imagen astronómica del día de la NASA</p>
+            
+            <div class="apod-title" id="apod-title">Cargando título...</div>
+            <div class="apod-date" id="apod-date">Cargando fecha...</div>
+            
+            <div class="apod-explanation" id="apod-explanation">
+                Cargando explicación de la imagen astronómica del día...
+            </div>
+            
+            <a href="#" id="apod-download" class="download-button">
+                <i class="fas fa-download"></i> DESCARGAR IMAGEN EN HD
+            </a>
+        </div>
+        
+        <div class="apod-nav">
+            <div class="apod-nav-btn" id="prev-apod">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="apod-nav-btn" id="next-apod">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </section>
+
     <main class="main-page-content">
         <div class="container">
-            
             <section id="dbt-info-section" class="content-block-qs">
                 <h2><i class="fas fa-brain"></i> Explorando la Terapia Dialéctico Conductual (DBT)</h2>
                 <p>
@@ -309,41 +900,44 @@
                 <p>
                     El término "dialéctica" se refiere a la síntesis o integración de opuestos. En DBT, esto implica un equilibrio entre la aceptación y el cambio. Se valida la experiencia emocional del individuo mientras se fomenta la adquisición de nuevas habilidades para gestionar emociones intensas y mejorar las relaciones interpersonales. Nuestros <a href="cursos.html">cursos</a> profundizan en estos módulos.
                 </p>
+                
                 <ul>
-                    <li><strong>Mindfulness (Atención Plena):</strong> Aprender a observar y experimentar el momento presente sin juzgar. Ayuda a tomar control de la mente y a reducir la reactividad emocional.</li>
-                    <li><strong>Regulación Emocional:</strong> Identificar y cambiar emociones que se quieren modificar, reducir la vulnerabilidad a la mente emocional y aumentar las experiencias emocionales positivas.</li>
-                    <li><strong>Tolerancia al Malestar:</strong> Aprender a aceptar y tolerar el malestar emocional sin recurrir a conductas desadaptativas. Incluye técnicas para sobrevivir a crisis emocionales.</li>
-                    <li><strong>Efectividad Interpersonal:</strong> Aprender a pedir lo que se necesita, decir no de manera efectiva y mantener el autorespeto y las relaciones importantes.</li>
+                    <li>
+                        <strong>Mindfulness (Atención Plena):</strong> Aprender a observar y experimentar el momento presente sin juzgar. Ayuda a tomar control de la mente y a reducir la reactividad emocional.
+                    </li>
+                    <li>
+                        <strong>Regulación Emocional:</strong> Identificar y cambiar emociones que se quieren modificar, reducir la vulnerabilidad a la mente emocional y aumentar las experiencias emocionales positivas.
+                    </li>
+                    <li>
+                        <strong>Tolerancia al Malestar:</strong> Aprender a aceptar y tolerar el malestar emocional sin recurrir a conductas desadaptativas. Incluye técnicas para sobrevivir a crisis emocionales.
+                    </li>
+                    <li>
+                        <strong>Efectividad Interpersonal:</strong> Aprender a pedir lo que se necesita, decir no de manera efectiva y mantener el autorespeto y las relaciones importantes.
+                    </li>
                 </ul>
+                
                 <p>
                     DBT típicamente incluye terapia individual, entrenamiento en habilidades grupales, coaching telefónico (según sea necesario) y un equipo de consulta para los terapeutas. El objetivo final es ayudar a las personas a construir una "vida que valga la pena vivir".
                 </p>
-            </section>
 
-            
-            <section id="apod-section" class="content-block-qs">
-                <h2><i class="fas fa-rocket"></i> Fotografía Astronómica del Día (NASA APOD)</h2>
-                <div id="apod-container" style="text-align: center;">
-                    <figure>
-                        <img id="apod-image" src="https://placehold.co/800x600/0A0A10/F0F0F0?text=Cargando+APOD..." alt="NASA Astronomy Picture of the Day">
-                        <figcaption>
-                            <h3 id="apod-title">Cargando título...</h3>
-                        </figcaption>
-                    </figure>
-                    <p id="apod-explanation-text">Cargando explicación...</p> 
-                    <p id="apod-copyright"></p>
-                    
-                    <div class="download-button-style">
-                        <a id="apod-download-sd" href="#" download class="apod-download-button" style="display: none;">
-                            <i class="fas fa-download"></i> Descargar Imagen
-                        </a>
-                    </div>
-                    <div id="apod-error" style="display: none;">
-                        Lo sentimos, no se pudo cargar la imagen astronómica del día. Por favor, intenta de nuevo más tarde.
-                    </div>
-                </div>
+                <h4><i class="fas fa-link"></i> Conceptos Relacionados y Recursos Adicionales</h4>
+                <p>Para complementar tu aprendizaje sobre los temas que abordamos en nuestras secciones, aquí tienes algunos enlaces informativos generales:</p>
+                
+                <ul class="external-wiki-links">
+                    <li>
+                        <i class="fab fa-wikipedia-w"></i> 
+                        <a href="https://es.wikipedia.org/wiki/Blog" target="_blank" rel="noopener noreferrer">¿Qué es un Blog? (Wikipedia)</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-wikipedia-w"></i> 
+                        <a href="https://es.wikipedia.org/wiki/Foro_de_discusi%C3%B3n" target="_blank" rel="noopener noreferrer">¿Qué es un Foro de Discusión? (Wikipedia)</a>
+                    </li>
+                    <li>
+                        <i class="fab fa-wikipedia-w"></i> 
+                        <a href="https://es.wikipedia.org/wiki/Freemium" target="_blank" rel="noopener noreferrer">Modelo Freemium/Premium (Wikipedia)</a>
+                    </li>
+                </ul>
             </section>
-
         </div>
     </main>
 
@@ -364,10 +958,11 @@
                 <div class="footer-column">
                     <h3>Navegación</h3>
                     <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
                         <li><a href="cursos.html">Cursos</a></li> 
-                        <li><a href="https://es.wikipedia.org/wiki/Blog" target="_blank">Blog</a></li> 
-                        <li><a href="https://es.wikipedia.org/wiki/Foro_de_discusi%C3%B3n" target="_blank">Foros</a></li> 
-                        <li><a href="https://es.wikipedia.org/wiki/Freemium" target="_blank">Premium</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="premium.html">Premium</a></li> 
                     </ul>
                 </div>
                 
@@ -403,7 +998,35 @@
         document.addEventListener('DOMContentLoaded', function() {
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
-
+            
+            // Create stars animation
+            const starsContainer = document.getElementById('stars');
+            const starsCount = 200;
+            
+            for (let i = 0; i < starsCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // Random position and size
+                const size = Math.random() * 3;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation delay and duration
+                star.style.animationDelay = `${Math.random() * 5}s`;
+                star.style.animationDuration = `${2 + Math.random() * 8}s`;
+                
+                // Random color for some stars
+                if (Math.random() > 0.7) {
+                    const colors = ['#8F00FF', '#00FFFF', '#FFFF00', '#FF00FF'];
+                    star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                }
+                
+                starsContainer.appendChild(star);
+            }
+            
             // Active Nav Link
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
             const navLinks = document.querySelectorAll('nav a');
@@ -415,85 +1038,126 @@
                     link.classList.remove('active');
                 }
             });
-
+            
+            // Header scroll effect
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+            
+            // Show content on scroll
+            const contentBlock = document.querySelector('.content-block-qs');
+            window.addEventListener('scroll', () => {
+                if (contentBlock.getBoundingClientRect().top < window.innerHeight * 0.8) {
+                    contentBlock.classList.add('visible');
+                }
+            });
+            
             // NASA APOD Fetch
             const apiKey = "KLRQ3WhMwiyQ2tZNpU8kXuHJabsmBLVeb6NFF9fx"; 
-            const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}`;
-
-            const apodImage = document.getElementById('apod-image');
+            const today = new Date();
+            const apodDate = new Date();
+            let currentApodDate = today;
+            
+            const apodBackground = document.getElementById('apod-background');
             const apodTitle = document.getElementById('apod-title');
-            const apodExplanationText = document.getElementById('apod-explanation-text'); 
-            const apodDownloadSD = document.getElementById('apod-download-sd');
-            const apodCopyright = document.getElementById('apod-copyright');
-            const apodError = document.getElementById('apod-error');
-
-            fetch(apiUrl)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error(`HTTP error! status: ${response.status}`);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    apodError.style.display = 'none'; 
-                    if (data.media_type === 'image') {
-                        apodImage.src = data.url;
-                        apodImage.alt = data.title;
-                        apodTitle.textContent = data.title;
-                        apodExplanationText.textContent = data.explanation; 
-
-                        const safeTitle = data.title ? data.title.replace(/\W+/g, '_') : 'apod_image';
-                        
-                        apodDownloadSD.href = data.url;
-                        apodDownloadSD.setAttribute('download', safeTitle + '_sd.jpg');
-                        apodDownloadSD.style.display = 'inline-block'; 
-
-                    } else if (data.media_type === 'video') {
-                        apodTitle.textContent = data.title;
-                        let videoHtml = `<p>El APOD de hoy es un video. Puedes verlo en <a href="${data.url}" target="_blank" rel="noopener noreferrer">${data.url}</a>.</p>`;
-                        
-                        if (data.url.includes("youtube.com/embed") || data.url.includes("youtu.be")) {
-                             const videoId = data.url.split('embed/')[1]?.split('?')[0] || data.url.split('/').pop().split('?')[0];
-                             videoHtml = `<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
-                                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;"
-                                src="https://www.youtube.com/embed/${videoId}" title="${data.title || 'Video del Día de NASA APOD'}" frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                             </div>`;
-                        } else if (data.url.includes("player.vimeo.com/video")) {
-                             videoHtml = `<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; background: #000;">
-                                <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;"
-                                src="${data.url}" title="${data.title || 'Video del Día de NASA APOD'}" frameborder="0" 
-                                allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-                             </div>`;
+            const apodDateEl = document.getElementById('apod-date');
+            const apodExplanation = document.getElementById('apod-explanation');
+            const apodDownload = document.getElementById('apod-download');
+            const prevApodBtn = document.getElementById('prev-apod');
+            const nextApodBtn = document.getElementById('next-apod');
+            
+            // Format date to YYYY-MM-DD
+            function formatDate(date) {
+                const year = date.getFullYear();
+                const month = String(date.getMonth() + 1).padStart(2, '0');
+                const day = String(date.getDate()).padStart(2, '0');
+                return `${year}-${month}-${day}`;
+            }
+            
+            // Fetch APOD for a specific date
+            function fetchApod(date) {
+                const formattedDate = formatDate(date);
+                const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
+                
+                // Show loading state
+                apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A10, #1a1a2e)";
+                apodTitle.textContent = "Cargando...";
+                apodDateEl.textContent = "";
+                apodExplanation.textContent = "Obteniendo la imagen del día desde la NASA...";
+                
+                fetch(apiUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error(`HTTP error! status: ${response.status}`);
                         }
-                        
-                        apodImage.style.display = 'none'; 
-                        const videoContainer = document.createElement('div');
-                        videoContainer.innerHTML = videoHtml;
-                        videoContainer.style.marginBottom = '20px';
-                        apodExplanationText.parentNode.insertBefore(videoContainer, apodExplanationText); 
-                        apodExplanationText.textContent = data.explanation; 
-                        apodDownloadSD.style.display = 'none'; 
-                    } else {
-                        apodTitle.textContent = 'Contenido no soportado';
-                        apodExplanationText.textContent = `El tipo de medio de hoy (${data.media_type}) no es una imagen o video. Puedes verlo en: <a href="${data.url}" target="_blank">${data.url}</a>`; 
-                        apodImage.style.display = 'none';
-                    }
-
-                    if (data.copyright) {
-                        apodCopyright.textContent = `© ${data.copyright.trim()}`;
-                    } else {
-                        apodCopyright.textContent = `Crédito: NASA APOD`;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching APOD:', error);
-                    apodError.style.display = 'block';
-                    apodImage.style.display = 'none'; 
-                    apodTitle.textContent = 'Error al cargar APOD';
-                    apodExplanationText.textContent = 'No se pudo obtener la imagen o información del día.'; 
-                    apodDownloadSD.style.display = 'none';
-                });
+                        return response.json();
+                    })
+                    .then(data => {
+                        if (data.media_type === 'image') {
+                            // Set background image
+                            apodBackground.style.backgroundImage = `url(${data.hdurl || data.url})`;
+                            
+                            // Set content
+                            apodTitle.textContent = data.title;
+                            apodDateEl.textContent = `Fecha: ${formattedDate}`;
+                            apodExplanation.textContent = data.explanation;
+                            
+                            // Set download link
+                            apodDownload.href = data.hdurl || data.url;
+                            apodDownload.setAttribute('download', `NASA_APOD_${formattedDate}.jpg`);
+                            
+                            currentApodDate = date;
+                        } else {
+                            // If it's a video, show a placeholder and message
+                            apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
+                            apodTitle.textContent = "Video del Día";
+                            apodDateEl.textContent = `Fecha: ${formattedDate}`;
+                            apodExplanation.textContent = "El APOD de hoy es un video. Visita el sitio oficial de la NASA para verlo.";
+                            apodDownload.style.display = 'none';
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error fetching APOD:', error);
+                        // Fallback to placeholder image
+                        apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1464802686167-b939a6910659?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
+                        apodTitle.textContent = "Imagen Astronómica del Día";
+                        apodDateEl.textContent = "Fecha: " + formatDate(today);
+                        apodExplanation.textContent = "Explora la belleza del universo con las imágenes más impresionantes capturadas por la NASA y telescopios alrededor del mundo.";
+                        apodDownload.style.display = 'none';
+                    });
+            }
+            
+            // Initial fetch for today
+            fetchApod(today);
+            
+            // Navigation buttons
+            prevApodBtn.addEventListener('click', () => {
+                const prevDate = new Date(currentApodDate);
+                prevDate.setDate(prevDate.getDate() - 1);
+                fetchApod(prevDate);
+            });
+            
+            nextApodBtn.addEventListener('click', () => {
+                const nextDate = new Date(currentApodDate);
+                nextDate.setDate(nextDate.getDate() + 1);
+                
+                // Don't allow future dates
+                if (nextDate <= today) {
+                    fetchApod(nextDate);
+                } else {
+                    // Show message for future dates
+                    apodTitle.textContent = "Imagen Futura";
+                    apodDateEl.textContent = "Fecha: " + formatDate(nextDate);
+                    apodExplanation.textContent = "La imagen para esta fecha aún no está disponible. Por favor, selecciona una fecha anterior.";
+                    apodBackground.style.backgroundImage = "url('https://images.unsplash.com/photo-1534447677768-be436bb09401?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80')";
+                    apodDownload.style.display = 'none';
+                }
+            });
         });
     </script>
 </body>
