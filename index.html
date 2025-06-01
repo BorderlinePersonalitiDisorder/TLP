@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borderline Journey - DBT, TLP y TCC Profundizado</title>
+    <title>Universo Borderline - DBT, TLP y TCC Profundizado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -42,7 +42,7 @@
             background: var(--dark-bg);
             color: var(--text-color-light);
             line-height: 1.8;
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Playfair Display', serif; 
             overflow-x: hidden;
             min-height: 100vh;
             display: flex; 
@@ -109,14 +109,14 @@
         }
         
         .logo h1 { 
-            font-family: 'Krona One', sans-serif; 
-            font-size: 1.8rem; 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
             font-weight: 400;
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
             -webkit-background-clip: text; 
             background-clip: text; 
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
+            letter-spacing: 2px; 
         }
         
         .logo i { 
@@ -202,14 +202,15 @@
         }
         
         .content-block-qs h2 {
-            font-family: 'Major Mono Display', monospace; 
-            font-size: 2.3rem; 
+            font-family: 'Fredoka One', cursive; 
+            font-size: 2.5rem; 
             color: var(--accent-blue); 
             text-align: center; 
             margin-bottom: 2rem; 
             text-transform: uppercase;
             position: relative;
             padding-bottom: 15px;
+            letter-spacing: 1px;
         }
         
         .content-block-qs h2::after {
@@ -224,36 +225,78 @@
             border-radius: 2px;
         }
         
-        .content-block-qs h2 i.fa-brain { /* Specific for DBT title */
-            color: var(--accent-magenta); 
-        }
-        .content-block-qs h2 i.fa-lightbulb { /* Specific for CBT title */
-             color: var(--accent-yellow);
+        .content-block-qs h2 i.fa-brain, 
+        .content-block-qs h2 i.fa-compass, /* Icon for new intro section */
+        .content-block-qs h2 i.fa-lightbulb { 
+            margin-right: 10px;
         }
 
+        .content-block-qs h2 i.fa-brain {
+            color: var(--accent-magenta); 
+        }
+         .content-block-qs h2 i.fa-compass { /* Style for intro title icon */
+            color: var(--accent-green); 
+        }
+        .content-block-qs h2 i.fa-lightbulb { 
+            color: var(--accent-yellow); 
+        }
         
         .content-block-qs h4 { 
-            font-family: 'Krona One', sans-serif;
+            font-family: 'Comfortaa', sans-serif; 
+            font-weight: 700; 
             color: var(--accent-green);
             margin-top: 2rem;
             margin-bottom: 1.2rem;
-            font-size: 1.4rem; 
+            font-size: 1.5rem; 
             border-left: 3px solid var(--accent-green); 
             padding-left: 12px;
         }
+
+        /* Styling for the new introductory section's list */
+        .intro-summary-list {
+            list-style: none;
+            padding-left: 0;
+            margin-top: 1.5rem;
+        }
+        .intro-summary-list li {
+            background: rgba(var(--accent-blue-rgb), 0.07);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid var(--accent-yellow);
+            border-radius: 0 8px 8px 0;
+            transition: all 0.3s ease;
+        }
+        .intro-summary-list li:hover {
+            background: rgba(var(--accent-yellow-rgb), 0.1);
+            transform: translateX(5px);
+        }
+        .intro-summary-list li strong {
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: 700;
+            color: var(--accent-yellow);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.15rem;
+        }
+        .intro-summary-list li p {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 0;
+            color: var(--text-color-light);
+        }
         
-        .info-section p { /* Common styling for paragraphs in info sections */
-            font-size: 1.15rem; 
+        .info-section p { 
+            font-size: 1.1rem; 
             color: var(--text-color-light); 
             margin-bottom: 20px; 
-            line-height: 1.85; 
+            line-height: 1.9; 
             text-align: justify;
         }
         
         .keyword-link {
             color: var(--accent-yellow);
             text-decoration: none;
-            font-weight: bold;
+            font-weight: bold; 
             border-bottom: 2px dashed var(--accent-yellow);
             transition: all 0.3s ease;
             padding: 0 2px;
@@ -265,13 +308,13 @@
             background-color: rgba(var(--accent-green-rgb), 0.1);
         }
         
-        .info-section ul:not(.external-wiki-links) { 
+        .info-section ul { /* Simplified from :not(.external-wiki-links) as those are gone */
             list-style: none; 
             padding-left: 0;
             margin-top: 1.8rem;
         }
         
-        .info-section ul:not(.external-wiki-links) li {
+        .info-section ul li {
             background: rgba(var(--secondary-cyan-rgb), 0.08); 
             padding: 18px; 
             margin-bottom: 18px;
@@ -280,57 +323,29 @@
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease, background-color 0.3s ease;
+            font-family: 'Playfair Display', serif; 
         }
         
-        .info-section ul:not(.external-wiki-links) li:hover {
+        .info-section ul li:hover {
             transform: translateX(8px); 
             background-color: rgba(var(--secondary-cyan-rgb), 0.15);
         }
         
-        .info-section ul:not(.external-wiki-links) li strong {
+        .info-section ul li strong {
             color: var(--accent-magenta); 
-            font-family: 'Krona One', sans-serif;
+            font-family: 'Comfortaa', sans-serif; 
+            font-weight: 700;
             display: block;
             margin-bottom: 8px;
             font-size: 1.25rem; 
         }
         
-        .info-section ul.external-wiki-links {
-            list-style: none;
-            padding-left: 0;
-            margin-top: 1.3rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 12px; 
-        }
-        
-        .info-section ul.external-wiki-links li {
-            margin-bottom: 0;
-            background: rgba(var(--accent-green-rgb), 0.07);
-            padding: 12px;
-            border-radius: 6px;
-            border: 1px solid rgba(var(--accent-green-rgb), 0.25);
-            transition: all 0.3s ease;
-        }
-        
-        .info-section ul.external-wiki-links li:hover {
-            background: rgba(var(--accent-green-rgb), 0.12);
-            transform: translateY(-2px);
-            box-shadow: 0 0 12px rgba(var(--accent-green-rgb), 0.25);
-        }
-        
-        .info-section ul.external-wiki-links li i {
-            margin-right: 10px;
-            color: var(--accent-green); 
-            font-size: 1.1rem;
-        }
-
         #apod-section {
             margin-top: 3rem; 
         }
 
         .apod-title-container h2 { 
-            font-family: 'Major Mono Display', monospace;
+            font-family: 'Fredoka One', cursive; 
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
@@ -354,6 +369,7 @@
             max-width: 600px;
             margin: 0 auto 1.5rem auto; 
             text-align: center;
+            font-family: 'Comfortaa', sans-serif; 
         }
         
         .hero-apod-image-container { 
@@ -388,8 +404,8 @@
         }
         
         .apod-title-text { 
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.7rem; 
+            font-family: 'Lobster', cursive; 
+            font-size: 2rem; 
             color: var(--accent-yellow);
             margin-bottom: 0.6rem; 
             animation: textPulse 2s infinite alternate;
@@ -402,21 +418,22 @@
         }
         
         .apod-date-text { 
-            font-family: 'Major Mono Display', monospace;
+            font-family: 'Caveat', cursive; 
             color: var(--accent-green);
-            font-size: 0.95rem; 
+            font-size: 1.5rem; 
             margin-bottom: 1.3rem; 
             text-align: center;
         }
 
         .image-details-block .desc-title-img { 
-            font-family: 'Krona One', sans-serif;
-            color: var(--accent-cyan); 
+            font-family: 'Comfortaa', sans-serif; 
+            font-weight: 700;
+            color: var(--secondary-cyan); 
             font-size: 1.3rem;
             margin-top: 1rem;
             margin-bottom: 0.8rem;
             text-align: center;
-            border-bottom: 1px dashed var(--accent-cyan);
+            border-bottom: 1px dashed var(--secondary-cyan);
             padding-bottom: 0.5rem;
         }
         
@@ -431,6 +448,7 @@
             max-height: 180px; 
             overflow-y: auto;
             margin-bottom: 1.3rem; 
+            font-family: 'Playfair Display', serif; 
         }
         
         .image-explanation::-webkit-scrollbar { width: 7px; }
@@ -469,7 +487,7 @@
 
         .apod-nav-btn {
             background: rgba(10, 10, 32, 0.65);
-            color: var(--accent-cyan);
+            color: var(--secondary-cyan);
             border: 1.5px solid var(--accent-blue);
             border-radius: 50%;
             width: 50px; 
@@ -545,6 +563,7 @@
             display: inline-block; 
             padding: 4px 0; 
             font-weight: 300; 
+            font-family: 'Comfortaa', sans-serif; 
         }
         .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
         
@@ -556,6 +575,7 @@
             margin-bottom: 12px; 
             font-size: 1.05rem; 
             color: var(--text-color-medium); 
+            font-family: 'Comfortaa', sans-serif; 
         }
         .contact-info i { color: var(--accent-blue); } 
         
@@ -581,6 +601,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.07); 
             color: #a090b0; 
             font-size: 0.95rem; 
+            font-family: 'Comfortaa', sans-serif; 
         }
         .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
         .copyright a:hover { color: var(--text-color-light); }
@@ -612,24 +633,26 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .content-block-qs h2 { font-size: 2rem; }
+            .content-block-qs h2 { font-size: 2.2rem; } 
             .apod-title-container h2 { font-size: 2.2rem; }
-            .apod-title-text { font-size: 1.5rem; }
+            .apod-title-text { font-size: 1.8rem; } 
         }
         
         @media (max-width: 600px) {
             .main-page-content { padding-top: 130px; } 
-            .logo h1 { font-size: 1.5rem; }
+            .logo h1 { font-size: 1.6rem; } 
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
             .content-block-qs { padding: 25px; }
-            .content-block-qs h2 { font-size: 1.7rem; }
-            .info-section p { font-size: 1rem; } /* Adjusted for smaller screens */
+            .content-block-qs h2 { font-size: 1.9rem; } 
+            .intro-summary-list li p { font-size: 0.95rem; }
+            .intro-summary-list li strong { font-size: 1.1rem;}
+            .info-section p { font-size: 1rem; } 
             .apod-title-container h2 { font-size: 1.8rem; }
             .apod-title-container p { font-size: 1rem; }
             .hero-apod-image-container { height: 55vh; min-height: 300px; }
-            .apod-title-text { font-size: 1.3rem; }
-            .apod-date-text { font-size: 0.85rem; }
+            .apod-title-text { font-size: 1.6rem; } 
+            .apod-date-text { font-size: 1.3rem; } 
             .image-details-block .desc-title-img { font-size: 1.15rem; }
             .image-explanation { font-size: 0.95rem; max-height: 150px; }
             .download-button { padding: 9px 20px; font-size: 0.95rem; }
@@ -645,8 +668,7 @@
         <div class="container header-container">
             <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
                 <i class="fas fa-brain"></i>
-                <h1>BORDERLINE JOURNEY</h1>
-            </a>
+                <h1>UNIVERSO BORDERLINE</h1> </a>
             <nav>
                 <ul>
                     <li><a href="index.html" class="active">Inicio</a></li>
@@ -661,6 +683,35 @@
 
     <main class="main-page-content">
         <div class="container">
+            <section id="intro-summary-section" class="content-block-qs info-section">
+                <h2><i class="fas fa-compass"></i> Bienvenido a Universo Borderline</h2>
+                <p style="text-align: center; font-size: 1.15rem; color: var(--text-color-medium); margin-bottom: 2rem;">
+                    Explora las diferentes facetas de nuestro universo, diseñado para acompañarte en tu viaje de autoconocimiento y bienestar.
+                </p>
+                <ul class="intro-summary-list">
+                    <li>
+                        <strong><i class="fas fa-home"></i> Inicio:</strong>
+                        <p>Tu punto de partida. Aquí encontrarás información esencial sobre TLP, DBT y TCC, además de nuestra dosis diaria de inspiración cósmica para elevar el espíritu.</p>
+                    </li>
+                    <li>
+                        <strong><i class="fas fa-graduation-cap"></i> Cursos:</strong>
+                        <p>Profundiza tus conocimientos con nuestros módulos interactivos. Explora a fondo las habilidades DBT, las técnicas TCC y herramientas para el bienestar emocional.</p>
+                    </li>
+                    <li>
+                        <strong><i class="fas fa-feather-alt"></i> Blog:</strong>
+                        <p>Un espacio para la reflexión y el aprendizaje continuo. Lee artículos, historias personales y perspectivas enriquecedoras sobre el viaje emocional.</p>
+                    </li>
+                    <li>
+                        <strong><i class="fas fa-users"></i> Foros:</strong>
+                        <p>Conecta con otros. Únete a nuestra comunidad para compartir experiencias, encontrar apoyo y crecer juntos en un ambiente seguro y comprensivo.</p>
+                    </li>
+                    <li>
+                        <strong><i class="fas fa-star"></i> Premium:</strong>
+                        <p>Accede a contenido exclusivo, recursos avanzados y herramientas especializadas diseñadas para potenciar tu camino de autoconocimiento y sanación.</p>
+                    </li>
+                </ul>
+            </section>
+
             <section id="dbt-info-section" class="content-block-qs info-section">
                 <h2><i class="fas fa-brain"></i> Explorando TLP y DBT</h2>
                 <p>
@@ -692,19 +743,7 @@
                 <p>
                     La DBT típicamente incluye terapia individual, entrenamiento en habilidades grupales, coaching telefónico (según sea necesario entre sesiones para la generalización de habilidades) y un equipo de consulta para los terapeutas (para asegurar la adherencia al modelo y proveer apoyo). El objetivo final es ayudar a las personas a construir una "vida que valga la pena vivir", definida por el propio individuo.
                 </p>
-
-                <h4><i class="fas fa-link"></i> Conceptos Relacionados y Recursos Adicionales</h4>
-                <p>Para complementar tu aprendizaje sobre los temas que abordamos en nuestras secciones, aquí tienes algunos enlaces informativos generales de Wikipedia:</p>
-                
-                <ul class="external-wiki-links">
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Psicoterapia" target="_blank" rel="noopener noreferrer">Psicoterapia (General)</a></li>
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Salud_mental" target="_blank" rel="noopener noreferrer">Salud Mental</a></li>
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" target="_blank" rel="noopener noreferrer">Terapia Cognitivo-Conductual (TCC)</a></li>
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Blog" target="_blank" rel="noopener noreferrer">¿Qué es un Blog?</a></li>
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Foro_de_discusi%C3%B3n" target="_blank" rel="noopener noreferrer">Foro de Discusión</a></li>
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Freemium" target="_blank" rel="noopener noreferrer">Modelo Freemium/Premium</a></li>
-                </ul>
-            </section>
+                </section>
 
             <section id="cbt-info-section" class="content-block-qs info-section">
                 <h2><i class="fas fa-lightbulb"></i> Descubriendo la Terapia Cognitivo Conductual (TCC)</h2>
@@ -735,22 +774,14 @@
                 </ul>
                 
                 <p>
-                   La TCC es generalmente una terapia de corto a mediano plazo, con un énfasis en el presente y en el desarrollo de estrategias prácticas para el cambio. Se anima al cliente a tomar un papel activo en su proceso terapéutico. Nuestros <a href="cursos.html" class="keyword-link">cursos</a> explorarán estos conceptos en mayor detalle.
+                    La TCC es generalmente una terapia de corto a mediano plazo, con un énfasis en el presente y en el desarrollo de estrategias prácticas para el cambio. Se anima al cliente a tomar un papel activo en su proceso terapéutico. Nuestros <a href="cursos.html" class="keyword-link">cursos</a> explorarán estos conceptos en mayor detalle.
                 </p>
-
-                <h4><i class="fas fa-link"></i> Conceptos Adicionales en TCC</h4>
-                 <ul class="external-wiki-links">
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Aaron_T._Beck" target="_blank" rel="noopener noreferrer">Aaron T. Beck (Fundador)</a></li>
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Diario_de_pensamientos_disfuncionales" target="_blank" rel="noopener noreferrer">Registro de Pensamientos</a></li>
-                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Experimento_conductual" target="_blank" rel="noopener noreferrer">Experimentos Conductuales</a></li>
-                </ul>
-            </section>
+                </section>
 
 
             <section id="apod-section" class="content-block-qs">
                 <div class="apod-title-container">
-                     <h2><i class="fas fa-mountain"></i> Inspiración Diaria del Cosmos</h2>
-                     <p>Descubre una imagen astronómica o astrofotografía inspiradora cada día.</p>
+                      <h2><i class="fas fa-rocket"></i> Inspiración Diaria del Cosmos</h2> <p>Descubre una imagen astronómica o astrofotografía inspiradora cada día.</p>
                 </div>
 
                 <div class="hero-apod-image-container">
@@ -785,9 +816,7 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>Borderline Journey</h3>
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <div class="social-links">
+                    <h3>Universo Borderline</h3> <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p> <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
@@ -807,11 +836,11 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Recursos DBT</h3>
-                    <ul class="footer-links">
+                    <h3>Enlaces Útiles</h3> <ul class="footer-links">
                         <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" target="_blank" rel="noopener noreferrer">¿Qué es TCC?</a></li>
                         <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
+                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar Terapeutas</a></li>
                         <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
@@ -828,8 +857,7 @@
             </div>
             
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
-                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
     </footer>
@@ -888,7 +916,7 @@
              const observerOptions = {
                 root: null, 
                 rootMargin: '0px',
-                threshold: 0.08 
+                threshold: 0.08 // Trigger when 8% of the element is visible
             };
 
             const observer = new IntersectionObserver((entries, obs) => {
@@ -910,7 +938,7 @@
             
             const apodBackground = document.getElementById('apod-background-main');
             const apodTitleEl = document.getElementById('apod-title-text-main'); 
-            const apodDateEl = document.getElementById('apod-date-text-main');   
+            const apodDateEl = document.getElementById('apod-date-text-main');  
             const apodExplanation = document.getElementById('image-explanation-main');
             const apodDownload = document.getElementById('apod-download-main');
             const prevApodBtn = document.getElementById('prev-apod-main');
@@ -944,7 +972,7 @@
                             if (!response.ok) {
                                 return response.json().then(errData => {
                                     throw new Error(`Error ${response.status}: ${errData.msg || 'No se pudo obtener la imagen para esta fecha.'}`);
-                                }).catch(() => {
+                                }).catch(() => { // Fallback if errData.msg is not available or response.json() itself fails
                                     throw new Error(`Error ${response.status}: No se pudo obtener la imagen para esta fecha.`);
                                 });
                             }
@@ -996,14 +1024,15 @@
                     const nextDate = new Date(currentApodDate);
                     nextDate.setDate(nextDate.getDate() + 1);
                     
-                    const todayForComparison = new Date();
-                    todayForComparison.setHours(0,0,0,0); 
-                    const tempNextDate = new Date(nextDate); 
-                    tempNextDate.setHours(0,0,0,0);
+                    const todayForComparison = new Date(); // Today's date for comparison
+                    todayForComparison.setHours(0,0,0,0); // Normalize to start of day
+                    const tempNextDate = new Date(nextDate); // Create a temporary date for nextDate to normalize
+                    tempNextDate.setHours(0,0,0,0); // Normalize to start of day
 
-                    if (tempNextDate <= todayForComparison) {
+                    if (tempNextDate <= todayForComparison) { // Allow fetching up to and including today
                         fetchDailyImage(nextDate);
                     } else {
+                        // Handle attempt to fetch future date
                         apodTitleEl.textContent = "Viaje al Futuro No Disponible";
                         apodDateEl.textContent = `Fecha: ${formatDateReadable(nextDate)}`;
                         apodExplanation.textContent = "Las crónicas cósmicas para esta fecha futura aún no han sido escritas. Por favor, mantente en el presente o explora el pasado.";
