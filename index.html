@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Borderline Journey - DBT y TLP Profundizado</title>
+    <title>Borderline Journey - DBT, TLP y TCC Profundizado</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Paleta Borderline */
             --primary-violet: #8A2BE2;
             --secondary-cyan: #00CED1;
             --accent-magenta: #FF00FF;
@@ -22,8 +21,15 @@
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
-            
             --dark-bg: #0A0A20;
+
+            /* RGB versions for box-shadows with opacity */
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+            --accent-yellow-rgb: 255, 215, 0;
+            --accent-green-rgb: 0, 255, 127;
+            --secondary-cyan-rgb: 0, 206, 209;
         }
         
         * {
@@ -39,10 +45,12 @@
             font-family: 'Raleway', sans-serif;
             overflow-x: hidden;
             min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 10% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%);
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
             background-size: 400% 400%; 
             animation: gradientBackground 20s ease infinite;
         }
@@ -62,7 +70,6 @@
             z-index: 1;
         }
         
-        /* Header */
         header {
             background: rgba(10, 10, 32, 0.85); 
             backdrop-filter: blur(12px); 
@@ -73,7 +80,7 @@
             width: 100%;
             z-index: 1000;
             border-bottom: 2px solid var(--accent-magenta); 
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
             transition: all 0.4s ease;
         }
         
@@ -94,7 +101,7 @@
             gap: 15px; 
             cursor: pointer;
             transition: all 0.4s ease;
-            text-decoration: none; /* Ensure logo itself is not underlined if it's an anchor */
+            text-decoration: none; 
         }
         
         .logo:hover {
@@ -120,7 +127,7 @@
         
         @keyframes logoPulse {
             0% { transform: scale(1); color: var(--accent-green); }
-            50% { transform: scale(1.1); color: var(--accent-cyan); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); }
             100% { transform: scale(1); color: var(--accent-blue); }
         }
         
@@ -169,23 +176,22 @@
             transform: translateY(-3px); 
         }
 
-        /* Main Content Area */
         .main-page-content { 
-            padding: 100px 0 2rem 0; /* Adjusted top padding for fixed header, bottom padding reduced */
+            padding: 100px 0 2rem 0; 
+            flex-grow: 1; 
         }
         
-        /* Content Block Styling (used for DBT and APOD sections) */
         .content-block-qs { 
             background: var(--card-bg); 
-            padding: 35px; /* Slightly reduced padding */
+            padding: 35px; 
             border-radius: 20px; 
-            margin-bottom: 2.5rem; /* Reduced margin */
+            margin-bottom: 2.5rem; 
             border: 1px solid var(--border-color);
-            box-shadow: 0 0 25px rgba(138, 43, 226, 0.25), 0 4px 12px rgba(0,0,0,0.4); 
+            box-shadow: 0 0 25px rgba(var(--primary-violet-rgb), 0.25), 0 4px 12px rgba(0,0,0,0.4); 
             backdrop-filter: blur(10px);
             transform: translateY(40px);
             opacity: 0;
-            transition: all 0.9s ease-out; /* Slightly faster transition */
+            transition: all 0.9s ease-out; 
             border-top-right-radius: 40px;
             border-bottom-left-radius: 40px;
         }
@@ -197,7 +203,7 @@
         
         .content-block-qs h2 {
             font-family: 'Major Mono Display', monospace; 
-            font-size: 2.3rem; /* Adjusted size */
+            font-size: 2.3rem; 
             color: var(--accent-blue); 
             text-align: center; 
             margin-bottom: 2rem; 
@@ -212,30 +218,32 @@
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 120px; /* Adjusted width */
-            height: 3px; /* Adjusted height */
+            width: 120px; 
+            height: 3px; 
             background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
             border-radius: 2px;
         }
         
-        .content-block-qs h2 i {
-            margin-right: 12px; /* Adjusted margin */
+        .content-block-qs h2 i.fa-brain { /* Specific for DBT title */
             color: var(--accent-magenta); 
         }
+        .content-block-qs h2 i.fa-lightbulb { /* Specific for CBT title */
+             color: var(--accent-yellow);
+        }
+
         
         .content-block-qs h4 { 
             font-family: 'Krona One', sans-serif;
             color: var(--accent-green);
             margin-top: 2rem;
             margin-bottom: 1.2rem;
-            font-size: 1.4rem; /* Adjusted size */
-            border-left: 3px solid var(--accent-green); /* Adjusted border */
+            font-size: 1.4rem; 
+            border-left: 3px solid var(--accent-green); 
             padding-left: 12px;
         }
         
-        /* DBT Info Section Specifics */
-        #dbt-info-section p {
-            font-size: 1.15rem; /* Adjusted size */
+        .info-section p { /* Common styling for paragraphs in info sections */
+            font-size: 1.15rem; 
             color: var(--text-color-light); 
             margin-bottom: 20px; 
             line-height: 1.85; 
@@ -254,76 +262,74 @@
         .keyword-link:hover {
             color: var(--accent-green);
             border-bottom: 2px solid var(--accent-green);
-            background-color: rgba(0, 255, 127, 0.1);
+            background-color: rgba(var(--accent-green-rgb), 0.1);
         }
         
-        #dbt-info-section ul:not(.external-wiki-links) { 
+        .info-section ul:not(.external-wiki-links) { 
             list-style: none; 
             padding-left: 0;
             margin-top: 1.8rem;
         }
         
-        #dbt-info-section ul:not(.external-wiki-links) li {
-            background: rgba(0, 206, 209, 0.08); /* Slightly more subtle */
-            padding: 18px; /* Adjusted padding */
+        .info-section ul:not(.external-wiki-links) li {
+            background: rgba(var(--secondary-cyan-rgb), 0.08); 
+            padding: 18px; 
             margin-bottom: 18px;
             border-left: 4px solid var(--accent-blue); 
-            border-radius: 0 10px 10px 0; /* Adjusted radius */
+            border-radius: 0 10px 10px 0; 
             position: relative;
             overflow: hidden;
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
         
-        #dbt-info-section ul:not(.external-wiki-links) li:hover {
-            transform: translateX(8px); /* Adjusted hover effect */
-            background-color: rgba(0, 206, 209, 0.15);
+        .info-section ul:not(.external-wiki-links) li:hover {
+            transform: translateX(8px); 
+            background-color: rgba(var(--secondary-cyan-rgb), 0.15);
         }
         
-        #dbt-info-section ul:not(.external-wiki-links) li strong {
+        .info-section ul:not(.external-wiki-links) li strong {
             color: var(--accent-magenta); 
             font-family: 'Krona One', sans-serif;
             display: block;
             margin-bottom: 8px;
-            font-size: 1.25rem; /* Adjusted size */
+            font-size: 1.25rem; 
         }
         
-        #dbt-info-section ul.external-wiki-links {
+        .info-section ul.external-wiki-links {
             list-style: none;
             padding-left: 0;
             margin-top: 1.3rem;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax */
-            gap: 12px; /* Adjusted gap */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 12px; 
         }
         
-        #dbt-info-section ul.external-wiki-links li {
+        .info-section ul.external-wiki-links li {
             margin-bottom: 0;
-            background: rgba(0, 255, 127, 0.07);
+            background: rgba(var(--accent-green-rgb), 0.07);
             padding: 12px;
             border-radius: 6px;
-            border: 1px solid rgba(0, 255, 127, 0.25);
+            border: 1px solid rgba(var(--accent-green-rgb), 0.25);
             transition: all 0.3s ease;
         }
         
-        #dbt-info-section ul.external-wiki-links li:hover {
-            background: rgba(0, 255, 127, 0.12);
+        .info-section ul.external-wiki-links li:hover {
+            background: rgba(var(--accent-green-rgb), 0.12);
             transform: translateY(-2px);
-            box-shadow: 0 0 12px rgba(0, 255, 127, 0.25);
+            box-shadow: 0 0 12px rgba(var(--accent-green-rgb), 0.25);
         }
         
-        #dbt-info-section ul.external-wiki-links li i {
+        .info-section ul.external-wiki-links li i {
             margin-right: 10px;
             color: var(--accent-green); 
             font-size: 1.1rem;
         }
 
-        /* APOD Section (Now at the end) */
         #apod-section {
-            /* Uses .content-block-qs for general styling */
-            margin-top: 3rem; /* Add some space if it's the last content block before footer */
+            margin-top: 3rem; 
         }
 
-        .apod-title-container h1 { /* For "Inspiración Diaria" title if kept separate */
+        .apod-title-container h2 { 
             font-family: 'Major Mono Display', monospace;
             font-size: 2.5rem;
             margin-bottom: 0.5rem;
@@ -335,7 +341,7 @@
             animation: titleGlow 3s infinite alternate;
             text-align: center;
         }
-         @keyframes titleGlow { /* Re-declared for clarity, ensure it's the same as header one if used */
+         @keyframes titleGlow { 
             0% { text-shadow: 0 0 10px var(--accent-magenta); }
             50% { text-shadow: 0 0 15px var(--accent-blue), 0 0 20px var(--accent-green); }
             100% { text-shadow: 0 0 12px var(--accent-magenta), 0 0 25px var(--accent-yellow); }
@@ -346,22 +352,22 @@
             line-height: 1.6;
             color: var(--text-color-medium);
             max-width: 600px;
-            margin: 0 auto 1.5rem auto; /* Center and add bottom margin */
+            margin: 0 auto 1.5rem auto; 
             text-align: center;
         }
         
-        .hero-apod-image-container { /* Container for the image itself */
+        .hero-apod-image-container { 
             position: relative;
             width: 100%;
-            height: 65vh; /* Adjust as needed, can be responsive */
+            height: 65vh; 
             min-height: 400px;
             overflow: hidden;
-            margin-bottom: 1.5rem; /* Space before description block */
-            background-color: var(--dark-bg); /* Fallback */
-            border-radius: 10px; /* Optional: rounded corners for the image container */
+            margin-bottom: 1.5rem; 
+            background-color: var(--dark-bg); 
+            border-radius: 10px; 
         }
         
-        .apod-background { /* The image itself */
+        .apod-background { 
             position: absolute;
             top: 0;
             left: 0;
@@ -373,15 +379,15 @@
             transition: background-image 1.2s ease-in-out;
         }
         
-        .image-details-block { /* Container for title, date, explanation, download, nav */
-            background: rgba(15, 15, 35, 0.8); /* Slightly different background for this block */
+        .image-details-block { 
+            background: rgba(15, 15, 35, 0.8); 
             padding: 25px;
             border-radius: 12px;
-            border: 1px solid rgba(var(--accent-blue-rgb, 30, 144, 255), 0.4); /* Define --accent-blue-rgb or use direct values */
-            box-shadow: 0 0 15px rgba(var(--accent-blue-rgb, 30, 144, 255), 0.2);
+            border: 1px solid rgba(var(--accent-blue-rgb), 0.4); 
+            box-shadow: 0 0 15px rgba(var(--accent-blue-rgb), 0.2);
         }
         
-        .apod-title-text { /* For the APOD image's own title */
+        .apod-title-text { 
             font-family: 'Krona One', sans-serif;
             font-size: 1.7rem; 
             color: var(--accent-yellow);
@@ -390,12 +396,12 @@
             text-align: center;
         }
         
-        @keyframes textPulse { /* Re-declared for clarity */
+        @keyframes textPulse { 
             0% { transform: scale(1); }
             100% { transform: scale(1.02); }
         }
         
-        .apod-date-text { /* For the APOD image's date */
+        .apod-date-text { 
             font-family: 'Major Mono Display', monospace;
             color: var(--accent-green);
             font-size: 0.95rem; 
@@ -403,9 +409,9 @@
             text-align: center;
         }
 
-        .image-details-block .desc-title-img { /* "Descripción de la Imagen del Día" */
+        .image-details-block .desc-title-img { 
             font-family: 'Krona One', sans-serif;
-            color: var(--accent-cyan); /* Different color for this title */
+            color: var(--accent-cyan); 
             font-size: 1.3rem;
             margin-top: 1rem;
             margin-bottom: 0.8rem;
@@ -415,12 +421,12 @@
         }
         
         .image-explanation {
-            font-size: 1.05rem; /* Slightly smaller for this context */
+            font-size: 1.05rem; 
             line-height: 1.75;
             padding: 12px;
             background: rgba(0, 0, 0, 0.25);
             border-radius: 8px;
-            border: 1px solid rgba(0, 206, 209, 0.15);
+            border: 1px solid rgba(var(--secondary-cyan-rgb), 0.15);
             box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
             max-height: 180px; 
             overflow-y: auto;
@@ -434,16 +440,16 @@
         .download-button {
             display: block;
             width: fit-content;
-            margin: 18px auto; /* Centered, adjusted margin */
+            margin: 18px auto; 
             background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));
             color: var(--dark-bg);
-            padding: 10px 25px; /* Adjusted padding */
+            padding: 10px 25px; 
             border-radius: 40px;
             text-decoration: none;
             font-family: 'Fredoka One', cursive;
-            font-size: 1.05rem; /* Adjusted size */
+            font-size: 1.05rem; 
             transition: all 0.3s ease;
-            box-shadow: 0 3px 12px rgba(255, 215, 0, 0.45);
+            box-shadow: 0 3px 12px rgba(var(--accent-yellow-rgb), 0.45);
             border: 2px solid rgba(255, 255, 255, 0.4);
             text-align: center;
         }
@@ -474,14 +480,14 @@
             font-size: 1.3rem; 
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 0 12px rgba(30, 144, 255, 0.45);
+            box-shadow: 0 0 12px rgba(var(--accent-blue-rgb), 0.45);
             animation: buttonFloat 3s infinite ease-in-out;
         }
         
         .apod-nav-btn:nth-child(1) { animation-delay: 0.15s; }
         .apod-nav-btn:nth-child(2) { animation-delay: 0.35s; }
         
-        @keyframes buttonFloat { /* Re-declared for clarity */
+        @keyframes buttonFloat { 
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-6px); } 
         }
@@ -494,14 +500,13 @@
             animation: none;
         }
         
-        /* Footer */
         footer { 
             background: rgba(10,10,32,0.97); 
             color: white; 
             padding: 4rem 0 2rem; 
             position: relative; 
             border-top: 2px solid var(--accent-blue); 
-            margin-top: 3rem; /* Ensure space above footer */
+            margin-top: auto; 
         }
         
         .footer-grid { 
@@ -531,7 +536,7 @@
             border-radius: 1.5px; 
         }
         
-        .footer-links { list-style: none; } 
+        .footer-links { list-style: none; padding-left:0; } 
         .footer-links li { margin-bottom: 12px; }
         .footer-links a { 
             color: var(--text-color-medium); 
@@ -580,9 +585,8 @@
         .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
         .copyright a:hover { color: var(--text-color-light); }
         
-        /* Background Animations */
         .stars {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
             pointer-events: none; z-index: -2; 
         }
         .star {
@@ -595,8 +599,8 @@
             100% { opacity: 0; transform: scale(1); }
         }
         .galaxy {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
             z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
         }
         @keyframes rotateGalaxy {
@@ -604,25 +608,24 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* Responsive Adjustments */
         @media (max-width: 900px) {
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
             .content-block-qs h2 { font-size: 2rem; }
-            .apod-title-container h1 { font-size: 2.2rem; }
+            .apod-title-container h2 { font-size: 2.2rem; }
             .apod-title-text { font-size: 1.5rem; }
         }
         
         @media (max-width: 600px) {
-            .main-page-content { padding-top: 130px; } /* More space for stacked header */
+            .main-page-content { padding-top: 130px; } 
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
             .content-block-qs { padding: 25px; }
             .content-block-qs h2 { font-size: 1.7rem; }
-            #dbt-info-section p { font-size: 1rem; }
-            .apod-title-container h1 { font-size: 1.8rem; }
+            .info-section p { font-size: 1rem; } /* Adjusted for smaller screens */
+            .apod-title-container h2 { font-size: 1.8rem; }
             .apod-title-container p { font-size: 1rem; }
             .hero-apod-image-container { height: 55vh; min-height: 300px; }
             .apod-title-text { font-size: 1.3rem; }
@@ -658,7 +661,7 @@
 
     <main class="main-page-content">
         <div class="container">
-            <section id="dbt-info-section" class="content-block-qs">
+            <section id="dbt-info-section" class="content-block-qs info-section">
                 <h2><i class="fas fa-brain"></i> Explorando TLP y DBT</h2>
                 <p>
                     El <a href="https://es.wikipedia.org/wiki/Trastorno_l%C3%ADmite_de_la_personalidad" class="keyword-link" target="_blank" rel="noopener noreferrer">Trastorno Límite de la Personalidad (TLP)</a> es una condición de salud mental caracterizada por una marcada inestabilidad en las emociones, las relaciones interpersonales, la autoimagen y los comportamientos. Las personas con TLP pueden experimentar cambios de humor intensos y dificultades para manejar sus impulsos. A menudo, temen el abandono y pueden tener relaciones tumultuosas.
@@ -702,6 +705,47 @@
                     <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Freemium" target="_blank" rel="noopener noreferrer">Modelo Freemium/Premium</a></li>
                 </ul>
             </section>
+
+            <section id="cbt-info-section" class="content-block-qs info-section">
+                <h2><i class="fas fa-lightbulb"></i> Descubriendo la Terapia Cognitivo Conductual (TCC)</h2>
+                <p>
+                    La <a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" class="keyword-link" target="_blank" rel="noopener noreferrer">Terapia Cognitivo Conductual (TCC o CBT)</a> es un tipo de psicoterapia ampliamente utilizada y basada en la evidencia que se enfoca en la interconexión entre pensamientos (cogniciones), emociones y comportamientos. Su premisa fundamental es que nuestros pensamientos influyen en nuestras emociones y acciones, y que al modificar patrones de pensamiento disfuncionales o negativos, podemos cambiar cómo nos sentimos y cómo actuamos.
+                </p>
+                <p>
+                    Desarrollada inicialmente por Aaron T. Beck en la década de 1960 para el tratamiento de la depresión, la TCC ha demostrado ser eficaz para una amplia gama de problemas psicológicos, incluyendo <a href="https://es.wikipedia.org/wiki/Trastornos_de_ansiedad" class="keyword-link" target="_blank" rel="noopener noreferrer">trastornos de ansiedad</a>, fobias, <a href="https://es.wikipedia.org/wiki/Trastorno_obsesivo-compulsivo" class="keyword-link" target="_blank" rel="noopener noreferrer">trastorno obsesivo-compulsivo (TOC)</a>, trastornos alimentarios, problemas de manejo de la ira y más. Es un enfoque orientado a objetivos, colaborativo y educativo, donde el terapeuta y el cliente trabajan juntos para identificar y abordar los problemas.
+                </p>
+                
+                <h4>Componentes Clave de la TCC</h4>
+                <ul>
+                    <li>
+                        <strong>Reestructuración Cognitiva:</strong> Implica identificar <a href="https://es.wikipedia.org/wiki/Distorsi%C3%B3n_cognitiva" class="keyword-link" target="_blank" rel="noopener noreferrer">distorsiones cognitivas</a> (patrones de pensamiento irracionales o inútiles, como la generalización excesiva, el pensamiento catastrófico o el filtro mental) y aprender a reemplazarlos con pensamientos más realistas, equilibrados y adaptativos.
+                    </li>
+                    <li>
+                        <strong>Activación Conductual:</strong> Se enfoca en aumentar la participación en actividades placenteras o que generan un sentido de logro, especialmente útil en casos de depresión donde la inactividad y la anhedonia son comunes.
+                    </li>
+                    <li>
+                        <strong>Exposición y Prevención de Respuesta (EyPR):</strong> Una técnica central para los trastornos de ansiedad y el TOC, donde el individuo se expone gradualmente a situaciones u objetos temidos (exposición) mientras se abstiene de realizar conductas compulsivas o de evitación (prevención de respuesta).
+                    </li>
+                    <li>
+                        <strong>Entrenamiento en Habilidades:</strong> Puede incluir el desarrollo de habilidades de <a href="https://es.wikipedia.org/wiki/Resoluci%C3%B3n_de_problemas" class="keyword-link" target="_blank" rel="noopener noreferrer">resolución de problemas</a>, asertividad, manejo del estrés, y técnicas de relajación.
+                    </li>
+                     <li>
+                        <strong>Tareas para Casa:</strong> La TCC a menudo incluye ejercicios y prácticas para realizar entre sesiones, lo que ayuda a generalizar las habilidades aprendidas en la terapia a la vida cotidiana.
+                    </li>
+                </ul>
+                
+                <p>
+                   La TCC es generalmente una terapia de corto a mediano plazo, con un énfasis en el presente y en el desarrollo de estrategias prácticas para el cambio. Se anima al cliente a tomar un papel activo en su proceso terapéutico. Nuestros <a href="cursos.html" class="keyword-link">cursos</a> explorarán estos conceptos en mayor detalle.
+                </p>
+
+                <h4><i class="fas fa-link"></i> Conceptos Adicionales en TCC</h4>
+                 <ul class="external-wiki-links">
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Aaron_T._Beck" target="_blank" rel="noopener noreferrer">Aaron T. Beck (Fundador)</a></li>
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Diario_de_pensamientos_disfuncionales" target="_blank" rel="noopener noreferrer">Registro de Pensamientos</a></li>
+                    <li><i class="fab fa-wikipedia-w"></i> <a href="https://es.wikipedia.org/wiki/Experimento_conductual" target="_blank" rel="noopener noreferrer">Experimentos Conductuales</a></li>
+                </ul>
+            </section>
+
 
             <section id="apod-section" class="content-block-qs">
                 <div class="apod-title-container">
@@ -792,13 +836,11 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            // Star animation
             const starsContainer = document.getElementById('stars');
-            if (starsContainer) { // Check if element exists
-                const starsCount = 150; // Reduced count for potentially better performance
+            if (starsContainer) { 
+                const starsCount = 150; 
                 for (let i = 0; i < starsCount; i++) {
                     const star = document.createElement('div');
                     star.classList.add('star');
@@ -820,9 +862,8 @@
                 }
             }
             
-            // Active Nav Link (assuming nav structure is consistent)
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
-            const navLinks = document.querySelectorAll('header nav a'); // More specific selector
+            const navLinks = document.querySelectorAll('header nav a'); 
             navLinks.forEach(link => {
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 if (linkFilename === currentPageFilename) {
@@ -832,11 +873,10 @@
                 }
             });
             
-            // Header scroll effect
             const header = document.getElementById('main-header');
-            if(header){ // Check if header exists
+            if(header){ 
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) { // Slightly lower threshold
+                    if (window.scrollY > 40) { 
                         header.classList.add('scrolled');
                     } else {
                         header.classList.remove('scrolled');
@@ -844,12 +884,11 @@
                 });
             }
             
-            // Show content on scroll (Intersection Observer)
             const contentBlocks = document.querySelectorAll('.content-block-qs'); 
              const observerOptions = {
                 root: null, 
                 rootMargin: '0px',
-                threshold: 0.08 // Lower threshold for earlier trigger
+                threshold: 0.08 
             };
 
             const observer = new IntersectionObserver((entries, obs) => {
@@ -865,7 +904,6 @@
                 observer.observe(block);
             });
             
-            // NASA APOD Fetch (for the section at the end)
             const apiKey = "FQFsse8Fnb3JvqPYnekskHSXtqeU2qLYXf86ZsKT"; 
             const today = new Date();
             let currentApodDate = new Date(today); 
@@ -878,7 +916,6 @@
             const prevApodBtn = document.getElementById('prev-apod-main');
             const nextApodBtn = document.getElementById('next-apod-main');
 
-            // Check if all APOD elements exist before proceeding
             if (apodBackground && apodTitleEl && apodDateEl && apodExplanation && apodDownload && prevApodBtn && nextApodBtn) {
                 function formatDate(date) {
                     const year = date.getFullYear();
@@ -961,7 +998,7 @@
                     
                     const todayForComparison = new Date();
                     todayForComparison.setHours(0,0,0,0); 
-                    const tempNextDate = new Date(nextDate); // Create a temporary date for comparison to avoid modifying nextDate directly
+                    const tempNextDate = new Date(nextDate); 
                     tempNextDate.setHours(0,0,0,0);
 
                     if (tempNextDate <= todayForComparison) {
