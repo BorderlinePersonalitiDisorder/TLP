@@ -3,19 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Premium - Experiencia Exclusiva - Borderline Journey</title>
+    <title>Premium - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-1: #ff00cc; /* Rosa neón */
-            --color-2: #00ffff; /* Cyan neón */
-            --color-3: #ffff00; /* Amarillo neón */
-            --color-4: #ff00ff; /* Magenta neón */
-            --color-5: #00ff00; /* Verde neón */
-            --dark-bg: #0f0f1b; /* Fondo oscuro principal */
-            --card-bg: rgba(25, 25, 45, 0.75); /* Fondo para tarjetas */
-            --card-border-glow: rgba(0, 255, 255, 0.5); 
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+            --accent-yellow-rgb: 255, 215, 0;
         }
         
         * {
@@ -26,576 +37,588 @@
         
         body {
             background: var(--dark-bg);
-            color: white;
-            line-height: 1.7;
-            font-family: 'Comfortaa', cursive;
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 204, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 30% 50%, rgba(255, 255, 0, 0.15) 0%, transparent 30%),
-                radial-gradient(circle at 70% 30%, rgba(255, 0, 255, 0.15) 0%, transparent 30%);
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
         }
         
-        .creative-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.5;
-            background: 
-                radial-gradient(circle, var(--color-1) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-2) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-3) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-4) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-5) 0%, transparent 20%);
-            background-size: 300% 300%;
-            background-position: 0% 0%;
-            animation: creativeBackground 30s infinite linear;
-        }
-        
-        @keyframes creativeBackground {
-            0% { background-position: 0% 0%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 0%; }
-        }
-        
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* Header Styles */
-        header {
-            background: rgba(15, 15, 27, 0.85);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--color-2);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo h1 {
-            font-family: 'Monoton', cursive;
-            font-size: 2.2rem;
-            font-weight: 400;
-            background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
-            letter-spacing: 2px;
-        }
-        
-        .logo i {
-            font-size: 2.2rem;
-            color: var(--color-2);
-            text-shadow: 0 0 15px var(--color-2);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Krona One', sans-serif;
-            font-size: 1rem;
-            padding: 8px 15px;
-            border-radius: 30px;
-            transition: all 0.4s ease;
-            position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--color-4);
-            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
-        }
-        
-        /* NEW NAVIGATION TAB STYLE */
-        nav a:hover, nav a.active {
-            background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, transparent 60%); /* Subtle cyan glow background */
-            color: var(--color-3); /* Yellow text */
-            border: 2px solid var(--color-2); /* Solid cyan border */
-            box-shadow: 0 0 18px var(--color-2), 0 0 8px var(--color-2) inset; /* Enhanced cyan glow */
-            transform: scale(1.07) translateY(-2px); /* Slight lift and different scale */
-            text-shadow: 0 0 8px var(--color-3); /* Optional: yellow text glow */
-        }
-        
-        nav a::after { /* Base style for the underline pseudo-element */
-            content: '';
-            position: absolute;
-            bottom: -5px; /* Position below the tab */
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0; /* Initially no width */
-            height: 3px;
-            background: var(--color-2); /* Default color, matching border */
-            transition: width 0.3s ease;
-        }
-        
-        /* Remove underline for active/hover states for the new design */
-        nav a:hover::after, nav a.active::after {
-            width: 0; 
-        }
-        
-       /* Premium Section Specific Styles */
-        .premium-page-section {
-            padding: 5.5rem 0 7rem; 
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .premium-page-section .section-title h2 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2.8rem; 
-            margin-bottom: 2rem;
-            background: linear-gradient(45deg, var(--color-3), var(--color-5), var(--color-2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 255, 0, 0.4);
-            animation: creativeText 5s infinite linear;
-        }
-         .premium-page-section .section-title h2::after { 
-            content: ''; /* Ensure pseudo-element is generated */
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--color-3);
-            box-shadow: 0 0 10px var(--color-3);
-            width: 200px;
-            height: 4px; /* Added height for visibility */
-            border-radius: 2px; /* Optional: rounded corners for underline */
-        }
-
-
-        .premium-page-section .section-title p { 
-            font-size: 1.4rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            color: #ddd;
-            font-family: 'Comfortaa', cursive;
-        }
-        
-        .premium-page-section::before { 
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: 
-                radial-gradient(circle at 20% 30%, var(--color-2, #00ffff) 0%, transparent 50%),
-                radial-gradient(circle at 80% 70%, var(--color-5, #00ff00) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, var(--color-3, #ffff00) 0%, transparent 60%);
-            background-size: 250% 250%;
-            background-position: center;
-            animation: creativeBackgroundPremium 25s infinite ease-in-out;
-            z-index: -1;
-            opacity: 0.25;
-        }
-
-        @keyframes creativeText { /* Added for .premium-page-section .section-title h2 */
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        @keyframes creativeBackgroundPremium { 
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
             100% { background-position: 0% 50%; }
         }
         
-        .premium-container { 
-            max-width: 900px; 
-            margin: 0 auto;
-            position: relative;
-            z-index: 2;
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
         }
         
-        .benefits-grid { 
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
-            gap: 35px;
-            margin: 4rem 0;
-        }
-        
-        .benefit-card { 
-            background: var(--card-bg);
-            padding: 35px 30px;
-            border-radius: 20px;
-            border: 1px solid var(--color-4);
-            box-shadow: 0 0 25px rgba(255, 0, 255, 0.35);
-            transition: all 0.4s ease;
-            backdrop-filter: blur(8px);
-            text-align: center; 
-        }
-        
-        .benefit-card:hover {
-            transform: translateY(-12px) rotate(2deg);
-            box-shadow: 0 12px 35px var(--color-4);
-            background: rgba(80, 0, 80, 0.6); 
-        }
-        
-        .benefit-card i {
-            font-size: 3.2rem;
-            margin-bottom: 22px;
-            color: var(--color-3);
-            text-shadow: 0 0 18px var(--color-3);
-        }
-        
-        .benefit-card h3 {
-            margin-bottom: 18px;
-            font-size: 1.6rem;
-            color: var(--color-2);
-            font-family: 'Krona One', sans-serif;
-        }
-        
-        .benefit-card p {
-            font-size: 1.05rem; 
-            margin-bottom: 0;
-            opacity: 0.9;
-            color: #ccc;
-        }
-
-        .cta-button-premium { 
-            display: inline-block;
-            background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-5));
-            color: var(--dark-bg);
-            padding: 18px 45px;
-            border-radius: 35px;
-            text-decoration: none;
-            font-family: 'Press Start 2P', cursive;
-            font-size: 1.3rem;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(255, 255, 0, 0.5);
-            border: none;
-            cursor: pointer;
-            margin-top: 2rem; 
-            position: relative;
-            overflow: hidden;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-        }
-        
-        .cta-button-premium:hover {
-            transform: translateY(-5px) scale(1.08);
-            box-shadow: 0 12px 30px var(--color-3);
-            filter: brightness(1.15);
-        }
-        
-        .cta-button-premium::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
             width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
-            transition: 0.6s;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
+            transition: all 0.4s ease;
         }
         
-        .cta-button-premium:hover::before {
-            left: 100%;
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Krona One', sans-serif; 
+            font-size: 1.8rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse {
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); }
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
         }
 
-        /* General Section Title Styles (used by .premium-page-section .section-title) */
-        .section-title { /* This class is used by the premium page title structure */
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+
+        .page-header {
             text-align: center;
-            margin-bottom: 4rem; /* Default, can be overridden by more specific rules if needed */
+            margin-bottom: 3rem;
+            padding-top: 2rem;
         }
-        /* Footer Styles */
-        footer {
-            background: rgba(10, 10, 20, 0.9);
-            color: white;
-            padding: 4.5rem 0 2.5rem;
-            position: relative;
-            border-top: 2px solid var(--color-5);
-            box-shadow: 0 -5px 20px rgba(0, 255, 0, 0.2);
+
+        .page-header h2 {
+            font-family: 'Major Mono Display', monospace;
+            font-size: 2.8rem;
+            color: var(--accent-yellow); /* Changed color for premium */
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(var(--accent-yellow-rgb), 0.5);
         }
-        
-        .footer-grid {
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-color-medium);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .premium-features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 45px;
-            margin-bottom: 3.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 10px 25px rgba(var(--accent-yellow-rgb), 0.3);
+        }
+
+        .feature-card .icon-container {
+            font-size: 2.8rem; /* Slightly smaller than course icons */
+            margin-bottom: 1rem;
+            padding: 15px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(var(--accent-yellow-rgb),0.15), rgba(var(--accent-red-rgb, 255,69,0),0.15));
+            color: var(--accent-yellow);
+            display: inline-flex;
+        }
+         /* Define RGB versions of colors if not already in :root */
+        :root {
+            --accent-red-rgb: 255, 69, 0;
+        }
+
+        .feature-card h3 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent-green);
+            margin-bottom: 0.8rem;
+        }
+
+        .feature-card p {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--text-color-light);
+            flex-grow: 1; /* Allows cards with less text to still align buttons if needed */
+        }
+
+        .pricing-section {
+            background: rgba(var(--primary-violet-rgb), 0.1);
+            padding: 3rem 0;
+            border-radius: 20px;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(var(--primary-violet-rgb), 0.3);
+        }
+        .pricing-section h2{
+            font-family: 'Major Mono Display', monospace;
+            font-size: 2.3rem;
+            color: var(--accent-magenta);
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+
+        .pricing-table {
+            display: flex;
+            justify-content: center;
+            align-items: stretch; /* Make cards same height */
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .pricing-plan {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            width: 320px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 2px solid var(--accent-blue);
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .pricing-plan:hover{
+            transform: scale(1.05);
+            box-shadow: 0 12px 35px rgba(var(--accent-blue-rgb),0.5);
+        }
+
+        .pricing-plan.featured {
+            border-color: var(--accent-yellow);
+            transform: scale(1.05); /* Make featured plan stand out */
+        }
+         .pricing-plan.featured:hover{
+            transform: scale(1.1);
+            box-shadow: 0 12px 35px rgba(var(--accent-yellow-rgb),0.5);
+        }
+
+
+        .pricing-plan h3 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.7rem;
+            color: var(--accent-yellow);
+            margin-bottom: 0.5rem;
+        }
+        .pricing-plan.featured h3 {
+             color: var(--accent-red);
+        }
+
+
+        .pricing-plan .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-green);
+            margin-bottom: 0.5rem;
+        }
+         .pricing-plan .price span.term {
+            font-size: 0.9rem;
+            color: var(--text-color-medium);
+            font-weight: normal;
+        }
+
+
+        .pricing-plan ul {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .pricing-plan ul li {
+            margin-bottom: 0.8rem;
+            font-size: 0.95rem;
+        }
+        .pricing-plan ul li i {
+            color: var(--accent-green);
+            margin-right: 8px;
+        }
+
+        .subscribe-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            margin-top: auto; /* Push to bottom */
+        }
+
+        .subscribe-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            transform: translateY(-3px) scale(1.05);
+        }
+         .pricing-plan.featured .subscribe-btn {
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));
+            color: var(--dark-bg);
+        }
+        .pricing-plan.featured .subscribe-btn:hover {
+             background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow));
         }
         
-        .footer-column h3 {
-            color: var(--color-3);
-            margin-bottom: 1.7rem;
-            position: relative;
-            padding-bottom: 12px;
-            font-size: 1.5rem;
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
             font-family: 'Fredoka One', cursive;
         }
         
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 55px;
-            height: 4px;
-            background: var(--color-2);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--color-2);
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
         }
         
-        .footer-links {
-            list-style: none;
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .social-links { display: flex; gap: 15px; margin-top: 22px; }
+        .social-links a { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 45px; 
+            height: 45px; 
+            background: rgba(255, 255, 255, 0.04); 
+            color: var(--accent-blue); 
+            border-radius: 50%; 
+            transition: all 0.4s ease; 
+            font-size: 1.2rem; 
+            border: 1px solid var(--accent-blue); 
+        }
+        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
         
-        .footer-links li {
-            margin-bottom: 14px;
-        }
-        
-        .footer-links a {
-            color: #bbb;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            padding: 5px 0;
-            font-weight: 300;
-        }
-        
-        .footer-links a:hover {
-            color: var(--color-1);
-            transform: translateX(10px);
-            text-shadow: 0 0 10px var(--color-1);
-        }
-        
-        .contact-info {
-            margin-top: 22px;
-        }
-        
-        .contact-info p {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-            font-size: 1.1rem;
-            color: #ddd;
-        }
-        
-        .contact-info i {
-            color: var(--color-2);
-            text-shadow: 0 0 5px var(--color-2);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 18px;
-            margin-top: 25px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--color-2);
-            border-radius: 50%;
-            transition: all 0.4s ease;
-            font-size: 1.3rem;
-            border: 1px solid var(--color-2);
-        }
-        
-        .social-links a:hover {
-            background: var(--color-2);
-            color: black;
-            transform: translateY(-5px) rotate(15deg);
-            box-shadow: 0 0 20px var(--color-2);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
-            font-size: 1rem;
-        }
-        
-        .copyright a {
-            color: var(--color-3);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .copyright a:hover {
-            color: var(--color-1);
-            text-shadow: 0 0 10px var(--color-1);
-        }
-        
-        /* Responsive */
         @media (max-width: 900px) {
-            .header-container {
-                flex-direction: column;
-                gap: 25px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .premium-page-section .section-title h2 {
-                font-size: 2.2rem; 
-            }
-             .premium-page-section .section-title p {
-                font-size: 1.2rem;
-            }
-            .benefits-grid {
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            }
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .page-header h2 { font-size: 2.2rem; }
+            .pricing-plan { width: calc(50% - 1rem); } /* Two columns for tablets */
         }
         
-        @media (max-width: 600px) {
-            .premium-page-section .section-title h2 {
-                font-size: 1.8rem; 
-            }
-            .premium-page-section .section-title p {
-                font-size: 1.1rem;
-            }
-            .benefit-card h3 {
-                font-size: 1.4rem; 
-            }
-            .benefit-card i {
-                font-size: 2.8rem;
-            }
-            .cta-button-premium {
-                font-size: 1.1rem;
-                padding: 15px 35px;
-            }
-            nav ul {
-                gap: 8px;
-            }
-            
-            nav a {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-        }
-
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.7);
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-        }
-
-        @keyframes ripple {
-            to {
-                transform: scale(2.5);
-                opacity: 0;
-            }
+        @media (max-width: 650px) { /* Adjusted breakpoint for pricing plans */
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.5rem; }
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .page-header h2 { font-size: 1.8rem; }
+            .page-header p { font-size: 1rem; }
+            .premium-features-grid { grid-template-columns: 1fr; }
+            .feature-card h3 {font-size: 1.3rem;}
+            .pricing-plan { width: 100%; } /* Single column for pricing on small mobiles */
+            .pricing-plan h3 {font-size: 1.5rem;}
+            .pricing-plan .price {font-size: 2.2rem;}
+            .subscribe-btn { padding: 10px 25px; font-size: 1rem;}
         }
     </style>
 </head>
 <body>
-    <div class="creative-bg"></div>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
     
-    <header>
+    <header id="main-header">
         <div class="container header-container">
-            <div class="logo">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
-                    <i class="fas fa-brain"></i>
-                    <h1>BORDERLINE JOURNEY</h1>
-                </a>
-            </div>
+            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+                <i class="fas fa-brain"></i>
+                <h1>BORDERLINE JOURNEY</h1>
+            </a>
             <nav>
                 <ul>
-                    <li><a href="index.html#inicio">Inicio</a></li>
-                    <li><a href="psicoeducacion.html">Psicoeducación</a></li>
-                    <li><a href="dbt.html">DBT</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="foro.html">Foro</a></li>
-                    <li><a href="premium.html" class="active">Premium</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="premium.html" class="active">Premium</a></li> 
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="premium-page-section" id="premium-contenido">
-            <div class="container section-title"> 
-                <h2>EXPERIENCIA PREMIUM</h2>
-                <p>Desbloquea el Universo Completo de Recursos Creativos para tu Viaje Borderline</p>
+    <main class="main-page-content">
+        <div class="container">
+            <div class="page-header">
+                <h2><i class="fas fa-crown"></i> Experiencia Premium Borderline Journey</h2>
+                <p>
+                    Eleva tu viaje de sanación y autoconocimiento con acceso exclusivo a contenido, herramientas avanzadas y una comunidad de apoyo más cercana.
+                </p>
             </div>
-            <div class="container premium-container"> 
-                <div class="benefits-grid">
-                    <div class="benefit-card">
-                        <i class="fas fa-vr-cardboard"></i>
-                        <h3>Realidad Virtual Inmersiva</h3>
-                        <p>Sumérgete en experiencias de VR diseñadas para practicar habilidades DBT en entornos seguros y controlados, potenciando tu aprendizaje.</p>
-                    </div>
-                    
-                    <div class="benefit-card">
-                        <i class="fas fa-palette"></i>
-                        <h3>Talleres de Arte Terapia Exclusivos</h3>
-                        <p>Participa en sesiones guiadas de arte terapia con enfoque en la expresión emocional profunda y la sanación creativa.</p>
-                    </div>
-                    
-                    <div class="benefit-card">
-                        <i class="fas fa-headset"></i>
-                        <h3>Soporte Prioritario 24/7</h3>
-                        <p>Accede a nuestro equipo de apoyo especializado en momentos críticos, recibiendo la contención que necesitas, cuando la necesitas.</p>
-                    </div>
-                    
-                    <div class="benefit-card">
-                        <i class="fas fa-music"></i>
-                        <h3>Meditaciones Sonoras Avanzadas</h3>
-                        <p>Explora una biblioteca extendida de experiencias auditivas y soundscapes diseñados para la regulación emocional y la calma profunda.</p>
+
+            <section class="premium-features-grid">
+                <article class="feature-card">
+                    <div class="icon-container"><i class="fas fa-book-open"></i></div>
+                    <h3>Cursos Avanzados y Talleres</h3>
+                    <p>Accede a módulos de profundización en DBT y CBT, talleres especializados en manejo de crisis, mindfulness avanzado y efectividad interpersonal.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-container"><i class="fas fa-users"></i></div>
+                    <h3>Comunidad Privada y Foros Exclusivos</h3>
+                    <p>Participa en foros moderados solo para miembros premium, con grupos de apoyo temáticos y un espacio más íntimo para compartir.</p>
+                </article>
+                <article class="feature-card">
+                    <div class="icon-container"><i class="fas fa-tools"></i></div>
+                    <h3>Herramientas Interactivas y Recursos</h3>
+                    <p>Utiliza diarios de emociones mejorados, hojas de trabajo descargables, meditaciones guiadas exclusivas y planificadores de habilidades.</p>
+                </article>
+                 <article class="feature-card">
+                    <div class="icon-container"><i class="fas fa-headset"></i></div>
+                    <h3>Soporte Prioritario</h3>
+                    <p>Recibe respuestas más rápidas a tus consultas y un canal de soporte dedicado para miembros premium.</p>
+                </article>
+                 <article class="feature-card">
+                    <div class="icon-container"><i class="fas fa-calendar-check"></i></div>
+                    <h3>Eventos y Q&A en Vivo</h3>
+                    <p>Participa en sesiones de preguntas y respuestas en vivo con profesionales y eventos especiales solo para la comunidad premium.</p>
+                </article>
+                 <article class="feature-card">
+                    <div class="icon-container"><i class="fas fa-gift"></i></div>
+                    <h3>Contenido Anticipado y Sin Publicidad</h3>
+                    <p>Disfruta de una experiencia libre de publicidad y accede a nuevo contenido y funcionalidades antes que nadie.</p>
+                </article>
+            </section>
+
+            <section class="pricing-section">
+                <div class="container">
+                    <h2>Elige Tu Plan Premium</h2>
+                    <div class="pricing-table">
+                        <div class="pricing-plan">
+                            <h3>Mensual</h3>
+                            <div class="price">$19 <span class="term">/mes</span></div>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Acceso a todos los cursos base</li>
+                                <li><i class="fas fa-check"></i> Foros de comunidad general</li>
+                                <li><i class="fas fa-times"></i> Cursos avanzados y talleres</li>
+                                <li><i class="fas fa-times"></i> Comunidad privada premium</li>
+                                <li><i class="fas fa-check"></i> Herramientas básicas</li>
+                            </ul>
+                            <a href="#" class="subscribe-btn">Suscribirme Ahora</a>
+                        </div>
+
+                        <div class="pricing-plan featured">
+                             <h3>Anual <span style="font-size:0.7em; color: var(--accent-green);">(Más Popular)</span></h3>
+                            <div class="price">$149 <span class="term">/año</span></div>
+                            <p style="color:var(--accent-green); font-weight:bold; margin-bottom:1rem;">¡Ahorra un 35%!</p>
+                            <ul>
+                                <li><i class="fas fa-check"></i> Todo lo del plan Mensual</li>
+                                <li><i class="fas fa-check"></i> Acceso a Cursos Avanzados</li>
+                                <li><i class="fas fa-check"></i> Talleres Especializados</li>
+                                <li><i class="fas fa-check"></i> Comunidad Privada Premium</li>
+                                <li><i class="fas fa-check"></i> Herramientas Interactivas Completas</li>
+                                <li><i class="fas fa-check"></i> Eventos y Q&A en Vivo</li>
+                                <li><i class="fas fa-check"></i> Soporte Prioritario</li>
+                            </ul>
+                            <a href="#" class="subscribe-btn">Elegir Plan Anual</a>
+                        </div>
+
+                        <div class="pricing-plan">
+                            <h3>Vitalicio</h3>
+                            <div class="price">$399 <span class="term">/pago único</span></div>
+                             <ul>
+                                <li><i class="fas fa-check"></i> Todos los beneficios Anuales</li>
+                                <li><i class="fas fa-star"></i> Acceso de por vida a todo el contenido</li>
+                                <li><i class="fas fa-star"></i> Actualizaciones futuras incluidas</li>
+                                <li><i class="fas fa-star"></i> Insignia de Fundador en foros</li>
+                                <li><i class="fas fa-gift"></i> Regalo de bienvenida exclusivo</li>
+                            </ul>
+                            <a href="#" class="subscribe-btn">Acceso Vitalicio</a>
+                        </div>
                     </div>
                 </div>
-                
-                <a href="#formulario-suscripcion" class="cta-button-premium">UNIRME AL VIAJE PREMIUM</a> 
-            </div>
-        </section>
-        
-        <section id="formulario-suscripcion" style="padding: 4rem 0; text-align:center; background: rgba(20,20,40,0.5); border-radius: 15px; margin: 3rem 20px;">
-            <div class="container">
-                 <h2 style="font-family: 'Krona One', sans-serif; color: var(--color-3); margin-bottom: 2rem; font-size: 2rem;">Elige Tu Plan y Comienza Hoy</h2>
-                 <p style="color: #ccc; max-width: 600px; margin: 0 auto 2.5rem auto; font-size: 1.1rem;">Próximamente más detalles sobre nuestros planes de suscripción. ¡Mantente atento/a!</p>
-                 <div style="border: 2px dashed var(--color-2); padding: 30px; border-radius: 10px; max-width: 500px; margin: 0 auto;">
-                    <p style="color: var(--color-5); font-size: 1.2rem;">Formulario de suscripción en desarrollo...</p>
-                 </div>
-            </div>
-        </section>
+            </section>
 
 
+        </div>
     </main>
 
     <footer>
@@ -603,7 +626,7 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Borderline Journey</h3>
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad.</p>
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -613,24 +636,23 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Recursos</h3>
+                    <h3>Navegación</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Galería Visual</a></li>
-                        <li><a href="dbt.html">Meditaciones Guiadas (DBT)</a></li> 
-                        <li><a href="blog.html">Diario Emocional (Blog)</a></li> 
-                        <li><a href="foro.html">Comunidad (Foro)</a></li> 
-                        <li><a href="premium.html">Recursos de Crisis (Premium)</a></li> 
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="premium.html">Premium</a></li> 
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Explorar</h3>
+                    <h3>Recursos DBT</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Psicoeducación</a></li> 
-                        <li><a href="dbt.html">DBT</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foro</a></li> 
-                        <li><a href="premium.html">Eventos (Premium)</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
                 
@@ -646,7 +668,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional.</p>
+                <p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
                 <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
@@ -654,78 +676,77 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Efecto de movimiento en tarjetas de beneficios
-            const benefitCards = document.querySelectorAll('.benefit-card');
-            benefitCards.forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const rect = card.getBoundingClientRect();
-                    const cardX = rect.left + rect.width / 2;
-                    const cardY = rect.top + rect.height / 2;
-                    const mouseX = e.clientX;
-                    const mouseY = e.clientY;
-                    
-                    let rotateX = (mouseY - cardY) / 22; 
-                    let rotateY = (mouseX - cardX) / -22;
-                    
-                    rotateX = Math.min(Math.max(rotateX, -9), 9); 
-                    rotateY = Math.min(Math.max(rotateY, -9), 9);
-                    
-                    this.style.transform = `perspective(1100px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.025)`;
-                });
-                
-                card.addEventListener('mouseenter', function() {
-                    this.style.transition = 'transform 0.1s ease-out';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; 
-                    this.style.transform = 'perspective(1100px) rotateY(0deg) rotateX(0deg) scale(1)';
-                });
-            });
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            // Efecto de ripple en botón CTA Premium
-            const ctaButton = document.querySelector('.cta-button-premium');
-            if (ctaButton) {
-                ctaButton.addEventListener('click', function(e) {
-                     if (this.getAttribute('href') === '#formulario-suscripcion') { 
-                         e.preventDefault();
-                         const targetElement = document.querySelector(this.getAttribute('href'));
-                         if(targetElement) {
-                            let headerOffset = 80; 
-                            const header = document.querySelector('header');
-                            if (header) headerOffset = header.offsetHeight + 20;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
-                            window.scrollTo({ top: offsetPosition, behavior: 'smooth'});
-                         }
-                     }
-
-                    const x = e.clientX - e.target.getBoundingClientRect().left; 
-                    const y = e.clientY - e.target.getBoundingClientRect().top;  
-                    
-                    const ripples = document.createElement('span');
-                    ripples.classList.add('ripple');
-                    ripples.style.left = x + 'px';
-                    ripples.style.top = y + 'px';
-                    this.appendChild(ripples);
-                    
-                    setTimeout(() => {
-                        ripples.remove();
-                    }, 600); 
-                });
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150;
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 6}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
+                    if (Math.random() > 0.65) {
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
+                    }
+                    starsContainer.appendChild(star);
+                }
             }
-
-            // Activar enlace de navegación
-            const currentPageFilename = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('nav a');
+            
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
+            const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
+                link.classList.remove('active'); 
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
                 }
             });
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            const animatedElements = document.querySelectorAll('.feature-card, .pricing-plan'); 
+            if (animatedElements.length > 0) {
+                 const observerOptions = {
+                    root: null, 
+                    rootMargin: '0px',
+                    threshold: 0.1 
+                };
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            // obs.unobserve(entry.target); // Optional
+                        }
+                    });
+                }, observerOptions);
+
+                animatedElements.forEach(element => {
+                    element.style.opacity = '0';
+                    element.style.transform = 'translateY(30px)';
+                    element.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+                    observer.observe(element);
+                });
+            }
         });
     </script>
 </body>
