@@ -10,14 +10,15 @@
         :root {
             --primary-violet: #8A2BE2;
             --secondary-cyan: #00CED1;
-            --accent-magenta: #FF00FF; 
+            --accent-magenta: #FF00FF; /* Primary accent for this page */
             --accent-green: #00FF7F;
             --accent-blue: #1E90FF;
             --accent-yellow: #FFD700;
+            --accent-red: #FF4500; 
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
-            --text-color-dark: #333333; /* For light backgrounds if any */
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
@@ -25,11 +26,11 @@
 
             --primary-violet-rgb: 138, 43, 226;
             --accent-blue-rgb: 30, 144, 255;
-            --accent-magenta-rgb: 255, 0, 255; 
+            --accent-magenta-rgb: 255, 0, 255; /* Primary accent for this page */
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209;
-            --accent-red-rgb: 255, 69, 0; /* Keep for consistency, though not primary here */
+            --accent-red-rgb: 255, 69, 0;
         }
         
         * {
@@ -328,6 +329,17 @@
             font-family: 'Raleway', sans-serif; 
             font-weight: 700;
         }
+        .keyword-link { 
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px dashed var(--accent-yellow);
+            transition: all 0.3s ease;
+        }
+        .keyword-link:hover {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
+        }
         
         .breadcrumb {
             text-align: center;
@@ -346,32 +358,57 @@
             color: var(--text-color-medium);
         }
 
-        .back-to-link-container {
-            text-align: center;
-            margin-top: 2.5rem; 
-            margin-bottom: 1rem; 
+        .navigation-buttons-container {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: wrap; 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+            margin-bottom: 1.5rem; 
+            padding: 1rem 0;
+            border-top: 1px dashed rgba(var(--primary-violet-rgb), 0.3);
         }
-        .back-to-btn {
+
+        .nav-btn {
             display: inline-flex; 
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); 
-            color: var(--dark-bg); 
+            justify-content: center; 
+            gap: 10px;
             padding: 12px 25px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             font-family: 'Comfortaa', sans-serif;
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 3px 10px rgba(var(--secondary-cyan-rgb), 0.4); 
+            flex-grow: 1; 
+            min-width: 220px; 
+            text-align: center;
         }
-        .back-to-btn:hover {
-            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 5px 15px rgba(var(--accent-green-rgb), 0.5); 
-        }
-        .back-to-btn i {
+        .nav-btn i {
             font-size: 1em; 
+        }
+
+        .back-btn {
+            background: linear-gradient(45deg, var(--accent-blue), var(--primary-violet)); 
+            color: white; 
+            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.4);
+        }
+        .back-btn:hover {
+            background: linear-gradient(45deg, var(--primary-violet), var(--accent-blue)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--primary-violet-rgb), 0.5); 
+        }
+
+        .continue-btn {
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
+            color: var(--dark-bg); 
+            box-shadow: 0 3px 10px rgba(var(--accent-green-rgb), 0.4);
+        }
+        .continue-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--secondary-cyan-rgb), 0.5); 
         }
         
         footer { 
@@ -489,6 +526,9 @@
             .page-header h2 { font-size: 2.2rem; } 
             .component-content-section h3 {font-size: 1.7rem;} 
             .component-content-section h4 {font-size: 1.3rem;} 
+            .navigation-buttons-container { flex-direction: column; } 
+            .nav-btn { width: 100%; max-width: 300px; } 
+
         }
         
         @media (max-width: 600px) {
@@ -503,7 +543,7 @@
             .component-content-section h4 {font-size: 1.2rem;} 
             .component-content-section p,
             .component-content-section li {font-size: 1rem;} 
-            .back-to-btn { padding: 10px 20px; font-size: 0.9rem;}
+            .nav-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -535,263 +575,201 @@
                 <a href="index.html">Inicio</a> &gt; 
                 <a href="cursos.html">Cursos</a> &gt; 
                 <a href="cbt.html">TCC</a> &gt; 
-                <span>Activación Conductual</span>
+                <span>Reestructuración Cognitiva</span>
             </div>
 
             <div class="page-header">
-                <h2><i class="fas fa-running"></i> Activación Conductual en TCC</h2>
+                <h2><i class="fas fa-brain-circuit"></i> Reestructuración Cognitiva en TCC</h2>
                 <p class="subtitle">
-                    Rompiendo la inercia: cómo la acción puede transformar tu estado de ánimo y bienestar. Una guía exhaustiva.
+                    Transformando pensamientos negativos y distorsiones para un mayor bienestar emocional. Una guía detallada.
                 </p>
             </div>
 
             <section class="component-content-section">
-                <h3><i class="fas fa-rocket"></i> Poniendo la Vida en Movimiento: La Esencia de la AC</h3>
+                <h3><i class="fas fa-lightbulb"></i> Cambiando la Forma en que Pensamos: El Poder de la Mente</h3>
                 <p>
-                    La <strong>Activación Conductual (AC)</strong> es una técnica terapéutica de gran poder y eficacia, originada y frecuentemente utilizada como un pilar fundamental dentro de la <strong>Terapia Cognitivo Conductual (TCC)</strong>. Aunque es especialmente reconocida por su efectividad en el tratamiento de la <em>depresión</em>, sus principios y estrategias son versátiles y se aplican con éxito a una amplia gama de dificultades psicológicas, incluyendo trastornos de ansiedad, problemas de regulación emocional y el manejo del estrés general.
+                    La <strong>Reestructuración Cognitiva</strong> es una de las piedras angulares y técnicas fundamentales dentro del amplio paraguas de la <strong>Terapia Cognitivo Conductual (TCC)</strong>. Su objetivo principal y más transformador es ayudar a las personas a tomar conciencia, identificar, analizar críticamente, desafiar y, finalmente, modificar aquellos patrones de pensamiento que son inútiles, persistentemente negativos, irracionales o distorsionados. Estos patrones, a menudo denominados <a href="https://es.wikipedia.org/wiki/Distorsi%C3%B3n_cognitiva" class="keyword-link" target="_blank" rel="noopener noreferrer">distorsiones cognitivas</a> o pensamientos automáticos negativos (PANs), son cruciales porque, según la TCC, no son los eventos en sí mismos los que causan nuestro malestar emocional, sino la <em>interpretación</em> que hacemos de ellos.
                 </p>
                 <p>
-                    El núcleo de la AC reside en una premisa simple pero profunda: <em>nuestros comportamientos y nuestro estado de ánimo están intrínsecamente e bidireccionalmente ligados</em>. Lo que hacemos —o, crucialmente, lo que dejamos de hacer— ejerce una influencia directa y significativa sobre cómo nos sentimos. Cuando una persona experimenta estados de ánimo negativos como la tristeza, la apatía o la ansiedad, es común una tendencia natural al retraimiento. Esto implica abandonar actividades que anteriormente resultaban placenteras, proporcionaban un sentido de logro o facilitaban la conexión social. Esta evitación y la consecuente pasividad no son inocuas; pueden desencadenar y perpetuar un <strong>círculo vicioso</strong>: la falta de experiencias positivas y gratificantes refuerza los sentimientos negativos, lo que a su vez conduce a una mayor inactividad y aislamiento.
+                    Nuestros pensamientos automáticos, que surgen de manera rápida y a menudo sin que seamos plenamente conscientes de ellos, están profundamente arraigados y moldeados por nuestras experiencias pasadas, creencias centrales y esquemas sobre nosotros mismos, los demás y el mundo. El problema surge cuando estos pensamientos no reflejan con precisión la realidad objetiva, sino que la tiñen con un sesgo negativo. A pesar de su posible inexactitud, estos pensamientos tienen un impacto poderoso y directo en cómo nos sentimos (nuestras emociones) y cómo actuamos (nuestros comportamientos). Al aprender el proceso de "reestructurar" estos pensamientos, es decir, examinarlos críticamente y reemplazarlos por alternativas más equilibradas, realistas y útiles, podemos fomentar un cambio significativo en nuestro estado emocional y en nuestra conducta.
                 </p>
-                <p>
-                    La Activación Conductual interviene directamente para romper este ciclo debilitante. Su objetivo principal es incrementar de manera gradual y sistemática la participación de la persona en actividades que son <strong>reforzantes, placenteras, o que están alineadas con sus valores personales y metas vitales</strong>, incluso si en el momento inicial no existe el deseo o la motivación para llevarlas a cabo.
-                </p>
-                <div class="example-box" style="text-align:center; padding: 20px; border: 1px dashed var(--secondary-cyan);">
-                    <p><em>Imagina aquí un diagrama ilustrando el ciclo: Estado de ánimo bajo -> Reducción de actividad -> Menos experiencias positivas -> Estado de ánimo aún más bajo -> Mayor reducción de actividad. La AC interrumpe este ciclo introduciendo actividad.</em></p>
-                </div>
-
-                <h4><i class="fas fa-drafting-compass"></i> Principios Fundamentales de la Activación Conductual: Los Pilares del Cambio</h4>
-                <p>La AC se sustenta en varios principios clave que guían su aplicación:</p>
-                <ul>
-                    <li>
-                        <strong>La Acción Precede a la Motivación (y al Cambio de Ánimo):</strong> Este es quizás el principio más contraintuitivo y central de la AC. Desafía la creencia popular de que necesitamos <em>sentirnos</em> motivados o de mejor humor para actuar. La AC postula lo contrario: a menudo es la <em>acción</em> la que genera la motivación y provoca una mejora en el estado de ánimo. No se espera a "tener ganas"; se actúa primero, como un experimento conductual, para observar los efectos.
-                        <div class="example-box">
-                            <h5>Ejemplo Práctico:</h5>
-                            <p>Una persona deprimida puede no sentir ganas de salir a caminar. En lugar de esperar la motivación, la AC propondría programar una caminata corta (ej. 10 minutos) y luego evaluar cómo se sintió durante y después, independientemente de las ganas previas.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Identificación de Actividades Valiosas y Reforzantes (TRAP vs. TRAC):</strong> Se trabaja colaborativamente con la persona para identificar qué actividades son verdaderamente importantes y significativas para ella (alineadas con sus <em>valores</em>) y cuáles tienen el potencial de ser placenteras (<em>reforzantes</em>). Se distingue entre actividades que son "TRAP" (Trampa: que parecen aliviar a corto plazo pero empeoran el ánimo a largo plazo, como quedarse en cama todo el día) y actividades "TRAC" (Trayectoria: que mueven hacia una vida más valiosa).
-                    </li>
-                    <li>
-                        <strong>Programación Estructurada y Monitoreo Detallado de Actividades:</strong> No basta con "intentar hacer más cosas". La AC implica planificar actividades específicas en un horario concreto (como si fueran citas importantes) y luego monitorear su realización. Este monitoreo incluye registrar no solo si se hizo la actividad, sino también el nivel de placer y/o logro experimentado (usualmente en una escala de 0 a 10) y el estado de ánimo antes y después. Esto proporciona datos objetivos sobre el impacto de la actividad.
-                    </li>
-                    <li>
-                        <strong>Enfoque Gradual y Jerarquizado (Paso a Paso):</strong> Para evitar la sobrecarga y el fracaso, se comienza con actividades que son relativamente fáciles y manejables. Se crea una <em>jerarquía de actividades</em>, desde las más sencillas hasta las más complejas o desafiantes. A medida que la persona gana confianza y experimenta los beneficios de las actividades más simples, se avanza gradualmente hacia las más difíciles.
-                    </li>
-                    <li>
-                        <strong>Reducción Activa de la Evitación Conductual:</strong> La evitación es un motor clave de la depresión y la ansiedad. La AC ayuda a identificar los patrones de evitación (qué situaciones, personas o actividades se están eludiendo) y a desarrollar estrategias para enfrentarlos gradualmente, utilizando las actividades programadas como medio.
-                    </li>
-                    <li>
-                        <strong>Énfasis en el Contexto y la Función del Comportamiento:</strong> La AC es idiográfica, es decir, se adapta a cada individuo. Se analiza cómo el entorno (físico, social) y las circunstancias vitales de una persona pueden estar influyendo en su comportamiento y estado de ánimo, y cómo ciertos comportamientos (o la ausencia de ellos) están "funcionando" para mantener el problema.
-                    </li>
-                    <li>
-                        <strong>Orientación Externa sobre Interna:</strong> En lugar de enfocarse excesivamente en cambiar pensamientos o sentimientos internos directamente (como en otras formas de TCC), la AC prioriza el cambio conductual observable. La premisa es que al cambiar lo que <em>hacemos</em>, nuestros pensamientos y sentimientos también comenzarán a cambiar como consecuencia natural.
-                    </li>
-                </ul>
-
-                <h4><i class="fas fa-cogs"></i> ¿Cómo Funciona la Activación Conductual en la Práctica? El Proceso Detallado</h4>
-                <p>
-                    El proceso terapéutico de la Activación Conductual es estructurado y colaborativo, implicando típicamente los siguientes pasos:
-                </p>
-                <ol>
-                    <li>
-                        <strong>Fase de Psicoeducación y Establecimiento del Modelo:</strong>
-                        <ul>
-                            <li>Se explica detalladamente el modelo de la AC: la relación entre el estado de ánimo, la actividad, la evitación y el refuerzo positivo. Se ayuda al paciente a entender cómo su inactividad o evitación actual puede estar contribuyendo a su malestar.</li>
-                            <li>Se presenta la lógica del tratamiento: "actuar de afuera hacia adentro" en lugar de esperar a sentirse mejor para actuar.</li>
-                            <li>Se fomenta la esperanza y se establece una alianza terapéutica sólida.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Monitoreo de Actividades Basales y Estado de Ánimo:</strong>
-                        <ul>
-                            <li>Se le pide al paciente que lleve un registro detallado de sus actividades diarias durante una semana (o un período determinado). Para cada bloque de tiempo, debe anotar qué hizo y cómo se sintió (ej. nivel de placer y logro, en una escala de 0-10).</li>
-                            <li>Este autorregistro ayuda a identificar patrones actuales de actividad e inactividad, la relación entre ciertas actividades y el estado de ánimo, y las actividades que se están evitando.</li>
-                            <li><strong>Ejemplo de Fila en un Registro de Actividades:</strong>
-                                <div class="example-box">
-                                    <p><strong>Hora:</strong> 10:00-11:00 | <strong>Actividad:</strong> Ver TV en la cama | <strong>Placer (0-10):</strong> 3 | <strong>Logro (0-10):</strong> 1 | <strong>Ánimo (0-10):</strong> 2</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Identificación de Valores Personales y Áreas Vitales:</strong>
-                        <ul>
-                            <li>Se explora qué es verdaderamente importante para la persona en diferentes áreas de su vida (ej. relaciones, trabajo/estudios, ocio, salud, crecimiento personal, espiritualidad). Los valores actúan como una brújula para seleccionar actividades significativas.</li>
-                            <li>Herramientas como el "Inventario de Valores" pueden ser útiles aquí.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Generación de una Lista Amplia de Actividades Potenciales (Menú de Actividades):</strong>
-                        <ul>
-                            <li>Basándose en los valores identificados, el monitoreo basal y las preferencias pasadas, se crea una lista exhaustiva de actividades que podrían ser placenteras, dar un sentido de logro, o estar alineadas con los valores.</li>
-                            <li>Se incluyen actividades de diferentes tipos: sociales, físicas, de ocio, de cuidado personal, productivas, creativas, etc.</li>
-                            <li>Se clasifican según la dificultad percibida y el potencial de refuerzo (placer/logro).</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Creación de Jerarquías de Activación y Programación Gradual:</strong>
-                        <ul>
-                            <li>Se seleccionan algunas actividades de la lista, comenzando por las más fáciles o las que tienen mayor probabilidad de éxito.</li>
-                            <li>Estas actividades se programan específicamente en la agenda semanal del paciente, detallando qué, cuándo, dónde y por cuánto tiempo.</li>
-                            <li>El objetivo es empezar pequeño y construir sobre los éxitos. Por ejemplo, si el valor es "conexión social" y la persona está muy aislada, una primera actividad podría ser "enviar un mensaje a un amigo" en lugar de "ir a una fiesta".</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Implementación y Monitoreo Continuo:</strong>
-                        <ul>
-                            <li>El paciente lleva a cabo las actividades programadas y continúa monitoreando su estado de ánimo, placer y logro.</li>
-                            <li>Se presta atención a los resultados, incluso si son modestos al principio.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Resolución de Problemas y Superación de Barreras:</strong>
-                        <ul>
-                            <li>Es común encontrar obstáculos (ej. falta de energía, pensamientos negativos, dificultades logísticas). El terapeuta y el paciente trabajan juntos para identificar estas barreras y desarrollar estrategias para superarlas.</li>
-                            <li>Se pueden usar técnicas de resolución de problemas, reestructuración cognitiva simple (para pensamientos que interfieren con la acción), o modificación de la actividad para hacerla más manejable.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Revisión del Progreso y Ajuste del Plan:</strong>
-                        <ul>
-                            <li>En cada sesión, se revisa el progreso, se celebran los éxitos (por pequeños que sean) y se ajusta el plan de activación según sea necesario, aumentando gradualmente la dificultad o variedad de las actividades.</li>
-                            <li>Se refuerza la conexión entre la actividad y la mejora del estado de ánimo.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Prevención de Recaídas y Mantenimiento de los Logros:</strong>
-                        <ul>
-                            <li>Una vez que se ha logrado una mejora significativa, se trabaja en estrategias para mantener los niveles de actividad y prevenir recaídas, reconociendo las señales tempranas de un posible declive y teniendo un plan de acción.</li>
-                        </ul>
-                    </li>
-                </ol>
-                <blockquote>
-                    <p>"La Activación Conductual no es simplemente 'hacer cosas'; es un proceso estratégico y personalizado de reconectar con la vida de una manera que sea significativa y gratificante para el individuo."</p>
+                 <blockquote>
+                    <p>"No son los hechos los que nos perturban, sino nuestras interpretaciones de los hechos." - Epicteto (Una idea central en la TCC).</p>
                 </blockquote>
             </section>
 
             <section class="component-content-section">
-                <h3><i class="fas fa-puzzle-piece"></i> Aplicaciones Específicas de la Activación Conductual</h3>
-                <p>Si bien la AC es un tratamiento de primera línea para la depresión, su utilidad se extiende a otros problemas:</p>
-                <ul>
-                    <li><strong>Trastornos de Ansiedad:</strong> Ayuda a las personas a enfrentar gradualmente situaciones temidas (exposición conductual) y a participar en actividades que han estado evitando debido a la ansiedad, reduciendo así la evitación que mantiene el ciclo ansioso.</li>
-                    <li><strong>Trastorno Límite de la Personalidad (TLP):</strong> Puede ser útil para abordar la apatía, el vacío crónico y la impulsividad, ayudando a estructurar el día con actividades valiosas y a reducir comportamientos problemáticos que surgen de la inactividad o el malestar.</li>
-                    <li><strong>Manejo del Estrés General:</strong> Fomentar actividades placenteras y de autocuidado puede ser una estrategia efectiva para reducir el estrés y mejorar el bienestar general.</li>
-                    <li><strong>Procrastinación Crónica:</strong> Los principios de iniciar la acción, dividir tareas grandes en pasos pequeños y programar actividades son directamente aplicables.</li>
-                </ul>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-users"></i> Ejemplos Prácticos y Escenarios de Aplicación</h3>
+                <h3><i class="fas fa-search"></i> Pasos Clave en el Proceso de Reestructuración Cognitiva</h3>
+                <p>La reestructuración cognitiva es un proceso activo y colaborativo que generalmente sigue una serie de pasos estructurados:</p>
                 
+                <h4>1. Identificación de Pensamientos Automáticos Negativos (PANs)</h4>
+                <p>El primer paso es aprender a sintonizar y "atrapar" esos pensamientos fugaces que cruzan nuestra mente, especialmente en situaciones que nos provocan malestar emocional. Algunas estrategias incluyen:</p>
+                <ul>
+                    <li><strong>Prestar atención a los cambios en el estado de ánimo:</strong> Un cambio repentino en cómo te sientes (ej. pasar de estar tranquilo a ansioso) a menudo indica la presencia de un PAN. Pregúntate: "¿Qué estaba pensando justo antes de empezar a sentirme así?"</li>
+                    <li><strong>Uso de Registros de Pensamientos Disfuncionales (RPD):</strong> Esta es una herramienta clásica de la TCC. Consiste en una tabla donde se anota la situación, la emoción sentida (y su intensidad), el pensamiento automático asociado, la evidencia a favor y en contra de ese pensamiento, y un pensamiento alternativo más equilibrado.</li>
+                    <li><strong>Identificar "palabras clave" o temas recurrentes:</strong> Palabras como "siempre", "nunca", "debería", "terrible", "fracaso" pueden señalar la presencia de pensamientos problemáticos.</li>
+                </ul>
                 <div class="example-box">
-                    <h5>Escenario 1: Ana, con Depresión y Aislamiento Social</h5>
-                    <p><strong>Situación:</strong> Ana ha estado sintiéndose profundamente triste y sin energía durante meses. Ha dejado de ver a sus amigos y pasa la mayor parte del día en casa viendo televisión. Su valor principal identificado es la "amistad" y "conexión".</p>
-                    <p><strong>Plan de Activación Conductual (Primeros Pasos):</strong></p>
-                    <ol>
-                        <li><strong>Monitoreo:</strong> Ana registra sus actividades y ánimo durante 3 días. Se da cuenta de que su ánimo es más bajo cuando pasa mucho tiempo sola viendo TV.</li>
-                        <li><strong>Lista de Actividades (basada en valor "amistad"):</strong>
-                            <ul>
-                                <li>Enviar un mensaje de texto a una amiga (Fácil).</li>
-                                <li>Llamar a un familiar (Moderado).</li>
-                                <li>Proponer tomar un café con una amiga (Difícil).</li>
-                            </ul>
-                        </li>
-                        <li><strong>Programación:</strong>
-                            <ul>
-                                <li>Lunes 15:00: Enviar mensaje a Laura preguntando cómo está.</li>
-                                <li>Miércoles 11:00: Llamar a su hermana.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Resultado Esperado (Hipótesis):</strong> Aunque no tenga ganas, conectar brevemente podría mejorar su ánimo o darle una pequeña sensación de logro.</li>
-                    </ol>
+                    <h5>Ejemplo de Identificación de PAN:</h5>
+                    <p><strong>Situación:</strong> Recibes un email de tu jefe pidiendo una reunión.</p>
+                    <p><strong>Emoción:</strong> Ansiedad (8/10).</p>
+                    <p><strong>Pensamiento Automático (PAN):</strong> "Seguro que es para despedirme. He hecho algo mal."</p>
                 </div>
 
+                <h4>2. Reconocimiento y Comprensión de las Distorsiones Cognitivas</h4>
+                <p>Una vez identificados los PANs, el siguiente paso es analizar si contienen errores de pensamiento o "distorsiones cognitivas". Familiarizarse con los tipos comunes de distorsiones es crucial. Aquí se detallan algunas de las más frecuentes, con ejemplos ampliados:</p>
+                <ul>
+                    <li>
+                        <strong>Pensamiento de Todo o Nada (Dicotómico o Polarizado):</strong> Ver las cosas en categorías absolutas, blanco o negro, sin matices.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> "Si no obtengo un 10 en este examen, soy un completo fracaso."</li>
+                            <li><em>Ejemplo 2:</em> "Esta relación no es perfecta, así que no vale la pena."</li>
+                            <li><em>Ejemplo 3:</em> "O hago dieta estricta y pierdo peso, o no tiene sentido intentarlo."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Generalización Excesiva:</strong> Tomar un evento negativo aislado y extraer una conclusión general y universal, aplicándola a todas las situaciones futuras o similares. A menudo se usan palabras como "siempre", "nunca", "nadie", "todos".
+                        <ul>
+                            <li><em>Ejemplo 1:</em> Después de una cita que no fue bien: "Nunca encontraré a alguien. Siempre estaré solo/a."</li>
+                            <li><em>Ejemplo 2:</em> Cometer un error en el trabajo: "Soy un incompetente en todo lo que hago."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Filtro Mental (Abstracción Selectiva):</strong> Centrarse exclusivamente en los detalles negativos de una situación e ignorar o descartar todos los aspectos positivos. Es como ver el mundo a través de unas gafas oscuras que solo dejan pasar lo malo.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> Recibes una evaluación de desempeño con muchos elogios y una pequeña sugerencia de mejora, y te obsesionas únicamente con la sugerencia, sintiéndote un desastre.</li>
+                            <li><em>Ejemplo 2:</em> Disfrutas de una fiesta, pero un breve comentario incómodo de alguien te hace concluir que "toda la noche fue horrible".</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Descalificar lo Positivo:</strong> Rechazar activamente las experiencias, logros o cualidades positivas, insistiendo en que "no cuentan" por alguna razón.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> Alguien te felicita por un trabajo bien hecho y piensas: "Solo lo dice por ser amable, en realidad no fue para tanto."</li>
+                            <li><em>Ejemplo 2:</em> Logras una meta importante y piensas: "Tuve suerte, cualquiera podría haberlo hecho."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Saltar a Conclusiones:</strong> Llegar a interpretaciones negativas sin tener hechos o evidencia suficiente que las respalden. Esto tiene dos subtipos comunes:
+                        <ul>
+                            <li><strong>Lectura de Mente (Adivinación del Pensamiento):</strong> Asumir que sabes lo que otras personas están pensando (generalmente de forma negativa sobre ti) sin tener pruebas. <em>Ejemplo:</em> "Me miró raro, seguro que piensa que soy estúpido/a."</li>
+                            <li><strong>Error del Adivino (Predicción Negativa del Futuro):</strong> Predecir que las cosas saldrán mal, convencido de que tu predicción es un hecho establecido. <em>Ejemplo:</em> "Sé que voy a suspender el examen, así que ¿para qué estudiar?" o "Esta relación está condenada al fracaso."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Magnificación (Catastrofización) y Minimización:</strong> Exagerar la importancia o el impacto de los problemas, errores o eventos negativos (catastrofizar), o, por el contrario, minimizar o infravalorar las propias cualidades positivas, logros o las cosas buenas que suceden.
+                        <ul>
+                            <li><em>Ejemplo de Magnificación:</em> "Cometí un pequeño error en el informe, ¡seguro que me despiden! Será una catástrofe."</li>
+                            <li><em>Ejemplo de Minimización:</em> "Sí, me ascendieron, pero es un puesto menor, no es gran cosa."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Razonamiento Emocional:</strong> Creer que algo debe ser verdad porque se <em>siente</em> así con mucha intensidad. Las emociones se toman como evidencia de la realidad.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> "Me siento culpable, por lo tanto, debo haber hecho algo malo."</li>
+                            <li><em>Ejemplo 2:</em> "Siento mucha ansiedad al pensar en hablar en público, eso significa que es realmente peligroso y voy a hacer el ridículo."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>"Deberías" y "Tengo que" (Imperativos Categóricos):</strong> Tener reglas internas rígidas y exigentes sobre cómo uno mismo y los demás "deberían" o "tienen que" actuar. Cuando estas reglas no se cumplen, generan culpa (si se aplican a uno mismo) o ira y resentimiento (si se aplican a otros).
+                        <ul>
+                            <li><em>Ejemplo 1:</em> "Debería ser siempre amable y complaciente con todos."</li>
+                            <li><em>Ejemplo 2:</em> "Él debería saber lo que necesito sin que se lo pida."</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Etiquetado y Mal Etiquetado:</strong> Es una forma extrema de generalización excesiva. En lugar de describir un error o un comportamiento específico, se asigna una etiqueta global y negativa a uno mismo o a otra persona.
+                        <ul>
+                            <li><em>Ejemplo 1:</em> En lugar de "Cometí un error", pensar "Soy un perdedor".</li>
+                            <li><em>Ejemplo 2:</em> Si alguien comete un error, pensar "Es un idiota".</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>Personalización y Culpa:</strong> Atribuirse la responsabilidad personal por eventos externos sobre los cuales no se tiene control, o culpar a otros desproporcionadamente sin considerar el propio papel.
+                        <ul>
+                            <li><em>Ejemplo de Personalización:</em> "Mi hijo suspendió matemáticas, soy una mala madre."</li>
+                            <li><em>Ejemplo de Culpa:</em> "Es culpa tuya que yo esté siempre de mal humor."</li>
+                        </ul>
+                    </li>
+                </ul>
+            </section>
+
+            <section class="component-content-section">
+                <h4>3. Examen Crítico de la Evidencia (El Juicio al Pensamiento)</h4>
+                <p>Una vez identificado el PAN y la posible distorsión, se procede a cuestionar su validez. Esto implica actuar como un detective o un juez imparcial, buscando evidencia objetiva:</p>
+                <ul>
+                    <li><strong>Evidencia a favor del pensamiento:</strong> "¿Qué hechos concretos apoyan esta idea? ¿Son interpretaciones o hechos?"</li>
+                    <li><strong>Evidencia en contra del pensamiento:</strong> "¿Qué hechos concretos contradicen esta idea o sugieren una perspectiva diferente? ¿He tenido experiencias pasadas que no encajan con este pensamiento?"</li>
+                    <li><strong>Preguntas Socráticas:</strong> Utilizar una serie de preguntas guiadas para explorar la lógica, las implicaciones y las alternativas al pensamiento. Ejemplos:
+                        <ul>
+                            <li>"¿Hay alguna otra forma de ver esta situación?"</li>
+                            <li>"¿Qué es lo peor que podría pasar? ¿Podría sobrevivirlo?"</li>
+                            <li>"¿Qué es lo mejor que podría pasar?"</li>
+                            <li>"¿Qué es lo más realista que podría pasar?"</li>
+                            <li>"¿Qué le diría a un amigo que tuviera este pensamiento en una situación similar?"</li>
+                            <li>"Si este pensamiento fuera cierto, ¿qué significaría sobre mí o sobre el mundo? ¿Es esa una conclusión válida?"</li>
+                        </ul>
+                    </li>
+                    <li><strong>Análisis Costo-Beneficio:</strong> "¿Cuáles son las ventajas y desventajas de seguir creyendo este pensamiento? ¿Cómo me ayuda y cómo me perjudica?"</li>
+                </ul>
+            </section>
+
+            <section class="component-content-section">
+                <h4>4. Generación de Pensamientos Alternativos Equilibrados y Adaptativos</h4>
+                <p>El objetivo no es simplemente reemplazar un pensamiento negativo por uno positivo irrealista, sino desarrollar una <strong>perspectiva más equilibrada, realista y útil</strong>. Un pensamiento alternativo efectivo debería ser:</p>
+                <ul>
+                    <li><strong>Basado en la evidencia:</strong> Considera todos los hechos, no solo los negativos.</li>
+                    <li><strong>Más flexible:</strong> Evita los extremos del "todo o nada".</li>
+                    <li><strong>Menos emocionalmente cargado:</strong> Reduce la intensidad de las emociones negativas.</li>
+                    <li><strong>Orientado a la acción (si es apropiado):</strong> Sugiere formas constructivas de afrontar la situación.</li>
+                    <li><strong>Autocompasivo:</strong> Trata de ser tan amable y comprensivo contigo mismo como lo serías con un buen amigo.</li>
+                </ul>
                 <div class="example-box">
-                    <h5>Escenario 2: Carlos, con Ansiedad Social que Evita Eventos</h5>
-                    <p><strong>Situación:</strong> Carlos siente una intensa ansiedad en situaciones sociales y ha empezado a rechazar todas las invitaciones a eventos, a pesar de que valora tener un círculo social.</p>
-                    <p><strong>Plan de Activación Conductual (Enfoque de Exposición Gradual):</strong></p>
-                    <ol>
-                        <li><strong>Valor:</strong> "Pertenencia social" y "disfrutar de compañía".</li>
-                        <li><strong>Jerarquía de Actividades (de menos a más ansiógenas):</strong>
-                            <ol type="a">
-                                <li>Ir a una tienda concurrida por 10 minutos.</li>
-                                <li>Aceptar una invitación a un café con un solo amigo cercano.</li>
-                                <li>Asistir a una reunión pequeña de trabajo (opcional).</li>
-                                <li>Ir a una fiesta de cumpleaños de un conocido por 1 hora.</li>
-                            </ol>
-                        </li>
-                        <li><strong>Programación:</strong> Carlos programa la actividad (a) para la próxima semana, con un plan de qué hará si la ansiedad aumenta (ej. técnicas de respiración, recordarse su valor).</li>
-                        <li><strong>Monitoreo:</strong> Registra su nivel de ansiedad antes, durante y después, y si logró el objetivo.</li>
-                    </ol>
+                    <h5>Ejemplo de Pensamiento Alternativo:</h5>
+                    <p><strong>PAN:</strong> "Seguro que es para despedirme. He hecho algo mal." (Lectura de mente, catastrofización).</p>
+                    <p><strong>Evidencia en contra:</strong> "Mi último informe fue bien recibido. No he cometido errores graves recientemente. Las reuniones pueden ser para muchos temas."</p>
+                    <p><strong>Pensamiento Alternativo:</strong> "No sé con certeza por qué mi jefe quiere reunirse. Podría ser por varios motivos, incluyendo temas rutinarios o nuevos proyectos. Aunque me sienta ansioso/a, esperaré a tener más información antes de sacar conclusiones negativas. Me centraré en prepararme por si es algo importante."</p>
                 </div>
             </section>
 
-             <section class="component-content-section">
-                <h3><i class="fas fa-exclamation-triangle"></i> Desafíos Comunes en la AC y Estrategias para Superarlos</h3>
+            <section class="component-content-section">
+                <h4>5. Experimentos Conductuales: Poniendo a Prueba los Pensamientos</h4>
+                <p>A veces, la mejor manera de cambiar una creencia arraigada es ponerla a prueba en la vida real. Los <strong>experimentos conductuales</strong> son actividades planificadas diseñadas para contrastar un pensamiento o creencia con la experiencia directa.</p>
                 <ul>
-                    <li><strong>Falta de Motivación Inicial:</strong> <em>Estrategia:</em> Recordar el principio "acción antes que motivación". Empezar con actividades muy pequeñas (regla de los 5 minutos). Enfocarse en el comportamiento, no en el sentimiento.</li>
-                    <li><strong>Sentirse Abrumado por la Lista de Actividades:</strong> <em>Estrategia:</em> Dividir las actividades en pasos aún más pequeños. Elegir solo 1-2 actividades para empezar. Usar la jerarquía.</li>
-                    <li><strong>Pensamientos Negativos ("No va a funcionar", "No soy capaz"):</strong> <em>Estrategia:</em> Reconocer los pensamientos sin debatirlos intensamente. Tratar la actividad como un "experimento" para ver qué pasa. Focalizarse en la acción.</li>
-                    <li><strong>Contratiempos y Días Malos:</strong> <em>Estrategia:</em> Normalizar que habrá días difíciles. No ver un contratiempo como un fracaso total. Retomar el plan lo antes posible, quizás con actividades más fáciles. Ser autocompasivo.</li>
-                    <li><strong>Dificultad para Experimentar Placer o Logro:</strong> <em>Estrategia:</em> Ajustar las expectativas. Al principio, el placer/logro puede ser sutil. Ampliar la definición de "logro" (ej. el simple hecho de haber intentado es un logro). Explorar diferentes tipos de actividades.</li>
+                    <li><strong>Diseño del experimento:</strong> Se define claramente qué pensamiento se va a probar, qué se hará, qué se predice que sucederá (basado en el viejo pensamiento) y qué se consideraría evidencia a favor o en contra.</li>
+                    <li><strong>Realización del experimento:</strong> Llevar a cabo la actividad planificada.</li>
+                    <li><strong>Observación y registro de resultados:</strong> Anotar objetivamente lo que sucedió.</li>
+                    <li><strong>Conclusiones y aprendizaje:</strong> Comparar los resultados con la predicción inicial y extraer conclusiones. ¿El viejo pensamiento se sostuvo? ¿Qué aprendí? ¿Cómo afecta esto a mi creencia?</li>
+                </ul>
+                <div class="example-box">
+                    <h5>Ejemplo de Experimento Conductual:</h5>
+                    <p><strong>Pensamiento a Probar:</strong> "Si expreso mi opinión en la reunión, todos pensarán que soy tonto/a y me criticarán."</p>
+                    <p><strong>Experimento:</strong> En la próxima reunión, expresar una opinión bien pensada sobre un tema relevante.</p>
+                    <p><strong>Predicción (basada en el PAN):</strong> "La gente me mirará mal, me interrumpirán o desestimarán mi idea."</p>
+                    <p><strong>Resultado (hipotético):</strong> "Expresé mi opinión. Nadie me interrumpió. Un colega asintió y otro hizo un comentario constructivo. No hubo críticas negativas."</p>
+                    <p><strong>Conclusión:</strong> "Mi miedo a ser criticado duramente fue exagerado. Puedo expresar opiniones y ser escuchado."</p>
+                </div>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-cogs"></i> Integración con Otras Técnicas y Consideraciones</h3>
+                <ul>
+                    <li><strong>Mindfulness:</strong> Ser consciente de los pensamientos a medida que surgen (habilidad de "observar" y "describir") es un prerrequisito para la reestructuración cognitiva.</li>
+                    <li><strong>Activación Conductual:</strong> A veces, actuar de manera diferente (a través de la activación) puede proporcionar nueva evidencia que desafía viejos pensamientos.</li>
+                    <li><strong>Práctica Constante:</strong> La reestructuración cognitiva es una habilidad que se fortalece con la práctica regular. No es un cambio de la noche a la mañana.</li>
+                    <li><strong>Autocompasión:</strong> Es importante ser amable y paciente consigo mismo durante este proceso. Habrá momentos en que los viejos patrones de pensamiento resurjan.</li>
                 </ul>
             </section>
 
             <section class="component-content-section">
-                <h3><i class="fas fa-tools"></i> Herramientas Útiles en la Activación Conductual (Conceptos)</h3>
-                <p>Aunque el terapeuta guía el proceso, ciertas herramientas estructuradas son comunes:</p>
-                <ul>
-                    <li><strong>Hoja de Monitoreo Diario de Actividades y Ánimo:</strong> Una tabla para registrar hora por hora las actividades realizadas, y calificar el placer y logro (0-10) y el estado de ánimo asociado.</li>
-                    <li><strong>Inventario de Valores Personales:</strong> Un cuestionario o ejercicio para ayudar a la persona a clarificar qué es lo más importante en su vida en diferentes dominios.</li>
-                    <li><strong>Jerarquía de Actividades de Activación:</strong> Una lista de actividades ordenadas de menor a mayor dificultad o evitación, que sirve como hoja de ruta.</li>
-                    <li><strong>Planificador Semanal de Actividades:</strong> Una agenda donde se programan concretamente las actividades a realizar durante la semana.</li>
-                </ul>
-                <p><em>Nota: Estos son conceptos de herramientas. Existen múltiples plantillas disponibles online o que un terapeuta puede proporcionar.</em></p>
-            </section>
-            
-            <section class="component-content-section">
-                <h3><i class="fas fa-link"></i> Integración de la AC con Otras Técnicas TCC</h3>
-                <p>La Activación Conductual raramente se usa en total aislamiento, especialmente dentro de un marco TCC más amplio:</p>
-                <ul>
-                    <li><strong>Reestructuración Cognitiva:</strong> Aunque la AC prioriza la acción, abordar pensamientos negativos persistentes que sabotean la activación puede ser necesario. Una vez que la persona está más activa, puede tener más energía y perspectiva para trabajar en sus patrones de pensamiento.</li>
-                    <li><strong>Entrenamiento en Habilidades de Afrontamiento:</strong> Habilidades para manejar la ansiedad (ej. respiración diafragmática, relajación muscular progresiva) pueden facilitar la realización de actividades evitadas.</li>
-                    <li><strong>Técnicas de Resolución de Problemas:</strong> Útiles para abordar obstáculos prácticos que impiden la activación.</li>
-                </ul>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-chart-line"></i> Beneficios a Largo Plazo y Mantenimiento de los Logros</h3>
-                <p>Los beneficios de la AC pueden ser duraderos si se mantienen los principios:</p>
-                <ul>
-                    <li><strong>Aumento Sostenido del Estado de Ánimo Positivo:</strong> Al mantener un nivel adecuado de actividad reforzante.</li>
-                    <li><strong>Mayor Resiliencia:</strong> Haber enfrentado y superado la inercia y la evitación fortalece la capacidad de afrontar futuros desafíos.</li>
-                    <li><strong>Mejora de la Autoestima y Autoeficacia:</strong> Ver que uno puede influir en su propio estado de ánimo a través de la acción.</li>
-                    <li><strong>Una Vida más Rica y Significativa:</strong> Al vivir de acuerdo con los propios valores.</li>
-                </ul>
-                <p><strong>Para el mantenimiento, es crucial:</strong> Continuar monitoreando (quizás menos intensivamente) el ánimo y la actividad, ser consciente de las señales tempranas de recaída (ej. aumento de la evitación), y tener un plan para reactivarse si es necesario.</p>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-user-md"></i> Consideraciones Importantes y Cuándo Buscar Ayuda Profesional</h3>
+                <h3><i class="fas-chart-line"></i> Beneficios de la Reestructuración Cognitiva</h3>
                 <p>
-                    Aunque los principios de la Activación Conductual pueden ser autoaplicados hasta cierto punto, es <strong>fundamental reconocer cuándo se necesita el apoyo de un profesional de la salud mental</strong>. Un terapeuta cualificado puede:
-                </p>
-                <ul>
-                    <li>Realizar una evaluación completa para un diagnóstico preciso.</li>
-                    <li>Adaptar el plan de AC a las necesidades individuales específicas.</li>
-                    <li>Ayudar a identificar y superar barreras complejas.</li>
-                    <li>Integrar la AC con otras intervenciones terapéuticas necesarias.</li>
-                    <li>Proporcionar apoyo y motivación experta durante todo el proceso.</li>
-                </ul>
-                <p>
-                    La AC es una herramienta poderosa, pero como cualquier intervención, su efectividad puede maximizarse con la guía adecuada, especialmente si el malestar es severo, persistente o coexiste con otras dificultades.
+                    Al practicar consistentemente la reestructuración cognitiva, las personas pueden experimentar una notable reducción en la intensidad y frecuencia de emociones negativas como la ansiedad, la tristeza, la ira y la culpa. También puede llevar a una mejora significativa en la autoestima, una mayor sensación de control sobre la propia vida, una mayor capacidad para resolver problemas de manera efectiva y, en última instancia, relaciones interpersonales más saludables y satisfactorias. Es una herramienta poderosa y empoderadora para tomar el control de la propia narrativa interna y fomentar un cambio positivo y duradero hacia un mayor bienestar.
                 </p>
             </section>
             
-            <div class="back-to-link-container">
-                <a href="cbt.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver a TCC</a>
+            <div class="navigation-buttons-container">
+                <a href="cbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a TCC</a>
+                <a href="activacion_conductual_cbt.html" class="nav-btn continue-btn">Continuar con Activación Conductual <i class="fas fa-arrow-right"></i></a>
             </div>
 
         </div>
@@ -891,7 +869,7 @@
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
+                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || // Current page
                      currentPageFilename === 'activacion_conductual_cbt.html' ||
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
                      currentPageFilename === 'resolucion_problemas_cbt.html'
