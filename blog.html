@@ -3,19 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Rincón Creativo - Borderline Journey</title>
+    <title>Blog - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --color-1: #ff00cc; /* Rosa neón */
-            --color-2: #00ffff; /* Cyan neón */
-            --color-3: #ffff00; /* Amarillo neón */
-            --color-4: #ff00ff; /* Magenta neón */
-            --color-5: #00ff00; /* Verde neón */
-            --dark-bg: #0f0f1b; /* Fondo oscuro principal */
-            --card-bg: rgba(25, 25, 45, 0.75); /* Fondo para tarjetas */
-            --card-border-glow: rgba(0, 255, 255, 0.5); 
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; /* For light backgrounds if any */
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+            --light-bg-article: #f0f4f8; /* Light background for articles */
         }
         
         * {
@@ -26,592 +34,514 @@
         
         body {
             background: var(--dark-bg);
-            color: white;
-            line-height: 1.7;
-            font-family: 'Comfortaa', cursive;
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
             background-image: 
-                radial-gradient(circle at 10% 20%, rgba(255, 0, 204, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(0, 255, 255, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 30% 50%, rgba(255, 255, 0, 0.15) 0%, transparent 30%),
-                radial-gradient(circle at 70% 30%, rgba(255, 0, 255, 0.15) 0%, transparent 30%);
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
         }
         
-        .creative-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            opacity: 0.5;
-            background: 
-                radial-gradient(circle, var(--color-1) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-2) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-3) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-4) 0%, transparent 20%),
-                radial-gradient(circle, var(--color-5) 0%, transparent 20%);
-            background-size: 300% 300%;
-            background-position: 0% 0%;
-            animation: creativeBackground 30s infinite linear;
-        }
-        
-        @keyframes creativeBackground {
-            0% { background-position: 0% 0%; }
-            25% { background-position: 100% 0%; }
-            50% { background-position: 100% 100%; }
-            75% { background-position: 0% 100%; }
-            100% { background-position: 0% 0%; }
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
         }
         
         .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
             z-index: 1;
         }
         
-        /* Header Styles */
         header {
-            background: rgba(15, 15, 27, 0.85);
-            backdrop-filter: blur(10px);
-            color: white;
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
             z-index: 1000;
-            border-bottom: 2px solid var(--color-2);
-            box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
-        }
-        
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-        
-        .logo h1 {
-            font-family: 'Monoton', cursive;
-            font-size: 2.2rem;
-            font-weight: 400;
-            background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-2));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 10px rgba(255, 0, 204, 0.3);
-            letter-spacing: 2px;
-        }
-        
-        .logo i {
-            font-size: 2.2rem;
-            color: var(--color-2);
-            text-shadow: 0 0 15px var(--color-2);
-        }
-        
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-        
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-family: 'Krona One', sans-serif;
-            font-size: 1rem;
-            padding: 8px 15px;
-            border-radius: 30px;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
             transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Krona One', sans-serif; 
+            font-size: 1.8rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse {
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--accent-cyan); }
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
             position: relative;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--color-4);
-            text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
+            background: transparent; 
+            border: 1px solid transparent; 
         }
         
-        nav a:hover, nav a.active {
-            background: var(--color-4);
-            box-shadow: 0 0 15px var(--color-4);
-            transform: scale(1.1);
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
         }
         
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: var(--color-2);
-            transition: width 0.3s ease;
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
         }
         
-        nav a:hover::after, nav a.active::after {
-            width: 80%;
-        }
-        
-        /* Section Title Styles (reusable) */
-        .section-title {
+        .page-header {
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 3rem;
+            padding-top: 2rem; /* Space from fixed header */
         }
-        
-        .section-title h2 {
+
+        .page-header h2 {
             font-family: 'Major Mono Display', monospace;
             font-size: 2.8rem;
-            color: var(--color-3); 
-            position: relative;
-            display: inline-block;
-            margin-bottom: 1.5rem;
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
             text-transform: uppercase;
-            letter-spacing: 3px;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            position: absolute;
-            bottom: -15px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px;
-            height: 4px;
-            background: var(--color-4); 
-            border-radius: 3px;
-            box-shadow: 0 0 10px var(--color-4); 
-        }
-        
-        .section-title p {
-            color: #bbb;
-            font-size: 1.3rem;
-            max-width: 750px;
-            margin: 0 auto;
-            opacity: 0.85;
-            font-weight: 300;
+            letter-spacing: 2px;
         }
 
-        /* Blog Section Styles */
-        .blog-section {
-            padding: 5.5rem 0;
-            background: var(--dark-bg); 
-        }
-
-        .blog-section .section-title h2 {
-            color: var(--color-5); /* Green for Blog section title */
-            font-family: 'Caveat', cursive; /* A more handwritten, personal font for blog */
-            font-size: 3.5rem; /* Larger for a more artistic feel */
-            text-transform: none; /* Keep it natural */
-        }
-        .blog-section .section-title h2::after {
-            background: var(--color-5);
-            box-shadow: 0 0 10px var(--color-5);
-            width: 150px; /* Slightly wider underline */
-        }
-
-        .blog-intro {
-            text-align: center;
+        .page-header p {
             font-size: 1.2rem;
-            color: #ccc;
-            max-width: 800px;
-            margin: -2rem auto 3rem auto;
-            font-weight: 300;
-            line-height: 1.8;
-            font-family: 'Comfortaa', cursive;
+            color: var(--text-color-medium);
+            max-width: 700px;
+            margin: 0 auto;
         }
-
-        .blog-post-grid {
+        
+        .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 35px;
+            gap: 2.5rem;
         }
 
         .blog-post-card {
             background: var(--card-bg);
             border-radius: 15px;
-            overflow: hidden; /* Ensures image corners are rounded if image is direct child */
-            border: 1px solid var(--color-1); /* Pink border for blog cards */
-            box-shadow: 0 5px 25px rgba(0,0,0,0.3), 0 0 15px rgba(255,0,204,0.3) inset;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
-            backdrop-filter: blur(8px);
+            border: 1px solid var(--border-color);
         }
 
         .blog-post-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.5), 0 0 25px var(--color-1) inset, 0 0 20px var(--color-1);
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5); /* Using direct RGBA for primary-violet */
         }
 
-        .blog-post-image-wrapper {
-            height: 220px;
-            overflow: hidden;
-        }
-
-        .blog-post-image-wrapper img {
+        .blog-post-thumbnail {
             width: 100%;
-            height: 100%;
+            height: 220px;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: opacity 0.3s ease;
         }
-        .blog-post-card:hover .blog-post-image-wrapper img {
-            transform: scale(1.1);
+         .blog-post-card:hover .blog-post-thumbnail {
+            opacity: 0.85;
         }
 
 
         .blog-post-content {
             padding: 25px;
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
-            flex-grow: 1; /* Allows content to fill space */
         }
 
-        .blog-post-title {
+        .blog-post-content h3 {
             font-family: 'Krona One', sans-serif;
             font-size: 1.5rem;
-            color: var(--color-3); /* Yellow title */
-            margin-bottom: 10px;
-            line-height: 1.3;
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+            line-height: 1.3; /* Added for better heading readability */
         }
         
         .blog-post-meta {
-            font-size: 0.9rem;
-            color: var(--color-2); /* Cyan for meta data */
-            margin-bottom: 15px;
-            font-family: 'Comfortaa', cursive;
+            font-size: 0.85rem;
+            color: var(--text-color-medium);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap; /* Allow meta items to wrap */
         }
+
         .blog-post-meta i {
             margin-right: 5px;
+            color: var(--accent-green);
         }
-        .blog-post-meta span {
-            margin-right: 15px;
-        }
-
+        
         .blog-post-excerpt {
-            color: #ddd;
-            font-size: 1.05rem;
-            line-height: 1.7;
-            margin-bottom: 20px;
-            font-weight: 300;
-            flex-grow: 1;
-        }
-
-        .blog-post-readmore {
-            display: inline-block;
-            margin-top: auto; 
-            padding: 12px 25px;
-            background: linear-gradient(45deg, var(--color-1), var(--color-4)); /* Pink/Magenta gradient */
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            font-family: 'Fredoka One', cursive;
-            font-weight: bold;
-            text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px var(--color-1);
-            align-self: flex-start; /* Align button to the start of the flex item */
-        }
-
-        .blog-post-readmore:hover {
-            background: linear-gradient(45deg, var(--color-5), var(--color-2)); /* Green/Cyan hover */
-            color: var(--dark-bg);
-            transform: scale(1.05);
-            box-shadow: 0 0 15px var(--color-5);
-        }
-        
-        /* Footer Styles */
-        footer {
-            background: rgba(10, 10, 20, 0.9);
-            color: white;
-            padding: 4.5rem 0 2.5rem;
-            position: relative;
-            border-top: 2px solid var(--color-5);
-            box-shadow: 0 -5px 20px rgba(0, 255, 0, 0.2);
-        }
-        
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 45px;
-            margin-bottom: 3.5rem;
-        }
-        
-        .footer-column h3 {
-            color: var(--color-3);
-            margin-bottom: 1.7rem;
-            position: relative;
-            padding-bottom: 12px;
-            font-size: 1.5rem;
-            font-family: 'Fredoka One', cursive;
-        }
-        
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 55px;
-            height: 4px;
-            background: var(--color-2);
-            border-radius: 2px;
-            box-shadow: 0 0 10px var(--color-2);
-        }
-        
-        .footer-links {
-            list-style: none;
-        }
-        
-        .footer-links li {
-            margin-bottom: 14px;
-        }
-        
-        .footer-links a {
-            color: #bbb;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            display: inline-block;
-            padding: 5px 0;
-            font-weight: 300;
-        }
-        
-        .footer-links a:hover {
-            color: var(--color-1);
-            transform: translateX(10px);
-            text-shadow: 0 0 10px var(--color-1);
-        }
-        
-        .contact-info {
-            margin-top: 22px;
-        }
-        
-        .contact-info p {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 14px;
-            font-size: 1.1rem;
-            color: #ddd;
-        }
-        
-        .contact-info i {
-            color: var(--color-2);
-            text-shadow: 0 0 5px var(--color-2);
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 18px;
-            margin-top: 25px;
-        }
-        
-        .social-links a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            color: var(--color-2);
-            border-radius: 50%;
-            transition: all 0.4s ease;
-            font-size: 1.3rem;
-            border: 1px solid var(--color-2);
-        }
-        
-        .social-links a:hover {
-            background: var(--color-2);
-            color: black;
-            transform: translateY(-5px) rotate(15deg);
-            box-shadow: 0 0 20px var(--color-2);
-        }
-        
-        .copyright {
-            text-align: center;
-            padding-top: 2.5rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            color: #888;
             font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+            color: var(--text-color-light);
         }
-        
-        .copyright a {
-            color: var(--color-3);
+
+        .read-more-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
             text-decoration: none;
-            transition: all 0.3s ease;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            text-align: center;
+            align-self: flex-start; 
+            margin-top: auto; /* Pushes button to bottom if content is short */
+        }
+
+        .read-more-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            transform: scale(1.05);
         }
         
-        .copyright a:hover {
-            color: var(--color-1);
-            text-shadow: 0 0 10px var(--color-1);
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
         }
         
-        /* Responsive */
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .social-links { display: flex; gap: 15px; margin-top: 22px; }
+        .social-links a { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 45px; 
+            height: 45px; 
+            background: rgba(255, 255, 255, 0.04); 
+            color: var(--accent-blue); 
+            border-radius: 50%; 
+            transition: all 0.4s ease; 
+            font-size: 1.2rem; 
+            border: 1px solid var(--accent-blue); 
+        }
+        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         @media (max-width: 900px) {
-            .header-container {
-                flex-direction: column;
-                gap: 25px;
-            }
-            
-            nav ul {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            
-            .section-title h2 {
-                font-size: 2rem;
-            }
-             .blog-section .section-title h2 {
-                font-size: 2.8rem; 
-            }
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .page-header h2 { font-size: 2.2rem; }
+            .blog-post-content h3 {font-size: 1.3rem;}
         }
         
         @media (max-width: 600px) {
-            .blog-section .section-title h2 {
-                font-size: 2.2rem; 
-            }
-            .blog-post-title {
-                font-size: 1.3rem; 
-            }
-             .blog-intro {
-                font-size: 1rem;
-            }
-
-            nav ul {
-                gap: 8px;
-            }
-            
-            nav a {
-                padding: 6px 12px;
-                font-size: 0.9rem;
-            }
-        }
-
-        .ripple {
-            position: absolute;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.7);
-            transform: scale(0);
-            animation: ripple 0.6s linear;
-        }
-
-        @keyframes ripple {
-            to {
-                transform: scale(2.5);
-                opacity: 0;
-            }
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.5rem; }
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .page-header h2 { font-size: 1.8rem; }
+            .page-header p { font-size: 1rem; }
+            .blog-grid { grid-template-columns: 1fr; /* Single column on small screens */ }
+            .blog-post-thumbnail { height: 180px; }
+            .blog-post-content h3 {font-size: 1.2rem;}
+            .blog-post-excerpt {font-size: 0.9rem;}
+            .read-more-btn { padding: 8px 16px; font-size: 0.9rem;}
         }
     </style>
 </head>
 <body>
-    <div class="creative-bg"></div>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
     
-    <header>
+    <header id="main-header">
         <div class="container header-container">
-            <div class="logo">
-                <a href="index.html" style="display: flex; align-items: center; text-decoration: none; gap: 15px;">
-                    <i class="fas fa-brain"></i>
-                    <h1>BORDERLINE JOURNEY</h1>
-                </a>
-            </div>
+            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+                <i class="fas fa-brain"></i>
+                <h1>BORDERLINE JOURNEY</h1>
+            </a>
             <nav>
                 <ul>
-                    <li><a href="index.html#inicio">Inicio</a></li>
-                    <li><a href="psicoeducacion.html">Psicoeducación</a></li>
-                    <li><a href="dbt.html">DBT</a></li>
-                    <li><a href="blog.html" class="active">Blog</a></li>
-                    <li><a href="index.html#foro">Foro</a></li>
-                    <li><a href="index.html#premium">Premium</a></li>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html" class="active">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="premium.html">Premium</a></li> 
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main>
-        <section class="blog-section" id="blog-contenido">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Nuestro Rincón Creativo</h2>
-                    <p>Exploraciones, Relatos y Arte desde el Corazón del Viaje Borderline</p>
-                </div>
-                <p class="blog-intro">
-                    Este es un espacio para compartir historias, reflexiones, arte terapéutico y las múltiples facetas de vivir y comprender el TLP. Un diario colectivo de experiencias, aprendizajes y destellos de esperanza.
+    <main class="main-page-content">
+        <div class="container">
+            <div class="page-header">
+                <h2><i class="fas fa-newspaper"></i> Crónicas del Viaje Interior</h2>
+                <p>
+                    Sumérgete en artículos, reflexiones y últimas noticias sobre TLP, DBT, salud mental y las sendas hacia el crecimiento personal. Un espacio para la comprensión, el aprendizaje y la inspiración.
                 </p>
-    
-                <div class="blog-post-grid">
-                    <article class="blog-post-card">
-                        <div class="blog-post-image-wrapper">
-                            <img src="https://placehold.co/600x400/ff00cc/ffffff?text=Arte+y+Emocion" alt="Imagen de arte abstracto representando emociones">
-                        </div>
-                        <div class="blog-post-content">
-                            <h3 class="blog-post-title">El Lienzo de mis Emociones: Arte como Refugio</h3>
-                            <p class="blog-post-meta">
-                                <span><i class="fas fa-user"></i> Elena Viajera</span>
-                                <span><i class="fas fa-calendar-alt"></i> 30 Mayo, 2025</span>
-                            </p>
-                            <p class="blog-post-excerpt">
-                                Descubre cómo la pintura se convirtió en mi lenguaje cuando las palabras no alcanzaban. Un viaje a través de colores, texturas y la liberación que encontré en el arte...
-                            </p>
-                            <a href="articulo_arte_emociones.html" class="blog-post-readmore">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-    
-                    <article class="blog-post-card">
-                        <div class="blog-post-image-wrapper">
-                             <img src="https://placehold.co/600x400/00ffff/0f0f1b?text=Dialogos+Internos" alt="Imagen conceptual de diálogo y reflexión">
-                        </div>
-                        <div class="blog-post-content">
-                            <h3 class="blog-post-title">Navegando la Tormenta Interna: Un Día a la Vez</h3>
-                             <p class="blog-post-meta">
-                                <span><i class="fas fa-user"></i> Anónimo Valiente</span>
-                                <span><i class="fas fa-calendar-alt"></i> 25 Mayo, 2025</span>
-                            </p>
-                            <p class="blog-post-excerpt">
-                                Hay días en que la mente es un mar embravecido. Comparto algunas estrategias que me ayudan a encontrar calma y perspectiva en medio del caos emocional...
-                            </p>
-                            <a href="articulo_tormenta_interna.html" class="blog-post-readmore">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-
-                    <article class="blog-post-card">
-                        <div class="blog-post-image-wrapper">
-                            <img src="https://placehold.co/600x400/ffff00/0f0f1b?text=Conexion+Humana" alt="Imagen de manos entrelazadas simbolizando apoyo">
-                        </div>
-                        <div class="blog-post-content">
-                            <h3 class="blog-post-title">La Fuerza del Vínculo: Encontrando Apoyo en la Comunidad</h3>
-                             <p class="blog-post-meta">
-                                <span><i class="fas fa-user"></i> Kai Conector</span>
-                                <span><i class="fas fa-calendar-alt"></i> 18 Mayo, 2025</span>
-                            </p>
-                            <p class="blog-post-excerpt">
-                                Sentirse comprendido puede ser un bálsamo. Reflexiones sobre la importancia de construir una red de apoyo y cómo la comunidad online puede ser un faro...
-                            </p>
-                            <a href="articulo_comunidad_apoyo.html" class="blog-post-readmore">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                     <article class="blog-post-card">
-                        <div class="blog-post-image-wrapper">
-                            <img src="https://placehold.co/600x400/00ff00/0f0f1b?text=Mindfulness+Diario" alt="Imagen serena de naturaleza o meditación">
-                        </div>
-                        <div class="blog-post-content">
-                            <h3 class="blog-post-title">Pequeños Anclajes: El Poder del Mindfulness en lo Cotidiano</h3>
-                             <p class="blog-post-meta">
-                                <span><i class="fas fa-user"></i> Paz Presente</span>
-                                <span><i class="fas fa-calendar-alt"></i> 12 Mayo, 2025</span>
-                            </p>
-                            <p class="blog-post-excerpt">
-                                Integrar la atención plena no requiere horas de meditación. Comparto micro-prácticas que me ayudan a conectarme con el ahora y a reducir la reactividad emocional...
-                            </p>
-                            <a href="articulo_mindfulness_cotidiano.html" class="blog-post-readmore">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        </div>
-                    </article>
-                </div>
             </div>
-        </section>
+
+            <div class="blog-grid">
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Mindfulness+en+DBT" alt="Persona meditando en un entorno sereno" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>Desentrañando el Mindfulness: El Corazón de la DBT</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 30 de Mayo, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Dra. Elena Valiente</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            El mindfulness, o atención plena, es mucho más que una técnica de meditación; es una habilidad fundamental en la Terapia Dialéctico Conductual (DBT). En este artículo, exploramos qué significa realmente practicar mindfulness, sus beneficios directos para la regulación emocional y cómo integrarlo en la vida diaria para reducir la reactividad y aumentar la conciencia del presente...
+                        </p>
+                        <a href="blog-post-mindfulness.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/00CED1/FFFFFF?text=Validación+Emocional" alt="Dos personas conectando y mostrando empatía" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>El Poder de la Validación: Entendiendo y Aceptando Nuestras Emociones</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 25 de Mayo, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Lic. Marco Figueroa</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            La validación emocional es un pilar en la DBT y en la construcción de relaciones saludables, tanto con nosotros mismos como con los demás. ¿Pero qué implica validar una emoción, especialmente cuando es intensa o dolorosa? Descubre por qué la invalidación puede ser tan dañina y aprende estrategias prácticas para ofrecer y recibir validación de manera efectiva, fomentando la comprensión y la conexión...
+                        </p>
+                        <a href="blog-post-validacion.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/FF00FF/FFFFFF?text=Mitos+sobre+TLP" alt="Signo de interrogación rodeado de palabras clave sobre TLP" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>Derribando Mitos: 5 Ideas Erróneas Comunes sobre el Trastorno Límite</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 18 de Mayo, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Equipo Borderline Journey</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            El Trastorno Límite de la Personalidad (TLP) a menudo está rodeado de estigma y desinformación. Estos mitos no solo perpetúan el sufrimiento de quienes lo viven, sino que también dificultan la búsqueda de ayuda y la comprensión por parte de su entorno. En este post, abordamos y desmentimos cinco de las ideas erróneas más extendidas sobre el TLP, aportando claridad y fomentando la empatía...
+                        </p>
+                        <a href="blog-post-mitos-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/00FF7F/0A0A20?text=Regulación+Emocional+Práctica" alt="Persona gestionando sus emociones de forma calmada" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>Regulación Emocional en Acción: Técnicas DBT para el Día a Día</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 12 de Junio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Dr. Carlos Sánchez</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            Más allá de la teoría, la regulación emocional se trata de aplicar herramientas concretas cuando las olas emocionales amenazan con desbordarnos. Este artículo detalla ejercicios prácticos de DBT, como la habilidad PLEASE y la revisión de hechos, para ayudarte a identificar, comprender y modular tus emociones de manera efectiva en situaciones cotidianas...
+                        </p>
+                        <a href="blog-post-regulacion-practica.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/1E90FF/FFFFFF?text=Relaciones+y+TLP" alt="Siluetas de personas interactuando, simbolizando relaciones" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>Navegando el Laberinto de las Relaciones con TLP: Desafíos y Estrategias</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 5 de Junio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Lic. Sofía Ramírez</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            Las relaciones interpersonales pueden ser particularmente intensas y desafiantes para quienes viven con TLP. Exploramos las dinámicas comunes, el miedo al abandono y cómo las habilidades de efectividad interpersonal de la DBT pueden ser faros de luz para construir vínculos más saludables, estables y satisfactorios con amigos, familiares y parejas...
+                        </p>
+                        <a href="blog-post-relaciones-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/FFD700/0A0A20?text=Tolerancia+al+Malestar+en+Crisis" alt="Una persona encontrando calma en medio de una tormenta simbólica" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="blog-post-content">
+                        <h3>Sobreviviendo la Tormenta: Herramientas de Tolerancia al Malestar en Momentos de Crisis</h3>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 28 de Junio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Equipo Borderline Journey</span>
+                        </div>
+                        <p class="blog-post-excerpt">
+                            Cuando el malestar emocional se vuelve abrumador, tener a mano estrategias de afrontamiento efectivas es crucial. Este artículo se sumerge en las habilidades de tolerancia al malestar de la DBT, como las técnicas TIPP, la auto-calma y la distracción sabia, ofreciendo un kit de primeros auxilios emocionales para navegar los momentos más difíciles sin recurrir a conductas dañinas...
+                        </p>
+                        <a href="blog-post-tolerancia-crisis.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+            </div>
+        </div>
     </main>
 
     <footer>
@@ -619,7 +549,7 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Borderline Journey</h3>
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad.</p>
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
@@ -629,22 +559,23 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Recursos</h3>
+                    <h3>Navegación</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Galería Visual</a></li>
-                        <li><a href="dbt.html">Meditaciones Guiadas (DBT)</a></li> 
-                        <li><a href="blog.html">Diario Emocional (Blog)</a></li> <li><a href="index.html#foro">Arte Terapéutico</a></li>
-                        <li><a href="index.html#premium">Recursos de Crisis</a></li>
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="premium.html">Premium</a></li> 
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Explorar</h3>
+                    <h3>Recursos DBT</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Psicoeducación</a></li> 
-                        <li><a href="dbt.html">DBT</a></li> 
-                        <li><a href="blog.html">Blog</a></li> <li><a href="index.html#foro">Foro</a></li>
-                        <li><a href="index.html#premium">Eventos</a></li>
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
                 
@@ -660,7 +591,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional.</p>
+                <p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
                 <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
@@ -668,70 +599,74 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Efecto de movimiento en tarjetas de blog
-            const blogPostCards = document.querySelectorAll('.blog-post-card');
-            blogPostCards.forEach(card => {
-                card.addEventListener('mousemove', function(e) {
-                    const rect = card.getBoundingClientRect();
-                    const cardX = rect.left + rect.width / 2;
-                    const cardY = rect.top + rect.height / 2;
-                    const mouseX = e.clientX;
-                    const mouseY = e.clientY;
-                    
-                    let rotateX = (mouseY - cardY) / 25; /* Menor sensibilidad para el blog */
-                    let rotateY = (mouseX - cardX) / -25;
-                    
-                    rotateX = Math.min(Math.max(rotateX, -8), 8); 
-                    rotateY = Math.min(Math.max(rotateY, -8), 8);
-                    
-                    this.style.transform = `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.02)`;
-                });
-                
-                card.addEventListener('mouseenter', function() {
-                    this.style.transition = 'transform 0.15s ease-out';
-                });
-                
-                card.addEventListener('mouseleave', function() {
-                    this.style.transition = 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1)'; 
-                    this.style.transform = 'perspective(1200px) rotateY(0deg) rotateX(0deg) scale(1)';
-                });
-            });
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            // Efecto de ripple en botones "Leer Más"
-            const buttons = document.querySelectorAll('.blog-post-readmore');
-            buttons.forEach(button => {
-                button.addEventListener('click', function(e) {
-                    // No prevenir si es un enlace real a un artículo
-                    // if (this.getAttribute('href') === '#') { 
-                    //     e.preventDefault();
-                    // }
-
-                    const x = e.clientX - e.target.getBoundingClientRect().left; 
-                    const y = e.clientY - e.target.getBoundingClientRect().top;  
-                    
-                    const ripples = document.createElement('span');
-                    ripples.classList.add('ripple');
-                    ripples.style.left = x + 'px';
-                    ripples.style.top = y + 'px';
-                    this.appendChild(ripples);
-                    
-                    setTimeout(() => {
-                        ripples.remove();
-                    }, 600); 
-                });
-            });
-
-            // Script para activar el enlace de navegación correspondiente a esta página
-            const currentPageFilename = window.location.pathname.split('/').pop();
-            const navLinks = document.querySelectorAll('nav a');
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150;
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 6}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
+                    if (Math.random() > 0.65) {
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
+            const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
+                link.classList.remove('active'); 
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
                 }
             });
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            const animatedSection = document.querySelector('.blog-grid'); 
+            if (animatedSection) {
+                 const observerOptions = {
+                    root: null, 
+                    rootMargin: '0px',
+                    threshold: 0.1 
+                };
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.style.opacity = '1';
+                            entry.target.style.transform = 'translateY(0)';
+                            // obs.unobserve(entry.target); // Descomentar si solo se anima una vez
+                        }
+                    });
+                }, observerOptions);
+                animatedSection.style.opacity = '0';
+                animatedSection.style.transform = 'translateY(40px)';
+                animatedSection.style.transition = 'opacity 0.9s ease-out, transform 0.9s ease-out';
+                observer.observe(animatedSection);
+            }
         });
     </script>
 </body>
