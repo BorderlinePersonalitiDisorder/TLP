@@ -136,40 +136,44 @@
             text-shadow: 0 0 5px rgba(255, 0, 255, 0.5);
         }
         
+        /* NEW NAVIGATION TAB STYLE */
         nav a:hover, nav a.active {
-            background: var(--color-4);
-            box-shadow: 0 0 15px var(--color-4);
-            transform: scale(1.1);
+            background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, transparent 60%); /* Subtle cyan glow background */
+            color: var(--color-3); /* Yellow text */
+            border: 2px solid var(--color-2); /* Solid cyan border */
+            box-shadow: 0 0 18px var(--color-2), 0 0 8px var(--color-2) inset; /* Enhanced cyan glow */
+            transform: scale(1.07) translateY(-2px); /* Slight lift and different scale */
+            text-shadow: 0 0 8px var(--color-3); /* Optional: yellow text glow */
         }
         
-        nav a::after {
+        nav a::after { /* Base style for the underline pseudo-element */
             content: '';
             position: absolute;
-            bottom: -5px;
+            bottom: -5px; /* Position below the tab */
             left: 50%;
             transform: translateX(-50%);
-            width: 0;
+            width: 0; /* Initially no width */
             height: 3px;
-            background: var(--color-2);
+            background: var(--color-2); /* Default color, matching border */
             transition: width 0.3s ease;
         }
         
+        /* Remove underline for active/hover states for the new design */
         nav a:hover::after, nav a.active::after {
-            width: 80%;
+            width: 0; 
         }
         
-       /* Premium Section Specific Styles (replaces .premium class from index) */
+       /* Premium Section Specific Styles */
         .premium-page-section {
-            padding: 5.5rem 0 7rem; /* Adjusted padding */
+            padding: 5.5rem 0 7rem; 
             text-align: center;
             position: relative;
             overflow: hidden;
-            /* Removed margin, border, box-shadow as it's a full page section now */
         }
 
         .premium-page-section .section-title h2 {
             font-family: 'Press Start 2P', cursive;
-            font-size: 2.8rem; /* Larger title for the page */
+            font-size: 2.8rem; 
             margin-bottom: 2rem;
             background: linear-gradient(45deg, var(--color-3), var(--color-5), var(--color-2));
             -webkit-background-clip: text;
@@ -178,14 +182,21 @@
             text-shadow: 0 0 15px rgba(255, 255, 0, 0.4);
             animation: creativeText 5s infinite linear;
         }
-         .premium-page-section .section-title h2::after { /* Underline for premium page title */
+         .premium-page-section .section-title h2::after { 
+            content: ''; /* Ensure pseudo-element is generated */
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
             background: var(--color-3);
             box-shadow: 0 0 10px var(--color-3);
             width: 200px;
+            height: 4px; /* Added height for visibility */
+            border-radius: 2px; /* Optional: rounded corners for underline */
         }
 
 
-        .premium-page-section .section-title p { /* Subtitle for premium page */
+        .premium-page-section .section-title p { 
             font-size: 1.4rem;
             margin-bottom: 3rem;
             opacity: 0.9;
@@ -196,7 +207,7 @@
             font-family: 'Comfortaa', cursive;
         }
         
-        .premium-page-section::before { /* Background animation for the premium page */
+        .premium-page-section::before { 
             content: '';
             position: absolute;
             top: 0;
@@ -214,27 +225,32 @@
             opacity: 0.25;
         }
 
-        @keyframes creativeBackgroundPremium { /* Specific animation for premium page background */
+        @keyframes creativeText { /* Added for .premium-page-section .section-title h2 */
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        @keyframes creativeBackgroundPremium { 
             0% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
             100% { background-position: 0% 50%; }
         }
         
-        .premium-container { /* Container for benefits and CTA */
-            max-width: 900px; /* Wider container for benefits */
+        .premium-container { 
+            max-width: 900px; 
             margin: 0 auto;
             position: relative;
             z-index: 2;
         }
         
-        .benefits-grid { /* Changed from .benefits to .benefits-grid for clarity */
+        .benefits-grid { 
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
             gap: 35px;
             margin: 4rem 0;
         }
         
-        .benefit-card { /* Changed from .benefit to .benefit-card */
+        .benefit-card { 
             background: var(--card-bg);
             padding: 35px 30px;
             border-radius: 20px;
@@ -242,13 +258,13 @@
             box-shadow: 0 0 25px rgba(255, 0, 255, 0.35);
             transition: all 0.4s ease;
             backdrop-filter: blur(8px);
-            text-align: center; /* Center content within card */
+            text-align: center; 
         }
         
         .benefit-card:hover {
             transform: translateY(-12px) rotate(2deg);
             box-shadow: 0 12px 35px var(--color-4);
-            background: rgba(80, 0, 80, 0.6); /* Darker magenta on hover */
+            background: rgba(80, 0, 80, 0.6); 
         }
         
         .benefit-card i {
@@ -266,13 +282,13 @@
         }
         
         .benefit-card p {
-            font-size: 1.05rem; /* Slightly smaller text for benefits */
+            font-size: 1.05rem; 
             margin-bottom: 0;
             opacity: 0.9;
             color: #ccc;
         }
 
-        .cta-button-premium { /* Specific CTA button for premium page */
+        .cta-button-premium { 
             display: inline-block;
             background: linear-gradient(45deg, var(--color-1), var(--color-3), var(--color-5));
             color: var(--dark-bg);
@@ -285,7 +301,7 @@
             box-shadow: 0 8px 25px rgba(255, 255, 0, 0.5);
             border: none;
             cursor: pointer;
-            margin-top: 2rem; /* Added margin top */
+            margin-top: 2rem; 
             position: relative;
             overflow: hidden;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
@@ -312,13 +328,11 @@
             left: 100%;
         }
 
-        /* Section Title Styles (reusable - already defined but can be customized if needed) */
-        .section-title {
+        /* General Section Title Styles (used by .premium-page-section .section-title) */
+        .section-title { /* This class is used by the premium page title structure */
             text-align: center;
-            margin-bottom: 4rem;
+            margin-bottom: 4rem; /* Default, can be overridden by more specific rules if needed */
         }
-        /* ... other .section-title styles remain the same ... */
-
         /* Footer Styles */
         footer {
             background: rgba(10, 10, 20, 0.9);
@@ -536,7 +550,8 @@
 
     <main>
         <section class="premium-page-section" id="premium-contenido">
-            <div class="container section-title"> <h2>EXPERIENCIA PREMIUM</h2>
+            <div class="container section-title"> 
+                <h2>EXPERIENCIA PREMIUM</h2>
                 <p>Desbloquea el Universo Completo de Recursos Creativos para tu Viaje Borderline</p>
             </div>
             <div class="container premium-container"> 
@@ -567,7 +582,7 @@
                 </div>
                 
                 <a href="#formulario-suscripcion" class="cta-button-premium">UNIRME AL VIAJE PREMIUM</a> 
-                </div>
+            </div>
         </section>
         
         <section id="formulario-suscripcion" style="padding: 4rem 0; text-align:center; background: rgba(20,20,40,0.5); border-radius: 15px; margin: 3rem 20px;">
@@ -604,7 +619,8 @@
                         <li><a href="dbt.html">Meditaciones Guiadas (DBT)</a></li> 
                         <li><a href="blog.html">Diario Emocional (Blog)</a></li> 
                         <li><a href="foro.html">Comunidad (Foro)</a></li> 
-                        <li><a href="premium.html">Recursos de Crisis (Premium)</a></li> </ul>
+                        <li><a href="premium.html">Recursos de Crisis (Premium)</a></li> 
+                    </ul>
                 </div>
                 
                 <div class="footer-column">
@@ -614,7 +630,8 @@
                         <li><a href="dbt.html">DBT</a></li> 
                         <li><a href="blog.html">Blog</a></li> 
                         <li><a href="foro.html">Foro</a></li> 
-                        <li><a href="premium.html">Eventos (Premium)</a></li> </ul>
+                        <li><a href="premium.html">Eventos (Premium)</a></li> 
+                    </ul>
                 </div>
                 
                 <div class="footer-column">
