@@ -28,6 +28,7 @@
             --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
+            --secondary-cyan-rgb: 0, 206, 209;
         }
         
         * {
@@ -186,14 +187,35 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
-            color: var(--accent-green); 
+            /* Typography changed to match blog.html title */
+            font-family: 'Playfair Display', serif; 
+            font-size: 3rem; 
+            font-weight: 700; 
+            color: var(--accent-cyan); /* Color changed to match blog.html title */
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--accent-green-rgb),0.4);
+            text-transform: none; 
+            letter-spacing: 0.5px; 
+            /* text-shadow: 0 0 10px rgba(var(--secondary-cyan-rgb),0.4); Removed shadow for cleaner look with Playfair */
+            display: inline-flex; 
+            align-items: center;
+            gap: 15px; 
         }
+         .page-header h2 i { /* Icon for forum page title */
+            font-size: 2.6rem; 
+            /* animation: subtleRotate 8s infinite linear; Keep animation if desired */
+        }
+        /* Optional: Add subtleRotate animation if you want the icon to move */
+         @keyframes subtleRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.05); }
+            50% { transform: rotate(0deg) scale(1.1); }
+            75% { transform: rotate(-5deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+        .page-header h2 i.fa-comments { /* Apply animation specifically to comments icon if needed */
+             animation: subtleRotate 8s infinite linear;
+        }
+
 
         .page-header p {
             font-size: 1.2rem;
@@ -218,10 +240,10 @@
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
-            opacity: 0; /* Initial state for animation */
-            transform: translateY(30px); /* Initial state for animation */
+            opacity: 0; 
+            transform: translateY(30px); 
         }
-        .forum-category-card.visible { /* State after animation */
+        .forum-category-card.visible { 
             opacity: 1;
             transform: translateY(0);
         }
@@ -285,16 +307,76 @@
             transform: scale(1.05);
         }
 
+        /* NEW: Resources Section (similar to blog article detail) */
+        .resources-section {
+            margin-top: 3rem; /* Or margin-bottom if placed before guidelines */
+            margin-bottom: 3rem;
+            padding: 25px;
+            background: rgba(var(--accent-yellow-rgb), 0.05); /* Different accent color */
+            border-radius: 15px;
+            border: 1px solid var(--accent-yellow);
+            opacity: 0; 
+            transform: translateY(30px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out; /* Ensure transition is defined */
+        }
+        .resources-section.visible {
+             opacity: 1;
+             transform: translateY(0);
+        }
+
+        .resources-section h2 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--accent-yellow);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        .resources-list {
+            list-style: none;
+            padding: 0;
+        }
+        .resources-list li {
+            margin-bottom: 1rem;
+        }
+        .resources-list a {
+            display: flex; /* Use flex for better alignment */
+            align-items: center; 
+            gap: 12px; 
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            width: 100%; 
+            box-sizing: border-box; 
+        }
+        .resources-list a:hover {
+            background-color: var(--accent-magenta);
+            transform: translateX(5px);
+        }
+        .resources-list a i {
+            font-size: 1.2rem; 
+            min-width: 20px; /* Ensure icon has space */
+            text-align: center;
+        }
+
+
         .forum-guidelines {
             background: rgba(var(--accent-blue-rgb), 0.05);
             padding: 25px;
             border-radius: 15px;
             border: 1px dashed rgba(var(--accent-blue-rgb), 0.3);
             margin-top: 2rem;
-            opacity: 0; /* Initial state for animation */
-            transform: translateY(30px); /* Initial state for animation */
+            opacity: 0; 
+            transform: translateY(30px); 
         }
-        .forum-guidelines.visible { /* State after animation */
+        .forum-guidelines.visible { 
             opacity: 1;
             transform: translateY(0);
         }
@@ -304,6 +386,10 @@
             color: var(--accent-blue);
             text-align: center;
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
         }
         .forum-guidelines ul {
             list-style-position: inside;
@@ -430,7 +516,8 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
+            .page-header h2 { font-size: 2.6rem; } /* Adjusted for Playfair */
+            .page-header h2 i { font-size: 2.2rem; }
             .forum-category-card h3 {font-size: 1.3rem;}
         }
         
@@ -439,13 +526,16 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } /* Adjusted for Playfair */
+            .page-header h2 i { font-size: 1.8rem; }
             .page-header p { font-size: 1rem; }
             .forum-categories-grid { grid-template-columns: 1fr; }
             .forum-category-card { padding: 20px; }
             .forum-category-card h3 {font-size: 1.2rem;}
             .forum-category-card p.description {font-size: 0.9rem;}
             .enter-forum-btn { padding: 8px 16px; font-size: 0.9rem;}
+            .resources-section h2 { font-size: 1.6rem; }
+            .resources-list a { padding: 10px 15px; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -515,7 +605,7 @@
                 </article>
                 
                 <article class="forum-category-card">
-                    <div class="icon-container"><i class="fas fa-lightbulb"></i></div> <h3>Recursos y Herramientas</h3>
+                    <div class="icon-container"><i class="fas fa-lightbulb"></i></div> <h3>Recursos y Herramientas (Foro)</h3>
                     <p class="description">Comparte libros, artículos, aplicaciones, videos y otras herramientas útiles que te hayan ayudado en tu proceso de recuperación y aprendizaje.</p>
                      <div class="forum-stats">
                         <span><i class="fas fa-comments"></i> 45 Temas</span>
@@ -525,15 +615,24 @@
                 </article>
             </div>
 
+            <section class="resources-section">
+                <h2><i class="fas fa-download"></i> Descargas y Recursos Clave</h2>
+                <ul class="resources-list">
+                    <li><a href="#" download="Manual_Habilidades_DBT_Marsha_Linehan_Resumen.pdf"><i class="fas fa-book-reader"></i> Manual de Habilidades DBT (Resumen por M. Linehan)</a></li>
+                    <li><a href="#" download="Guia_Rapida_Tolerancia_Malestar.pdf"><i class="fas fa-shield-alt"></i> Guía Rápida: Tolerancia al Malestar</a></li>
+                    <li><a href="#" download="Hoja_Registro_Emociones_DBT.pdf"><i class="fas fa-clipboard-list"></i> Hoja de Registro de Emociones (Estilo DBT)</a></li>
+                    <li><a href="https://www.behavioraltech.org/resources/links/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Behavioral Tech (Fundado por M. Linehan) - Recursos</a></li>
+                    <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> Información sobre TLP (NIMH)</a></li>
+                </ul>
+            </section>
             <section class="forum-guidelines">
-                <h3><i class="fas fa-shield-alt"></i> Normas de la Comunidad</h3>
-                <ul>
-                    <li><i class="fas fa-check"></i> Sé respetuoso y empático con todos los miembros.</li>
-                    <li><i class="fas fa-check"></i> No compartas información personal identificable.</li>
-                    <li><i class="fas fa-check"></i> Evita el lenguaje ofensivo o discriminatorio.</li>
-                    <li><i class="fas fa-check"></i> No se permite la promoción de servicios o productos no autorizados.</li>
-                    <li><i class="fas fa-check"></i> Reporta cualquier contenido que viole estas normas a los moderadores.</li>
-                    <li><i class="fas fa-check"></i> Recuerda que este foro es de apoyo entre pares y no sustituye la terapia profesional.</li>
+                <h3><i class="fas fa-gavel"></i> Normas de la Comunidad</h3> <ul>
+                    <li><i class="fas fa-check-circle"></i> Sé respetuoso y empático con todos los miembros.</li>
+                    <li><i class="fas fa-check-circle"></i> No compartas información personal identificable.</li>
+                    <li><i class="fas fa-check-circle"></i> Evita el lenguaje ofensivo o discriminatorio.</li>
+                    <li><i class="fas fa-check-circle"></i> No se permite la promoción de servicios o productos no autorizados.</li>
+                    <li><i class="fas fa-check-circle"></i> Reporta cualquier contenido que viole estas normas a los moderadores.</li>
+                    <li><i class="fas fa-check-circle"></i> Recuerda que este foro es de apoyo entre pares y no sustituye la terapia profesional.</li>
                 </ul>
             </section>
 
@@ -642,7 +741,8 @@
                 });
             }
             
-            const animatedElements = document.querySelectorAll('.forum-category-card, .forum-guidelines'); 
+            // Updated to include .resources-section for animation
+            const animatedElements = document.querySelectorAll('.forum-category-card, .forum-guidelines, .resources-section'); 
             if (animatedElements.length > 0) {
                  const observerOptions = {
                     root: null, 
@@ -652,15 +752,17 @@
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            entry.target.classList.add('visible'); // Use class for animation
-                            // obs.unobserve(entry.target); // Optional
+                            entry.target.classList.add('visible'); 
+                            // obs.unobserve(entry.target); // Optional: unobserve after animation
                         }
+                        // Optional: else { entry.target.classList.remove('visible'); } // To re-animate if scrolled out and back
                     });
                 }, observerOptions);
 
                 animatedElements.forEach(element => {
-                    // Initial styles are now handled by CSS (.forum-category-card, .forum-guidelines)
-                    // and the .visible class will trigger the animation.
+                    // Initial styles (opacity: 0, transform: translateY(30px)) are set in CSS
+                    // Transition is also set in CSS for .visible state or direct style change
+                    element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out'; // Ensure transition is applied
                     observer.observe(element);
                 });
             }
