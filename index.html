@@ -79,7 +79,7 @@
             padding: 1rem 0;
             position: sticky;
             top: 0;
-            z-index: 1000; /* Ensure header is above other content */
+            z-index: 1000; 
             border-bottom: 2px solid var(--color-2);
             box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
         }
@@ -117,25 +117,25 @@
         nav ul {
             display: flex;
             list-style: none;
-            gap: 15px; /* Slightly reduced gap */
+            gap: 10px; /* Adjusted gap for more links */
         }
         
         nav a {
-            color: #e0e0e0; /* Slightly softer white */
+            color: #e0e0e0; 
             text-decoration: none;
             font-family: 'Krona One', sans-serif;
-            font-size: 0.95rem; /* Slightly smaller font */
-            padding: 10px 18px; /* Adjusted padding */
-            border-radius: 8px; /* Less rounded */
+            font-size: 0.9rem; /* Adjusted font size for more links */
+            padding: 10px 15px; /* Adjusted padding */
+            border-radius: 8px; 
             transition: all 0.3s ease-out;
             position: relative;
-            background: transparent; /* Transparent by default */
-            border: 1px solid transparent; /* Transparent border by default */
-            text-shadow: none; /* Remove default text shadow */
-            overflow: hidden; /* For pseudo-element effect */
+            background: transparent; 
+            border: 1px solid transparent; 
+            text-shadow: none; 
+            overflow: hidden; 
         }
 
-        nav a::before { /* New pseudo-element for background effect */
+        nav a::before { 
             content: '';
             position: absolute;
             top: 0;
@@ -150,19 +150,18 @@
         
         nav a:hover::before, nav a.active::before {
             left: 0;
-            opacity: 0.2; /* Subtle background glow */
+            opacity: 0.2; 
         }
 
         nav a:hover, nav a.active {
-            color: var(--color-3); /* Yellow text on hover/active */
-            background-color: rgba(0, 255, 255, 0.05); /* Very subtle cyan background */
-            border: 1px solid var(--color-2); /* Cyan border */
-            box-shadow: 0 0 12px rgba(0, 255, 255, 0.4); /* Cyan glow */
-            transform: translateY(-2px); /* Slight lift */
+            color: var(--color-3); 
+            background-color: rgba(0, 255, 255, 0.05); 
+            border: 1px solid var(--color-2); 
+            box-shadow: 0 0 12px rgba(0, 255, 255, 0.4); 
+            transform: translateY(-2px); 
             text-shadow: 0 0 5px var(--color-3);
         }
         
-        /* Removing the old underline effect */
         nav a::after { 
             display: none;
         }
@@ -520,7 +519,7 @@
         }
         
         /* Premium Section (Index Page Version - CTA) */
-        .premium-cta-section { /* Renamed to avoid conflict with premium.html styles */
+        .premium-cta-section { 
             padding: 7rem 0;
             text-align: center;
             position: relative;
@@ -546,12 +545,12 @@
                 radial-gradient(circle, var(--color-5) 0%, transparent 70%);
             background-size: 200% 200%;
             background-position: center;
-            animation: creativeBackground 20s infinite linear; /* Reusing existing animation */
+            animation: creativeBackground 20s infinite linear; 
             z-index: -1;
             opacity: 0.2;
         }
         
-        .premium-cta-container { /* Renamed to avoid conflict */
+        .premium-cta-container { 
             max-width: 800px;
             margin: 0 auto;
             position: relative;
@@ -567,7 +566,7 @@
             background-clip: text;
             -webkit-text-fill-color: transparent;
             text-shadow: 0 0 10px rgba(255, 255, 0, 0.3);
-            animation: creativeText 5s infinite linear; /* Reusing existing animation */
+            animation: creativeText 5s infinite linear; 
         }
         
         .premium-cta-section p {
@@ -579,7 +578,6 @@
             margin-right: auto;
             color: #ddd;
         }
-        /* No .benefits grid here, it's on premium.html */
         
         /* Footer */
         footer {
@@ -707,6 +705,16 @@
         }
         
         /* Responsive */
+        @media (max-width: 1024px) { /* Adjusted breakpoint for more links */
+             nav ul {
+                gap: 8px;
+            }
+            nav a {
+                font-size: 0.85rem;
+                padding: 8px 12px;
+            }
+        }
+
         @media (max-width: 900px) {
             .header-container {
                 flex-direction: column;
@@ -716,6 +724,11 @@
             nav ul {
                 flex-wrap: wrap;
                 justify-content: center;
+                gap: 5px; /* Further reduce gap */
+            }
+             nav a {
+                font-size: 0.8rem; /* Further reduce font size */
+                padding: 8px 10px; /* Further reduce padding */
             }
             
             .hero h2 {
@@ -740,15 +753,6 @@
             }
             .premium-cta-section h2 {
                 font-size: 1.8rem;
-            }
-            
-            nav ul {
-                gap: 8px;
-            }
-            
-            nav a {
-                padding: 6px 12px;
-                font-size: 0.9rem;
             }
             
             .cta-button {
@@ -793,6 +797,8 @@
                     <li><a href="dbt.html">DBT</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="foro.html">Foro</a></li>
+                    <li><a href="up_download.html">Up/Download</a></li>
+                    <li><a href="quienes_somos.html">Quiénes Somos</a></li>
                     <li><a href="premium.html">Premium</a></li>
                 </ul>
             </nav>
@@ -810,7 +816,8 @@
         </div>
     </section>
 
-    <section class="features" id="recursos-destacados"> <div class="container">
+    <section class="features" id="recursos-destacados"> 
+        <div class="container">
             <div class="section-title">
                 <h2>RECURSOS VISUALES</h2>
                 <p>Explora nuestras secciones con un enfoque creativo para el aprendizaje</p>
@@ -856,7 +863,8 @@
         </div>
     </section>
 
-    <section class="testimonials" id="testimonios"> <div class="container">
+    <section class="testimonials" id="testimonios"> 
+        <div class="container">
             <div class="section-title">
                 <h2>EXPERIENCIAS</h2>
                 <p>Voces de nuestra comunidad creativa</p>
@@ -905,10 +913,12 @@
         </div>
     </section>
 
-    <section class="premium-cta-section" id="premium-cta"> <div class="container premium-cta-container">
+    <section class="premium-cta-section" id="premium-cta"> 
+        <div class="container premium-cta-container">
             <h2>EXPERIENCIA PREMIUM</h2>
             <p>Acceso completo a nuestro universo de recursos creativos para el manejo del TLP</p>
-            <a href="premium.html" class="cta-button">DESCUBRE PREMIUM</a> </div>
+            <a href="premium.html" class="cta-button">DESCUBRE PREMIUM</a> 
+        </div>
     </section>
 
     <footer>
@@ -943,6 +953,8 @@
                         <li><a href="dbt.html">DBT</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="foro.html">Foro</a></li>
+                        <li><a href="up_download.html">Up/Download</a></li>
+                        <li><a href="quienes_somos.html">Quiénes Somos</a></li>
                         <li><a href="premium.html">Eventos</a></li>
                     </ul>
                 </div>
@@ -967,8 +979,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Efecto de movimiento en elementos al pasar el mouse
-            const cards = document.querySelectorAll('.feature-card, .testimonial-card, .benefit-card'); // .benefit-card es de premium.html, aquí no aplica
+            const cards = document.querySelectorAll('.feature-card, .testimonial-card');
             cards.forEach(card => {
                 card.addEventListener('mousemove', function(e) {
                     const rect = card.getBoundingClientRect();
@@ -993,7 +1004,6 @@
                 });
             });
             
-            // Cambio de color en títulos (JS version, complements CSS animation)
             const sectionTitleH2s = document.querySelectorAll('.section-title h2');
             let hue = 0;
 
@@ -1002,23 +1012,16 @@
                     hue = (hue + 1) % 360;
                     sectionTitleH2s.forEach(text => {
                         const parentSection = text.closest('section');
-                        if (!text.closest('.hero') && !text.closest('.premium-cta-section') && // Excluir hero y premium-cta
-                            (!parentSection || !parentSection.classList.contains('psicoeducacion-detailed-section'))) { // Excluir si es de psicoeducacion.html
+                        if (!text.closest('.hero') && !text.closest('.premium-cta-section')) {
                            text.style.filter = `hue-rotate(${hue}deg)`;
                         }
                     });
                 }, 100); 
             }
             
-            // Efecto de partículas en botones
             const buttons = document.querySelectorAll('.cta-button');
             buttons.forEach(button => {
                 button.addEventListener('click', function(e) {
-                    // No prevenir si es un enlace real a otra página
-                    // if (this.getAttribute('href').startsWith('#')) {
-                    //     e.preventDefault(); 
-                    // }
-
                     const x = e.clientX - e.target.getBoundingClientRect().left; 
                     const y = e.clientY - e.target.getBoundingClientRect().top;  
                     
@@ -1034,11 +1037,9 @@
                 });
             });
             
-            // Scroll suave para enlaces internos de la página (si los hubiera)
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
-                    // Solo prevenir y hacer scroll suave si es un ancla real en ESTA página
                     if (targetId !== "#" && document.querySelector(targetId)) {
                         e.preventDefault();
                         const targetElement = document.querySelector(targetId);
@@ -1062,23 +1063,26 @@
                 });
             });
             
-            // Destacar sección actual en navegación (para index.html)
             const sections = document.querySelectorAll('section[id]'); 
             const navLinks = document.querySelectorAll('nav a');
             const header = document.querySelector('header');
             
-            // Set "Inicio" as active by default on index.html
             const inicioLink = document.querySelector('nav a[href="index.html"]');
-            if (inicioLink) {
-                navLinks.forEach(link => link.classList.remove('active')); // Clear others first
-                inicioLink.classList.add('active');
+            if (window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html') || window.location.pathname === '') {
+                 navLinks.forEach(link => link.classList.remove('active'));
+                 if(inicioLink) inicioLink.classList.add('active');
             }
 
 
             window.addEventListener('scroll', () => {
-                let currentId = 'inicio'; // Default to 'inicio'
+                // Only run scroll-based active link highlighting on index.html
+                if (!(window.location.pathname.endsWith('/') || window.location.pathname.endsWith('index.html') || window.location.pathname === '')) {
+                    return;
+                }
+
+                let currentId = 'inicio'; 
                 const scrollY = window.pageYOffset;
-                const offset = header ? header.offsetHeight + 60 : 120; // Adjusted offset
+                const offset = header ? header.offsetHeight + 60 : 120; 
 
                 sections.forEach(section => {
                     const sectionTop = section.offsetTop;
@@ -1089,11 +1093,21 @@
                 
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    // For index.html, anclas internas son #id, no archivos.html#id
-                    if (link.getAttribute('href') === `#${currentId}` || (currentId === 'inicio' && link.getAttribute('href') === 'index.html')) {
+                    const linkHref = link.getAttribute('href');
+
+                    if (linkHref === `index.html#${currentId}` || (currentId === 'inicio' && (linkHref === 'index.html' || linkHref === 'index.html#inicio'))) {
                         link.classList.add('active');
+                    } else if (linkHref === `#${currentId}` ) { // Fallback for simple anchor links
+                         link.classList.add('active');
                     }
                 });
+
+                 // Ensure "Inicio" is active if at the very top or no other section matches
+                if (scrollY < (sections[0]?.offsetTop - offset || 300)) {
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    if(inicioLink) inicioLink.classList.add('active');
+                }
+
             });
         });
     </script>
