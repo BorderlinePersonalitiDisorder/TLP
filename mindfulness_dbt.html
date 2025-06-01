@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activación Conductual en TCC - Profundización Completa - Borderline Journey</title>
+    <title>Mindfulness (Atención Plena) en DBT - Guía Exhaustiva - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-violet: #8A2BE2;
-            --secondary-cyan: #00CED1;
-            --accent-magenta: #FF00FF; 
+            --secondary-cyan: #00CED1; /* Primary accent for this page */
+            --accent-magenta: #FF00FF;
             --accent-green: #00FF7F;
             --accent-blue: #1E90FF;
             --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
-            --text-color-dark: #333333; /* For light backgrounds if any */
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
@@ -25,10 +26,10 @@
 
             --primary-violet-rgb: 138, 43, 226;
             --accent-blue-rgb: 30, 144, 255;
-            --accent-magenta-rgb: 255, 0, 255; 
+            --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
-            --secondary-cyan-rgb: 0, 206, 209;
+            --secondary-cyan-rgb: 0, 206, 209; /* Primary accent for this page */
             --accent-red-rgb: 255, 69, 0; 
         }
         
@@ -188,14 +189,14 @@
         }
 
         .page-header h2 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Playfair Display', serif; 
             font-size: 2.8rem; 
             font-weight: 700;
-            color: var(--accent-magenta); 
+            color: var(--secondary-cyan); /* Module specific color */
             margin-bottom: 0.5rem;
             text-transform: none; 
             letter-spacing: 0.5px;
-            text-shadow: 0 0 8px rgba(var(--accent-magenta-rgb),0.4); 
+            text-shadow: 0 0 8px rgba(var(--secondary-cyan-rgb),0.4); 
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -212,7 +213,7 @@
             margin: 0 auto 2rem auto;
         }
         
-        .component-content-section { 
+        .component-content-section { /* Renamed from module-content-section for consistency */
             background: var(--card-bg);
             padding: 30px 35px; 
             border-radius: 15px;
@@ -228,18 +229,18 @@
         }
 
         .component-content-section h3 {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.9rem; 
-            color: var(--accent-magenta); 
+            color: var(--secondary-cyan); /* Module specific color */
             margin-top: 1rem; 
             margin-bottom: 1.8rem; 
             text-align: center;
-            border-bottom: 2px dashed var(--accent-magenta); 
+            border-bottom: 2px dashed var(--secondary-cyan); 
             padding-bottom: 0.8rem; 
         }
          .component-content-section h4 {
-            font-family: 'Raleway', sans-serif;
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.5rem; 
             color: var(--accent-yellow);
@@ -252,7 +253,7 @@
             font-family: 'Raleway', sans-serif;
             font-weight: 700;
             font-size: 1.2rem;
-            color: var(--secondary-cyan);
+            color: var(--accent-green); 
             margin-top: 1.5rem;
             margin-bottom: 0.8rem;
         }
@@ -279,7 +280,7 @@
             content: '\f00c'; 
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
-            color: var(--accent-magenta); 
+            color: var(--secondary-cyan); /* Module specific color */
             position: absolute;
             left: 0;
             top: 4px; 
@@ -298,16 +299,16 @@
             font-weight: 700;
         }
         .component-content-section em {
-            color: var(--secondary-cyan); 
+            color: var(--accent-yellow); 
             font-style: italic;
         }
         .component-content-section blockquote {
-            border-left: 5px solid var(--accent-blue);
+            border-left: 5px solid var(--accent-magenta); 
             padding: 15px 25px;
             margin: 2rem 0;
             font-style: italic;
             color: var(--text-color-medium);
-            background-color: rgba(var(--accent-blue-rgb), 0.08);
+            background-color: rgba(var(--accent-magenta-rgb), 0.08);
             border-radius: 0 10px 10px 0;
             font-size: 1.05rem;
         }
@@ -316,17 +317,28 @@
             text-align: left;
         }
         .example-box {
-            background-color: rgba(var(--accent-yellow-rgb), 0.05);
-            border: 1px dashed var(--accent-yellow);
+            background-color: rgba(var(--accent-blue-rgb), 0.05); 
+            border: 1px dashed var(--accent-blue);
             padding: 20px;
             margin: 1.5rem 0;
             border-radius: 8px;
         }
         .example-box h5 {
-            color: var(--accent-yellow);
+            color: var(--accent-blue);
             margin-top: 0;
             font-family: 'Raleway', sans-serif; 
             font-weight: 700;
+        }
+        .keyword-link { 
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px dashed var(--accent-yellow);
+            transition: all 0.3s ease;
+        }
+        .keyword-link:hover {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
         }
         
         .breadcrumb {
@@ -346,13 +358,12 @@
             color: var(--text-color-medium);
         }
 
-        /* UPDATED: Navigation Buttons Container */
         .navigation-buttons-container {
             display: flex;
-            justify-content: space-between; /* Distributes space between buttons */
+            justify-content: space-between; 
             align-items: center;
-            flex-wrap: wrap; /* Allows buttons to stack on smaller screens */
-            gap: 1.5rem; /* Space between buttons if they wrap */
+            flex-wrap: wrap; 
+            gap: 1.5rem; 
             margin-top: 3rem; 
             margin-bottom: 1.5rem; 
             padding: 1rem 0;
@@ -362,7 +373,7 @@
         .nav-btn {
             display: inline-flex; 
             align-items: center;
-            justify-content: center; /* Center text and icon */
+            justify-content: center; 
             gap: 10px;
             padding: 12px 25px;
             border-radius: 25px;
@@ -370,26 +381,26 @@
             font-weight: bold;
             font-family: 'Comfortaa', sans-serif;
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            flex-grow: 1; /* Allows buttons to share space */
-            min-width: 220px; /* Minimum width for each button */
+            flex-grow: 1; 
+            min-width: 220px; 
             text-align: center;
         }
         .nav-btn i {
             font-size: 1em; 
         }
 
-        .back-btn {
-            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue)); 
+        .back-btn { /* For "Volver a DBT" */
+            background: linear-gradient(45deg, var(--primary-violet), var(--accent-blue)); 
             color: white; 
-            box-shadow: 0 3px 10px rgba(var(--accent-magenta-rgb), 0.4);
+            box-shadow: 0 3px 10px rgba(var(--primary-violet-rgb), 0.4);
         }
         .back-btn:hover {
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta)); 
+            background: linear-gradient(45deg, var(--accent-blue), var(--primary-violet)); 
             transform: translateY(-3px) scale(1.03);
             box-shadow: 0 5px 15px rgba(var(--accent-blue-rgb), 0.5); 
         }
 
-        .continue-btn {
+        .continue-btn { /* For "Continuar con Regulación Emocional" */
             background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
             color: var(--dark-bg); 
             box-shadow: 0 3px 10px rgba(var(--accent-green-rgb), 0.4);
@@ -515,8 +526,8 @@
             .page-header h2 { font-size: 2.2rem; } 
             .component-content-section h3 {font-size: 1.7rem;} 
             .component-content-section h4 {font-size: 1.3rem;} 
-            .navigation-buttons-container { flex-direction: column; } /* Stack buttons on smaller screens */
-            .nav-btn { width: 100%; max-width: 300px; } /* Full width buttons when stacked */
+            .navigation-buttons-container { flex-direction: column; } 
+            .nav-btn { width: 100%; max-width: 300px; } 
 
         }
         
@@ -563,265 +574,233 @@
             <div class="breadcrumb">
                 <a href="index.html">Inicio</a> &gt; 
                 <a href="cursos.html">Cursos</a> &gt; 
-                <a href="cbt.html">TCC</a> &gt; 
-                <span>Activación Conductual</span>
+                <a href="dbt.html">DBT</a> &gt; 
+                <span>Mindfulness</span>
             </div>
 
             <div class="page-header">
-                <h2><i class="fas fa-running"></i> Activación Conductual en TCC</h2>
+                <h2><i class="fas fa-spa"></i> Mindfulness (Atención Plena) en DBT</h2>
                 <p class="subtitle">
-                    Rompiendo la inercia: cómo la acción puede transformar tu estado de ánimo y bienestar. Una guía exhaustiva.
+                    La habilidad fundamental para observar el presente, reducir la reactividad y cultivar la sabiduría interior. Una exploración profunda.
                 </p>
             </div>
 
             <section class="component-content-section">
-                <h3><i class="fas fa-rocket"></i> Poniendo la Vida en Movimiento: La Esencia de la AC</h3>
+                <h3><i class="fas fa-seedling"></i> ¿Qué es Mindfulness en DBT? El Corazón de la Terapia</h3>
                 <p>
-                    La <strong>Activación Conductual (AC)</strong> es una técnica terapéutica de gran poder y eficacia, originada y frecuentemente utilizada como un pilar fundamental dentro de la <strong>Terapia Cognitivo Conductual (TCC)</strong>. Aunque es especialmente reconocida por su efectividad en el tratamiento de la <em>depresión</em>, sus principios y estrategias son versátiles y se aplican con éxito a una amplia gama de dificultades psicológicas, incluyendo trastornos de ansiedad, problemas de regulación emocional y el manejo del estrés general.
+                    En el contexto de la Terapia Dialéctico Conductual (DBT), <strong>Mindfulness</strong> (o Atención Plena) trasciende la noción popular de ser simplemente una técnica de meditación, aunque ciertamente puede incluir prácticas meditativas. Se erige como un <em>conjunto de habilidades centrales y fundamentales</em>, enseñándonos el arte de prestar atención de manera <strong>intencional, en el momento presente, y sin juzgar</strong>. Este último componente, "sin juzgar", es particularmente crucial y a menudo el más desafiante. Mindfulness en DBT es, en esencia, aprender a tomar las riendas de nuestra mente en lugar de permitir que nuestros pensamientos y emociones errantes nos controlen. Actúa como el cimiento sobre el cual se construyen y se potencian todas las demás habilidades de DBT: Regulación Emocional, Tolerancia al Malestar y Efectividad Interpersonal.
                 </p>
                 <p>
-                    El núcleo de la AC reside en una premisa simple pero profunda: <em>nuestros comportamientos y nuestro estado de ánimo están intrínsecamente e bidireccionalmente ligados</em>. Lo que hacemos —o, crucialmente, lo que dejamos de hacer— ejerce una influencia directa y significativa sobre cómo nos sentimos. Cuando una persona experimenta estados de ánimo negativos como la tristeza, la apatía o la ansiedad, es común una tendencia natural al retraimiento. Esto implica abandonar actividades que anteriormente resultaban placenteras, proporcionaban un sentido de logro o facilitaban la conexión social. Esta evitación y la consecuente pasividad no son inocuas; pueden desencadenar y perpetuar un <strong>círculo vicioso</strong>: la falta de experiencias positivas y gratificantes refuerza los sentimientos negativos, lo que a su vez conduce a una mayor inactividad y aislamiento.
+                    El objetivo primordial de cultivar las habilidades de Mindfulness en DBT es multifacético: busca ayudarnos a <strong>participar plenamente en la vida</strong>, a experimentar la realidad tal como se presenta (en lugar de cómo tememos que sea o cómo desearíamos que fuera), a <strong>reducir el sufrimiento innecesario</strong> que a menudo surge de nuestros juicios, de rumiar sobre el pasado o de la ansiedad anticipatoria sobre el futuro, y a <strong>incrementar nuestra capacidad para tomar decisiones sabias y efectivas</strong>, alineadas con nuestros valores y metas a largo plazo. Es aprender a estar presentes en nuestra propia vida.
                 </p>
-                <p>
-                    La Activación Conductual interviene directamente para romper este ciclo debilitante. Su objetivo principal es incrementar de manera gradual y sistemática la participación de la persona en actividades que son <strong>reforzantes, placenteras, o que están alineadas con sus valores personales y metas vitales</strong>, incluso si en el momento inicial no existe el deseo o la motivación para llevarlas a cabo.
-                </p>
-                <div class="example-box" style="text-align:center; padding: 20px; border: 1px dashed var(--secondary-cyan);">
-                    <p><em>Imagina aquí un diagrama ilustrando el ciclo: Estado de ánimo bajo -> Reducción de actividad -> Menos experiencias positivas -> Estado de ánimo aún más bajo -> Mayor reducción de actividad. La AC interrumpe este ciclo introduciendo actividad.</em></p>
-                </div>
-
-                <h4><i class="fas fa-drafting-compass"></i> Principios Fundamentales de la Activación Conductual: Los Pilares del Cambio</h4>
-                <p>La AC se sustenta en varios principios clave que guían su aplicación:</p>
-                <ul>
-                    <li>
-                        <strong>La Acción Precede a la Motivación (y al Cambio de Ánimo):</strong> Este es quizás el principio más contraintuitivo y central de la AC. Desafía la creencia popular de que necesitamos <em>sentirnos</em> motivados o de mejor humor para actuar. La AC postula lo contrario: a menudo es la <em>acción</em> la que genera la motivación y provoca una mejora en el estado de ánimo. No se espera a "tener ganas"; se actúa primero, como un experimento conductual, para observar los efectos.
-                        <div class="example-box">
-                            <h5>Ejemplo Práctico:</h5>
-                            <p>Una persona deprimida puede no sentir ganas de salir a caminar. En lugar de esperar la motivación, la AC propondría programar una caminata corta (ej. 10 minutos) y luego evaluar cómo se sintió durante y después, independientemente de las ganas previas.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Identificación de Actividades Valiosas y Reforzantes (TRAP vs. TRAC):</strong> Se trabaja colaborativamente con la persona para identificar qué actividades son verdaderamente importantes y significativas para ella (alineadas con sus <em>valores</em>) y cuáles tienen el potencial de ser placenteras (<em>reforzantes</em>). Se distingue entre actividades que son "TRAP" (Trampa: que parecen aliviar a corto plazo pero empeoran el ánimo a largo plazo, como quedarse en cama todo el día) y actividades "TRAC" (Trayectoria: que mueven hacia una vida más valiosa).
-                    </li>
-                    <li>
-                        <strong>Programación Estructurada y Monitoreo Detallado de Actividades:</strong> No basta con "intentar hacer más cosas". La AC implica planificar actividades específicas en un horario concreto (como si fueran citas importantes) y luego monitorear su realización. Este monitoreo incluye registrar no solo si se hizo la actividad, sino también el nivel de placer y/o logro experimentado (usualmente en una escala de 0 a 10) y el estado de ánimo antes y después. Esto proporciona datos objetivos sobre el impacto de la actividad.
-                    </li>
-                    <li>
-                        <strong>Enfoque Gradual y Jerarquizado (Paso a Paso):</strong> Para evitar la sobrecarga y el fracaso, se comienza con actividades que son relativamente fáciles y manejables. Se crea una <em>jerarquía de actividades</em>, desde las más sencillas hasta las más complejas o desafiantes. A medida que la persona gana confianza y experimenta los beneficios de las actividades más simples, se avanza gradualmente hacia las más difíciles.
-                    </li>
-                    <li>
-                        <strong>Reducción Activa de la Evitación Conductual:</strong> La evitación es un motor clave de la depresión y la ansiedad. La AC ayuda a identificar los patrones de evitación (qué situaciones, personas o actividades se están eludiendo) y a desarrollar estrategias para enfrentarlos gradualmente, utilizando las actividades programadas como medio.
-                    </li>
-                    <li>
-                        <strong>Énfasis en el Contexto y la Función del Comportamiento:</strong> La AC es idiográfica, es decir, se adapta a cada individuo. Se analiza cómo el entorno (físico, social) y las circunstancias vitales de una persona pueden estar influyendo en su comportamiento y estado de ánimo, y cómo ciertos comportamientos (o la ausencia de ellos) están "funcionando" para mantener el problema.
-                    </li>
-                    <li>
-                        <strong>Orientación Externa sobre Interna:</strong> En lugar de enfocarse excesivamente en cambiar pensamientos o sentimientos internos directamente (como en otras formas de TCC), la AC prioriza el cambio conductual observable. La premisa es que al cambiar lo que <em>hacemos</em>, nuestros pensamientos y sentimientos también comenzarán a cambiar como consecuencia natural.
-                    </li>
-                </ul>
-
-                <h4><i class="fas fa-cogs"></i> ¿Cómo Funciona la Activación Conductual en la Práctica? El Proceso Detallado</h4>
-                <p>
-                    El proceso terapéutico de la Activación Conductual es estructurado y colaborativo, implicando típicamente los siguientes pasos:
-                </p>
-                <ol>
-                    <li>
-                        <strong>Fase de Psicoeducación y Establecimiento del Modelo:</strong>
-                        <ul>
-                            <li>Se explica detalladamente el modelo de la AC: la relación entre el estado de ánimo, la actividad, la evitación y el refuerzo positivo. Se ayuda al paciente a entender cómo su inactividad o evitación actual puede estar contribuyendo a su malestar.</li>
-                            <li>Se presenta la lógica del tratamiento: "actuar de afuera hacia adentro" en lugar de esperar a sentirse mejor para actuar.</li>
-                            <li>Se fomenta la esperanza y se establece una alianza terapéutica sólida.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Monitoreo de Actividades Basales y Estado de Ánimo:</strong>
-                        <ul>
-                            <li>Se le pide al paciente que lleve un registro detallado de sus actividades diarias durante una semana (o un período determinado). Para cada bloque de tiempo, debe anotar qué hizo y cómo se sintió (ej. nivel de placer y logro, en una escala de 0-10).</li>
-                            <li>Este autorregistro ayuda a identificar patrones actuales de actividad e inactividad, la relación entre ciertas actividades y el estado de ánimo, y las actividades que se están evitando.</li>
-                            <li><strong>Ejemplo de Fila en un Registro de Actividades:</strong>
-                                <div class="example-box">
-                                    <p><strong>Hora:</strong> 10:00-11:00 | <strong>Actividad:</strong> Ver TV en la cama | <strong>Placer (0-10):</strong> 3 | <strong>Logro (0-10):</strong> 1 | <strong>Ánimo (0-10):</strong> 2</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Identificación de Valores Personales y Áreas Vitales:</strong>
-                        <ul>
-                            <li>Se explora qué es verdaderamente importante para la persona en diferentes áreas de su vida (ej. relaciones, trabajo/estudios, ocio, salud, crecimiento personal, espiritualidad). Los valores actúan como una brújula para seleccionar actividades significativas.</li>
-                            <li>Herramientas como el "Inventario de Valores" pueden ser útiles aquí.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Generación de una Lista Amplia de Actividades Potenciales (Menú de Actividades):</strong>
-                        <ul>
-                            <li>Basándose en los valores identificados, el monitoreo basal y las preferencias pasadas, se crea una lista exhaustiva de actividades que podrían ser placenteras, dar un sentido de logro, o estar alineadas con los valores.</li>
-                            <li>Se incluyen actividades de diferentes tipos: sociales, físicas, de ocio, de cuidado personal, productivas, creativas, etc.</li>
-                            <li>Se clasifican según la dificultad percibida y el potencial de refuerzo (placer/logro).</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Creación de Jerarquías de Activación y Programación Gradual:</strong>
-                        <ul>
-                            <li>Se seleccionan algunas actividades de la lista, comenzando por las más fáciles o las que tienen mayor probabilidad de éxito.</li>
-                            <li>Estas actividades se programan específicamente en la agenda semanal del paciente, detallando qué, cuándo, dónde y por cuánto tiempo.</li>
-                            <li>El objetivo es empezar pequeño y construir sobre los éxitos. Por ejemplo, si el valor es "conexión social" y la persona está muy aislada, una primera actividad podría ser "enviar un mensaje a un amigo" en lugar de "ir a una fiesta".</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Implementación y Monitoreo Continuo:</strong>
-                        <ul>
-                            <li>El paciente lleva a cabo las actividades programadas y continúa monitoreando su estado de ánimo, placer y logro.</li>
-                            <li>Se presta atención a los resultados, incluso si son modestos al principio.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Resolución de Problemas y Superación de Barreras:</strong>
-                        <ul>
-                            <li>Es común encontrar obstáculos (ej. falta de energía, pensamientos negativos, dificultades logísticas). El terapeuta y el paciente trabajan juntos para identificar estas barreras y desarrollar estrategias para superarlas.</li>
-                            <li>Se pueden usar técnicas de resolución de problemas, reestructuración cognitiva simple (para pensamientos que interfieren con la acción), o modificación de la actividad para hacerla más manejable.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Revisión del Progreso y Ajuste del Plan:</strong>
-                        <ul>
-                            <li>En cada sesión, se revisa el progreso, se celebran los éxitos (por pequeños que sean) y se ajusta el plan de activación según sea necesario, aumentando gradualmente la dificultad o variedad de las actividades.</li>
-                            <li>Se refuerza la conexión entre la actividad y la mejora del estado de ánimo.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Prevención de Recaídas y Mantenimiento de los Logros:</strong>
-                        <ul>
-                            <li>Una vez que se ha logrado una mejora significativa, se trabaja en estrategias para mantener los niveles de actividad y prevenir recaídas, reconociendo las señales tempranas de un posible declive y teniendo un plan de acción.</li>
-                        </ul>
-                    </li>
-                </ol>
-                <blockquote>
-                    <p>"La Activación Conductual no es simplemente 'hacer cosas'; es un proceso estratégico y personalizado de reconectar con la vida de una manera que sea significativa y gratificante para el individuo."</p>
+                 <blockquote>
+                    <p>"Mindfulness es la conciencia que emerge a través de prestar atención a propósito, en el momento presente, y sin juzgar, al despliegue de la experiencia momento a momento." - Jon Kabat-Zinn (Una definición influyente en el campo)</p>
                 </blockquote>
             </section>
 
             <section class="component-content-section">
-                <h3><i class="fas fa-puzzle-piece"></i> Aplicaciones Específicas de la Activación Conductual</h3>
-                <p>Si bien la AC es un tratamiento de primera línea para la depresión, su utilidad se extiende a otros problemas:</p>
-                <ul>
-                    <li><strong>Trastornos de Ansiedad:</strong> Ayuda a las personas a enfrentar gradualmente situaciones temidas (exposición conductual) y a participar en actividades que han estado evitando debido a la ansiedad, reduciendo así la evitación que mantiene el ciclo ansioso.</li>
-                    <li><strong>Trastorno Límite de la Personalidad (TLP):</strong> Puede ser útil para abordar la apatía, el vacío crónico y la impulsividad, ayudando a estructurar el día con actividades valiosas y a reducir comportamientos problemáticos que surgen de la inactividad o el malestar.</li>
-                    <li><strong>Manejo del Estrés General:</strong> Fomentar actividades placenteras y de autocuidado puede ser una estrategia efectiva para reducir el estrés y mejorar el bienestar general.</li>
-                    <li><strong>Procrastinación Crónica:</strong> Los principios de iniciar la acción, dividir tareas grandes en pasos pequeños y programar actividades son directamente aplicables.</li>
-                </ul>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-users"></i> Ejemplos Prácticos y Escenarios de Aplicación</h3>
+                <h3><i class="fas fa-binoculars"></i> Habilidades "Qué" (What Skills): El Foco de la Atención</h3>
+                <p>Estas habilidades nos enseñan <em>a qué</em> dirigir nuestra atención cuando practicamos mindfulness. Son las acciones fundamentales de la atención plena:</p>
                 
-                <div class="example-box">
-                    <h5>Escenario 1: Ana, con Depresión y Aislamiento Social</h5>
-                    <p><strong>Situación:</strong> Ana ha estado sintiéndose profundamente triste y sin energía durante meses. Ha dejado de ver a sus amigos y pasa la mayor parte del día en casa viendo televisión. Su valor principal identificado es la "amistad" y "conexión".</p>
-                    <p><strong>Plan de Activación Conductual (Primeros Pasos):</strong></p>
-                    <ol>
-                        <li><strong>Monitoreo:</strong> Ana registra sus actividades y ánimo durante 3 días. Se da cuenta de que su ánimo es más bajo cuando pasa mucho tiempo sola viendo TV.</li>
-                        <li><strong>Lista de Actividades (basada en valor "amistad"):</strong>
-                            <ul>
-                                <li>Enviar un mensaje de texto a una amiga (Fácil).</li>
-                                <li>Llamar a un familiar (Moderado).</li>
-                                <li>Proponer tomar un café con una amiga (Difícil).</li>
-                            </ul>
-                        </li>
-                        <li><strong>Programación:</strong>
-                            <ul>
-                                <li>Lunes 15:00: Enviar mensaje a Laura preguntando cómo está.</li>
-                                <li>Miércoles 11:00: Llamar a su hermana.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Resultado Esperado (Hipótesis):</strong> Aunque no tenga ganas, conectar brevemente podría mejorar su ánimo o darle una pequeña sensación de logro.</li>
-                    </ol>
-                </div>
-
-                <div class="example-box">
-                    <h5>Escenario 2: Carlos, con Ansiedad Social que Evita Eventos</h5>
-                    <p><strong>Situación:</strong> Carlos siente una intensa ansiedad en situaciones sociales y ha empezado a rechazar todas las invitaciones a eventos, a pesar de que valora tener un círculo social.</p>
-                    <p><strong>Plan de Activación Conductual (Enfoque de Exposición Gradual):</strong></p>
-                    <ol>
-                        <li><strong>Valor:</strong> "Pertenencia social" y "disfrutar de compañía".</li>
-                        <li><strong>Jerarquía de Actividades (de menos a más ansiógenas):</strong>
-                            <ol type="a">
-                                <li>Ir a una tienda concurrida por 10 minutos.</li>
-                                <li>Aceptar una invitación a un café con un solo amigo cercano.</li>
-                                <li>Asistir a una reunión pequeña de trabajo (opcional).</li>
-                                <li>Ir a una fiesta de cumpleaños de un conocido por 1 hora.</li>
-                            </ol>
-                        </li>
-                        <li><strong>Programación:</strong> Carlos programa la actividad (a) para la próxima semana, con un plan de qué hará si la ansiedad aumenta (ej. técnicas de respiración, recordarse su valor).</li>
-                        <li><strong>Monitoreo:</strong> Registra su nivel de ansiedad antes, durante y después, y si logró el objetivo.</li>
-                    </ol>
-                </div>
-            </section>
-
-             <section class="component-content-section">
-                <h3><i class="fas fa-exclamation-triangle"></i> Desafíos Comunes en la AC y Estrategias para Superarlos</h3>
-                <ul>
-                    <li><strong>Falta de Motivación Inicial:</strong> <em>Estrategia:</em> Recordar el principio "acción antes que motivación". Empezar con actividades muy pequeñas (regla de los 5 minutos). Enfocarse en el comportamiento, no en el sentimiento.</li>
-                    <li><strong>Sentirse Abrumado por la Lista de Actividades:</strong> <em>Estrategia:</em> Dividir las actividades en pasos aún más pequeños. Elegir solo 1-2 actividades para empezar. Usar la jerarquía.</li>
-                    <li><strong>Pensamientos Negativos ("No va a funcionar", "No soy capaz"):</strong> <em>Estrategia:</em> Reconocer los pensamientos sin debatirlos intensamente. Tratar la actividad como un "experimento" para ver qué pasa. Focalizarse en la acción.</li>
-                    <li><strong>Contratiempos y Días Malos:</strong> <em>Estrategia:</em> Normalizar que habrá días difíciles. No ver un contratiempo como un fracaso total. Retomar el plan lo antes posible, quizás con actividades más fáciles. Ser autocompasivo.</li>
-                    <li><strong>Dificultad para Experimentar Placer o Logro:</strong> <em>Estrategia:</em> Ajustar las expectativas. Al principio, el placer/logro puede ser sutil. Ampliar la definición de "logro" (ej. el simple hecho de haber intentado es un logro). Explorar diferentes tipos de actividades.</li>
-                </ul>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-tools"></i> Herramientas Útiles en la Activación Conductual (Conceptos)</h3>
-                <p>Aunque el terapeuta guía el proceso, ciertas herramientas estructuradas son comunes:</p>
-                <ul>
-                    <li><strong>Hoja de Monitoreo Diario de Actividades y Ánimo:</strong> Una tabla para registrar hora por hora las actividades realizadas, y calificar el placer y logro (0-10) y el estado de ánimo asociado.</li>
-                    <li><strong>Inventario de Valores Personales:</strong> Un cuestionario o ejercicio para ayudar a la persona a clarificar qué es lo más importante en su vida en diferentes dominios.</li>
-                    <li><strong>Jerarquía de Actividades de Activación:</strong> Una lista de actividades ordenadas de menor a mayor dificultad o evitación, que sirve como hoja de ruta.</li>
-                    <li><strong>Planificador Semanal de Actividades:</strong> Una agenda donde se programan concretamente las actividades a realizar durante la semana.</li>
-                </ul>
-                <p><em>Nota: Estos son conceptos de herramientas. Existen múltiples plantillas disponibles online o que un terapeuta puede proporcionar.</em></p>
-            </section>
-            
-            <section class="component-content-section">
-                <h3><i class="fas fa-link"></i> Integración de la AC con Otras Técnicas TCC</h3>
-                <p>La Activación Conductual raramente se usa en total aislamiento, especialmente dentro de un marco TCC más amplio:</p>
-                <ul>
-                    <li><strong>Reestructuración Cognitiva:</strong> Aunque la AC prioriza la acción, abordar pensamientos negativos persistentes que sabotean la activación puede ser necesario. Una vez que la persona está más activa, puede tener más energía y perspectiva para trabajar en sus patrones de pensamiento.</li>
-                    <li><strong>Entrenamiento en Habilidades de Afrontamiento:</strong> Habilidades para manejar la ansiedad (ej. respiración diafragmática, relajación muscular progresiva) pueden facilitar la realización de actividades evitadas.</li>
-                    <li><strong>Técnicas de Resolución de Problemas:</strong> Útiles para abordar obstáculos prácticos que impiden la activación.</li>
-                </ul>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-chart-line"></i> Beneficios a Largo Plazo y Mantenimiento de los Logros</h3>
-                <p>Los beneficios de la AC pueden ser duraderos si se mantienen los principios:</p>
-                <ul>
-                    <li><strong>Aumento Sostenido del Estado de Ánimo Positivo:</strong> Al mantener un nivel adecuado de actividad reforzante.</li>
-                    <li><strong>Mayor Resiliencia:</strong> Haber enfrentado y superado la inercia y la evitación fortalece la capacidad de afrontar futuros desafíos.</li>
-                    <li><strong>Mejora de la Autoestima y Autoeficacia:</strong> Ver que uno puede influir en su propio estado de ánimo a través de la acción.</li>
-                    <li><strong>Una Vida más Rica y Significativa:</strong> Al vivir de acuerdo con los propios valores.</li>
-                </ul>
-                <p><strong>Para el mantenimiento, es crucial:</strong> Continuar monitoreando (quizás menos intensivamente) el ánimo y la actividad, ser consciente de las señales tempranas de recaída (ej. aumento de la evitación), y tener un plan para reactivarse si es necesario.</p>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-user-md"></i> Consideraciones Importantes y Cuándo Buscar Ayuda Profesional</h3>
+                <h4>1. Observar: Ser un Testigo Silencioso de la Experiencia</h4>
                 <p>
-                    Aunque los principios de la Activación Conductual pueden ser autoaplicados hasta cierto punto, es <strong>fundamental reconocer cuándo se necesita el apoyo de un profesional de la salud mental</strong>. Un terapeuta cualificado puede:
+                    Observar implica simplemente <strong>notar la experiencia</strong> a medida que surge y pasa, sin aferrarse a ella ni rechazarla. Es un acto de atención pasiva pero alerta. Podemos observar:
                 </p>
                 <ul>
-                    <li>Realizar una evaluación completa para un diagnóstico preciso.</li>
-                    <li>Adaptar el plan de AC a las necesidades individuales específicas.</li>
-                    <li>Ayudar a identificar y superar barreras complejas.</li>
-                    <li>Integrar la AC con otras intervenciones terapéuticas necesarias.</li>
-                    <li>Proporcionar apoyo y motivación experta durante todo el proceso.</li>
+                    <li><strong>Sensaciones Corporales:</strong> Desde el contacto de los pies con el suelo, la sensación de la ropa sobre la piel, la tensión en los hombros, hasta las mariposas en el estómago o el latido del corazón.</li>
+                    <li><strong>Pensamientos:</strong> Notar los pensamientos como eventos mentales que vienen y van, como nubes en el cielo, sin engancharse en su contenido ni creerlos automáticamente.</li>
+                    <li><strong>Emociones:</strong> Reconocer la presencia de una emoción (tristeza, alegría, miedo) y observar cómo se siente en el cuerpo, sin ser arrastrado por ella.</li>
+                    <li><strong>Impulsos de Acción:</strong> Notar el impulso de hacer algo (ej. gritar, comer, evitar) sin necesariamente actuar sobre ese impulso.</li>
+                    <li><strong>El Entorno Externo:</strong> Prestar atención a lo que vemos (colores, formas, luz), oímos (sonidos cercanos y lejanos), olemos, saboreamos y tocamos en nuestro entorno inmediato.</li>
+                </ul>
+                <p>La clave es ser como un <strong>científico curioso</strong> de nuestra propia experiencia, observando con interés pero sin interferir ni analizar en exceso.</p>
+                <div class="example-box">
+                    <h5>Ejemplo de Observar:</h5>
+                    <p>Sentado en silencio, notas un pensamiento de "no soy lo suficientemente bueno". En lugar de luchar contra él o creerlo, simplemente lo observas como un pensamiento, notando su aparición y, eventualmente, su desaparición, como cualquier otro evento mental.</p>
+                </div>
+
+                <h4>2. Describir: Poniendo Palabras a la Experiencia</h4>
+                <p>
+                    Describir implica <strong>etiquetar verbalmente</strong> (interna o externamente) lo que hemos observado. Es un paso más activo que la simple observación. Poner palabras a nuestras experiencias nos ayuda a:
+                </p>
+                <ul>
+                    <li><strong>Diferenciar entre la experiencia y nuestra interpretación de ella.</strong></li>
+                    <li><strong>Crear una "distancia psicológica"</strong> que nos permite no fusionarnos con nuestros pensamientos o emociones.</li>
+                    <li><strong>Comunicar nuestra experiencia interna</strong> a otros (y a nosotros mismos) con mayor claridad.</li>
+                </ul>
+                <p>Cuando describimos, nos ceñimos a los hechos de nuestra observación. Por ejemplo:</p>
+                <ul>
+                    <li>"Estoy notando un pensamiento de que voy a fallar." (En lugar de "Voy a fallar.")</li>
+                    <li>"Siento una sensación de opresión en el pecho." (En lugar de "Estoy teniendo un ataque al corazón.")</li>
+                    <li>"Estoy sintiendo la emoción de la tristeza." (En lugar de "Soy una persona triste.")</li>
+                </ul>
+                <p>Es crucial que la descripción sea <strong>no valorativa</strong> y se base en lo observado.</p>
+
+                <h4>3. Participar: Inmersión Total en el Momento Presente</h4>
+                <p>
+                    Participar es la habilidad de <strong>sumergirse completamente</strong> en la actividad del momento presente, sin separación entre uno mismo y la experiencia. Es entrar en el "fluir" de la vida, actuando de manera espontánea e intuitiva desde la Mente Sabia. Esto puede ocurrir durante actividades formales de mindfulness (como una meditación caminando) o en cualquier actividad cotidiana:
+                </p>
+                <ul>
+                    <li>Al lavar los platos: sentir el agua, el jabón, el movimiento de las manos.</li>
+                    <li>Al conversar con alguien: escuchar plenamente, estar presente con la otra persona.</li>
+                    <li>Al practicar un hobby: estar completamente absorto en la tarea.</li>
+                </ul>
+                <p>Participar implica dejar de lado la autoconciencia excesiva, los juicios y las distracciones para estar plenamente en el aquí y ahora.</p>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-sliders-h"></i> Habilidades "Cómo" (How Skills): La Manera de Prestar Atención</h3>
+                <p>Estas habilidades nos enseñan <em>cómo</em> aplicar las habilidades "Qué" (Observar, Describir, Participar) de una manera que sea verdaderamente mindful y efectiva:</p>
+
+                <h4>1. Sin Juzgar (Non-judgmentally): Aceptando la Realidad Tal Como Es</h4>
+                <p>
+                    Esta es una de las habilidades más desafiantes y transformadoras. Implica <strong>ver y aceptar la realidad</strong> (pensamientos, sentimientos, eventos, personas) tal como es, sin evaluarla constantemente como "buena" o "mala", "correcta" o "incorrecta", "justa" o "injusta".
+                </p>
+                <ul>
+                    <li><strong>Reconocer los hechos:</strong> Separar los hechos observables de nuestras opiniones, creencias y juicios sobre esos hechos.</li>
+                    <li><strong>Dejar ir los "debería":</strong> Soltar las expectativas rígidas sobre cómo deberían ser las cosas o cómo deberíamos sentirnos.</li>
+                    <li><strong>Aceptar las consecuencias:</strong> Reconocer las consecuencias de los eventos sin añadir una capa de juicio sobre ellas (ej. "Perdí el autobús, lo que significa que llegaré tarde" vs. "Perdí el autobús, ¡qué desastre! Soy un fracasado y todo me sale mal.").</li>
+                </ul>
+                <p>No juzgar no significa aprobar o resignarse pasivamente a situaciones dañinas. Significa ver claramente la realidad para poder responder a ella de manera más efectiva, en lugar de reaccionar a nuestros juicios sobre ella. La aceptación sin juicio reduce el sufrimiento añadido.</p>
+                <div class="example-box">
+                    <h5>Ejemplo de No Juzgar:</h5>
+                    <p>Sientes ansiedad antes de una presentación. En lugar de juzgarte ("Soy un cobarde por sentir esto"), simplemente observas y describes: "Estoy sintiendo ansiedad; noto mi corazón latiendo más rápido y tensión en mis hombros."</p>
+                </div>
+
+                <h4>2. Unidireccionalmente (One-Mindfully): Una Cosa a la Vez</h4>
+                <p>
+                    Esta habilidad implica <strong>enfocar toda nuestra atención en una sola cosa en el momento presente</strong>. En un mundo lleno de distracciones y la glorificación de la multitarea, practicar la atención unifocal puede ser un poderoso antídoto.
+                </p>
+                <ul>
+                    <li><strong>Elegir un foco:</strong> Puede ser la respiración, una sensación corporal, un sonido, una tarea que estamos realizando.</li>
+                    <li><strong>Mantener la atención:</strong> Intentar mantener la atención en ese único foco.</li>
+                    <li><strong>Manejar las distracciones:</strong> Cuando la mente inevitablemente divague (lo cual es completamente normal), notar suavemente hacia dónde se fue y, con amabilidad, redirigir la atención de nuevo al foco elegido. Repetir este proceso cuantas veces sea necesario.</li>
+                </ul>
+                <p>Cuando estamos comiendo, solo comemos (sin ver TV o revisar el teléfono). Cuando estamos escuchando a alguien, solo escuchamos. Esto aumenta la profundidad de nuestra experiencia y nuestra efectividad.</p>
+
+                <h4>3. Efectivamente (Effectively): Haciendo lo que Funciona</h4>
+                <p>
+                    Ser efectivo significa <strong>hacer lo que es necesario en una situación particular para alcanzar nuestros objetivos y vivir de acuerdo con nuestros valores</strong>, en lugar de actuar impulsados por emociones intensas, el orgullo, la terquedad, o la idea de lo que "debería ser" o lo que es "justo" en un sentido rígido.
+                </p>
+                <ul>
+                    <li><strong>Clarificar el objetivo:</strong> ¿Qué quiero lograr en esta situación?</li>
+                    <li><strong>Considerar las opciones:</strong> ¿Qué acciones me acercarán a mi objetivo?</li>
+                    <li><strong>Actuar con habilidad:</strong> Aplicar las habilidades de DBT (u otras habilidades relevantes) que sean más apropiadas para la situación.</li>
+                    <li><strong>Soltar la necesidad de "tener razón":</strong> A veces, para ser efectivos, necesitamos dejar de lado la necesidad de demostrar que tenemos razón o que la otra persona está equivocada.</li>
+                    <li><strong>Jugar según las reglas:</strong> Si la situación lo requiere (ej. interactuar con una figura de autoridad), actuar de la manera que aumente las probabilidades de un resultado favorable, incluso si no nos parece "justo".</li>
+                </ul>
+                <p>La efectividad es pragmática y flexible, enfocada en los resultados deseados a largo plazo.</p>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-brain"></i> La Mente Sabia (Wise Mind): Integrando Razón y Emoción</h3>
+                <p>
+                    Un concepto absolutamente central y distintivo del Mindfulness en DBT es el de la <strong>Mente Sabia</strong>. Marsha Linehan describe la Mente Sabia como la síntesis dialéctica de dos estados mentales que a menudo experimentamos por separado: la <strong>Mente Emocional</strong> y la <strong>Mente Racional</strong>.
+                </p>
+                <ul>
+                    <li><strong>Mente Emocional:</strong> En este estado, nuestros pensamientos y comportamientos están predominantemente controlados por nuestras emociones actuales. La lógica y la razón tienen poco peso. Las decisiones pueden ser impulsivas y basadas en la intensidad del sentimiento del momento (ej. gritarle a alguien cuando estamos enfadados, evitar algo que nos da miedo aunque sea importante).</li>
+                    <li><strong>Mente Racional (o Lógica):</strong> En este estado, nos acercamos a las situaciones de manera fría, analítica y lógica. Los hechos, las reglas y las consecuencias pragmáticas son lo principal. Las emociones son ignoradas o minimizadas (ej. tomar una decisión puramente basada en datos sin considerar el impacto emocional en uno mismo o en otros).</li>
                 </ul>
                 <p>
-                    La AC es una herramienta poderosa, pero como cualquier intervención, su efectividad puede maximizarse con la guía adecuada, especialmente si el malestar es severo, persistente o coexiste con otras dificultades.
+                    Ambos estados mentales tienen su lugar y pueden ser útiles en ciertos contextos, pero vivir predominantemente en uno de los extremos puede llevar a problemas. La <strong>Mente Sabia</strong> es ese lugar interno donde la lógica de la Mente Racional se integra con la información y la energía de la Mente Emocional. Es una sabiduría profunda, a menudo intuitiva, que va más allá de la simple suma de razón y emoción.
                 </p>
+                <h4>Características de la Mente Sabia:</h4>
+                <ul>
+                    <li><strong>Intuición:</strong> A menudo se experimenta como un "saber interno", una corazonada o una sensación de lo que es correcto o verdadero para nosotros en una situación.</li>
+                    <li><strong>Equilibrio:</strong> Encuentra el punto medio, la síntesis, entre los extremos.</li>
+                    <li><strong>Perspectiva Amplia:</strong> Ve la "imagen completa", considerando tanto los hechos como los sentimientos, tanto el corto como el largo plazo.</li>
+                    <li><strong>Paz Interior:</strong> Actuar desde la Mente Sabia suele ir acompañado de una sensación de calma, certeza y paz, incluso si la decisión es difícil.</li>
+                    <li><strong>Conexión con Valores:</strong> Las decisiones de la Mente Sabia suelen estar alineadas con nuestros valores más profundos.</li>
+                </ul>
+                <h4>Accediendo a la Mente Sabia:</h4>
+                <p>No hay una fórmula única, pero algunas prácticas pueden ayudar:</p>
+                <ol>
+                    <li><strong>Centrarse en la Respiración:</strong> Llevar la atención a la respiración, especialmente a la exhalación, puede calmar el sistema nervioso y crear un espacio para que emerja la Mente Sabia. Imagina que inhalas hacia el centro de tu ser y exhalas desde allí.</li>
+                    <li><strong>Preguntar a la Mente Sabia:</strong> Una vez centrado, puedes formular una pregunta a tu Mente Sabia (ej. "¿Qué es lo sabio hacer aquí?") y esperar una respuesta, que puede venir como una sensación, una imagen, una palabra o una comprensión súbita.</li>
+                    <li><strong>Practicar Mindfulness Regularmente:</strong> Cuanto más practicamos observar nuestros pensamientos y emociones sin juicio, más fácil se vuelve acceder a ese espacio de sabiduría interna.</li>
+                </ol>
+                 <div class="example-box">
+                    <h5>Ejemplo de Decisión desde Diferentes Mentes:</h5>
+                    <p><strong>Situación:</strong> Un amigo cancela planes contigo a último momento.</p>
+                    <p><strong>Mente Emocional:</strong> "¡Qué desconsiderado! Nunca le importo. ¡No volveré a hablarle!" (Ira, tristeza).</p>
+                    <p><strong>Mente Racional:</strong> "Estadísticamente, la gente cancela planes a veces. Debo analizar las posibles razones logísticas. No hay base para una reacción emocional." (Fría, distante).</p>
+                    <p><strong>Mente Sabia:</strong> "Siento decepción y un poco de enfado, es natural. Quizás tuvo un imprevisto. Le preguntaré si todo está bien y expresaré cómo me siento de manera calmada, buscando entender y mantener la amistad si es posible, pero también cuidando mis propios sentimientos." (Integra emoción, lógica, valores de amistad y autorespeto).</p>
+                </div>
+                <p>
+                    Las habilidades de Mindfulness son, en última instancia, el camino para cultivar y acceder a nuestra Mente Sabia, permitiéndonos vivir vidas más conscientes, equilibradas y significativas.
+                </p>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-heartbeat"></i> Beneficios Detallados de la Práctica de Mindfulness</h3>
+                <p>La práctica regular y consistente de mindfulness, tal como se enseña en DBT, ofrece una amplia gama de beneficios que impactan positivamente múltiples áreas de la vida:</p>
+                <h4>Beneficios Psicológicos y Emocionales:</h4>
+                <ul>
+                    <li><strong>Reducción del Estrés y la Ansiedad:</strong> Al centrarnos en el presente, disminuimos la tendencia a rumiar sobre el pasado o preocuparnos excesivamente por el futuro, dos grandes fuentes de estrés y ansiedad.</li>
+                    <li><strong>Mejora de la Regulación Emocional:</strong> Mindfulness nos permite observar nuestras emociones sin reaccionar impulsivamente, creando un espacio para elegir respuestas más adaptativas.</li>
+                    <li><strong>Mayor Autoconciencia:</strong> Aumenta la comprensión de nuestros propios patrones de pensamiento, sentimientos, sensaciones corporales e impulsos, lo que facilita la identificación de desencadenantes y señales tempranas de malestar.</li>
+                    <li><strong>Disminución de la Reactividad Emocional:</strong> Aprendemos a no ser "secuestrados" por nuestras emociones, experimentándolas plenamente pero sin que nos dominen.</li>
+                    <li><strong>Aumento de la Autoaceptación y Autocompasión:</strong> La práctica de la observación sin juicio fomenta una actitud más amable y compasiva hacia uno mismo.</li>
+                    <li><strong>Reducción de Síntomas Depresivos:</strong> Al romper ciclos de rumiación negativa y aumentar la conexión con experiencias placenteras o significativas del presente.</li>
+                    <li><strong>Mejora de la Concentración y la Atención:</strong> Entrenar la mente para enfocarse fortalece la capacidad de atención sostenida.</li>
+                </ul>
+                <h4>Beneficios Físicos:</h4>
+                <ul>
+                    <li><strong>Reducción de la Presión Arterial y el Ritmo Cardíaco:</strong> Asociado a la disminución del estrés.</li>
+                    <li><strong>Mejora del Sistema Inmunológico:</strong> Algunos estudios sugieren que la reducción del estrés mediante mindfulness puede tener efectos positivos en la inmunidad.</li>
+                    <li><strong>Alivio del Dolor Crónico:</strong> Aunque no elimina el dolor, mindfulness puede cambiar la relación con el dolor, reduciendo el sufrimiento asociado.</li>
+                    <li><strong>Mejora de la Calidad del Sueño:</strong> Al calmar la mente y reducir la rumiación antes de dormir.</li>
+                </ul>
+                <h4>Beneficios Interpersonales:</h4>
+                <ul>
+                    <li><strong>Mejora de la Escucha Activa:</strong> Al estar más presentes en las conversaciones.</li>
+                    <li><strong>Mayor Empatía:</strong> Al estar más sintonizados con nuestras propias emociones, podemos entender mejor las de los demás.</li>
+                    <li><strong>Reducción de Conflictos:</strong> Al responder de manera menos reactiva y más reflexiva.</li>
+                </ul>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-hands-helping"></i> Formas Prácticas de Integrar Mindfulness en la Vida Diaria</h3>
+                <p>Mindfulness no se limita a la meditación formal. Se puede (¡y se debe!) integrar en las actividades cotidianas. Distinguimos entre prácticas formales e informales:</p>
+                <h4>Prácticas Formales de Mindfulness:</h4>
+                <p>Implican dedicar un tiempo específico a la práctica, generalmente en un entorno tranquilo.</p>
+                <ul>
+                    <li><strong>Meditación Sentada Enfocada en la Respiración:</strong> Sentarse cómodamente y llevar la atención a las sensaciones de la respiración, notando cómo entra y sale el aire. Cuando la mente divaga, redirigirla suavemente a la respiración.</li>
+                    <li><strong>Escaneo Corporal (Body Scan):</strong> Acostado o sentado, llevar la atención secuencialmente a diferentes partes del cuerpo, notando cualquier sensación presente (hormigueo, calor, tensión, etc.) sin juzgarla.</li>
+                    <li><strong>Meditación Caminando:</strong> Prestar atención plena a las sensaciones de caminar: el contacto de los pies con el suelo, el movimiento de las piernas, el balanceo de los brazos, los sonidos del entorno.</li>
+                    <li><strong>Meditación de Observación de Pensamientos/Emociones:</strong> Sentarse y simplemente observar los pensamientos y emociones que surgen, como si fueran nubes pasando por el cielo, sin engancharse ni juzgarlos.</li>
+                </ul>
+                <h4>Prácticas Informales de Mindfulness:</h4>
+                <p>Consisten en llevar la conciencia plena a las actividades rutinarias.</p>
+                <ul>
+                    <li><strong>Comer con Atención Plena (Mindful Eating):</strong> Prestar atención a los colores, olores, texturas y sabores de la comida. Comer despacio, saboreando cada bocado.</li>
+                    <li><strong>Ducharse o Cepillarse los Dientes con Atención Plena:</strong> Sentir la temperatura del agua, el olor del jabón, las sensaciones en la piel o en la boca.</li>
+                    <li><strong>Lavar los Platos con Atención Plena:</strong> Notar la temperatura del agua, la sensación del jabón, el sonido de los platos.</li>
+                    <li><strong>Escucha Atenta en Conversaciones:</strong> Realmente escuchar lo que la otra persona dice, tanto verbal como no verbalmente, sin planear la respuesta mientras habla.</li>
+                    <li><strong>Momentos de Transición:</strong> Usar momentos como esperar en una fila, caminar de un lugar a otro, o el semáforo en rojo, para conectar con la respiración o las sensaciones del momento.</li>
+                    <li><strong>Observar la Naturaleza:</strong> Prestar atención detallada a una flor, una hoja, el cielo, el sonido de los pájaros.</li>
+                </ul>
+                <div class="example-box">
+                    <h5>Pequeño Ejercicio Informal: El Minuto de Mindfulness</h5>
+                    <p>En cualquier momento del día, detente por un minuto. Cierra los ojos si te sientes cómodo. Lleva tu atención a tu respiración. Siente cómo el aire entra y sale. No intentes cambiar nada, solo observa. Si tu mente se distrae, tráela de vuelta suavemente. Este simple ejercicio puede ayudarte a recentrarte.</p>
+                </div>
+            </section>
+
+            <section class="component-content-section">
+                 <h3><i class="fas fa-question-circle"></i> Mitos Comunes sobre Mindfulness</h3>
+                <p>Existen varias ideas erróneas sobre el mindfulness que pueden dificultar su comprensión y práctica:</p>
+                <ul>
+                    <li><strong>Mito 1: Mindfulness es tener la mente en blanco.</strong> <em>Realidad:</em> Mindfulness no se trata de detener los pensamientos, sino de cambiar nuestra relación con ellos, observándolos sin juicio y sin ser arrastrados. La mente genera pensamientos constantemente; el objetivo es no fusionarse con ellos.</li>
+                    <li><strong>Mito 2: Mindfulness es solo para relajarse o eliminar el estrés.</strong> <em>Realidad:</em> Si bien la relajación y la reducción del estrés pueden ser efectos secundarios positivos, el objetivo principal es desarrollar la conciencia del momento presente y la aceptación. A veces, mindfulness implica estar presente con emociones difíciles, no solo con las placenteras.</li>
+                    <li><strong>Mito 3: Mindfulness es una práctica religiosa o espiritual.</strong> <em>Realidad:</em> Aunque tiene raíces en tradiciones contemplativas, el mindfulness tal como se enseña en contextos terapéuticos como DBT es una habilidad psicológica secular. Puede ser practicado por personas de cualquier creencia o sin ninguna creencia específica.</li>
+                    <li><strong>Mito 4: Si me distraigo, estoy fallando en mindfulness.</strong> <em>Realidad:</em> La distracción es una parte natural del funcionamiento de la mente. La práctica de mindfulness incluye el acto de notar la distracción y redirigir amablemente la atención. Cada vez que haces esto, estás fortaleciendo tu "músculo" de la atención.</li>
+                    <li><strong>Mito 5: Mindfulness es egoísta o auto-indulgente.</strong> <em>Realidad:</em> Al cultivar una mayor conciencia y compasión hacia uno mismo, a menudo nos volvemos más capaces de estar presentes y ser compasivos con los demás. Cuidar de nuestro mundo interior nos permite interactuar de manera más saludable con el mundo exterior.</li>
+                </ul>
             </section>
             
             <div class="navigation-buttons-container">
-                <a href="cbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a TCC</a>
-                <a href="regulacion_emocional_dbt.html" class="nav-btn continue-btn">Continuar con Regulación Emocional (DBT) <i class="fas fa-arrow-right"></i></a>
+                <a href="dbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a DBT</a>
+                <a href="regulacion_emocional_dbt.html" class="nav-btn continue-btn">Continuar con Regulación Emocional <i class="fas fa-arrow-right"></i></a>
             </div>
 
         </div>
@@ -917,12 +896,12 @@
                 if (linkFilename === 'cursos.html' && 
                     (currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
-                     currentPageFilename === 'mindfulness_dbt.html' ||
+                     currentPageFilename === 'mindfulness_dbt.html' || 
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
-                     currentPageFilename === 'activacion_conductual_cbt.html' ||
+                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
+                     currentPageFilename === 'activacion_conductual_cbt.html' || // Current page
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
                      currentPageFilename === 'resolucion_problemas_cbt.html'
                      )) {
