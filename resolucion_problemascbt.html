@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resolución de Problemas en TCC - Borderline Journey</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+            --accent-yellow-rgb: 255, 215, 0;
+            --accent-green-rgb: 0, 255, 127;
+            --secondary-cyan-rgb: 0, 206, 209;
+            --accent-red-rgb: 255, 69, 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Krona One', sans-serif; 
+            font-size: 1.8rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse {
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); }
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            padding-top: 2rem;
+        }
+
+        .page-header h2 {
+            font-family: 'Major Mono Display', monospace;
+            font-size: 2.8rem;
+            color: var(--primary-violet); /* Component specific color */
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(var(--primary-violet-rgb),0.5);
+        }
+
+        .page-header p.subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color-medium);
+            max-width: 750px;
+            margin: 0 auto 2rem auto;
+        }
+        
+        .component-content-section { 
+            background: var(--card-bg);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .component-content-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .component-content-section h3 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.8rem;
+            color: var(--primary-violet); /* Component specific color */
+            margin-bottom: 1.5rem;
+            text-align: center;
+            border-bottom: 2px dashed var(--primary-violet);
+            padding-bottom: 0.5rem;
+        }
+         .component-content-section h4 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.3rem;
+            color: var(--accent-yellow);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-left: 3px solid var(--accent-yellow);
+            padding-left: 10px;
+        }
+
+        .component-content-section p {
+            font-size: 1.1rem;
+            text-align: justify;
+            margin-bottom: 1rem;
+            color: var(--text-color-light);
+        }
+        .component-content-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+        .component-content-section ul li {
+            margin-bottom: 0.75rem;
+            font-size: 1.05rem;
+            padding-left: 25px;
+            position: relative;
+        }
+        .component-content-section ul li::before {
+            content: '\f00c'; /* FontAwesome check icon */
+            font-family: 'Font Awesome 5 Free';
+            font-weight: 900;
+            color: var(--primary-violet); /* Component specific color */
+            position: absolute;
+            left: 0;
+            top: 2px;
+        }
+        
+        .breadcrumb {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 0.9rem;
+        }
+        .breadcrumb a {
+            color: var(--accent-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-yellow);
+        }
+        .breadcrumb span {
+            color: var(--text-color-medium);
+        }
+        
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .social-links { display: flex; gap: 15px; margin-top: 22px; }
+        .social-links a { 
+            display: inline-flex; 
+            align-items: center; 
+            justify-content: center; 
+            width: 45px; 
+            height: 45px; 
+            background: rgba(255, 255, 255, 0.04); 
+            color: var(--accent-blue); 
+            border-radius: 50%; 
+            transition: all 0.4s ease; 
+            font-size: 1.2rem; 
+            border: 1px solid var(--accent-blue); 
+        }
+        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .page-header h2 { font-size: 2.2rem; }
+            .component-content-section h3 {font-size: 1.6rem;}
+        }
+        
+        @media (max-width: 600px) {
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.5rem; }
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .page-header h2 { font-size: 1.8rem; }
+            .page-header p.subtitle { font-size: 1rem; }
+            .component-content-section { padding: 20px; }
+            .component-content-section h3 {font-size: 1.5rem;}
+            .component-content-section p {font-size: 1rem;}
+            .component-content-section ul li {font-size: 0.95rem;}
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
+    
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+                <i class="fas fa-brain"></i>
+                <h1>BORDERLINE JOURNEY</h1>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html" class="active">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="premium.html">Premium</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-page-content">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="index.html">Inicio</a> &gt; 
+                <a href="cursos.html">Cursos</a> &gt; 
+                <a href="cbt.html">TCC</a> &gt; 
+                <span>Resolución de Problemas</span>
+            </div>
+
+            <div class="page-header">
+                <h2><i class="fas fa-puzzle-piece"></i> Resolución de Problemas y Habilidades en TCC</h2>
+                <p class="subtitle">
+                    Desarrollando estrategias efectivas para afrontar los desafíos de la vida y tomar decisiones conscientes.
+                </p>
+            </div>
+
+            <section class="component-content-section">
+                <h3>Abordando los Desafíos con Estrategia</h3>
+                <p>
+                    La Terapia Cognitivo Conductual (TCC) no solo se enfoca en modificar pensamientos y conductas directamente relacionados con síntomas específicos, sino que también equipa a las personas con un conjunto de habilidades más amplias para manejar los problemas de la vida de manera más efectiva. El entrenamiento en Resolución de Problemas es un componente clave que enseña un enfoque sistemático para abordar las dificultades.
+                </p>
+                <p>
+                    Cuando nos enfrentamos a problemas, especialmente si estamos lidiando con ansiedad o depresión, puede ser fácil sentirse abrumado, indeciso o recurrir a estrategias de afrontamiento poco útiles. La TCC ofrece un marco para desglosar los problemas en partes manejables y desarrollar soluciones prácticas.
+                </p>
+
+                <h4>Pasos del Proceso de Resolución de Problemas en TCC:</h4>
+                <ul>
+                    <li><strong>Definición Clara del Problema:</strong> El primer paso es definir el problema de la manera más específica y concreta posible. ¿Cuál es exactamente la dificultad? ¿Qué aspectos están bajo tu control y cuáles no?</li>
+                    <li><strong>Generación de Múltiples Soluciones (Brainstorming):</strong> Una vez que el problema está claro, se fomenta la generación de la mayor cantidad posible de soluciones potenciales, sin juzgarlas inicialmente. El objetivo es la cantidad sobre la calidad en esta etapa.</li>
+                    <li><strong>Evaluación de las Soluciones:</strong> Cada solución generada se evalúa considerando sus posibles ventajas y desventajas, las consecuencias a corto y largo plazo, y su viabilidad.</li>
+                    <li><strong>Selección de la Mejor Solución (o Combinación):</strong> Con base en la evaluación, se elige la solución o combinación de soluciones que parezca más prometedora y realista.</li>
+                    <li><strong>Planificación de la Implementación:</strong> Se elabora un plan detallado paso a paso sobre cómo llevar a cabo la solución elegida. ¿Qué se necesita hacer? ¿Cuándo? ¿Quién está involucrado?</li>
+                    <li><strong>Ejecución del Plan:</strong> Poner en práctica la solución.</li>
+                    <li><strong>Evaluación de los Resultados:</strong> Una vez implementada la solución, se evalúa su efectividad. ¿Funcionó como se esperaba? ¿Se resolvió el problema? ¿Qué se aprendió del proceso? Si no fue efectiva, se puede volver a los pasos anteriores para seleccionar o generar nuevas soluciones.</li>
+                </ul>
+
+                <h4>Otras Habilidades Complementarias Entrenadas en TCC:</h4>
+                <p>Además de la resolución de problemas estructurada, la TCC puede incluir el entrenamiento en otras habilidades útiles, tales como:</p>
+                <ul>
+                    <li><strong>Toma de Decisiones:</strong> Aprender a sopesar pros y contras, considerar valores personales y tomar decisiones de manera más consciente y menos impulsiva.</li>
+                    <li><strong>Habilidades de Comunicación y Asertividad:</strong> Similar a la efectividad interpersonal en DBT, se enfoca en expresar necesidades y límites de manera clara y respetuosa.</li>
+                    <li><strong>Manejo del Tiempo y Organización:</strong> Desarrollar estrategias para planificar tareas, establecer prioridades y reducir la procrastinación.</li>
+                    <li><strong>Técnicas de Relajación:</strong> Aprender y practicar métodos como la respiración diafragmática, la relajación muscular progresiva o la visualización para manejar el estrés y la ansiedad.</li>
+                </ul>
+                <p>
+                    Al integrar estas habilidades, la TCC busca no solo aliviar los síntomas actuales, sino también empoderar a las personas con un conjunto de herramientas que pueden utilizar para afrontar futuros desafíos de manera más adaptativa y resiliente, mejorando su calidad de vida general.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Borderline Journey</h3>
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-tiktok"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="premium.html">Premium</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos DBT</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> itfrombit.w74@gmail.com</p>
+                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150;
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 6}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
+                    if (Math.random() > 0.65) {
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                
+                if (linkFilename === 'cursos.html' && 
+                    (currentPageFilename === 'dbt.html' || 
+                     currentPageFilename === 'cbt.html' ||
+                     currentPageFilename === 'mindfulness_dbt.html' ||
+                     currentPageFilename === 'regulacion_emocional_dbt.html' ||
+                     currentPageFilename === 'tolerancia_malestar_dbt.html' ||
+                     currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
+                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
+                     currentPageFilename === 'activacion_conductual_cbt.html' ||
+                     currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
+                     currentPageFilename === 'resolucion_problemas_cbt.html'
+                     )) {
+                     link.classList.add('active'); 
+                } else if (linkFilename === currentPageFilename) {
+                    link.classList.add('active');
+                }
+            });
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+            
+            const animatedSection = document.querySelector('.component-content-section'); 
+            if (animatedSection) {
+                 const observerOptions = {
+                    root: null, 
+                    rootMargin: '0px',
+                    threshold: 0.1 
+                };
+                const observer = new IntersectionObserver((entries, obs) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('visible');
+                            obs.unobserve(entry.target); 
+                        }
+                    });
+                }, observerOptions);
+                observer.observe(animatedSection);
+            }
+        });
+    </script>
+</body>
+</html>
