@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quiénes Somos - Borderline Journey</title>
+    <title>Inicio - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&display=swap" rel="stylesheet">
     <style>
@@ -166,132 +166,79 @@
         nav a::after { 
             display: none;
         }
-        
-        /* Quienes Somos Section Styles */
-        .quienes-somos-section {
-            padding: 5.5rem 0;
+
+        /* Hero Section Styles */
+        .hero-section {
+            padding: 6rem 0;
+            text-align: center;
+            background: linear-gradient(rgba(15, 15, 27, 0.7), rgba(15, 15, 27, 0.9)), 
+                        url('https://placehold.co/1200x600/0f0f1b/ff00cc?text=Abstract+Mindscape&font=comfortaa') no-repeat center center/cover;
+            border-bottom: 3px solid var(--color-1);
+            box-shadow: 0 5px 25px rgba(255,0,204,0.2);
         }
 
-        .section-title-qs { /* Specific title for this page */
+        .hero-section h2 {
+            font-family: 'Monoton', cursive;
+            font-size: 4rem;
+            color: var(--color-1);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 15px var(--color-1), 0 0 25px var(--color-4);
+            letter-spacing: 4px;
+        }
+
+        .hero-section .subtitle {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.5rem;
+            color: var(--color-2);
+            margin-bottom: 2.5rem;
+            text-shadow: 0 0 10px var(--color-2);
+            opacity: 0.9;
+        }
+
+        .hero-section .cta-button {
+            font-family: 'Press Start 2P', cursive;
+            font-size: 1rem;
+            color: var(--dark-bg);
+            background: linear-gradient(45deg, var(--color-3), var(--color-5));
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px var(--color-3), 0 0 25px var(--color-5);
+            border: none;
+        }
+
+        .hero-section .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 0 25px var(--color-3), 0 0 40px var(--color-5);
+        }
+        
+        /* General Section Styles (can be reused) */
+        .content-section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
             text-align: center;
             margin-bottom: 3rem;
         }
 
-        .section-title-qs h2 {
-            font-family: 'Monoton', cursive; /* Using Monoton like the logo */
-            font-size: 3.5rem;
-            color: var(--color-1); /* Pink accent */
+        .section-title h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.8rem;
+            color: var(--color-5);
             margin-bottom: 0.5rem;
-            text-shadow: 0 0 15px var(--color-1), 0 0 25px var(--color-4);
-            letter-spacing: 3px;
+            text-shadow: 0 0 12px var(--color-5);
         }
 
-        .section-title-qs p.subtitle {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.3rem;
-            color: var(--color-2);
-            text-shadow: 0 0 8px var(--color-2);
-            opacity: 0.9;
-        }
-
-        .profile-container-qs {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 20px;
-            border: 2px solid var(--color-5); /* Green border */
-            box-shadow: 0 0 30px rgba(0, 255, 0, 0.25), inset 0 0 20px rgba(0, 255, 0, 0.1);
-            backdrop-filter: blur(10px);
-        }
-
-        @media (min-width: 768px) {
-            .profile-container-qs {
-                flex-direction: row;
-                align-items: flex-start; /* Align items to the start for varying text lengths */
-            }
-        }
-
-
-        .profile-image-qs {
-            flex-shrink: 0;
-            width: 220px;
-            height: 220px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 5px solid var(--color-1); /* Pink border for image */
-            box-shadow: 0 0 25px var(--color-1);
-            margin-bottom: 20px;
+        .section-title p {
+            font-family: 'Comfortaa', cursive;
+            font-size: 1.2rem;
+            color: #ccc;
+            max-width: 700px;
+            margin: 0 auto;
         }
         
-         @media (min-width: 768px) {
-            .profile-image-qs {
-                margin-bottom: 0;
-                margin-right: 30px; /* Add margin for larger screens */
-            }
-        }
-
-
-        .profile-image-qs img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .profile-info-qs {
-            text-align: left; /* Left align text */
-            max-width: 650px; /* Control text width */
-        }
-        
-        @media (max-width: 767px) {
-             .profile-info-qs {
-                text-align: center; /* Center text on smaller screens */
-            }
-        }
-
-
-        .profile-info-qs h3 {
-            font-family: 'Press Start 2P', cursive;
-            font-size: 2rem;
-            color: var(--color-3); /* Yellow name */
-            margin-bottom: 10px;
-            text-shadow: 0 0 10px var(--color-3);
-        }
-
-        .profile-info-qs .role-qs {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.1rem;
-            color: var(--color-2);
-            margin-bottom: 20px;
-            display: block; /* Make it a block to take full width before paragraph */
-        }
-        
-        .profile-info-qs p {
-            font-size: 1.1rem;
-            color: #e0e0e0;
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-        
-        .profile-info-qs p strong {
-            color: var(--color-5); /* Green for emphasis */
-            font-weight: 700; /* Ensure Comfortaa bold is used */
-        }
-
-        .profile-quote-qs {
-            font-family: 'Caveat', cursive;
-            font-size: 1.6rem;
-            color: var(--color-1);
-            padding: 15px;
-            margin-top: 20px;
-            border-left: 4px solid var(--color-1);
-            background: rgba(255,0,204, 0.05);
-            border-radius: 0 8px 8px 0;
-            font-style: italic;
-        }
-
         /* Footer Styles */
         footer {
             background: rgba(10, 10, 20, 0.9);
@@ -362,7 +309,7 @@
             align-items: center;
             gap: 12px;
             margin-bottom: 14px;
-            font-size: 1.1rem;
+            font-size: 1.1rem; /* Corrected from 1.1rem; */
             color: #ddd;
         }
         
@@ -403,7 +350,7 @@
             padding-top: 2.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: #888;
-            font-size: 1rem;
+            font-size: 1rem; /* Corrected from 1rem; */
         }
         
         .copyright a {
@@ -428,40 +375,43 @@
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            .section-title-qs h2 {
-                font-size: 2.8rem;
+            .hero-section h2 {
+                font-size: 3rem;
             }
-            .profile-info-qs h3 {
-                font-size: 1.8rem;
+            .hero-section .subtitle {
+                font-size: 1.2rem;
             }
         }
         
         @media (max-width: 600px) {
-            .section-title-qs h2 {
-                font-size: 2.2rem; 
+            .logo h1 {
+                font-size: 1.8rem;
             }
-            .section-title-qs p.subtitle {
-                font-size: 1.1rem;
-            }
-            .profile-image-qs {
-                width: 180px;
-                height: 180px;
-            }
-            .profile-info-qs h3 {
-                font-size: 1.6rem;
-            }
-            .profile-info-qs p {
-                font-size: 1rem;
-            }
-            .profile-quote-qs {
-                font-size: 1.4rem;
+            .logo i {
+                font-size: 1.8rem;
             }
             nav ul {
-                gap: 8px;
+                gap: 5px; /* Smaller gap for more links */
             }
             nav a {
-                padding: 6px 12px;
-                font-size: 0.85rem; /* Adjusted for more links */
+                padding: 8px 10px; /* Smaller padding */
+                font-size: 0.8rem; /* Smaller font for more links */
+            }
+            .hero-section h2 {
+                font-size: 2.5rem;
+            }
+            .hero-section .subtitle {
+                font-size: 1rem;
+            }
+            .hero-section .cta-button {
+                font-size: 0.9rem;
+                padding: 12px 25px;
+            }
+            .section-title h3 {
+                font-size: 2.2rem;
+            }
+            .footer-column h3 {
+                font-size: 1.3rem;
             }
         }
 
@@ -494,13 +444,13 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="index.html" class="active">Inicio</a></li>
                     <li><a href="psicoeducacion.html">Psicoeducación</a></li>
                     <li><a href="dbt.html">DBT</a></li>
                     <li><a href="blog.html">Blog</a></li>
                     <li><a href="foro.html">Foro</a></li>
                     <li><a href="up_download.html">Up/Download</a></li>
-                    <li><a href="quienes_somos.html" class="active">Quiénes Somos</a></li>
+                    <li><a href="quienes_somos.html">Quiénes Somos</a></li>
                     <li><a href="premium.html">Premium</a></li>
                 </ul>
             </nav>
@@ -508,39 +458,21 @@
     </header>
 
     <main>
-        <section class="quienes-somos-section" id="quienes-somos-contenido">
+        <section class="hero-section">
             <div class="container">
-                <div class="section-title-qs">
-                    <h2>Nuestra Esencia</h2>
-                    <p class="subtitle">Detrás del Viaje Borderline</p>
-                </div>
-
-                <div class="profile-container-qs">
-                    <div class="profile-image-qs">
-                        <img src="https://placehold.co/300x300/ff00cc/ffffff?text=Mayra+S." alt="Mayra Schwarzschild">
-                    </div>
-                    <div class="profile-info-qs">
-                        <h3>Mayra Schwarzschild</h3>
-                        <span class="role-qs">Fundadora y Corazón de Borderline Journey</span>
-                        <p>
-                            ¡Hola! Soy Mayra, y este espacio nació de una profunda necesidad personal y un deseo ardiente de transformar la conversación sobre el Trastorno Límite de la Personalidad. 
-                            Impulsada por mi propio viaje con el <strong>TLP</strong> y una pasión inagotable por la <strong>expresión creativa</strong>, creé Borderline Journey como un faro de comprensión, un lienzo de recursos visuales y una comunidad vibrante y llena de color.
-                        </p>
-                        <p>
-                            Soy una amante del arte en todas sus formas, desde el diseño digital que da vida a esta web, hasta la poesía que a veces brota en momentos de intensa introspección. Creo firmemente en el poder transformador de la creatividad para sanar, conectar y dar sentido a las complejidades de nuestra mente.
-                        </p>
-                        <p>
-                            Mi diagnóstico no me define, pero sí ha modelado una profunda <strong>empatía</strong> y una perspectiva única sobre la intensidad emocional y la constante búsqueda de equilibrio. Este espacio es un reflejo de esa búsqueda: un lugar para encontrar <strong>belleza en la complejidad y fortaleza en la vulnerabilidad.</strong>
-                        </p>
-                        <p>
-                            Borderline Journey es más que un sitio web; es una invitación a explorar, a aprender, a compartir sin miedo y a sentir que no estás solo/a en esta travesía. Mi visión es construir un refugio donde la información sea accesible y visualmente estimulante, donde las herramientas sean prácticas y donde cada voz pueda ser escuchada y validada.
-                        </p>
-                        <div class="profile-quote-qs">
-                            "En el caos de la emoción, reside una creatividad feroz y una capacidad de amar profundamente. Abracemos nuestra intensidad."
-                        </div>
-                    </div>
-                </div>
+                <h2>Bienvenido/a al Viaje</h2>
+                <p class="subtitle">Explora, comprende y encuentra tu equilibrio en Borderline Journey.</p>
+                <a href="psicoeducacion.html" class="cta-button">Comienza a Explorar</a>
             </div>
+        </section>
+
+        <section class="content-section" id="introduction">
+            <div class="container">
+                <div class="section-title">
+                    <h3>Descubre Tu Camino</h3>
+                    <p>Borderline Journey es un espacio seguro y creativo dedicado a la comprensión del Trastorno Límite de la Personalidad. Aquí encontrarás recursos visuales, herramientas de DBT, una comunidad de apoyo y mucho más.</p>
+                </div>
+                </div>
         </section>
     </main>
 
@@ -561,11 +493,10 @@
                 <div class="footer-column">
                     <h3>Recursos</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Galería Visual</a></li>
-                        <li><a href="dbt.html">Meditaciones Guiadas (DBT)</a></li> 
+                        <li><a href="psicoeducacion.html#galeria">Galería Visual</a></li> <li><a href="dbt.html#meditaciones">Meditaciones Guiadas (DBT)</a></li> 
                         <li><a href="blog.html">Diario Emocional (Blog)</a></li> 
                         <li><a href="foro.html">Comunidad (Foro)</a></li> 
-                        <li><a href="premium.html">Recursos de Crisis (Premium)</a></li> 
+                        <li><a href="premium.html#crisis">Recursos de Crisis (Premium)</a></li> 
                     </ul>
                 </div>
                 
@@ -578,7 +509,7 @@
                         <li><a href="foro.html">Foro</a></li> 
                         <li><a href="up_download.html">Up/Download</a></li>
                         <li><a href="quienes_somos.html">Quiénes Somos</a></li>
-                        <li><a href="premium.html">Eventos (Premium)</a></li> 
+                        <li><a href="premium.html#eventos">Eventos (Premium)</a></li> 
                     </ul>
                 </div>
                 
@@ -594,7 +525,7 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional.</p>
+                <p>&copy; <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional.</p>
                 <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
@@ -603,10 +534,10 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Activar enlace de navegación
-            const currentPageFilename = window.location.pathname.split('/').pop();
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; // Default to index.html if path is empty
             const navLinks = document.querySelectorAll('nav a');
             navLinks.forEach(link => {
-                const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0] || 'index.html';
                 if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
                 } else {
@@ -615,7 +546,8 @@
             });
 
             // Efecto de hover para tarjetas (si se añaden más tarjetas en esta página)
-            const cards = document.querySelectorAll('.profile-container-qs'); // Placeholder si se añaden más tarjetas
+            // Este script es genérico, puedes añadir la clase 'interactive-card' a elementos que quieras que tengan este efecto.
+            const cards = document.querySelectorAll('.interactive-card'); 
              cards.forEach(card => {
                 card.addEventListener('mousemove', function(e) {
                     const rect = card.getBoundingClientRect();
@@ -624,14 +556,13 @@
                     const mouseX = e.clientX;
                     const mouseY = e.clientY;
                     
-                    let rotateX = (mouseY - cardY) / 25; 
-                    let rotateY = (mouseX - cardX) / -25;
+                    let rotateX = (mouseY - cardY) / 20; // Ajusta la sensibilidad
+                    let rotateY = (mouseX - cardX) / -20; // Ajusta la sensibilidad
                     
-                    rotateX = Math.min(Math.max(rotateX, -5), 5); // Sutil efecto para el profile card
-                    rotateY = Math.min(Math.max(rotateY, -5), 5);
+                    rotateX = Math.min(Math.max(rotateX, -7), 7); 
+                    rotateY = Math.min(Math.max(rotateY, -7), 7);
                     
-                    // No aplicar scale aquí para evitar que la imagen se distorsione demasiado
-                    this.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+                    this.style.transform = `perspective(1500px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(1.03)`;
                 });
                 
                 card.addEventListener('mouseenter', function() {
@@ -640,9 +571,12 @@
                 
                 card.addEventListener('mouseleave', function() {
                     this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)'; 
-                    this.style.transform = 'perspective(1500px) rotateY(0deg) rotateX(0deg)';
+                    this.style.transform = 'perspective(1500px) rotateY(0deg) rotateX(0deg) scale(1)';
                 });
             });
+
+            // Copyright year
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
         });
     </script>
 </body>
