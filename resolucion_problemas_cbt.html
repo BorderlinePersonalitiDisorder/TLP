@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resolución de Problemas en TCC - Borderline Journey</title>
+    <title>Resolución de Problemas en TCC - Guía Detallada - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-violet: #8A2BE2;
+            --primary-violet: #8A2BE2; /* Primary accent for this page */
             --secondary-cyan: #00CED1;
             --accent-magenta: #FF00FF;
             --accent-green: #00FF7F;
@@ -18,12 +18,13 @@
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
             --dark-bg: #0A0A20;
 
-            --primary-violet-rgb: 138, 43, 226;
+            --primary-violet-rgb: 138, 43, 226; /* Primary accent for this page */
             --accent-blue-rgb: 30, 144, 255;
             --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
@@ -188,14 +189,22 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif; /* Updated font */
+            font-size: 2.8rem; 
+            font-weight: 700;
             color: var(--primary-violet); /* Component specific color */
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--primary-violet-rgb),0.5);
+            text-transform: none; 
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(var(--primary-violet-rgb),0.4); 
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
+        .page-header h2 i {
+            font-size: 2.5rem; 
+        }
+
 
         .page-header p.subtitle {
             font-size: 1.2rem;
@@ -206,9 +215,9 @@
         
         .component-content-section { 
             background: var(--card-bg);
-            padding: 30px;
+            padding: 30px 35px; 
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem; 
             border: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(30px);
@@ -220,49 +229,116 @@
         }
 
         .component-content-section h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.8rem;
-            color: var(--primary-violet); /* Component specific color */
-            margin-bottom: 1.5rem;
+            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-weight: 700; 
+            font-size: 1.9rem; 
+            color: var(--primary-violet); 
+            margin-top: 1rem; 
+            margin-bottom: 1.8rem; 
             text-align: center;
-            border-bottom: 2px dashed var(--primary-violet);
-            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--primary-violet); 
+            padding-bottom: 0.8rem; 
         }
          .component-content-section h4 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.3rem;
+            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-weight: 700; 
+            font-size: 1.5rem; 
             color: var(--accent-yellow);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--accent-yellow);
-            padding-left: 10px;
+            margin-top: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            border-left: 4px solid var(--accent-yellow); 
+            padding-left: 15px; 
+        }
+        .component-content-section h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-cyan); 
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .component-content-section p {
+        .component-content-section p, 
+        .component-content-section li { 
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; 
             color: var(--text-color-light);
+            line-height: 1.9; 
         }
-        .component-content-section ul {
+        .component-content-section ul,
+        .component-content-section ol {
             list-style: none;
-            padding-left: 0;
+            padding-left: 0; 
             margin-bottom: 1.5rem;
         }
         .component-content-section ul li {
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-            padding-left: 25px;
+            padding-left: 30px; 
             position: relative;
         }
         .component-content-section ul li::before {
-            content: '\f00c'; /* FontAwesome check icon */
+            content: '\f058'; /* FontAwesome check-circle icon for a softer look */
             font-family: 'Font Awesome 5 Free';
-            font-weight: 900;
-            color: var(--primary-violet); /* Component specific color */
+            font-weight: 900; /* Solid icon */
+            color: var(--primary-violet); 
             position: absolute;
             left: 0;
-            top: 2px;
+            top: 4px; 
+            font-size: 1em; 
+        }
+         .component-content-section ol li {
+            padding-left: 10px; 
+            margin-left: 20px; 
+            list-style-position: outside;
+        }
+        .component-content-section ol {
+            list-style-type: decimal; 
+        }
+        .component-content-section strong {
+            color: var(--accent-green); 
+            font-weight: 700;
+        }
+        .component-content-section em {
+            color: var(--secondary-cyan); 
+            font-style: italic;
+        }
+        .component-content-section blockquote {
+            border-left: 5px solid var(--accent-blue);
+            padding: 15px 25px;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+            background-color: rgba(var(--accent-blue-rgb), 0.08);
+            border-radius: 0 10px 10px 0;
+            font-size: 1.05rem;
+        }
+        .component-content-section blockquote p {
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .example-box {
+            background-color: rgba(var(--accent-yellow-rgb), 0.05); 
+            border: 1px dashed var(--accent-yellow);
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .example-box h5 {
+            color: var(--accent-yellow);
+            margin-top: 0;
+            font-family: 'Raleway', sans-serif; 
+            font-weight: 700;
+        }
+        .keyword-link { 
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px dashed var(--accent-yellow);
+            transition: all 0.3s ease;
+        }
+        .keyword-link:hover {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
         }
         
         .breadcrumb {
@@ -280,6 +356,59 @@
         }
         .breadcrumb span {
             color: var(--text-color-medium);
+        }
+
+        .navigation-buttons-container {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: wrap; 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+            margin-bottom: 1.5rem; 
+            padding: 1rem 0;
+            border-top: 1px dashed rgba(var(--primary-violet-rgb), 0.3);
+        }
+
+        .nav-btn {
+            display: inline-flex; 
+            align-items: center;
+            justify-content: center; 
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            flex-grow: 1; 
+            min-width: 220px; 
+            text-align: center;
+        }
+        .nav-btn i {
+            font-size: 1em; 
+        }
+
+        .back-btn {
+            background: linear-gradient(45deg, var(--accent-blue), var(--primary-violet)); 
+            color: white; 
+            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.4);
+        }
+        .back-btn:hover {
+            background: linear-gradient(45deg, var(--primary-violet), var(--accent-blue)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--primary-violet-rgb), 0.5); 
+        }
+
+        .continue-btn {
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
+            color: var(--dark-bg); 
+            box-shadow: 0 3px 10px rgba(var(--accent-green-rgb), 0.4);
+        }
+        .continue-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--secondary-cyan-rgb), 0.5); 
         }
         
         footer { 
@@ -394,8 +523,12 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
-            .component-content-section h3 {font-size: 1.6rem;}
+            .page-header h2 { font-size: 2.2rem; } 
+            .component-content-section h3 {font-size: 1.7rem;} 
+            .component-content-section h4 {font-size: 1.3rem;} 
+            .navigation-buttons-container { flex-direction: column; } 
+            .nav-btn { width: 100%; max-width: 300px; } 
+
         }
         
         @media (max-width: 600px) {
@@ -403,12 +536,14 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } 
             .page-header p.subtitle { font-size: 1rem; }
             .component-content-section { padding: 20px; }
-            .component-content-section h3 {font-size: 1.5rem;}
-            .component-content-section p {font-size: 1rem;}
-            .component-content-section ul li {font-size: 0.95rem;}
+            .component-content-section h3 {font-size: 1.6rem;} 
+            .component-content-section h4 {font-size: 1.2rem;} 
+            .component-content-section p,
+            .component-content-section li {font-size: 1rem;} 
+            .nav-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -418,7 +553,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+            <a href="index.html" rel="noopener noreferrer" class="logo">
                 <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
@@ -444,44 +579,141 @@
             </div>
 
             <div class="page-header">
-                <h2><i class="fas fa-puzzle-piece"></i> Resolución de Problemas y Habilidades en TCC</h2>
+                <h2><i class="fas fa-puzzle-piece"></i> Resolución de Problemas en TCC</h2>
                 <p class="subtitle">
-                    Desarrollando estrategias efectivas para afrontar los desafíos de la vida y tomar decisiones conscientes.
+                    Desarrollando estrategias efectivas para afrontar los desafíos de la vida y tomar decisiones conscientes. Una guía completa.
                 </p>
             </div>
 
             <section class="component-content-section">
-                <h3>Abordando los Desafíos con Estrategia</h3>
+                <h3><i class="fas fa-lightbulb"></i> Abordando los Desafíos con Estrategia: El Arte de Resolver Problemas</h3>
                 <p>
-                    La Terapia Cognitivo Conductual (TCC) no solo se enfoca en modificar pensamientos y conductas directamente relacionados con síntomas específicos, sino que también equipa a las personas con un conjunto de habilidades más amplias para manejar los problemas de la vida de manera más efectiva. El entrenamiento en Resolución de Problemas es un componente clave que enseña un enfoque sistemático para abordar las dificultades.
+                    La <strong>Terapia Cognitivo Conductual (TCC)</strong> no solo se enfoca en la modificación directa de pensamientos y conductas disfuncionales que subyacen a síntomas específicos, sino que también se dedica a equipar a las personas con un arsenal de <strong>habilidades de afrontamiento más amplias</strong> para manejar los inevitables problemas y desafíos de la vida de una manera más efectiva y menos angustiante. El <strong>Entrenamiento en Resolución de Problemas</strong> es un componente central y pragmático de la TCC que enseña un enfoque estructurado y sistemático para abordar las dificultades, grandes o pequeñas.
                 </p>
                 <p>
-                    Cuando nos enfrentamos a problemas, especialmente si estamos lidiando con ansiedad o depresión, puede ser fácil sentirse abrumado, indeciso o recurrir a estrategias de afrontamiento poco útiles. La TCC ofrece un marco para desglosar los problemas en partes manejables y desarrollar soluciones prácticas.
+                    Cuando nos enfrentamos a problemas, especialmente si estamos lidiando con estados emocionales intensos como la ansiedad, la depresión o la ira, puede ser muy fácil sentirse <strong>abrumado, paralizado por la indecisión, o recurrir a estrategias de afrontamiento poco útiles</strong> a corto plazo y perjudiciales a largo plazo (como la evitación, la rumiación excesiva, el consumo de sustancias, o la agresión). La TCC, a través del entrenamiento en resolución de problemas, ofrece un marco claro y práctico para desglosar los problemas en partes más manejables, analizar la situación objetivamente y desarrollar soluciones creativas y prácticas.
                 </p>
+                 <blockquote>
+                    <p>"Un problema bien definido es un problema medio resuelto." - Charles Kettering. Esta cita encapsula la importancia del primer paso en la resolución efectiva de problemas.</p>
+                </blockquote>
+            </section>
 
-                <h4>Pasos del Proceso de Resolución de Problemas en TCC:</h4>
+            <section class="component-content-section">
+                <h3><i class="fas fa-sitemap"></i> El Modelo Clásico de Resolución de Problemas (D'Zurilla y Goldfried): Pasos Detallados</h3>
+                <p>Este modelo, ampliamente utilizado en TCC, propone un proceso secuencial para abordar los problemas de manera efectiva:</p>
+                
+                <h4>1. Orientación y Actitud hacia el Problema: Preparando el Terreno Mental</h4>
+                <p>Antes de sumergirse en la solución, es crucial cultivar una mentalidad adecuada:</p>
                 <ul>
-                    <li><strong>Definición Clara del Problema:</strong> El primer paso es definir el problema de la manera más específica y concreta posible. ¿Cuál es exactamente la dificultad? ¿Qué aspectos están bajo tu control y cuáles no?</li>
-                    <li><strong>Generación de Múltiples Soluciones (Brainstorming):</strong> Una vez que el problema está claro, se fomenta la generación de la mayor cantidad posible de soluciones potenciales, sin juzgarlas inicialmente. El objetivo es la cantidad sobre la calidad en esta etapa.</li>
-                    <li><strong>Evaluación de las Soluciones:</strong> Cada solución generada se evalúa considerando sus posibles ventajas y desventajas, las consecuencias a corto y largo plazo, y su viabilidad.</li>
-                    <li><strong>Selección de la Mejor Solución (o Combinación):</strong> Con base en la evaluación, se elige la solución o combinación de soluciones que parezca más prometedora y realista.</li>
-                    <li><strong>Planificación de la Implementación:</strong> Se elabora un plan detallado paso a paso sobre cómo llevar a cabo la solución elegida. ¿Qué se necesita hacer? ¿Cuándo? ¿Quién está involucrado?</li>
-                    <li><strong>Ejecución del Plan:</strong> Poner en práctica la solución.</li>
-                    <li><strong>Evaluación de los Resultados:</strong> Una vez implementada la solución, se evalúa su efectividad. ¿Funcionó como se esperaba? ¿Se resolvió el problema? ¿Qué se aprendió del proceso? Si no fue efectiva, se puede volver a los pasos anteriores para seleccionar o generar nuevas soluciones.</li>
+                    <li><strong>Reconocer y Aceptar los Problemas como Parte Normal de la Vida:</strong> Los problemas no son necesariamente un signo de fracaso personal, sino desafíos inherentes a la existencia. Normalizar su aparición reduce la angustia asociada.</li>
+                    <li><strong>Creer en la Propia Capacidad para Resolver Problemas (Autoeficacia):</strong> Fomentar la creencia de que uno tiene la capacidad de encontrar soluciones y manejar las dificultades, aunque no se vea la solución de inmediato.</li>
+                    <li><strong>Inhibir la Tendencia a Reaccionar Impulsivamente o Evitar el Problema:</strong> Tomarse un tiempo para pensar antes de actuar o, por el contrario, no posponer indefinidamente el afrontamiento.</li>
+                    <li><strong>Identificar y Desafiar Creencias Negativas sobre los Problemas o la Propia Capacidad:</strong> Pensamientos como "No soy bueno/a resolviendo problemas" o "Esto es demasiado para mí" pueden sabotear el proceso.</li>
+                </ul>
+                <div class="example-box">
+                    <h5>Ejemplo de Cambio de Orientación:</h5>
+                    <p><strong>Orientación Inicial (Poco útil):</strong> "Siempre me pasan estas cosas, es un desastre y no hay nada que pueda hacer. Soy un imán para los problemas."</p>
+                    <p><strong>Orientación TCC (Más útil):</strong> "Este es un problema desafiante, y me siento abrumado/a ahora mismo. Sin embargo, los problemas son parte de la vida y he superado dificultades antes. Voy a intentar abordarlo paso a paso y ver qué puedo hacer."</p>
+                </div>
+
+                <h4>2. Definición y Formulación Clara y Precisa del Problema: ¿Qué Está Pasando Realmente?</h4>
+                <p>Un problema mal definido es casi imposible de resolver. Este paso implica clarificar la naturaleza de la dificultad:</p>
+                <ul>
+                    <li><strong>Ser Específico y Concreto:</strong> ¿Cuál es <em>exactamente</em> el problema? Evitar generalidades vagas. En lugar de "Estoy estresado", podría ser "Tengo tres plazos importantes la próxima semana y no sé cómo organizarme".</li>
+                    <li><strong>Desglosar Problemas Grandes o Complejos:</strong> Si el problema parece inmenso, dividirlo en sub-problemas más pequeños y manejables.</li>
+                    <li><strong>Recopilar Información Relevante:</strong> Reunir todos los hechos pertinentes sobre el problema. ¿Quién está involucrado? ¿Qué sucede? ¿Dónde? ¿Cuándo? ¿Con qué frecuencia?</li>
+                    <li><strong>Establecer Metas Realistas y Alcanzables:</strong> ¿Cuál sería un resultado deseable o una solución aceptable? Las metas deben ser SMART (Específicas, Medibles, Alcanzables, Relevantes, con Plazo definido).</li>
+                    <li><strong>Distinguir entre Hechos y Opiniones/Interpretaciones:</strong> Centrarse en lo observable y verificable, separándolo de las propias suposiciones o juicios.</li>
+                    <li><strong>Identificar Obstáculos Potenciales:</strong> ¿Qué podría dificultar la resolución del problema?</li>
                 </ul>
 
-                <h4>Otras Habilidades Complementarias Entrenadas en TCC:</h4>
-                <p>Además de la resolución de problemas estructurada, la TCC puede incluir el entrenamiento en otras habilidades útiles, tales como:</p>
+                <h4>3. Generación de Múltiples Soluciones Alternativas (Brainstorming o Lluvia de Ideas)</h4>
+                <p>Una vez que el problema está claramente definido, el objetivo es generar la mayor cantidad y variedad posible de soluciones potenciales, sin evaluarlas en esta etapa:</p>
                 <ul>
-                    <li><strong>Toma de Decisiones:</strong> Aprender a sopesar pros y contras, considerar valores personales y tomar decisiones de manera más consciente y menos impulsiva.</li>
-                    <li><strong>Habilidades de Comunicación y Asertividad:</strong> Similar a la efectividad interpersonal en DBT, se enfoca en expresar necesidades y límites de manera clara y respetuosa.</li>
-                    <li><strong>Manejo del Tiempo y Organización:</strong> Desarrollar estrategias para planificar tareas, establecer prioridades y reducir la procrastinación.</li>
-                    <li><strong>Técnicas de Relajación:</strong> Aprender y practicar métodos como la respiración diafragmática, la relajación muscular progresiva o la visualización para manejar el estrés y la ansiedad.</li>
+                    <li><strong>Principio de Cantidad:</strong> Cuantas más ideas, mejor. Incluso las que parezcan descabelladas al principio pueden inspirar otras más prácticas.</li>
+                    <li><strong>Principio de Variedad:</strong> Pensar en diferentes tipos de soluciones: cambiar la situación, cambiar la propia reacción o perspectiva ante la situación, buscar ayuda, aceptar aspectos del problema que no se pueden cambiar, etc.</li>
+                    <li><strong>Aplazar el Juicio (Sin Censura):</strong> En esta fase, no se critica ni se evalúa ninguna idea. Todas las opciones son bienvenidas.</li>
+                    <li><strong>Técnicas de Brainstorming:</strong> Se pueden usar listas, mapas mentales, o simplemente anotar ideas a medida que surgen. Preguntarse "¿Qué he intentado antes?", "¿Qué le aconsejaría a un amigo?", "¿Qué haría alguien a quien admiro?".</li>
                 </ul>
+                <div class="example-box">
+                    <h5>Ejemplo de Brainstorming (Problema: "No tengo tiempo para hacer ejercicio"):</h5>
+                    <ul>
+                        <li>Levantarme 30 minutos antes.</li>
+                        <li>Hacer ejercicio durante la pausa del almuerzo.</li>
+                        <li>Ir al gimnasio después del trabajo.</li>
+                        <li>Hacer ejercicio en casa con videos online.</li>
+                        <li>Caminar o ir en bicicleta al trabajo.</li>
+                        <li>Reducir el tiempo en redes sociales para liberar espacio.</li>
+                        <li>Hacer ejercicio los fines de semana.</li>
+                        <li>Pedir a mi pareja que se encargue de los niños mientras hago ejercicio.</li>
+                        <li>No hacer ejercicio (y aceptar las consecuencias).</li>
+                    </ul>
+                </div>
+
+                <h4>4. Toma de Decisiones: Evaluación y Selección de la(s) Mejor(es) Solución(es)</h4>
+                <p>Con una lista de posibles soluciones, el siguiente paso es evaluarlas sistemáticamente para elegir la más prometedora:</p>
+                <ul>
+                    <li><strong>Evaluar cada solución generada considerando:</strong>
+                        <ul>
+                            <li><em>Probabilidad de éxito:</em> ¿Qué tan probable es que esta solución resuelva el problema o me acerque a mi meta?</li>
+                            <li><em>Consecuencias a corto plazo:</em> ¿Cuáles son los efectos inmediatos (positivos y negativos) de implementar esta solución?</li>
+                            <li><em>Consecuencias a largo plazo:</em> ¿Cuáles son los efectos a más largo plazo (positivos y negativos)?</li>
+                            <li><em>Recursos necesarios:</em> ¿Cuánto tiempo, esfuerzo, dinero, o ayuda de otros requiere esta solución? ¿Dispongo de ellos?</li>
+                            <li><em>Congruencia con los propios valores:</em> ¿Esta solución está alineada con mis principios y lo que es importante para mí?</li>
+                            <li><em>Obstáculos potenciales para su implementación:</em> ¿Qué dificultades podrían surgir al intentar llevarla a cabo?</li>
+                        </ul>
+                    </li>
+                    <li><strong>Utilizar una Matriz de Decisión o Análisis de Pros y Contras:</strong> Para cada solución viable, listar los pros y los contras, y quizás asignarles un peso o puntuación.</li>
+                    <li><strong>Seleccionar la Solución (o Combinación de Soluciones):</strong> Con base en la evaluación, elegir la opción que parezca ofrecer el mejor balance de beneficios sobre costos y la mayor probabilidad de éxito. A veces, una combinación de varias soluciones es lo más efectivo.</li>
+                </ul>
+
+                <h4>5. Implementación de la Solución Elegida: Planificación Detallada y Ejecución</h4>
+                <p>Una vez seleccionada la solución, es crucial desarrollar un plan de acción concreto:</p>
+                <ul>
+                    <li><strong>Desarrollar un Plan de Acción Específico:</strong> ¿Qué pasos exactos se necesitan para implementar la solución? Desglosarlos en tareas pequeñas y manejables.</li>
+                    <li><strong>Establecer un Cronograma:</strong> ¿Cuándo se realizará cada paso? Poner fechas límite realistas.</li>
+                    <li><strong>Identificar Recursos Necesarios:</strong> ¿Qué se necesita (materiales, información, apoyo) para cada paso?</li>
+                    <li><strong>Anticipar Posibles Obstáculos y Planificar Contingencias:</strong> ¿Qué podría salir mal y cómo se manejaría?</li>
+                    <li><strong>Llevar a Cabo el Plan:</strong> Poner en práctica los pasos definidos.</li>
+                    <li><strong>Auto-Monitoreo Durante la Implementación:</strong> Prestar atención a cómo va funcionando el plan y si se están cumpliendo los pasos.</li>
+                </ul>
+
+                <h4>6. Verificación y Evaluación de los Resultados: ¿Funcionó?</h4>
+                <p>Después de haber implementado la solución, es vital evaluar su efectividad:</p>
+                <ul>
+                    <li><strong>Comparar los Resultados con las Metas:</strong> ¿Se resolvió el problema o se alcanzó la meta establecida en el paso 2? ¿En qué medida?</li>
+                    <li><strong>Evaluar las Consecuencias:</strong> ¿Cuáles fueron los resultados reales (positivos y negativos) comparados con los anticipados?</li>
+                    <li><strong>Auto-Refuerzo:</strong> Si la solución fue exitosa, reconocer y recompensar el esfuerzo y el logro. Esto aumenta la autoeficacia.</li>
+                    <li><strong>Aprender del Proceso:</strong> Independientemente del resultado, ¿qué se aprendió de la experiencia? ¿Qué funcionó bien? ¿Qué se podría mejorar la próxima vez?</li>
+                    <li><strong>Ajustar si es Necesario:</strong> Si el problema no se resolvió satisfactoriamente o surgieron nuevos problemas, se puede volver a los pasos anteriores del modelo (ej. redefinir el problema, generar nuevas soluciones, elegir una alternativa diferente). La resolución de problemas es a menudo un proceso iterativo.</li>
+                </ul>
+                <p><em>Recordar que los intentos fallidos no son fracasos, sino oportunidades valiosas de aprendizaje que proporcionan información útil para futuros intentos.</em></p>
+            </section>
+            
+            <section class="component-content-section">
+                <h3><i class="fas-cogs"></i> Habilidades Complementarias para la Resolución Efectiva de Problemas</h3>
+                <p>El proceso de resolución de problemas se ve potenciado por otras habilidades cognitivas y conductuales:</p>
+                <ul>
+                    <li><strong>Manejo de Emociones:</strong> Emociones intensas pueden nublar el juicio. Aprender a regularlas (ej. con técnicas de mindfulness o relajación) permite pensar con más claridad.</li>
+                    <li><strong>Reestructuración Cognitiva:</strong> Desafiar pensamientos como "esto es imposible" o "no soy capaz" es crucial.</li>
+                    <li><strong>Asertividad:</strong> Muchos problemas requieren comunicar necesidades o límites a otros.</li>
+                    <li><strong>Toma de Perspectiva:</strong> Ver el problema desde el punto de vista de otros involucrados puede abrir nuevas soluciones.</li>
+                    <li><strong>Creatividad:</strong> Salir de los patrones habituales de pensamiento para encontrar soluciones novedosas.</li>
+                </ul>
+            </section>
+
+            <section class="component-content-section">
+                <h3><i class="fas fa-user-md"></i> Conclusión: Empoderándose a Través de la Habilidad de Resolver Problemas</h3>
                 <p>
-                    Al integrar estas habilidades, la TCC busca no solo aliviar los síntomas actuales, sino también empoderar a las personas con un conjunto de herramientas que pueden utilizar para afrontar futuros desafíos de manera más adaptativa y resiliente, mejorando su calidad de vida general.
+                    El entrenamiento en Resolución de Problemas dentro de la TCC es una herramienta profundamente empoderadora. Al aprender y practicar estos pasos de manera sistemática, las personas no solo se vuelven más capaces de enfrentar los desafíos específicos que les llevaron a terapia, sino que también adquieren una habilidad transferible y vital para manejar las dificultades futuras de manera más independiente y con mayor confianza. Reduce la sensación de impotencia y aumenta la autoeficacia, contribuyendo significativamente a un mayor bienestar general y a una vida más satisfactoria y autodirigida.
                 </p>
             </section>
+
+            <div class="navigation-buttons-container">
+                <a href="tecnicas_exposicion_cbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a Técnicas de Exposición</a>
+                <a href="cbt.html" class="nav-btn continue-btn">Finalizar Curso TCC y Volver <i class="fas fa-check-circle"></i></a>
+            </div>
+
         </div>
     </main>
 
@@ -579,10 +811,10 @@
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
+                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
                      currentPageFilename === 'activacion_conductual_cbt.html' ||
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
-                     currentPageFilename === 'resolucion_problemas_cbt.html'
+                     currentPageFilename === 'resolucion_problemas_cbt.html' // Current page
                      )) {
                      link.classList.add('active'); 
                 } else if (linkFilename === currentPageFilename) {
@@ -601,22 +833,25 @@
                 });
             }
             
-            const animatedSection = document.querySelector('.component-content-section'); 
-            if (animatedSection) {
+            const animatedSections = document.querySelectorAll('.component-content-section'); 
+            if (animatedSections.length > 0) {
                  const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
-                    threshold: 0.1 
+                    threshold: 0.05 
                 };
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            obs.unobserve(entry.target); 
+                        } else {
+                            // entry.target.classList.remove('visible');
                         }
                     });
                 }, observerOptions);
-                observer.observe(animatedSection);
+                animatedSections.forEach(section => {
+                    observer.observe(section);
+                });
             }
         });
     </script>
