@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tolerancia al Malestar en DBT - Borderline Journey</title>
+    <title>Tolerancia al Malestar en DBT - Guía Exhaustiva - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -14,10 +14,11 @@
             --accent-green: #00FF7F;
             --accent-blue: #1E90FF;
             --accent-yellow: #FFD700;
-            --accent-red: #FF4500;
+            --accent-red: #FF4500; /* Primary accent for this page */
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
@@ -29,7 +30,7 @@
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209;
-            --accent-red-rgb: 255, 69, 0;
+            --accent-red-rgb: 255, 69, 0; /* Primary accent for this page */
         }
         
         * {
@@ -188,13 +189,20 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.8rem; 
+            font-weight: 700;
             color: var(--accent-red); /* Module specific color */
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--accent-red-rgb),0.5);
+            text-transform: none; 
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(var(--accent-red-rgb),0.4); 
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .page-header h2 i {
+            font-size: 2.5rem; 
         }
 
         .page-header p.subtitle {
@@ -204,11 +212,11 @@
             margin: 0 auto 2rem auto;
         }
         
-        .module-content-section {
+        .module-content-section { 
             background: var(--card-bg);
-            padding: 30px;
+            padding: 30px 35px; 
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem; 
             border: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(30px);
@@ -220,51 +228,118 @@
         }
 
         .module-content-section h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.8rem;
+            font-family: 'Raleway', sans-serif; 
+            font-weight: 700; 
+            font-size: 1.9rem; 
             color: var(--accent-red); /* Module specific color */
-            margin-bottom: 1.5rem;
+            margin-top: 1rem; 
+            margin-bottom: 1.8rem; 
             text-align: center;
-            border-bottom: 2px dashed var(--accent-red);
-            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--accent-red); 
+            padding-bottom: 0.8rem; 
         }
          .module-content-section h4 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.3rem;
+            font-family: 'Raleway', sans-serif; 
+            font-weight: 700; 
+            font-size: 1.5rem; 
             color: var(--accent-yellow);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--accent-yellow);
-            padding-left: 10px;
+            margin-top: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            border-left: 4px solid var(--accent-yellow); 
+            padding-left: 15px; 
+        }
+        .module-content-section h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-cyan); 
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .module-content-section p {
+        .module-content-section p, 
+        .module-content-section li { 
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; 
             color: var(--text-color-light);
+            line-height: 1.9; 
         }
-        .module-content-section ul {
+        .module-content-section ul,
+        .module-content-section ol {
             list-style: none;
-            padding-left: 0;
+            padding-left: 0; 
             margin-bottom: 1.5rem;
         }
         .module-content-section ul li {
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-            padding-left: 25px;
+            padding-left: 30px; 
             position: relative;
         }
         .module-content-section ul li::before {
-            content: '\f00c'; /* FontAwesome check icon */
+            content: '\f058'; /* Changed to check-circle for this module */
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
             color: var(--accent-red); /* Module specific color */
             position: absolute;
             left: 0;
-            top: 2px;
+            top: 4px; 
+            font-size: 1em; 
         }
-
+         .module-content-section ol li {
+            padding-left: 10px; 
+            margin-left: 20px; 
+            list-style-position: outside;
+        }
+        .module-content-section ol {
+            list-style-type: decimal; 
+        }
+        .module-content-section strong {
+            color: var(--accent-green); 
+            font-weight: 700;
+        }
+        .module-content-section em {
+            color: var(--accent-yellow); 
+            font-style: italic;
+        }
+        .module-content-section blockquote {
+            border-left: 5px solid var(--accent-blue); 
+            padding: 15px 25px;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+            background-color: rgba(var(--accent-blue-rgb), 0.08);
+            border-radius: 0 10px 10px 0;
+            font-size: 1.05rem;
+        }
+        .module-content-section blockquote p {
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .example-box {
+            background-color: rgba(var(--secondary-cyan-rgb), 0.05); /* Changed for variety */
+            border: 1px dashed var(--secondary-cyan);
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .example-box h5 {
+            color: var(--secondary-cyan);
+            margin-top: 0;
+            font-family: 'Raleway', sans-serif; 
+            font-weight: 700;
+        }
+        .keyword-link { 
+            color: var(--accent-yellow);
+            text-decoration: none;
+            font-weight: bold;
+            border-bottom: 1px dashed var(--accent-yellow);
+            transition: all 0.3s ease;
+        }
+        .keyword-link:hover {
+            color: var(--accent-green);
+            border-bottom-color: var(--accent-green);
+        }
+        
         .breadcrumb {
             text-align: center;
             margin-bottom: 2rem;
@@ -280,6 +355,59 @@
         }
         .breadcrumb span {
             color: var(--text-color-medium);
+        }
+
+        .navigation-buttons-container {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            flex-wrap: wrap; 
+            gap: 1.5rem; 
+            margin-top: 3rem; 
+            margin-bottom: 1.5rem; 
+            padding: 1rem 0;
+            border-top: 1px dashed rgba(var(--primary-violet-rgb), 0.3);
+        }
+
+        .nav-btn {
+            display: inline-flex; 
+            align-items: center;
+            justify-content: center; 
+            gap: 10px;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            flex-grow: 1; 
+            min-width: 220px; 
+            text-align: center;
+        }
+        .nav-btn i {
+            font-size: 1em; 
+        }
+
+        .back-btn { /* For "Volver a Regulación Emocional" */
+            background: linear-gradient(45deg, var(--accent-green), var(--primary-violet)); 
+            color: white; 
+            box-shadow: 0 3px 10px rgba(var(--accent-green-rgb), 0.4);
+        }
+        .back-btn:hover {
+            background: linear-gradient(45deg, var(--primary-violet), var(--accent-green)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--primary-violet-rgb), 0.5); 
+        }
+
+        .continue-btn { /* For "Continuar con Efectividad Interpersonal" */
+            background: linear-gradient(45deg, var(--accent-blue), var(--secondary-cyan)); 
+            color: white; 
+            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.4);
+        }
+        .continue-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-blue)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--secondary-cyan-rgb), 0.5); 
         }
         
         footer { 
@@ -394,8 +522,12 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
-            .module-content-section h3 {font-size: 1.6rem;}
+            .page-header h2 { font-size: 2.2rem; } 
+            .module-content-section h3 {font-size: 1.7rem;} 
+            .module-content-section h4 {font-size: 1.3rem;} 
+            .navigation-buttons-container { flex-direction: column; } 
+            .nav-btn { width: 100%; max-width: 300px; } 
+
         }
         
         @media (max-width: 600px) {
@@ -403,12 +535,14 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } 
             .page-header p.subtitle { font-size: 1rem; }
             .module-content-section { padding: 20px; }
-            .module-content-section h3 {font-size: 1.5rem;}
-            .module-content-section p {font-size: 1rem;}
-            .module-content-section ul li {font-size: 0.95rem;}
+            .module-content-section h3 {font-size: 1.6rem;} 
+            .module-content-section h4 {font-size: 1.2rem;} 
+            .module-content-section p,
+            .module-content-section li {font-size: 1rem;} 
+            .nav-btn { padding: 10px 20px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -418,7 +552,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+            <a href="index.html" rel="noopener noreferrer" class="logo">
                 <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
@@ -451,62 +585,138 @@
             </div>
 
             <section class="module-content-section">
-                <h3>Navegando las Tormentas Emocionales</h3>
+                <h3><i class="fas fa-water"></i> Navegando las Tormentas Emocionales: Introducción a la Tolerancia al Malestar</h3>
                 <p>
-                    La vida inevitablemente nos presenta situaciones dolorosas y crisis emocionales. El módulo de Tolerancia al Malestar en DBT se enfoca en desarrollar la capacidad de experimentar y sobrevivir a estas dificultades sin recurrir a comportamientos impulsivos o desadaptativos que, a menudo, solo intensifican el sufrimiento a largo plazo.
+                    La vida, en su inherente complejidad, inevitablemente nos presenta situaciones dolorosas, momentos de crisis y emociones intensas que pueden sentirse abrumadoras. El módulo de <strong>Tolerancia al Malestar</strong> de la Terapia Dialéctico Conductual (DBT) se enfoca precisamente en desarrollar la capacidad de <em>experimentar y sobrevivir</em> a estas dificultades sin recurrir a comportamientos impulsivos, autodestructivos o desadaptativos que, aunque puedan ofrecer un alivio momentáneo, a menudo solo intensifican el sufrimiento a largo plazo y nos alejan de la vida que deseamos construir.
                 </p>
                 <p>
-                    Estas habilidades no buscan eliminar el dolor, ya que cierto grado de malestar es parte de la experiencia humana, sino más bien enseñarnos a atravesarlo de manera consciente y efectiva. Se dividen principalmente en dos categorías: habilidades de supervivencia a la crisis y habilidades de aceptación de la realidad.
+                    Es crucial entender que estas habilidades <strong>no buscan eliminar el dolor o el malestar</strong> por completo. El dolor es una parte inevitable de la experiencia humana; intentar suprimirlo o evitarlo constantemente puede ser contraproducente. En lugar de ello, la Tolerancia al Malestar nos enseña a <em>atravesar</em> estas experiencias difíciles de manera consciente y efectiva, reduciendo el sufrimiento añadido que proviene de la lucha contra la realidad o de las acciones impulsivas. Este módulo se divide principalmente en dos categorías de habilidades: <strong>Habilidades de Supervivencia a la Crisis</strong> y <strong>Habilidades de Aceptación de la Realidad</strong>.
                 </p>
-
-                <h4>Habilidades de Supervivencia a la Crisis</h4>
-                <p>Estas son estrategias a corto plazo para momentos de angustia intensa, cuando no podemos resolver el problema de inmediato:</p>
-                <ul>
-                    <li><strong>Habilidades TIPP:</strong> Cambiar la química de tu cuerpo para reducir la excitación emocional extrema.
-                        <ul>
-                            <li><strong>T</strong>emperatura: Usar agua fría en la cara o sostener hielo.</li>
-                            <li><strong>I</strong>ntense Ejercicio: Realizar actividad física vigorosa por un corto período.</li>
-                            <li><strong>P</strong>aced Breathing (Respiración Rítmica): Ralentizar la respiración, exhalando más tiempo que inhalando.</li>
-                            <li><strong>P</strong>aired Muscle Relaxation (Relajación Muscular Progresiva): Tensar y relajar grupos musculares.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Distraerse con la Mente Sabia (ACCEPTS):</strong> Desviar la atención del dolor emocional de forma saludable.
-                        <ul>
-                            <li><strong>A</strong>ctividades: Realizar actividades agradables o que requieran concentración.</li>
-                            <li><strong>C</strong>ontribuir: Ayudar a otros.</li>
-                            <li><strong>C</strong>omparaciones: Poner la situación en perspectiva comparándola con otras.</li>
-                            <li><strong>E</strong>mociones Opuestas: Generar emociones diferentes a la actual.</li>
-                            <li><strong>P</strong>ushing Away (Alejar): Dejar temporalmente de lado la situación dolorosa.</li>
-                            <li><strong>T</strong>houghts (Pensamientos): Ocupar la mente con otros pensamientos.</li>
-                            <li><strong>S</strong>ensaciones: Usar los cinco sentidos para enfocarse en el presente.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Auto-Calma (Self-Soothe):</strong> Confortarse a través de los cinco sentidos (vista, oído, olfato, gusto, tacto) de manera amable y nutritiva.</li>
-                    <li><strong>Mejorar el Momento (IMPROVE):</strong> Usar estrategias para hacer que el momento actual sea un poco más tolerable.
-                        <ul>
-                            <li><strong>I</strong>magery (Imágenes): Visualizar escenas relajantes o de éxito.</li>
-                            <li><strong>M</strong>eaning (Significado): Encontrar un propósito o valor en el dolor.</li>
-                            <li><strong>P</strong>rayer (Oración/Reflexión): Conectar con un sentido de trascendencia o valores profundos.</li>
-                            <li><strong>R</strong>elaxation (Relajación): Usar técnicas de relajación.</li>
-                            <li><strong>O</strong>ne thing in the moment (Una cosa a la vez): Enfocarse en el presente.</li>
-                            <li><strong>V</strong>acation (Vacaciones breves): Tomar un breve descanso mental.</li>
-                            <li><strong>E</strong>ncouragement (Auto-aliento): Darse mensajes de apoyo y esperanza.</li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <h4>Habilidades de Aceptación de la Realidad</h4>
-                <p>Estas habilidades nos ayudan a aceptar la vida tal como es, especialmente cuando no podemos cambiar una situación dolorosa:</p>
-                <ul>
-                    <li><strong>Aceptación Radical:</strong> Aceptar completa y totalmente la realidad, sin luchar contra ella, sin juzgarla y sin resignación pasiva. Es reconocer que la realidad es lo que es, independientemente de si nos gusta o no.</li>
-                    <li><strong>Volver la Mente (Turning the Mind):</strong> Tomar la decisión consciente de aceptar la realidad, una y otra vez, cada vez que la mente se rebele contra ella.</li>
-                    <li><strong>Disposición (Willingness):</strong> Participar plenamente en la realidad tal como es, sin oponerse ni evitarla. Es lo opuesto a la "obstinación" (willfulness).</li>
-                    <li><strong>Media Sonrisa y Manos Dispuestas:</strong> Usar posturas corporales que fomenten la aceptación y la apertura a la experiencia.</li>
-                </ul>
-                <p>
-                    Las habilidades de tolerancia al malestar son esenciales para romper ciclos de reactividad emocional y comportamientos impulsivos, permitiendo a las personas afrontar el dolor de manera más sabia y construir una mayor resiliencia.
-                </p>
+                 <blockquote>
+                    <p>"El dolor es inevitable, el sufrimiento es opcional." - Haruki Murakami (Una cita que resuena con el espíritu de la Tolerancia al Malestar).</p>
+                </blockquote>
             </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-first-aid"></i> Habilidades de Supervivencia a la Crisis: Herramientas para el Ahora Mismo</h3>
+                <p>Estas son estrategias a corto plazo diseñadas para ayudarte a superar momentos de angustia emocional intensa, cuando no puedes resolver el problema de inmediato o cuando la emoción es tan fuerte que corres el riesgo de actuar de manera perjudicial.</p>
+                
+                <h4>1. Habilidades TIPP: Cambiando la Química de tu Cuerpo</h4>
+                <p>Las habilidades TIPP actúan rápidamente sobre la fisiología de tu cuerpo para reducir la excitación emocional extrema:</p>
+                <ul>
+                    <li>
+                        <strong>T - Temperatura:</strong>
+                        <ul>
+                            <li><strong>Descripción:</strong> Usar frío intenso para activar el "reflejo de buceo" mamífero, que ralentiza el ritmo cardíaco y calma el sistema nervioso.</li>
+                            <li><strong>Cómo:</strong> Sostener la respiración y sumergir la cara (desde las sienes hasta debajo de los ojos) en un recipiente con agua muy fría (no helada) durante 15-30 segundos. Alternativamente, se puede aplicar una bolsa de hielo o compresas frías en esa zona, o en la nuca o muñecas.</li>
+                            <li><strong>Precaución:</strong> Consultar con un médico si se tienen problemas cardíacos o de presión arterial.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>I - Ejercicio Intenso (Intense Exercise):</strong>
+                        <ul>
+                            <li><strong>Descripción:</strong> Realizar actividad física vigorosa durante un corto período (ej. 10-20 minutos) para liberar la energía acumulada por la emoción intensa y cambiar el estado fisiológico.</li>
+                            <li><strong>Cómo:</strong> Correr en el sitio, subir y bajar escaleras, hacer saltos de tijera, bailar intensamente, etc.</li>
+                            <li><strong>Objetivo:</strong> Elevar el ritmo cardíaco y luego permitir que el cuerpo se calme.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>P - Respiración Rítmica (Paced Breathing):</strong>
+                        <ul>
+                            <li><strong>Descripción:</strong> Ralentizar deliberadamente el ritmo de la respiración, haciendo que la exhalación sea más larga que la inhalación. Esto activa el sistema nervioso parasimpático, que promueve la calma.</li>
+                            <li><strong>Cómo:</strong> Inhalar lentamente contando hasta 4, y exhalar aún más lentamente contando hasta 6 u 8. Repetir durante varios minutos.</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <strong>P - Relajación Muscular Progresiva (Paired Muscle Relaxation):</strong>
+                        <ul>
+                            <li><strong>Descripción:</strong> Tensar y luego relajar sistemáticamente diferentes grupos musculares del cuerpo. Esto ayuda a liberar la tensión física asociada a la angustia emocional.</li>
+                            <li><strong>Cómo:</strong> Tensar un grupo muscular (ej. puños) mientras inhalas, mantener la tensión unos segundos, y luego relajar completamente el músculo mientras exhalas. Repetir con diferentes grupos musculares (brazos, hombros, cara, abdomen, piernas, pies).</li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="example-box">
+                    <h5>Cuándo usar TIPP:</h5>
+                    <p>Cuando la emoción es tan intensa (ej. 80-100 en una escala de 0-100) que no puedes pensar con claridad ni usar otras habilidades más cognitivas.</p>
+                </div>
+            </section>
+
+            <section class="module-content-section">
+                <h4>2. Distraerse con la Mente Sabia (ACCEPTS): Un Respiro Saludable</h4>
+                <p>Cuando el dolor emocional es muy fuerte, distraerse temporalmente de manera saludable puede ser una estrategia efectiva para evitar que la emoción te abrume o te lleve a conductas problemáticas. El acrónimo <strong>ACCEPTS</strong> te ofrece siete formas de hacerlo:</p>
+                <ul>
+                    <li><strong>A - Actividades:</strong> Realizar actividades que requieran concentración o que sean placenteras para desviar la atención (ej. ver una película, leer un libro, hacer un crucigrama, jugar a un videojuego, cocinar, pintar).</li>
+                    <li><strong>C - Contribuir:</strong> Ayudar a otros o hacer algo por alguien más. Esto puede desviar el foco de tu propio dolor y generar emociones positivas (ej. hacer un favor, ser voluntario, escuchar a un amigo).</li>
+                    <li><strong>C - Comparaciones:</strong> Poner tu situación actual en perspectiva comparándola con momentos en los que te has sentido peor y has sobrevivido, o comparándote con otros que están en situaciones más difíciles (con cuidado de no invalidar tu propio dolor).</li>
+                    <li><strong>E - Emociones Opuestas:</strong> Generar emociones diferentes a la que estás sintiendo. Si te sientes triste, mira una comedia. Si te sientes enfadado, escucha música relajante o lee algo inspirador.</li>
+                    <li><strong>P - Pushing Away (Alejar Temporalmente):</strong> Dejar de lado mentalmente la situación dolorosa por un tiempo. Imagina que la pones en una caja y la guardas para lidiar con ella más tarde, cuando estés más calmado/a.</li>
+                    <li><strong>T - Thoughts (Otros Pensamientos):</strong> Ocupar tu mente con otros pensamientos que no estén relacionados con la emoción dolorosa (ej. contar objetos, recitar algo, planificar una actividad agradable, resolver un acertijo mental).</li>
+                    <li><strong>S - Sensaciones Intensas:</strong> Usar sensaciones físicas intensas (pero no dañinas) para desviar la atención del dolor emocional (ej. sostener un cubito de hielo, morder un limón, oler un aroma fuerte como la menta, escuchar música a alto volumen por un momento).</li>
+                </ul>
+            </section>
+
+            <section class="module-content-section">
+                <h4>3. Auto-Calma (Self-Soothe) con los Cinco Sentidos: Confort y Bienestar</h4>
+                <p>Esta habilidad implica ser amable y reconfortante contigo mismo/a utilizando tus cinco sentidos para crear experiencias placenteras y calmantes en el momento presente. Es especialmente útil cuando te sientes abrumado/a o necesitas un respiro.</p>
+                <ul>
+                    <li><strong>Vista:</strong> Mirar algo hermoso o agradable (ej. flores, arte, fotos de seres queridos, la naturaleza, una vela encendida).</li>
+                    <li><strong>Oído:</strong> Escuchar música relajante o que te guste, los sonidos de la naturaleza (pájaros, lluvia), un podcast interesante, o el silencio.</li>
+                    <li><strong>Olfato:</strong> Oler aromas agradables (ej. aceites esenciales, velas aromáticas, flores frescas, tu perfume favorito, el olor del café o del pan horneándose).</li>
+                    <li><strong>Gusto:</strong> Saborear algo delicioso con atención plena (ej. un trozo de chocolate, tu té favorito, una fruta fresca). No se trata de comer emocionalmente, sino de disfrutar conscientemente de un pequeño placer.</li>
+                    <li><strong>Tacto:</strong> Experimentar sensaciones táctiles agradables (ej. acariciar a una mascota, envolverte en una manta suave, darte un baño caliente, usar una loción con un olor agradable, sentir la textura de una piedra lisa).</li>
+                </ul>
+            </section>
+
+            <section class="module-content-section">
+                <h4>4. Mejorar el Momento (IMPROVE the Moment): Haciendo lo Difícil un Poco Más Soportable</h4>
+                <p>Cuando estás en una situación dolorosa que no puedes cambiar de inmediato, las habilidades IMPROVE te ayudan a encontrar formas de hacer que ese momento sea un poco más tolerable:</p>
+                <ul>
+                    <li><strong>I - Imagery (Imágenes Mentales):</strong> Visualizar escenas relajantes, pacíficas o de éxito. Imagina un lugar seguro y tranquilo, o visualízate afrontando la situación con calma y competencia.</li>
+                    <li><strong>M - Meaning (Significado):</strong> Intentar encontrar algún propósito, valor o significado en el dolor o la dificultad. Preguntarte: "¿Qué puedo aprender de esto?", "¿Cómo puede esto ayudarme a crecer?".</li>
+                    <li><strong>P - Prayer (Oración o Reflexión Espiritual):</strong> Conectar con un sentido de trascendencia, valores espirituales o una fuerza superior, si esto es significativo para ti. Puede ser una oración formal o una reflexión personal profunda.</li>
+                    <li><strong>R - Relaxation (Relajación):</strong> Usar técnicas de relajación como la respiración diafragmática, la meditación, el yoga suave, o escuchar música relajante.</li>
+                    <li><strong>O - One thing in the moment (Una Cosa a la Vez):</strong> Enfocarse completamente en lo que estás haciendo en el momento presente, en lugar de preocuparte por el pasado o el futuro. Similar a la habilidad "Unidireccionalmente" de Mindfulness.</li>
+                    <li><strong>V - Vacation (Vacaciones Breves):</strong> Tomar un breve descanso mental o físico de la situación estresante. Desconectar por unos minutos o unas horas para recargar energías (ej. dar un paseo corto, leer algo no relacionado con el problema, tomar una siesta si es posible).</li>
+                    <li><strong>E - Encouragement (Auto-aliento y Autocompasión):</strong> Darte mensajes de apoyo, ánimo y comprensión. Hablarte a ti mismo/a como lo harías con un buen amigo que está sufriendo (ej. "Puedo superar esto", "Estoy haciendo lo mejor que puedo", "Es normal sentirse así").</li>
+                </ul>
+            </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-handshake"></i> Habilidades de Aceptación de la Realidad: Abrazando lo Inevitable</h3>
+                <p>Estas habilidades nos ayudan a aceptar la vida tal como es, con sus dolores y dificultades, especialmente cuando nos enfrentamos a situaciones que no podemos cambiar o que son parte del pasado. La aceptación no es aprobación ni resignación pasiva, sino un reconocimiento activo de la realidad para poder vivir más plenamente a pesar de ella.</p>
+
+                <h4>1. Aceptación Radical: Abrazar la Realidad Completamente</h4>
+                <p>La <strong>Aceptación Radical</strong> implica aceptar completa y totalmente, con mente, cuerpo y espíritu, la realidad tal como es, sin luchar contra ella, sin juzgarla y sin amargura. Es reconocer que la realidad es lo que es, independientemente de si nos gusta, si la aprobamos, o si creemos que es justa.</p>
+                <ul>
+                    <li><strong>¿Qué es Aceptar Radicalmente?</strong> Es decir "sí" a la realidad, incluso cuando es dolorosa. Es dejar de luchar contra lo que no podemos cambiar.</li>
+                    <li><strong>¿Qué NO es Aceptar Radicalmente?</strong> No es aprobar la situación, no es resignarse pasivamente, no es dejar de intentar cambiar las cosas que sí se pueden cambiar en el futuro.</li>
+                    <li><strong>¿Por qué Aceptar Radicalmente?</strong> Porque rechazar la realidad no la cambia, solo aumenta nuestro sufrimiento (dolor + no aceptación = sufrimiento). La aceptación reduce el sufrimiento y nos libera energía para enfocarnos en lo que sí podemos hacer.</li>
+                    <li><strong>Pasos para Practicar la Aceptación Radical:</strong> Observar que estás luchando contra la realidad. Recordarte a ti mismo que la realidad desagradable es tal como es y no puede ser cambiada. Recordarte a ti mismo que hay causas para la realidad. Practicar la aceptación con todo tu ser (mente, cuerpo, espíritu).</li>
+                </ul>
+
+                <h4>2. Volver la Mente (Turning the Mind): El Compromiso con la Aceptación</h4>
+                <p>Aceptar radicalmente no es un acto único, sino un proceso que a menudo requiere un esfuerzo repetido. <strong>Volver la Mente</strong> es la habilidad de tomar la decisión consciente de aceptar la realidad, una y otra vez, cada vez que la mente se rebele contra ella con pensamientos de "no debería ser así" o "esto no es justo". Es como girar suavemente un volante para mantener el coche en el camino de la aceptación.</p>
+
+                <h4>3. Disposición vs. Obstinación (Willingness vs. Willfulness)</h4>
+                <ul>
+                    <li><strong>Disposición (Willingness):</strong> Es la capacidad de participar plenamente en la realidad tal como es, sin oponerse ni evitarla. Implica hacer lo que es necesario en cada situación, de acuerdo con tus metas y valores, incluso si es difícil o desagradable.</li>
+                    <li><strong>Obstinación (Willfulness):</strong> Es lo opuesto a la disposición. Implica negarse a aceptar la realidad, luchar contra ella, insistir en que las cosas sean diferentes, o actuar de manera impulsiva y contraproducente. Es "cortarse la nariz para fastidiar la cara".</li>
+                </ul>
+                <p>Cultivar la disposición es clave para la aceptación y la efectividad.</p>
+
+                <h4>4. Media Sonrisa y Manos Dispuestas: Usando el Cuerpo para Fomentar la Aceptación</h4>
+                <p>Estas son posturas físicas sutiles que pueden ayudar a cambiar nuestro estado interno hacia una mayor aceptación:</p>
+                <ul>
+                    <li><strong>Media Sonrisa:</strong> Relajar los músculos de la cara y dibujar una leve sonrisa con los labios, como la de la Mona Lisa. Esta postura puede enviar señales al cerebro que promueven la calma y la aceptación, incluso si no te sientes particularmente feliz.</li>
+                    <li><strong>Manos Dispuestas:</strong> Sentarse o estar de pie con las manos abiertas, las palmas hacia arriba, los dedos relajados, descansando sobre el regazo o a los lados. Esta postura corporal abierta y receptiva puede fomentar una actitud interna de disposición y aceptación.</li>
+                </ul>
+            </section>
+            
+            <div class="navigation-buttons-container">
+                <a href="regulacion_emocional_dbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a Regulación Emocional</a>
+                <a href="efectividad_interpersonal_dbt.html" class="nav-btn continue-btn">Continuar con Efectividad Interpersonal <i class="fas fa-arrow-right"></i></a>
+            </div>
+
         </div>
     </main>
 
@@ -602,10 +812,10 @@
                      currentPageFilename === 'cbt.html' ||
                      currentPageFilename === 'mindfulness_dbt.html' ||
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
-                     currentPageFilename === 'tolerancia_malestar_dbt.html' ||
+                     currentPageFilename === 'tolerancia_malestar_dbt.html' || // Current page
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
-                     currentPageFilename === 'activacion_conductual_cbt.html' ||
+                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
+                     currentPageFilename === 'activacion_conductual_cbt.html' || 
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
                      currentPageFilename === 'resolucion_problemas_cbt.html'
                      )) {
@@ -626,22 +836,25 @@
                 });
             }
             
-            const animatedSection = document.querySelector('.module-content-section'); 
-            if (animatedSection) {
+            const animatedSections = document.querySelectorAll('.module-content-section'); 
+            if (animatedSections.length > 0) {
                  const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
-                    threshold: 0.1 
+                    threshold: 0.05 
                 };
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            obs.unobserve(entry.target); 
+                        } else {
+                            // entry.target.classList.remove('visible');
                         }
                     });
                 }, observerOptions);
-                observer.observe(animatedSection);
+                animatedSections.forEach(section => {
+                    observer.observe(section);
+                });
             }
         });
     </script>
