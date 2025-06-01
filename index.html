@@ -787,6 +787,22 @@
                 max-width: 300px;
             }
         }
+
+        /* Corrección: Estilo para efecto ripple */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.7);
+            transform: scale(0);
+            animation: ripple 0.6s linear;
+        }
+
+        @keyframes ripple {
+            to {
+                transform: scale(2.5);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -801,31 +817,31 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="index.html" class="active">Inicio</a></li>
-                    <li><a href="psicoeducacion.html">Psicoeducación</a></li>
-                    <li><a href="dbt.html">DBT</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="foro.html">Foro</a></li>
-                    <li><a href="premium.html">Premium</a></li>
+                    <li><a href="#inicio" class="active">Inicio</a></li>
+                    <li><a href="#psicoeducacion">Psicoeducación</a></li>
+                    <li><a href="#dbt">DBT</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#foro">Foro</a></li>
+                    <li><a href="#premium">Premium</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" id="inicio">
         <div class="container hero-content">
             <h2>EXPLORANDO LA MENTE BORDERLINE</h2>
             <p>Un viaje creativo a través de recursos, comunidad y herramientas para comprender y gestionar el Trastorno Límite de la Personalidad</p>
             <div>
                 <a href="#premium" class="cta-button">INICIAR EXPERIENCIA</a>
-                <a href="premium.html" class="cta-button secondary">ACCESO PREMIUM</a>
+                <a href="#premium" class="cta-button secondary">ACCESO PREMIUM</a>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section class="features">
+    <section class="features" id="psicoeducacion">
         <div class="container">
             <div class="section-title">
                 <h2>RECURSOS VISUALES</h2>
@@ -839,37 +855,37 @@
                     <div class="feature-content">
                         <h3>Psicoeducación</h3>
                         <p>Información visual sobre síntomas, causas y estrategias de afrontamiento para el TLP. Aprende con infografías creativas.</p>
-                        <a href="psicoeducacion.html" class="feature-link">Explorar <i class="fas fa-arrow-right"></i></a>
+                        <a href="#psicoeducacion" class="feature-link">Explorar <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
                 <!-- DBT -->
-                <div class="feature-card">
+                <div class="feature-card" id="dbt">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717406-1c69efaf1dd8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
-                        <h3>DBT Visual</h3>
+                        <h3>DBT</h3>
                         <p>Técnicas de Terapia Dialéctica Conductual presentadas de forma creativa y experiencial. Mindfulness con enfoque sensorial.</p>
-                        <a href="dbt.html" class="feature-link">Ver ejercicios <i class="fas fa-arrow-right"></i></a>
+                        <a href="#dbt" class="feature-link">Ver ejercicios <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
                 <!-- Blog -->
-                <div class="feature-card">
-                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1589652717521-10c0d092dea9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                <div class="feature-card" id="blog">
+                    <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
-                        <h3>Blog Experiencial</h3>
+                        <h3>Blog</h3>
                         <p>Relatos personales, arte terapéutico y exploraciones creativas sobre la experiencia de vivir con TLP.</p>
-                        <a href="blog.html" class="feature-link">Leer artículos <i class="fas fa-arrow-right"></i></a>
+                        <a href="#blog" class="feature-link">Leer artículos <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
                 
                 <!-- Foro -->
-                <div class="feature-card">
+                <div class="feature-card" id="foro">
                     <div class="feature-img" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
                     <div class="feature-content">
-                        <h3>Foro de Apoyo</h3>
+                        <h3>Foro</h3>
                         <p>Comunidad segura para compartir experiencias, obtener apoyo y conectar con personas que comprenden el TLP.</p>
-                        <a href="foro.html" class="feature-link">Unirse al foro <i class="fas fa-arrow-right"></i></a>
+                        <a href="#foro" class="feature-link">Unirse al foro <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
@@ -959,7 +975,7 @@
                 </div>
             </div>
             
-            <a href="premium.html" class="cta-button">UNIRME AL VIAJE</a>
+            <a href="#premium" class="cta-button">UNIRME AL VIAJE</a>
         </div>
     </section>
 
@@ -981,22 +997,22 @@
                 <div class="footer-column">
                     <h3>Recursos</h3>
                     <ul class="footer-links">
-                        <li><a href="#">Galería Visual</a></li>
-                        <li><a href="#">Meditaciones Guiadas</a></li>
-                        <li><a href="#">Diario Emocional Interactivo</a></li>
-                        <li><a href="#">Arte Terapéutico</a></li>
-                        <li><a href="#">Recursos de Crisis</a></li>
+                        <li><a href="#psicoeducacion">Galería Visual</a></li>
+                        <li><a href="#dbt">Meditaciones Guiadas</a></li>
+                        <li><a href="#blog">Diario Emocional</a></li>
+                        <li><a href="#foro">Arte Terapéutico</a></li>
+                        <li><a href="#premium">Recursos de Crisis</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Explorar</h3>
                     <ul class="footer-links">
-                        <li><a href="psicoeducacion.html">Psicoeducación</a></li>
-                        <li><a href="dbt.html">DBT Visual</a></li>
-                        <li><a href="blog.html">Blog Experiencial</a></li>
-                        <li><a href="foro.html">Foro de Arte</a></li>
-                        <li><a href="#">Eventos</a></li>
+                        <li><a href="#psicoeducacion">Psicoeducación</a></li>
+                        <li><a href="#dbt">DBT</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#foro">Foro</a></li>
+                        <li><a href="#premium">Eventos</a></li>
                     </ul>
                 </div>
                 
@@ -1080,6 +1096,30 @@
                             top: target.offsetTop - 80,
                             behavior: 'smooth'
                         });
+                    }
+                });
+            });
+            
+            // Destacar sección actual en navegación
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            window.addEventListener('scroll', () => {
+                let current = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    
+                    if (pageYOffset >= (sectionTop - 300)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').includes(current)) {
+                        link.classList.add('active');
                     }
                 });
             });
