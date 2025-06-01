@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efectividad Interpersonal en DBT - Borderline Journey</title>
+    <title>Efectividad Interpersonal en DBT - Guía Completa - Borderline Journey</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -12,19 +12,19 @@
             --secondary-cyan: #00CED1;
             --accent-magenta: #FF00FF;
             --accent-green: #00FF7F;
-            --accent-blue: #1E90FF;
+            --accent-blue: #1E90FF; /* Primary accent for this page */
             --accent-yellow: #FFD700;
-            --accent-red: #FF4500;
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
             --dark-bg: #0A0A20;
 
             --primary-violet-rgb: 138, 43, 226;
-            --accent-blue-rgb: 30, 144, 255;
+            --accent-blue-rgb: 30, 144, 255; /* Primary accent for this page */
             --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
@@ -187,13 +187,21 @@
         }
 
         .page-header h2 {
-            font-family: 'Major Mono Display', monospace;
-            font-size: 2.8rem;
+            /* Typography changed for main title */
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem; 
+            font-weight: 700;
             color: var(--accent-blue); /* Module specific color */
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(var(--accent-blue-rgb),0.5);
+            text-transform: none; 
+            letter-spacing: 0.5px;
+            text-shadow: 0 0 8px rgba(var(--accent-blue-rgb),0.4); 
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .page-header h2 i {
+            font-size: 2.5rem; 
         }
 
         .page-header p.subtitle {
@@ -203,11 +211,11 @@
             margin: 0 auto 2rem auto;
         }
         
-        .module-content-section {
+        .module-content-section { 
             background: var(--card-bg);
-            padding: 30px;
+            padding: 30px 35px; 
             border-radius: 15px;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem; 
             border: 1px solid var(--border-color);
             opacity: 0;
             transform: translateY(30px);
@@ -219,51 +227,109 @@
         }
 
         .module-content-section h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.8rem;
+            /* Typography changed for section titles */
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700; 
+            font-size: 1.9rem; 
             color: var(--accent-blue); /* Module specific color */
-            margin-bottom: 1.5rem;
+            margin-top: 1rem; 
+            margin-bottom: 1.8rem; 
             text-align: center;
-            border-bottom: 2px dashed var(--accent-blue);
-            padding-bottom: 0.5rem;
+            border-bottom: 2px dashed var(--accent-blue); 
+            padding-bottom: 0.8rem; 
         }
          .module-content-section h4 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.3rem;
+            /* Typography changed for sub-section titles */
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700; 
+            font-size: 1.5rem; 
             color: var(--accent-yellow);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-            border-left: 3px solid var(--accent-yellow);
-            padding-left: 10px;
+            margin-top: 2.5rem; 
+            margin-bottom: 1.2rem; 
+            border-left: 4px solid var(--accent-yellow); 
+            padding-left: 15px; 
+        }
+        .module-content-section h5 {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--secondary-cyan);
+            margin-top: 1.5rem;
+            margin-bottom: 0.8rem;
         }
 
-        .module-content-section p {
+        .module-content-section p, 
+        .module-content-section li { 
             font-size: 1.1rem;
             text-align: justify;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem; 
             color: var(--text-color-light);
+            line-height: 1.9; 
         }
-        .module-content-section ul {
+        .module-content-section ul,
+        .module-content-section ol {
             list-style: none;
-            padding-left: 0;
+            padding-left: 0; 
             margin-bottom: 1.5rem;
         }
         .module-content-section ul li {
-            margin-bottom: 0.75rem;
-            font-size: 1.05rem;
-            padding-left: 25px;
+            padding-left: 30px; 
             position: relative;
         }
         .module-content-section ul li::before {
-            content: '\f00c'; /* FontAwesome check icon */
+            content: '\f00c'; 
             font-family: 'Font Awesome 5 Free';
             font-weight: 900;
             color: var(--accent-blue); /* Module specific color */
             position: absolute;
             left: 0;
-            top: 2px;
+            top: 4px; 
+            font-size: 1em; 
         }
-
+         .module-content-section ol li {
+            padding-left: 10px; 
+            margin-left: 20px; 
+            list-style-position: outside;
+        }
+        .module-content-section ol {
+            list-style-type: decimal; 
+        }
+        .module-content-section strong {
+            color: var(--accent-green); 
+            font-weight: 700;
+        }
+        .module-content-section em {
+            color: var(--secondary-cyan); 
+            font-style: italic;
+        }
+        .module-content-section blockquote {
+            border-left: 5px solid var(--accent-green); /* Changed color for variety */
+            padding: 15px 25px;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+            background-color: rgba(var(--accent-green-rgb), 0.08);
+            border-radius: 0 10px 10px 0;
+            font-size: 1.05rem;
+        }
+        .module-content-section blockquote p {
+            margin-bottom: 0;
+            text-align: left;
+        }
+        .example-box {
+            background-color: rgba(var(--accent-yellow-rgb), 0.05);
+            border: 1px dashed var(--accent-yellow);
+            padding: 20px;
+            margin: 1.5rem 0;
+            border-radius: 8px;
+        }
+        .example-box h5 {
+            color: var(--accent-yellow);
+            margin-top: 0;
+            font-family: 'Raleway', sans-serif; /* Ensure consistency */
+            font-weight: 700;
+        }
+        
         .breadcrumb {
             text-align: center;
             margin-bottom: 2rem;
@@ -393,8 +459,9 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.2rem; }
-            .module-content-section h3 {font-size: 1.6rem;}
+            .page-header h2 { font-size: 2.2rem; } 
+            .module-content-section h3 {font-size: 1.7rem;} 
+            .module-content-section h4 {font-size: 1.3rem;} 
         }
         
         @media (max-width: 600px) {
@@ -402,12 +469,13 @@
             .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 1.8rem; }
+            .page-header h2 { font-size: 2rem; } 
             .page-header p.subtitle { font-size: 1rem; }
             .module-content-section { padding: 20px; }
-            .module-content-section h3 {font-size: 1.5rem;}
-            .module-content-section p {font-size: 1rem;}
-            .module-content-section ul li {font-size: 0.95rem;}
+            .module-content-section h3 {font-size: 1.6rem;} 
+            .module-content-section h4 {font-size: 1.2rem;} 
+            .module-content-section p,
+            .module-content-section li {font-size: 1rem;} 
         }
     </style>
 </head>
@@ -417,7 +485,7 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+            <a href="index.html" rel="noopener noreferrer" class="logo">
                 <i class="fas fa-brain"></i>
                 <h1>BORDERLINE JOURNEY</h1>
             </a>
@@ -445,63 +513,195 @@
             <div class="page-header">
                 <h2><i class="fas fa-users"></i> Efectividad Interpersonal en DBT</h2>
                 <p class="subtitle">
-                    Construyendo relaciones saludables, manteniendo el autorespeto y logrando tus objetivos en las interacciones.
+                    Construyendo relaciones saludables, manteniendo el autorespeto y logrando tus objetivos en las interacciones. Una guía completa.
                 </p>
             </div>
 
             <section class="module-content-section">
-                <h3>Navegando el Mundo de las Relaciones</h3>
+                <h3><i class="fas fa-people-arrows"></i> Navegando el Complejo Mundo de las Relaciones</h3>
                 <p>
-                    Las relaciones interpersonales son una parte fundamental de la vida, pero pueden ser una fuente significativa de estrés y malestar, especialmente para individuos con desregulación emocional. El módulo de Efectividad Interpersonal de la DBT se enfoca en enseñar habilidades para interactuar con otros de manera que se puedan alcanzar los objetivos personales, mantener relaciones importantes y preservar el autorespeto.
+                    Las relaciones interpersonales son una parte intrínseca y fundamental de la experiencia humana, fuentes potenciales de gran alegría, apoyo y significado. Sin embargo, para muchas personas, especialmente aquellas que experimentan una intensa <strong>desregulación emocional</strong> (como en el Trastorno Límite de la Personalidad), las interacciones pueden convertirse en un campo minado, generando estrés significativo, malentendidos dolorosos y un profundo malestar. El módulo de <strong>Efectividad Interpersonal</strong> de la Terapia Dialéctico Conductual (DBT), desarrollado por Marsha M. Linehan, se enfoca precisamente en equipar a los individuos con un conjunto de habilidades prácticas y estratégicas para navegar estas complejidades.
                 </p>
                 <p>
-                    Estas habilidades nos ayudan a equilibrar nuestras propias necesidades con las de los demás, a comunicarnos de manera clara y asertiva, y a manejar conflictos de forma constructiva. El objetivo es ser efectivos en nuestras interacciones, lo que significa lograr lo que queremos de una manera que no dañe la relación ni nuestro sentido de integridad.
+                    El objetivo primordial de este módulo no es simplemente "llevarse bien con la gente", sino aprender a interactuar con otros de manera que se puedan <strong>alcanzar los objetivos personales legítimos</strong>, <strong>mantener y mejorar relaciones importantes</strong> y, crucialmente, <strong>preservar y fortalecer el autorespeto</strong> en el proceso. Estas tres metas a menudo pueden parecer en conflicto, y es precisamente en la gestión de esta tensión dialéctica donde residen la potencia y la sabiduría de estas habilidades.
                 </p>
-
-                <h4>Objetivos de la Efectividad Interpersonal:</h4>
-                <ul>
-                    <li><strong>Efectividad en los Objetivos (DEAR MAN):</strong> Aprender a pedir lo que se desea o a decir no de manera clara y respetuosa.
-                        <ul>
-                            <li><strong>D</strong>escribe la situación actual.</li>
-                            <li><strong>E</strong>xpresa tus sentimientos y opiniones sobre la situación.</li>
-                            <li><strong>A</strong>sertivamente pide lo que quieres o di no claramente.</li>
-                            <li><strong>R</strong>efuerza (explica las consecuencias positivas de obtener lo que quieres).</li>
-                            <li><strong>M</strong>antente Enfocado (Mindful): No te desvíes del tema.</li>
-                            <li><strong>A</strong>parenta Seguridad: Usa un tono de voz y lenguaje corporal seguros.</li>
-                            <li><strong>N</strong>egocia: Estar dispuesto a ceder un poco para obtener lo que quieres.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Efectividad en las Relaciones (GIVE):</strong> Mantener y mejorar las relaciones mientras se intenta conseguir lo que se quiere.
-                        <ul>
-                            <li><strong>G</strong>entil: Sé amable y respetuoso, sin ataques ni amenazas.</li>
-                            <li><strong>I</strong>nteresado: Muestra interés en la otra persona escuchando y validando.</li>
-                            <li><strong>V</strong>alida: Reconoce los sentimientos, pensamientos y dificultades de la otra persona.</li>
-                            <li><strong>E</strong>asy Manner (Actitud Relajada): Usa un poco de humor, sonríe, sé ligero.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Efectividad en el Autorespeto (FAST):</strong> Mantener o mejorar el respeto por uno mismo mientras se interactúa con otros.
-                        <ul>
-                            <li><strong>F</strong>air (Justo): Sé justo contigo mismo y con la otra persona.</li>
-                            <li><strong>A</strong>pologies (Sin Disculpas Excesivas): No te disculpes por tener una opinión o por discrepar.</li>
-                            <li><strong>S</strong>tick to Values (Apégate a tus Valores): No sacrifiques tus valores para obtener lo que quieres o para que le agrades a alguien.</li>
-                            <li><strong>T</strong>ruthful (Sé Honesto): No mientas ni exageres.</li>
-                        </ul>
-                    </li>
-                </ul>
-
-                <h4>Factores que Reducen la Efectividad Interpersonal:</h4>
-                <p>La DBT también ayuda a identificar y abordar factores que pueden interferir con la efectividad interpersonal, como:</p>
-                <ul>
-                    <li>Falta de habilidad.</li>
-                    <li>Mitos que se interponen (ej. "pedir ayuda es signo de debilidad").</li>
-                    <li>Emociones intensas que interfieren (ej. miedo, ira, vergüenza).</li>
-                    <li>Indecisión sobre qué pedir o si se tiene derecho a pedirlo.</li>
-                    <li>El entorno (ej. personas que castigan la asertividad).</li>
-                </ul>
                 <p>
-                    Al practicar estas habilidades, las personas pueden aprender a navegar situaciones sociales complejas con mayor confianza y habilidad, logrando un equilibrio entre sus propias necesidades y las de los demás, y fomentando relaciones más satisfactorias y estables.
+                    Las habilidades de efectividad interpersonal nos enseñan a encontrar un equilibrio funcional entre nuestras propias necesidades, deseos y límites, y las necesidades, deseos y límites de los demás. Nos capacitan para comunicarnos de manera clara, directa y asertiva, en lugar de recurrir a la pasividad, la agresividad o la manipulación pasivo-agresiva. Además, proporcionan herramientas para manejar los desacuerdos y conflictos de una forma más constructiva y menos dañina para las relaciones. En esencia, se trata de ser <em>efectivos</em> en nuestras interacciones, lo que implica lograr lo que queremos de una manera que honre nuestra integridad y no queme los puentes que nos conectan con los demás.
                 </p>
+                 <blockquote>
+                    <p>"La efectividad interpersonal no se trata de ganar todas las batallas, sino de construir puentes y mantener el respeto propio, incluso cuando no obtenemos exactamente lo que queremos."</p>
+                </blockquote>
             </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-bullseye"></i> Los Tres Objetivos Clave de la Efectividad Interpersonal</h3>
+                <p>La DBT organiza las habilidades de efectividad interpersonal en torno a tres objetivos principales, cada uno con su propio conjunto de habilidades mnemotécnicas:</p>
+                
+                <h4>1. Efectividad en los Objetivos (Lograr lo que Quieres - DEAR MAN)</h4>
+                <p>Este conjunto de habilidades se utiliza cuando necesitas que alguien haga algo por ti, o cuando necesitas decir "no" a una petición de manera efectiva. El acrónimo <strong>DEAR MAN</strong> te guía paso a paso:</p>
+                <ul>
+                    <li>
+                        <strong>D - Describe:</strong> Describe la situación actual de manera objetiva y concisa, sin juicios ni interpretaciones. Cíñete a los hechos observables.
+                        <div class="example-box">
+                            <h5>Ejemplo (Pedir ayuda):</h5>
+                            <p>"He notado que en las últimas tres reuniones de equipo, he sido la única persona tomando notas y preparando el resumen posterior."</p>
+                            <h5>Ejemplo (Decir no):</h5>
+                            <p>"Entiendo que necesitas que cubra tu turno el sábado por la tarde."</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>E - Expresa:</strong> Expresa tus sentimientos y opiniones sobre la situación utilizando declaraciones "yo". Sé claro sobre cómo te afecta la situación.
+                        <div class="example-box">
+                            <h5>Ejemplo (Pedir ayuda):</h5>
+                            <p>"Me siento un poco abrumada y creo que no es equitativo que esta tarea recaiga siempre en mí."</p>
+                            <h5>Ejemplo (Decir no):</h5>
+                            <p>"Me siento mal por no poder ayudarte, pero ya tengo un compromiso personal importante ese día que no puedo cambiar."</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>A - Asertivamente Pide o Di No:</strong> Pide lo que quieres de forma clara y directa, o di "no" de manera inequívoca. No des rodeos ni esperes que la otra persona adivine tus necesidades.
+                        <div class="example-box">
+                            <h5>Ejemplo (Pedir ayuda):</h5>
+                            <p>"Me gustaría que pudiéramos rotar esta tarea entre los miembros del equipo, o que alguien más se encargue la próxima vez."</p>
+                            <h5>Ejemplo (Decir no):</h5>
+                            <p>"Así que, lamentablemente, no podré cubrir tu turno este sábado."</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>R - Refuerza (Recompensa):</strong> Explica las consecuencias positivas para la otra persona (o para la relación, o para la situación) si obtienes lo que quieres o si aceptan tu "no". Hazles saber cómo se beneficiarán.
+                        <div class="example-box">
+                            <h5>Ejemplo (Pedir ayuda):</h5>
+                            <p>"Si compartimos esta responsabilidad, creo que todos estaremos más involucrados y yo podré concentrarme mejor en mis otras tareas, lo que beneficiará al proyecto."</p>
+                            <h5>Ejemplo (Decir no):</h5>
+                            <p>"Agradezco que hayas pensado en mí y espero que encuentres a alguien más. En otra ocasión, si puedo, estaré encantada de ayudar."</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>M - Mantente Enfocado (Mindful):</strong> Mantén tu objetivo en mente. No te desvíes del tema, no te dejes llevar por discusiones secundarias ni ataques personales. Si la conversación se desvía, redirígela amablemente hacia tu petición o negativa (técnica del "disco rayado").
+                    </li>
+                    <li>
+                        <strong>A - Aparenta Seguridad (Confianza):</strong> Utiliza un tono de voz calmado pero firme, mantén contacto visual (si es culturalmente apropiado) y una postura corporal segura. Aunque por dentro sientas nervios, proyecta confianza.
+                    </li>
+                    <li>
+                        <strong>N - Negocia:</strong> Estate dispuesto a ceder un poco si es necesario y apropiado. La efectividad a menudo implica encontrar un compromiso. Pregunta qué soluciones alternativas podría haber.
+                    </li>
+                </ul>
+                <p><em>Practicar DEAR MAN ayuda a aumentar las probabilidades de conseguir tus objetivos sin dañar la relación ni tu autoestima.</em></p>
+            </section>
+
+            <section class="module-content-section">
+                <h4>2. Efectividad en las Relaciones (Mantener y Mejorar la Relación - GIVE)</h4>
+                <p>Estas habilidades se centran en cómo interactuar de manera que se preserve o mejore la relación con la otra persona, independientemente de si consigues tu objetivo principal. Son especialmente útiles cuando la relación es importante para ti. El acrónimo <strong>GIVE</strong> te guía:</p>
+                <ul>
+                    <li>
+                        <strong>G - Gentil (Sé Amable):</strong> Sé cortés y respetuoso en tu enfoque. Evita ataques personales, amenazas, juicios o sarcasmo. Trata a la otra persona con la amabilidad que te gustaría recibir.
+                    </li>
+                    <li>
+                        <strong>I - Interesado (Muestra Interés):</strong> Escucha activamente lo que la otra persona dice, sin interrumpir. Haz preguntas para clarificar y muestra interés genuino en su perspectiva, aunque no estés de acuerdo.
+                        <div class="example-box">
+                            <h5>Ejemplo:</h5>
+                            <p>"Entiendo que para ti es importante X, ¿podrías contarme un poco más sobre por qué es así?"</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>V - Valida:</strong> Reconoce y valida los sentimientos, pensamientos, opiniones o dificultades de la otra persona, incluso si no los compartes. Validar no significa estar de acuerdo, sino mostrar que entiendes su perspectiva desde <em>su</em> punto de vista.
+                        <div class="example-box">
+                            <h5>Ejemplo:</h5>
+                            <p>"Puedo ver que esto te está causando mucho estrés" o "Tiene sentido que te sientas así, dada la situación."</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>E - Easy Manner (Actitud Relajada y Sencilla):</strong> Intenta mantener una actitud ligera y relajada. Usa el humor (apropiado), sonríe, sé paciente. Evita la tensión excesiva o la solemnidad innecesaria.
+                    </li>
+                </ul>
+                <p><em>Las habilidades GIVE son cruciales para construir y mantener la confianza y la buena voluntad en tus relaciones.</em></p>
+            </section>
+
+            <section class="module-content-section">
+                <h4>3. Efectividad en el Autorespeto (Mantener tu Respeto Propio - FAST)</h4>
+                <p>Este conjunto de habilidades te ayuda a actuar de una manera que te haga sentir bien contigo mismo y mantener tu autorespeto, especialmente en situaciones interpersonales difíciles. El acrónimo <strong>FAST</strong> es tu guía:</p>
+                <ul>
+                    <li>
+                        <strong>F - Fair (Sé Justo):</strong> Sé justo contigo mismo y con la otra persona. Reconoce tus derechos y necesidades, así como los de la otra persona. No te aproveches ni permitas que se aprovechen de ti.
+                    </li>
+                    <li>
+                        <strong>A - Apologies (Sin Disculpas Excesivas):</strong> No te disculpes innecesariamente por existir, por tener una opinión, por necesitar algo o por decir "no" cuando es apropiado. Disculparse en exceso puede minar tu autorespeto.
+                    </li>
+                    <li>
+                        <strong>S - Stick to Values (Apégate a tus Valores):</strong> Actúa de acuerdo con tus propios valores y principios morales. No comprometas tus valores fundamentales para obtener lo que quieres, para evitar un conflicto o para que le agrades a alguien.
+                        <div class="example-box">
+                            <h5>Ejemplo:</h5>
+                            <p>Si la honestidad es un valor importante para ti, no mientas para conseguir algo, aunque parezca más fácil a corto plazo.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <strong>T - Truthful (Sé Honesto):</strong> Sé veraz y evita la deshonestidad, el engaño o la exageración. Actuar con integridad refuerza el autorespeto.
+                    </li>
+                </ul>
+                <p><em>Las habilidades FAST te ayudan a sentirte orgulloso de cómo te manejas en las interacciones, independientemente del resultado.</em></p>
+            </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-balance-scale"></i> La Dialéctica de la Efectividad Interpersonal</h3>
+                <p>Un aspecto central de la DBT es la <strong>dialéctica</strong>, que implica encontrar la síntesis o el equilibrio entre dos polos aparentemente opuestos. En la efectividad interpersonal, la dialéctica principal es entre:</p>
+                <ul>
+                    <li><strong>Conseguir tus objetivos</strong> (DEAR MAN)</li>
+                    <li><strong>Mantener la relación</strong> (GIVE)</li>
+                    <li><strong>Mantener tu autorespeto</strong> (FAST)</li>
+                </ul>
+                <p>No siempre es posible maximizar los tres objetivos simultáneamente en cada interacción. A veces, puede ser necesario priorizar uno sobre los otros. Por ejemplo:</p>
+                <ul>
+                    <li>Si tu objetivo es muy importante y la relación no tanto (o es una interacción única), podrías enfocarte más en DEAR MAN.</li>
+                    <li>Si la relación es crucial y a largo plazo, podrías priorizar GIVE, incluso si eso significa no obtener exactamente lo que querías en ese momento.</li>
+                    <li>Si una situación amenaza tus valores fundamentales, FAST será prioritario, incluso si eso significa arriesgar el objetivo o la relación.</li>
+                </ul>
+                <p>La sabiduría interpersonal implica evaluar cada situación y decidir qué objetivo es más importante en ese contexto particular, y luego aplicar las habilidades correspondientes de manera flexible.</p>
+            </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-user-cog"></i> Factores que Pueden Reducir la Efectividad Interpersonal</h3>
+                <p>La DBT también nos ayuda a ser conscientes de los factores que pueden obstaculizar nuestra capacidad para ser efectivos en las relaciones. Identificarlos es el primer paso para abordarlos:</p>
+                <ul>
+                    <li><strong>Falta de Habilidad:</strong> Simplemente no saber qué hacer o cómo hacerlo. Esto se soluciona aprendiendo y practicando las habilidades DEAR MAN, GIVE y FAST.</li>
+                    <li><strong>Mitos Interpersonales que se Interponen:</strong> Creencias erróneas sobre las relaciones o sobre uno mismo que dificultan la aplicación de las habilidades.
+                        <div class="example-box">
+                            <h5>Ejemplos de Mitos:</h5>
+                            <p>"Pedir ayuda es un signo de debilidad."<br>"Si digo 'no', la gente se enfadará conmigo y me abandonará."<br>"Debo complacer a los demás para que me quieran."</p>
+                        </div>
+                    </li>
+                    <li><strong>Emociones Intensas que Interfieren:</strong> Cuando emociones como la ira, el miedo, la vergüenza o la tristeza son muy intensas, pueden "secuestrar" nuestra capacidad de pensar con claridad y aplicar las habilidades. Aquí es donde las habilidades de Regulación Emocional y Tolerancia al Malestar de DBT se vuelven cruciales como apoyo.</li>
+                    <li><strong>Indecisión o Conflicto de Objetivos:</strong> No estar seguro de lo que se quiere, si se tiene derecho a pedirlo, o tener objetivos contradictorios (ej. querer que alguien cambie pero también temer su reacción).</li>
+                    <li><strong>El Entorno o la Otra Persona:</strong> A veces, el entorno puede ser invalidante o la otra persona puede no ser receptiva o ser habilidosa en la manipulación. En estos casos, la efectividad puede implicar establecer límites firmes, buscar apoyo externo o, en última instancia, decidir si la relación es sostenible.</li>
+                    <li><strong>Preocupaciones a Corto vs. Largo Plazo:</strong> A veces, ceder a corto plazo para evitar un conflicto puede parecer efectivo, pero puede dañar la relación o el autorespeto a largo plazo. La efectividad implica considerar las consecuencias a más largo alcance.</li>
+                </ul>
+            </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-hands-helping"></i> Practicando y Fortaleciendo tus Habilidades Interpersonales</h3>
+                <p>Como cualquier habilidad, la efectividad interpersonal mejora con la práctica constante y deliberada:</p>
+                <ul>
+                    <li><strong>Comienza con Situaciones de Bajo Riesgo:</strong> Practica las habilidades en interacciones menos cargadas emocionalmente o con personas con las que te sientas más seguro.</li>
+                    <li><strong>Usa Hojas de Trabajo y Planificación:</strong> Antes de una interacción importante, planifica cómo usarás las habilidades DEAR MAN, GIVE o FAST. Escribirlo puede ayudar a clarificar tus objetivos y estrategias.</li>
+                    <li><strong>Role-Playing (Juego de Roles):</strong> Practica con un terapeuta, un amigo de confianza o un grupo de habilidades. Esto te permite ensayar y recibir feedback en un entorno seguro.</li>
+                    <li><strong>Mindfulness Antes y Durante:</strong> Practica la atención plena para ser consciente de tus objetivos, tus emociones y las de la otra persona durante la interacción. Esto te ayuda a mantenerte enfocado y a responder con habilidad en lugar de reaccionar impulsivamente.</li>
+                    <li><strong>Revisa y Aprende de Cada Interacción:</strong> Después de una interacción, reflexiona sobre qué funcionó, qué no funcionó y qué podrías hacer diferente la próxima vez. Sé autocompasivo; el aprendizaje es un proceso.</li>
+                    <li><strong>Pide Feedback (si es apropiado):</strong> De personas de confianza, pregunta cómo perciben tu estilo de comunicación.</li>
+                </ul>
+            </section>
+
+            <section class="module-content-section">
+                <h3><i class="fas fa-road"></i> Beneficios a Largo Plazo de una Mayor Efectividad Interpersonal</h3>
+                <p>Invertir tiempo y esfuerzo en desarrollar estas habilidades puede transformar profundamente tu vida:</p>
+                <ul>
+                    <li><strong>Relaciones Más Saludables y Estables:</strong> Menos conflictos, mayor comprensión mutua y conexiones más genuinas.</li>
+                    <li><strong>Reducción del Estrés Interpersonal:</strong> Mayor capacidad para manejar desacuerdos y situaciones difíciles sin un coste emocional excesivo.</li>
+                    <li><strong>Aumento de la Autoestima y el Autorespeto:</strong> Sentirse competente y actuar de acuerdo con los propios valores en las relaciones.</li>
+                    <li><strong>Mayor Capacidad para Satisfacer Necesidades:</strong> Ser capaz de pedir lo que necesitas y establecer límites de manera efectiva.</li>
+                    <li><strong>Mejora General del Bienestar Emocional:</strong> Las relaciones positivas son un pilar fundamental de la salud mental.</li>
+                </ul>
+                <p>Al practicar consistentemente las habilidades de efectividad interpersonal, las personas pueden aprender a navegar el complejo y a menudo desafiante mundo de las relaciones humanas con mayor confianza, habilidad y satisfacción, fomentando conexiones más profundas y un mayor sentido de bienestar personal.</p>
+            </section>
+
         </div>
     </main>
 
@@ -598,7 +798,7 @@
                      currentPageFilename === 'mindfulness_dbt.html' ||
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
-                     currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
+                     currentPageFilename === 'efectividad_interpersonal_dbt.html' || // Current page
                      currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
                      currentPageFilename === 'activacion_conductual_cbt.html' ||
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
@@ -621,22 +821,25 @@
                 });
             }
             
-            const animatedSection = document.querySelector('.module-content-section'); 
-            if (animatedSection) {
+            const animatedSections = document.querySelectorAll('.module-content-section'); 
+            if (animatedSections.length > 0) {
                  const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
-                    threshold: 0.1 
+                    threshold: 0.05 
                 };
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                            obs.unobserve(entry.target); 
+                        } else {
+                            // entry.target.classList.remove('visible'); // Optional: re-animate on scroll
                         }
                     });
                 }, observerOptions);
-                observer.observe(animatedSection);
+                animatedSections.forEach(section => {
+                    observer.observe(section);
+                });
             }
         });
     </script>
