@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Efectividad Interpersonal en DBT - Guía Completa - Borderline Journey</title>
+    <title>Efectividad Interpersonal en DBT - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -109,14 +109,14 @@
         }
         
         .logo h1 { 
-            font-family: 'Krona One', sans-serif; 
-            font-size: 1.8rem; 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
             font-weight: 400;
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
             -webkit-background-clip: text; 
             background-clip: text; 
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
         
         .logo i { 
@@ -161,6 +161,7 @@
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
+            border-radius: 20px;
         }
         
         nav a:hover::before, 
@@ -349,10 +350,10 @@
             text-align: center;
             margin-top: 2.5rem; 
             margin-bottom: 1rem; 
-            display: flex; /* Added for button layout */
-            justify-content: center; /* Added for button layout */
-            gap: 1rem; /* Added for spacing between buttons */
-            flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+            display: flex; 
+            justify-content: center; 
+            gap: 1rem; 
+            flex-wrap: wrap; 
         }
         .back-to-btn {
             display: inline-flex; 
@@ -436,21 +437,7 @@
         }
         .contact-info i { color: var(--accent-blue); } 
         
-        .social-links { display: flex; gap: 15px; margin-top: 22px; }
-        .social-links a { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 45px; 
-            height: 45px; 
-            background: rgba(255, 255, 255, 0.04); 
-            color: var(--accent-blue); 
-            border-radius: 50%; 
-            transition: all 0.4s ease; 
-            font-size: 1.2rem; 
-            border: 1px solid var(--accent-blue); 
-        }
-        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        /* .social-links class removed from the first footer column as per user request */
         
         .copyright { 
             text-align: center; 
@@ -496,7 +483,7 @@
         
         @media (max-width: 600px) {
             .main-page-content { padding-top: 130px; } 
-            .logo h1 { font-size: 1.5rem; }
+            .logo h1 { font-size: 1.6rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
             .page-header h2 { font-size: 2rem; } 
@@ -516,16 +503,17 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="index.html" rel="noopener noreferrer" class="logo"> <i class="fas fa-brain"></i>
-                <h1>BORDERLINE JOURNEY</h1>
+            <a href="index.html" class="logo" aria-label="Universo Borderline Homepage"> 
+                <i class="fas fa-brain" aria-hidden="true"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
             </a>
-            <nav>
+            <nav aria-label="Navegación principal">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="cursos.html" class="active">Cursos</a></li> 
+                    <li><a href="cursos.html" class="active" aria-current="page">Cursos</a></li> 
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
-                    <li><a href="premium.html">Premium</a></li> 
+                    <li><a href="memes.html">Memes</a></li> 
                 </ul>
             </nav>
         </div>
@@ -816,14 +804,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>Borderline Journey</h3>
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                    </div>
+                    <h3>Universo Borderline</h3>
+                    <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                    <!-- Social links icons removed -->
                 </div>
                 
                 <div class="footer-column">
@@ -833,16 +816,15 @@
                         <li><a href="cursos.html">Cursos</a></li> 
                         <li><a href="blog.html">Blog</a></li> 
                         <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="premium.html">Premium</a></li> 
+                        <li><a href="memes.html">Memes</a></li> 
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Recursos DBT</h3>
+                    <h3>Enlaces Útiles</h3> 
                     <ul class="footer-links">
                         <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
                         <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
                         <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
@@ -850,16 +832,16 @@
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> itfrombit.w74@gmail.com</p>
-                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
-                        <p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
+                        <!-- Removed "Soporte: 24/7 para miembros premium" -->
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
                     </div>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
                 <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
@@ -867,21 +849,23 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
+            // Create animated stars
             const starsContainer = document.getElementById('stars');
             if (starsContainer) {
-                const starsCount = 150;
+                const starsCount = 150; // Number of stars
                 for (let i = 0; i < starsCount; i++) {
                     const star = document.createElement('div');
                     star.classList.add('star');
-                    const size = Math.random() * 2.2 + 0.3;
+                    const size = Math.random() * 2.2 + 0.3; // Random size
                     star.style.width = `${size}px`;
                     star.style.height = `${size}px`;
-                    star.style.left = `${Math.random() * 100}%`;
-                    star.style.top = `${Math.random() * 100}%`;
-                    star.style.animationDelay = `${Math.random() * 6}s`; 
-                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
+                    star.style.left = `${Math.random() * 100}%`; // Random horizontal position
+                    star.style.top = `${Math.random() * 100}%`; // Random vertical position
+                    star.style.animationDelay = `${Math.random() * 6}s`; // Random animation delay
+                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`; // Random animation duration
                     if (Math.random() > 0.65) {
                         const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
                         star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
@@ -893,34 +877,41 @@
                 }
             }
             
+            // Active navigation link highlighting
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
             const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
                 link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 
+                // Highlight "Cursos" if on any course-related subpage or cursos.html itself
                 if (linkFilename === 'cursos.html' && 
-                    (currentPageFilename === 'dbt.html' || 
+                    (currentPageFilename === 'cursos.html' || 
+                     currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
-                     currentPageFilename === 'mindfulness_dbt.html' || 
+                     currentPageFilename === 'mindfulness_dbt.html' ||
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' || // Current page
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' ||
-                     currentPageFilename === 'activacion_conductual_cbt.html' ||
+                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
+                     currentPageFilename === 'activacion_conductual_cbt.html' || 
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
                      currentPageFilename === 'resolucion_problemas_cbt.html'
                     )) {
                     link.classList.add('active'); 
-                } else if (linkFilename === currentPageFilename) {
+                    link.setAttribute('aria-current', 'page');
+                } else if (linkFilename === currentPageFilename) { // For other pages
                     link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
                 }
             });
             
+            // Header scroll effect
             const header = document.getElementById('main-header');
             if(header){
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) {
+                    if (window.scrollY > 40) { 
                         header.classList.add('scrolled');
                     } else {
                         header.classList.remove('scrolled');
@@ -928,6 +919,7 @@
                 });
             }
             
+            // Intersection Observer for module content section animations
             const animatedSections = document.querySelectorAll('.module-content-section'); 
             if (animatedSections.length > 0) {
                  const observerOptions = {
@@ -940,7 +932,7 @@
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
                         } else {
-                            // entry.target.classList.remove('visible'); // Optional: re-animate on scroll
+                            // entry.target.classList.remove('visible'); // Uncomment to re-animate on scroll up
                         }
                     });
                 }, observerOptions);
