@@ -1,337 +1,339 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Foro: Apoyo General y Bienvenida - Borderline Journey</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
-	<style>
-		:root {
-			--primary-violet: #8A2BE2;
-			--secondary-cyan: #00CED1;
-			--accent-magenta: #FF00FF;
-			--accent-green: #00FF7F;
-			--accent-blue: #1E90FF;
-			--accent-yellow: #FFD700;
-			--accent-red: #FF4500;
-			
-			--text-color-light: #F0F0F0;
-			--text-color-medium: #A0A0A0;
-			
-			--card-bg: rgba(30, 30, 50, 0.92);
-			--border-color: rgba(138, 43, 226, 0.7);
-			--dark-bg: #0A0A20;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro: Apoyo General y Bienvenida - Universo Borderline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
 
-			--primary-violet-rgb: 138, 43, 226;
-			--accent-blue-rgb: 30, 144, 255;
-			--accent-magenta-rgb: 255, 0, 255;
-			--accent-yellow-rgb: 255, 215, 0;
-			--accent-green-rgb: 0, 255, 127;
-			--secondary-cyan-rgb: 0, 206, 209;
-		}
-		
-		* {
-			margin: 0;
-			padding: 0;
-			box-sizing: border-box;
-		}
-		
-		body {
-			background: var(--dark-bg);
-			color: var(--text-color-light);
-			line-height: 1.8;
-			font-family: 'Raleway', sans-serif;
-			overflow-x: hidden;
-			min-height: 100vh;
-			display: flex; 
-			flex-direction: column; 
-			background-image: 
-				radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%), 
-				radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%), 
-				radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
-			background-size: 400% 400%; 
-			animation: gradientBackground 20s ease infinite;
-		}
-		
-		@keyframes gradientBackground {
-			0% { background-position: 0% 50%; } 
-			50% { background-position: 100% 50%; } 
-			100% { background-position: 0% 50%; }
-		}
-		
-		.container {
-			width: 100%; 
-			max-width: 1100px; 
-			margin: 0 auto; 
-			padding: 0 20px; 
-			position: relative; 
-			z-index: 1;
-		}
-		
-		header {
-			background: rgba(10, 10, 32, 0.85); 
-			backdrop-filter: blur(12px); 
-			color: white; 
-			padding: 1rem 0; 
-			position: fixed; 
-			top: 0; 
-			width: 100%;
-			z-index: 1000;
-			border-bottom: 2px solid var(--accent-magenta); 
-			box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
-			transition: all 0.4s ease;
-		}
-		
-		header.scrolled {
-			background: rgba(10, 10, 32, 0.95);
-			padding: 0.7rem 0;
-		}
-		
-		.header-container { 
-			display: flex; 
-			justify-content: space-between; 
-			align-items: center; 
-		}
-		
-		.logo { 
-			display: flex; 
-			align-items: center; 
-			gap: 15px; 
-			cursor: pointer;
-			transition: all 0.4s ease;
-			text-decoration: none; 
-		}
-		
-		.logo:hover {
-			transform: rotate(-5deg) scale(1.05);
-		}
-		
-		.logo h1 { 
-			font-family: 'Krona One', sans-serif; 
-			font-size: 1.8rem; 
-			font-weight: 400;
-			background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
-			-webkit-background-clip: text; 
-			background-clip: text; 
-			-webkit-text-fill-color: transparent;
-			letter-spacing: 1px;
-		}
-		
-		.logo i { 
-			font-size: 2.2rem; 
-			color: var(--accent-green); 
-			animation: logoPulse 3s infinite alternate;
-		}
-		
-		@keyframes logoPulse {
-			0% { transform: scale(1); color: var(--accent-green); }
-			50% { transform: scale(1.1); color: var(--secondary-cyan); }
-			100% { transform: scale(1); color: var(--accent-blue); }
-		}
-		
-		nav ul { 
-			display: flex; 
-			list-style: none; 
-			gap: 10px; 
-		}
-		
-		nav a { 
-			color: var(--text-color-light); 
-			text-decoration: none; 
-			font-family: 'Comfortaa', sans-serif; 
-			font-size: 0.9rem; 
-			padding: 10px 15px; 
-			border-radius: 20px; 
-			transition: all 0.3s ease-out; 
-			position: relative;
-			background: transparent; 
-			border: 1px solid transparent; 
-		}
-		
-		nav a::before { 
-			content: ''; 
-			position: absolute; 
-			top: 0; 
-			left: 0; 
-			width: 0%; 
-			height: 100%;
-			background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
-			opacity: 0.3; 
-			transition: width 0.4s ease; 
-			z-index: -1;
-		}
-		
-		nav a:hover::before, 
-		nav a.active::before { 
-			width: 100%; 
-		} 
-		
-		nav a:hover, 
-		nav a.active {
-			color: var(--accent-yellow); 
-			background-color: rgba(0, 255, 255, 0.1); 
-			border: 1px solid var(--accent-blue); 
-			transform: translateY(-3px); 
-		}
-
-		.main-page-content { 
-			padding: 100px 0 4rem 0; 
-			flex-grow: 1; 
-		}
-
-		.forum-page-header {
-			text-align: center;
-			margin-bottom: 2.5rem;
-			padding-top: 2rem;
-		}
-
-		.forum-page-header h2 {
-			font-family: 'Playfair Display', serif; 
-			font-size: 2.8rem; 
-			font-weight: 700; 
-			color: var(--secondary-cyan);
-			margin-bottom: 0.5rem;
-			text-transform: none; 
-			letter-spacing: 0.5px; 
-			display: inline-flex; 
-			align-items: center;
-			gap: 15px; 
-		}
-		 .forum-page-header h2 i {
-			font-size: 2.4rem; 
-		}
-		
-		.forum-page-header p.description {
-			font-size: 1.1rem;
-			color: var(--text-color-medium);
-			max-width: 750px;
-			margin: 0 auto 1.5rem auto;
-		}
-
-		.breadcrumb {
-			font-size: 0.9rem;
-			color: var(--text-color-medium);
-			margin-bottom: 2rem;
-			text-align: center;
-		}
-		.breadcrumb a {
-			color: var(--accent-yellow);
-			text-decoration: none;
-			transition: color 0.3s ease;
-		}
-		.breadcrumb a:hover {
-			color: var(--accent-green);
-		}
-		.breadcrumb span {
-			margin: 0 8px;
-		}
-
-		.forum-actions {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 2rem;
-			padding: 1rem;
-			background-color: rgba(var(--accent-blue-rgb), 0.08);
-			border-radius: 10px;
-			border: 1px solid rgba(var(--accent-blue-rgb), 0.2);
-		}
-
-		.create-thread-btn {
-			background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
-			color: var(--dark-bg);
-			padding: 10px 20px;
-			border-radius: 25px;
-			text-decoration: none;
-			font-weight: bold;
-			transition: background 0.3s ease, transform 0.3s ease;
-			font-size: 0.95rem;
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+            --accent-yellow-rgb: 255, 215, 0;
+            --accent-green-rgb: 0, 255, 127;
+            --secondary-cyan-rgb: 0, 206, 209;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%), 
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%), 
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
             cursor: pointer;
-		}
-		.create-thread-btn:hover {
-			background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
-			transform: scale(1.03);
-		}
-		.create-thread-btn i {
-			margin-right: 8px;
-		}
-		
-		.forum-section-title {
-			font-family: 'Krona One', sans-serif;
-			font-size: 1.6rem;
-			color: var(--accent-yellow);
-			margin-bottom: 1.5rem;
-			padding-bottom: 0.5rem;
-			border-bottom: 2px solid var(--accent-yellow);
-			display: inline-block;
-		}
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse {
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); }
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+            border-radius: 20px; 
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
 
-		.thread-list {
-			list-style: none;
-			padding: 0;
-			margin-bottom: 2.5rem;
-		}
-		.thread-item {
-			background: var(--card-bg);
-			border-radius: 10px;
-			margin-bottom: 1rem;
-			padding: 1.5rem;
-			border: 1px solid var(--border-color);
-			transition: transform 0.3s ease, box-shadow 0.3s ease;
-		}
-		.thread-item:hover {
-			transform: translateY(-5px);
-			box-shadow: 0 8px 25px rgba(var(--accent-green-rgb), 0.3);
-		}
-		.thread-item-header {
-			display: flex;
-			justify-content: space-between;
-			align-items: center;
-			margin-bottom: 0.75rem;
-		}
-		.thread-item-header h4 a {
-			font-family: 'Comfortaa', sans-serif;
-			font-size: 1.25rem;
-			color: var(--accent-green);
-			text-decoration: none;
-			transition: color 0.3s ease;
-		}
-		.thread-item-header h4 a:hover {
-			color: var(--secondary-cyan);
-		}
-		.thread-meta {
-			font-size: 0.85rem;
-			color: var(--text-color-medium);
-		}
-		.thread-meta span {
-			margin-left: 15px;
-		}
-		.thread-meta i {
-			margin-right: 5px;
-		}
-		.thread-excerpt {
-			font-size: 0.95rem;
-			color: var(--text-color-light);
-			line-height: 1.7;
-            white-space: pre-wrap; /* To respect newlines in content */
-		}
-		
-		.sticky-thread {
-			border-left: 4px solid var(--accent-yellow);
-			background-color: rgba(var(--accent-yellow-rgb), 0.05);
-		}
-		.sticky-thread .thread-item-header h4 a {
-			color: var(--accent-yellow);
-		}
-		.sticky-thread .thread-item-header h4 a:hover {
-			color: var(--accent-green);
-		}
-		.sticky-thread .thread-item-header h4 i {
-			margin-right: 8px;
-			color: var(--accent-yellow);
-		}
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+
+        .forum-page-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            padding-top: 2rem;
+        }
+
+        .forum-page-header h2 {
+            font-family: 'Playfair Display', serif; 
+            font-size: 2.8rem; 
+            font-weight: 700; 
+            color: var(--secondary-cyan); /* Main color for general support */
+            margin-bottom: 0.5rem;
+            text-transform: none; 
+            letter-spacing: 0.5px; 
+            display: inline-flex; 
+            align-items: center;
+            gap: 15px; 
+        }
+         .forum-page-header h2 i {
+            font-size: 2.4rem; 
+        }
+        
+        .forum-page-header p.description {
+            font-size: 1.1rem;
+            color: var(--text-color-medium);
+            max-width: 750px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: var(--text-color-medium);
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .breadcrumb a {
+            color: var(--accent-yellow);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-green);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
+
+        .forum-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: rgba(var(--secondary-cyan-rgb), 0.08); /* Thematic color */
+            border-radius: 10px;
+            border: 1px solid rgba(var(--secondary-cyan-rgb), 0.2);
+        }
+
+        .create-thread-btn {
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
+            color: var(--dark-bg);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none; 
+        }
+        .create-thread-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
+            transform: scale(1.03);
+        }
+        .create-thread-btn i {
+            margin-right: 8px;
+        }
+        
+        .forum-section-title {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.6rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-yellow);
+            display: inline-block;
+        }
+
+        .thread-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 2.5rem;
+        }
+        .thread-item {
+            background: var(--card-bg);
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .thread-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(var(--secondary-cyan-rgb), 0.3); /* Thematic shadow */
+        }
+        .thread-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap; 
+        }
+        .thread-item-header h4 a {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.25rem;
+            color: var(--secondary-cyan); /* Thematic color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .thread-item-header h4 a:hover {
+            color: var(--accent-green);
+        }
+        .thread-meta {
+            font-size: 0.85rem;
+            color: var(--text-color-medium);
+            display: flex; 
+            flex-wrap: wrap; 
+            gap: 10px; 
+        }
+        .thread-meta i {
+            margin-right: 5px;
+        }
+        .thread-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-color-light);
+            line-height: 1.7;
+            white-space: pre-wrap; 
+        }
+        
+        .sticky-thread {
+            border-left: 4px solid var(--accent-yellow); 
+            background-color: rgba(var(--accent-yellow-rgb), 0.05);
+        }
+        .sticky-thread .thread-item-header h4 a {
+            color: var(--accent-yellow);
+        }
+        .sticky-thread .thread-item-header h4 a:hover {
+            color: var(--secondary-cyan); 
+        }
+        .sticky-thread .thread-item-header h4 i {
+            margin-right: 8px;
+            color: var(--accent-yellow);
+        }
 
         /* Modal Styles */
         .modal-overlay {
@@ -404,6 +406,7 @@
             border-radius: 8px;
             color: var(--text-color-light);
             font-size: 1rem;
+            font-family: 'Raleway', sans-serif; 
         }
         .modal-content textarea {
             min-height: 120px;
@@ -413,288 +416,322 @@
             display: block;
             width: 100%;
             background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
-			color: var(--dark-bg);
-			padding: 12px 20px;
-			border-radius: 25px;
-			text-decoration: none;
-			font-weight: bold;
-			transition: background 0.3s ease, transform 0.3s ease;
-			font-size: 1rem;
+            color: var(--dark-bg);
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 1rem;
             border: none;
             cursor: pointer;
+            font-family: 'Comfortaa', sans-serif; 
         }
         .modal-content button[type="submit"]:hover {
             background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
-			transform: scale(1.02);
+            transform: scale(1.02);
         }
 
+        /* Pagination Styles */
+        .pagination-nav { 
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .pagination-nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            gap: 5px; 
+        }
+        .pagination-nav li a, .pagination-nav li span { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem; 
+            height: 40px; 
+            line-height: 1.25rem; 
+            color: var(--text-color-medium);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem; 
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .pagination-nav li a:hover {
+            background-color: rgba(var(--secondary-cyan-rgb), 0.2); /* Thematic hover */
+            color: var(--secondary-cyan);
+        }
+        .pagination-nav li a[aria-current="page"] {
+            z-index: 10;
+            color: var(--dark-bg); 
+            background-color: var(--secondary-cyan);
+            border-color: var(--secondary-cyan);
+        }
+        .pagination-nav li:first-child a { border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; }
+        .pagination-nav li:last-child a { border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; }
 
-		footer { 
-			background: rgba(10,10,32,0.97); 
-			color: white; 
-			padding: 4rem 0 2rem; 
-			position: relative; 
-			border-top: 2px solid var(--accent-blue); 
-			margin-top: auto; 
-		}
-		
-		.footer-grid { 
-			display: grid; 
-			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-			gap: 40px; 
-			margin-bottom: 3rem; 
-		}
-		
-		.footer-column h3 { 
-			color: var(--accent-yellow); 
-			margin-bottom: 1.5rem; 
-			position: relative; 
-			padding-bottom: 10px; 
-			font-size: 1.4rem; 
-			font-family: 'Fredoka One', cursive;
-		}
-		
-		.footer-column h3::after { 
-			content: ''; 
-			position: absolute; 
-			bottom: 0; 
-			left: 0; 
-			width: 50px; 
-			height: 3.5px; 
-			background: var(--accent-blue); 
-			border-radius: 1.5px; 
-		}
-		
-		.footer-links { list-style: none; padding-left:0; } 
-		.footer-links li { margin-bottom: 12px; }
-		.footer-links a { 
-			color: var(--text-color-medium); 
-			text-decoration: none; 
-			transition: all 0.3s ease; 
-			display: inline-block; 
-			padding: 4px 0; 
-			font-weight: 300; 
-		}
-		.footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
-		
-		.contact-info { margin-top: 20px; }
-		.contact-info p { 
-			display: flex; 
-			align-items: center; 
-			gap: 10px; 
-			margin-bottom: 12px; 
-			font-size: 1.05rem; 
-			color: var(--text-color-medium); 
-		}
-		.contact-info i { color: var(--accent-blue); } 
-		
-		.social-links { display: flex; gap: 15px; margin-top: 22px; }
-		.social-links a { 
-			display: inline-flex; 
-			align-items: center; 
-			justify-content: center; 
-			width: 45px; 
-			height: 45px; 
-			background: rgba(255, 255, 255, 0.04); 
-			color: var(--accent-blue); 
-			border-radius: 50%; 
-			transition: all 0.4s ease; 
-			font-size: 1.2rem; 
-			border: 1px solid var(--accent-blue); 
-		}
-		.social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
-		
-		.copyright { 
-			text-align: center; 
-			padding-top: 2rem; 
-			border-top: 1px solid rgba(255, 255, 255, 0.07); 
-			color: #a090b0; 
-			font-size: 0.95rem; 
-		}
-		.copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
-		.copyright a:hover { color: var(--text-color-light); }
-		
-		.stars {
-			position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-			pointer-events: none; z-index: -2; 
-		}
-		.star {
-			position: absolute; width: 2px; height: 2px; background: white;
-			border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
-		}
-		@keyframes twinkle {
-			0% { opacity: 0; transform: scale(1); }
-			50% { opacity: 1; transform: scale(1.5); }
-			100% { opacity: 0; transform: scale(1); }
-		}
-		.galaxy {
-			position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-			background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
-			z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
-		}
-		@keyframes rotateGalaxy {
-			0% { transform: rotate(0deg); }
-			100% { transform: rotate(360deg); }
-		}
-		
-		@media (max-width: 900px) {
-			.header-container { flex-direction: column; gap: 12px; }
-			nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
-			nav a { font-size: 0.8rem; padding: 7px 10px; }
-			.forum-page-header h2 { font-size: 2.2rem; }
-			.forum-page-header h2 i { font-size: 2rem; }
-		}
-		
-		@media (max-width: 600px) {
-			.main-page-content { padding-top: 130px; } 
-			.logo h1 { font-size: 1.5rem; }
-			nav ul { gap: 5px; }
-			nav a { font-size: 0.7rem; padding: 6px 7px; }
-			.forum-page-header h2 { font-size: 1.8rem; }
-			.forum-page-header h2 i { font-size: 1.6rem; }
-			.forum-page-header p.description { font-size: 1rem; }
-			.forum-actions { flex-direction: column; gap: 1rem; }
-			.thread-item-header { flex-direction: column; align-items: flex-start; gap: 0.5rem;}
-			.thread-meta span { margin-left: 0; margin-right: 15px;}
-		}
-	</style>
+
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-family: 'Comfortaa', sans-serif; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+            font-family: 'Comfortaa', sans-serif; 
+        }
+        .contact-info i { color: var(--accent-blue); flex-shrink:0; } 
+        
+        /* .social-links class removed from the first footer column as per user request */
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+            font-family: 'Comfortaa', sans-serif; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .forum-page-header h2 { font-size: 2.2rem; }
+            .forum-page-header h2 i { font-size: 2rem; }
+        }
+        
+        @media (max-width: 600px) {
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.6rem; }
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .forum-page-header h2 { font-size: 1.8rem; }
+            .forum-page-header h2 i { font-size: 1.6rem; }
+            .forum-page-header p.description { font-size: 1rem; }
+            .forum-actions { flex-direction: column; gap: 1rem; }
+            .thread-item-header { flex-direction: column; align-items: flex-start; gap: 0.5rem;}
+            .thread-meta span { margin-left: 0; margin-right: 10px;} 
+        }
+    </style>
 </head>
 
 <body>
-	<div class="stars" id="stars"></div>
-	<div class="galaxy"></div>
-	
-	<header id="main-header">
-		<div class="container header-container">
-			<a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
-				<i class="fas fa-brain"></i>
-				<h1>BORDERLINE JOURNEY</h1>
-			</a>
-			<nav>
-				<ul>
-					<li><a href="index.html">Inicio</a></li>
-					<li><a href="cursos.html">Cursos</a></li> 
-					<li><a href="blog.html">Blog</a></li> 
-					<li><a href="foro.html" class="active">Foros</a></li> 
-					<li><a href="premium.html">Premium</a></li> 
-				</ul>
-			</nav>
-		</div>
-	</header>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
+    
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo" aria-label="Universo Borderline Homepage"> 
+                <i class="fas fa-brain" aria-hidden="true"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
+            </a>
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html" class="active" aria-current="page">Foros</a></li> 
+                    <li><a href="memes.html">Memes</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-	<main class="main-page-content">
-		<div class="container">
-			<div class="forum-page-header">
-				<h2><i class="fas fa-hand-holding-heart"></i> Foro: Apoyo General y Bienvenida</h2>
-				<p class="description">
-					Este es tu espacio para presentarte a la comunidad de Borderline Journey. Comparte tus experiencias, desafíos y logros. Encuentra comprensión, haz preguntas y conecta con otros que entienden tu viaje.
-				</p>
-			</div>
+    <main class="main-page-content">
+        <div class="container">
+            <div class="forum-page-header">
+                <h2><i class="fas fa-hand-holding-heart"></i> Foro: Apoyo General y Bienvenida</h2>
+                <p class="description">
+                    Este es tu espacio para presentarte a la comunidad de Universo Borderline. Comparte tus experiencias, desafíos y logros. Encuentra comprensión, haz preguntas y conecta con otros que entienden tu viaje.
+                </p>
+            </div>
 
-			<div class="breadcrumb">
-				<a href="foro.html">Todos los Foros</a>
-				<span>&gt;</span>
-				<span>Apoyo General y Bienvenida</span>
-			</div>
+            <div class="breadcrumb">
+                <a href="foro.html">Todos los Foros</a>
+                <span>&gt;</span>
+                <span>Apoyo General y Bienvenida</span>
+            </div>
 
-			<div class="forum-actions">
-				<button id="open-new-thread-modal-btn" class="create-thread-btn"><i class="fas fa-plus-circle"></i> Crear Nuevo Tema</button>
-				<div>
-					</div>
-			</div>
+            <div class="forum-actions">
+                <button id="open-new-thread-modal-btn" class="create-thread-btn"><i class="fas fa-plus-circle"></i> Crear Nuevo Tema</button>
+                <div>
+                    <!-- Placeholder for search or filter if needed later -->
+                </div>
+            </div>
 
-			<section id="sticky-threads-section">
-				<h3 class="forum-section-title">Hilos Destacados</h3>
-				<ul class="thread-list">
-					<li class="thread-item sticky-thread">
-						<div class="thread-item-header">
-							<h4><a href="#"><i class="fas fa-thumbtack"></i> ¡Bienvenido/a! Preséntate aquí</a></h4>
-							<div class="thread-meta">
-								<span>Por: Admin</span>
-								<span><i class="fas fa-comment"></i> 152 Respuestas</span>
-								<span><i class="fas fa-eye"></i> 3.2k Vistas</span>
-							</div>
-						</div>
-						<p class="thread-excerpt">Un hilo para que los nuevos miembros se presenten y la comunidad les dé la bienvenida. ¡No seas tímido/a!</p>
-					</li>
-					<li class="thread-item sticky-thread">
-						<div class="thread-item-header">
-							<h4><a href="#"><i class="fas fa-book-reader"></i> Guía de Normas y Buenas Prácticas del Foro</a></h4>
-							<div class="thread-meta">
-								<span>Por: Moderador</span>
-								<span><i class="fas fa-comment"></i> 12 Respuestas</span>
-								<span><i class="fas fa-eye"></i> 1.8k Vistas</span>
-							</div>
-						</div>
-						<p class="thread-excerpt">Por favor, lee estas normas para asegurar que mantenemos un espacio seguro y de apoyo para todos.</p>
-					</li>
-				</ul>
-			</section>
+            <section id="sticky-threads-section">
+                <h3 class="forum-section-title">Hilos Destacados</h3>
+                <ul class="thread-list">
+                    <li class="thread-item sticky-thread">
+                        <div class="thread-item-header">
+                            <h4><a href="#"><i class="fas fa-thumbtack"></i> ¡Bienvenido/a! Preséntate aquí</a></h4>
+                            <div class="thread-meta">
+                                <span>Por: Admin</span>
+                                <span><i class="fas fa-comment"></i> 152 Respuestas</span>
+                                <span><i class="fas fa-eye"></i> 3.2k Vistas</span>
+                            </div>
+                        </div>
+                        <p class="thread-excerpt">Un hilo para que los nuevos miembros se presenten y la comunidad les dé la bienvenida. ¡No seas tímido/a!</p>
+                    </li>
+                    <li class="thread-item sticky-thread">
+                        <div class="thread-item-header">
+                            <h4><a href="#"><i class="fas fa-book-reader"></i> Guía de Normas y Buenas Prácticas del Foro</a></h4>
+                            <div class="thread-meta">
+                                <span>Por: Moderador</span>
+                                <span><i class="fas fa-comment"></i> 12 Respuestas</span>
+                                <span><i class="fas fa-eye"></i> 1.8k Vistas</span>
+                            </div>
+                        </div>
+                        <p class="thread-excerpt">Por favor, lee estas normas para asegurar que mantenemos un espacio seguro y de apoyo para todos.</p>
+                    </li>
+                </ul>
+            </section>
 
-			<section id="general-threads-section">
-				<h3 class="forum-section-title">Temas de Discusión</h3>
-				<ul class="thread-list" id="general-thread-list-ul">
-					<li class="thread-item">
-						<div class="thread-item-header">
-							<h4><a href="#">Mis primeros pasos después del diagnóstico</a></h4>
-							<div class="thread-meta">
-								<span>Por: UsuarioAlegre</span>
-								<span><i class="fas fa-comment"></i> 34 Respuestas</span>
-								<span><i class="fas fa-eye"></i> 876 Vistas</span>
-								<span>Última respuesta: hace 2 horas</span>
-							</div>
-						</div>
-						<p class="thread-excerpt">Quería compartir cómo me he sentido y qué cosas pequeñas me han ayudado desde que recibí mi diagnóstico. ¿Alguien más se siente así?</p>
-					</li>
-					<li class="thread-item">
-						<div class="thread-item-header">
-							<h4><a href="#">Buscando consejos para explicar el TLP a mi familia</a></h4>
-							<div class="thread-meta">
-								<span>Por: GuerreroSilencioso</span>
-								<span><i class="fas fa-comment"></i> 58 Respuestas</span>
-								<span><i class="fas fa-eye"></i> 1.1k Vistas</span>
-								<span>Última respuesta: hace 5 horas</span>
-							</div>
-						</div>
-						<p class="thread-excerpt">Me cuesta mucho encontrar las palabras adecuadas para que mi familia entienda por lo que estoy pasando. ¿Alguna sugerencia o recurso?</p>
-					</li>
-					<li class="thread-item">
-						<div class="thread-item-header">
-							<h4><a href="#">Pequeñas victorias de la semana</a></h4>
-							<div class="thread-meta">
-								<span>Por: EstrellaFugaz</span>
-								<span><i class="fas fa-comment"></i> 102 Respuestas</span>
-								<span><i class="fas fa-eye"></i> 2.5k Vistas</span>
-								<span>Última respuesta: hace 30 minutos</span>
-							</div>
-						</div>
-						<p class="thread-excerpt">¡Un espacio para celebrar esos pequeños grandes logros que a veces pasan desapercibidos! ¿Cuál fue tu victoria esta semana?</p>
-					</li>
-					</ul>
-			</section>
-			
-			<nav aria-label="Paginación de temas" class="flex justify-center mt-8 mb-4">
-				<ul class="flex items-center -space-x-px h-10 text-base">
-				  <li>
-					<a href="#" class="flex items-center justify-center px-4 h-10 ms-0 leading-tight text-stone-400 bg-stone-700 border border-e-0 border-stone-600 rounded-s-lg hover:bg-stone-600 hover:text-stone-200">
-					  <span class="sr-only">Anterior</span>
-					  <i class="fas fa-chevron-left"></i>
-					</a>
-				  </li>
-				  <li>
-					<a href="#" aria-current="page" class="z-10 flex items-center justify-center px-4 h-10 leading-tight text-yellow-400 border border-yellow-500 bg-yellow-900 hover:bg-yellow-800 hover:text-yellow-300">1</a>
-				  </li>
-				  <li>
-					<a href="#" class="flex items-center justify-center px-4 h-10 leading-tight text-stone-400 bg-stone-700 border border-stone-600 rounded-e-lg hover:bg-stone-600 hover:text-stone-200">
-					  <span class="sr-only">Siguiente</span>
-					  <i class="fas fa-chevron-right"></i>
-					</a>
-				  </li>
-				</ul>
-			  </nav>
+            <section id="general-threads-section">
+                <h3 class="forum-section-title">Temas de Discusión</h3>
+                <ul class="thread-list" id="general-thread-list-ul">
+                    <li class="thread-item">
+                        <div class="thread-item-header">
+                            <h4><a href="#">Mis primeros pasos después del diagnóstico</a></h4>
+                            <div class="thread-meta">
+                                <span>Por: UsuarioAlegre</span>
+                                <span><i class="fas fa-comment"></i> 34 Respuestas</span>
+                                <span><i class="fas fa-eye"></i> 876 Vistas</span>
+                                <span>Última respuesta: hace 2 horas</span>
+                            </div>
+                        </div>
+                        <p class="thread-excerpt">Quería compartir cómo me he sentido y qué cosas pequeñas me han ayudado desde que recibí mi diagnóstico. ¿Alguien más se siente así?</p>
+                    </li>
+                    <li class="thread-item">
+                        <div class="thread-item-header">
+                            <h4><a href="#">Buscando consejos para explicar el TLP a mi familia</a></h4>
+                            <div class="thread-meta">
+                                <span>Por: GuerreroSilencioso</span>
+                                <span><i class="fas fa-comment"></i> 58 Respuestas</span>
+                                <span><i class="fas fa-eye"></i> 1.1k Vistas</span>
+                                <span>Última respuesta: hace 5 horas</span>
+                            </div>
+                        </div>
+                        <p class="thread-excerpt">Me cuesta mucho encontrar las palabras adecuadas para que mi familia entienda por lo que estoy pasando. ¿Alguna sugerencia o recurso?</p>
+                    </li>
+                    <li class="thread-item">
+                        <div class="thread-item-header">
+                            <h4><a href="#">Pequeñas victorias de la semana</a></h4>
+                            <div class="thread-meta">
+                                <span>Por: EstrellaFugaz</span>
+                                <span><i class="fas fa-comment"></i> 102 Respuestas</span>
+                                <span><i class="fas fa-eye"></i> 2.5k Vistas</span>
+                                <span>Última respuesta: hace 30 minutos</span>
+                            </div>
+                        </div>
+                        <p class="thread-excerpt">¡Un espacio para celebrar esos pequeños grandes logros que a veces pasan desapercibidos! ¿Cuál fue tu victoria esta semana?</p>
+                    </li>
+                    </ul>
+            </section>
+            
+            <nav aria-label="Paginación de temas" class="pagination-nav">
+                <ul>
+                  <li>
+                    <a href="#">
+                      <span class="sr-only">Anterior</span>
+                      <i class="fas fa-chevron-left"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" aria-current="page">1</a>
+                  </li>
+                  <li>
+                    <a href="#">2</a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="sr-only">Siguiente</span>
+                      <i class="fas fa-chevron-right"></i>
+                    </a>
+                  </li>
+                </ul>
+              </nav>
 
-		</div>
-	</main>
+        </div>
+    </main>
 
     <div id="new-thread-modal" class="modal-overlay">
         <div class="modal-content">
@@ -714,105 +751,109 @@
         </div>
     </div>
 
-	<footer>
-		<div class="container">
-			<div class="footer-grid">
-				<div class="footer-column">
-					<h3>Borderline Journey</h3>
-					<p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-					<div class="social-links">
-						<a href="#"><i class="fab fa-instagram"></i></a>
-						<a href="#"><i class="fab fa-tiktok"></i></a>
-						<a href="#"><i class="fab fa-youtube"></i></a>
-						<a href="#"><i class="fab fa-discord"></i></a>
-					</div>
-				</div>
-				
-				<div class="footer-column">
-					<h3>Navegación</h3>
-					<ul class="footer-links">
-						<li><a href="index.html">Inicio</a></li> 
-						<li><a href="cursos.html">Cursos</a></li> 
-						<li><a href="blog.html">Blog</a></li> 
-						<li><a href="foro.html">Foros</a></li> 
-						<li><a href="premium.html">Premium</a></li> 
-					</ul>
-				</div>
-				
-				<div class="footer-column">
-					<h3>Recursos DBT</h3>
-					<ul class="footer-links">
-						<li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
-						<li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-						<li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
-						<li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
-					</ul>
-				</div>
-				
-				<div class="footer-column">
-					<h3>Contacto</h3>
-					<div class="contact-info">
-						<p><i class="fas fa-envelope"></i> itfrombit.w74@gmail.com</p>
-						<p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
-						<p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
-						<p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
-					</div>
-				</div>
-			</div>
-			
-			<div class="copyright">
-				<p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
-				<p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
-			</div>
-		</div>
-	</footer>
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Universo Borderline</h3>
+                    <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                    <!-- Social links icons removed -->
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="memes.html">Memes</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Útiles</h3> 
+                    <ul class="footer-links">
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
+                        <!-- Removed "Soporte: 24/7 para miembros premium" -->
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+            </div>
+        </div>
+    </footer>
 
-	<script>
-		document.addEventListener('DOMContentLoaded', function() {
-			document.getElementById('currentYear').textContent = new Date().getFullYear();
-			
-			const starsContainer = document.getElementById('stars');
-			if (starsContainer) {
-				const starsCount = 150;
-				for (let i = 0; i < starsCount; i++) {
-					const star = document.createElement('div');
-					star.classList.add('star');
-					const size = Math.random() * 2.2 + 0.3;
-					star.style.width = `${size}px`;
-					star.style.height = `${size}px`;
-					star.style.left = `${Math.random() * 100}%`;
-					star.style.top = `${Math.random() * 100}%`;
-					star.style.animationDelay = `${Math.random() * 6}s`; 
-					star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
-					if (Math.random() > 0.65) {
-						const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
-						star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-						star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
-					} else {
-						star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
-					}
-					starsContainer.appendChild(star);
-				}
-			}
-			
-			const navLinks = document.querySelectorAll('header nav a');
-			navLinks.forEach(link => {
-				link.classList.remove('active'); 
-				if (link.getAttribute('href') === 'foro.html') {
-					link.classList.add('active');
-				}
-			});
-			
-			const header = document.getElementById('main-header');
-			if(header){
-				window.addEventListener('scroll', () => {
-					if (window.scrollY > 40) {
-						header.classList.add('scrolled');
-					} else {
-						header.classList.remove('scrolled');
-					}
-				});
-			}
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150;
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 6}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
+                    if (Math.random() > 0.65) {
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
+                const linkFilename = link.getAttribute('href').split('/').pop();
+                // Highlight "Foros" if on any forum-related subpage or foro.html itself
+                if (linkFilename === 'foro.html' && 
+                    (currentPageFilename.startsWith('foro_') || currentPageFilename === 'foro.html')) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                } else if (linkFilename === currentPageFilename) { // For other pages
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
 
             // Modal functionality
             const newThreadModal = document.getElementById('new-thread-modal');
@@ -837,7 +878,7 @@
             }
             if(newThreadModal) {
                 newThreadModal.addEventListener('click', function(event) {
-                    if (event.target === newThreadModal) {
+                    if (event.target === newThreadModal) { // Close if overlay is clicked
                         closeModal();
                     }
                 });
@@ -846,19 +887,24 @@
             if(newThreadForm && generalThreadListUl) {
                 newThreadForm.addEventListener('submit', function(event) {
                     event.preventDefault();
-                    const title = document.getElementById('thread-title').value;
-                    const content = document.getElementById('thread-content').value;
+                    const titleInput = document.getElementById('thread-title');
+                    const contentInput = document.getElementById('thread-content');
+                    const title = titleInput.value;
+                    const content = contentInput.value;
 
                     if (title.trim() === '' || content.trim() === '') {
-                        // Podrías añadir un mensaje de error más visible aquí
                         console.log("El título y el contenido no pueden estar vacíos.");
+                        if(title.trim() === '') titleInput.style.borderColor = 'var(--accent-red)'; else titleInput.style.borderColor = 'var(--border-color)';
+                        if(content.trim() === '') contentInput.style.borderColor = 'var(--accent-red)'; else contentInput.style.borderColor = 'var(--border-color)';
                         return;
                     }
+                    titleInput.style.borderColor = 'var(--border-color)'; 
+                    contentInput.style.borderColor = 'var(--border-color)'; 
+
 
                     const newThreadLi = document.createElement('li');
                     newThreadLi.classList.add('thread-item');
                     
-                    // Simple sanitization for display
                     const sanitizedTitle = title.replace(/</g, "&lt;").replace(/>/g, "&gt;");
                     const sanitizedContent = content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
@@ -876,14 +922,13 @@
                         <p class="thread-excerpt">${sanitizedContent.substring(0, 150)}${sanitizedContent.length > 150 ? '...' : ''}</p>
                     `;
                     
-                    // Prepend to see the new thread at the top
                     generalThreadListUl.prepend(newThreadLi); 
 
                     newThreadForm.reset();
                     closeModal();
                 });
             }
-		});
-	</script>
+        });
+    </script>
 </body>
 </html>
