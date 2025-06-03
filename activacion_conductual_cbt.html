@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Activación Conductual en TCC - Profundización Completa - Borderline Journey</title>
+    <meta name="description" content="Profundización en la Activación Conductual (AC) como técnica clave de la Terapia Cognitivo Conductual (TCC) para el manejo de la depresión y otros desafíos emocionales.">
+    <title>Activación Conductual en TCC - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -110,14 +111,14 @@
         }
         
         .logo h1 { 
-            font-family: 'Krona One', sans-serif; 
-            font-size: 1.8rem; 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
             font-weight: 400;
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
             -webkit-background-clip: text; 
             background-clip: text; 
             -webkit-text-fill-color: transparent;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
         
         .logo i { 
@@ -162,6 +163,7 @@
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
+            border-radius: 20px; /* Ensure ::before is also rounded */
         }
         
         nav a:hover::before, 
@@ -189,10 +191,10 @@
         }
 
         .page-header h2 {
-            font-family: 'Playfair Display', serif; /* Updated font */
+            font-family: 'Playfair Display', serif; 
             font-size: 2.8rem; 
             font-weight: 700;
-            color: var(--accent-red); /* Component specific color */
+            color: var(--accent-red); 
             margin-bottom: 0.5rem;
             text-transform: none; 
             letter-spacing: 0.5px;
@@ -229,7 +231,7 @@
         }
 
         .component-content-section h3 {
-            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.9rem; 
             color: var(--accent-red); 
@@ -240,7 +242,7 @@
             padding-bottom: 0.8rem; 
         }
          .component-content-section h4 {
-            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.5rem; 
             color: var(--accent-yellow);
@@ -390,7 +392,7 @@
         }
 
         .back-btn {
-            background: linear-gradient(45deg, var(--accent-magenta), var(--primary-violet)); /* Adjusted for Activacion Conductual theme (Magenta) */
+            background: linear-gradient(45deg, var(--accent-magenta), var(--primary-violet)); 
             color: white; 
             box-shadow: 0 3px 10px rgba(var(--accent-magenta-rgb), 0.4);
         }
@@ -401,7 +403,7 @@
         }
 
         .continue-btn {
-            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-blue)); /* Adjusted for Tecnicas de Exposicion theme (Cyan/Blue) */
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-blue)); 
             color: white; 
             box-shadow: 0 3px 10px rgba(var(--secondary-cyan-rgb), 0.4);
         }
@@ -409,6 +411,19 @@
             background: linear-gradient(45deg, var(--accent-blue), var(--secondary-cyan)); 
             transform: translateY(-3px) scale(1.03);
             box-shadow: 0 5px 15px rgba(var(--accent-blue-rgb), 0.5); 
+        }
+        
+        .diagram-container {
+            text-align: center;
+            padding: 20px;
+            margin: 1.5rem 0;
+            border: 1px dashed var(--secondary-cyan);
+            border-radius: 8px;
+            background-color: rgba(var(--secondary-cyan-rgb), 0.05);
+        }
+        .diagram-container svg {
+            max-width: 100%;
+            height: auto;
         }
         
         footer { 
@@ -470,21 +485,7 @@
         }
         .contact-info i { color: var(--accent-blue); } 
         
-        .social-links { display: flex; gap: 15px; margin-top: 22px; }
-        .social-links a { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 45px; 
-            height: 45px; 
-            background: rgba(255, 255, 255, 0.04); 
-            color: var(--accent-blue); 
-            border-radius: 50%; 
-            transition: all 0.4s ease; 
-            font-size: 1.2rem; 
-            border: 1px solid var(--accent-blue); 
-        }
-        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        /* .social-links class is removed from the first footer column as per user request */
         
         .copyright { 
             text-align: center; 
@@ -533,7 +534,7 @@
         
         @media (max-width: 600px) {
             .main-page-content { padding-top: 130px; } 
-            .logo h1 { font-size: 1.5rem; }
+            .logo h1 { font-size: 1.6rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
             .page-header h2 { font-size: 2rem; } 
@@ -544,6 +545,7 @@
             .component-content-section p,
             .component-content-section li {font-size: 1rem;} 
             .nav-btn { padding: 10px 20px; font-size: 0.9rem;}
+            .diagram-container svg { width: 100%; }
         }
     </style>
 </head>
@@ -553,9 +555,9 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="index.html" rel="noopener noreferrer" class="logo">
+            <a href="index.html" class="logo"> 
                 <i class="fas fa-brain"></i>
-                <h1>BORDERLINE JOURNEY</h1>
+                <h1>UNIVERSO BORDERLINE</h1> 
             </a>
             <nav>
                 <ul>
@@ -563,7 +565,7 @@
                     <li><a href="cursos.html" class="active">Cursos</a></li> 
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
-                    <li><a href="premium.html">Premium</a></li> 
+                    <li><a href="memes.html">Memes</a></li> 
                 </ul>
             </nav>
         </div>
@@ -596,9 +598,56 @@
                 <p>
                     La Activación Conductual interviene directamente para romper este ciclo debilitante. Su objetivo principal es incrementar de manera gradual y sistemática la participación de la persona en actividades que son <strong>reforzantes, placenteras, o que están alineadas con sus valores personales y metas vitales</strong>, incluso si en el momento inicial no existe el deseo o la motivación para llevarlas a cabo.
                 </p>
-                <div class="example-box" style="text-align:center; padding: 20px; border: 1px dashed var(--secondary-cyan);">
-                    <p><em>Imagina aquí un diagrama ilustrando el ciclo: Estado de ánimo bajo -> Reducción de actividad -> Menos experiencias positivas -> Estado de ánimo aún más bajo -> Mayor reducción de actividad. La AC interrumpe este ciclo introduciendo actividad.</em></p>
+                <div class="diagram-container">
+                    <svg viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg" aria-labelledby="diagramTitle diagramDesc">
+                        <title id="diagramTitle">Diagrama del Ciclo de Activación Conductual</title>
+                        <desc id="diagramDesc">Ilustra cómo el estado de ánimo bajo lleva a la reducción de actividad, lo que reduce las experiencias positivas, empeorando el ánimo. La Activación Conductual interrumpe este ciclo.</desc>
+                        
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--secondary-cyan)" />
+                            </marker>
+                            <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--accent-red)" />
+                            </marker>
+                        </defs>
+
+                        <!-- Cycle Boxes -->
+                        <g id="cycle">
+                            <rect x="250" y="30" width="200" height="60" rx="10" fill="rgba(var(--primary-violet-rgb), 0.3)" stroke="var(--primary-violet)" stroke-width="2"/>
+                            <text x="350" y="65" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle">Estado de Ánimo Bajo</text>
+
+                            <rect x="480" y="150" width="200" height="60" rx="10" fill="rgba(var(--primary-violet-rgb), 0.3)" stroke="var(--primary-violet)" stroke-width="2"/>
+                            <text x="580" y="175" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Reducción de</text>
+                            <text x="580" y="195" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Actividad</text>
+
+                            <rect x="250" y="270" width="200" height="60" rx="10" fill="rgba(var(--primary-violet-rgb), 0.3)" stroke="var(--primary-violet)" stroke-width="2"/>
+                            <text x="350" y="295" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Menos Experiencias</text>
+                            <text x="350" y="315" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Positivas</text>
+
+                            <rect x="20" y="150" width="200" height="60" rx="10" fill="rgba(var(--primary-violet-rgb), 0.3)" stroke="var(--primary-violet)" stroke-width="2"/>
+                            <text x="120" y="175" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Mayor Reducción</text>
+                            <text x="120" y="195" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">de Actividad</text>
+                        </g>
+
+                        <!-- Cycle Arrows -->
+                        <path d="M 350 90 Q 350 120, 480 160" stroke="var(--secondary-cyan)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 580 210 Q 480 240, 350 270" stroke="var(--secondary-cyan)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 350 330 Q 350 240, 220 200" stroke="var(--secondary-cyan)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        <path d="M 120 150 Q 200 120, 350 90" stroke="var(--secondary-cyan)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Activation Conductual Intervention -->
+                        <g id="intervention">
+                            <rect x="225" y="370" width="250" height="60" rx="10" fill="rgba(var(--accent-red-rgb), 0.8)" stroke="var(--accent-red)" stroke-width="2.5"/>
+                            <text x="350" y="405" font-family="Fredoka One, cursive" font-size="18" fill="var(--text-color-light)" text-anchor="middle">ACTIVACIÓN CONDUCTUAL</text>
+                            
+                            <!-- Arrow from AC to break the cycle -->
+                            <line x1="350" y1="370" x2="350" y2="230" stroke="var(--accent-red)" stroke-width="3" stroke-dasharray="5,5" marker-end="url(#arrowhead-red)"/>
+                             <text x="360" y="250" font-family="Comfortaa, sans-serif" font-size="14" fill="var(--accent-red)" font-weight="bold">Interrumpe el ciclo</text>
+                        </g>
+                    </svg>
                 </div>
+
 
                 <h4><i class="fas fa-drafting-compass"></i> Principios Fundamentales de la Activación Conductual: Los Pilares del Cambio</h4>
                 <p>La AC se sustenta en varios principios clave que guían su aplicación:</p>
@@ -842,14 +891,9 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>Borderline Journey</h3>
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                    </div>
+                    <h3>Universo Borderline</h3>
+                    <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                    <!-- Social links icons removed -->
                 </div>
                 
                 <div class="footer-column">
@@ -859,16 +903,16 @@
                         <li><a href="cursos.html">Cursos</a></li> 
                         <li><a href="blog.html">Blog</a></li> 
                         <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="premium.html">Premium</a></li> 
+                        <li><a href="memes.html">Memes</a></li> 
                     </ul>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Recursos DBT</h3>
+                    <h3>Enlaces Útiles</h3>
                     <ul class="footer-links">
                         <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" target="_blank" rel="noopener noreferrer">¿Qué es TCC?</a></li>
                         <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
                         <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
@@ -876,16 +920,17 @@
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> itfrombit.w74@gmail.com</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p>
                         <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
-                        <p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
+                        <!-- Removed "Soporte: 24/7 para miembros premium" -->
                         <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p>
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
                 <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
@@ -925,20 +970,22 @@
                 link.classList.remove('active'); 
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 
+                // Highlight "Cursos" if on any course-related subpage or cursos.html itself
                 if (linkFilename === 'cursos.html' && 
-                    (currentPageFilename === 'dbt.html' || 
+                    (currentPageFilename === 'cursos.html' || 
+                     currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
                      currentPageFilename === 'mindfulness_dbt.html' ||
                      currentPageFilename === 'regulacion_emocional_dbt.html' ||
                      currentPageFilename === 'tolerancia_malestar_dbt.html' ||
                      currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
                      currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
-                     currentPageFilename === 'activacion_conductual_cbt.html' || // Current page
+                     currentPageFilename === 'activacion_conductual_cbt.html' || 
                      currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
                      currentPageFilename === 'resolucion_problemas_cbt.html'
-                     )) {
-                     link.classList.add('active'); 
-                } else if (linkFilename === currentPageFilename) {
+                    )) {
+                    link.classList.add('active'); 
+                } else if (linkFilename === currentPageFilename) { // For other pages
                     link.classList.add('active');
                 }
             });
@@ -966,7 +1013,7 @@
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
                         } else {
-                            // entry.target.classList.remove('visible');
+                            // entry.target.classList.remove('visible'); // Uncomment to re-animate on scroll up
                         }
                     });
                 }, observerOptions);
