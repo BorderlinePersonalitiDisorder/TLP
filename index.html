@@ -41,7 +41,7 @@
 			background: var(--dark-bg);
 			color: var(--text-color-light);
 			line-height: 1.8;
-			font-family: 'Playfair Display', serif; 
+			font-family: 'Playfair Display', serif; /* Base font */
 			overflow-x: hidden;
 			min-height: 100vh;
 			display: flex; 
@@ -226,7 +226,8 @@
 		
 		.content-block-qs h2 i.fa-brain, 
 		.content-block-qs h2 i.fa-compass,
-		.content-block-qs h2 i.fa-lightbulb { 
+		.content-block-qs h2 i.fa-lightbulb,
+        .content-block-qs h2 i.fa-meteor { /* Added for new welcome icon */
 			margin-right: 10px;
 		}
 
@@ -239,62 +240,38 @@
 		.content-block-qs h2 i.fa-lightbulb { 
 			color: var(--accent-yellow); 
 		}
+        .content-block-qs h2 i.fa-meteor { /* Style for new welcome icon */
+            color: var(--secondary-cyan);
+        }
 		
-		/* Styles for the introductory summary list */
-		.intro-summary-list {
-			list-style: none; /* Removes default list bullets */
-			padding-left: 0;
-			margin-top: 1.5rem;
-		}
-
-		.intro-summary-list li {
-			margin-bottom: 15px;
-			border-left: 4px solid var(--accent-yellow); /* Keeps the distinctive left border */
-			transition: transform 0.3s ease; /* For the hover slide effect */
-			border-radius: 0 8px 8px 0; /* Added to li for the border to also appear rounded with the link */
-		}
-
-		.intro-summary-list li:hover {
-			transform: translateX(5px); /* Slides the list item slightly to the right on hover */
-		}
-
-		.intro-summary-list li a {
-			display: block; /* Makes the entire area of the link clickable */
-			text-decoration: none; /* Removes the default underline from links */
-			color: inherit; /* Ensures text inside the link inherits its color from parent elements */
-			background: rgba(var(--accent-blue-rgb), 0.07); /* Sets the background color of the link */
-			padding: 15px 20px; /* Adds padding inside the link */
-			border-radius: 0 8px 8px 0; /* Rounds the corners of the link, matching the li's original style */
-			transition: background-color 0.3s ease; /* Smooth transition for background color change on hover */
-		}
-
-		.intro-summary-list li a:hover {
-			background: rgba(var(--accent-yellow-rgb), 0.1); /* Changes background color on hover for feedback */
-		}
-
-		.intro-summary-list li a strong {
-			font-family: 'Comfortaa', sans-serif;
-			font-weight: 700;
-			color: var(--accent-yellow);
-			display: block;
-			margin-bottom: 5px;
-			font-size: 1.15rem;
-		}
-
-		.intro-summary-list li a p {
-			font-size: 1rem;
-			line-height: 1.7;
-			margin-bottom: 0;
-			color: var(--text-color-light);
-		}
-		
-		.info-section p { /* General paragraph styling within info sections */
+		.info-section p, .welcome-section p { /* General paragraph styling within info sections */
 			font-size: 1.1rem; 
 			color: var(--text-color-light); 
 			margin-bottom: 20px; 
 			line-height: 1.9; 
 			text-align: justify;
 		}
+
+        .welcome-section .welcome-text {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--text-color-medium);
+            margin-bottom: 1.5rem;
+            font-family: 'Comfortaa', sans-serif;
+        }
+
+        .welcome-section .exploration-prompt {
+            font-size: 1.15rem;
+            color: var(--accent-yellow);
+            text-align: center;
+            font-style: italic;
+            margin-top: 1rem;
+            padding: 10px;
+            background: rgba(var(--accent-yellow-rgb), 0.05);
+            border-left: 3px solid var(--accent-yellow);
+            border-right: 3px solid var(--accent-yellow);
+            border-radius: 8px;
+        }
 		
 		#apod-section { /* Specific styling for the Astronomy Picture of the Day section */
 			margin-top: 3rem; 
@@ -604,10 +581,9 @@
 			nav a { font-size: 0.7rem; padding: 6px 7px; }
 			.content-block-qs { padding: 25px; }
 			.content-block-qs h2 { font-size: 1.9rem; } 
-			.intro-summary-list li a p { font-size: 0.95rem; } /* Adjusted from .intro-summary-list li p */
-			.intro-summary-list li a strong { font-size: 1.1rem;} /* Adjusted from .intro-summary-list li strong */
-			/* .info-section p { font-size: 1rem; }  This was too general, affecting intro-summary-list p too */
-                      .apod-title-container p { font-size: 1rem; } /* Specifically target APOD description */
+            .welcome-section .welcome-text { font-size: 1.1rem; }
+            .welcome-section .exploration-prompt { font-size: 1.05rem; }
+			.apod-title-container p { font-size: 1rem; } /* Specifically target APOD description */
 			.apod-title-container h2 { font-size: 1.8rem; }
 			.hero-apod-image-container { height: 55vh; min-height: 300px; }
 			.apod-title-text { font-size: 1.6rem; } 
@@ -627,10 +603,10 @@
 		<div class="container header-container">
 			<a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
 				<i class="fas fa-brain"></i>
-				<h1>UNIVERSO BORDERLINE</h1> </a>
+				<h1>UNIVERSO BORDERLINE</h1>
+            </a>
 			<nav>
 				<ul>
-					<li><a href="index.html" class="active">Inicio</a></li>
 					<li><a href="cursos.html">Cursos</a></li> 
 					<li><a href="blog.html">Blog</a></li> 
 					<li><a href="foro.html">Foros</a></li> 
@@ -642,48 +618,21 @@
 
 	<main class="main-page-content">
 		<div class="container">
-			<section id="intro-summary-section" class="content-block-qs info-section">
-				<h2><i class="fas fa-compass"></i> Bienvenido a Universo Borderline</h2>
-				<p style="text-align: center; font-size: 1.15rem; color: var(--text-color-medium); margin-bottom: 2rem;">
-					Explora las diferentes facetas de nuestro universo, diseñado para acompañarte en tu viaje de autoconocimiento y bienestar. 
+            <section id="welcome-section" class="content-block-qs welcome-section">
+				<h2><i class="fas fa-meteor"></i> Te Damos la Bienvenida a tu Universo</h2>
+				<p class="welcome-text">
+					Este es un espacio de encuentro y transformación, diseñado para iluminar tu camino de autoconocimiento y bienestar emocional.
+                    Aquí, la curiosidad es tu brújula y la autoaceptación, tu nave estelar.
 				</p>
-				<ul class="intro-summary-list">
-					<li>
-						<a href="index.html">
-							<strong><i class="fas fa-home"></i> Inicio:</strong>
-							<p>Tu punto de partida. Aquí encontrarás información esencial sobre TLP, DBT y TCC, además de nuestra dosis diaria de inspiración cósmica para elevar el espíritu.</p>
-						</a>
-					</li>
-					<li>
-						<a href="cursos.html">
-							<strong><i class="fas fa-graduation-cap"></i> Cursos:</strong>
-							<p>Profundiza tus conocimientos con nuestros módulos interactivos. Explora a fondo las habilidades DBT, las técnicas TCC y herramientas para el bienestar emocional.</p>
-						</a>
-					</li>
-					<li>
-						<a href="blog.html">
-							<strong><i class="fas fa-feather-alt"></i> Blog:</strong>
-							<p>Un espacio para la reflexión y el aprendizaje continuo. Lee artículos, historias personales y perspectivas enriquecedoras sobre el viaje emocional.</p>
-						</a>
-					</li>
-					<li>
-						<a href="foro.html">
-							<strong><i class="fas fa-users"></i> Foros:</strong>
-							<p>Conecta con otros. Únete a nuestra comunidad para compartir experiencias, encontrar apoyo y crecer juntos en un ambiente seguro y comprensivo.</p>
-						</a>
-					</li>
-					<li>
-						<a href="memes.html">
-							<strong><i class="fas fa-smile-beam"></i> Memes:</strong>
-							<p>Una selección de humor gráfico relacionado con la temática del sitio para distender y compartir una sonrisa.</p>
-						</a>
-					</li>
-				</ul>
+                <p class="exploration-prompt">
+                    Cada rincón de este universo ha sido creado para ofrecerte herramientas, perspectivas y comunidad. ¿Qué constelación de conocimiento deseas explorar hoy?
+                </p>
 			</section>
 
 			<section id="apod-section" class="content-block-qs">
 				<div class="apod-title-container">
-					 <h2><i class="fas fa-rocket"></i> Inspiración Diaria del Cosmos</h2> <p>Descubre una imagen astronómica o astrofotografía inspiradora cada día.</p>
+					 <h2><i class="fas fa-rocket"></i> Inspiración Diaria del Cosmos</h2>
+                     <p>Descubre una imagen astronómica o astrofotografía inspiradora cada día.</p>
 				</div>
 
 				<div class="hero-apod-image-container">
@@ -718,7 +667,9 @@
 		<div class="container">
 			<div class="footer-grid">
 				<div class="footer-column">
-					<h3>Universo Borderline</h3> <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p> <div class="social-links">
+					<h3>Universo Borderline</h3>
+                    <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                    <div class="social-links">
 						<a href="#"><i class="fab fa-instagram"></i></a>
 						<a href="#"><i class="fab fa-tiktok"></i></a>
 						<a href="#"><i class="fab fa-youtube"></i></a>
@@ -729,7 +680,6 @@
 				<div class="footer-column">
 					<h3>Navegación</h3>
 					<ul class="footer-links">
-						<li><a href="index.html">Inicio</a></li> 
 						<li><a href="cursos.html">Cursos</a></li> 
 						<li><a href="blog.html">Blog</a></li> 
 						<li><a href="foro.html">Foros</a></li> 
@@ -738,7 +688,8 @@
 				</div>
 				
 				<div class="footer-column">
-					<h3>Enlaces Útiles</h3> <ul class="footer-links">
+					<h3>Enlaces Útiles</h3>
+                    <ul class="footer-links">
 						<li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
 						<li><a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" target="_blank" rel="noopener noreferrer">¿Qué es TCC?</a></li>
 						<li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
@@ -759,7 +710,8 @@
 			</div>
 			
 			<div class="copyright">
-				<p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+				<p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
 			</div>
 		</div>
 	</footer>
@@ -792,11 +744,15 @@
 				}
 			}
 			
+            // Script para marcar el enlace activo en la navegación
 			const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
 			const navLinks = document.querySelectorAll('header nav a'); 
 			navLinks.forEach(link => {
+                // Se compara el href del enlace con el nombre del archivo actual.
+                // Si es index.html (página principal), ningún enlace de la barra de navegación debe marcarse como activo,
+                // ya que "Inicio" fue removido. Para otras páginas, sí se marcará el correspondiente.
 				const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-				if (linkFilename === currentPageFilename) {
+				if (linkFilename === currentPageFilename && currentPageFilename !== 'index.html') {
 					link.classList.add('active');
 				} else {
 					link.classList.remove('active');
@@ -818,7 +774,7 @@
 			 const observerOptions = {
 				root: null, 
 				rootMargin: '0px',
-				threshold: 0.08
+				threshold: 0.08 // Un poco más bajo para que se active antes al scrollear
 			};
 
 			const observer = new IntersectionObserver((entries, obs) => {
@@ -834,7 +790,7 @@
 				observer.observe(block);
 			});
 			
-			const apiKey = "FQFsse8Fnb3JvqPYnekskHSXtqeU2qLYXf86ZsKT";  // Consider moving to a more secure place if this were a live app
+			const apiKey = "FQFsse8Fnb3JvqPYnekskHSXtqeU2qLYXf86ZsKT"; // API Key para NASA APOD
 			const today = new Date();
 			let currentApodDate = new Date(today); 
 			
@@ -863,6 +819,7 @@
 					const formattedDate = formatDate(dateToFetch);
 					const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
 					
+					// Estados de carga visuales
 					apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A20, #1a1a32)"; 
 					apodTitleEl.textContent = "Consultando el cosmos...";
 					apodDateEl.textContent = "Aguarde un momento...";
@@ -872,9 +829,11 @@
 					fetch(apiUrl)
 						.then(response => {
 							if (!response.ok) {
+								// Intenta parsear el error de la API de NASA si está disponible
 								return response.json().then(errData => {
 									throw new Error(`Error ${response.status}: ${errData.msg || 'No se pudo obtener la imagen para esta fecha.'}`);
 								}).catch(() => {
+									// Fallback si el cuerpo del error no es JSON o está vacío
 									throw new Error(`Error ${response.status}: No se pudo obtener la imagen para esta fecha.`);
 								});
 							}
@@ -890,19 +849,21 @@
 								apodDownload.setAttribute('download', `Cosmos_${formattedDate}.jpg`);
 								apodDownload.style.display = 'block'; 
 							} else if (data.media_type === 'video') {
+								// Placeholder para videos, ya que el fondo no puede mostrar un video directamente
 								apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Video+Cósmico+del+Día')`;
 								apodTitleEl.textContent = data.title || "Video Cósmico del Día";
 								apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
-								apodExplanation.innerHTML = `${data.explanation}<br><br>El contenido de hoy es un video. <a href="${data.url}" target="_blank" rel="noopener noreferrer" class="keyword-link">Haz clic aquí para verlo en su fuente original</a>.`;
+								apodExplanation.innerHTML = `${data.explanation}<br><br>El contenido de hoy es un video. <a href="${data.url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-yellow);">Haz clic aquí para verlo en su fuente original</a>.`;
 								apodDownload.style.display = 'none';
 							} else {
+								 // Placeholder para otros tipos de media o errores inesperados
 								 apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Misterio+Cósmico')`;
 								apodTitleEl.textContent = "Misterio Cósmico";
 								apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
 								apodExplanation.textContent = "El tipo de contenido para hoy no es una imagen o video estándar, o no está disponible en este momento.";
 								apodDownload.style.display = 'none';
 							}
-							currentApodDate = new Date(dateToFetch); 
+							currentApodDate = new Date(dateToFetch); // Actualiza la fecha actual del APOD
 						})
 						.catch(error => {
 							console.error('Error al obtener la imagen cósmica:', error);
@@ -914,7 +875,7 @@
 						});
 				}
 				
-				fetchDailyImage(today);
+				fetchDailyImage(today); // Carga la imagen del día actual al iniciar
 				
 				prevApodBtn.addEventListener('click', () => {
 					const prevDate = new Date(currentApodDate);
@@ -926,14 +887,16 @@
 					const nextDate = new Date(currentApodDate);
 					nextDate.setDate(nextDate.getDate() + 1);
 					
+					// Compara si la fecha siguiente es posterior al día de hoy
 					const todayForComparison = new Date();
-					todayForComparison.setHours(0,0,0,0);
+					todayForComparison.setHours(0,0,0,0); // Normaliza la hora para comparación precisa
 					const tempNextDate = new Date(nextDate);
-					tempNextDate.setHours(0,0,0,0);
+					tempNextDate.setHours(0,0,0,0); // Normaliza la hora para comparación precisa
 
 					if (tempNextDate <= todayForComparison) {
 						fetchDailyImage(nextDate);
 					} else {
+						// Mensaje si se intenta acceder a una fecha futura
 						apodTitleEl.textContent = "Viaje al Futuro No Disponible";
 						apodDateEl.textContent = `Fecha: ${formatDateReadable(nextDate)}`;
 						apodExplanation.textContent = "Las crónicas cósmicas para esta fecha futura aún no han sido escritas. Por favor, mantente en el presente o explora el pasado.";
