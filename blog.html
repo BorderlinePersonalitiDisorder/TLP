@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Universo Borderline</title> <!-- Changed title to match the project -->
+    <title>Blog - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -18,16 +18,16 @@
             
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
-            --text-color-dark: #333333; /* For light backgrounds if any */
+            --text-color-dark: #333333; 
             
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
             --dark-bg: #0A0A20;
-            --light-bg-article: #f0f4f8; /* Light background for articles */
+            --light-bg-article: #f0f4f8; 
         }
         
         html {
-            scroll-behavior: smooth; /* For smooth scrolling to anchors */
+            scroll-behavior: smooth; 
         }
 
         * {
@@ -107,14 +107,14 @@
         }
         
         .logo h1 { 
-            font-family: 'Monoton', cursive; /* Changed to Monoton to match index.html */
-            font-size: 1.9rem; /* Adjusted to match index.html */
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
             font-weight: 400;
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
             -webkit-background-clip: text; 
             background-clip: text; 
             -webkit-text-fill-color: transparent;
-            letter-spacing: 2px; /* Adjusted to match index.html */
+            letter-spacing: 2px; 
         }
         
         .logo i { 
@@ -123,9 +123,9 @@
             animation: logoPulse 3s infinite alternate;
         }
         
-        @keyframes logoPulse { /* Ensured consistency with index.html */
+        @keyframes logoPulse { 
             0% { transform: scale(1); color: var(--accent-green); }
-            50% { transform: scale(1.1); color: var(--secondary-cyan); } /* Used secondary-cyan as in index */
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
             100% { transform: scale(1); color: var(--accent-blue); }
         }
         
@@ -182,7 +182,7 @@
         
         .page-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 3rem; /* Reduced margin as category section is removed */
             padding-top: 2rem; 
         }
 
@@ -218,66 +218,13 @@
             max-width: 700px;
             margin: 0 auto;
         }
-
-        /* Categories Section */
-        .categories-section {
-            margin-bottom: 3rem;
-            padding: 1.5rem;
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 10px;
-            border: 1px solid var(--accent-blue);
-            box-shadow: 0 0 15px rgba(30, 144, 255, 0.2);
-        }
-
-        .categories-section h3 {
-            font-family: 'Fredoka One', cursive;
-            color: var(--accent-green);
-            text-align: center;
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .category-list {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            list-style: none;
-            padding: 0;
-        }
-
-        .category-list li a {
-            display: inline-block;
-            padding: 8px 18px;
-            background-color: var(--card-bg);
-            color: var(--accent-yellow);
-            border: 1px solid var(--accent-magenta);
-            border-radius: 20px;
-            text-decoration: none;
-            font-family: 'Comfortaa', sans-serif;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .category-list li a:hover {
-            background-color: var(--accent-magenta);
-            color: var(--dark-bg);
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 5px 10px rgba(255, 0, 255, 0.4);
-        }
         
         .blog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
+            margin-top: 2rem; /* Added margin-top to compensate for removed categories section */
         }
-
-        .category-anchor { /* Helper for smooth scrolling to category sections */
-            padding-top: 80px; /* Adjust based on fixed header height */
-            margin-top: -80px; /* Negative margin to offset padding */
-            display: block; /* Ensures it takes up space for targeting */
-        }
-
 
         .blog-post-card {
             background: var(--card-bg);
@@ -349,7 +296,7 @@
         .blog-post-excerpt {
             font-size: 1rem;
             line-height: 1.7;
-            margin-bottom: 1.5rem; /* Ensure space for the note below */
+            margin-bottom: 1.5rem; 
             flex-grow: 1;
             color: var(--text-color-light);
         }
@@ -365,7 +312,6 @@
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
             text-align: center;
             align-self: flex-start; 
-            /* margin-top: auto; Removed to allow note to be closer */
         }
 
         .read-more-btn:hover {
@@ -374,12 +320,11 @@
             box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4); 
         }
         
-        /* NEW: Style for the resource hint */
         .full-article-note {
             font-size: 0.8rem;
             color: var(--accent-green);
-            margin-top: 10px; /* Space above the note */
-            text-align: left; /* Align with button if button is flex-start */
+            margin-top: 10px; 
+            text-align: left; 
             display: flex;
             align-items: center;
             gap: 5px;
@@ -503,13 +448,11 @@
             .page-header h2 { font-size: 2.6rem; } 
             .page-header h2 i { font-size: 2.2rem; } 
             .blog-post-content h3 {font-size: 1.3rem;}
-            .categories-section h3 { font-size: 1.6rem; }
-            .category-list li a { font-size: 0.85rem; padding: 7px 15px; }
         }
         
         @media (max-width: 600px) {
             .main-page-content { padding-top: 130px; } 
-            .logo h1 { font-size: 1.6rem; } /* Adjusted to match index.html */
+            .logo h1 { font-size: 1.6rem; } 
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
             .page-header h2 { font-size: 2rem; } 
@@ -521,8 +464,6 @@
             .blog-post-excerpt {font-size: 0.9rem;}
             .read-more-btn { padding: 8px 16px; font-size: 0.9rem;}
             .full-article-note { font-size: 0.75rem; }
-            .categories-section h3 { font-size: 1.4rem; }
-            .category-list li a { font-size: 0.8rem; padding: 6px 12px; }
         }
     </style>
 </head>
@@ -532,9 +473,9 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="index.html" class="logo"> <!-- Changed href to index.html and removed external link attributes -->
+            <a href="index.html" class="logo"> 
                 <i class="fas fa-brain"></i>
-                <h1>UNIVERSO BORDERLINE</h1> <!-- Changed from BORDERLINE JOURNEY -->
+                <h1>UNIVERSO BORDERLINE</h1> 
             </a>
             <nav>
                 <ul>
@@ -542,7 +483,7 @@
                     <li><a href="cursos.html">Cursos</a></li> 
                     <li><a href="blog.html" class="active">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
-                    <li><a href="memes.html">Memes</a></li> <!-- Changed from premium.html -->
+                    <li><a href="memes.html">Memes</a></li> 
                 </ul>
             </nav>
         </div>
@@ -557,20 +498,10 @@
                 </p>
             </div>
 
-            <section class="categories-section">
-                <h3><i class="fas fa-tags"></i> Explora por Categorías</h3>
-                <ul class="category-list">
-                    <li><a href="#habilidades-dbt">Habilidades DBT</a></li>
-                    <li><a href="#historias-personales">Historias Personales</a></li>
-                    <li><a href="#noticias-salud-mental">Noticias Salud Mental</a></li>
-                    <li><a href="#practicas-mindfulness">Prácticas Mindfulness</a></li>
-                    <li><a href="#regulacion-emocional">Regulación Emocional</a></li>
-                    <li><a href="#relaciones">Relaciones</a></li>
-                </ul>
-            </section>
+            <!-- Categories Section Removed -->
+
             <div class="blog-grid">
-                <article class="blog-post-card"> <!-- Removed id="practicas-mindfulness" to avoid duplicate IDs if this is a template -->
-                    <span class="category-anchor" id="habilidades-dbt"></span> 
+                <article class="blog-post-card"> 
                     <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Mindfulness+en+DBT" alt="Persona meditando en un entorno sereno" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Desentrañando el Mindfulness: El Corazón de la DBT</h3>
@@ -586,8 +517,7 @@
                     </div>
                 </article>
 
-                <article class="blog-post-card"> <!-- Removed id="regulacion-emocional" -->
-                     <span class="category-anchor" id="relaciones"></span> 
+                <article class="blog-post-card"> 
                     <img src="https://placehold.co/600x400/00CED1/FFFFFF?text=Validación+Emocional" alt="Dos personas conectando y mostrando empatía" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>El Poder de la Validación: Entendiendo y Aceptando Nuestras Emociones</h3>
@@ -603,14 +533,13 @@
                     </div>
                 </article>
 
-                <article class="blog-post-card"> <!-- Removed id="noticias-salud-mental" -->
-                    <span class="category-anchor" id="noticias-salud-mental"></span>
+                <article class="blog-post-card"> 
                     <img src="https://placehold.co/600x400/FF00FF/FFFFFF?text=Mitos+sobre+TLP" alt="Signo de interrogación rodeado de palabras clave sobre TLP" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Derribando Mitos: 5 Ideas Erróneas Comunes sobre el Trastorno Límite</h3>
                         <div class="blog-post-meta">
                             <span><i class="fas fa-calendar-alt"></i> 18 de Mayo, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Equipo Universo Borderline</span> <!-- Changed from Borderline Journey -->
+                            <span><i class="fas fa-user-edit"></i> Equipo Universo Borderline</span> 
                         </div>
                         <p class="blog-post-excerpt">
                             El Trastorno Límite de la Personalidad (TLP) a menudo está rodeado de estigma y desinformación. Estos mitos no solo perpetúan el sufrimiento de quienes lo viven, sino que también dificultan la búsqueda de ayuda y la comprensión por parte de su entorno. En este post, abordamos y desmentimos cinco de las ideas erróneas más extendidas sobre el TLP, aportando claridad y fomentando la empatía...
@@ -621,7 +550,6 @@
                 </article>
 
                 <article class="blog-post-card"> 
-                    <span class="category-anchor" id="regulacion-emocional"></span>
                     <img src="https://placehold.co/600x400/00FF7F/0A0A20?text=Regulación+Emocional+Práctica" alt="Persona gestionando sus emociones de forma calmada" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Regulación Emocional en Acción: Técnicas DBT para el Día a Día</h3>
@@ -638,7 +566,6 @@
                 </article>
 
                 <article class="blog-post-card">
-                    <span class="category-anchor" id="practicas-mindfulness"></span> <!-- Anchor for mindfulness category -->
                     <img src="https://placehold.co/600x400/1E90FF/FFFFFF?text=Relaciones+y+TLP" alt="Siluetas de personas interactuando, simbolizando relaciones" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Navegando el Laberinto de las Relaciones con TLP: Desafíos y Estrategias</h3>
@@ -660,7 +587,7 @@
                         <h3>Sobreviviendo la Tormenta: Herramientas de Tolerancia al Malestar en Momentos de Crisis</h3>
                         <div class="blog-post-meta">
                             <span><i class="fas fa-calendar-alt"></i> 28 de Junio, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Equipo Universo Borderline</span> <!-- Changed from Borderline Journey -->
+                            <span><i class="fas fa-user-edit"></i> Equipo Universo Borderline</span> 
                         </div>
                         <p class="blog-post-excerpt">
                             Cuando el malestar emocional se vuelve abrumador, tener a mano estrategias de afrontamiento efectivas es crucial. Este artículo se sumerge en las habilidades de tolerancia al malestar de la DBT, como las técnicas TIPP, la auto-calma y la distracción sabia, ofreciendo un kit de primeros auxilios emocionales para navegar los momentos más difíciles sin recurrir a conductas dañinas...
@@ -670,54 +597,8 @@
                     </div>
                 </article>
                 
-                <article class="blog-post-card"> <!-- Removed id="historias-personales" -->
-                    <span class="category-anchor" id="historias-personales"></span>
-                    <img src="https://placehold.co/600x400/FF4500/FFFFFF?text=Autocompasión+y+TLP" alt="Corazón luminoso sostenido por manos cuidadosas" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>El Viaje hacia la Autocompasión: Un Bálsamo para el TLP</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 15 de Julio, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Dra. Ana Torres</span>
-                        </div>
-                        <p class="blog-post-excerpt">
-                            La autocrítica severa es una compañera frecuente en el TLP. Aprender a cultivar la autocompasión puede transformar la relación con uno mismo, ofreciendo calidez y comprensión en lugar de juicio. Exploramos cómo practicar la autocompasión y sus beneficios para la sanación y el bienestar emocional...
-                        </p>
-                        <a href="blog-post-autocompasion.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
-                    </div>
-                </article>
+                <!-- Removed additional articles to keep only 6 -->
 
-                <article class="blog-post-card">
-                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=DBT+para+Familias" alt="Grupo de personas diversas unidas en apoyo" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>DBT y el Entorno Familiar: Apoyando a Seres Queridos con TLP</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 22 de Julio, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Psic. Laura Méndez</span>
-                        </div>
-                        <p class="blog-post-excerpt">
-                            El TLP no solo afecta a quien lo vive, sino también a su entorno. La DBT ofrece herramientas valiosas para familiares y amigos, ayudándoles a comprender mejor el trastorno, mejorar la comunicación, establecer límites saludables y ofrecer un apoyo más efectivo. Descubre cómo la familia puede ser parte activa del proceso de recuperación...
-                        </p>
-                        <a href="blog-post-dbt-familias.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
-                    </div>
-                </article>
-
-                <article class="blog-post-card">
-                    <img src="https://placehold.co/600x400/00CED1/0A0A20?text=Estigma+Salud+Mental" alt="Manos rompiendo cadenas simbólicas" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>Rompiendo Cadenas: Cómo Combatir el Estigma en Salud Mental</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 30 de Julio, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Colectivo Voces Conscientes</span>
-                        </div>
-                        <p class="blog-post-excerpt">
-                            El estigma asociado a los trastornos mentales, y en particular al TLP, sigue siendo una barrera importante para la búsqueda de ayuda y la recuperación. Este artículo explora las raíces del estigma, su impacto y, lo más importante, qué podemos hacer como individuos y sociedad para desafiarlo, promover la comprensión y crear un entorno más compasivo y solidario para todos...
-                        </p>
-                        <a href="blog-post-estigma.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
-                    </div>
-                </article>
                 </div>
         </div>
     </main>
@@ -726,13 +607,13 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>Universo Borderline</h3> <!-- Changed from Borderline Journey -->
+                    <h3>Universo Borderline</h3> 
                     <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-tiktok"></i></a>
                         <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a> <!-- Added Discord link to social icons -->
+                        <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a> 
                     </div>
                 </div>
                 
@@ -743,7 +624,7 @@
                         <li><a href="cursos.html">Cursos</a></li> 
                         <li><a href="blog.html">Blog</a></li> 
                         <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="memes.html">Memes</a></li> <!-- Changed from premium.html -->
+                        <li><a href="memes.html">Memes</a></li> 
                     </ul>
                 </div>
                 
@@ -760,17 +641,17 @@
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> <!-- Made email a link -->
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
                         <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
                         <p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
                         <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
-                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> <!-- Added Discord link -->
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> <!-- Changed from Borderline Journey -->
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
                 <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
@@ -812,14 +693,11 @@
             navLinks.forEach(link => {
                 link.classList.remove('active'); 
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                // Check if the link's href matches the current page filename.
-                // Also handles the case where index.html might be represented as "" (empty string) by some servers.
                 if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && linkFilename === '')) { 
                     link.classList.add('active');
                 }
-                 // Specifically for blog.html, ensure "Blog" is active.
                 if (currentPageFilename === 'blog.html' && linkFilename === 'blog.html') {
-                    navLinks.forEach(nl => nl.classList.remove('active')); // Remove active from others
+                    navLinks.forEach(nl => nl.classList.remove('active')); 
                     link.classList.add('active');
                 }
             });
@@ -837,7 +715,7 @@
             }
             
             // Intersection Observer for fade-in animations
-            const animatedSections = document.querySelectorAll('.blog-grid, .categories-section'); 
+            const animatedSections = document.querySelectorAll('.blog-grid'); // Only animate blog-grid now
             if (animatedSections.length > 0) {
                 const observerOptions = {
                     root: null, 
@@ -849,45 +727,40 @@
                         if (entry.isIntersecting) {
                             entry.target.style.opacity = '1';
                             entry.target.style.transform = 'translateY(0)';
-                            // obs.unobserve(entry.target); // Optionally unobserve after animation
-                        } else { 
-                            // Optional: Reset animation if element scrolls out of view and you want it to re-animate
-                            // entry.target.style.opacity = '0';
-                            // entry.target.style.transform = 'translateY(40px)';
-                        }
+                        } 
                     });
                 }, observerOptions);
 
                 animatedSections.forEach(section => {
-                    section.style.opacity = '0'; // Initial state for animation
-                    section.style.transform = 'translateY(40px)'; // Initial state for animation
+                    section.style.opacity = '0'; 
+                    section.style.transform = 'translateY(40px)'; 
                     section.style.transition = 'opacity 0.9s ease-out, transform 0.9s ease-out';
                     observer.observe(section);
                 });
             }
 
-            // Smooth scroll for category links
-            const categoryLinks = document.querySelectorAll('.category-list a');
-            categoryLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                    const href = this.getAttribute('href');
-                    if (href.startsWith('#')) {
-                        e.preventDefault();
-                        const targetId = href.substring(1);
-                        const targetElement = document.getElementById(targetId);
-                        if (targetElement) {
-                            const headerHeight = document.getElementById('main-header') ? document.getElementById('main-header').offsetHeight : 0;
-                            const elementPosition = targetElement.getBoundingClientRect().top;
-                            const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; // 20px additional offset
+            // Smooth scroll for category links (No longer needed as categories are removed)
+            // const categoryLinks = document.querySelectorAll('.category-list a');
+            // categoryLinks.forEach(link => {
+            //     link.addEventListener('click', function(e) {
+            //         const href = this.getAttribute('href');
+            //         if (href.startsWith('#')) {
+            //             e.preventDefault();
+            //             const targetId = href.substring(1);
+            //             const targetElement = document.getElementById(targetId);
+            //             if (targetElement) {
+            //                 const headerHeight = document.getElementById('main-header') ? document.getElementById('main-header').offsetHeight : 0;
+            //                 const elementPosition = targetElement.getBoundingClientRect().top;
+            //                 const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; 
 
-                            window.scrollTo({
-                                top: offsetPosition,
-                                behavior: "smooth"
-                            });
-                        }
-                    }
-                });
-            });
+            //                 window.scrollTo({
+            //                     top: offsetPosition,
+            //                     behavior: "smooth"
+            //                 });
+            //             }
+            //         }
+            //     });
+            // });
 
         });
     </script>
