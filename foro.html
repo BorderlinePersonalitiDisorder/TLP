@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Foros de Comunidad - Borderline Journey</title>
+	<title>Foros de Comunidad - Universo Borderline</title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
 	<style>
@@ -45,41 +45,41 @@
 			font-family: 'Raleway', sans-serif;
 			overflow-x: hidden;
 			min-height: 100vh;
-			display: flex; 
-			flex-direction: column; 
-			background-image: 
-				radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%), 
-				radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%), 
+			display: flex;
+			flex-direction: column;
+			background-image:
+				radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+				radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
 				radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
-			background-size: 400% 400%; 
+			background-size: 400% 400%;
 			animation: gradientBackground 20s ease infinite;
 		}
 		
 		@keyframes gradientBackground {
-			0% { background-position: 0% 50%; } 
-			50% { background-position: 100% 50%; } 
+			0% { background-position: 0% 50%; }
+			50% { background-position: 100% 50%; }
 			100% { background-position: 0% 50%; }
 		}
 		
 		.container {
-			width: 100%; 
-			max-width: 1100px; 
-			margin: 0 auto; 
-			padding: 0 20px; 
-			position: relative; 
+			width: 100%;
+			max-width: 1100px;
+			margin: 0 auto;
+			padding: 0 20px;
+			position: relative;
 			z-index: 1;
 		}
 		
 		header {
-			background: rgba(10, 10, 32, 0.85); 
-			backdrop-filter: blur(12px); 
-			color: white; 
-			padding: 1rem 0; 
-			position: fixed; 
-			top: 0; 
+			background: rgba(10, 10, 32, 0.85);
+			backdrop-filter: blur(12px);
+			color: white;
+			padding: 1rem 0;
+			position: fixed;
+			top: 0;
 			width: 100%;
 			z-index: 1000;
-			border-bottom: 2px solid var(--accent-magenta); 
+			border-bottom: 2px solid var(--accent-magenta);
 			box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
 			transition: all 0.4s ease;
 		}
@@ -89,96 +89,97 @@
 			padding: 0.7rem 0;
 		}
 		
-		.header-container { 
-			display: flex; 
-			justify-content: space-between; 
-			align-items: center; 
+		.header-container {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 		
-		.logo { 
-			display: flex; 
-			align-items: center; 
-			gap: 15px; 
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: 15px;
 			cursor: pointer;
 			transition: all 0.4s ease;
-			text-decoration: none; 
+			text-decoration: none;
 		}
 		
 		.logo:hover {
 			transform: rotate(-5deg) scale(1.05);
 		}
 		
-		.logo h1 { 
-			font-family: 'Krona One', sans-serif; 
-			font-size: 1.8rem; 
+		.logo h1 {
+            font-family: 'Monoton', cursive;
+            font-size: 1.9rem;
 			font-weight: 400;
 			background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
-			-webkit-background-clip: text; 
-			background-clip: text; 
+			-webkit-background-clip: text;
+			background-clip: text;
 			-webkit-text-fill-color: transparent;
-			letter-spacing: 1px;
+            letter-spacing: 2px;
 		}
 		
-		.logo i { 
-			font-size: 2.2rem; 
-			color: var(--accent-green); 
+		.logo i {
+			font-size: 2.2rem;
+			color: var(--accent-green);
 			animation: logoPulse 3s infinite alternate;
 		}
 		
 		@keyframes logoPulse {
-			0% { transform: scale(1); color: var(--accent-green); }
-			50% { transform: scale(1.1); color: var(--secondary-cyan); }
-			100% { transform: scale(1); color: var(--accent-blue); }
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+		
+		nav ul {
+			display: flex;
+			list-style: none;
+			gap: 10px;
 		}
 		
-		nav ul { 
-			display: flex; 
-			list-style: none; 
-			gap: 10px; 
-		}
-		
-		nav a { 
-			color: var(--text-color-light); 
-			text-decoration: none; 
-			font-family: 'Comfortaa', sans-serif; 
-			font-size: 0.9rem; 
-			padding: 10px 15px; 
-			border-radius: 20px; 
-			transition: all 0.3s ease-out; 
+		nav a {
+			color: var(--text-color-light);
+			text-decoration: none;
+			font-family: 'Comfortaa', sans-serif;
+			font-size: 0.9rem;
+			padding: 10px 15px;
+			border-radius: 20px;
+			transition: all 0.3s ease-out;
 			position: relative;
-			background: transparent; 
-			border: 1px solid transparent; 
+			background: transparent;
+			border: 1px solid transparent;
 		}
 		
-		nav a::before { 
-			content: ''; 
-			position: absolute; 
-			top: 0; 
-			left: 0; 
-			width: 0%; 
+		nav a::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 0%;
 			height: 100%;
 			background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
-			opacity: 0.3; 
-			transition: width 0.4s ease; 
+			opacity: 0.3;
+			transition: width 0.4s ease;
 			z-index: -1;
+            border-radius: 20px; /* Added to ensure the ::before pseudo-element is also rounded */
 		}
 		
-		nav a:hover::before, 
-		nav a.active::before { 
-			width: 100%; 
-		} 
+		nav a:hover::before,
+		nav a.active::before {
+			width: 100%;
+		}
 		
-		nav a:hover, 
+		nav a:hover,
 		nav a.active {
-			color: var(--accent-yellow); 
-			background-color: rgba(0, 255, 255, 0.1); 
-			border: 1px solid var(--accent-blue); 
-			transform: translateY(-3px); 
+			color: var(--accent-yellow);
+			background-color: rgba(0, 255, 255, 0.1);
+			border: 1px solid var(--accent-blue);
+			transform: translateY(-3px);
 		}
 
-		.main-page-content { 
-			padding: 100px 0 4rem 0; 
-			flex-grow: 1; 
+		.main-page-content {
+			padding: 100px 0 4rem 0;
+			flex-grow: 1;
 		}
 
 		.page-header {
@@ -188,19 +189,19 @@
 		}
 
 		.page-header h2 {
-			font-family: 'Playfair Display', serif; 
-			font-size: 3rem; 
-			font-weight: 700; 
+			font-family: 'Playfair Display', serif;
+			font-size: 3rem;
+			font-weight: 700;
 			color: var(--secondary-cyan);
 			margin-bottom: 0.5rem;
-			text-transform: none; 
-			letter-spacing: 0.5px; 
-			display: inline-flex; 
+			text-transform: none;
+			letter-spacing: 0.5px;
+			display: inline-flex;
 			align-items: center;
-			gap: 15px; 
+			gap: 15px;
 		}
 		 .page-header h2 i {
-			font-size: 2.6rem; 
+			font-size: 2.6rem;
 		}
 		@keyframes subtleRotate {
 			0% { transform: rotate(0deg) scale(1); }
@@ -233,14 +234,14 @@
 			border-radius: 15px;
 			padding: 25px;
 			box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-			transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.6s ease-out;
 			border: 1px solid var(--border-color);
 			display: flex;
 			flex-direction: column;
-			opacity: 0; 
-			transform: translateY(30px); 
+			opacity: 0; /* Initial state for animation */
+			transform: translateY(30px); /* Initial state for animation */
+			transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.35s ease; /* Added box-shadow to transition */
 		}
-		.forum-category-card.visible { 
+		.forum-category-card.visible {
 			opacity: 1;
 			transform: translateY(0);
 		}
@@ -295,8 +296,8 @@
 			font-weight: bold;
 			transition: background 0.3s ease, transform 0.3s ease;
 			text-align: center;
-			align-self: center; 
-			margin-top: auto; 
+			align-self: center;
+			margin-top: auto;
 		}
 
 		.enter-forum-btn:hover {
@@ -311,8 +312,8 @@
 			background: rgba(var(--accent-yellow-rgb), 0.05);
 			border-radius: 15px;
 			border: 1px solid var(--accent-yellow);
-			opacity: 0; 
-			transform: translateY(30px);
+			opacity: 0; /* Initial state for animation */
+			transform: translateY(30px); /* Initial state for animation */
 			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 		}
 		.resources-section.visible {
@@ -339,9 +340,9 @@
 			margin-bottom: 1rem;
 		}
 		.resources-list a {
-			display: flex; 
-			align-items: center; 
-			gap: 12px; 
+			display: flex;
+			align-items: center;
+			gap: 12px;
 			background-color: var(--accent-blue);
 			color: white;
 			padding: 12px 20px;
@@ -349,15 +350,15 @@
 			text-decoration: none;
 			font-weight: bold;
 			transition: background-color 0.3s ease, transform 0.3s ease;
-			width: 100%; 
-			box-sizing: border-box; 
+			width: 100%;
+			box-sizing: border-box;
 		}
 		.resources-list a:hover {
 			background-color: var(--accent-magenta);
 			transform: translateX(5px);
 		}
 		.resources-list a i {
-			font-size: 1.2rem; 
+			font-size: 1.2rem;
 			min-width: 20px;
 			text-align: center;
 		}
@@ -369,11 +370,11 @@
 			border-radius: 15px;
 			border: 1px dashed rgba(var(--accent-blue-rgb), 0.3);
 			margin-top: 2rem;
-			opacity: 0; 
-			transform: translateY(30px); 
+			opacity: 0; /* Initial state for animation */
+			transform: translateY(30px); /* Initial state for animation */
 			transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 		}
-		.forum-guidelines.visible { 
+		.forum-guidelines.visible {
 			opacity: 1;
 			transform: translateY(0);
 		}
@@ -401,94 +402,94 @@
 			margin-right: 8px;
 		}
 		
-		footer { 
-			background: rgba(10,10,32,0.97); 
-			color: white; 
-			padding: 4rem 0 2rem; 
-			position: relative; 
-			border-top: 2px solid var(--accent-blue); 
-			margin-top: auto; 
+		footer {
+			background: rgba(10,10,32,0.97);
+			color: white;
+			padding: 4rem 0 2rem;
+			position: relative;
+			border-top: 2px solid var(--accent-blue);
+			margin-top: auto;
 		}
 		
-		.footer-grid { 
-			display: grid; 
-			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
-			gap: 40px; 
-			margin-bottom: 3rem; 
+		.footer-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+			gap: 40px;
+			margin-bottom: 3rem;
 		}
 		
-		.footer-column h3 { 
-			color: var(--accent-yellow); 
-			margin-bottom: 1.5rem; 
-			position: relative; 
-			padding-bottom: 10px; 
-			font-size: 1.4rem; 
+		.footer-column h3 {
+			color: var(--accent-yellow);
+			margin-bottom: 1.5rem;
+			position: relative;
+			padding-bottom: 10px;
+			font-size: 1.4rem;
 			font-family: 'Fredoka One', cursive;
 		}
 		
-		.footer-column h3::after { 
-			content: ''; 
-			position: absolute; 
-			bottom: 0; 
-			left: 0; 
-			width: 50px; 
-			height: 3.5px; 
-			background: var(--accent-blue); 
-			border-radius: 1.5px; 
+		.footer-column h3::after {
+			content: '';
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			width: 50px;
+			height: 3.5px;
+			background: var(--accent-blue);
+			border-radius: 1.5px;
 		}
 		
-		.footer-links { list-style: none; padding-left:0; } 
+		.footer-links { list-style: none; padding-left:0; }
 		.footer-links li { margin-bottom: 12px; }
-		.footer-links a { 
-			color: var(--text-color-medium); 
-			text-decoration: none; 
-			transition: all 0.3s ease; 
-			display: inline-block; 
-			padding: 4px 0; 
-			font-weight: 300; 
+		.footer-links a {
+			color: var(--text-color-medium);
+			text-decoration: none;
+			transition: all 0.3s ease;
+			display: inline-block;
+			padding: 4px 0;
+			font-weight: 300;
 		}
 		.footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
 		
 		.contact-info { margin-top: 20px; }
-		.contact-info p { 
-			display: flex; 
-			align-items: center; 
-			gap: 10px; 
-			margin-bottom: 12px; 
-			font-size: 1.05rem; 
-			color: var(--text-color-medium); 
+		.contact-info p {
+			display: flex;
+			align-items: center;
+			gap: 10px;
+			margin-bottom: 12px;
+			font-size: 1.05rem;
+			color: var(--text-color-medium);
 		}
-		.contact-info i { color: var(--accent-blue); } 
+		.contact-info i { color: var(--accent-blue); }
 		
 		.social-links { display: flex; gap: 15px; margin-top: 22px; }
-		.social-links a { 
-			display: inline-flex; 
-			align-items: center; 
-			justify-content: center; 
-			width: 45px; 
-			height: 45px; 
-			background: rgba(255, 255, 255, 0.04); 
-			color: var(--accent-blue); 
-			border-radius: 50%; 
-			transition: all 0.4s ease; 
-			font-size: 1.2rem; 
-			border: 1px solid var(--accent-blue); 
+		.social-links a {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			width: 45px;
+			height: 45px;
+			background: rgba(255, 255, 255, 0.04);
+			color: var(--accent-blue);
+			border-radius: 50%;
+			transition: all 0.4s ease;
+			font-size: 1.2rem;
+			border: 1px solid var(--accent-blue);
 		}
 		.social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
 		
-		.copyright { 
-			text-align: center; 
-			padding-top: 2rem; 
-			border-top: 1px solid rgba(255, 255, 255, 0.07); 
-			color: #a090b0; 
-			font-size: 0.95rem; 
+		.copyright {
+			text-align: center;
+			padding-top: 2rem;
+			border-top: 1px solid rgba(255, 255, 255, 0.07);
+			color: #a090b0;
+			font-size: 0.95rem;
 		}
-		.copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+		.copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; }
 		.copyright a:hover { color: var(--text-color-light); }
 		
 		.stars {
 			position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-			pointer-events: none; z-index: -2; 
+			pointer-events: none; z-index: -2;
 		}
 		.star {
 			position: absolute; width: 2px; height: 2px; background: white;
@@ -519,8 +520,8 @@
 		}
 		
 		@media (max-width: 600px) {
-			.main-page-content { padding-top: 130px; } 
-			.logo h1 { font-size: 1.5rem; }
+			.main-page-content { padding-top: 130px; }
+			.logo h1 { font-size: 1.6rem; }
 			nav ul { gap: 5px; }
 			nav a { font-size: 0.7rem; padding: 6px 7px; }
 			.page-header h2 { font-size: 2rem; }
@@ -543,17 +544,17 @@
 	
 	<header id="main-header">
 		<div class="container header-container">
-			<a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+			<a href="index.html" class="logo">
 				<i class="fas fa-brain"></i>
-				<h1>BORDERLINE JOURNEY</h1>
+				<h1>UNIVERSO BORDERLINE</h1>
 			</a>
 			<nav>
 				<ul>
 					<li><a href="index.html">Inicio</a></li>
-					<li><a href="cursos.html">Cursos</a></li> 
-					<li><a href="blog.html">Blog</a></li> 
-					<li><a href="foro.html" class="active">Foros</a></li> 
-					<li><a href="premium.html">Premium</a></li> 
+					<li><a href="cursos.html">Cursos</a></li>
+					<li><a href="blog.html">Blog</a></li>
+					<li><a href="foro.html" class="active">Foros</a></li>
+					<li><a href="memes.html">Memes</a></li>
 				</ul>
 			</nav>
 		</div>
@@ -562,9 +563,9 @@
 	<main class="main-page-content">
 		<div class="container">
 			<div class="page-header">
-				<h2><i class="fas fa-comments"></i> Comunidad Borderline Journey</h2>
+				<h2><i class="fas fa-comments"></i> Comunidad Universo Borderline</h2>
 				<p>
-					Un espacio seguro y de apoyo para conectar, compartir experiencias, hacer preguntas y aprender unos de otros en el viaje hacia el bienestar emocional. 
+					Un espacio seguro y de apoyo para conectar, compartir experiencias, hacer preguntas y aprender unos de otros en el viaje hacia el bienestar emocional.
 				</p>
 			</div>
 
@@ -612,36 +613,38 @@
 					<a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
 				</article>
 
-				<article class="forum-category-card"> 
-					<div class="icon-container"><i class="fas fa-spa"></i></div> 
-					<h3>Mindfulness y Meditación</h3> 
-					<p class="description">Comparte tus prácticas de mindfulness, meditaciones guiadas favoritas y cómo estas herramientas te ayudan a encontrar calma y centrarte.</p> 
-					<div class="forum-stats"> 
-						<span><i class="fas fa-comments"></i> 30 Temas</span> 
-						<span><i class="fas fa-reply"></i> 150 Respuestas</span> 
-					</div> 
-					<a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a> 
-				</article> 
+				<article class="forum-category-card">
+					<div class="icon-container"><i class="fas fa-spa"></i></div>
+					<h3>Mindfulness y Meditación</h3>
+					<p class="description">Comparte tus prácticas de mindfulness, meditaciones guiadas favoritas y cómo estas herramientas te ayudan a encontrar calma y centrarte.</p>
+					<div class="forum-stats">
+						<span><i class="fas fa-comments"></i> 30 Temas</span>
+						<span><i class="fas fa-reply"></i> 150 Respuestas</span>
+					</div>
+					<a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
+				</article>
 
-				<article class="forum-category-card"> 
-					<div class="icon-container"><i class="fas fa-shield-virus"></i></div> <h3>Superando Crisis</h3> 
-					<p class="description">Un espacio para discutir estrategias de afrontamiento en momentos de crisis, compartir experiencias sobre cómo superar obstáculos y ofrecer apoyo mutuo.</p> 
-					<div class="forum-stats"> 
-						<span><i class="fas fa-comments"></i> 25 Temas</span> 
-						<span><i class="fas fa-reply"></i> 120 Respuestas</span> 
-					</div> 
-					<a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a> 
-				</article> 
+				<article class="forum-category-card">
+					<div class="icon-container"><i class="fas fa-shield-alt"></i></div> <!-- Changed icon from fa-shield-virus -->
+                    <h3>Superando Crisis</h3>
+					<p class="description">Un espacio para discutir estrategias de afrontamiento en momentos de crisis, compartir experiencias sobre cómo superar obstáculos y ofrecer apoyo mutuo.</p>
+					<div class="forum-stats">
+						<span><i class="fas fa-comments"></i> 25 Temas</span>
+						<span><i class="fas fa-reply"></i> 120 Respuestas</span>
+					</div>
+					<a href="#" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
+				</article>
 			</div>
 
 			<section class="resources-section">
-				<h2><i class="fas fa-download"></i> Descargas y Recursos Clave</h2>
+				<h2><i class="fas fa-book-open"></i> Enlaces Educativos y de Apoyo</h2>
 				<ul class="resources-list">
-					<li><a href="Manual_Habilidades_DBT_Marsha_Linehan_Resumen.pdf" download="Manual_Habilidades_DBT_Marsha_Linehan_Resumen.pdf"><i class="fas fa-book-reader"></i> Manual de Habilidades DBT (Resumen por M. Linehan)</a></li>
-					<li><a href="Guia_Rapida_Tolerancia_Malestar.pdf" download="Guia_Rapida_Tolerancia_Malestar.pdf"><i class="fas fa-shield-alt"></i> Guía Rápida: Tolerancia al Malestar</a></li>
-					<li><a href="Hoja_Registro_Emociones_DBT.pdf" download="Hoja_Registro_Emociones_DBT.pdf"><i class="fas fa-clipboard-list"></i> Hoja de Registro de Emociones (Estilo DBT)</a></li>
-					<li><a href="https://www.behavioraltech.org/resources/links/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Behavioral Tech (Fundado por M. Linehan) - Recursos</a></li>
+					<li><a href="https://www.casbuenosaires.org.ar/" target="_blank" rel="noopener noreferrer"><i class="fas fa-hands-helping"></i> Línea de Prevención del Suicidio (Argentina)</a></li>
+					<li><a href="https://www.aluba.org.ar/" target="_blank" rel="noopener noreferrer"><i class="fas fa-utensils"></i> Trastornos Alimentarios (ALUBA)</a></li>
+					<li><a href="https://jugadoresanonimos.org.ar/" target="_blank" rel="noopener noreferrer"><i class="fas fa-dice"></i> Ludopatía: Jugadores Anónimos (Argentina)</a></li>
+					<li><a href="https://www.behavioraltech.org/resources/links/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Behavioral Tech (Recursos DBT)</a></li>
 					<li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> Información sobre TLP (NIMH)</a></li>
+					<li><a href="https://www.mayoclinic.org/es/diseases-conditions/kleptomania/symptoms-causes/syc-20364732" target="_blank" rel="noopener noreferrer"><i class="fas fa-hand-sparkles"></i> Cleptomanía: Información (Mayo Clinic)</a></li>
 				</ul>
 			</section>
 			<section class="forum-guidelines">
@@ -662,50 +665,51 @@
 		<div class="container">
 			<div class="footer-grid">
 				<div class="footer-column">
-					<h3>Borderline Journey</h3>
+					<h3>Universo Borderline</h3>
 					<p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
 					<div class="social-links">
 						<a href="#"><i class="fab fa-instagram"></i></a>
 						<a href="#"><i class="fab fa-tiktok"></i></a>
 						<a href="#"><i class="fab fa-youtube"></i></a>
-						<a href="#"><i class="fab fa-discord"></i></a>
+						<a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
 					</div>
 				</div>
 				
 				<div class="footer-column">
 					<h3>Navegación</h3>
 					<ul class="footer-links">
-						<li><a href="index.html">Inicio</a></li> 
-						<li><a href="cursos.html">Cursos</a></li> 
-						<li><a href="blog.html">Blog</a></li> 
-						<li><a href="foro.html">Foros</a></li> 
-						<li><a href="premium.html">Premium</a></li> 
+						<li><a href="index.html">Inicio</a></li>
+						<li><a href="cursos.html">Cursos</a></li>
+						<li><a href="blog.html">Blog</a></li>
+						<li><a href="foro.html">Foros</a></li>
+						<li><a href="memes.html">Memes</a></li>
 					</ul>
 				</div>
 				
 				<div class="footer-column">
 					<h3>Recursos DBT</h3>
 					<ul class="footer-links">
-						<li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
-						<li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+						<li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li>
+						<li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li>
 						<li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
-						<li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+						<li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li>
 					</ul>
 				</div>
 				
 				<div class="footer-column">
 					<h3>Contacto</h3>
 					<div class="contact-info">
-						<p><i class="fas fa-envelope"></i> itfrombit.w74@gmail.com</p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p>
 						<p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
 						<p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
 						<p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p>
 					</div>
 				</div>
 			</div>
 			
 			<div class="copyright">
-				<p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
+				<p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
 				<p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
 			</div>
 		</div>
@@ -726,7 +730,7 @@
 					star.style.height = `${size}px`;
 					star.style.left = `${Math.random() * 100}%`;
 					star.style.top = `${Math.random() * 100}%`;
-					star.style.animationDelay = `${Math.random() * 6}s`; 
+					star.style.animationDelay = `${Math.random() * 6}s`;
 					star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
 					if (Math.random() > 0.65) {
 						const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
@@ -739,14 +743,18 @@
 				}
 			}
 			
-			const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
+			const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html';
 			const navLinks = document.querySelectorAll('header nav a');
 			navLinks.forEach(link => {
-				link.classList.remove('active'); 
+				link.classList.remove('active');
 				const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-				if (linkFilename === currentPageFilename) {
-					link.classList.add('active');
-				}
+                if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && linkFilename === '')) { 
+                    link.classList.add('active');
+                }
+                if (currentPageFilename === 'foro.html' && linkFilename === 'foro.html') {
+                    navLinks.forEach(nl => nl.classList.remove('active')); 
+                    link.classList.add('active');
+                }
 			});
 			
 			const header = document.getElementById('main-header');
@@ -760,20 +768,19 @@
 				});
 			}
 			
-			const animatedElements = document.querySelectorAll('.forum-category-card, .forum-guidelines, .resources-section'); 
+			const animatedElements = document.querySelectorAll('.forum-category-card, .forum-guidelines, .resources-section');
 			if (animatedElements.length > 0) {
 				 const observerOptions = {
-					root: null, 
+					root: null,
 					rootMargin: '0px',
-					threshold: 0.1 
+					threshold: 0.1
 				};
 				const observer = new IntersectionObserver((entries, obs) => {
 					entries.forEach(entry => {
 						if (entry.isIntersecting) {
-							entry.target.classList.add('visible'); 
-							// obs.unobserve(entry.target); // Optional: unobserve after animation
+							entry.target.classList.add('visible');
+                            // obs.unobserve(entry.target); // Uncomment to animate only once
 						}
-						// Optional: else { entry.target.classList.remove('visible'); } // To re-animate if scrolled out and back
 					});
 				}, observerOptions);
 
