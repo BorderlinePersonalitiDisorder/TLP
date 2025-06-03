@@ -227,7 +227,7 @@
 		.content-block-qs h2 i.fa-brain, 
 		.content-block-qs h2 i.fa-compass,
 		.content-block-qs h2 i.fa-lightbulb,
-        .content-block-qs h2 i.fa-meteor { /* Added for new welcome icon */
+        .content-block-qs h2 i.fa-meteor { 
 			margin-right: 10px;
 		}
 
@@ -240,44 +240,45 @@
 		.content-block-qs h2 i.fa-lightbulb { 
 			color: var(--accent-yellow); 
 		}
-        .content-block-qs h2 i.fa-meteor { /* Style for new welcome icon */
+        .content-block-qs h2 i.fa-meteor { 
             color: var(--secondary-cyan);
         }
 		
-		.info-section p, .welcome-section p { /* General paragraph styling within info sections */
+		.info-section p, .welcome-section p { 
 			font-size: 1.1rem; 
 			color: var(--text-color-light); 
 			margin-bottom: 20px; 
 			line-height: 1.9; 
-			text-align: justify;
+			text-align: justify; 
 		}
 
         .welcome-section .welcome-text {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-color-medium);
+            text-align: center; 
+            font-size: 1.15rem; 
+            color: var(--text-color-light); 
             margin-bottom: 1.5rem;
-            font-family: 'Comfortaa', sans-serif;
+            font-family: 'Raleway', sans-serif; 
+            padding: 0 15px; 
         }
 
         .welcome-section .exploration-prompt {
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             color: var(--accent-yellow);
             text-align: center;
-            font-style: italic;
+            font-style: normal; 
             margin-top: 1rem;
-            padding: 10px;
-            background: rgba(var(--accent-yellow-rgb), 0.05);
-            border-left: 3px solid var(--accent-yellow);
-            border-right: 3px solid var(--accent-yellow);
-            border-radius: 8px;
+            padding: 15px;
+            background: rgba(var(--accent-yellow-rgb), 0.07);
+            border-left: 4px solid var(--accent-yellow);
+            border-radius: 0 8px 8px 0;
+            font-family: 'Comfortaa', sans-serif;
         }
 		
-		#apod-section { /* Specific styling for the Astronomy Picture of the Day section */
+		#apod-section { 
 			margin-top: 3rem; 
 		}
 
-		.apod-title-container h2 { /* Title for APOD section */
+		.apod-title-container h2 { 
 			font-family: 'Fredoka One', cursive; 
 			font-size: 2.5rem;
 			margin-bottom: 0.5rem;
@@ -289,13 +290,13 @@
 			animation: titleGlow 3s infinite alternate;
 			text-align: center;
 		}
-		 @keyframes titleGlow { /* Animation for the APOD title glow effect */
+		 @keyframes titleGlow { 
 			0% { text-shadow: 0 0 10px var(--accent-magenta); }
 			50% { text-shadow: 0 0 15px var(--accent-blue), 0 0 20px var(--accent-green); }
 			100% { text-shadow: 0 0 12px var(--accent-magenta), 0 0 25px var(--accent-yellow); }
 		}
 
-		.apod-title-container p { /* Sub-description for APOD section */
+		.apod-title-container p { 
 			font-size: 1.1rem;
 			line-height: 1.6;
 			color: var(--text-color-medium);
@@ -305,7 +306,7 @@
 			font-family: 'Comfortaa', sans-serif; 
 		}
 		
-		.hero-apod-image-container { /* Container for the main APOD image */
+		.hero-apod-image-container { 
 			position: relative;
 			width: 100%;
 			height: 65vh; 
@@ -316,7 +317,7 @@
 			border-radius: 10px; 
 		}
 		
-		.apod-background { /* Element that will hold the APOD background image */
+		.apod-background { 
 			position: absolute;
 			top: 0;
 			left: 0;
@@ -325,10 +326,10 @@
 			background-size: cover; 
 			background-position: center;
 			background-repeat: no-repeat;
-			transition: background-image 1.2s ease-in-out; /* Smooth transition for image changes */
+			transition: background-image 1.2s ease-in-out; 
 		}
 		
-		.image-details-block { /* Block containing title, date, explanation of APOD */
+		.image-details-block { 
 			background: rgba(15, 15, 35, 0.8); 
 			padding: 25px;
 			border-radius: 12px;
@@ -336,21 +337,21 @@
 			box-shadow: 0 0 15px rgba(var(--accent-blue-rgb), 0.2);
 		}
 		
-		.apod-title-text { /* APOD image title */
+		.apod-title-text { 
 			font-family: 'Lobster', cursive; 
 			font-size: 2rem; 
 			color: var(--accent-yellow);
 			margin-bottom: 0.6rem; 
-			animation: textPulse 2s infinite alternate; /* Subtle pulse animation for title */
+			animation: textPulse 2s infinite alternate; 
 			text-align: center;
 		}
 		
-		@keyframes textPulse { /* Keyframes for text pulse animation */
+		@keyframes textPulse { 
 			0% { transform: scale(1); }
 			100% { transform: scale(1.02); }
 		}
 		
-		.apod-date-text { /* APOD image date */
+		.apod-date-text { 
 			font-family: 'Caveat', cursive; 
 			color: var(--accent-green);
 			font-size: 1.5rem; 
@@ -358,7 +359,7 @@
 			text-align: center;
 		}
 
-		.image-details-block .desc-title-img { /* Subtitle for APOD explanation */
+		.image-details-block .desc-title-img { 
 			font-family: 'Comfortaa', sans-serif; 
 			font-weight: 700;
 			color: var(--secondary-cyan); 
@@ -370,7 +371,7 @@
 			padding-bottom: 0.5rem;
 		}
 		
-		.image-explanation { /* Container for APOD image explanation text */
+		.image-explanation { 
 			font-size: 1.05rem; 
 			line-height: 1.75;
 			padding: 12px;
@@ -379,17 +380,16 @@
 			border: 1px solid rgba(var(--secondary-cyan-rgb), 0.15);
 			box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
 			max-height: 180px; 
-			overflow-y: auto; /* Allows scrolling for longer explanations */
+			overflow-y: auto; 
 			margin-bottom: 1.3rem; 
 			font-family: 'Playfair Display', serif; 
 		}
 		
-		/* Custom scrollbar for APOD explanation */
 		.image-explanation::-webkit-scrollbar { width: 7px; }
 		.image-explanation::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.15); border-radius: 8px; }
 		.image-explanation::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 8px; }
 		
-		.download-button { /* Button to download APOD image */
+		.download-button { 
 			display: block;
 			width: fit-content;
 			margin: 18px auto; 
@@ -412,14 +412,14 @@
 			box-shadow: 0 6px 18px rgba(255, 69, 0, 0.65);
 		}
 		
-		.apod-nav-footer { /* Container for APOD navigation buttons (prev/next) */
+		.apod-nav-footer { 
 			display: flex;
 			justify-content: center;
 			gap: 18px;
 			margin-top: 20px; 
 		}
 
-		.apod-nav-btn { /* Styling for APOD navigation buttons */
+		.apod-nav-btn { 
 			background: rgba(10, 10, 32, 0.65);
 			color: var(--secondary-cyan);
 			border: 1.5px solid var(--accent-blue);
@@ -433,13 +433,13 @@
 			cursor: pointer;
 			transition: all 0.3s ease;
 			box-shadow: 0 0 12px rgba(var(--accent-blue-rgb), 0.45);
-			animation: buttonFloat 3s infinite ease-in-out; /* Floating animation for buttons */
+			animation: buttonFloat 3s infinite ease-in-out; 
 		}
 		
-		.apod-nav-btn:nth-child(1) { animation-delay: 0.15s; } /* Staggered animation start */
+		.apod-nav-btn:nth-child(1) { animation-delay: 0.15s; } 
 		.apod-nav-btn:nth-child(2) { animation-delay: 0.35s; }
 		
-		@keyframes buttonFloat { /* Keyframes for button floating animation */
+		@keyframes buttonFloat { 
 			0%, 100% { transform: translateY(0); }
 			50% { transform: translateY(-6px); } 
 		}
@@ -449,26 +449,26 @@
 			color: var(--dark-bg);
 			transform: translateY(-3px); 
 			box-shadow: 0 0 20px var(--accent-blue);
-			animation: none; /* Pause float animation on hover */
+			animation: none; 
 		}
 		
-		footer { /* Footer styling */
+		footer { 
 			background: rgba(10,10,32,0.97); 
 			color: white; 
 			padding: 4rem 0 2rem; 
 			position: relative; 
 			border-top: 2px solid var(--accent-blue); 
-			margin-top: auto; /* Pushes footer to bottom if content is short */
+			margin-top: auto; 
 		}
 		
-		.footer-grid { /* Grid layout for footer content */
+		.footer-grid { 
 			display: grid; 
 			grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
 			gap: 40px; 
 			margin-bottom: 3rem; 
 		}
 		
-		.footer-column h3 { /* Titles within footer columns */
+		.footer-column h3 { 
 			color: var(--accent-yellow); 
 			margin-bottom: 1.5rem; 
 			position: relative; 
@@ -477,7 +477,7 @@
 			font-family: 'Fredoka One', cursive;
 		}
 		
-		.footer-column h3::after { /* Decorative underline for footer titles */
+		.footer-column h3::after { 
 			content: ''; 
 			position: absolute; 
 			bottom: 0; 
@@ -488,7 +488,7 @@
 			border-radius: 1.5px; 
 		}
 		
-		.footer-links { list-style: none; padding-left:0; } /* Styling for lists of links in footer */
+		.footer-links { list-style: none; padding-left:0; } 
 		.footer-links li { margin-bottom: 12px; }
 		.footer-links a { 
 			color: var(--text-color-medium); 
@@ -501,7 +501,7 @@
 		}
 		.footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
 		
-		.contact-info { margin-top: 20px; } /* Container for contact information in footer */
+		.contact-info { margin-top: 20px; } 
 		.contact-info p { 
 			display: flex; 
 			align-items: center; 
@@ -511,10 +511,18 @@
 			color: var(--text-color-medium); 
 			font-family: 'Comfortaa', sans-serif; 
 		}
-		.contact-info i { color: var(--accent-blue); } /* Icon styling in contact info */
+        .contact-info p a { 
+            color: var(--text-color-medium);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .contact-info p a:hover {
+            color: var(--accent-yellow);
+        }
+		.contact-info i { color: var(--accent-blue); width: 20px; text-align: center;} 
 		
-		.social-links { display: flex; gap: 15px; margin-top: 22px; } /* Social media links container */
-		.social-links a { /* Individual social media link styling */
+		.social-links { display: flex; gap: 15px; margin-top: 22px; } 
+		.social-links a { 
 			display: inline-flex; 
 			align-items: center; 
 			justify-content: center; 
@@ -529,7 +537,7 @@
 		}
 		.social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
 		
-		.copyright { /* Copyright text styling */
+		.copyright { 
 			text-align: center; 
 			padding-top: 2rem; 
 			border-top: 1px solid rgba(255, 255, 255, 0.07); 
@@ -540,31 +548,29 @@
 		.copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
 		.copyright a:hover { color: var(--text-color-light); }
 		
-		/* Starry background effect */
 		.stars {
 			position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-			pointer-events: none; z-index: -2; /* Places stars behind content */
+			pointer-events: none; z-index: -2; 
 		}
 		.star {
 			position: absolute; width: 2px; height: 2px; background: white;
-			border-radius: 50%; opacity: 0; animation: twinkle 5s infinite; /* Twinkle animation for stars */
+			border-radius: 50%; opacity: 0; animation: twinkle 5s infinite; 
 		}
-		@keyframes twinkle { /* Keyframes for star twinkle animation */
+		@keyframes twinkle { 
 			0% { opacity: 0; transform: scale(1); }
 			50% { opacity: 1; transform: scale(1.5); }
 			100% { opacity: 0; transform: scale(1); }
 		}
-		.galaxy { /* Subtle rotating galaxy effect in background */
+		.galaxy { 
 			position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
 			background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
 			z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
 		}
-		@keyframes rotateGalaxy { /* Keyframes for galaxy rotation */
+		@keyframes rotateGalaxy { 
 			0% { transform: rotate(0deg); }
 			100% { transform: rotate(360deg); }
 		}
 		
-		/* Responsive adjustments */
 		@media (max-width: 900px) {
 			.header-container { flex-direction: column; gap: 12px; }
 			nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
@@ -575,15 +581,15 @@
 		}
 		
 		@media (max-width: 600px) {
-			.main-page-content { padding-top: 130px; } /* Adjust padding for smaller fixed header */
+			.main-page-content { padding-top: 130px; } 
 			.logo h1 { font-size: 1.6rem; } 
 			nav ul { gap: 5px; }
 			nav a { font-size: 0.7rem; padding: 6px 7px; }
 			.content-block-qs { padding: 25px; }
 			.content-block-qs h2 { font-size: 1.9rem; } 
-            .welcome-section .welcome-text { font-size: 1.1rem; }
-            .welcome-section .exploration-prompt { font-size: 1.05rem; }
-			.apod-title-container p { font-size: 1rem; } /* Specifically target APOD description */
+            .welcome-section .welcome-text { font-size: 1.05rem; padding: 0 10px;} 
+            .welcome-section .exploration-prompt { font-size: 1rem; padding: 10px; } 
+			.apod-title-container p { font-size: 1rem; } 
 			.apod-title-container h2 { font-size: 1.8rem; }
 			.hero-apod-image-container { height: 55vh; min-height: 300px; }
 			.apod-title-text { font-size: 1.6rem; } 
@@ -621,11 +627,10 @@
             <section id="welcome-section" class="content-block-qs welcome-section">
 				<h2><i class="fas fa-meteor"></i> Te Damos la Bienvenida a tu Universo</h2>
 				<p class="welcome-text">
-					Este es un espacio de encuentro y transformación, diseñado para iluminar tu camino de autoconocimiento y bienestar emocional.
-                    Aquí, la curiosidad es tu brújula y la autoaceptación, tu nave estelar.
+                    Bienvenido a Universo Borderline. Este es un espacio de psicoeducación y comunidad, enfocado en brindar información clara y recursos sobre el Trastorno Límite de la Personalidad (TLP), DBT y TCC.
 				</p>
                 <p class="exploration-prompt">
-                    Cada rincón de este universo ha sido creado para ofrecerte herramientas, perspectivas y comunidad. ¿Qué constelación de conocimiento deseas explorar hoy?
+                    Explora nuestras secciones para profundizar tu conocimiento, desarrollar habilidades y conectar con otros en un ambiente de respeto y comprensión.
                 </p>
 			</section>
 
@@ -673,7 +678,7 @@
 						<a href="#"><i class="fab fa-instagram"></i></a>
 						<a href="#"><i class="fab fa-tiktok"></i></a>
 						<a href="#"><i class="fab fa-youtube"></i></a>
-						<a href="#"><i class="fab fa-discord"></i></a>
+						<a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
 					</div>
 				</div>
 				
@@ -701,10 +706,11 @@
 				<div class="footer-column">
 					<h3>Contacto</h3>
 					<div class="contact-info">
-						<p><i class="fas fa-envelope"></i> itfrombit.w74@gmail.com</p>
+						<p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com">itfrombit.w74@gmail.com</a></p>
 						<p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
 						<p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
 						<p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer">Únete a Discord</a></p>
 					</div>
 				</div>
 			</div>
@@ -744,13 +750,9 @@
 				}
 			}
 			
-            // Script para marcar el enlace activo en la navegación
 			const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
 			const navLinks = document.querySelectorAll('header nav a'); 
 			navLinks.forEach(link => {
-                // Se compara el href del enlace con el nombre del archivo actual.
-                // Si es index.html (página principal), ningún enlace de la barra de navegación debe marcarse como activo,
-                // ya que "Inicio" fue removido. Para otras páginas, sí se marcará el correspondiente.
 				const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
 				if (linkFilename === currentPageFilename && currentPageFilename !== 'index.html') {
 					link.classList.add('active');
@@ -774,7 +776,7 @@
 			 const observerOptions = {
 				root: null, 
 				rootMargin: '0px',
-				threshold: 0.08 // Un poco más bajo para que se active antes al scrollear
+				threshold: 0.08 
 			};
 
 			const observer = new IntersectionObserver((entries, obs) => {
@@ -790,7 +792,7 @@
 				observer.observe(block);
 			});
 			
-			const apiKey = "FQFsse8Fnb3JvqPYnekskHSXtqeU2qLYXf86ZsKT"; // API Key para NASA APOD
+			const apiKey = "FQFsse8Fnb3JvqPYnekskHSXtqeU2qLYXf86ZsKT"; 
 			const today = new Date();
 			let currentApodDate = new Date(today); 
 			
@@ -819,7 +821,6 @@
 					const formattedDate = formatDate(dateToFetch);
 					const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
 					
-					// Estados de carga visuales
 					apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A20, #1a1a32)"; 
 					apodTitleEl.textContent = "Consultando el cosmos...";
 					apodDateEl.textContent = "Aguarde un momento...";
@@ -829,11 +830,9 @@
 					fetch(apiUrl)
 						.then(response => {
 							if (!response.ok) {
-								// Intenta parsear el error de la API de NASA si está disponible
 								return response.json().then(errData => {
 									throw new Error(`Error ${response.status}: ${errData.msg || 'No se pudo obtener la imagen para esta fecha.'}`);
 								}).catch(() => {
-									// Fallback si el cuerpo del error no es JSON o está vacío
 									throw new Error(`Error ${response.status}: No se pudo obtener la imagen para esta fecha.`);
 								});
 							}
@@ -849,21 +848,19 @@
 								apodDownload.setAttribute('download', `Cosmos_${formattedDate}.jpg`);
 								apodDownload.style.display = 'block'; 
 							} else if (data.media_type === 'video') {
-								// Placeholder para videos, ya que el fondo no puede mostrar un video directamente
 								apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Video+Cósmico+del+Día')`;
 								apodTitleEl.textContent = data.title || "Video Cósmico del Día";
 								apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
 								apodExplanation.innerHTML = `${data.explanation}<br><br>El contenido de hoy es un video. <a href="${data.url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-yellow);">Haz clic aquí para verlo en su fuente original</a>.`;
 								apodDownload.style.display = 'none';
 							} else {
-								 // Placeholder para otros tipos de media o errores inesperados
 								 apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Misterio+Cósmico')`;
 								apodTitleEl.textContent = "Misterio Cósmico";
 								apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
 								apodExplanation.textContent = "El tipo de contenido para hoy no es una imagen o video estándar, o no está disponible en este momento.";
 								apodDownload.style.display = 'none';
 							}
-							currentApodDate = new Date(dateToFetch); // Actualiza la fecha actual del APOD
+							currentApodDate = new Date(dateToFetch); 
 						})
 						.catch(error => {
 							console.error('Error al obtener la imagen cósmica:', error);
@@ -875,7 +872,7 @@
 						});
 				}
 				
-				fetchDailyImage(today); // Carga la imagen del día actual al iniciar
+				fetchDailyImage(today); 
 				
 				prevApodBtn.addEventListener('click', () => {
 					const prevDate = new Date(currentApodDate);
@@ -887,16 +884,14 @@
 					const nextDate = new Date(currentApodDate);
 					nextDate.setDate(nextDate.getDate() + 1);
 					
-					// Compara si la fecha siguiente es posterior al día de hoy
 					const todayForComparison = new Date();
-					todayForComparison.setHours(0,0,0,0); // Normaliza la hora para comparación precisa
+					todayForComparison.setHours(0,0,0,0); 
 					const tempNextDate = new Date(nextDate);
-					tempNextDate.setHours(0,0,0,0); // Normaliza la hora para comparación precisa
+					tempNextDate.setHours(0,0,0,0); 
 
 					if (tempNextDate <= todayForComparison) {
 						fetchDailyImage(nextDate);
 					} else {
-						// Mensaje si se intenta acceder a una fecha futura
 						apodTitleEl.textContent = "Viaje al Futuro No Disponible";
 						apodDateEl.textContent = `Fecha: ${formatDateReadable(nextDate)}`;
 						apodExplanation.textContent = "Las crónicas cósmicas para esta fecha futura aún no han sido escritas. Por favor, mantente en el presente o explora el pasado.";
