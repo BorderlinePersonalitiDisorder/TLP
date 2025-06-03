@@ -182,7 +182,7 @@
         
         .page-header {
             text-align: center;
-            margin-bottom: 3rem; /* Reduced margin as category section is removed */
+            margin-bottom: 3rem; 
             padding-top: 2rem; 
         }
 
@@ -223,7 +223,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
-            margin-top: 2rem; /* Added margin-top to compensate for removed categories section */
+            margin-top: 2rem; 
         }
 
         .blog-post-card {
@@ -392,21 +392,7 @@
         }
         .contact-info i { color: var(--accent-blue); } 
         
-        .social-links { display: flex; gap: 15px; margin-top: 22px; }
-        .social-links a { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 45px; 
-            height: 45px; 
-            background: rgba(255, 255, 255, 0.04); 
-            color: var(--accent-blue); 
-            border-radius: 50%; 
-            transition: all 0.4s ease; 
-            font-size: 1.2rem; 
-            border: 1px solid var(--accent-blue); 
-        }
-        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        /* .social-links class has been removed from the first footer column */
         
         .copyright { 
             text-align: center; 
@@ -481,7 +467,7 @@
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="cursos.html">Cursos</a></li> 
-                    <li><a href="blog.html" class="active">Blog</a></li> 
+                    <li><a href="blog.html" class="active" aria-current="page">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
                     <li><a href="memes.html">Memes</a></li> 
                 </ul>
@@ -497,8 +483,6 @@
                     Sumérgete en artículos, reflexiones y últimas noticias sobre TLP, DBT, salud mental y las sendas hacia el crecimiento personal. Un espacio para la comprensión, el aprendizaje y la inspiración.
                 </p>
             </div>
-
-            <!-- Categories Section Removed -->
 
             <div class="blog-grid">
                 <article class="blog-post-card"> 
@@ -597,8 +581,6 @@
                     </div>
                 </article>
                 
-                <!-- Removed additional articles to keep only 6 -->
-
                 </div>
         </div>
     </main>
@@ -609,13 +591,7 @@
                 <div class="footer-column">
                     <h3>Universo Borderline</h3> 
                     <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a> 
                     </div>
-                </div>
                 
                 <div class="footer-column">
                     <h3>Navegación</h3>
@@ -633,7 +609,6 @@
                     <ul class="footer-links">
                         <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
                         <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
                         <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
@@ -643,7 +618,6 @@
                     <div class="contact-info">
                         <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
                         <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
-                        <p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
                         <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
                         <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
                     </div>
@@ -692,13 +666,20 @@
             const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
                 link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && linkFilename === '')) { 
                     link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
                 }
+                // Specifically for blog.html, ensure "Blog" is active.
                 if (currentPageFilename === 'blog.html' && linkFilename === 'blog.html') {
-                    navLinks.forEach(nl => nl.classList.remove('active')); 
+                    navLinks.forEach(nl => {
+                        nl.classList.remove('active');
+                        nl.removeAttribute('aria-current');
+                    });
                     link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
                 }
             });
             
@@ -715,7 +696,7 @@
             }
             
             // Intersection Observer for fade-in animations
-            const animatedSections = document.querySelectorAll('.blog-grid'); // Only animate blog-grid now
+            const animatedSections = document.querySelectorAll('.blog-grid'); 
             if (animatedSections.length > 0) {
                 const observerOptions = {
                     root: null, 
@@ -738,30 +719,6 @@
                     observer.observe(section);
                 });
             }
-
-            // Smooth scroll for category links (No longer needed as categories are removed)
-            // const categoryLinks = document.querySelectorAll('.category-list a');
-            // categoryLinks.forEach(link => {
-            //     link.addEventListener('click', function(e) {
-            //         const href = this.getAttribute('href');
-            //         if (href.startsWith('#')) {
-            //             e.preventDefault();
-            //             const targetId = href.substring(1);
-            //             const targetElement = document.getElementById(targetId);
-            //             if (targetElement) {
-            //                 const headerHeight = document.getElementById('main-header') ? document.getElementById('main-header').offsetHeight : 0;
-            //                 const elementPosition = targetElement.getBoundingClientRect().top;
-            //                 const offsetPosition = elementPosition + window.pageYOffset - headerHeight - 20; 
-
-            //                 window.scrollTo({
-            //                     top: offsetPosition,
-            //                     behavior: "smooth"
-            //                 });
-            //             }
-            //         }
-            //     });
-            // });
-
         });
     </script>
 </body>
