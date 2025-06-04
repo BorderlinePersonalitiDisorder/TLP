@@ -201,7 +201,7 @@
             font-family: 'Playfair Display', serif; 
             font-size: 3rem; 
             font-weight: 700; 
-            color: var(--accent-cyan);
+            color: var(--secondary-cyan); /* Cambiado para usar la variable correcta */
             margin-bottom: 0.5rem;
             text-transform: none; 
             letter-spacing: 0.5px; 
@@ -284,7 +284,7 @@
             line-height: 1.4; /* Ajustado */
         }
          .podcast-content h3:hover {
-            color: var(--accent-cyan);
+            color: var(--secondary-cyan);
         }
         
         .podcast-meta {
@@ -525,7 +525,71 @@
                     </div>
                 </article>
                 
-                <!-- Aquí se pueden añadir más tarjetas de podcast en el futuro -->
+                <!-- Podcast Card: TLP y Suicidio -->
+                <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-blue); color: var(--text-color-light);">
+                        <i class="fas fa-heart-broken"></i> <!-- Icono representativo -->
+                    </div>
+                    <div class="podcast-content">
+                        <h3>TLP y Suicidio</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Fecha a definir</span> | 
+                            <span><i class="fas fa-clock"></i> Duración a definir</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Un episodio crucial que aborda la compleja relación entre el TLP y las ideas suicidas, ofreciendo perspectivas y recursos.
+                        </p>
+                        <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor no disponible.</span>
+                            <a href="https://open.spotify.com/episode/3M1Y78t0QXnOIp3XUsy7GH?si=723f8a23baff4695" target="_blank" rel="noopener noreferrer" class="listen-btn">Más Detalles</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Podcast Card: TLP y Conductas Sexuales -->
+                <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-magenta); color: var(--text-color-light);">
+                        <i class="fas fa-venus-mars"></i> <!-- Icono representativo -->
+                    </div>
+                    <div class="podcast-content">
+                        <h3>TLP y Conductas Sexuales</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Fecha a definir</span> | 
+                            <span><i class="fas fa-clock"></i> Duración a definir</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Explorando cómo el TLP puede influir en la sexualidad y las relaciones interpersonales, con un enfoque en la comprensión y el bienestar.
+                        </p>
+                        <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor no disponible.</span>
+                            <a href="https://open.spotify.com/episode/3hVGrh46VPExTrVSvn60BB?si=86b565767f59449b" target="_blank" rel="noopener noreferrer" class="listen-btn">Más Detalles</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Podcast Card: TLP/TCA -->
+                <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-green); color: var(--text-color-dark);"> <!-- Color de texto oscuro para mejor contraste con verde claro -->
+                        <i class="fas fa-utensils"></i> <!-- Icono representativo -->
+                    </div>
+                    <div class="podcast-content">
+                        <h3>TLP/TCA</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Fecha a definir</span> | 
+                            <span><i class="fas fa-clock"></i> Duración a definir</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Análisis de la comorbilidad entre el Trastorno Límite de la Personalidad y los Trastornos de la Conducta Alimentaria.
+                        </p>
+                        <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor no disponible.</span>
+                            <a href="https://open.spotify.com/episode/1nEqu5xM2PWPunhmjJnrBT?si=3d6c920daba64da4" target="_blank" rel="noopener noreferrer" class="listen-btn">Más Detalles</a>
+                        </div>
+                    </div>
+                </article>
                 
             </div>
              <div style="text-align: center; margin-top: 3rem;">
@@ -617,7 +681,7 @@
                 link.classList.remove('active'); 
                 link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                 // Check if the link's href matches the current page filename
+               // Check if the link's href matches the current page filename
                 if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
