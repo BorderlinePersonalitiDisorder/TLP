@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Políticas de Privacidad y Términos de Uso - Universo Borderline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+            --light-bg-article: #1a1a2e; 
+            --article-text-color: #E0E0E0; 
+            --article-heading-color: var(--secondary-cyan);
+
+            /* Variables RGB para opacidad en background-color */
+            --accent-yellow-rgb: 255, 215, 0;
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-red-rgb: 255, 69, 0;
+        }
+        
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px; 
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse { 
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+            border-radius: 20px; 
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active { /* 'active' class will be handled by JS */
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+
+        .article-container {
+            background-color: var(--light-bg-article);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            margin-top: 2rem;
+            border: 1px solid var(--border-color);
+            color: var(--article-text-color);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .article-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--accent-yellow);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+        
+        .article-content p, .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+        
+        .article-content strong {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .article-content h2 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.8rem;
+            color: var(--article-heading-color);
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-magenta);
+            display: inline-block;
+        }
+        .article-content h3 {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-violet);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content ul, .article-content ol {
+            padding-left: 25px;
+        }
+         .article-content ul li, .article-content ol li {
+            margin-bottom: 0.75rem;
+        }
+        .article-content ul li::marker {
+            color: var(--accent-green);
+        }
+        .article-content ol li::marker {
+            color: var(--accent-blue);
+        }
+        
+        .back-to-home-btn { /* Renamed from back-to-blog-btn for general use */
+            display: inline-block;
+            margin-top: 3rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .back-to-home-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4);
+        }
+        
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .article-header h1 { font-size: 2.2rem; }
+        }
+        
+        @media (max-width: 600px) {
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.6rem; } 
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .article-header h1 { font-size: 1.8rem; }
+            .article-content p, .article-content ul, .article-content ol { font-size: 1rem; }
+            .article-content h2 { font-size: 1.5rem; }
+            .article-content h3 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
+    
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"> 
+                <i class="fas fa-brain"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="memes.html">Memes</a></li> 
+                    <!-- Considerar añadir un enlace a esta página de políticas en el footer -->
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-page-content">
+        <div class="container">
+            <article class="article-container">
+                <header class="article-header">
+                    <h1>Políticas de Privacidad y Términos de Uso</h1>
+                    <p style="color: var(--text-color-medium); font-size: 1rem; margin-top: 0.5rem;">Última actualización: [4 de Junio, 2025]</p>
+                </header>
+                
+                <section class="article-content">
+                    <p>Bienvenido/a a Universo Borderline. Su privacidad y la confianza que deposita en nosotros son de suma importancia. A continuación, detallamos nuestras políticas de privacidad y los términos y condiciones que rigen el uso de este sitio web.</p>
+                    <p><em><strong>Nota Importante:</strong> El contenido de este sitio web, incluyendo este documento, tiene fines informativos y de apoyo. No constituye asesoramiento legal ni terapéutico profesional. Para cuestiones legales, consulte a un abogado. Para cuestiones de salud mental, consulte a un profesional cualificado.</em></p>
+
+                    <h2>Política de Privacidad</h2>
+                    <p>En Universo Borderline ("nosotros", "nuestro"), estamos comprometidos con la protección de su privacidad y sus datos personales. Esta Política de Privacidad describe cómo recopilamos, usamos, protegemos y compartimos su información cuando visita nuestro sitio web [NombreDeTuSitioWeb.com] (el "Sitio").</p>
+
+                    <h3>1. Información que Recopilamos</h3>
+                    <p>Podemos recopilar diferentes tipos de información para diversos fines con el fin de proporcionar y mejorar nuestro servicio para usted:</p>
+                    <ul>
+                        <li><strong>Información de Identificación Personal:</strong> Si decide contactarnos a través de un formulario, correo electrónico, o participar en foros (si están disponibles y requieren registro), podríamos solicitarle cierta información personal identificable que puede incluir, entre otros: nombre, dirección de correo electrónico. El suministro de esta información es voluntario.</li>
+                        <li><strong>Datos de Uso y Navegación:</strong> Podemos recopilar información sobre cómo se accede y utiliza el Sitio ("Datos de Uso"). Estos Datos de Uso pueden incluir información como la dirección del Protocolo de Internet de su computadora (por ejemplo, dirección IP), tipo de navegador, versión del navegador, las páginas de nuestro Sitio que visita, la hora y fecha de su visita, el tiempo dedicado a esas páginas, identificadores únicos de dispositivos y otros datos de diagnóstico. Esta información se recopila generalmente de forma anónima y agregada.</li>
+                        <li><strong>Cookies y Tecnologías de Seguimiento:</strong> Utilizamos cookies y tecnologías de seguimiento similares para rastrear la actividad en nuestro Sitio y mantener cierta información. Las cookies son archivos con una pequeña cantidad de datos que pueden incluir un identificador único anónimo. Puede indicar a su navegador que rechace todas las cookies o que indique cuándo se envía una cookie. Sin embargo, si no acepta cookies, es posible que no pueda utilizar algunas partes de nuestro Sitio.</li>
+                    </ul>
+
+                    <h3>2. Uso de sus Datos</h3>
+                    <p>Universo Borderline utiliza los datos recopilados para diversos fines:</p>
+                    <ul>
+                        <li>Para proveer y mantener nuestro Sitio.</li>
+                        <li>Para notificarle sobre cambios en nuestro Sitio o servicios.</li>
+                        <li>Para permitirle participar en funciones interactivas de nuestro Sitio cuando elija hacerlo (por ejemplo, foros).</li>
+                        <li>Para proporcionar atención al cliente.</li>
+                        <li>Para recopilar análisis o información valiosa para que podamos mejorar nuestro Sitio.</li>
+                        <li>Para monitorear el uso de nuestro Sitio.</li>
+                        <li>Para detectar, prevenir y abordar problemas técnicos.</li>
+                        <li><strong>Importante:</strong> No vendemos, intercambiamos ni alquilamos su información de identificación personal a terceros.</li>
+                    </ul>
+
+                    <h3>3. Seguridad de los Datos</h3>
+                    <p>La seguridad de sus datos es importante para nosotros, pero recuerde que ningún método de transmisión por Internet o método de almacenamiento electrónico es 100% seguro. Si bien nos esforzamos por utilizar medios comercialmente aceptables para proteger sus Datos Personales, no podemos garantizar su seguridad absoluta.</p>
+                    <p>Dada la naturaleza sensible de los temas tratados en este sitio, le recomendamos encarecidamente que sea consciente de la información que comparte, especialmente en áreas públicas como los foros (si están habilitados). Considere el uso de seudónimos y evite compartir detalles que puedan identificarle directamente si desea mantener un mayor grado de anonimato.</p>
+
+                    <h3>4. Enlaces a Otros Sitios</h3>
+                    <p>Nuestro Sitio puede contener enlaces a otros sitios que no son operados por nosotros. Si hace clic en un enlace de un tercero, será dirigido al sitio de ese tercero. Le recomendamos encarecidamente que revise la Política de Privacidad de cada sitio que visite. No tenemos control ni asumimos ninguna responsabilidad por el contenido, las políticas de privacidad o las prácticas de los sitios o servicios de terceros.</p>
+                    
+                    <h3>5. Privacidad de los Niños</h3>
+                    <p>Nuestro Sitio no está dirigido a menores de 13 años (o la edad mínima aplicable en su jurisdicción). No recopilamos deliberadamente información de identificación personal de menores. Si usted es padre/madre o tutor y sabe que su hijo nos ha proporcionado Datos Personales, contáctenos. Si nos damos cuenta de que hemos recopilado Datos Personales de menores sin verificación del consentimiento de los padres, tomamos medidas para eliminar esa información de nuestros servidores.</p>
+
+                    <h3>6. Sus Derechos de Protección de Datos</h3>
+                    <p>Dependiendo de su ubicación, puede tener ciertos derechos con respecto a sus datos personales, como el derecho a acceder, corregir, eliminar o restringir el procesamiento de sus datos. Si desea ejercer alguno de estos derechos, contáctenos en [Correo Electrónico de Contacto para Privacidad].</p>
+
+                    <h3>7. Cambios a esta Política de Privacidad</h3>
+                    <p>Podemos actualizar nuestra Política de Privacidad de vez en cuando. Le notificaremos cualquier cambio publicando la nueva Política de Privacidad en esta página. Se le aconseja que revise esta Política de Privacidad periódicamente para cualquier cambio. Los cambios a esta Política de Privacidad son efectivos cuando se publican en esta página.</p>
+
+                    <h2>Términos y Condiciones de Uso</h2>
+                    <p>Por favor, lea estos Términos y Condiciones de Uso ("Términos", "Términos y Condiciones") cuidadosamente antes de usar el sitio web [NombreDeTuSitioWeb.com] (el "Servicio") operado por Universo Borderline ("nosotros", "nuestro").</p>
+                    <p>Su acceso y uso del Servicio está condicionado a su aceptación y cumplimiento de estos Términos. Estos Términos se aplican a todos los visitantes, usuarios y otras personas que accedan o utilicen el Servicio.</p>
+                    <p><strong>Al acceder o utilizar el Servicio, usted acepta estar sujeto a estos Términos. Si no está de acuerdo con alguna parte de los términos, no podrá acceder al Servicio.</strong></p>
+
+                    <h3>1. Propósito del Sitio y Descargo de Responsabilidad Médica</h3>
+                    <p>El contenido proporcionado en Universo Borderline (incluyendo textos, gráficos, imágenes y otro material) tiene fines informativos, educativos y de apoyo únicamente. <strong>No pretende ser un sustituto del consejo, diagnóstico o tratamiento médico o psicológico profesional.</strong> Siempre busque el consejo de su médico u otro proveedor de salud calificado con cualquier pregunta que pueda tener sobre una condición médica o de salud mental. Nunca ignore el consejo médico profesional ni demore en buscarlo debido a algo que haya leído en este sitio web.</p>
+                    <p>Universo Borderline no recomienda ni respalda ninguna prueba, médico, producto, procedimiento, opinión u otra información específica que pueda mencionarse en el sitio. La confianza en cualquier información proporcionada por Universo Borderline, empleados de Universo Borderline, otras personas que aparecen en el sitio por invitación de Universo Borderline, u otros visitantes del sitio es bajo su propio riesgo.</p>
+                    <p><strong>Si cree que puede tener una emergencia médica o una crisis de salud mental, llame a su médico, al número de emergencia local (por ejemplo, 911 en EE. UU., 107 en Argentina para emergencias médicas, o líneas de ayuda específicas para crisis de salud mental) inmediatamente.</strong></p>
+
+                    <h3>2. Propiedad Intelectual</h3>
+                    <p>El Servicio y su contenido original (excluyendo el contenido proporcionado por los usuarios, si aplica), características y funcionalidad son y seguirán siendo propiedad exclusiva de Universo Borderline y sus licenciantes. El Servicio está protegido por derechos de autor, marcas registradas y otras leyes tanto de [País de Registro/Operación] como de países extranjeros. Nuestras marcas comerciales y nuestra imagen comercial no se pueden utilizar en relación con ningún producto o servicio sin el consentimiento previo por escrito de Universo Borderline.</p>
+                    <p>Se le concede una licencia limitada para acceder y hacer uso personal y no comercial del contenido de este sitio para fines educativos y de apoyo, siempre que se reconozcan adecuadamente las fuentes.</p>
+
+                    <h3>3. Contenido Generado por el Usuario (Si Aplica)</h3>
+                    <p>Si el Sitio permite a los usuarios publicar, enlazar, almacenar, compartir y poner a disposición cierta información, texto, gráficos, videos u otro material ("Contenido del Usuario"), usted es responsable del Contenido del Usuario que publica en o a través del Servicio, incluida su legalidad, fiabilidad y adecuación.</p>
+                    <p>Al publicar Contenido del Usuario en o a través del Servicio, usted declara y garantiza que: (i) el Contenido del Usuario es suyo (usted lo posee) y/o tiene el derecho de usarlo y el derecho de otorgarnos los derechos y la licencia según lo dispuesto en estos Términos, y (ii) la publicación de su Contenido del Usuario en o a través del Servicio no viola los derechos de privacidad, derechos de publicidad, derechos de autor, derechos contractuales o cualquier otro derecho de cualquier persona o entidad.</p>
+                    <p>Nos reservamos el derecho de bloquear o eliminar comunicaciones o materiales que determinemos que son: (a) abusivos, difamatorios u obscenos; (b) fraudulentos, engañosos o falaces; (c) en violación de un derecho de autor, marca registrada u otro derecho de propiedad intelectual de otro o; (d) ofensivos o de otro modo inaceptables para nosotros a nuestra entera discreción.</p>
+                    <p>Usted reconoce que no preseleccionamos el Contenido del Usuario, pero que nosotros y nuestros designados tendremos el derecho (pero no la obligación) a nuestra entera discreción de rechazar o eliminar cualquier Contenido del Usuario que esté disponible a través del Servicio.</p>
+
+                    <h3>4. Conducta del Usuario</h3>
+                    <p>Usted acepta no utilizar el Servicio para:</p>
+                    <ul>
+                        <li>Publicar o transmitir cualquier material que sea ilegal, amenazante, abusivo, difamatorio, vulgar, obsceno, profano, odioso, racial, étnica o de cualquier otra forma objetable.</li>
+                        <li>Acosar, amenazar, avergonzar o causar angustia o incomodidad a otro participante, usuario u otra persona o entidad.</li>
+                        <li>Transmitir o facilitar la distribución de cualquier contenido que sea falso, engañoso o que suplante a cualquier persona o entidad.</li>
+                        <li>Publicar o transmitir cualquier publicidad no solicitada, materiales promocionales o cualquier otra forma de solicitud.</li>
+                        <li>Violar cualquier ley o regulación local, estatal, nacional o internacional aplicable.</li>
+                    </ul>
+                    <p>El incumplimiento de estas normas de conducta puede resultar en la terminación de su acceso al Servicio.</p>
+
+                    <h3>5. Limitación de Responsabilidad</h3>
+                    <p>En ningún caso Universo Borderline, ni sus directores, empleados, socios, agentes, proveedores o afiliados, serán responsables de ningún daño indirecto, incidental, especial, consecuente o punitivo, incluidos, entre otros, la pérdida de beneficios, datos, uso, buena voluntad u otras pérdidas intangibles, resultantes de (i) su acceso o uso o incapacidad para acceder o utilizar el Servicio; (ii) cualquier conducta o contenido de cualquier tercero en el Servicio; (iii) cualquier contenido obtenido del Servicio; y (iv) el acceso no autorizado, uso o alteración de sus transmisiones o contenido, ya sea basado en garantía, contrato, agravio (incluida la negligencia) o cualquier otra teoría legal, ya sea que hayamos sido informados o no de la posibilidad de dicho daño, e incluso si se determina que un remedio establecido en este documento ha fallado en su propósito esencial.</p>
+                    <p>El uso de este sitio es bajo su propio riesgo. El contenido se proporciona "tal cual" y "según disponibilidad" sin garantías de ningún tipo, ya sean expresas o implícitas.</p>
+
+                    <h3>6. Modificaciones a los Términos</h3>
+                    <p>Nos reservamos el derecho, a nuestra entera discreción, de modificar o reemplazar estos Términos en cualquier momento. Si una revisión es material, intentaremos proporcionar un aviso de al menos 30 días antes de que entren en vigor los nuevos términos. Lo que constituye un cambio material se determinará a nuestra entera discreción.</p>
+                    <p>Al continuar accediendo o utilizando nuestro Servicio después de que esas revisiones entren en vigor, usted acepta estar sujeto a los términos revisados. Si no está de acuerdo con los nuevos términos, deje de usar el Servicio.</p>
+
+                    <h3>7. Ley Aplicable y Jurisdicción</h3>
+                    <p>Estos Términos se regirán e interpretarán de acuerdo con las leyes de [Su País/Jurisdicción, por ejemplo, "la República Argentina"], sin tener en cuenta sus disposiciones sobre conflicto de leyes.</p>
+                    <p>Nuestra incapacidad para hacer cumplir cualquier derecho o disposición de estos Términos no se considerará una renuncia a esos derechos. Si alguna disposición de estos Términos es considerada inválida o inaplicable por un tribunal, las disposiciones restantes de estos Términos seguirán en vigor. Estos Términos constituyen el acuerdo completo entre nosotros con respecto a nuestro Servicio, y reemplazan y sustituyen cualquier acuerdo anterior que pudiéramos tener entre nosotros con respecto al Servicio.</p>
+                    
+                    <h3>8. Contacto</h3>
+                    <p>Si tiene alguna pregunta sobre esta Política de Privacidad o los Términos y Condiciones de Uso, por favor contáctenos:</p>
+                    <ul>
+                        <li>Por correo electrónico: [itfrombit.w74@gmail.com]</li>
+                        <li>Visitando esta página en nuestro sitio web: [Enlace a tu página de contacto, si tienes una]</li>
+                    </ul>
+                    
+                    <div style="text-align: center; margin-top: 2.5rem;">
+                         <a href="index.html" class="back-to-home-btn"><i class="fas fa-home"></i> Volver al Inicio</a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Universo Borderline</h3> 
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="memes.html">Memes</a></li> 
+                        <li><a href="politicas.html">Políticas y Términos</a></li> <!-- Enlace a esta página -->
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos DBT</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
+                <!-- Se podría enlazar a esta misma página desde aquí si se desea -->
+                <p><a href="politicas.html">Privacidad y Términos</a> | <a href="#">Seguridad (Ejemplo)</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150; 
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 7}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 7.5}s`; 
+                    if (Math.random() > 0.6) { 
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)', 'var(--accent-blue)', 'var(--accent-yellow)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 3 + 0.8}px ${star.style.backgroundColor}`; 
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 2 + 0.5}px rgba(255,255,255,0.7)`; 
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            // Active navigation link highlighting: No link active for this page
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
+            });
+            
+            // Specific logic if you add a "Políticas" link to the nav and want it active:
+            // const currentPageFilename = window.location.pathname.split('/').pop();
+            // if (currentPageFilename === 'politicas.html') { // Assuming this file is named politicas.html
+            //     navLinks.forEach(link => {
+            //         if (link.getAttribute('href') === 'politicas.html') {
+            //             link.classList.add('active');
+            //             link.setAttribute('aria-current', 'page');
+            //         }
+            //     });
+            // }
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
