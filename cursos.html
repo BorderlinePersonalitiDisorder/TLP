@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Universo Borderline</title>
+    <title>Cursos - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -80,6 +80,8 @@
             border-bottom: 2px solid var(--accent-magenta); 
             box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
             transition: all 0.4s ease;
+            display: flex;
+            justify-content: center;
         }
         
         header.scrolled {
@@ -90,7 +92,8 @@
         .header-container { 
             display: flex; 
             justify-content: space-between; 
-            align-items: center; 
+            align-items: center;
+            width: 100%;
         }
         
         .logo { 
@@ -132,7 +135,8 @@
         nav ul { 
             display: flex; 
             list-style: none; 
-            gap: 10px; 
+            gap: 15px;
+            align-items: center;
         }
         
         nav a { 
@@ -145,16 +149,21 @@
             transition: all 0.3s ease-out; 
             position: relative;
             background: transparent; 
-            border: 1px solid transparent; 
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
         }
         
         nav a::before { 
             content: ''; 
             position: absolute; 
-            top: 0; 
+            top: 50%; 
             left: 0; 
             width: 0%; 
             height: 100%;
+            transform: translateY(-50%);
             background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
             opacity: 0.3; 
             transition: width 0.4s ease; 
@@ -190,7 +199,7 @@
             font-family: 'Playfair Display', serif; 
             font-size: 3rem; 
             font-weight: 700; 
-            color: var(--secondary-cyan); /* Changed from --accent-cyan to --secondary-cyan for consistency */
+            color: var(--secondary-cyan); 
             margin-bottom: 0.5rem;
             text-transform: none; 
             letter-spacing: 0.5px; 
@@ -219,14 +228,14 @@
             margin: 0 auto;
         }
         
-        .blog-grid {
+        .course-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2.5rem;
             margin-top: 2rem; 
         }
 
-        .blog-post-card {
+        .course-card {
             background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
@@ -237,45 +246,45 @@
             border: 1px solid var(--border-color);
         }
 
-        .blog-post-card:hover {
+        .course-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5); 
         }
 
-        .blog-post-thumbnail {
+        .course-thumbnail {
             width: 100%;
             height: 220px;
             object-fit: cover;
             transition: opacity 0.3s ease, transform 0.4s ease; 
         }
-         .blog-post-card:hover .blog-post-thumbnail {
+         .course-card:hover .course-thumbnail {
             opacity: 0.85;
             transform: scale(1.03); 
         }
 
 
-        .blog-post-content {
+        .course-content {
             padding: 25px;
             flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
 
-        .blog-post-content h3 {
-            font-family: 'Playfair Display', serif; /* Changed Font */
-            font-size: 1.6rem; /* Adjusted size for new font */
+        .course-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
             color: var(--accent-yellow);
             margin-bottom: 1rem;
-            line-height: 1.4; /* Adjusted line height */
+            line-height: 1.4;
             transition: color 0.3s ease, text-shadow 0.3s ease; 
         }
-        .blog-post-content h3:hover {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 8px var(--accent-cyan);
-            font-family: 'Krona One', sans-serif; /* Kept Krona for hover, or change if desired */
+        .course-content h3:hover {
+            color: var(--secondary-cyan);
+            text-shadow: 0 0 8px var(--secondary-cyan);
+            font-family: 'Krona One', sans-serif;
         }
         
-        .blog-post-meta {
+        .course-meta {
             font-size: 0.85rem;
             color: var(--text-color-medium);
             margin-bottom: 1rem;
@@ -285,16 +294,16 @@
             flex-wrap: wrap; 
         }
 
-        .blog-post-meta i {
+        .course-meta i {
             margin-right: 5px;
             color: var(--accent-green);
             transition: transform 0.3s ease; 
         }
-        .blog-post-meta span:hover i { 
+        .course-meta span:hover i { 
             transform: scale(1.2) rotate(-10deg);
         }
-        
-        .blog-post-excerpt {
+
+        .course-description {
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 1.5rem; 
@@ -302,7 +311,7 @@
             color: var(--text-color-light);
         }
 
-        .read-more-btn {
+        .enroll-btn {
             display: inline-block;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
             color: white;
@@ -315,25 +324,12 @@
             align-self: flex-start; 
         }
 
-        .read-more-btn:hover {
+        .enroll-btn:hover {
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
             transform: scale(1.05) translateY(-2px); 
             box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4); 
         }
         
-        .full-article-note {
-            font-size: 0.8rem;
-            color: var(--accent-green);
-            margin-top: 10px; 
-            text-align: left; 
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .full-article-note i {
-            font-size: 0.9rem;
-        }
-
         footer { 
             background: rgba(10,10,32,0.97); 
             color: white; 
@@ -403,59 +399,32 @@
         .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
         .copyright a:hover { color: var(--text-color-light); }
         
-        .stars {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            pointer-events: none; z-index: -2; 
-        }
-        .star {
-            position: absolute; width: 2px; height: 2px; background: white;
-            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
-        }
-        @keyframes twinkle {
-            0% { opacity: 0; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-            100% { opacity: 0; transform: scale(1); }
-        }
-        .galaxy {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
-            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
-        }
-        @keyframes rotateGalaxy {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
         @media (max-width: 900px) {
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
-            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; height: 40px; }
             .page-header h2 { font-size: 2.6rem; } 
             .page-header h2 i { font-size: 2.2rem; } 
-            .blog-post-content h3 {font-size: 1.4rem;} /* Adjusted for new font */
+            .course-content h3 {font-size: 1.4rem;} 
         }
         
         @media (max-width: 600px) {
             .main-page-content { padding-top: 130px; } 
             .logo h1 { font-size: 1.6rem; } 
             nav ul { gap: 5px; }
-            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; height: 35px; }
             .page-header h2 { font-size: 2rem; } 
             .page-header h2 i { font-size: 1.8rem; } 
             .page-header p { font-size: 1rem; }
-            .blog-grid { grid-template-columns: 1fr; }
-            .blog-post-thumbnail { height: 180px; }
-            .blog-post-content h3 {font-size: 1.3rem;} /* Adjusted for new font */
-            .blog-post-excerpt {font-size: 0.9rem;}
-            .read-more-btn { padding: 8px 16px; font-size: 0.9rem;}
-            .full-article-note { font-size: 0.75rem; }
+            .course-grid { grid-template-columns: 1fr; }
+            .course-thumbnail { height: 180px; }
+            .course-content h3 {font-size: 1.3rem;} 
+            .course-description {font-size: 0.9rem;}
+            .enroll-btn { padding: 8px 16px; font-size: 0.9rem;}
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    <div class="galaxy"></div>
-    
     <header id="main-header">
         <div class="container header-container">
             <a href="index.html" class="logo"> 
@@ -465,8 +434,8 @@
             <nav>
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li> 
-                    <li><a href="blog.html" class="active" aria-current="page">Blog</a></li> 
+                    <li><a href="cursos.html" class="active" aria-current="page">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
                     <li><a href="memes.html">Memes</a></li> 
                     <li><a href="podcast.html">Podcast</a></li>
@@ -478,109 +447,44 @@
     <main class="main-page-content">
         <div class="container">
             <div class="page-header">
-                <h2><i class="fas fa-newspaper"></i> Crónicas del Viaje Interior</h2>
+                <h2><i class="fas fa-graduation-cap"></i> Cursos Disponibles</h2>
                 <p>
-                    Sumérgete en artículos, reflexiones y últimas noticias sobre TLP, DBT, salud mental y las sendas hacia el crecimiento personal. Un espacio para la comprensión, el aprendizaje y la inspiración.
+                    Explora nuestras formaciones especializadas en DBT y CBT, diseñadas para brindar herramientas prácticas en manejo emocional y desarrollo mental.
                 </p>
             </div>
 
-            <div class="blog-grid">
-                <article class="blog-post-card"> 
-                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Mindfulness+Práctico" alt="Persona meditando en un entorno sereno" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>Desentrañando el Mindfulness: El Corazón de la DBT</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 30 de Mayo, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Dra. Elena Valiente</span>
+            <div class="course-grid">
+                <!-- Card para curso DBT -->
+                <article class="course-card"> 
+                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Curso+DBT" alt="Imagen representativa del curso DBT" class="course-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="course-content">
+                        <h3>Introducción a la DBT</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Inicio: 15 de Julio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Instructora: Lic. Paula Gómez</span>
                         </div>
-                        <p class="blog-post-excerpt">
-                            El mindfulness, o atención plena, es mucho más que una técnica de meditación; es una habilidad fundamental en la Terapia Dialéctico Conductual (DBT). En este artículo, exploramos qué significa realmente practicar mindfulness, sus beneficios directos para la regulación emocional y cómo integrarlo en la vida diaria para reducir la reactividad y aumentar la conciencia del presente...
+                        <p class="course-description">
+                            Domina las habilidades fundamentales de la Terapia Dialéctico Conductual, incluyendo mindfulness, regulación emocional y efectividad interpersonal. 
                         </p>
-                        <a href="blog-post-mindfulness.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
+                        <a href="dbt.html" class="enroll-btn">Más Información <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
 
-                <article class="blog-post-card"> 
-                    <img src="https://placehold.co/600x400/00CED1/0A0A20?text=Validación+y+Empatía" alt="Dos personas conectando y mostrando empatía" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>El Poder de la Validación: Entendiendo y Aceptando Nuestras Emociones</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 25 de Mayo, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Lic. Marco Figueroa</span>
+                <!-- Card para curso CBT -->
+                <article class="course-card"> 
+                    <img src="https://placehold.co/600x400/00CED1/0A0A20?text=Curso+CBT" alt="Imagen representativa del curso CBT" class="course-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="course-content">
+                        <h3>Fundamentos de la CBT</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Inicio: 22 de Julio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Instructor: Dr. Alejandro Ruiz</span>
                         </div>
-                        <p class="blog-post-excerpt">
-                            La validación emocional es un pilar en la DBT y en la construcción de relaciones saludables, tanto con nosotros mismos como con los demás. ¿Pero qué implica validar una emoción, especialmente cuando es intensa o dolorosa? Descubre por qué la invalidación puede ser tan dañina y aprende estrategias prácticas para ofrecer y recibir validación de manera efectiva, fomentando la comprensión y la conexión...
+                        <p class="course-description">
+                            Aprende las bases de la Terapia Cognitivo Conductual para identificar y reestructurar pensamientos disfuncionales, mejorando tu bienestar emocional.
                         </p>
-                        <a href="blog-post-validacion.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
+                        <a href="cbt.html" class="enroll-btn">Más Información <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </article>
-
-                <article class="blog-post-card"> 
-                    <img src="https://placehold.co/600x400/FF00FF/FFFFFF?text=Mitos+vs+Realidad+TLP" alt="Signo de interrogación rodeado de palabras clave sobre TLP" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>Derribando Mitos: 5 Ideas Erróneas Comunes sobre el Trastorno Límite</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 18 de Mayo, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Equipo Universo Borderline</span> 
-                        </div>
-                        <p class="blog-post-excerpt">
-                            El Trastorno Límite de la Personalidad (TLP) a menudo está rodeado de estigma y desinformación. Estos mitos no solo perpetúan el sufrimiento de quienes lo viven, sino que también dificultan la búsqueda de ayuda y la comprensión por parte de su entorno. En este post, abordamos y desmentimos cinco de las ideas erróneas más extendidas sobre el TLP, aportando claridad y fomentando la empatía...
-                        </p>
-                        <a href="blog-post-mitos-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
-                    </div>
-                </article>
-
-                <article class="blog-post-card"> 
-                    <img src="https://placehold.co/600x400/00FF7F/0A0A20?text=Herramientas+DBT" alt="Persona gestionando sus emociones de forma calmada" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>Regulación Emocional en Acción: Técnicas DBT para el Día a Día</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 12 de Junio, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Dr. Carlos Sánchez</span>
-                        </div>
-                        <p class="blog-post-excerpt">
-                            Más allá de la teoría, la regulación emocional se trata de aplicar herramientas concretas cuando las olas emocionales amenazan con desbordarnos. Este artículo detalla ejercicios prácticos de DBT, como la habilidad PLEASE y la revisión de hechos, para ayudarte a identificar, comprender y modular tus emociones de manera efectiva en situaciones cotidianas...
-                        </p>
-                        <a href="blog-post-regulacion-practica.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
-                    </div>
-                </article>
-
-                <article class="blog-post-card">
-                    <img src="https://placehold.co/600x400/1E90FF/FFFFFF?text=Vínculos+Sanos" alt="Siluetas de personas interactuando, simbolizando relaciones" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>Navegando el Laberinto de las Relaciones con TLP: Desafíos y Estrategias</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 5 de Junio, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Lic. Sofía Ramírez</span>
-                        </div>
-                        <p class="blog-post-excerpt">
-                            Las relaciones interpersonales pueden ser particularmente intensas y desafiantes para quienes viven con TLP. Exploramos las dinámicas comunes, el miedo al abandono y cómo las habilidades de efectividad interpersonal de la DBT pueden ser faros de luz para construir vínculos más saludables, estables y satisfactorios con amigos, familiares y parejas...
-                        </p>
-                        <a href="blog-post-relaciones-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
-                    </div>
-                </article>
-
-                <article class="blog-post-card">
-                    <img src="https://placehold.co/600x400/FFD700/0A0A20?text=Calma+en+la+Crisis" alt="Una persona encontrando calma en medio de una tormenta simbólica" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
-                    <div class="blog-post-content">
-                        <h3>Sobreviviendo la Tormenta: Herramientas de Tolerancia al Malestar en Momentos de Crisis</h3>
-                        <div class="blog-post-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 28 de Junio, 2025</span>
-                            <span><i class="fas fa-user-edit"></i> Equipo Universo Borderline</span> 
-                        </div>
-                        <p class="blog-post-excerpt">
-                            Cuando el malestar emocional se vuelve abrumador, tener a mano estrategias de afrontamiento efectivas es crucial. Este artículo se sumerge en las habilidades de tolerancia al malestar de la DBT, como las técnicas TIPP, la auto-calma y la distracción sabia, ofreciendo un kit de primeros auxilios emocionales para navegar los momentos más difíciles sin recurrir a conductas dañinas...
-                        </p>
-                        <a href="blog-post-tolerancia-crisis.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
-                        <p class="full-article-note"><i class="fas fa-info-circle"></i> Artículo completo incluye recursos y descargas.</p>
-                    </div>
-                </article>
-                
             </div>
         </div>
     </main>
@@ -590,7 +494,7 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Universo Borderline</h3> 
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT y CBT.</p>
                 </div>
                 
                 <div class="footer-column">
@@ -607,15 +511,6 @@
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Recursos DBT</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
-                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
                     <h3>Contacto</h3>
                     <div class="contact-info">
                         <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
@@ -627,7 +522,7 @@
             </div>
             
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
+                <p>© 2023-<span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT/CBT.</p> 
                 <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
@@ -638,31 +533,6 @@
             // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            // Star generation
-            const starsContainer = document.getElementById('stars');
-            if (starsContainer) {
-                const starsCount = 150; 
-                for (let i = 0; i < starsCount; i++) {
-                    const star = document.createElement('div');
-                    star.classList.add('star');
-                    const size = Math.random() * 2.2 + 0.3;
-                    star.style.width = `${size}px`;
-                    star.style.height = `${size}px`;
-                    star.style.left = `${Math.random() * 100}%`;
-                    star.style.top = `${Math.random() * 100}%`;
-                    star.style.animationDelay = `${Math.random() * 7}s`; 
-                    star.style.animationDuration = `${2.5 + Math.random() * 7.5}s`; 
-                    if (Math.random() > 0.6) { 
-                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)', 'var(--accent-blue)', 'var(--accent-yellow)'];
-                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                        star.style.boxShadow = `0 0 ${Math.random() * 3 + 0.8}px ${star.style.backgroundColor}`; 
-                    } else {
-                        star.style.boxShadow = `0 0 ${Math.random() * 2 + 0.5}px rgba(255,255,255,0.7)`; 
-                    }
-                    starsContainer.appendChild(star);
-                }
-            }
-            
             // Active navigation link highlighting
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
             const navLinks = document.querySelectorAll('header nav a');
@@ -670,16 +540,7 @@
                 link.classList.remove('active'); 
                 link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                // Check if the link's href matches the current page filename.
-                // Also handles the case where the current page is 'index.html' and the link href is empty (root path).
-                if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && linkFilename === '')) { 
-                    link.classList.add('active');
-                    link.setAttribute('aria-current', 'page');
-                }
-                // Special handling for blog.html to ensure "Blog" is active if it's the current page.
-                // This is a bit redundant given the logic above but ensures it if there are multiple blog-related pages.
-                if (currentPageFilename === 'blog.html' && linkFilename === 'blog.html') {
-                    // Clear active class from all links first to avoid multiple active links
+                if (linkFilename === currentPageFilename || (currentPageFilename === 'cursos.html' && linkFilename === 'cursos.html')) {
                     navLinks.forEach(nl => {
                          nl.classList.remove('active');
                          nl.removeAttribute('aria-current');
@@ -698,36 +559,6 @@
                     } else {
                         header.classList.remove('scrolled');
                     }
-                });
-            }
-            
-            // Intersection Observer for fade-in animations on blog cards
-            const blogCards = document.querySelectorAll('.blog-post-card'); // Target individual cards
-            if (blogCards.length > 0) {
-                const observerOptions = {
-                    root: null, 
-                    rootMargin: '0px',
-                    threshold: 0.1 
-                };
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            // Optional: unobserve after animation to save resources
-                            // obs.unobserve(entry.target); 
-                        } 
-                    });
-                }, observerOptions);
-
-                blogCards.forEach(card => { // Apply to each card
-                    card.style.opacity = '0'; 
-                    card.style.transform = 'translateY(40px)'; 
-                    card.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
-                    // Add a slight delay for staggered animation if desired
-                    // const delay = Array.from(blogCards).indexOf(card) * 100; // Example: 100ms delay per card
-                    // card.style.transitionDelay = `${delay}ms`;
-                    observer.observe(card);
                 });
             }
         });
