@@ -31,6 +31,8 @@
             --accent-yellow-rgb: 255, 215, 0;
             --primary-violet-rgb: 138, 43, 226;
             --accent-red-rgb: 255, 69, 0;
+            --accent-green-rgb: 0, 255, 127; /* Añadida para consistencia */
+            --accent-blue-rgb: 30, 144, 255;  /* Añadida para consistencia */
         }
         
         html {
@@ -53,9 +55,9 @@
             display: flex; 
             flex-direction: column; 
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 10% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%);
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
             background-size: 400% 400%; 
             animation: gradientBackground 20s ease infinite;
         }
@@ -85,7 +87,7 @@
             width: 100%;
             z-index: 1000;
             border-bottom: 2px solid var(--accent-magenta); 
-            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
             transition: all 0.4s ease;
         }
         
@@ -177,7 +179,7 @@
         nav a:hover, 
         nav a.active {
             color: var(--accent-yellow); 
-            background-color: rgba(0, 255, 255, 0.1); 
+            background-color: rgba(var(--secondary-cyan-rgb), 0.1); 
             border: 1px solid var(--accent-blue); 
             transform: translateY(-3px); 
         }
@@ -229,7 +231,7 @@
         /* Estilos para la sección de podcasts */
         .podcast-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Aumentado minmax para más espacio */
             gap: 2.5rem;
             margin-top: 2rem;
         }
@@ -252,9 +254,9 @@
 
         .podcast-thumbnail {
             width: 100%;
-            height: 200px; /* Ajustar altura según necesidad */
+            height: 200px; 
             object-fit: cover;
-            background-color: #2a2a3e; /* Color de fondo para el placeholder */
+            background-color: #2a2a3e; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -266,7 +268,7 @@
         }
 
         .podcast-content {
-            padding: 20px;
+            padding: 25px; /* Aumentado el padding */
             flex-grow: 1;
             display: flex;
             flex-direction: column;
@@ -274,27 +276,27 @@
 
         .podcast-content h3 {
             font-family: 'Krona One', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.3rem; /* Ligeramente reducido para más texto */
             color: var(--accent-yellow);
             margin-bottom: 0.8rem;
-            line-height: 1.3;
+            line-height: 1.4; /* Ajustado */
         }
          .podcast-content h3:hover {
             color: var(--accent-cyan);
         }
         
         .podcast-meta {
-            font-size: 0.8rem;
+            font-size: 0.85rem; /* Aumentado */
             color: var(--text-color-medium);
             margin-bottom: 1rem;
         }
          .podcast-meta i {
-            margin-right: 5px;
+            margin-right: 6px; /* Aumentado */
             color: var(--accent-green);
         }
 
         .podcast-excerpt {
-            font-size: 0.95rem;
+            font-size: 1rem; /* Aumentado */
             line-height: 1.7;
             margin-bottom: 1.5rem;
             flex-grow: 1;
@@ -306,12 +308,12 @@
             padding: 20px;
             text-align: center;
             border-radius: 8px;
-            margin-top: auto; /* Empuja al final si el excerpt es corto */
+            margin-top: auto; 
             color: var(--text-color-medium);
         }
         .podcast-player-placeholder i {
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
+            font-size: 2.2rem; /* Aumentado */
+            margin-bottom: 0.7rem; /* Aumentado */
             display: block;
             color: var(--accent-blue);
         }
@@ -319,18 +321,38 @@
             display: inline-block;
             background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
             color: var(--dark-bg);
-            padding: 10px 20px;
+            padding: 12px 22px; /* Aumentado */
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             transition: background 0.3s ease, transform 0.3s ease;
             margin-top: 10px;
+            font-size: 0.9rem; /* Añadido */
         }
         .listen-btn:hover {
             background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
             transform: scale(1.05);
         }
         
+        .back-to-home-btn { /* Botón para volver al inicio */
+            display: inline-block;
+            margin-top: 3rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .back-to-home-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-magenta-rgb), 0.4);
+        }
+
         footer { 
             background: rgba(10,10,32,0.97); 
             color: white; 
@@ -415,7 +437,7 @@
         }
         .galaxy {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
+            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
             z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
         }
         @keyframes rotateGalaxy {
@@ -472,97 +494,141 @@
     <main class="main-page-content">
         <div class="container">
             <div class="page-header">
-                <h2><i class="fas fa-podcast"></i> Voces del Universo Interior</h2>
+                <h2><i class="fas fa-podcast"></i> Ecos del Interior: Charlas que Sanan</h2>
                 <p>
                     Conéctate con historias, entrevistas y reflexiones en formato audio. Un espacio para escuchar, aprender y sentir que no estás solo/a en este viaje.
                 </p>
             </div>
 
             <div class="podcast-grid">
-                <!-- Ejemplo de Tarjeta de Podcast 1 -->
+                <!-- Podcast 1: TCA -->
                 <article class="podcast-card"> 
-                    <div class="podcast-thumbnail">
-                        <i class="fas fa-headphones-alt"></i> <!-- Icono placeholder -->
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-red); color: var(--text-color-light);">
+                        <i class="fas fa-utensils"></i>
                     </div>
                     <div class="podcast-content">
-                        <h3>Episodio 1: La Danza de las Emociones</h3>
+                        <h3>Episodio 1: TCA y TLP - Un Vínculo Complejo</h3>
                         <p class="podcast-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 10 de Junio, 2025</span> | 
-                            <span><i class="fas fa-clock"></i> 45 min</span>
+                            <span><i class="fas fa-calendar-alt"></i> 5 de Julio, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 48 min</span>
                         </p>
                         <p class="podcast-excerpt">
-                            Una introducción al mundo emocional del TLP, explorando la intensidad y cómo la DBT ofrece herramientas para navegarla. Con la Dra. Elena Valiente.
+                            Exploramos la frecuente comorbilidad entre el Trastorno Límite de la Personalidad y los Trastornos de la Conducta Alimentaria. Entendiendo las raíces y buscando la recuperación.
                         </p>
                         <div class="podcast-player-placeholder">
                             <i class="fas fa-play-circle"></i>
-                            <span>Reproductor de audio no disponible.</span>
-                            <a href="#" class="listen-btn">Escuchar en [Plataforma]</a>
+                            <span>Reproductor no disponible.</span>
+                            <a href="podcast-tca.html" class="listen-btn">Más Detalles</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Ejemplo de Tarjeta de Podcast 2 -->
+                <!-- Podcast 2: Consumo Compulsivo -->
                 <article class="podcast-card"> 
-                    <div class="podcast-thumbnail" style="background-color: var(--accent-magenta); color: var(--dark-bg);">
-                         <i class="fas fa-microphone-alt"></i>
+                    <div class="podcast-thumbnail" style="background-color: var(--primary-violet); color: var(--text-color-light);">
+                         <i class="fas fa-shopping-cart"></i>
                     </div>
                     <div class="podcast-content">
-                        <h3>Episodio 2: Testimonios que Iluminan</h3>
+                        <h3>Episodio 2: El Impulso Irrefrenable del Consumo</h3>
                         <p class="podcast-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 17 de Junio, 2025</span> | 
-                            <span><i class="fas fa-clock"></i> 55 min</span>
+                            <span><i class="fas fa-calendar-alt"></i> 12 de Julio, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 52 min</span>
                         </p>
                         <p class="podcast-excerpt">
-                            Conversamos con personas que comparten su viaje con el TLP y cómo han encontrado caminos hacia la recuperación y una vida significativa.
+                            Analizamos el trastorno por consumo compulsivo (compras, juego, etc.) como una forma de escape o regulación emocional en el TLP. Estrategias DBT para el control de impulsos.
                         </p>
                          <div class="podcast-player-placeholder">
                             <i class="fas fa-play-circle"></i>
-                            <span>Reproductor de audio no disponible.</span>
-                            <a href="#" class="listen-btn">Escuchar en [Plataforma]</a>
+                            <span>Reproductor no disponible.</span>
+                            <a href="podcast-consumo-compulsivo.html" class="listen-btn">Más Detalles</a>
                         </div>
                     </div>
                 </article>
 
-                <!-- Ejemplo de Tarjeta de Podcast 3 -->
+                <!-- Podcast 3: Cleptomanía -->
                  <article class="podcast-card"> 
-                    <div class="podcast-thumbnail" style="background-color: var(--accent-green); color: var(--dark-bg);">
-                         <i class="fas fa-users"></i>
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-blue); color: var(--text-color-light);">
+                         <i class="fas fa-hand-paper"></i> <!-- Icono cambiado para cleptomanía -->
                     </div>
                     <div class="podcast-content">
-                        <h3>Episodio 3: El Rol de la Familia y Amigos</h3>
+                        <h3>Episodio 3: Cleptomanía - Más Allá del Robo</h3>
                         <p class="podcast-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 24 de Junio, 2025</span> | 
+                            <span><i class="fas fa-calendar-alt"></i> 19 de Julio, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 45 min</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Una mirada profunda a la cleptomanía, su posible relación con la impulsividad y la búsqueda de alivio en el TLP. Desmitificando y comprendiendo.
+                        </p>
+                         <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor no disponible.</span>
+                           <a href="podcast-cleptomania.html" class="listen-btn">Más Detalles</a>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Podcast 4: Mitomanía -->
+                 <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-magenta); color: var(--text-color-light);">
+                         <i class="fas fa-theater-masks"></i> <!-- Icono cambiado para mitomanía -->
+                    </div>
+                    <div class="podcast-content">
+                        <h3>Episodio 4: Mitomanía - Entre la Verdad y la Ficción</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 26 de Julio, 2025</span> | 
                             <span><i class="fas fa-clock"></i> 50 min</span>
                         </p>
                         <p class="podcast-excerpt">
-                            Entendiendo el TLP desde la perspectiva de los seres queridos. Estrategias de apoyo, validación y autocuidado para familiares y amigos. Con Lic. Sofía Ramírez.
+                           Exploramos la mitomanía o mentira patológica, sus posibles funciones en el TLP y el difícil camino hacia la honestidad y la autoaceptación.
                         </p>
                          <div class="podcast-player-placeholder">
                             <i class="fas fa-play-circle"></i>
-                            <span>Reproductor de audio no disponible.</span>
-                           <a href="#" class="listen-btn">Escuchar en [Plataforma]</a>
+                            <span>Reproductor no disponible.</span>
+                            <a href="podcast-mitomania.html" class="listen-btn">Más Detalles</a>
                         </div>
                     </div>
                 </article>
 
-                 <!-- Ejemplo de Tarjeta de Podcast 4 -->
+                <!-- Podcast 5: Depresión -->
                  <article class="podcast-card"> 
-                    <div class="podcast-thumbnail" style="background-color: var(--accent-yellow); color: var(--dark-bg);">
-                         <i class="fas fa-lightbulb"></i>
+                    <div class="podcast-thumbnail" style="background-color: var(--secondary-cyan); color: var(--dark-bg);">
+                         <i class="fas fa-cloud-rain"></i> <!-- Icono para depresión -->
                     </div>
                     <div class="podcast-content">
-                        <h3>Episodio 4: Mindfulness en la Práctica Diaria</h3>
+                        <h3>Episodio 5: TLP y la Sombra de la Depresión</h3>
                         <p class="podcast-meta">
-                            <span><i class="fas fa-calendar-alt"></i> 1 de Julio, 2025</span> | 
-                            <span><i class="fas fa-clock"></i> 40 min</span>
+                            <span><i class="fas fa-calendar-alt"></i> 2 de Agosto, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 55 min</span>
                         </p>
                         <p class="podcast-excerpt">
-                            Más allá de la meditación: cómo integrar la atención plena en actividades cotidianas para reducir el estrés y aumentar la conciencia. Ejercicios guiados.
+                           La depresión es una comorbilidad frecuente en el TLP. Diferencias, similitudes y cómo la DBT aborda los síntomas depresivos y la desesperanza.
                         </p>
                          <div class="podcast-player-placeholder">
                             <i class="fas fa-play-circle"></i>
-                            <span>Reproductor de audio no disponible.</span>
-                            <a href="#" class="listen-btn">Escuchar en [Plataforma]</a>
+                            <span>Reproductor no disponible.</span>
+                            <a href="podcast-depresion.html" class="listen-btn">Más Detalles</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Podcast 6: Manejo de Ira -->
+                 <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-yellow); color: var(--dark-bg);">
+                         <i class="fas fa-fire-alt"></i> <!-- Icono para manejo de ira -->
+                    </div>
+                    <div class="podcast-content">
+                        <h3>Episodio 6: Domando el Fuego Interno - Manejo de Ira en TLP</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 9 de Agosto, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 47 min</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                           La ira intensa es un desafío común. Exploramos su función, los problemas que genera y habilidades DBT para reconocerla, comprenderla y expresarla de forma más adaptativa.
+                        </p>
+                         <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor no disponible.</span>
+                            <a href="podcast-manejo-ira.html" class="listen-btn">Más Detalles</a>
                         </div>
                     </div>
                 </article>
@@ -666,7 +732,7 @@
                  if (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html')) {
                     // Ensure other links are not active if on index
                     if (linkFilename === '' || linkFilename === 'index.html') {
-                        link.classList.add('active');
+                        link.classList.add('active'); // Make "Inicio" active on index.html
                         link.setAttribute('aria-current', 'page');
                     } else {
                         link.classList.remove('active');
