@@ -126,7 +126,7 @@
         
         @keyframes logoPulse {
             0% { transform: scale(1); color: var(--accent-green); }
-            50% { transform: scale(1.1); color: var(--secondary-cyan); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
             100% { transform: scale(1); color: var(--accent-blue); }
         }
         
@@ -542,6 +542,7 @@
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html" class="active" aria-current="page">Foros</a></li> 
                     <li><a href="memes.html">Memes</a></li> 
+                    <li><a href="podcast.html">Podcast</a></li> <!-- Podcast link added -->
                 </ul>
             </nav>
         </div>
@@ -665,6 +666,8 @@
                         <li><a href="blog.html">Blog</a></li> 
                         <li><a href="foro.html">Foros</a></li> 
                         <li><a href="memes.html">Memes</a></li> 
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="politicas.html">Políticas</a></li> <!-- Políticas link added -->
                     </ul>
                 </div>
                 
@@ -730,7 +733,7 @@
                 link.classList.remove('active'); 
                 link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop();
-                if (linkFilename === currentPageFilename) {
+                if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html'))) {
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
                 }
