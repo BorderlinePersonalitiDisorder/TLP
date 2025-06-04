@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobreviviendo la Tormenta: Tolerancia al Malestar - Universo Borderline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+            --article-bg: #101028; /* Slightly lighter than dark-bg for article readability */
+            --article-text-color: #E0E0E0; 
+            --article-heading-color: var(--secondary-cyan);
+
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+            --secondary-cyan-rgb: 0, 206, 209;
+        }
+        
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px; 
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse { 
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+            border-radius: 20px; 
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(var(--secondary-cyan-rgb), 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+        
+        /* Styles for Single Blog Post */
+        .article-full-container {
+            max-width: 800px; /* Optimal width for reading */
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--article-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        .article-header-section {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(var(--primary-violet-rgb), 0.3);
+            padding-bottom: 1.5rem;
+        }
+
+        .article-title-full {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--article-heading-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .article-meta-full {
+            font-size: 0.9rem;
+            color: var(--text-color-medium);
+            margin-bottom: 1.5rem;
+        }
+        .article-meta-full span {
+            margin-right: 15px;
+        }
+        .article-meta-full i {
+            margin-right: 6px;
+            color: var(--accent-green);
+        }
+
+        .article-featured-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .article-body-content {
+            color: var(--article-text-color);
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+        .article-body-content p {
+            margin-bottom: 1.5rem;
+        }
+        .article-body-content h2 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(var(--accent-yellow-rgb), 0.3);
+        }
+        .article-body-content h3 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent-green);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .article-body-content ul, .article-body-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        .article-body-content li {
+            margin-bottom: 0.5rem;
+        }
+        .article-body-content blockquote {
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+        }
+        .article-body-content a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-cyan);
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+        .article-body-content a:hover {
+            color: var(--accent-yellow);
+            border-bottom-color: var(--accent-yellow);
+        }
+
+        .article-navigation {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .back-to-blog-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-to-blog-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-magenta-rgb), 0.4);
+        }
+        .back-to-blog-btn i {
+            margin-right: 8px;
+        }
+
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .article-title-full { font-size: 2.2rem; }
+        }
+        
+        @media (max-width: 600px) {
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.6rem; } 
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .article-full-container { padding: 1.5rem; margin: 1rem auto; }
+            .article-title-full { font-size: 1.8rem; }
+            .article-body-content { font-size: 1rem; }
+            .article-body-content h2 { font-size: 1.5rem; }
+            .article-body-content h3 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
+    
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"> 
+                <i class="fas fa-brain"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html" class="active" aria-current="page">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="memes.html">Memes</a></li>
+                    <li><a href="podcast.html">Podcasts</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-page-content">
+        <div class="article-full-container">
+            <article>
+                <header class="article-header-section">
+                    <h1 class="article-title-full">Sobreviviendo la Tormenta: Herramientas de Tolerancia al Malestar en Momentos de Crisis</h1>
+                    <p class="article-meta-full">
+                        <span><i class="fas fa-calendar-alt"></i> 28 de Junio, 2025</span> 
+                        <span><i class="fas fa-user-edit"></i> Equipo Universo Borderline</span>
+                        <span><i class="fas fa-tag"></i> Tolerancia al Malestar, DBT, Crisis</span>
+                    </p>
+                </header>
+                
+                <img src="https://placehold.co/800x400/FFD700/0A0A20?text=Calma+en+la+Crisis+Emocional" alt="Imagen simbólica de calma en medio de una tormenta emocional" class="article-featured-image" onerror="this.onerror=null;this.src='https://placehold.co/800x400/0A0A20/FFFFFF?text=Imagen+Principal+No+Disponible';">
+
+                <section class="article-body-content">
+                    <p>En el torbellino de emociones intensas que a menudo acompaña al Trastorno Límite de la Personalidad (TLP), los momentos de crisis pueden sentirse abrumadores, como una tempestad interna que amenaza con arrasarlo todo. Sin embargo, la Terapia Dialéctico Conductual (DBT) nos ofrece un faro de esperanza y un conjunto de herramientas poderosas: las habilidades de Tolerancia al Malestar. Estas no buscan eliminar el dolor mágicamente, sino enseñarnos a navegarlo sin empeorar la situación, a sobrevivir la tormenta hasta que amaine.</p>
+                    
+                    <h2>¿Qué es la Tolerancia al Malestar?</h2>
+                    <p>La tolerancia al malestar se refiere a la capacidad de percibir y experimentar emociones y sensaciones físicas angustiantes sin recurrir a conductas problemáticas o impulsivas que, aunque puedan ofrecer un alivio momentáneo, a largo plazo generan más sufrimiento. Es aprender a "estar con" el dolor, en lugar de huir desesperadamente de él.</p>
+                    <p>Para las personas con TLP, cuya sensibilidad emocional es a menudo muy alta, esta habilidad es crucial. La impulsividad en respuesta al malestar puede llevar a autolesiones, consumo de sustancias, conflictos interpersonales intensos o decisiones precipitadas. Las habilidades de tolerancia al malestar actúan como un ancla en medio de la tormenta.</p>
+
+                    <h2>El Kit de Primeros Auxilios Emocionales: Habilidades Clave</h2>
+                    <p>La DBT organiza estas habilidades en acrónimos fáciles de recordar, diseñados para ser accesibles en momentos de alta activación emocional.</p>
+
+                    <h3>Habilidades TIPP: Cambiando la Química Corporal</h3>
+                    <p>Cuando la angustia es extrema, a veces necesitamos un cambio rápido en nuestra fisiología para reducir la intensidad emocional. Las habilidades TIPP son ideales para esto:</p>
+                    <ul>
+                        <li><strong>T - Temperatura:</strong> Sumergir la cara en agua muy fría (cuidando de no provocar un reflejo de apnea peligroso) o sostener hielo en las manos puede activar el reflejo de inmersión mamífero, disminuyendo el ritmo cardíaco y calmando el sistema nervioso.</li>
+                        <li><strong>I - Ejercicio Intenso:</strong> Realizar actividad física vigorosa por un corto período (saltar, correr en el lugar) puede liberar la tensión acumulada y cambiar el estado de ánimo.</li>
+                        <li><strong>P - Respiración Pautada:</strong> Inhalar profundamente y exhalar lentamente, haciendo la exhalación más larga que la inhalación (por ejemplo, inhalar contando hasta 4, exhalar contando hasta 6 u 8), activa el sistema nervioso parasimpático, promoviendo la calma.</li>
+                        <li><strong>P - Relajación Muscular Progresiva:</strong> Tensar y relajar sistemáticamente diferentes grupos musculares ayuda a liberar la tensión física asociada a la angustia emocional.</li>
+                    </ul>
+
+                    <h3>Distracción con Mente Sabia (ACCEPTS)</h3>
+                    <p>Cuando el dolor es intenso pero no estamos en un pico de crisis que requiera TIPP, distraernos de forma consciente y temporal puede ser útil. El acrónimo ACCEPTS nos guía:</p>
+                    <ul>
+                        <li><strong>A - Actividades:</strong> Realizar actividades placenteras o que requieran concentración (ver una película, leer, pintar, jugar).</li>
+                        <li><strong>C - Contribuir:</strong> Ayudar a otros, hacer voluntariado, ofrecer un favor. Esto desvía el foco de nuestro propio dolor.</li>
+                        <li><strong>C - Comparaciones:</strong> Compararse con momentos pasados en los que se superó una dificultad o con personas que están en situaciones peores (con cuidado de no invalidar el propio sufrimiento).</li>
+                        <li><strong>E - Emociones opuestas:</strong> Generar emociones contrarias a la que se siente (ver comedias si se está triste, escuchar música alegre).</li>
+                        <li><strong>P - Empujar lejos (Pushing away):</strong> Bloquear temporalmente la situación dolorosa de la mente, posponiendo su afrontamiento para un momento de mayor calma.</li>
+                        <li><strong>T - Pensamientos (Thoughts):</strong> Ocupar la mente con otros pensamientos (contar, recitar poemas, hacer puzzles mentales).</li>
+                        <li><strong>S - Sensaciones:</strong> Enfocarse en sensaciones físicas intensas pero seguras (una ducha caliente o fría, oler algo fuerte, saborear algo intenso).</li>
+                    </ul>
+
+                    <h3>Autocalma (Self-Soothing) con los Cinco Sentidos</h3>
+                    <p>Esta habilidad implica consolarse a uno mismo de manera deliberada y amable, utilizando los cinco sentidos para crear experiencias placenteras y calmantes:</p>
+                    <ul>
+                        <li><strong>Vista:</strong> Mirar algo bello (flores, arte, un paisaje), encender una vela.</li>
+                        <li><strong>Oído:</strong> Escuchar música relajante, los sonidos de la naturaleza, un podcast tranquilizador.</li>
+                        <li><strong>Olfato:</strong> Oler aceites esenciales, una loción agradable, el aroma del café o té.</li>
+                        <li><strong>Gusto:</strong> Saborear una bebida caliente, un pequeño dulce, una comida reconfortante (con consciencia, sin caer en atracones).</li>
+                        <li><strong>Tacto:</strong> Acariciar una mascota, envolverse en una manta suave, tomar un baño caliente.</li>
+                    </ul>
+
+                    <h3>Mejorar el Momento (IMPROVE)</h3>
+                    <p>Cuando no podemos cambiar la situación dolorosa, podemos intentar mejorar el momento presente con pequeñas acciones:</p>
+                    <ul>
+                        <li><strong>I - Imaginería:</strong> Visualizar escenas relajantes, lugares seguros, o a uno mismo afrontando la situación con éxito.</li>
+                        <li><strong>M - Significado (Meaning):</strong> Encontrar un propósito o significado en el dolor, si es posible (ej. "esto me hará más fuerte").</li>
+                        <li><strong>P - Oración (Prayer):</strong> Para quienes encuentran consuelo en la espiritualidad.</li>
+                        <li><strong>R - Relajación:</strong> Usar técnicas de relajación como las mencionadas (respiración, muscular progresiva).</li>
+                        <li><strong>O - Una cosa en el momento:</strong> Enfocarse completamente en la actividad presente, practicando mindfulness.</li>
+                        <li><strong>V - Vacaciones breves:</strong> Tomarse un descanso corto de la situación estresante, aunque sea mentalmente.</li>
+                        <li><strong>E - Ánimo (Encouragement) y Autocompasión:</strong> Hablarse a uno mismo con amabilidad y comprensión, como lo haríamos con un buen amigo.</li>
+                    </ul>
+
+                    <h2>Aceptación Radical: La Base de la Tolerancia</h2>
+                    <p>Subyacente a todas estas habilidades está el principio de la Aceptación Radical: aceptar la realidad tal como es, sin juzgarla, sin luchar contra ella, especialmente cuando no podemos cambiarla. No significa aprobar la realidad dolorosa, sino reconocerla para poder actuar de manera más efectiva.</p>
+                    <blockquote>"La aceptación radical descansa sobre la idea de que el sufrimiento proviene no tanto del dolor en sí, sino de la lucha contra el dolor." - Marsha M. Linehan</blockquote>
+
+                    <h2>Practicando para la Tormenta</h2>
+                    <p>Como cualquier habilidad, la tolerancia al malestar requiere práctica constante, incluso en momentos de calma relativa. Cuanto más se practican estas herramientas, más accesibles estarán cuando la tormenta emocional arrecie. No se trata de ser perfecto, sino de intentarlo una y otra vez, con autocompasión y persistencia.</p>
+                    <p>Recordemos que sobrevivir a la tormenta no es solo aguantar; es aprender a encontrar pequeños momentos de calma en su interior, sabiendo que, como todas las tormentas, esta también pasará.</p>
+                </section>
+
+                <div class="article-navigation">
+                    <a href="blog.html" class="back-to-blog-btn"><i class="fas fa-arrow-left"></i> Volver al Blog</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Universo Borderline</h3> 
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="memes.html">Memes</a></li>
+                        <li><a href="podcast.html">Podcasts</a></li> 
+                        <li><a href="politicas.html">Políticas y Términos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos DBT</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
+                <p><a href="politicas.html">Privacidad y Términos</a> | <a href="#">Seguridad (Ejemplo)</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150; 
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 7}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 7.5}s`; 
+                    if (Math.random() > 0.6) { 
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)', 'var(--accent-blue)', 'var(--accent-yellow)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 3 + 0.8}px ${star.style.backgroundColor}`; 
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 2 + 0.5}px rgba(255,255,255,0.7)`; 
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            // Active navigation link highlighting
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
+                const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+                // If this is a blog post page, and the link is to blog.html, keep blog.html active.
+                // This assumes blog post pages don't have their own direct nav link.
+                if (document.body.classList.contains('single-blog-post-page') && linkFilename === 'blog.html') {
+                     navLinks.forEach(nl => { // Clear active from others first
+                        nl.classList.remove('active');
+                        nl.removeAttribute('aria-current');
+                    });
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                } else if (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html')) {
+                    if (linkFilename === '' || linkFilename === 'index.html') {
+                        link.classList.add('active'); 
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.classList.remove('active');
+                        link.removeAttribute('aria-current');
+                    }
+                }
+            });
+             // Add a class to body if it's a single blog post page, for specific JS logic if needed
+             if (currentPageFilename !== 'blog.html' && document.querySelector('.article-full-container')) {
+                document.body.classList.add('single-blog-post-page');
+                // Re-run active link logic to ensure "Blog" is active
+                 navLinks.forEach(link => {
+                    const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                    if (linkFilename === 'blog.html') {
+                        navLinks.forEach(nl => { nl.classList.remove('active'); nl.removeAttribute('aria-current');});
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                 });
+            }
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
