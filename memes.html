@@ -6,29 +6,43 @@
     <title>Memes de Salud Mental - Galería Dinámica y Divertida</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Original Meme Page Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Oswald:wght@400;500;700&family=Fredoka+One&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    <!-- Added fonts from other pages for consistency in nav/logo -->
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #111827; /* bg-gray-900 */
-            color: #F3F4F6; /* text-gray-100 */
-        }
-        .header-title-main {
-            font-family: 'Fredoka One', cursive;
-            font-weight: 400;
-            animation: breatheColor 5s infinite alternate;
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            
+            --card-bg: rgba(30, 30, 50, 0.92); /* Standard card bg */
+            --border-color: rgba(138, 43, 226, 0.7); /* Standard border */
+            --dark-bg: #0A0A20; /* Standard dark bg */
+
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+            --accent-yellow-rgb: 255, 215, 0;
+            --accent-green-rgb: 0, 255, 127;
+            --secondary-cyan-rgb: 0, 206, 209;
         }
 
-        @keyframes breatheColor {
-            0% {
-                text-shadow: 0 0 5px rgba(79, 70, 229, 0.5), 0 0 10px rgba(236, 72, 153, 0.5), 0 0 15px rgba(16, 185, 129, 0.5);
-            }
-            50% {
-                text-shadow: 0 0 10px rgba(79, 70, 229, 0.7), 0 0 20px rgba(236, 72, 153, 0.7), 0 0 25px rgba(16, 185, 129, 0.7);
-            }
-            100% {
-                text-shadow: 0 0 5px rgba(79, 70, 229, 0.5), 0 0 10px rgba(236, 72, 153, 0.5), 0 0 15px rgba(16, 185, 129, 0.5);
-            }
+        body {
+            font-family: 'Poppins', sans-serif; /* Main font for meme page content */
+            background-color: #111827; /* bg-gray-900 from meme page */
+            color: #F3F4F6; /* text-gray-100 from meme page */
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
         }
 
         .meme-card {
@@ -41,6 +55,7 @@
             transform: translateY(20px);
             display: flex;
             flex-direction: column;
+            min-height: 180px; /* Ensure a minimum height for cards without images */
         }
         .meme-card.is-visible {
             opacity: 1;
@@ -50,12 +65,7 @@
             transform: translateY(-8px) scale(1.05);
             box-shadow: 0 25px 50px -12px rgba(79, 70, 229, 0.5);
         }
-        .meme-card img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            background-color: #374151; /* Placeholder background */
-        }
+        /* img styles are removed as images are removed from cards */
         .meme-card h3 {
             font-family: 'Oswald', sans-serif;
             font-weight: 500;
@@ -83,300 +93,522 @@
             0% { background-position: 0% 50%; }
             100% { background-position: 300% 50%; }
         }
-    </style>
+
+        /* Standard Header Styles (adapted from other pages) */
+        .standard-header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
+            transition: all 0.4s ease;
+        }
+        .standard-header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        .logo h1.site-title { /* Specific class for site title to avoid conflict */
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        .logo i.site-icon { /* Specific class for site icon */
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        @keyframes logoPulse {
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+            border-radius: 20px; 
+        }
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+        .main-page-content-wrapper { /* Wrapper for main content to handle fixed header */
+             padding-top: 80px; /* Adjust based on header height */
+        }
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; }
+            .main-page-content-wrapper { padding-top: 120px; } /* Adjust for taller header on mobile */
+        }
+         @media (max-width: 600px) {
+            .main-page-content-wrapper { padding-top: 150px; } /* Further adjust for mobile */
+        }
+
+        /* Footer Styles from Foros Page (for consistency if needed) */
+        .standard-footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 2rem 0; /* Adjusted padding */
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; /* Pushes footer to bottom */
+        }
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* Adjusted minmax */
+            gap: 30px; /* Adjusted gap */
+            margin-bottom: 2rem; /* Adjusted margin */
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0 20px;
+        }
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1rem; /* Adjusted margin */
+            position: relative; 
+            padding-bottom: 8px; /* Adjusted padding */
+            font-size: 1.25rem; /* Adjusted font size */
+            font-family: 'Fredoka One', cursive;
+        }
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 40px; /* Adjusted width */
+            height: 3px; /* Adjusted height */
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 10px; /* Adjusted margin */ }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 3px 0; /* Adjusted padding */
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; /* Adjusted font size */
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(6px); /* Adjusted transform */ }
+        
+        .contact-info { margin-top: 15px; /* Adjusted margin */ }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 8px; /* Adjusted gap */
+            margin-bottom: 10px; /* Adjusted margin */
+            font-size: 0.95rem; /* Adjusted font size */
+            color: var(--text-color-medium); 
+            font-family: 'Comfortaa', sans-serif; 
+        }
+        .contact-info i { color: var(--accent-blue); flex-shrink:0; } 
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 1.5rem; /* Adjusted padding */
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.9rem; /* Adjusted font size */
+            font-family: 'Comfortaa', sans-serif; 
+            max-width: 1100px;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+
+   </style>
 </head>
 <body class="antialiased">
 
-    <header class="py-8 md:py-12 bg-gray-800 shadow-2xl relative overflow-hidden">
-        <div class="absolute inset-0 opacity-10">
-            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="smallGrid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M 20 0 L 0 0 0 20" fill="none" stroke="rgba(107, 114, 128, 0.5)" stroke-width="0.5"/></pattern></defs><rect width="100%" height="100%" fill="url(#smallGrid)" /></svg>
-        </div>
-        <div class="container mx-auto px-6 text-center relative z-10">
-            <h1 class="text-5xl md:text-7xl font-bold header-title-main">
-                <span class="text-indigo-400">Galería</span> de <span class="text-pink-400">Memes</span> sobre <span class="text-emerald-400">Salud Mental</span>
-            </h1>
-            <p class="mt-6 text-lg md:text-xl text-gray-300 max-w-2xl mx-auto">
-                Una colección de humor gráfico para sonreír, reflexionar y recordar que el humor también es sanador.
-            </p>
+    <!-- Standard Header from other pages -->
+    <header id="main-header" class="standard-header">
+        <div class="header-container">
+            <a href="index.html" class="logo" aria-label="Universo Borderline Homepage"> 
+                <i class="fas fa-brain site-icon" aria-hidden="true"></i>
+                <h1 class="site-title">UNIVERSO BORDERLINE</h1> 
+            </a>
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="memes.html" class="active" aria-current="page">Memes</a></li> 
+                    <li><a href="podcast.html">Podcast</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
-    <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+    <div class="main-page-content-wrapper"> <!-- Wrapper for main content -->
+        
+        <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12">
+            <!-- The main title section has been removed -->
 
-        <section id="reddit-memes" class="mb-12 md:mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
-                Joyitas de <span class="platform-title">Reddit</span> <i class="fab fa-reddit-alien text-orange-500 ml-2"></i>
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                <!-- Meme 1 -->
-                <div class="meme-card">
-                    <img src="https://i.imgur.com/sOq3C3N.jpg" alt="Meme del cerebro distraído por la noche" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Reddit+1';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-indigo-300">Mi Cerebro y Yo en la Noche</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: r/MentalHealthMemes (Alternativo)</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.reddit.com/r/MentalHealthMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
+            <section id="reddit-memes" class="mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
+                    Joyitas de <span class="platform-title">Reddit</span> <i class="fab fa-reddit-alien text-orange-500 ml-2"></i>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <!-- Meme 1 -->
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-indigo-300">Mi Cerebro y Yo en la Noche</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: r/MentalHealthMemes (Alternativo)</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.reddit.com/r/MentalHealthMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Meme 2 -->
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-emerald-300">Procrastinación Nivel Experto</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: r/FunnyAndSad (Alternativo)</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.reddit.com/r/FunnyAndSad/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Meme 3 -->
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-amber-300">Pequeña Gran Victoria</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: r/WholesomeMemes (Alternativo)</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.reddit.com/r/WholesomeMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Meme 4 -->
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-pink-400">Batería Social Agotada</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: r/IntrovertMemes (Alternativo)</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.reddit.com/r/IntrovertMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Meme 2 -->
-                <div class="meme-card">
-                    <img src="https://i.imgur.com/D0GfS7D.jpg" alt="Meme de procrastinación 'Panik Kalm Panik'" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Reddit+2';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-emerald-300">Procrastinación Nivel Experto</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: r/FunnyAndSad (Alternativo)</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.reddit.com/r/FunnyAndSad/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
+            </section>
+
+            <section id="facebook-memes" class="mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
+                    Perlas de <span class="platform-title">Facebook</span> <i class="fab fa-facebook text-blue-600 ml-2"></i>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-indigo-300">Café: Ayuda y Perjudica</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: "Psicólogos y Estudiantes de Psicología"</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.facebook.com/search/top/?q=memes%20salud%20mental" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-cyan-300">Adulting: La Dura Realidad</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: "Memes Psicología"</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.facebook.com/search/top/?q=mental%20health%20humor" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meme-card">
+                         <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-purple-300">Mis Planes vs. Mi Ansiedad</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: "Memes Psicología"</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.facebook.com/search/top/?q=funny%20mental%20health%20quotes" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-rose-300">Un Abrazo Virtual</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: "Salud Mental Positiva"</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-rose-500 hover:bg-rose-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Ir a Facebook <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Meme 3 -->
-                <div class="meme-card">
-                    <img src="https://i.imgur.com/xYn9jA7.jpg" alt="Meme de pequeña victoria estilo 'success kid'" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Reddit+3';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-amber-300">Pequeña Gran Victoria</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: r/WholesomeMemes (Alternativo)</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.reddit.com/r/WholesomeMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-amber-500 hover:bg-amber-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
+            </section>
+
+            <section id="pinterest-memes" class="mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
+                    Inspiración de <span class="platform-title">Pinterest</span> <i class="fab fa-pinterest text-red-600 ml-2"></i>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-red-400">Modo Zen Activado</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: Pinterest "Salud Mental y Bienestar"</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.pinterest.com/search/pins/?q=mental%20health%20memes%20español" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-fuchsia-400">Recordatorio de Amor Propio</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: Pinterest "Self-Care Club"</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.pinterest.com/search/pins/?q=self%20love%20memes%20español" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-lime-400">Un Día a la Vez</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: Pinterest "Mentalidad Positiva"</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.pinterest.com/search/pins/?q=un%20dia%20a%20la%20vez%20meme" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-lime-500 hover:bg-lime-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-blue-400">Validando Emociones</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: Pinterest "Salud Emocional"</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.pinterest.com/search/pins/?q=validar%20emociones%20meme" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Ir a Pinterest <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- Meme 4 -->
-                <div class="meme-card">
-                    <img src="https://i.imgur.com/NOE9LMj.jpg" alt="Meme de gato con batería social baja" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Reddit+4';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-pink-400">Batería Social Agotada</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: r/IntrovertMemes (Alternativo)</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.reddit.com/r/IntrovertMemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-pink-600 hover:bg-pink-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Ver en Reddit <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
+            </section>
+
+            <section id="instagram-memes" class="mb-12 md:mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
+                    Postales de <span class="platform-title">Instagram</span> <i class="fab fa-instagram text-pink-500 ml-2"></i>
+                </h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
+                    <!-- Meme 1 -->
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-purple-400">Paz Mental: Prioridad</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: @PsicologaExistencial (Ejemplo)</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.instagram.com/explore/tags/mentalhealthmemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
                         </div>
+                    </div>
+                    <!-- Meme 2 -->
+                    <div class="meme-card">
+                         <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-orange-400">En Terapia Se Habla</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: @HablemosDeSaludMental (Ejemplo)</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.instagram.com/explore/tags/therapymemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Meme 3 -->
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-sky-400">Autocuidado Esencial</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: @CulturaPositiva (Ejemplo)</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.instagram.com/explore/tags/selfcare/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Meme 4 -->
+                    <div class="meme-card">
+                        <!-- Image removed -->
+                        <div class="meme-card-content">
+                            <h3 class="text-xl mb-2 text-violet-400">Emociones en Proceso</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: @AnsiedadYCafe (Ejemplo)</p>
+                            <div class="meme-card-buttons">
+                                <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                    Ir a Instagram <i class="fas fa-external-link-alt ml-1"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="text-center py-10 md:py-16 bg-gray-800 rounded-xl shadow-2xl mt-12 border border-indigo-500/30">
+                <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-indigo-300">¡Personaliza Tu Diversión!</h3>
+                <p class="text-gray-300 max-w-xl mx-auto mb-6">
+                    Esta galería es tu espacio. Para llenarla con tus memes favoritos:
+                </p>
+                <ol class="text-gray-400 list-decimal list-inside inline-block text-left space-y-3 mb-8 text-sm sm:text-base">
+                    <li>Encuentra la URL directa de un meme gracioso (que termine en .jpg, .png, .gif).</li>
+                    <li>En el código HTML, busca una tarjeta (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;div class="meme-card"&gt;</code>).</li>
+                    <li>(Opcional) Si deseas añadir una imagen, descomenta o reinserta la etiqueta <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;img&gt;</code> y reemplaza el atributo <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">src</code> con la URL del meme.</li>
+                    <li>Actualiza el texto alternativo (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">alt</code>), el título (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;h3&gt;</code>), la fuente y el enlace del botón.</li>
+                    <li>Copia y pega la estructura de <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">meme-card</code> para añadir más risas.</li>
+                </ol>
+                <p class="text-gray-400 max-w-xl mx-auto text-xs italic">
+                    Recuerda: la disponibilidad de los enlaces directos a memes puede cambiar. Si un meme no carga, prueba con otro. ¡Diviértete curando tu galería!
+                </p>
+            </section>
+
+        </main>
+    </div> <!-- End of main-page-content-wrapper -->
+
+    <!-- Standard Footer from other pages -->
+    <footer class="standard-footer">
+        <div class="container mx-auto px-6"> <!-- Ensure container class is used for consistency -->
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Universo Borderline</h3>
+                    <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="memes.html">Memes</a></li> 
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="politicas.html">Políticas</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Enlaces Útiles</h3> 
+                    <ul class="footer-links">
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
                     </div>
                 </div>
             </div>
-        </section>
-
-        <section id="facebook-memes" class="mb-12 md:mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
-                Perlas de <span class="platform-title">Facebook</span> <i class="fab fa-facebook text-blue-600 ml-2"></i>
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                <div class="meme-card">
-                    <img src="https://scontent.faep9-2.fna.fbcdn.net/v/t39.30808-6/311999565_180809677804795_2355992911917980894_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=5f2048&_nc_ohc=1Y_Kq9x4_f0Q7kNvgE7yS0H&_nc_ht=scontent.faep9-2.fna&oh=00_AYC-Z2hK5b-L_82yYh8g_4u_yG7e1jV_1V-u0t-tT_R_Hg&oe=66636617" alt="Meme sobre el café ayudando con la depresión pero aumentando la ansiedad" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Facebook+1';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-indigo-300">Café: Ayuda y Perjudica</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: "Psicólogos y Estudiantes de Psicología"</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.facebook.com/search/top/?q=memes%20salud%20mental" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="meme-card">
-                    <img src="https://scontent.faep9-1.fna.fbcdn.net/v/t39.30808-6/405236299_755566303270882_3015752175060114742_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=5f2048&_nc_ohc=N8B27gX-9YEQ7kNvgF-1N3a&_nc_ht=scontent.faep9-1.fna&oh=00_AYBJ2579CjQ_g2f7r7h_T9Fv-z1j0v7n9yJ-T089q34q5g&oe=66635732" alt="Meme sobre las responsabilidades de ser adulto" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Facebook+2';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-cyan-300">Adulting: La Dura Realidad</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: "Memes Psicología"</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.facebook.com/search/top/?q=mental%20health%20humor" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="meme-card">
-                     <img src="https://scontent.faep9-1.fna.fbcdn.net/v/t39.30808-6/366932482_690002893160557_306610083935742637_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=5f2048&_nc_ohc=Y1v_X-j8q0UQ7kNvgGv98lK&_nc_ht=scontent.faep9-1.fna&oh=00_AYB6f0Jd9j55W0X9_8q709R3U0l_T03s09y6Gk1YFq7o7A&oe=666369C4" alt="Meme sobre mis planes vs la ansiedad" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Facebook+3';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-purple-300">Mis Planes vs. Mi Ansiedad</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: "Memes Psicología"</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.facebook.com/search/top/?q=funny%20mental%20health%20quotes" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="meme-card">
-                    <img src="https://scontent.faep9-3.fna.fbcdn.net/v/t39.30808-6/333581907_136119359260959_449787780983208711_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=5f2048&_nc_ohc=zHh6_A6Jj0QQ7kNvgF47X1d&_nc_ht=scontent.faep9-3.fna&oh=00_AYB9Xv-x0p5k1s-g0Z_r_zB_bY-h_3oVw_Qh9Ww-pQx1vQ&oe=66635A15" alt="Meme 'te mando un abrazo' con un dibujo tierno" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Facebook+4';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-rose-300">Un Abrazo Virtual</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: "Salud Mental Positiva"</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-rose-500 hover:bg-rose-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Ir a Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            
+            <div class="copyright">
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
-        </section>
-
-        <section id="pinterest-memes" class="mb-12 md:mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
-                Inspiración de <span class="platform-title">Pinterest</span> <i class="fab fa-pinterest text-red-600 ml-2"></i>
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                <div class="meme-card">
-                    <img src="https://i.pinimg.com/564x/2c/0a/2f/2c0a2fde0a84a197cb439906b09c5472.jpg" alt="Meme 'Keep calm and respira' con un cerebro meditando" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Pinterest+1';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-red-400">Modo Zen Activado</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: Pinterest "Salud Mental y Bienestar"</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.pinterest.com/search/pins/?q=mental%20health%20memes%20español" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-red-600 hover:bg-red-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="meme-card">
-                    <img src="https://i.pinimg.com/564x/8c/85/31/8c8531f5cf3a1e78dd2a641412769105.jpg" alt="Meme sobre el amor propio con una planta regándose a sí misma" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Pinterest+2';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-fuchsia-400">Recordatorio de Amor Propio</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: Pinterest "Self-Care Club"</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.pinterest.com/search/pins/?q=self%20love%20memes%20español" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-fuchsia-600 hover:bg-fuchsia-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="meme-card">
-                    <img src="https://i.pinimg.com/564x/6e/c9/ec/6ec9ec9e9c323b73671769f3f098aaa0.jpg" alt="Meme 'Un día a la vez' con un perezoso sonriendo" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Pinterest+3';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-lime-400">Un Día a la Vez</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: Pinterest "Mentalidad Positiva"</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.pinterest.com/search/pins/?q=un%20dia%20a%20la%20vez%20meme" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-lime-500 hover:bg-lime-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Buscar en Pinterest <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="meme-card">
-                    <img src="https://i.pinimg.com/564x/b0/85/c2/b085c282560a87461278373b7f842953.jpg" alt="Meme 'Está bien no estar bien' con un corazón" onerror="this.onerror=null;this.src='https://placehold.co/400x300/374151/E5E7EB?text=Error+Pinterest+4';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-blue-400">Validando Emociones</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: Pinterest "Salud Emocional"</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.pinterest.com/search/pins/?q=validar%20emociones%20meme" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Ir a Pinterest <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="instagram-memes" class="mb-12 md:mb-16">
-            <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
-                Postales de <span class="platform-title">Instagram</span> <i class="fab fa-instagram text-pink-500 ml-2"></i>
-            </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                <!-- Meme 1 -->
-                <div class="meme-card">
-                    <img src="https://scontent.cdninstagram.com/v/t51.2885-15/300400191_125097380261880_201493990807913187_n.jpg?stp=dst-jpg_e35&_nc_ht=scontent.cdninstagram.com&_nc_cat=100&_nc_ohc=hFw9m897y9QQ7kNvgG8g7-A&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYB9M0s4X5X3X8X7X9X7X9X7X9X7X9X7X9X7X9X7X9X7&oe=66635A7B&_nc_sid=10d13b"
-                         alt="Meme 'Mi paz mental no es negociable' con una persona relajada"
-                         data-intermediate-fallback="https://pbs.twimg.com/media/F20X8fjXgAAgJSO.jpg:large"
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x300/C084FC/FFFFFF?text=Error+Insta+1';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-purple-400">Paz Mental: Prioridad</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: @PsicologaExistencial (Ejemplo)</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.instagram.com/explore/tags/mentalhealthmemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Meme 2 -->
-                <div class="meme-card">
-                     <img src="https://scontent.cdninstagram.com/v/t51.2885-15/334980524_1341193506701534_4991079745282369954_n.jpg?stp=dst-jpg_e35&_nc_ht=scontent.cdninstagram.com&_nc_cat=102&_nc_ohc=M_L303m9LDAQ7kNvgG0q-lA&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYD01xG01xG01xG01xG01xG01xG01xG01xG01xG01xG0&oe=666362D3&_nc_sid=10d13b"
-                          alt="Meme sobre ir a terapia y el terapeuta escuchando"
-                          data-intermediate-fallback="https://pbs.twimg.com/media/GE0S5JbXAAAkXNn.jpg"
-                          onerror="this.onerror=null; this.src='https://placehold.co/400x300/FB923C/FFFFFF?text=Error+Insta+2';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-orange-400">En Terapia Se Habla</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: @HablemosDeSaludMental (Ejemplo)</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.instagram.com/explore/tags/therapymemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Meme 3 -->
-                <div class="meme-card">
-                    <img src="https://scontent.cdninstagram.com/v/t51.2885-15/300874789_786546092548784_612844027447690196_n.jpg?stp=dst-jpg_e35&_nc_ht=scontent.cdninstagram.com&_nc_cat=107&_nc_ohc=e4J8o_e4J8oQ7kNvgEG-g_D&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYBYf_BYf_BYf_BYf_BYf_BYf_BYf_BYf_BYf_BYf_BYf&oe=666352E2&_nc_sid=10d13b"
-                         alt="Meme sobre el autocuidado siendo una prioridad, no un lujo"
-                         data-intermediate-fallback="https://pbs.twimg.com/media/F5N0X0jXMAAY349.jpg"
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x300/0EA5E9/FFFFFF?text=Error+Insta+3';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-sky-400">Autocuidado Esencial</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: @CulturaPositiva (Ejemplo)</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.instagram.com/explore/tags/selfcare/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-sky-600 hover:bg-sky-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- Meme 4 -->
-                <div class="meme-card">
-                    <img src="https://scontent.cdninstagram.com/v/t51.2885-15/274999298_305779738297468_391899001363581506_n.jpg?stp=dst-jpg_e35&_nc_ht=scontent.cdninstagram.com&_nc_cat=108&_nc_ohc=A1b_A1b_A1bQQ7kNvgF7A1b_&edm=APs17CUBAAAA&ccb=7-5&oh=00_AYDgDgDgDgDgDgDgDgDgDgDgDgDgDgDgDgDgDgDgDgDgDg&oe=666367C8&_nc_sid=10d13b"
-                         alt="Meme 'Procesando...' con un cerebro con barra de carga"
-                         data-intermediate-fallback="https://pbs.twimg.com/media/F3tZ40sWAAA60X7.jpg"
-                         onerror="this.onerror=null; this.src='https://placehold.co/400x300/8B5CF6/FFFFFF?text=Error+Insta+4';">
-                    <div class="meme-card-content">
-                        <h3 class="text-xl mb-2 text-violet-400">Emociones en Proceso</h3>
-                        <p class="text-sm text-gray-400 mb-3">Fuente: @AnsiedadYCafe (Ejemplo)</p>
-                        <div class="meme-card-buttons">
-                            <a href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-violet-600 hover:bg-violet-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                Ir a Instagram <i class="fas fa-external-link-alt ml-1"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="text-center py-10 md:py-16 bg-gray-800 rounded-xl shadow-2xl mt-12 border border-indigo-500/30">
-            <h3 class="text-2xl md:text-3xl font-semibold mb-4 text-indigo-300">¡Personaliza Tu Diversión!</h3>
-            <p class="text-gray-300 max-w-xl mx-auto mb-6">
-                Esta galería es tu espacio. Para llenarla con tus memes favoritos:
-            </p>
-            <ol class="text-gray-400 list-decimal list-inside inline-block text-left space-y-3 mb-8 text-sm sm:text-base">
-                <li>Encuentra la URL directa de un meme gracioso (que termine en .jpg, .png, .gif).</li>
-                <li>En el código HTML, busca una tarjeta (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;div class="meme-card"&gt;</code>).</li>
-                <li>Reemplaza el atributo <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">src</code> de la etiqueta <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;img&gt;</code> con la URL del meme.</li>
-                <li>Actualiza el texto alternativo (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">alt</code>), el título (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;h3&gt;</code>), la fuente y el enlace del botón.</li>
-                <li>Copia y pega la estructura de <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">meme-card</code> para añadir más risas.</li>
-            </ol>
-            <p class="text-gray-400 max-w-xl mx-auto text-xs italic">
-                Recuerda: la disponibilidad de los enlaces directos a memes puede cambiar. Si un meme no carga, prueba con otro. ¡Diviértete curando tu galería!
-            </p>
-        </section>
-
-    </main>
-
-    <footer class="py-8 bg-gray-800 border-t border-gray-700/50">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-400 text-sm">
-                Creado con <i class="fas fa-grin-beam text-yellow-400 animate-pulse"></i> y un poco de <i class="fas fa-heart text-pink-500"></i> para la comunidad.
-            </p>
-            <p class="text-gray-500 text-sm mt-1">
-                 El humor es una gran herramienta, pero no sustituye la ayuda profesional si la necesitas.
-            </p>
-            <p class="text-gray-600 text-xs mt-3">
-                &copy; <span id="currentYear"></span> Tu Galería de Memes Personal. Memes pertenecen a sus geniales creadores.
-            </p>
         </div>
     </footer>
 
@@ -384,6 +616,32 @@
         document.getElementById('currentYear').textContent = new Date().getFullYear();
 
         document.addEventListener('DOMContentLoaded', () => {
+            // Header scroll effect
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+
+            // Active navigation link highlighting
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html';
+            const navLinks = document.querySelectorAll('#main-header nav a'); // Target nav links in standard header
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
+                const linkFilename = link.getAttribute('href').split('/').pop();
+                 if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html'))) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+
+
             const observerOptions = {
                 root: null,
                 rootMargin: '0px',
@@ -395,11 +653,12 @@
                     if (entry.isIntersecting) {
                         entry.target.classList.add('is-visible'); // Make the card visible
 
+                        // Image fallback logic is no longer needed for all cards as images are removed.
+                        // Kept the structure in case you want to re-add images to specific sections later.
                         const imgElement = entry.target.querySelector('img');
 
-                        if (imgElement) {
-                            // Check if the image has loaded. naturalWidth is 0 if it fails.
-                            // We do this check after a short delay to give the primary src a chance.
+                        if (imgElement) { 
+                            // This part will only run if an img tag exists in the card.
                             setTimeout(() => {
                                 const isInstagramPrimaryUrl = imgElement.src.includes("cdninstagram.com");
                                 const initialLoadFailed = imgElement.naturalWidth === 0;
@@ -407,16 +666,13 @@
                                 if (isInstagramPrimaryUrl && initialLoadFailed && !imgElement.dataset.intermediateAttempted) {
                                     const intermediateFallbackUrl = imgElement.dataset.intermediateFallback;
                                     if (intermediateFallbackUrl) {
-                                        imgElement.dataset.intermediateAttempted = 'true'; // Mark as attempted
+                                        imgElement.dataset.intermediateAttempted = 'true'; 
                                         imgElement.src = intermediateFallbackUrl;
-                                        // If this new src (intermediateFallbackUrl) also fails,
-                                        // the img's onerror attribute (pointing to the ultimate placeholder)
-                                        // will be triggered by the browser.
                                     }
                                 }
-                            }, 100); // Short delay before checking naturalWidth
+                            }, 100); 
                         }
-                        observerInstance.unobserve(entry.target); // Stop observing once it's visible and processed
+                        observerInstance.unobserve(entry.target); 
                     }
                 });
             }, observerOptions);
