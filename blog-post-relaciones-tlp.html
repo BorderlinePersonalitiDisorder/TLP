@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navegando el Laberinto de las Relaciones con TLP - Universo Borderline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+            --article-bg: #101028; 
+            --article-text-color: #E0E0E0; 
+            --article-heading-color: var(--secondary-cyan);
+
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+            --secondary-cyan-rgb: 0, 206, 209;
+            --accent-yellow-rgb: 255, 215, 0; 
+        }
+        
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px; 
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse { 
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+            border-radius: 20px; 
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(var(--secondary-cyan-rgb), 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+        
+        /* Styles for Single Blog Post */
+        .article-full-container {
+            max-width: 800px; 
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: var(--article-bg);
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.5);
+            border: 1px solid var(--border-color);
+        }
+
+        .article-header-section {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid rgba(var(--primary-violet-rgb), 0.3);
+            padding-bottom: 1.5rem;
+        }
+
+        .article-title-full {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--article-heading-color);
+            margin-bottom: 0.75rem;
+            line-height: 1.3;
+        }
+
+        .article-meta-full {
+            font-size: 0.9rem;
+            color: var(--text-color-medium);
+            margin-bottom: 1.5rem;
+        }
+        .article-meta-full span {
+            margin-right: 15px;
+        }
+        .article-meta-full i {
+            margin-right: 6px;
+            color: var(--accent-green);
+        }
+
+        .article-featured-image {
+            width: 100%;
+            max-height: 400px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .article-body-content {
+            color: var(--article-text-color);
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+        .article-body-content p {
+            margin-bottom: 1.5rem;
+        }
+        .article-body-content h2 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.8rem;
+            color: var(--accent-yellow);
+            margin-top: 2.5rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid rgba(var(--accent-yellow-rgb), 0.3);
+        }
+        .article-body-content h3 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent-green);
+            margin-top: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .article-body-content ul, .article-body-content ol {
+            margin-bottom: 1.5rem;
+            padding-left: 25px;
+        }
+        .article-body-content li {
+            margin-bottom: 0.5rem;
+        }
+        .article-body-content blockquote {
+            border-left: 4px solid var(--accent-blue);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+        }
+        .article-body-content a {
+            color: var(--accent-cyan);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--accent-cyan);
+            transition: color 0.3s ease, border-bottom-color 0.3s ease;
+        }
+        .article-body-content a:hover {
+            color: var(--accent-yellow);
+            border-bottom-color: var(--accent-yellow);
+        }
+
+        .article-navigation {
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .back-to-blog-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .back-to-blog-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 4px 15px rgba(var(--accent-magenta-rgb), 0.4);
+        }
+        .back-to-blog-btn i {
+            margin-right: 8px;
+        }
+
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .article-title-full { font-size: 2.2rem; }
+        }
+        
+        @media (max-width: 600px) {
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.6rem; } 
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .article-full-container { padding: 1.5rem; margin: 1rem auto; }
+            .article-title-full { font-size: 1.8rem; }
+            .article-body-content { font-size: 1rem; }
+            .article-body-content h2 { font-size: 1.5rem; }
+            .article-body-content h3 { font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
+    
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"> 
+                <i class="fas fa-brain"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html" class="active" aria-current="page">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="memes.html">Memes</a></li>
+                    <li><a href="podcast.html">Podcasts</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-page-content">
+        <div class="article-full-container">
+            <article>
+                <header class="article-header-section">
+                    <h1 class="article-title-full">Navegando el Laberinto de las Relaciones con TLP: Desafíos y Estrategias</h1>
+                    <p class="article-meta-full">
+                        <span><i class="fas fa-calendar-alt"></i> 5 de Junio, 2025</span> 
+                        <span><i class="fas fa-user-edit"></i> Lic. Sofía Ramírez</span>
+                        <span><i class="fas fa-tag"></i> TLP, Relaciones, DBT, Vínculos</span>
+                    </p>
+                </header>
+                
+                <img src="https://placehold.co/800x400/1E90FF/FFFFFF?text=Relaciones+y+TLP" alt="Imagen simbólica de personas interactuando, representando relaciones" class="article-featured-image" onerror="this.onerror=null;this.src='https://placehold.co/800x400/0A0A20/FFFFFF?text=Imagen+Principal+No+Disponible';">
+
+                <section class="article-body-content">
+                    <p>Las relaciones interpersonales son una parte fundamental de la experiencia humana, pero para quienes viven con Trastorno Límite de la Personalidad (TLP), pueden sentirse como un verdadero laberinto: lleno de intensidad, giros inesperados, miedos profundos y, a veces, callejones sin salida. La inestabilidad en las relaciones es, de hecho, uno de los criterios diagnósticos centrales del TLP. Sin embargo, esto no significa que las conexiones significativas y estables estén fuera de alcance. La Terapia Dialéctico Conductual (DBT) ofrece herramientas cruciales para iluminar este camino.</p>
+                    
+                    <h2>El Corazón del Desafío: Intensidad Emocional y Miedo al Abandono</h2>
+                    <p>Las personas con TLP a menudo experimentan las emociones de manera mucho más intensa y fluctuante que otras. Esto puede llevar a idealizar rápidamente a las personas al inicio de una relación, para luego devaluarlas si perciben una amenaza de rechazo o abandono, incluso si esta amenaza no es real. El miedo al abandono, real o imaginario, es un motor poderoso que puede desencadenar conductas desesperadas para evitarlo, como aferrarse intensamente o, paradójicamente, alejar a la persona por miedo a ser herido primero.</p>
+                    <p>Esta "montaña rusa emocional" puede ser agotadora tanto para la persona con TLP como para sus seres queridos, generando un ciclo de malentendidos, conflictos y rupturas dolorosas.</p>
+
+                    <h2>Patrones Comunes en las Relaciones con TLP</h2>
+                    <ul>
+                        <li><strong>Relaciones intensas e inestables:</strong> Pasando rápidamente de la cercanía extrema a la distancia o el conflicto.</li>
+                        <li><strong>Idealización y Devaluación:</strong> Ver a los demás como "perfectos" o "terribles", con poca capacidad para integrar aspectos positivos y negativos.</li>
+                        <li><strong>Miedo crónico al abandono:</strong> Esfuerzos frenéticos para evitar ser abandonado, incluso si no hay una amenaza real.</li>
+                        <li><strong>Dificultad con los límites:</strong> Problemas para establecer y mantener límites saludables, o para respetar los de los demás.</li>
+                        <li><strong>Reacciones emocionales desproporcionadas:</strong> Pequeños desencadenantes pueden provocar respuestas emocionales muy intensas.</li>
+                        <li><strong>Sensación de vacío:</strong> Un sentimiento persistente de vacío que puede intentar llenarse a través de las relaciones.</li>
+                    </ul>
+
+                    <h2>Habilidades de Efectividad Interpersonal de la DBT: Faros en el Laberinto</h2>
+                    <p>La DBT pone un gran énfasis en las habilidades de efectividad interpersonal, que son esenciales para navegar las relaciones de manera más saludable. Estas habilidades se centran en tres objetivos principales:</p>
+                    
+                    <h3>1. Conseguir Objetivos de Forma Efectiva (DEAR MAN):</h3>
+                    <p>Esta habilidad ayuda a pedir lo que se necesita o a decir "no" de manera respetuosa y asertiva.</p>
+                    <ul>
+                        <li><strong>D - Describe:</strong> Describe la situación actual de forma objetiva.</li>
+                        <li><strong>E - Expresa:</strong> Expresa tus sentimientos y opiniones sobre la situación.</li>
+                        <li><strong>A - Aserta:</strong> Pide lo que quieres o di "no" claramente.</li>
+                        <li><strong>R - Refuerza:</strong> Explica las consecuencias positivas de obtener lo que quieres (o las negativas si no lo obtienes).</li>
+                        <li><strong>M - Mantente Mindful:</strong> Mantén el foco en tu objetivo, ignora distracciones o ataques.</li>
+                        <li><strong>A - Apariencia de Confianza:</strong> Actúa con seguridad, usa un tono de voz firme, mantén contacto visual.</li>
+                        <li><strong>N - Negocia:</strong> Estate dispuesto a ceder un poco para llegar a un acuerdo.</li>
+                    </ul>
+
+                    <h3>2. Mantener y Mejorar Relaciones (GIVE):</h3>
+                    <p>Estas habilidades se enfocan en cómo interactuar de manera que se preserve la relación, incluso durante desacuerdos.</p>
+                    <ul>
+                        <li><strong>G - Gentileza (Gentle):</strong> Sé amable y respetuoso, sin ataques, amenazas o juicios.</li>
+                        <li><strong>I - Interés (Interested):</strong> Muestra interés genuino en la otra persona, escucha activamente.</li>
+                        <li><strong>V - Valida (Validate):</strong> Reconoce los sentimientos, pensamientos y dificultades de la otra persona.</li>
+                        <li><strong>E - Estilo Sencillo (Easy manner):</strong> Usa el humor, sonríe, sé ligero y accesible.</li>
+                    </ul>
+
+                    <h3>3. Mantener el Autorrespeto (FAST):</h3>
+                    <p>Estas habilidades son cruciales cuando es importante mantener tu propia integridad y valores, incluso si eso significa no obtener lo que quieres o arriesgar la relación.</p>
+                    <ul>
+                        <li><strong>F - Justicia (Fair):</strong> Sé justo contigo mismo y con la otra persona.</li>
+                        <li><strong>A - Sin Disculpas (No Apologies):</strong> No te disculpes en exceso por existir, por tener una opinión o por discrepar (a menos que hayas hecho algo incorrecto).</li>
+                        <li><strong>S - Mantén tus Valores (Stick to values):</strong> No sacrifiques tus valores fundamentales para obtener algo o evitar un conflicto.</li>
+                        <li><strong>T - Sinceridad (Truthful):</strong> No mientas, no exageres, no inventes excusas.</li>
+                    </ul>
+
+                    <h2>El Camino Hacia Vínculos Más Saludables</h2>
+                    <p>Navegar el laberinto de las relaciones con TLP es un desafío, pero no es una sentencia. Con la práctica constante de estas habilidades de DBT, la autoconciencia y, a menudo, el apoyo terapéutico, es posible construir vínculos más estables, satisfactorios y llenos de significado. Requiere valentía para enfrentar los miedos, compasión por uno mismo y por los demás, y la convicción de que mereces relaciones basadas en el respeto y la comprensión mutua.</p>
+                    <blockquote>"Las relaciones son como un jardín. Requieren cuidado constante, atención y la habilidad de podar lo que no sirve para que florezca lo hermoso." - Adaptado</blockquote>
+                    <p>Recuerda que cada interacción es una oportunidad para practicar. Sé paciente contigo mismo en este proceso de aprendizaje y crecimiento.</p>
+                </section>
+
+                <div class="article-navigation">
+                    <a href="blog.html" class="back-to-blog-btn"><i class="fas fa-arrow-left"></i> Volver al Blog</a>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Universo Borderline</h3> 
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="memes.html">Memes</a></li>
+                        <li><a href="podcast.html">Podcasts</a></li> 
+                        <li><a href="politicas.html">Políticas y Términos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos DBT</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
+                <p><a href="politicas.html">Privacidad y Términos</a> | <a href="#">Seguridad (Ejemplo)</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150; 
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 7}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 7.5}s`; 
+                    if (Math.random() > 0.6) { 
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)', 'var(--accent-blue)', 'var(--accent-yellow)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 3 + 0.8}px ${star.style.backgroundColor}`; 
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 2 + 0.5}px rgba(255,255,255,0.7)`; 
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            // Active navigation link highlighting
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
+                const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+                
+                if (document.body.classList.contains('single-blog-post-page') && linkFilename === 'blog.html') {
+                     navLinks.forEach(nl => { 
+                        nl.classList.remove('active');
+                        nl.removeAttribute('aria-current');
+                    });
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                } else if (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html')) {
+                    if (linkFilename === '' || linkFilename === 'index.html') {
+                        link.classList.add('active'); 
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.classList.remove('active');
+                        link.removeAttribute('aria-current');
+                    }
+                }
+            });
+            
+             if (currentPageFilename !== 'blog.html' && document.querySelector('.article-full-container')) {
+                document.body.classList.add('single-blog-post-page');
+                
+                 navLinks.forEach(link => {
+                    const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                    if (linkFilename === 'blog.html') {
+                        navLinks.forEach(nl => { nl.classList.remove('active'); nl.removeAttribute('aria-current');});
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                 });
+            }
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
