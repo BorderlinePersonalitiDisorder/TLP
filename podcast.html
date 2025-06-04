@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Podcasts - Universo Borderline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
+            
+            --card-bg: rgba(30, 30, 50, 0.92); /* Usado para las tarjetas de podcast */
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+            --light-bg-article: #1a1a2e; 
+            --article-text-color: #E0E0E0; 
+            --article-heading-color: var(--secondary-cyan);
+
+            /* Variables RGB para opacidad en background-color */
+            --accent-yellow-rgb: 255, 215, 0;
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-red-rgb: 255, 69, 0;
+        }
+        
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px; 
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse { 
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+            border-radius: 20px; 
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem; 
+            padding-top: 2rem; 
+        }
+
+        .page-header h2 {
+            font-family: 'Playfair Display', serif; 
+            font-size: 3rem; 
+            font-weight: 700; 
+            color: var(--accent-cyan);
+            margin-bottom: 0.5rem;
+            text-transform: none; 
+            letter-spacing: 0.5px; 
+            display: inline-flex; 
+            align-items: center;
+            gap: 15px; 
+        }
+
+        .page-header h2 i {
+            font-size: 2.6rem; 
+            animation: subtleRotate 8s infinite linear;
+        }
+
+        @keyframes subtleRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.05); }
+            50% { transform: rotate(0deg) scale(1.1); }
+            75% { transform: rotate(-5deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-color-medium);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Estilos para la sección de podcasts */
+        .podcast-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .podcast-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+        }
+
+        .podcast-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(var(--primary-violet-rgb), 0.5);
+        }
+
+        .podcast-thumbnail {
+            width: 100%;
+            height: 200px; /* Ajustar altura según necesidad */
+            object-fit: cover;
+            background-color: #2a2a3e; /* Color de fondo para el placeholder */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--text-color-medium);
+        }
+         .podcast-card:hover .podcast-thumbnail {
+            opacity: 0.85;
+        }
+
+        .podcast-content {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .podcast-content h3 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.4rem;
+            color: var(--accent-yellow);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+         .podcast-content h3:hover {
+            color: var(--accent-cyan);
+        }
+        
+        .podcast-meta {
+            font-size: 0.8rem;
+            color: var(--text-color-medium);
+            margin-bottom: 1rem;
+        }
+         .podcast-meta i {
+            margin-right: 5px;
+            color: var(--accent-green);
+        }
+
+        .podcast-excerpt {
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .podcast-player-placeholder {
+            background-color: #222230;
+            border: 1px dashed var(--border-color);
+            padding: 20px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: auto; /* Empuja al final si el excerpt es corto */
+            color: var(--text-color-medium);
+        }
+        .podcast-player-placeholder i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+            color: var(--accent-blue);
+        }
+        .listen-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
+            color: var(--dark-bg);
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease;
+            margin-top: 10px;
+        }
+        .listen-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
+            transform: scale(1.05);
+        }
+        
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .page-header h2 { font-size: 2.6rem; } 
+            .page-header h2 i { font-size: 2.2rem; } 
+        }
+        
+        @media (max-width: 600px) {
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.6rem; } 
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .page-header h2 { font-size: 2rem; } 
+            .page-header h2 i { font-size: 1.8rem; } 
+            .page-header p { font-size: 1rem; }
+            .podcast-grid { grid-template-columns: 1fr; }
+            .podcast-thumbnail { height: 180px; font-size: 2.5rem;}
+            .podcast-content h3 {font-size: 1.2rem;}
+            .podcast-excerpt {font-size: 0.9rem;}
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
+    
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"> 
+                <i class="fas fa-brain"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="memes.html">Memes</a></li>
+                    <li><a href="podcast.html" class="active" aria-current="page">Podcasts</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-page-content">
+        <div class="container">
+            <div class="page-header">
+                <h2><i class="fas fa-podcast"></i> Voces del Universo Interior</h2>
+                <p>
+                    Conéctate con historias, entrevistas y reflexiones en formato audio. Un espacio para escuchar, aprender y sentir que no estás solo/a en este viaje.
+                </p>
+            </div>
+
+            <div class="podcast-grid">
+                <!-- Ejemplo de Tarjeta de Podcast 1 -->
+                <article class="podcast-card"> 
+                    <div class="podcast-thumbnail">
+                        <i class="fas fa-headphones-alt"></i> <!-- Icono placeholder -->
+                    </div>
+                    <div class="podcast-content">
+                        <h3>Episodio 1: La Danza de las Emociones</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 10 de Junio, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 45 min</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Una introducción al mundo emocional del TLP, explorando la intensidad y cómo la DBT ofrece herramientas para navegarla. Con la Dra. Elena Valiente.
+                        </p>
+                        <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor de audio no disponible.</span>
+                            <a href="#" class="listen-btn">Escuchar en [Plataforma]</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Ejemplo de Tarjeta de Podcast 2 -->
+                <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-magenta); color: var(--dark-bg);">
+                         <i class="fas fa-microphone-alt"></i>
+                    </div>
+                    <div class="podcast-content">
+                        <h3>Episodio 2: Testimonios que Iluminan</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 17 de Junio, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 55 min</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Conversamos con personas que comparten su viaje con el TLP y cómo han encontrado caminos hacia la recuperación y una vida significativa.
+                        </p>
+                         <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor de audio no disponible.</span>
+                            <a href="#" class="listen-btn">Escuchar en [Plataforma]</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Ejemplo de Tarjeta de Podcast 3 -->
+                 <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-green); color: var(--dark-bg);">
+                         <i class="fas fa-users"></i>
+                    </div>
+                    <div class="podcast-content">
+                        <h3>Episodio 3: El Rol de la Familia y Amigos</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 24 de Junio, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 50 min</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Entendiendo el TLP desde la perspectiva de los seres queridos. Estrategias de apoyo, validación y autocuidado para familiares y amigos. Con Lic. Sofía Ramírez.
+                        </p>
+                         <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor de audio no disponible.</span>
+                           <a href="#" class="listen-btn">Escuchar en [Plataforma]</a>
+                        </div>
+                    </div>
+                </article>
+
+                 <!-- Ejemplo de Tarjeta de Podcast 4 -->
+                 <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--accent-yellow); color: var(--dark-bg);">
+                         <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <div class="podcast-content">
+                        <h3>Episodio 4: Mindfulness en la Práctica Diaria</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 1 de Julio, 2025</span> | 
+                            <span><i class="fas fa-clock"></i> 40 min</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Más allá de la meditación: cómo integrar la atención plena en actividades cotidianas para reducir el estrés y aumentar la conciencia. Ejercicios guiados.
+                        </p>
+                         <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor de audio no disponible.</span>
+                            <a href="#" class="listen-btn">Escuchar en [Plataforma]</a>
+                        </div>
+                    </div>
+                </article>
+                
+            </div>
+             <div style="text-align: center; margin-top: 3rem;">
+                <a href="index.html" class="back-to-home-btn"><i class="fas fa-home"></i> Volver al Inicio</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Universo Borderline</h3> 
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="memes.html">Memes</a></li>
+                        <li><a href="podcast.html">Podcasts</a></li> 
+                        <li><a href="politicas.html">Políticas y Términos</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos DBT</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
+                <p><a href="politicas.html">Privacidad y Términos</a> | <a href="#">Seguridad (Ejemplo)</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150; 
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 7}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 7.5}s`; 
+                    if (Math.random() > 0.6) { 
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)', 'var(--accent-blue)', 'var(--accent-yellow)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 3 + 0.8}px ${star.style.backgroundColor}`; 
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 2 + 0.5}px rgba(255,255,255,0.7)`; 
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            // Active navigation link highlighting
+            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
+                const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                 // Check if the link's href matches the current page filename
+                if (linkFilename === currentPageFilename) {
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+                // Special case for index.html if current page is root
+                 if (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html')) {
+                    // Ensure other links are not active if on index
+                    if (linkFilename === '' || linkFilename === 'index.html') {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.classList.remove('active');
+                        link.removeAttribute('aria-current');
+                    }
+                }
+            });
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
