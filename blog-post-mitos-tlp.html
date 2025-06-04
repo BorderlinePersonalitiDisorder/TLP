@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Derribando Mitos sobre TLP - Universo Borderline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            --text-color-dark: #333333; 
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+            --light-bg-article: #1a1a2e; 
+            --article-text-color: #E0E0E0; 
+            --article-heading-color: var(--secondary-cyan);
+        }
+        
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px; 
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse { 
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+            border-radius: 20px; 
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+
+        .article-container {
+            background-color: var(--light-bg-article);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+            margin-top: 2rem;
+            border: 1px solid var(--border-color);
+            color: var(--article-text-color);
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .article-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .article-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--accent-yellow);
+            margin-bottom: 0.8rem;
+            line-height: 1.3;
+        }
+
+        .article-meta {
+            font-size: 0.9rem;
+            color: var(--text-color-medium);
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .article-meta i {
+            color: var(--accent-green);
+        }
+
+        .article-image {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .article-content p, .article-content ul, .article-content ol {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.9;
+        }
+        
+        .article-content strong {
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        .article-content h2 {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.8rem;
+            color: var(--article-heading-color);
+            margin-top: 2.5rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-magenta);
+            display: inline-block;
+        }
+        .article-content h3 {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-violet);
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .article-content ul, .article-content ol {
+            padding-left: 25px;
+        }
+        .article-content ul li {
+            margin-bottom: 0.5rem; /* Espacio entre ítems de lista */
+        }
+        .article-content ul li::marker {
+            color: var(--accent-green);
+        }
+        .article-content ol li::marker {
+            color: var(--accent-blue);
+        }
+
+        .article-content blockquote {
+            border-left: 4px solid var(--accent-yellow);
+            padding-left: 1.5rem;
+            margin: 2rem 0;
+            font-style: italic;
+            color: var(--text-color-medium);
+            background-color: rgba(var(--accent-yellow-rgb, 255, 215, 0), 0.05); 
+            border-radius: 0 8px 8px 0;
+            padding: 1rem 1.5rem;
+        }
+         :root { 
+            --accent-yellow-rgb: 255, 215, 0;
+        }
+
+        .important-note {
+            background-color: rgba(var(--accent-red-rgb, 255, 69, 0), 0.1);
+            :root { --accent-red-rgb: 255, 69, 0; }
+            border-left: 5px solid var(--accent-red);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 8px;
+        }
+        .important-note p {
+            margin-bottom: 0;
+            color: var(--text-color-light);
+        }
+        .important-note strong {
+            color: var(--accent-red);
+        }
+
+        .back-to-blog-btn {
+            display: inline-block;
+            margin-top: 3rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+        }
+
+        .back-to-blog-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4);
+        }
+        
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a { 
+            color: var(--text-color-medium); 
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
+            padding: 4px 0; 
+            font-weight: 300; 
+        }
+        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        
+        .contact-info { margin-top: 20px; }
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        .stars {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            pointer-events: none; z-index: -2; 
+        }
+        .star {
+            position: absolute; width: 2px; height: 2px; background: white;
+            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+            100% { opacity: 0; transform: scale(1); }
+        }
+        .galaxy {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+            background: radial-gradient(circle at center, transparent 20%, rgba(138, 43, 226, 0.1) 70%, transparent 100%);
+            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
+        }
+        @keyframes rotateGalaxy {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            nav a { font-size: 0.8rem; padding: 7px 10px; }
+            .article-header h1 { font-size: 2.2rem; }
+        }
+        
+        @media (max-width: 600px) {
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.6rem; } 
+            nav ul { gap: 5px; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .article-header h1 { font-size: 1.8rem; }
+            .article-content p, .article-content ul, .article-content ol { font-size: 1rem; }
+            .article-content h2 { font-size: 1.5rem; }
+            .article-content h3 { font-size: 1.3rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+    <div class="galaxy"></div>
+    
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo"> 
+                <i class="fas fa-brain"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html" class="active" aria-current="page">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="memes.html">Memes</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-page-content">
+        <div class="container">
+            <article class="article-container">
+                <header class="article-header">
+                    <h1>Derribando Mitos: 5 Ideas Erróneas Comunes sobre el Trastorno Límite</h1>
+                    <div class="article-meta">
+                        <span><i class="fas fa-calendar-alt"></i> 18 de Mayo, 2025</span>
+                        <span><i class="fas fa-user-edit"></i> Equipo Universo Borderline</span>
+                    </div>
+                </header>
+                
+                <img src="https://placehold.co/800x400/FF00FF/FFFFFF?text=Rompiendo+Estigmas+TLP" alt="Martillo rompiendo cadenas con palabras como 'estigma', 'mito'" class="article-image" onerror="this.onerror=null;this.src='https://placehold.co/800x400/0A0A20/FFFFFF?text=Imagen+Principal+No+Disponible';">
+
+                <section class="article-content">
+                    <p>El Trastorno Límite de la Personalidad (TLP) es, quizás, uno de los diagnósticos en salud mental más incomprendidos y estigmatizados. La cultura popular y, lamentablemente, a veces incluso algunos profesionales, han perpetuado una serie de mitos que no solo son falsos, sino profundamente dañinos para quienes viven con TLP y para sus seres queridos. Estos malentendidos dificultan la búsqueda de ayuda, la empatía y la posibilidad de una recuperación real. Es hora de encender una luz potente sobre estas sombras y desmantelar, uno por uno, algunos de los mitos más comunes y perniciosos.</p>
+                    
+                    <p>En "Universo Borderline", creemos que la información clara y la compasión son las herramientas más poderosas contra el estigma. Acompáñanos en este recorrido para desmitificar el TLP y construir puentes de entendimiento.</p>
+
+                    <h2>Mito 1: "Las personas con TLP son manipuladoras y solo buscan atención."</h2>
+                    <p><strong>Realidad:</strong> Esta es una de las etiquetas más crueles y simplistas. Las conductas que pueden ser interpretadas como "manipuladoras" o "buscadoras de atención" suelen ser, en realidad, expresiones desesperadas de un dolor emocional intenso y un profundo miedo al abandono. Las personas con TLP experimentan emociones con una intensidad abrumadora y, a menudo, carecen de las habilidades para comunicar sus necesidades o regular esas emociones de manera efectiva. Lo que puede parecer manipulación es frecuentemente un intento, aunque desadaptativo, de evitar el abandono, ser escuchados o aliviar un sufrimiento interno que se siente intolerable. La DBT, de hecho, se enfoca en enseñar formas más efectivas y saludables de comunicar necesidades y manejar las emociones.</p>
+                    <blockquote>"Detrás de cada conducta 'difícil' hay una emoción no expresada o una necesidad no satisfecha. La curiosidad y la compasión son más útiles que el juicio."</blockquote>
+
+                    <h2>Mito 2: "El TLP es solo un problema de 'mal carácter' o 'ser demasiado dramático/a'."</h2>
+                    <p><strong>Realidad:</strong> El TLP es un trastorno de salud mental complejo y real, reconocido en los manuales diagnósticos como el DSM-5 y el CIE-11. No se trata de una elección de "ser difícil" o de una simple exageración. Implica una desregulación emocional significativa, dificultades en las relaciones interpersonales, una autoimagen inestable, conductas impulsivas y, a menudo, un historial de trauma. Reducirlo a un "mal carácter" es invalidar la profunda lucha interna y las bases neurobiológicas y ambientales que contribuyen a su desarrollo. Las personas con TLP no eligen sentirse así; luchan cada día con una intensidad emocional que la mayoría de la gente no puede imaginar.</p>
+
+                    <h2>Mito 3: "Las personas con TLP no pueden mejorar o son 'casos perdidos'."</h2>
+                    <p><strong>Realidad:</strong> Este es un mito particularmente desesperanzador y, afortunadamente, completamente falso. Si bien el TLP puede ser un trastorno grave y desafiante, <strong>el tratamiento especializado, como la Terapia Dialéctico Conductual (DBT), ha demostrado ser altamente efectivo</strong>. Muchas personas con TLP logran una mejora significativa, aprenden a manejar sus emociones, construyen relaciones más estables y llevan vidas plenas y satisfactorias. La recuperación es un proceso, a menudo largo y con altibajos, pero es absolutamente posible. La idea de que son "casos perdidos" perpetúa el estigma y puede disuadir a las personas de buscar la ayuda que merecen y que puede cambiar sus vidas.</p>
+                    
+                    <h2>Mito 4: "El TLP solo afecta a mujeres jóvenes."</h2>
+                    <p><strong>Realidad:</strong> Aunque históricamente el TLP se ha diagnosticado con más frecuencia en mujeres, las investigaciones más recientes sugieren que afecta a hombres y mujeres en proporciones más similares de lo que se pensaba. Los hombres con TLP pueden ser diagnosticados erróneamente con otros trastornos (como el trastorno de personalidad antisocial) o sus síntomas pueden manifestarse de formas que no se ajustan al estereotipo tradicional. Además, el TLP puede diagnosticarse en la adolescencia y persistir en la edad adulta, afectando a personas de diversas edades. Es crucial superar estos sesgos de género y edad para asegurar un diagnóstico y tratamiento adecuados para todos.</p>
+
+                    <h2>Mito 5: "Si alguien tiene TLP, todas sus relaciones están destinadas al fracaso."</h2>
+                    <p><strong>Realidad:</strong> Es cierto que las dificultades en la regulación emocional y el miedo al abandono pueden hacer que las relaciones interpersonales sean un área de gran desafío para las personas con TLP. Sin embargo, esto no significa que estén condenadas al fracaso. Con terapia y el desarrollo de habilidades de efectividad interpersonal (otro pilar de la DBT), las personas con TLP pueden aprender a comunicarse de manera más efectiva, establecer límites saludables, manejar los conflictos y construir relaciones más estables y gratificantes. Es un trabajo que requiere esfuerzo tanto de la persona con TLP como, a menudo, de sus seres queridos, pero las relaciones sanas y duraderas son un objetivo alcanzable.</p>
+                    
+                    <div class="important-note">
+                        <p><strong>Una Nota Importante:</strong> Derribar mitos es el primer paso. Si tú o alguien que conoces está luchando con características del TLP, buscar una evaluación y apoyo profesional es fundamental. La información es poder, pero la ayuda especializada es transformación.</p>
+                    </div>
+
+                    <p>El camino hacia la comprensión y la aceptación del TLP pasa por desafiar activamente estos mitos y reemplazarlos con información precisa y compasión. Cada vez que elegimos educarnos y hablar con empatía, contribuimos a un mundo donde las personas con TLP se sientan menos solas y más esperanzadas.</p>
+                    
+                    <div style="text-align: center; margin-top: 2.5rem;">
+                         <a href="blog.html" class="back-to-blog-btn"><i class="fas fa-arrow-left"></i> Volver al Blog</a>
+                    </div>
+                </section>
+            </article>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Universo Borderline</h3> 
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foros</a></li> 
+                        <li><a href="memes.html">Memes</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Recursos DBT</h3>
+                    <ul class="footer-links">
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
+                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const starsContainer = document.getElementById('stars');
+            if (starsContainer) {
+                const starsCount = 150; 
+                for (let i = 0; i < starsCount; i++) {
+                    const star = document.createElement('div');
+                    star.classList.add('star');
+                    const size = Math.random() * 2.2 + 0.3;
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    star.style.left = `${Math.random() * 100}%`;
+                    star.style.top = `${Math.random() * 100}%`;
+                    star.style.animationDelay = `${Math.random() * 7}s`; 
+                    star.style.animationDuration = `${2.5 + Math.random() * 7.5}s`; 
+                    if (Math.random() > 0.6) { 
+                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)', 'var(--accent-blue)', 'var(--accent-yellow)'];
+                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                        star.style.boxShadow = `0 0 ${Math.random() * 3 + 0.8}px ${star.style.backgroundColor}`; 
+                    } else {
+                        star.style.boxShadow = `0 0 ${Math.random() * 2 + 0.5}px rgba(255,255,255,0.7)`; 
+                    }
+                    starsContainer.appendChild(star);
+                }
+            }
+            
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
+                if (link.getAttribute('href') === 'blog.html') { 
+                    link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
+                }
+            });
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
