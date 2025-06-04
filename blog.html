@@ -190,7 +190,7 @@
             font-family: 'Playfair Display', serif; 
             font-size: 3rem; 
             font-weight: 700; 
-            color: var(--accent-cyan);
+            color: var(--secondary-cyan); /* Changed from --accent-cyan to --secondary-cyan for consistency */
             margin-bottom: 0.5rem;
             text-transform: none; 
             letter-spacing: 0.5px; 
@@ -262,16 +262,17 @@
         }
 
         .blog-post-content h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.5rem;
+            font-family: 'Playfair Display', serif; /* Changed Font */
+            font-size: 1.6rem; /* Adjusted size for new font */
             color: var(--accent-yellow);
             margin-bottom: 1rem;
-            line-height: 1.3; 
+            line-height: 1.4; /* Adjusted line height */
             transition: color 0.3s ease, text-shadow 0.3s ease; 
         }
         .blog-post-content h3:hover {
             color: var(--accent-cyan);
             text-shadow: 0 0 8px var(--accent-cyan);
+            font-family: 'Krona One', sans-serif; /* Kept Krona for hover, or change if desired */
         }
         
         .blog-post-meta {
@@ -431,7 +432,7 @@
             nav a { font-size: 0.8rem; padding: 7px 10px; }
             .page-header h2 { font-size: 2.6rem; } 
             .page-header h2 i { font-size: 2.2rem; } 
-            .blog-post-content h3 {font-size: 1.3rem;}
+            .blog-post-content h3 {font-size: 1.4rem;} /* Adjusted for new font */
         }
         
         @media (max-width: 600px) {
@@ -444,7 +445,7 @@
             .page-header p { font-size: 1rem; }
             .blog-grid { grid-template-columns: 1fr; }
             .blog-post-thumbnail { height: 180px; }
-            .blog-post-content h3 {font-size: 1.2rem;}
+            .blog-post-content h3 {font-size: 1.3rem;} /* Adjusted for new font */
             .blog-post-excerpt {font-size: 0.9rem;}
             .read-more-btn { padding: 8px 16px; font-size: 0.9rem;}
             .full-article-note { font-size: 0.75rem; }
@@ -468,6 +469,7 @@
                     <li><a href="blog.html" class="active" aria-current="page">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
                     <li><a href="memes.html">Memes</a></li> 
+                    <li><a href="podcast.html">Podcast</a></li> <!-- Added Podcast Link -->
                 </ul>
             </nav>
         </div>
@@ -484,7 +486,7 @@
 
             <div class="blog-grid">
                 <article class="blog-post-card"> 
-                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Mindfulness+en+DBT" alt="Persona meditando en un entorno sereno" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Mindfulness+Práctico" alt="Persona meditando en un entorno sereno" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Desentrañando el Mindfulness: El Corazón de la DBT</h3>
                         <div class="blog-post-meta">
@@ -500,7 +502,7 @@
                 </article>
 
                 <article class="blog-post-card"> 
-                    <img src="https://placehold.co/600x400/00CED1/FFFFFF?text=Validación+Emocional" alt="Dos personas conectando y mostrando empatía" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <img src="https://placehold.co/600x400/00CED1/0A0A20?text=Validación+y+Empatía" alt="Dos personas conectando y mostrando empatía" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>El Poder de la Validación: Entendiendo y Aceptando Nuestras Emociones</h3>
                         <div class="blog-post-meta">
@@ -516,7 +518,7 @@
                 </article>
 
                 <article class="blog-post-card"> 
-                    <img src="https://placehold.co/600x400/FF00FF/FFFFFF?text=Mitos+sobre+TLP" alt="Signo de interrogación rodeado de palabras clave sobre TLP" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <img src="https://placehold.co/600x400/FF00FF/FFFFFF?text=Mitos+vs+Realidad+TLP" alt="Signo de interrogación rodeado de palabras clave sobre TLP" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Derribando Mitos: 5 Ideas Erróneas Comunes sobre el Trastorno Límite</h3>
                         <div class="blog-post-meta">
@@ -532,7 +534,7 @@
                 </article>
 
                 <article class="blog-post-card"> 
-                    <img src="https://placehold.co/600x400/00FF7F/0A0A20?text=Regulación+Emocional+Práctica" alt="Persona gestionando sus emociones de forma calmada" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <img src="https://placehold.co/600x400/00FF7F/0A0A20?text=Herramientas+DBT" alt="Persona gestionando sus emociones de forma calmada" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Regulación Emocional en Acción: Técnicas DBT para el Día a Día</h3>
                         <div class="blog-post-meta">
@@ -548,7 +550,7 @@
                 </article>
 
                 <article class="blog-post-card">
-                    <img src="https://placehold.co/600x400/1E90FF/FFFFFF?text=Relaciones+y+TLP" alt="Siluetas de personas interactuando, simbolizando relaciones" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <img src="https://placehold.co/600x400/1E90FF/FFFFFF?text=Vínculos+Sanos" alt="Siluetas de personas interactuando, simbolizando relaciones" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Navegando el Laberinto de las Relaciones con TLP: Desafíos y Estrategias</h3>
                         <div class="blog-post-meta">
@@ -564,7 +566,7 @@
                 </article>
 
                 <article class="blog-post-card">
-                    <img src="https://placehold.co/600x400/FFD700/0A0A20?text=Tolerancia+al+Malestar+en+Crisis" alt="Una persona encontrando calma en medio de una tormenta simbólica" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <img src="https://placehold.co/600x400/FFD700/0A0A20?text=Calma+en+la+Crisis" alt="Una persona encontrando calma en medio de una tormenta simbólica" class="blog-post-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
                     <div class="blog-post-content">
                         <h3>Sobreviviendo la Tormenta: Herramientas de Tolerancia al Malestar en Momentos de Crisis</h3>
                         <div class="blog-post-meta">
@@ -599,6 +601,8 @@
                         <li><a href="blog.html">Blog</a></li> 
                         <li><a href="foro.html">Foros</a></li> 
                         <li><a href="memes.html">Memes</a></li> 
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="politicas.html">Políticas</a></li> <!-- Added Políticas Link -->
                     </ul>
                 </div>
                 
@@ -666,15 +670,19 @@
                 link.classList.remove('active'); 
                 link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
+                // Check if the link's href matches the current page filename.
+                // Also handles the case where the current page is 'index.html' and the link href is empty (root path).
                 if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && linkFilename === '')) { 
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
                 }
-                // Specifically for blog.html, ensure "Blog" is active.
+                // Special handling for blog.html to ensure "Blog" is active if it's the current page.
+                // This is a bit redundant given the logic above but ensures it if there are multiple blog-related pages.
                 if (currentPageFilename === 'blog.html' && linkFilename === 'blog.html') {
+                    // Clear active class from all links first to avoid multiple active links
                     navLinks.forEach(nl => {
-                        nl.classList.remove('active');
-                        nl.removeAttribute('aria-current');
+                         nl.classList.remove('active');
+                         nl.removeAttribute('aria-current');
                     });
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
@@ -693,9 +701,9 @@
                 });
             }
             
-            // Intersection Observer for fade-in animations
-            const animatedSections = document.querySelectorAll('.blog-grid'); 
-            if (animatedSections.length > 0) {
+            // Intersection Observer for fade-in animations on blog cards
+            const blogCards = document.querySelectorAll('.blog-post-card'); // Target individual cards
+            if (blogCards.length > 0) {
                 const observerOptions = {
                     root: null, 
                     rootMargin: '0px',
@@ -706,15 +714,20 @@
                         if (entry.isIntersecting) {
                             entry.target.style.opacity = '1';
                             entry.target.style.transform = 'translateY(0)';
+                            // Optional: unobserve after animation to save resources
+                            // obs.unobserve(entry.target); 
                         } 
                     });
                 }, observerOptions);
 
-                animatedSections.forEach(section => {
-                    section.style.opacity = '0'; 
-                    section.style.transform = 'translateY(40px)'; 
-                    section.style.transition = 'opacity 0.9s ease-out, transform 0.9s ease-out';
-                    observer.observe(section);
+                blogCards.forEach(card => { // Apply to each card
+                    card.style.opacity = '0'; 
+                    card.style.transform = 'translateY(40px)'; 
+                    card.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
+                    // Add a slight delay for staggered animation if desired
+                    // const delay = Array.from(blogCards).indexOf(card) * 100; // Example: 100ms delay per card
+                    // card.style.transitionDelay = `${delay}ms`;
+                    observer.observe(card);
                 });
             }
         });
