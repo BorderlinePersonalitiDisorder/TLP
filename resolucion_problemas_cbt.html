@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resolución de Problemas en TCC - Guía Detallada - Borderline Journey</title>
+    <title>Resolución de Problemas en TCC - Guía Detallada - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -110,7 +110,7 @@
         }
         
         .logo h1 { 
-            font-family: 'Krona One', sans-serif; 
+            font-family: 'Monoton', cursive; 
             font-size: 1.8rem; 
             font-weight: 400;
             background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
@@ -162,6 +162,7 @@
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
+            border-radius: 20px;
         }
         
         nav a:hover::before, 
@@ -189,7 +190,7 @@
         }
 
         .page-header h2 {
-            font-family: 'Playfair Display', serif; /* Updated font */
+            font-family: 'Playfair Display', serif;
             font-size: 2.8rem; 
             font-weight: 700;
             color: var(--primary-violet); /* Component specific color */
@@ -204,7 +205,6 @@
         .page-header h2 i {
             font-size: 2.5rem; 
         }
-
 
         .page-header p.subtitle {
             font-size: 1.2rem;
@@ -229,7 +229,7 @@
         }
 
         .component-content-section h3 {
-            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.9rem; 
             color: var(--primary-violet); 
@@ -240,7 +240,7 @@
             padding-bottom: 0.8rem; 
         }
          .component-content-section h4 {
-            font-family: 'Raleway', sans-serif; /* Updated font */
+            font-family: 'Raleway', sans-serif; 
             font-weight: 700; 
             font-size: 1.5rem; 
             color: var(--accent-yellow);
@@ -249,15 +249,7 @@
             border-left: 4px solid var(--accent-yellow); 
             padding-left: 15px; 
         }
-        .component-content-section h5 {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--secondary-cyan); 
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-
+        
         .component-content-section p, 
         .component-content-section li { 
             font-size: 1.1rem;
@@ -277,9 +269,9 @@
             position: relative;
         }
         .component-content-section ul li::before {
-            content: '\f058'; /* FontAwesome check-circle icon for a softer look */
+            content: '\f058'; 
             font-family: 'Font Awesome 5 Free';
-            font-weight: 900; /* Solid icon */
+            font-weight: 900;
             color: var(--primary-violet); 
             position: absolute;
             left: 0;
@@ -301,44 +293,6 @@
         .component-content-section em {
             color: var(--secondary-cyan); 
             font-style: italic;
-        }
-        .component-content-section blockquote {
-            border-left: 5px solid var(--accent-blue);
-            padding: 15px 25px;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--text-color-medium);
-            background-color: rgba(var(--accent-blue-rgb), 0.08);
-            border-radius: 0 10px 10px 0;
-            font-size: 1.05rem;
-        }
-        .component-content-section blockquote p {
-            margin-bottom: 0;
-            text-align: left;
-        }
-        .example-box {
-            background-color: rgba(var(--accent-yellow-rgb), 0.05); 
-            border: 1px dashed var(--accent-yellow);
-            padding: 20px;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-        }
-        .example-box h5 {
-            color: var(--accent-yellow);
-            margin-top: 0;
-            font-family: 'Raleway', sans-serif; 
-            font-weight: 700;
-        }
-        .keyword-link { 
-            color: var(--accent-yellow);
-            text-decoration: none;
-            font-weight: bold;
-            border-bottom: 1px dashed var(--accent-yellow);
-            transition: all 0.3s ease;
-        }
-        .keyword-link:hover {
-            color: var(--accent-green);
-            border-bottom-color: var(--accent-green);
         }
         
         .breadcrumb {
@@ -390,25 +344,25 @@
         }
 
         .back-btn {
-            background: linear-gradient(45deg, var(--accent-blue), var(--primary-violet)); 
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-blue)); 
             color: white; 
-            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.4);
+            box-shadow: 0 3px 10px rgba(var(--secondary-cyan-rgb), 0.4);
         }
         .back-btn:hover {
-            background: linear-gradient(45deg, var(--primary-violet), var(--accent-blue)); 
+            background: linear-gradient(45deg, var(--accent-blue), var(--secondary-cyan)); 
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 5px 15px rgba(var(--primary-violet-rgb), 0.5); 
+            box-shadow: 0 5px 15px rgba(var(--accent-blue-rgb), 0.5); 
         }
 
         .continue-btn {
-            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); 
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-yellow)); 
             color: var(--dark-bg); 
             box-shadow: 0 3px 10px rgba(var(--accent-green-rgb), 0.4);
         }
         .continue-btn:hover {
-            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); 
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-green)); 
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 5px 15px rgba(var(--secondary-cyan-rgb), 0.5); 
+            box-shadow: 0 5px 15px rgba(var(--accent-yellow-rgb), 0.5); 
         }
         
         footer { 
@@ -450,14 +404,14 @@
         .footer-links { list-style: none; padding-left:0; } 
         .footer-links li { margin-bottom: 12px; }
         .footer-links a { 
-            color: var(--text-color-medium); 
+            color: var(--text-color-light);
             text-decoration: none; 
             transition: all 0.3s ease; 
             display: inline-block; 
             padding: 4px 0; 
-            font-weight: 300; 
+            font-family: 'Comfortaa', sans-serif; 
         }
-        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        .footer-links a:hover { color: var(--accent-yellow); transform: translateX(8px); }
         
         .contact-info { margin-top: 20px; }
         .contact-info p { 
@@ -467,24 +421,9 @@
             margin-bottom: 12px; 
             font-size: 1.05rem; 
             color: var(--text-color-medium); 
+            font-family: 'Comfortaa', sans-serif; 
         }
-        .contact-info i { color: var(--accent-blue); } 
-        
-        .social-links { display: flex; gap: 15px; margin-top: 22px; }
-        .social-links a { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 45px; 
-            height: 45px; 
-            background: rgba(255, 255, 255, 0.04); 
-            color: var(--accent-blue); 
-            border-radius: 50%; 
-            transition: all 0.4s ease; 
-            font-size: 1.2rem; 
-            border: 1px solid var(--accent-blue); 
-        }
-        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        .contact-info i { color: var(--accent-blue); flex-shrink: 0; } 
         
         .copyright { 
             text-align: center; 
@@ -492,6 +431,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.07); 
             color: #a090b0; 
             font-size: 0.95rem; 
+            font-family: 'Comfortaa', sans-serif; 
         }
         .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
         .copyright a:hover { color: var(--text-color-light); }
@@ -528,7 +468,6 @@
             .component-content-section h4 {font-size: 1.3rem;} 
             .navigation-buttons-container { flex-direction: column; } 
             .nav-btn { width: 100%; max-width: 300px; } 
-
         }
         
         @media (max-width: 600px) {
@@ -553,17 +492,18 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="index.html" rel="noopener noreferrer" class="logo">
-                <i class="fas fa-brain"></i>
-                <h1>BORDERLINE JOURNEY</h1>
+            <a href="index.html" class="logo" aria-label="Universo Borderline Homepage"> 
+                <i class="fas fa-brain" aria-hidden="true"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
             </a>
-            <nav>
+            <nav aria-label="Navegación principal">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="cursos.html" class="active">Cursos</a></li> 
+                    <li><a href="cursos.html" class="active" aria-current="page">Cursos</a></li> 
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
-                    <li><a href="premium.html">Premium</a></li> 
+                    <li><a href="memes.html">Memes</a></li> 
+                    <li><a href="podcast.html">Podcast</a></li> 
                 </ul>
             </nav>
         </div>
@@ -594,8 +534,8 @@
                     Cuando nos enfrentamos a problemas, especialmente si estamos lidiando con estados emocionales intensos como la ansiedad, la depresión o la ira, puede ser muy fácil sentirse <strong>abrumado, paralizado por la indecisión, o recurrir a estrategias de afrontamiento poco útiles</strong> a corto plazo y perjudiciales a largo plazo (como la evitación, la rumiación excesiva, el consumo de sustancias, o la agresión). La TCC, a través del entrenamiento en resolución de problemas, ofrece un marco claro y práctico para desglosar los problemas en partes más manejables, analizar la situación objetivamente y desarrollar soluciones creativas y prácticas.
                 </p>
                  <blockquote>
-                    <p>"Un problema bien definido es un problema medio resuelto." - Charles Kettering. Esta cita encapsula la importancia del primer paso en la resolución efectiva de problemas.</p>
-                </blockquote>
+                     <p>"Un problema bien definido es un problema medio resuelto." - Charles Kettering. Esta cita encapsula la importancia del primer paso en la resolución efectiva de problemas.</p>
+                 </blockquote>
             </section>
 
             <section class="component-content-section">
@@ -691,7 +631,7 @@
             </section>
             
             <section class="component-content-section">
-                <h3><i class="fas-cogs"></i> Habilidades Complementarias para la Resolución Efectiva de Problemas</h3>
+                <h3><i class="fas fa-cogs"></i> Habilidades Complementarias para la Resolución Efectiva de Problemas</h3>
                 <p>El proceso de resolución de problemas se ve potenciado por otras habilidades cognitivas y conductuales:</p>
                 <ul>
                     <li><strong>Manejo de Emociones:</strong> Emociones intensas pueden nublar el juicio. Aprender a regularlas (ej. con técnicas de mindfulness o relajación) permite pensar con más claridad.</li>
@@ -708,7 +648,7 @@
                     El entrenamiento en Resolución de Problemas dentro de la TCC es una herramienta profundamente empoderadora. Al aprender y practicar estos pasos de manera sistemática, las personas no solo se vuelven más capaces de enfrentar los desafíos específicos que les llevaron a terapia, sino que también adquieren una habilidad transferible y vital para manejar las dificultades futuras de manera más independiente y con mayor confianza. Reduce la sensación de impotencia y aumenta la autoeficacia, contribuyendo significativamente a un mayor bienestar general y a una vida más satisfactoria y autodirigida.
                 </p>
             </section>
-
+            
             <div class="navigation-buttons-container">
                 <a href="tecnicas_exposicion_cbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a Técnicas de Exposición</a>
                 <a href="cbt.html" class="nav-btn continue-btn">Finalizar Curso TCC y Volver <i class="fas fa-check-circle"></i></a>
@@ -721,33 +661,16 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>Borderline Journey</h3>
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="#"><i class="fab fa-discord"></i></a>
-                    </div>
+                    <h3>Universo Borderline</h3>
+                    <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Navegación</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li> 
-                        <li><a href="cursos.html">Cursos</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="premium.html">Premium</a></li> 
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Recursos DBT</h3>
+                    <h3>Enlaces Útiles</h3> 
                     <ul class="footer-links">
                         <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
+                        <li><a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" target="_blank" rel="noopener noreferrer">¿Qué es TCC?</a></li>
                         <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar un Terapeuta DBT</a></li>
                         <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
                     </ul>
                 </div>
@@ -755,25 +678,26 @@
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> itfrombit.w74@gmail.com</p>
-                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
-                        <p><i class="fas fa-clock"></i> Soporte: 24/7 para miembros premium</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
                     </div>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Borderline Journey. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
-                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados.</p> 
+                <p><a href="privacidad.html">Privacidad</a> | <a href="terminos.html">Términos</a> | <a href="seguridad.html">Seguridad</a></p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
+            // Create animated stars
             const starsContainer = document.getElementById('stars');
             if (starsContainer) {
                 const starsCount = 150;
@@ -798,34 +722,34 @@
                 }
             }
             
+            // Active navigation link highlighting
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
             const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
                 link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 
                 if (linkFilename === 'cursos.html' && 
-                    (currentPageFilename === 'dbt.html' || 
+                    (currentPageFilename === 'cursos.html' || 
+                     currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
-                     currentPageFilename === 'mindfulness_dbt.html' ||
-                     currentPageFilename === 'regulacion_emocional_dbt.html' ||
-                     currentPageFilename === 'tolerancia_malestar_dbt.html' ||
-                     currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
-                     currentPageFilename === 'activacion_conductual_cbt.html' ||
-                     currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
-                     currentPageFilename === 'resolucion_problemas_cbt.html' // Current page
-                     )) {
-                     link.classList.add('active'); 
+                     currentPageFilename.includes('_dbt') ||
+                     currentPageFilename.includes('_cbt') 
+                    )) {
+                    link.classList.add('active'); 
+                    link.setAttribute('aria-current', 'page');
                 } else if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
                 }
             });
             
+            // Header scroll effect
             const header = document.getElementById('main-header');
             if(header){
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) {
+                    if (window.scrollY > 40) { 
                         header.classList.add('scrolled');
                     } else {
                         header.classList.remove('scrolled');
@@ -833,6 +757,7 @@
                 });
             }
             
+            // Intersection Observer for module content section animations
             const animatedSections = document.querySelectorAll('.component-content-section'); 
             if (animatedSections.length > 0) {
                  const observerOptions = {
@@ -844,11 +769,10 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                        } else {
-                            // entry.target.classList.remove('visible');
                         }
                     });
                 }, observerOptions);
+
                 animatedSections.forEach(section => {
                     observer.observe(section);
                 });
@@ -856,4 +780,4 @@
         });
     </script>
 </body>
-</html>
+</ht
