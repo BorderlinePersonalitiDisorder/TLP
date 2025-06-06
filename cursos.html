@@ -118,6 +118,7 @@
             background-clip: text; 
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px; 
+            white-space: nowrap; /* Evita que el texto se divida en dos líneas */
         }
         
         .logo i { 
@@ -530,8 +531,8 @@
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 if (linkFilename === currentPageFilename || (currentPageFilename === 'cursos.html' && linkFilename === 'cursos.html')) {
                     navLinks.forEach(nl => {
-                         nl.classList.remove('active');
-                         nl.removeAttribute('aria-current');
+                          nl.classList.remove('active');
+                          nl.removeAttribute('aria-current');
                     });
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
