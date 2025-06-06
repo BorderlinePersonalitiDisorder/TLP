@@ -269,7 +269,7 @@
             transform: translateY(-12px) scale(1.03); 
             box-shadow: 0 15px 35px rgba(var(--primary-violet-rgb), 0.6); 
         }
-        .module-card.mindfulness:hover { border-color: var(--accent-cyan); }
+        .module-card.mindfulness:hover { border-color: var(--secondary-cyan); }
         .module-card.emotion-regulation:hover { border-color: var(--accent-green); }
         .module-card.distress-tolerance:hover { border-color: var(--accent-red); }
         .module-card.interpersonal-effectiveness:hover { border-color: var(--accent-blue); }
@@ -285,7 +285,7 @@
             transform: scale(1.1) rotate(-5deg); 
         }
 
-        .module-card.mindfulness .icon-container { color: var(--accent-cyan); }
+        .module-card.mindfulness .icon-container { color: var(--secondary-cyan); }
         .module-card.emotion-regulation .icon-container { color: var(--accent-green); }
         .module-card.distress-tolerance .icon-container { color: var(--accent-red); }
         .module-card.interpersonal-effectiveness .icon-container { color: var(--accent-blue); }
@@ -298,7 +298,7 @@
             margin-bottom: 1rem;
             transition: color 0.3s ease, text-shadow 0.3s ease; 
         }
-        .module-card.mindfulness h3 { color: var(--accent-cyan); }
+        .module-card.mindfulness h3 { color: var(--secondary-cyan); }
         .module-card.emotion-regulation h3 { color: var(--accent-green); }
         .module-card.distress-tolerance h3 { color: var(--accent-red); }
         .module-card.interpersonal-effectiveness h3 { color: var(--accent-blue); }
@@ -331,8 +331,8 @@
         .explore-module-btn:hover {
             transform: scale(1.05) translateY(-2px); 
         }
-        .module-card.mindfulness .explore-module-btn { background: linear-gradient(45deg, var(--accent-cyan), var(--primary-violet)); box-shadow: 0 4px 12px rgba(var(--accent-cyan-rgb),0.4);}
-        .module-card.mindfulness .explore-module-btn:hover { background: linear-gradient(45deg, var(--primary-violet), var(--accent-cyan)); border-color: var(--accent-cyan);}
+        .module-card.mindfulness .explore-module-btn { background: linear-gradient(45deg, var(--secondary-cyan), var(--primary-violet)); box-shadow: 0 4px 12px rgba(var(--secondary-cyan-rgb),0.4);}
+        .module-card.mindfulness .explore-module-btn:hover { background: linear-gradient(45deg, var(--primary-violet), var(--secondary-cyan)); border-color: var(--secondary-cyan);}
 
         .module-card.emotion-regulation .explore-module-btn { background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan)); color:var(--dark-bg); box-shadow: 0 4px 12px rgba(var(--accent-green-rgb),0.4);}
         .module-card.emotion-regulation .explore-module-btn:hover { background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green)); border-color: var(--accent-green);}
@@ -431,8 +431,6 @@
         }
         .contact-info i { color: var(--accent-blue); flex-shrink: 0; } 
         
-        /* .social-links class removed from the first footer column as per user request */
-        
         .copyright { 
             text-align: center; 
             padding-top: 2rem; 
@@ -511,6 +509,7 @@
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
                     <li><a href="memes.html">Memes</a></li> 
+                    <li><a href="podcast.html">Podcast</a></li> 
                 </ul>
             </nav>
         </div>
@@ -590,18 +589,6 @@
                 <div class="footer-column">
                     <h3>Universo Borderline</h3>
                     <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <!-- Social links icons removed -->
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Navegación</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li> 
-                        <li><a href="cursos.html">Cursos</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="memes.html">Memes</a></li> 
-                    </ul>
                 </div>
                 
                 <div class="footer-column">
@@ -618,7 +605,6 @@
                     <div class="contact-info">
                         <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
                         <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
-                        <!-- Removed "Soporte: 24/7 para miembros premium" -->
                         <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
                         <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
                     </div>
@@ -626,7 +612,7 @@
             </div>
             <div class="copyright">
                 <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
-                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+                <p><a href="privacidad.html">Privacidad</a> | <a href="terminos.html">Términos</a> | <a href="seguridad.html">Seguridad</a></p>
             </div>
         </div>
     </footer>
@@ -674,14 +660,8 @@
                     (currentPageFilename === 'cursos.html' || 
                      currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
-                     currentPageFilename === 'mindfulness_dbt.html' ||
-                     currentPageFilename === 'regulacion_emocional_dbt.html' ||
-                     currentPageFilename === 'tolerancia_malestar_dbt.html' ||
-                     currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
-                     currentPageFilename === 'activacion_conductual_cbt.html' || 
-                     currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
-                     currentPageFilename === 'resolucion_problemas_cbt.html'
+                     currentPageFilename.includes('_dbt') ||
+                     currentPageFilename.includes('_cbt') 
                     )) {
                     link.classList.add('active'); 
                     link.setAttribute('aria-current', 'page');
@@ -715,7 +695,6 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible'); 
-                            // obs.unobserve(entry.target); // Optionally unobserve after first animation
                         }
                     });
                 }, observerOptions);
