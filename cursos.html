@@ -512,7 +512,7 @@
             
             <div class="copyright">
                 <p>© 2023-<span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT/CBT.</p> 
-                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+                <p><a href="privacidad.html">Privacidad</a> | <a href="terminos.html">Términos</a> | <a href="seguridad.html">Seguridad</a></p>
             </div>
         </div>
     </footer>
@@ -529,11 +529,7 @@
                 link.classList.remove('active'); 
                 link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                if (linkFilename === currentPageFilename || (currentPageFilename === 'cursos.html' && linkFilename === 'cursos.html')) {
-                    navLinks.forEach(nl => {
-                          nl.classList.remove('active');
-                          nl.removeAttribute('aria-current');
-                    });
+                if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
                 }
