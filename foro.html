@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Foros de Comunidad - Universo Borderline</title>
+    <title>Foro: Apoyo General y Bienvenida - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -126,7 +126,7 @@
         
         @keyframes logoPulse {
             0% { transform: scale(1); color: var(--accent-green); }
-            50% { transform: scale(1.1); color: var(--secondary-cyan); } 
+            50% { transform: scale(1.1); color: var(--secondary-cyan); }
             100% { transform: scale(1); color: var(--accent-blue); }
         }
         
@@ -181,17 +181,17 @@
             flex-grow: 1; 
         }
 
-        .page-header {
+        .forum-page-header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2.5rem;
             padding-top: 2rem;
         }
 
-        .page-header h2 {
+        .forum-page-header h2 {
             font-family: 'Playfair Display', serif; 
-            font-size: 3rem; 
+            font-size: 2.8rem; 
             font-weight: 700; 
-            color: var(--secondary-cyan);
+            color: var(--secondary-cyan); /* Main color for general support */
             margin-bottom: 0.5rem;
             text-transform: none; 
             letter-spacing: 0.5px; 
@@ -199,94 +199,47 @@
             align-items: center;
             gap: 15px; 
         }
-         .page-header h2 i {
-            font-size: 2.6rem; 
-        }
-        @keyframes subtleRotate {
-            0% { transform: rotate(0deg) scale(1); }
-            25% { transform: rotate(5deg) scale(1.05); }
-            50% { transform: rotate(0deg) scale(1.1); }
-            75% { transform: rotate(-5deg) scale(1.05); }
-            100% { transform: rotate(0deg) scale(1); }
-        }
-        .page-header h2 i.fa-comments {
-             animation: subtleRotate 8s infinite linear;
-        }
-
-
-        .page-header p {
-            font-size: 1.2rem;
-            color: var(--text-color-medium);
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .forum-categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .forum-category-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 25px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-            transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.6s ease-out;
-            border: 1px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            opacity: 0; 
-            transform: translateY(30px); 
-        }
-        .forum-category-card.visible { 
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-
-        .forum-category-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 12px 30px rgba(var(--accent-green-rgb), 0.4);
-        }
-
-        .forum-category-card .icon-container {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            color: var(--accent-green);
-            text-align: center;
-        }
-
-        .forum-category-card h3 {
-            font-family: 'Krona One', sans-serif;
-            font-size: 1.4rem;
-            color: var(--accent-yellow);
-            margin-bottom: 0.8rem;
-            text-align: center;
-        }
-
-        .forum-category-card p.description {
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: var(--text-color-light);
-            margin-bottom: 1.5rem;
-            text-align: center;
-            flex-grow: 1;
+           .forum-page-header h2 i {
+            font-size: 2.4rem; 
         }
         
-        .forum-stats {
-            font-size: 0.85rem;
+        .forum-page-header p.description {
+            font-size: 1.1rem;
             color: var(--text-color-medium);
-            margin-bottom: 1.5rem;
+            max-width: 750px;
+            margin: 0 auto 1.5rem auto;
+        }
+
+        .breadcrumb {
+            font-size: 0.9rem;
+            color: var(--text-color-medium);
+            margin-bottom: 2rem;
             text-align: center;
         }
-        .forum-stats span { margin: 0 10px; }
-        .forum-stats i { margin-right: 5px; }
+        .breadcrumb a {
+            color: var(--accent-yellow);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .breadcrumb a:hover {
+            color: var(--accent-green);
+        }
+        .breadcrumb span {
+            margin: 0 8px;
+        }
 
+        .forum-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1rem;
+            background-color: rgba(var(--secondary-cyan-rgb), 0.08); /* Thematic color */
+            border-radius: 10px;
+            border: 1px solid rgba(var(--secondary-cyan-rgb), 0.2);
+        }
 
-        .enter-forum-btn {
-            display: inline-block;
+        .create-thread-btn {
             background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
             color: var(--dark-bg);
             padding: 10px 20px;
@@ -294,113 +247,283 @@
             text-decoration: none;
             font-weight: bold;
             transition: background 0.3s ease, transform 0.3s ease;
-            text-align: center;
-            align-self: center; 
-            margin-top: auto; 
+            font-size: 0.95rem;
+            cursor: pointer;
+            border: none; 
         }
-
-        .enter-forum-btn:hover {
+        .create-thread-btn:hover {
             background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
-
-        .resources-section {
-            margin-top: 3rem;
-            margin-bottom: 3rem;
-            padding: 25px;
-            background: rgba(var(--accent-yellow-rgb), 0.05);
-            border-radius: 15px;
-            border: 1px solid var(--accent-yellow);
-            opacity: 0; 
-            transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        .create-thread-btn i {
+            margin-right: 8px;
         }
-        .resources-section.visible {
-             opacity: 1;
-             transform: translateY(0);
-        }
-
-        .resources-section h2 {
-            font-family: 'Fredoka One', cursive;
+        
+        .forum-section-title {
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.6rem;
             color: var(--accent-yellow);
-            font-size: 1.8rem;
             margin-bottom: 1.5rem;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-yellow);
+            display: inline-block;
         }
-        .resources-list {
+
+        .thread-list {
             list-style: none;
             padding: 0;
+            margin-bottom: 2.5rem;
         }
-        .resources-list li {
+        .thread-item {
+            background: var(--card-bg);
+            border-radius: 10px;
             margin-bottom: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Added cursor for clickable items */
         }
-        .resources-list a {
+        .thread-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(var(--secondary-cyan-rgb), 0.3); /* Thematic shadow */
+        }
+        .thread-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.75rem;
+            flex-wrap: wrap; 
+        }
+        .thread-item-header h4 a {
+            font-family: 'Comfortaa', sans-serif;
+            font-size: 1.25rem;
+            color: var(--secondary-cyan); /* Thematic color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .thread-item-header h4 a:hover {
+            color: var(--accent-green);
+        }
+        .thread-meta {
+            font-size: 0.85rem;
+            color: var(--text-color-medium);
             display: flex; 
-            align-items: center; 
-            gap: 12px; 
-            background-color: var(--accent-blue);
-            color: white;
+            flex-wrap: wrap; 
+            gap: 10px; 
+        }
+        .thread-meta i {
+            margin-right: 5px;
+        }
+        .thread-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-color-light);
+            line-height: 1.7;
+            white-space: pre-wrap; 
+        }
+        
+        .sticky-thread {
+            border-left: 4px solid var(--accent-yellow); 
+            background-color: rgba(var(--accent-yellow-rgb), 0.05);
+        }
+        .sticky-thread .thread-item-header h4 a {
+            color: var(--accent-yellow);
+        }
+        .sticky-thread .thread-item-header h4 a:hover {
+            color: var(--secondary-cyan); 
+        }
+        .sticky-thread .thread-item-header h4 i {
+            margin-right: 8px;
+            color: var(--accent-yellow);
+        }
+
+        /* Modal Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background-color: var(--dark-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            transform: scale(0.95);
+            transition: transform 0.3s ease;
+            max-height: 90vh; /* Limit modal height */
+            overflow-y: auto; /* Enable scrolling for content */
+        }
+        .modal-overlay.active .modal-content {
+            transform: scale(1);
+        }
+        .modal-close-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: none;
+            border: none;
+            color: var(--text-color-medium);
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .modal-close-btn:hover {
+            color: var(--accent-red);
+        }
+        .modal-content h3 {
+            font-family: 'Krona One', sans-serif;
+            color: var(--accent-yellow);
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .modal-content label {
+            display: block;
+            color: var(--text-color-medium);
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        .modal-content input[type="text"],
+        .modal-content textarea {
+            width: 100%;
+            padding: 0.75rem;
+            margin-bottom: 1rem;
+            background-color: rgba(var(--card-bg), 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            color: var(--text-color-light);
+            font-size: 1rem;
+            font-family: 'Raleway', sans-serif; 
+        }
+        .modal-content textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+        .modal-content button[type="submit"],
+        .modal-content .submit-comment-btn { /* Style for new comment button */
+            display: block;
+            width: 100%;
+            background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
+            color: var(--dark-bg);
             padding: 12px 20px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            width: 100%; 
-            box-sizing: border-box; 
+            transition: background 0.3s ease, transform 0.3s ease;
+            font-size: 1rem;
+            border: none;
+            cursor: pointer;
+            font-family: 'Comfortaa', sans-serif; 
         }
-        .resources-list a:hover {
-            background-color: var(--accent-magenta);
-            transform: translateX(5px);
-        }
-        .resources-list a i {
-            font-size: 1.2rem; 
-            min-width: 20px;
-            text-align: center;
+        .modal-content button[type="submit"]:hover,
+        .modal-content .submit-comment-btn:hover {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
+            transform: scale(1.02);
         }
 
-
-        .forum-guidelines {
-            background: rgba(var(--accent-blue-rgb), 0.05);
-            padding: 25px;
-            border-radius: 15px;
-            border: 1px dashed rgba(var(--accent-blue-rgb), 0.3);
-            margin-top: 2rem;
-            opacity: 0; 
-            transform: translateY(30px); 
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        /* Thread Detail Modal Specific Styles */
+        .thread-detail-content {
+            background-color: rgba(var(--primary-violet-rgb), 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(var(--primary-violet-rgb), 0.3);
+            white-space: pre-wrap;
         }
-        .forum-guidelines.visible { 
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .forum-guidelines h3 {
+        .thread-detail-comments-section h4 {
             font-family: 'Krona One', sans-serif;
-            color: var(--accent-blue);
-            text-align: center;
+            color: var(--accent-green);
             margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(var(--accent-green-rgb), 0.3);
+            padding-bottom: 0.5rem;
+        }
+        .comment-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+        .comment-item {
+            background-color: rgba(var(--accent-blue-rgb), 0.05);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 0.7rem;
+            border: 1px solid rgba(var(--accent-blue-rgb), 0.2);
+            font-size: 0.9rem;
+        }
+        .comment-meta {
+            font-size: 0.75rem;
+            color: var(--text-color-medium);
+            margin-bottom: 0.3rem;
+        }
+        .comment-text {
+            color: var(--text-color-light);
+            white-space: pre-wrap;
+        }
+        .no-comments-message {
+            color: var(--text-color-medium);
+            text-align: center;
+            font-style: italic;
+            padding: 1rem;
+        }
+
+        /* Pagination Styles */
+        .pagination-nav { 
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
+        }
+        .pagination-nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            gap: 5px; 
+        }
+        .pagination-nav li a, .pagination-nav li span { 
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            padding: 0.5rem 1rem; 
+            height: 40px; 
+            line-height: 1.25rem; 
+            color: var(--text-color-medium);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem; 
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
-        .forum-guidelines ul {
-            list-style-position: inside;
-            padding-left: 0;
+        .pagination-nav li a:hover {
+            background-color: rgba(var(--secondary-cyan-rgb), 0.2); /* Thematic hover */
+            color: var(--secondary-cyan);
         }
-        .forum-guidelines ul li {
-            margin-bottom: 0.5rem;
-            font-size: 0.95rem;
+        .pagination-nav li a[aria-current="page"] {
+            z-index: 10;
+            color: var(--dark-bg); 
+            background-color: var(--secondary-cyan);
+            border-color: var(--secondary-cyan);
         }
-        .forum-guidelines ul li i {
-            color: var(--accent-blue);
-            margin-right: 8px;
-        }
-        
+        .pagination-nav li:first-child a { border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; }
+        .pagination-nav li:last-child a { border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; }
+
+
         footer { 
             background: rgba(10,10,32,0.97); 
             color: white; 
@@ -484,7 +607,7 @@
         }
         @keyframes twinkle {
             0% { opacity: 0; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+            50% { opacity: 1; transform: scale(1.1); }
             100% { opacity: 0; transform: scale(1); }
         }
         .galaxy {
@@ -497,13 +620,24 @@
             100% { transform: rotate(360deg); }
         }
         
+        .user-id-display {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-color-medium);
+            margin-top: 1rem;
+            word-break: break-all;
+            padding: 0.5rem;
+            background-color: rgba(var(--primary-violet-rgb), 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(var(--primary-violet-rgb), 0.3);
+        }
+
         @media (max-width: 900px) {
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .page-header h2 { font-size: 2.6rem; }
-            .page-header h2 i { font-size: 2.2rem; }
-            .forum-category-card h3 {font-size: 1.3rem;}
+            .forum-page-header h2 { font-size: 2.2rem; }
+            .forum-page-header h2 i { font-size: 2rem; }
         }
         
         @media (max-width: 600px) {
@@ -511,16 +645,12 @@
             .logo h1 { font-size: 1.6rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .page-header h2 { font-size: 2rem; }
-            .page-header h2 i { font-size: 1.8rem; }
-            .page-header p { font-size: 1rem; }
-            .forum-categories-grid { grid-template-columns: 1fr; }
-            .forum-category-card { padding: 20px; }
-            .forum-category-card h3 {font-size: 1.2rem;}
-            .forum-category-card p.description {font-size: 0.9rem;}
-            .enter-forum-btn { padding: 8px 16px; font-size: 0.9rem;}
-            .resources-section h2 { font-size: 1.6rem; }
-            .resources-list a { padding: 10px 15px; font-size: 0.9rem; }
+            .forum-page-header h2 { font-size: 1.8rem; }
+            .forum-page-header h2 i { font-size: 1.6rem; }
+            .forum-page-header p.description { font-size: 1rem; }
+            .forum-actions { flex-direction: column; gap: 1rem; }
+            .thread-item-header { flex-direction: column; align-items: flex-start; gap: 0.5rem;}
+            .thread-meta span { margin-left: 0; margin-right: 10px;} 
         }
     </style>
 </head>
@@ -540,9 +670,9 @@
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="cursos.html">Cursos</a></li> 
                     <li><a href="blog.html">Blog</a></li> 
-                    <li><a href="foro.html" class="active" aria-current="page">Foros</a></li> 
+                    <li><a href="foro.html">Foro</a></li> <!-- Changed from Foros to Foro -->
                     <li><a href="memes.html">Memes</a></li> 
-                    <li><a href="podcast.html">Podcast</a></li> <!-- Podcast link added -->
+                    <li><a href="podcast.html">Podcast</a></li> 
                 </ul>
             </nav>
         </div>
@@ -550,104 +680,139 @@
 
     <main class="main-page-content">
         <div class="container">
-            <div class="page-header">
-                <h2><i class="fas fa-comments"></i> Comunidad Universo Borderline</h2>
-                <p>
-                    Un espacio seguro y de apoyo para conectar, compartir experiencias, hacer preguntas y aprender unos de otros en el viaje hacia el bienestar emocional. 
+            <div class="forum-page-header">
+                <h2><i class="fas fa-hand-holding-heart"></i> Foro: Apoyo General y Bienvenida</h2>
+                <p class="description">
+                    Este es tu espacio para presentarte a la comunidad de Universo Borderline. Comparte tus experiencias, desafíos y logros. Encuentra comprensión, haz preguntas y conecta con otros que entienden tu viaje.
                 </p>
+                <div class="user-id-display">
+                    Tu ID de Usuario (para compartir): <span id="current-user-id">Cargando...</span>
+                </div>
             </div>
 
-            <div class="forum-categories-grid">
-                <article class="forum-category-card">
-                    <div class="icon-container"><i class="fas fa-hand-holding-heart"></i></div>
-                    <h3>Apoyo General y Bienvenida</h3>
-                    <p class="description">Preséntate a la comunidad, comparte tus desafíos y logros generales, y encuentra un espacio de escucha y comprensión.</p>
-                    <div class="forum-stats">
-                        <span><i class="fas fa-comments"></i> 125 Temas</span>
-                        <span><i class="fas fa-reply"></i> 872 Respuestas</span>
-                    </div>
-                    <a href="foro_apoyo_general.html" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
-                </article>
-
-                <article class="forum-category-card">
-                    <div class="icon-container"><i class="fas fa-yin-yang"></i></div>
-                    <h3>Habilidades DBT en Práctica</h3>
-                    <p class="description">Discute cómo aplicas las habilidades de Mindfulness, Regulación Emocional, Tolerancia al Malestar y Efectividad Interpersonal en tu vida diaria.</p>
-                     <div class="forum-stats">
-                        <span><i class="fas fa-comments"></i> 88 Temas</span>
-                        <span><i class="fas fa-reply"></i> 630 Respuestas</span>
-                    </div>
-                    <a href="foro_habilidades_dbt.html" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
-                </article>
-
-                <article class="forum-category-card">
-                    <div class="icon-container"><i class="fas fa-users"></i></div>
-                    <h3>Relaciones y Familia</h3>
-                    <p class="description">Un espacio para hablar sobre los desafíos y éxitos en las relaciones interpersonales, familiares y de pareja desde la perspectiva del TLP y la DBT.</p>
-                     <div class="forum-stats">
-                        <span><i class="fas fa-comments"></i> 62 Temas</span>
-                        <span><i class="fas fa-reply"></i> 415 Respuestas</span>
-                    </div>
-                    <a href="foro_relaciones_familia.html" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
-                </article>
-                
-                <article class="forum-category-card">
-                    <div class="icon-container"><i class="fas fa-lightbulb"></i></div> <h3>Recursos y Herramientas</h3>
-                    <p class="description">Comparte libros, artículos, aplicaciones, videos y otras herramientas útiles que te hayan ayudado en tu proceso de recuperación y aprendizaje.</p>
-                     <div class="forum-stats">
-                        <span><i class="fas fa-comments"></i> 45 Temas</span>
-                        <span><i class="fas fa-reply"></i> 280 Respuestas</span>
-                    </div>
-                    <a href="foro_recursos_herramientas.html" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a>
-                </article>
-
-                <article class="forum-category-card"> 
-                    <div class="icon-container"><i class="fas fa-spa"></i></div> 
-                    <h3>Mindfulness y Meditación</h3> 
-                    <p class="description">Comparte tus prácticas de mindfulness, meditaciones guiadas favoritas y cómo estas herramientas te ayudan a encontrar calma y centrarte.</p> 
-                    <div class="forum-stats"> 
-                        <span><i class="fas fa-comments"></i> 30 Temas</span> 
-                        <span><i class="fas fa-reply"></i> 150 Respuestas</span> 
-                    </div> 
-                    <a href="foro_mindfulness_meditacion.html" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a> 
-                </article> 
-
-                <article class="forum-category-card"> 
-                    <div class="icon-container"><i class="fas fa-shield-alt"></i></div> <!-- Changed icon -->
-                    <h3>Superando Crisis</h3> 
-                    <p class="description">Un espacio para discutir estrategias de afrontamiento en momentos de crisis, compartir experiencias sobre cómo superar obstáculos y ofrecer apoyo mutuo.</p> 
-                    <div class="forum-stats"> 
-                        <span><i class="fas fa-comments"></i> 25 Temas</span> 
-                        <span><i class="fas fa-reply"></i> 120 Respuestas</span> 
-                    </div> 
-                    <a href="foro_superando_crisis.html" class="enter-forum-btn">Entrar al Foro <i class="fas fa-arrow-right"></i></a> 
-                </article> 
+            <div class="breadcrumb">
+                <a href="foro.html">Todos los Foros</a>
+                <span>&gt;</span>
+                <span>Apoyo General y Bienvenida</span>
             </div>
 
-            <section class="resources-section">
-                <h2><i class="fas fa-book-open"></i> Enlaces Educativos y de Apoyo</h2>
-                <ul class="resources-list">
-                    <li><a href="https://www.casbuenosaires.org.ar/" target="_blank" rel="noopener noreferrer"><i class="fas fa-hands-helping"></i> Línea de Prevención del Suicidio (Argentina)</a></li>
-                    <li><a href="https://www.aluba.org.ar/" target="_blank" rel="noopener noreferrer"><i class="fas fa-utensils"></i> Trastornos Alimentarios (ALUBA)</a></li>
-                    <li><a href="https://jugadoresanonimos.org.ar/" target="_blank" rel="noopener noreferrer"><i class="fas fa-dice"></i> Ludopatía: Jugadores Anónimos (Argentina)</a></li>
-                    <li><a href="https://www.behavioraltech.org/resources/links/" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Behavioral Tech (Recursos DBT)</a></li>
-                    <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer"><i class="fas fa-info-circle"></i> Información sobre TLP (NIMH)</a></li>
-                    <li><a href="https://www.mayoclinic.org/es/diseases-conditions/kleptomania/symptoms-causes/syc-20364732" target="_blank" rel="noopener noreferrer"><i class="fas fa-hand-sparkles"></i> Cleptomanía: Información (Mayo Clinic)</a></li>
+            <div class="forum-actions">
+                <button id="open-new-thread-modal-btn" class="create-thread-btn"><i class="fas fa-plus-circle"></i> Crear Nuevo Tema</button>
+                <div>
+                    <!-- Placeholder for search or filter if needed later -->
+                </div>
+            </div>
+
+            <section id="sticky-threads-section">
+                <h3 class="forum-section-title">Hilos Destacados</h3>
+                <ul class="thread-list" id="sticky-thread-list-ul">
+                    <!-- Sticky threads will be loaded here dynamically -->
                 </ul>
             </section>
-            <section class="forum-guidelines">
-                <h3><i class="fas fa-gavel"></i> Normas de la Comunidad</h3> <ul>
-                    <li><i class="fas fa-check-circle"></i> Sé respetuoso y empático con todos los miembros.</li>
-                    <li><i class="fas fa-check-circle"></i> No compartas información personal identificable.</li>
-                    <li><i class="fas fa-check-circle"></i> Evita el lenguaje ofensivo o discriminatorio.</li>
-                    <li><i class="fas fa-check-circle"></i> No se permite la promoción de servicios o productos no autorizados.</li>
-                    <li><i class="fas fa-check-circle"></i> Reporta cualquier contenido que viole estas normas a los moderadores.</li>
-                    <li><i class="fas fa-check-circle"></i> Recuerda que este foro es de apoyo entre pares y no sustituye la terapia profesional.</li>
+
+            <section id="general-threads-section">
+                <h3 class="forum-section-title">Temas de Discusión</h3>
+                <ul class="thread-list" id="general-thread-list-ul">
+                    <!-- General threads will be loaded here dynamically -->
                 </ul>
             </section>
+            
+            <nav aria-label="Paginación de temas" class="pagination-nav">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="sr-only">Anterior</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-current="page">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="sr-only">Siguiente</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
 
         </div>
     </main>
+
+    <!-- Modal for Creating New Thread -->
+    <div id="new-thread-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-new-thread-modal-btn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+            <h3>Crear Nuevo Tema de Discusión</h3>
+            <form id="new-thread-form">
+                <div>
+                    <label for="thread-title">Título del Tema:</label>
+                    <input type="text" id="thread-title" name="thread-title" required>
+                </div>
+                <div>
+                    <label for="thread-content">Contenido del Primer Mensaje:</label>
+                    <textarea id="thread-content" name="thread-content" rows="6" required></textarea>
+                </div>
+                <button type="submit">Publicar Tema</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal for Rules and Policies -->
+    <div id="rules-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-rules-modal-btn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+            <h3>Guía de Normas y Buenas Prácticas del Foro</h3>
+            <div class="thread-detail-content">
+                <p>¡Bienvenido/a a la comunidad de Universo Borderline! Para asegurar un espacio seguro, respetuoso y de apoyo para todos, te pedimos que sigas estas sencillas normas:</p>
+                <ul>
+                    <li><strong>Sé respetuoso/a:</strong> Trata a los demás como te gustaría ser tratado/a. Evita cualquier forma de agresión, acoso o discurso de odio.</li>
+                    <li><strong>Confidencialidad:</strong> No compartas información personal de otros miembros sin su consentimiento. Recuerda que este es un espacio público.</li>
+                    <li><strong>Lenguaje adecuado:</strong> Mantén un lenguaje apropiado para todos los públicos. Evita el uso excesivo de malas palabras.</li>
+                    <li><strong>Apoyo mutuo:</strong> Este foro está diseñado para el apoyo entre pares. Ofrece tu comprensión y experiencia de forma constructiva.</li>
+                    <li><strong>No dar consejos médicos:</strong> No somos profesionales de la salud. Evita dar diagnósticos o consejos médicos. Si necesitas ayuda profesional, consulta a un especialista.</li>
+                    <li><strong>Temas sensibles:</strong> Si vas a discutir un tema sensible o que pueda ser un disparador para otros, por favor, avísalo al principio de tu publicación.</li>
+                    <li><strong>Promoción:</strong> No uses el foro para promocionar productos, servicios o enlaces externos sin la aprobación de los moderadores.</li>
+                    <li><strong>Sé paciente:</strong> La moderación lleva tiempo. Si ves algo que va en contra de las normas, repórtalo en lugar de responder directamente.</li>
+                </ul>
+                <p>¡Gracias por contribuir a una comunidad positiva y enriquecedora!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Thread Details and Comments -->
+    <div id="thread-detail-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-thread-detail-modal-btn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+            <h3 id="thread-detail-title"></h3>
+            <div class="thread-detail-content">
+                <p id="thread-detail-main-content"></p>
+                <p class="thread-meta">
+                    <span>Autor: <span id="thread-detail-author"></span></span>
+                    <span>Creado: <span id="thread-detail-created-at"></span></span>
+                </p>
+            </div>
+
+            <div class="thread-detail-comments-section">
+                <h4>Comentarios</h4>
+                <ul id="comment-list" class="comment-list">
+                    <!-- Comments will be loaded here dynamically -->
+                    <li class="no-comments-message">No hay comentarios aún. ¡Sé el primero en dejar uno!</li>
+                </ul>
+
+                <div class="add-comment-section">
+                    <h4>Añadir un Comentario</h4>
+                    <textarea id="new-comment-content" placeholder="Escribe tu comentario aquí..." rows="3"></textarea>
+                    <button id="submit-comment-btn" class="submit-comment-btn">Comentar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <footer>
         <div class="container">
@@ -655,21 +820,9 @@
                 <div class="footer-column">
                     <h3>Universo Borderline</h3>
                     <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <!-- Social links icons removed -->
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Navegación</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li> 
-                        <li><a href="cursos.html">Cursos</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="memes.html">Memes</a></li> 
-                        <li><a href="podcast.html">Podcast</a></li>
-                        <li><a href="politicas.html">Políticas</a></li> <!-- Políticas link added -->
-                    </ul>
-                </div>
+                <!-- Removed Navegación column as per user request -->
                 
                 <div class="footer-column">
                     <h3>Enlaces Útiles</h3> 
@@ -685,7 +838,6 @@
                     <div class="contact-info">
                         <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
                         <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
-                        <!-- Removed "Soporte: 24/7 para miembros premium" -->
                         <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
                         <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
                     </div>
@@ -699,77 +851,437 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        // FIX: Changed 'initialAuthToken' to '__initial_auth_token' to correctly access the global variable
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
+
+        // Initialize Firebase
+        let app;
+        let db;
+        let auth;
+        let userId = 'loading...'; // Default loading state for userId
+        let currentOpenThreadId = null; // To keep track of the thread currently open in the detail modal
+
+        // Function to display messages (replaces alert)
+        function showMessage(message, type = 'info') {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: ${type === 'error' ? '#f44336' : '#4CAF50'};
+                color: white;
+                padding: 15px;
+                border-radius: 5px;
+                z-index: 9999;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+            `;
+            messageBox.textContent = message;
+            document.body.appendChild(messageBox);
+
+            setTimeout(() => {
+                messageBox.style.opacity = 1;
+            }, 100);
+
+            setTimeout(() => {
+                messageBox.style.opacity = 0;
+                messageBox.addEventListener('transitionend', () => messageBox.remove());
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
+
+            // Initialize Firebase App
+            try {
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+            } catch (error) {
+                console.error("Error initializing Firebase:", error);
+                showMessage("Error al inicializar la base de datos.", "error");
+                return;
+            }
+
+            // Authenticate user
+            onAuthStateChanged(auth, async (user) => {
+                if (!user) {
+                    try {
+                        // Sign in anonymously if no initial token is provided or user is not signed in
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                        userId = auth.currentUser.uid;
+                        document.getElementById('current-user-id').textContent = userId;
+                        console.log("Firebase authenticated. User ID:", userId);
+                        // Fetch threads after successful authentication
+                        setupThreadListener();
+                    } catch (error) {
+                        console.error("Error signing in to Firebase:", error);
+                        showMessage("Error al iniciar sesión en el foro.", "error");
+                        userId = 'Error de autenticación';
+                        document.getElementById('current-user-id').textContent = userId;
+                    }
+                } else {
+                    userId = user.uid;
+                    document.getElementById('current-user-id').textContent = userId;
+                    console.log("Firebase authenticated. User ID:", userId);
+                    // Fetch threads after successful authentication
+                    setupThreadListener();
+                }
+            });
+
+            // Star animation logic
             const starsContainer = document.getElementById('stars');
             if (starsContainer) {
                 const starsCount = 150;
                 for (let i = 0; i < starsCount; i++) {
                     const star = document.createElement('div');
                     star.classList.add('star');
-                    const size = Math.random() * 2.2 + 0.3;
+                    const size = Math.random() * 2.2 + 0.3; // Size between 0.3 and 2.5
                     star.style.width = `${size}px`;
                     star.style.height = `${size}px`;
                     star.style.left = `${Math.random() * 100}%`;
                     star.style.top = `${Math.random() * 100}%`;
-                    star.style.animationDelay = `${Math.random() * 6}s`; 
-                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
-                    if (Math.random() > 0.65) {
-                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
-                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
-                    } else {
-                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
-                    }
+                    star.style.animationDelay = `${Math.random() * 5}s`; // Random delay for twinkle effect
+                    star.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random duration between 2s and 5s
                     starsContainer.appendChild(star);
                 }
             }
-            
-            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html';
-            const navLinks = document.querySelectorAll('header nav a');
-            navLinks.forEach(link => {
-                link.classList.remove('active'); 
-                link.removeAttribute('aria-current');
-                const linkFilename = link.getAttribute('href').split('/').pop();
-                if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html'))) {
-                    link.classList.add('active');
-                    link.setAttribute('aria-current', 'page');
+
+            // Header scroll effect
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
                 }
             });
+
+            // Get modal elements
+            const newThreadModal = document.getElementById('new-thread-modal');
+            const openNewThreadBtn = document.getElementById('open-new-thread-modal-btn');
+            const closeNewThreadBtn = document.getElementById('close-new-thread-modal-btn');
+            const newThreadForm = document.getElementById('new-thread-form');
             
-            const header = document.getElementById('main-header');
-            if(header){
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) {
-                        header.classList.add('scrolled');
+            const rulesModal = document.getElementById('rules-modal');
+            const closeRulesModalBtn = document.getElementById('close-rules-modal-btn');
+
+            const threadDetailModal = document.getElementById('thread-detail-modal');
+            const closeThreadDetailModalBtn = document.getElementById('close-thread-detail-modal-btn');
+            const threadDetailTitle = document.getElementById('thread-detail-title');
+            const threadDetailMainContent = document.getElementById('thread-detail-main-content');
+            const threadDetailAuthor = document.getElementById('thread-detail-author');
+            const threadDetailCreatedAt = document.getElementById('thread-detail-created-at');
+            const commentListUl = document.getElementById('comment-list');
+            const newCommentContentInput = document.getElementById('new-comment-content');
+            const submitCommentBtn = document.getElementById('submit-comment-btn');
+
+            const generalThreadListUl = document.getElementById('general-thread-list-ul');
+            const stickyThreadListUl = document.getElementById('sticky-thread-list-ul');
+
+
+            // Event Listeners for Modals
+            openNewThreadBtn.addEventListener('click', () => {
+                newThreadModal.classList.add('active');
+            });
+            closeNewThreadBtn.addEventListener('click', () => {
+                newThreadModal.classList.remove('active');
+            });
+            newThreadModal.addEventListener('click', (e) => {
+                if (e.target === newThreadModal) {
+                    newThreadModal.classList.remove('active');
+                }
+            });
+
+            closeRulesModalBtn.addEventListener('click', () => {
+                rulesModal.classList.remove('active');
+            });
+            rulesModal.addEventListener('click', (e) => {
+                if (e.target === rulesModal) {
+                    rulesModal.classList.remove('active');
+                }
+            });
+
+            closeThreadDetailModalBtn.addEventListener('click', () => {
+                threadDetailModal.classList.remove('active');
+                currentOpenThreadId = null; // Clear the current thread ID
+            });
+            threadDetailModal.addEventListener('click', (e) => {
+                if (e.target === threadDetailModal) {
+                    threadDetailModal.classList.remove('active');
+                    currentOpenThreadId = null; // Clear the current thread ID
+                }
+            });
+
+            // Function to render threads
+            function renderThreads(threads) {
+                // Clear existing threads
+                generalThreadListUl.innerHTML = '';
+                stickyThreadListUl.innerHTML = '';
+
+                // Sort threads by creation date (newest first for general, then stickies first)
+                threads.sort((a, b) => {
+                    if (a.isSticky && !b.isSticky) return -1;
+                    if (!a.isSticky && b.isSticky) return 1;
+                    return b.createdAt.toDate().getTime() - a.createdAt.toDate().getTime();
+                });
+
+                threads.forEach(thread => {
+                    const threadItem = document.createElement('li');
+                    threadItem.classList.add('thread-item');
+                    threadItem.dataset.threadId = thread.id; // Store thread ID
+
+                    if (thread.isSticky) {
+                        threadItem.classList.add('sticky-thread');
+                    }
+
+                    const lastReplyTime = thread.lastReplyAt ? new Date(thread.lastReplyAt.toDate()).toLocaleString() : 'N/A';
+                    const repliesCount = thread.replies !== undefined ? thread.replies : 0;
+                    const viewsCount = thread.views !== undefined ? thread.views : Math.floor(Math.random() * 1000) + 100; // Placeholder views
+
+                    // Limit content preview to 150 characters for the list view
+                    const excerpt = thread.content.length > 150 ? thread.content.substring(0, 150) + '...' : thread.content;
+
+                    threadItem.innerHTML = `
+                        <div class="thread-item-header">
+                            <h4><a href="#">${thread.isSticky ? '<i class="fas fa-thumbtack"></i>' : ''}${thread.title}</a></h4>
+                            <div class="thread-meta">
+                                <span>Por: ${thread.author || 'Anónimo'}</span>
+                                <span><i class="fas fa-comment"></i> ${repliesCount} Respuestas</span>
+                                <span><i class="fas fa-eye"></i> ${viewsCount} Vistas</span>
+                                <span>Última respuesta: ${lastReplyTime}</span>
+                            </div>
+                        </div>
+                        <p class="thread-excerpt">${excerpt}</p>
+                    `;
+
+                    // Add click listener to open modal
+                    threadItem.addEventListener('click', (e) => {
+                        // Prevent opening thread detail if clicking on any link inside (e.g., author link)
+                        if (e.target.tagName === 'A' || e.target.tagName === 'I') {
+                            e.preventDefault();
+                            if (e.target.closest('.sticky-thread') && e.target.closest('h4 a')) {
+                                rulesModal.classList.add('active'); // Open rules modal if it's the rules sticky thread
+                            }
+                            return;
+                        }
+                        if (thread.isSticky) {
+                            rulesModal.classList.add('active'); // Open rules modal if it's a sticky thread
+                        } else {
+                            openThreadDetailModal(thread.id); // Open thread detail for general threads
+                        }
+                    });
+
+                    if (thread.isSticky) {
+                        stickyThreadListUl.appendChild(threadItem);
                     } else {
-                        header.classList.remove('scrolled');
+                        generalThreadListUl.appendChild(threadItem);
                     }
                 });
             }
-            
-            const animatedElements = document.querySelectorAll('.forum-category-card, .forum-guidelines, .resources-section');
-            if (animatedElements.length > 0) {
-                 const observerOptions = {
-                    root: null,
-                    rootMargin: '0px',
-                    threshold: 0.1
-                };
-                const observer = new IntersectionObserver((entries, obs) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('visible');
-                            // obs.unobserve(entry.target); // Uncomment to animate only once
-                        }
-                    });
-                }, observerOptions);
 
-                animatedElements.forEach(element => {
-                    observer.observe(element);
+            // Setup Firestore listener for threads
+            function setupThreadListener() {
+                if (!db || !userId || userId === 'loading...') {
+                    console.warn("Firestore no está listo o el usuario aún no ha autenticado. Reintentando en 1 segundo...");
+                    setTimeout(setupThreadListener, 1000); // Retry after 1 second
+                    return;
+                }
+
+                // Collection reference for public threads
+                const threadsCollectionRef = collection(db, `artifacts/${appId}/public/data/threads`);
+                const q = query(threadsCollectionRef);
+
+                onSnapshot(q, (snapshot) => {
+                    const threads = [];
+                    snapshot.forEach((doc) => {
+                        threads.push({ id: doc.id, ...doc.data() });
+                    });
+                    renderThreads(threads);
+                }, (error) => {
+                    console.error("Error al obtener hilos de Firestore:", error);
+                    showMessage("Error al cargar los temas del foro.", "error");
                 });
             }
+
+            // Function to open thread detail modal and load data
+            async function openThreadDetailModal(threadId) {
+                currentOpenThreadId = threadId; // Set the currently open thread ID
+                threadDetailModal.classList.add('active');
+
+                try {
+                    const threadDocRef = doc(db, `artifacts/${appId}/public/data/threads`, threadId);
+                    const threadDoc = await getDoc(threadDocRef);
+
+                    if (threadDoc.exists()) {
+                        const threadData = threadDoc.data();
+                        threadDetailTitle.textContent = threadData.title;
+                        threadDetailMainContent.textContent = threadData.content;
+                        threadDetailAuthor.textContent = threadData.author || 'Anónimo';
+                        threadDetailCreatedAt.textContent = threadData.createdAt ? new Date(threadData.createdAt.toDate()).toLocaleString() : 'N/A';
+
+                        // Increment view count (optional, can be debounced or done on server)
+                        await updateDoc(threadDocRef, {
+                            views: (threadData.views || 0) + 1
+                        });
+
+                        // Set up listener for comments
+                        setupCommentListener(threadId);
+                    } else {
+                        showMessage("Tema no encontrado.", "error");
+                        threadDetailModal.classList.remove('active');
+                    }
+                } catch (error) {
+                    console.error("Error al cargar detalles del tema:", error);
+                    showMessage("Error al cargar los detalles del tema.", "error");
+                    threadDetailModal.classList.remove('active');
+                }
+            }
+
+            // Function to render comments
+            function renderComments(comments) {
+                commentListUl.innerHTML = ''; // Clear existing comments
+
+                if (comments.length === 0) {
+                    const noCommentsItem = document.createElement('li');
+                    noCommentsItem.classList.add('no-comments-message');
+                    noCommentsItem.textContent = 'No hay comentarios aún. ¡Sé el primero en dejar uno!';
+                    commentListUl.appendChild(noCommentsItem);
+                    return;
+                }
+
+                // Sort comments by creation date (oldest first)
+                comments.sort((a, b) => a.createdAt.toDate().getTime() - b.createdAt.toDate().getTime());
+
+                comments.forEach(comment => {
+                    const commentItem = document.createElement('li');
+                    commentItem.classList.add('comment-item');
+                    commentItem.innerHTML = `
+                        <p class="comment-meta">
+                            <strong>${comment.author || 'Anónimo'}</strong>
+                            <span> - ${comment.createdAt ? new Date(comment.createdAt.toDate()).toLocaleString() : 'N/A'}</span>
+                        </p>
+                        <p class="comment-text">${comment.content}</p>
+                    `;
+                    commentListUl.appendChild(commentItem);
+                });
+            }
+
+            // Setup Firestore listener for comments
+            function setupCommentListener(threadId) {
+                if (!db) return; // Ensure db is initialized
+
+                const commentsCollectionRef = collection(db, `artifacts/${appId}/public/data/threads/${threadId}/comments`);
+                const q = query(commentsCollectionRef);
+
+                onSnapshot(q, (snapshot) => {
+                    const comments = [];
+                    snapshot.forEach((doc) => {
+                        comments.push({ id: doc.id, ...doc.data() });
+                    });
+                    renderComments(comments);
+                }, (error) => {
+                    console.error("Error al obtener comentarios de Firestore:", error);
+                    showMessage("Error al cargar los comentarios.", "error");
+                });
+            }
+
+            // Handle new thread submission
+            newThreadForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                if (!db || !userId || userId === 'loading...') {
+                    showMessage("Error: Autenticación no completa. Intenta nuevamente en un momento.", "error");
+                    return;
+                }
+
+                const title = document.getElementById('thread-title').value;
+                const content = document.getElementById('thread-content').value;
+
+                if (!title || !content) {
+                    showMessage("Por favor, rellena todos los campos.", "error");
+                    return;
+                }
+
+                try {
+                    // Add a new document to the 'threads' collection
+                    await addDoc(collection(db, `artifacts/${appId}/public/data/threads`), {
+                        title: title,
+                        content: content,
+                        author: userId, // Use the authenticated user's ID
+                        createdAt: serverTimestamp(), // Firestore timestamp
+                        lastReplyAt: serverTimestamp(),
+                        replies: 0,
+                        views: 0,
+                        isSticky: false // New threads are not sticky by default
+                    });
+                    showMessage("¡Tema publicado con éxito!");
+                    newThreadForm.reset();
+                    newThreadModal.classList.remove('active');
+                } catch (e) {
+                    console.error("Error al añadir documento: ", e);
+                    showMessage("Error al publicar el tema. Inténtalo de nuevo.", "error");
+                }
+            });
+
+            // Handle new comment submission
+            submitCommentBtn.addEventListener('click', async () => {
+                if (!db || !userId || userId === 'loading...') {
+                    showMessage("Error: Autenticación no completa. No se puede añadir comentario.", "error");
+                    return;
+                }
+                if (!currentOpenThreadId) {
+                    showMessage("Error: No hay ningún tema abierto para comentar.", "error");
+                    return;
+                }
+
+                const commentContent = newCommentContentInput.value.trim();
+                if (!commentContent) {
+                    showMessage("Por favor, escribe un comentario.", "error");
+                    return;
+                }
+
+                try {
+                    // Add the comment to the thread's sub-collection
+                    await addDoc(collection(db, `artifacts/${appId}/public/data/threads/${currentOpenThreadId}/comments`), {
+                        content: commentContent,
+                        author: userId, // Use the authenticated user's ID
+                        createdAt: serverTimestamp()
+                    });
+
+                    // Update the parent thread's replies count and lastReplyAt
+                    const threadDocRef = doc(db, `artifacts/${appId}/public/data/threads`, currentOpenThreadId);
+                    const threadDoc = await getDoc(threadDocRef);
+                    if (threadDoc.exists()) {
+                        const threadData = threadDoc.data();
+                        await updateDoc(threadDocRef, {
+                            replies: (threadData.replies || 0) + 1,
+                            lastReplyAt: serverTimestamp()
+                        });
+                    }
+                    
+                    showMessage("¡Comentario añadido con éxito!");
+                    newCommentContentInput.value = ''; // Clear the input
+                } catch (e) {
+                    console.error("Error al añadir comentario: ", e);
+                    showMessage("Error al añadir el comentario. Inténtalo de nuevo.", "error");
+                }
+            });
         });
     </script>
 </body>
