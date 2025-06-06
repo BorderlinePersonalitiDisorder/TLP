@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog Post: Desentrañando el Mindfulness - Universo Borderline</title>
+    <title>Blog - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -181,13 +181,13 @@
             flex-grow: 1; 
         }
 
-        .blog-post-header {
+        .page-header {
             text-align: center;
             margin-bottom: 3rem;
             padding-top: 2rem;
         }
 
-        .blog-post-header h2 {
+        .page-header h2 {
             font-family: 'Playfair Display', serif; 
             font-size: 3rem; 
             font-weight: 700; 
@@ -203,105 +203,153 @@
             background-clip: text; 
             -webkit-text-fill-color: transparent;
         }
-           .blog-post-header h2 i {
+           .page-header h2 i {
             font-size: 2.6rem; 
             color: var(--accent-green);
         }
         
-        .blog-post-meta {
-            font-size: 1rem;
+        .page-header p {
+            font-size: 1.2rem;
             color: var(--text-color-medium);
-            margin-top: 1.5rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-        }
-        .blog-post-meta span i {
-            margin-right: 8px;
-            color: var(--accent-yellow);
+            max-width: 700px;
+            margin: 0 auto;
         }
 
-        .blog-content {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2.5rem;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
-            border: 1px solid var(--border-color);
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
             margin-bottom: 3rem;
         }
 
-        .blog-content h3 {
+        .blog-post-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            border: 1px solid var(--border-color);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden; /* Ensures image corners are rounded */
+        }
+
+        .blog-post-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(var(--accent-green-rgb), 0.4);
+        }
+
+        .blog-post-card img {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Ensures image covers area without distortion */
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .blog-post-content {
+            padding: 20px;
+            flex-grow: 1; /* Allows content to take up available space */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-post-content .category {
+            font-size: 0.85rem;
+            color: var(--accent-magenta);
+            text-transform: uppercase;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .blog-post-content h3 {
             font-family: 'Krona One', sans-serif;
-            font-size: 1.8rem;
-            color: var(--accent-green);
-            margin-top: 2.5rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid rgba(var(--accent-green-rgb), 0.3);
+            font-size: 1.35rem;
+            color: var(--accent-yellow);
+            margin-bottom: 10px;
+            line-height: 1.4;
         }
 
-        .blog-content p {
-            margin-bottom: 1.5rem;
+        .blog-post-content p.excerpt {
+            font-size: 0.95rem;
             color: var(--text-color-light);
-            font-size: 1.05rem;
-            line-height: 1.7;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1; /* Allows excerpt to push button to bottom */
         }
 
-        .blog-content ul {
-            list-style: none;
-            padding-left: 20px;
-            margin-bottom: 1.5rem;
-        }
-        .blog-content ul li {
-            margin-bottom: 0.8rem;
-            color: var(--text-color-light);
-            font-size: 1rem;
-            position: relative;
-        }
-        .blog-content ul li::before {
-            content: "\f00c"; /* FontAwesome check-circle */
-            font-family: "Font Awesome 5 Free";
-            font-weight: 900;
-            color: var(--accent-blue);
-            position: absolute;
-            left: -20px;
-            top: 3px;
-        }
-
-        .blog-content blockquote {
-            border-left: 5px solid var(--accent-yellow);
-            padding-left: 20px;
-            margin: 2rem 0;
-            font-style: italic;
+        .blog-post-meta {
+            font-size: 0.8rem;
             color: var(--text-color-medium);
-            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px; /* Space above "Read More" button */
         }
-        .blog-content blockquote p {
-            margin-bottom: 0;
+        .blog-post-meta span i {
+            margin-right: 5px;
+            color: var(--accent-green);
         }
 
-        .back-to-blog-btn {
+        .read-more-btn {
             display: inline-block;
-            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             transition: background 0.3s ease, transform 0.3s ease;
             text-align: center;
-            margin-top: 2rem;
-            font-size: 1.1rem;
+            align-self: flex-start; /* Aligns button to the left within flex column */
+            margin-top: 15px;
         }
-        .back-to-blog-btn:hover {
-            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+
+        .read-more-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
             transform: scale(1.05);
         }
-        .back-to-blog-btn i {
-            margin-right: 10px;
+
+        /* Pagination Styles */
+        .pagination-nav { 
+            display: flex;
+            justify-content: center;
+            margin-top: 2.5rem; 
+            margin-bottom: 1rem; 
         }
-        
+        .pagination-nav ul {
+            display: flex;
+            align-items: center;
+            list-style: none;
+            padding: 0;
+            gap: 5px; 
+        }
+        .pagination-nav li a, .pagination-nav li span { 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem 1rem; 
+            height: 40px; 
+            line-height: 1.25rem; 
+            color: var(--text-color-medium);
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 0.375rem; 
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        .pagination-nav li a:hover {
+            background-color: rgba(var(--secondary-cyan-rgb), 0.2); 
+            color: var(--secondary-cyan);
+        }
+        .pagination-nav li a[aria-current="page"] {
+            z-index: 10;
+            color: var(--dark-bg); 
+            background-color: var(--secondary-cyan);
+            border-color: var(--secondary-cyan);
+        }
+        .pagination-nav li:first-child a { border-top-left-radius: 0.375rem; border-bottom-left-radius: 0.375rem; }
+        .pagination-nav li:last-child a { border-top-right-radius: 0.375rem; border-bottom-right-radius: 0.375rem; }
+
         footer { 
             background: rgba(10,10,32,0.97); 
             color: white; 
@@ -400,10 +448,9 @@
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
             nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .blog-post-header h2 { font-size: 2.6rem; }
-            .blog-post-header h2 i { font-size: 2.2rem; }
-            .blog-content { padding: 2rem; }
-            .blog-content h3 { font-size: 1.6rem; }
+            .page-header h2 { font-size: 2.6rem; }
+            .page-header h2 i { font-size: 2.2rem; }
+            .blog-grid { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;}
         }
         
         @media (max-width: 600px) {
@@ -411,13 +458,16 @@
             .logo h1 { font-size: 1.6rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .blog-post-header h2 { font-size: 2rem; }
-            .blog-post-header h2 i { font-size: 1.8rem; }
-            .blog-post-meta { flex-direction: column; gap: 10px; font-size: 0.9rem; }
-            .blog-content { padding: 1.5rem; }
-            .blog-content h3 { font-size: 1.4rem; }
-            .blog-content p { font-size: 0.95rem; }
-            .back-to-blog-btn { padding: 10px 20px; font-size: 1rem; }
+            .page-header h2 { font-size: 2rem; }
+            .page-header h2 i { font-size: 1.8rem; }
+            .page-header p { font-size: 1rem; }
+            .blog-grid { grid-template-columns: 1fr; }
+            .blog-post-card { margin-bottom: 1.5rem; } /* Add spacing for single column layout */
+            .blog-post-card img { height: 180px; }
+            .blog-post-content { padding: 15px; }
+            .blog-post-content h3 { font-size: 1.2rem; }
+            .blog-post-content p.excerpt { font-size: 0.9rem; }
+            .read-more-btn { padding: 8px 16px; font-size: 0.9rem;}
         }
     </style>
 </head>
@@ -447,57 +497,127 @@
 
     <main class="main-page-content">
         <div class="container">
-            <div class="blog-post-header">
-                <h2>Desentrañando el Mindfulness: El Corazón de la DBT</h2>
-                <div class="blog-post-meta">
-                    <span><i class="fas fa-calendar-alt"></i> 30 de Mayo, 2025</span>
-                    <span><i class="fas fa-user-circle"></i> Dra. Elena Valiente</span>
-                </div>
-            </div>
-
-            <article class="blog-content">
-                <p>El mindfulness, o atención plena, es mucho más que una técnica de meditación; es una habilidad fundamental que nos enseña a vivir el momento presente, observando nuestros pensamientos, emociones y sensaciones corporales sin juicio. En el contexto de la Terapia Dialéctico Comportamental (DBT), el mindfulness es la piedra angular, la base sobre la que se construyen todas las demás habilidades.</p>
-
-                <p>Al cultivar el mindfulness, aprendemos a desengancharnos del "piloto automático" y de las reacciones impulsivas, permitiéndonos responder a las situaciones de manera más consciente y efectiva. Es una invitación a la curiosidad y a la aceptación de nuestra experiencia interna, incluso cuando es incómoda.</p>
-
-                <h3>Beneficios Comprobados del Mindfulness</h3>
-                <p>La investigación científica ha respaldado consistentemente los múltiples beneficios de la práctica regular de mindfulness:</p>
-                <ul>
-                    <li><strong>Reducción del estrés y la ansiedad:</strong> Estudios han demostrado que la práctica regular de mindfulness puede reducir los niveles de cortisol (la hormona del estrés) hasta en un 30%. Además, una meta-análisis de más de 200 estudios encontró que los programas basados en mindfulness son tan efectivos como los antidepresivos para reducir la recurrencia de la depresión en aquellos con episodios previos.</li>
-                    <li><strong>Mejora de la regulación emocional:</strong> Al observar las emociones sin reaccionar de inmediato, se fortalece la capacidad de manejarlas de forma más saludable, especialmente útil en condiciones como el TLP.</li>
-                    <li><strong>Aumento de la autoconciencia:</strong> Permite reconocer patrones de pensamiento y comportamiento, lo que facilita la identificación de desencadenantes y la elección de respuestas más adaptativas.</li>
-                    <li><strong>Mejora de las relaciones interpersonales:</strong> Una mayor conciencia del momento presente y de las propias emociones facilita la empatía y la comunicación efectiva con los demás.</li>
-                    <li><strong>Cambios cerebrales positivos:</strong> La neurociencia ha revelado que la meditación mindfulness puede aumentar la densidad de materia gris en áreas del cerebro asociadas con el aprendizaje, la memoria, la regulación emocional y la autoconciencia, como la corteza prefrontal y el hipocampo.</li>
-                </ul>
-
-                <h3>El Mindfulness en la DBT: Una Habilidad Central</h3>
-                <blockquote>
-                    <p>"No puedes detener las olas, pero puedes aprender a surfear." <br> - Jon Kabat-Zinn</p>
-                </blockquote>
-                <p>En DBT, el mindfulness es una habilidad "núcleo" que se enseña transversalmente a todas las demás. Se utiliza para:
-                    <ul>
-                        <li><strong>Observar:</strong> Prestar atención a la experiencia presente, interna y externa, sin juzgar.</li>
-                        <li><strong>Describir:</strong> Poner palabras a lo que se observa, de forma objetiva y sin interpretaciones.</li>
-                        <li><strong>Participar:</strong> Involucrarse plenamente en la actividad del momento, ya sea una conversación, una comida o una caminata.</li>
-                    </ul>
+            <div class="page-header">
+                <h2><i class="fas fa-blog"></i> Nuestro Blog de Bienestar Emocional</h2>
+                <p>
+                    Explora artículos, recursos y perspectivas sobre el Trastorno Límite de la Personalidad, DBT, mindfulness, y mucho más.
                 </p>
-                <p>La incorporación del mindfulness en DBT ha sido clave para su éxito. Estadísticas indican que, en pacientes con Trastorno Límite de la Personalidad, la DBT, con el mindfulness como componente esencial, ha demostrado reducir significativamente las conductas autolesivas y las hospitalizaciones, con tasas de éxito de hasta el 75% en la reducción de síntomas clave.</p>
-
-                <h3>Integrando el Mindfulness en tu Día a Día</h3>
-                <p>No necesitas ser un monje para practicar mindfulness. Puedes incorporarlo en actividades cotidianas:</p>
-                <ul>
-                    <li><strong>Respiración consciente:</strong> Dedica unos minutos a observar tu respiración, notando cómo entra y sale el aire de tu cuerpo.</li>
-                    <li><strong>Escaneo corporal:</strong> Recorre tu cuerpo mentalmente, prestando atención a cualquier sensación, tensión o relajación.</li>
-                    <li><strong>Alimentación consciente:</strong> Come despacio, prestando atención a los sabores, texturas y olores de tus alimentos.</li>
-                    <li><strong>Caminata consciente:</strong> Siente el contacto de tus pies con el suelo, el viento en tu piel, los sonidos a tu alrededor.</li>
-                </ul>
-                <p>El mindfulness es una práctica, no una perfección. Cada momento en el que te das cuenta de dónde está tu atención, sin importar si te has distraído miles de veces, es un momento de mindfulness. Es una habilidad que se fortalece con la práctica constante y con un poco de paciencia y autocompasión.</p>
-                <p>Esperamos que este post te haya inspirado a explorar el poder del mindfulness en tu vida. Es una herramienta poderosa para navegar las complejidades de la mente y el corazón, especialmente para aquellos en el camino del bienestar emocional y la recuperación del TLP.</p>
-            </article>
-
-            <div style="text-align: center;">
-                <a href="blog.html" class="back-to-blog-btn"><i class="fas fa-arrow-left"></i> Volver al Blog</a>
             </div>
+
+            <div class="blog-grid">
+                <!-- Removed Mindfulness Practico card -->
+                <!-- Removed Validacion y Empatia card -->
+                <!-- Removed Mitos vs Realidad TLP card -->
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/FF4500/FFFFFF?text=TLP+y+Suicidio" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FF4500/FFFFFF?text=TLP+Suicidio';" alt="Imagen de TLP y Suicidio">
+                    <div class="blog-post-content">
+                        <span class="category">TLP & Crisis</span>
+                        <h3>TLP y Suicidio: Comprender y Prevenir el Riesgo</h3>
+                        <p class="excerpt">Exploramos la compleja relación entre el TLP y el riesgo suicida, ofreciendo información vital para la prevención y el apoyo. La esperanza es posible.</p>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 15 de Mayo, 2025</span>
+                            <span><i class="fas fa-user-circle"></i> Dr. Daniel Paz</span>
+                        </div>
+                        <a href="blog-post-suicidio-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/1E90FF/FFFFFF?text=TLP+y+Sexualidad" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1E90FF/FFFFFF?text=TLP+Sexualidad';" alt="Imagen de TLP y Sexualidad">
+                    <div class="blog-post-content">
+                        <span class="category">Relaciones & TLP</span>
+                        <h3>TLP y Sexualidad: Navegando la Intimidad con Sensibilidad</h3>
+                        <p class="excerpt">Abordamos los desafíos y complejidades de la sexualidad en el TLP, promoviendo la comprensión y estrategias para una intimidad saludable.</p>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 10 de Mayo, 2025</span>
+                            <span><i class="fas fa-user-circle"></i> Lic. Sofía Ramos</span>
+                        </div>
+                        <a href="blog-post-sexualidad-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/FFD700/8A2BE2?text=TLP+y+Vacio+Cronico" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFD700/8A2BE2?text=TLP+Vacio';" alt="Imagen de TLP y Vacío Crónico">
+                    <div class="blog-post-content">
+                        <span class="category">Experiencias TLP</span>
+                        <h3>El Vacío Crónico en el TLP: Entender y Llenar el Espacio Interior</h3>
+                        <p class="excerpt">Exploramos la experiencia del vacío crónico en el TLP, ofreciendo perspectivas y habilidades para afrontar esta sensación persistente.</p>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 5 de Mayo, 2025</span>
+                            <span><i class="fas fa-user-circle"></i> Equipo Universo Borderline</span>
+                        </div>
+                        <a href="blog-post-vacio-cronico-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/00FF7F/0A0A20?text=TLP+y+Disociacion" onerror="this.onerror=null;this.src='https://placehold.co/600x400/00FF7F/0A0A20?text=TLP+Disociacion';" alt="Imagen de TLP y Disociación">
+                    <div class="blog-post-content">
+                        <span class="category">Síntomas TLP</span>
+                        <h3>Disociación y TLP: Desconexión, Trauma y Estrategias de Afrontamiento</h3>
+                        <p class="excerpt">Analizamos la disociación en el TLP, su vínculo con el trauma y cómo desarrollar habilidades para manejar estas experiencias disociativas.</p>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 1 de Mayo, 2025</span>
+                            <span><i class="fas fa-user-circle"></i> Dr. Alejandro Vega</span>
+                        </div>
+                        <a href="blog-post-disociacion-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=TLP+y+Consumo" onerror="this.onerror=null;this.src='https://placehold.co/600x400/8A2BE2/FFFFFF?text=TLP+Consumo';" alt="Imagen de TLP y Consumo">
+                    <div class="blog-post-content">
+                        <span class="category">Comorbilidad & TLP</span>
+                        <h3>TLP y Consumo de Sustancias: Abordando la Doble Lucha</h3>
+                        <p class="excerpt">Exploramos la comorbilidad entre el TLP y el consumo de sustancias, ofreciendo estrategias integrales para el tratamiento y la recuperación.</p>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 28 de Abril, 2025</span>
+                            <span><i class="fas fa-user-circle"></i> Lic. Carolina Soto</span>
+                        </div>
+                        <a href="blog-post-consumo-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <article class="blog-post-card">
+                    <img src="https://placehold.co/600x400/00CED1/FFFFFF?text=TLP+y+TCA" onerror="this.onerror=null;this.src='https://placehold.co/600x400/00CED1/FFFFFF?text=TLP+TCA';" alt="Imagen de TLP y TCA">
+                    <div class="blog-post-content">
+                        <span class="category">Comorbilidad & TLP</span>
+                        <h3>TLP y Trastornos de la Conducta Alimentaria (TCA): Una Conexión Compleja</h3>
+                        <p class="excerpt">Analizamos la intersección entre el TLP y los TCA, y cómo un enfoque integrador es esencial para abordar ambas condiciones de forma efectiva.</p>
+                        <div class="blog-post-meta">
+                            <span><i class="fas fa-calendar-alt"></i> 22 de Abril, 2025</span>
+                            <span><i class="fas fa-user-circle"></i> Dra. Sofía Valiente</span>
+                        </div>
+                        <a href="blog-post-tca-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
+
+                <!-- More blog posts can be added here following the same structure -->
+            </div>
+
+            <nav aria-label="Paginación de artículos" class="pagination-nav">
+                <ul>
+                    <li>
+                        <a href="#">
+                            <span class="sr-only">Anterior</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-current="page">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="sr-only">Siguiente</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </main>
 
@@ -507,6 +627,19 @@
                 <div class="footer-column">
                     <h3>Universo Borderline</h3>
                     <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Navegación</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Inicio</a></li> 
+                        <li><a href="cursos.html">Cursos</a></li> 
+                        <li><a href="blog.html">Blog</a></li> 
+                        <li><a href="foro.html">Foro</a></li> 
+                        <li><a href="memes.html">Memes</a></li> 
+                        <li><a href="podcast.html">Podcast</a></li>
+                        <li><a href="politicas.html">Políticas</a></li> 
+                    </ul>
                 </div>
                 
                 <div class="footer-column">
