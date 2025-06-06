@@ -235,6 +235,14 @@
             display: flex;
             flex-direction: column;
             border: 1px solid var(--border-color);
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        
+        .blog-post-card.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .blog-post-card:hover {
@@ -270,8 +278,8 @@
             transition: color 0.3s ease, text-shadow 0.3s ease; 
         }
         .blog-post-content h3:hover {
-            color: var(--accent-cyan);
-            text-shadow: 0 0 8px var(--accent-cyan);
+            color: var(--secondary-cyan);
+            text-shadow: 0 0 8px var(--secondary-cyan);
             font-family: 'Krona One', sans-serif; 
         }
         
@@ -370,19 +378,6 @@
             border-radius: 1.5px; 
         }
         
-        .footer-links { list-style: none; padding-left:0; } 
-        .footer-links li { margin-bottom: 12px; }
-        .footer-links a { 
-            color: var(--text-color-medium); 
-            text-decoration: none; 
-            transition: all 0.3s ease; 
-            display: inline-block; 
-            padding: 4px 0; 
-            font-weight: 300; 
-        }
-        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
-        
-        .contact-info { margin-top: 20px; }
         .contact-info p { 
             display: flex; 
             align-items: center; 
@@ -590,29 +585,7 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Universo Borderline</h3> 
-                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Navegación</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li> 
-                        <li><a href="cursos.html">Cursos</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="memes.html">Memes</a></li> 
-                        <li><a href="podcast.html">Podcast</a></li>
-                        <li><a href="politicas.html">Políticas</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Recursos DBT</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
-                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
-                    </ul>
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT y CBT.</p>
                 </div>
                 
                 <div class="footer-column">
@@ -625,10 +598,9 @@
                     </div>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
-                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+                <p>© 2023-<span id="currentYear"></span> Universo Borderline. Todos los derechos reservados.</p> 
+                <p><a href="privacidad.html">Privacidad</a> | <a href="terminos.html">Términos</a> | <a href="seguridad.html">Seguridad</a></p>
             </div>
         </div>
     </footer>
@@ -670,20 +642,7 @@
                 link.classList.remove('active'); 
                 link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                // Check if the link's href matches the current page filename.
-                // Also handles the case where the current page is 'index.html' and the link href is empty (root path).
-                if (linkFilename === currentPageFilename || (currentPageFilename === 'index.html' && linkFilename === '')) { 
-                    link.classList.add('active');
-                    link.setAttribute('aria-current', 'page');
-                }
-                // Special handling for blog.html to ensure "Blog" is active if it's the current page.
-                // This is a bit redundant given the logic above but ensures it if there are multiple blog-related pages.
-                if (currentPageFilename === 'blog.html' && linkFilename === 'blog.html') {
-                    // Clear active class from all links first to avoid multiple active links
-                    navLinks.forEach(nl => {
-                         nl.classList.remove('active');
-                         nl.removeAttribute('aria-current');
-                    });
+                if (linkFilename === currentPageFilename) { 
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
                 }
@@ -702,7 +661,7 @@
             }
             
             // Intersection Observer for fade-in animations on blog cards
-            const blogCards = document.querySelectorAll('.blog-post-card'); // Target individual cards
+            const blogCards = document.querySelectorAll('.blog-post-card');
             if (blogCards.length > 0) {
                 const observerOptions = {
                     root: null, 
@@ -712,25 +671,18 @@
                 const observer = new IntersectionObserver((entries, obs) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            entry.target.style.opacity = '1';
-                            entry.target.style.transform = 'translateY(0)';
-                            // Optional: unobserve after animation to save resources
-                            // obs.unobserve(entry.target); 
+                            entry.target.classList.add('visible'); // Use a class for animation
+                            // obs.unobserve(entry.target); // Optional: unobserve after animation
                         } 
                     });
                 }, observerOptions);
 
-                blogCards.forEach(card => { // Apply to each card
-                    card.style.opacity = '0'; 
-                    card.style.transform = 'translateY(40px)'; 
-                    card.style.transition = 'opacity 0.7s ease-out, transform 0.7s ease-out';
-                    // Add a slight delay for staggered animation if desired
-                    // const delay = Array.from(blogCards).indexOf(card) * 100; // Example: 100ms delay per card
-                    // card.style.transitionDelay = `${delay}ms`;
+                blogCards.forEach((card, index) => {
+                    card.style.transitionDelay = `${index * 100}ms`; // Staggered delay
                     observer.observe(card);
                 });
             }
         });
     </script>
 </body>
-</ht
+<
