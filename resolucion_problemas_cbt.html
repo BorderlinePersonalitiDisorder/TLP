@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Resolución de Problemas en TCC - Artículo del Blog - Universo Borderline</title>
+    <title>Resolución de Problemas en TCC - Guía Detallada - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -249,15 +249,7 @@
             border-left: 4px solid var(--accent-yellow); 
             padding-left: 15px; 
         }
-        .component-content-section h5 {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--secondary-cyan);
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-
+        
         .component-content-section p, 
         .component-content-section li { 
             font-size: 1.1rem;
@@ -320,29 +312,57 @@
             color: var(--text-color-medium);
         }
 
-        .back-to-link-container {
-            text-align: center;
+        .navigation-buttons-container {
+            display: flex;
+            justify-content: center; /* Changed */
+            align-items: center;
+            flex-wrap: wrap; 
+            gap: 1.5rem; 
             margin-top: 3rem; 
-            margin-bottom: 1rem; 
+            margin-bottom: 1.5rem; 
+            padding: 1rem 0;
+            border-top: 1px dashed rgba(var(--primary-violet-rgb), 0.3);
         }
-        .back-to-btn {
+
+        .nav-btn {
             display: inline-flex; 
             align-items: center;
-            gap: 8px;
-            background: linear-gradient(45deg, var(--accent-blue), var(--primary-violet)); 
-            color: white; 
+            justify-content: center; 
+            gap: 10px;
             padding: 12px 25px;
             border-radius: 25px;
             text-decoration: none;
             font-weight: bold;
             font-family: 'Comfortaa', sans-serif;
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            box-shadow: 0 3px 10px rgba(var(--accent-blue-rgb), 0.4);
+            /* flex-grow: 1; Removed */
+            min-width: 220px; 
+            text-align: center;
         }
-        .back-to-btn:hover {
-            background: linear-gradient(45deg, var(--primary-violet), var(--accent-blue)); 
+        .nav-btn i {
+            font-size: 1em; 
+        }
+
+        .back-btn {
+            background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-blue)); 
+            color: white; 
+            box-shadow: 0 3px 10px rgba(var(--secondary-cyan-rgb), 0.4);
+        }
+        .back-btn:hover {
+            background: linear-gradient(45deg, var(--accent-blue), var(--secondary-cyan)); 
             transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 5px 15px rgba(var(--primary-violet-rgb), 0.5); 
+            box-shadow: 0 5px 15px rgba(var(--accent-blue-rgb), 0.5); 
+        }
+
+        .continue-btn {
+            background: linear-gradient(45deg, var(--accent-green), var(--accent-yellow)); 
+            color: var(--dark-bg); 
+            box-shadow: 0 3px 10px rgba(var(--accent-green-rgb), 0.4);
+        }
+        .continue-btn:hover {
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-green)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--accent-yellow-rgb), 0.5); 
         }
         
         footer { 
@@ -433,7 +453,6 @@
             .page-header h2 { font-size: 2.2rem; } 
             .component-content-section h3 {font-size: 1.7rem;} 
             .component-content-section h4 {font-size: 1.3rem;} 
-            .navigation-buttons-container { flex-direction: column; } 
             .nav-btn { width: 100%; max-width: 300px; } 
         }
         
@@ -466,8 +485,8 @@
             <nav aria-label="Navegación principal">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li> 
-                    <li><a href="blog.html" class="active" aria-current="page">Blog</a></li> 
+                    <li><a href="cursos.html" class="active" aria-current="page">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
                     <li><a href="memes.html">Memes</a></li> 
                     <li><a href="podcast.html">Podcast</a></li> 
@@ -480,8 +499,9 @@
         <div class="container">
             <div class="breadcrumb">
                 <a href="index.html">Inicio</a> &gt; 
-                <a href="blog.html">Blog</a> &gt; 
-                <span>Resolución de Problemas en TCC</span>
+                <a href="cursos.html">Cursos</a> &gt; 
+                <a href="cbt.html">TCC</a> &gt; 
+                <span>Resolución de Problemas</span>
             </div>
 
             <div class="page-header">
@@ -548,8 +568,9 @@
                 </ul>
             </section>
             
-            <div class="back-to-link-container">
-                <a href="blog.html" class="back-to-btn"><i class="fas fa-arrow-left"></i> Volver al Blog</a>
+            <div class="navigation-buttons-container">
+                <a href="tecnicas_exposicion_cbt.html" class="nav-btn back-btn"><i class="fas fa-arrow-left"></i> Volver a Técnicas de Exposición</a>
+                <a href="cbt.html" class="nav-btn continue-btn">Finalizar Curso TCC y Volver <i class="fas fa-check-circle"></i></a>
             </div>
 
         </div>
@@ -628,33 +649,20 @@
                 link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 
-                // This logic marks "Blog" as active if the current page is blog.html OR if it's considered a blog post page
-                if (linkFilename === 'blog.html' && 
-                    (currentPageFilename === 'blog.html' || 
-                     document.body.classList.contains('single-blog-post-page') // A helper class for blog posts
+                if (linkFilename === 'cursos.html' && 
+                    (currentPageFilename === 'cursos.html' || 
+                     currentPageFilename === 'dbt.html' || 
+                     currentPageFilename === 'cbt.html' ||
+                     currentPageFilename.includes('_dbt') ||
+                     currentPageFilename.includes('_cbt') 
                     )) {
                     link.classList.add('active'); 
                     link.setAttribute('aria-current', 'page');
-                } else if (linkFilename === currentPageFilename) { // For other pages
+                } else if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
                 }
             });
-             // Add a class to body for specific page logic
-            if (document.querySelector('.breadcrumb span').textContent.includes('Resolución de Problemas')) {
-                 document.body.classList.add('single-blog-post-page');
-                 // Re-run nav logic to make sure 'Blog' is active
-                 navLinks.forEach(link => {
-                     const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                     if(linkFilename === 'blog.html'){
-                         link.classList.add('active');
-                         link.setAttribute('aria-current', 'page');
-                     } else {
-                         link.classList.remove('active');
-                         link.removeAttribute('aria-current');
-                     }
-                 });
-            }
             
             // Header scroll effect
             const header = document.getElementById('main-header');
