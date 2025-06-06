@@ -199,7 +199,7 @@
             align-items: center;
             gap: 15px; 
         }
-         .forum-page-header h2 i {
+           .forum-page-header h2 i {
             font-size: 2.4rem; 
         }
         
@@ -281,6 +281,7 @@
             padding: 1.5rem;
             border: 1px solid var(--border-color);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Added cursor for clickable items */
         }
         .thread-item:hover {
             transform: translateY(-5px);
@@ -366,6 +367,8 @@
             position: relative;
             transform: scale(0.95);
             transition: transform 0.3s ease;
+            max-height: 90vh; /* Limit modal height */
+            overflow-y: auto; /* Enable scrolling for content */
         }
         .modal-overlay.active .modal-content {
             transform: scale(1);
@@ -412,7 +415,8 @@
             min-height: 120px;
             resize: vertical;
         }
-        .modal-content button[type="submit"] {
+        .modal-content button[type="submit"],
+        .modal-content .submit-comment-btn { /* Style for new comment button */
             display: block;
             width: 100%;
             background: linear-gradient(45deg, var(--accent-green), var(--secondary-cyan));
@@ -427,9 +431,55 @@
             cursor: pointer;
             font-family: 'Comfortaa', sans-serif; 
         }
-        .modal-content button[type="submit"]:hover {
+        .modal-content button[type="submit"]:hover,
+        .modal-content .submit-comment-btn:hover {
             background: linear-gradient(45deg, var(--secondary-cyan), var(--accent-green));
             transform: scale(1.02);
+        }
+
+        /* Thread Detail Modal Specific Styles */
+        .thread-detail-content {
+            background-color: rgba(var(--primary-violet-rgb), 0.1);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(var(--primary-violet-rgb), 0.3);
+            white-space: pre-wrap;
+        }
+        .thread-detail-comments-section h4 {
+            font-family: 'Krona One', sans-serif;
+            color: var(--accent-green);
+            margin-bottom: 1rem;
+            border-bottom: 1px solid rgba(var(--accent-green-rgb), 0.3);
+            padding-bottom: 0.5rem;
+        }
+        .comment-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+        .comment-item {
+            background-color: rgba(var(--accent-blue-rgb), 0.05);
+            padding: 0.8rem 1.2rem;
+            border-radius: 8px;
+            margin-bottom: 0.7rem;
+            border: 1px solid rgba(var(--accent-blue-rgb), 0.2);
+            font-size: 0.9rem;
+        }
+        .comment-meta {
+            font-size: 0.75rem;
+            color: var(--text-color-medium);
+            margin-bottom: 0.3rem;
+        }
+        .comment-text {
+            color: var(--text-color-light);
+            white-space: pre-wrap;
+        }
+        .no-comments-message {
+            color: var(--text-color-medium);
+            text-align: center;
+            font-style: italic;
+            padding: 1rem;
         }
 
         /* Pagination Styles */
@@ -570,6 +620,18 @@
             100% { transform: rotate(360deg); }
         }
         
+        .user-id-display {
+            text-align: center;
+            font-size: 0.8rem;
+            color: var(--text-color-medium);
+            margin-top: 1rem;
+            word-break: break-all;
+            padding: 0.5rem;
+            background-color: rgba(var(--primary-violet-rgb), 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(var(--primary-violet-rgb), 0.3);
+        }
+
         @media (max-width: 900px) {
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
@@ -622,6 +684,9 @@
                 <p class="description">
                     Este es tu espacio para presentarte a la comunidad de Universo Borderline. Comparte tus experiencias, desafíos y logros. Encuentra comprensión, haz preguntas y conecta con otros que entienden tu viaje.
                 </p>
+                <div class="user-id-display">
+                    Tu ID de Usuario (para compartir): <span id="current-user-id">Cargando...</span>
+                </div>
             </div>
 
             <div class="breadcrumb">
@@ -639,100 +704,45 @@
 
             <section id="sticky-threads-section">
                 <h3 class="forum-section-title">Hilos Destacados</h3>
-                <ul class="thread-list">
-                    <li class="thread-item sticky-thread">
-                        <div class="thread-item-header">
-                            <h4><a href="#"><i class="fas fa-thumbtack"></i> ¡Bienvenido/a! Preséntate aquí</a></h4>
-                            <div class="thread-meta">
-                                <span>Por: Admin</span>
-                                <span><i class="fas fa-comment"></i> 152 Respuestas</span>
-                                <span><i class="fas fa-eye"></i> 3.2k Vistas</span>
-                            </div>
-                        </div>
-                        <p class="thread-excerpt">Un hilo para que los nuevos miembros se presenten y la comunidad les dé la bienvenida. ¡No seas tímido/a!</p>
-                    </li>
-                    <li class="thread-item sticky-thread">
-                        <div class="thread-item-header">
-                            <h4><a href="#"><i class="fas fa-book-reader"></i> Guía de Normas y Buenas Prácticas del Foro</a></h4>
-                            <div class="thread-meta">
-                                <span>Por: Moderador</span>
-                                <span><i class="fas fa-comment"></i> 12 Respuestas</span>
-                                <span><i class="fas fa-eye"></i> 1.8k Vistas</span>
-                            </div>
-                        </div>
-                        <p class="thread-excerpt">Por favor, lee estas normas para asegurar que mantenemos un espacio seguro y de apoyo para todos.</p>
-                    </li>
+                <ul class="thread-list" id="sticky-thread-list-ul">
+                    <!-- Sticky threads will be loaded here dynamically -->
                 </ul>
             </section>
 
             <section id="general-threads-section">
                 <h3 class="forum-section-title">Temas de Discusión</h3>
                 <ul class="thread-list" id="general-thread-list-ul">
-                    <li class="thread-item">
-                        <div class="thread-item-header">
-                            <h4><a href="#">Mis primeros pasos después del diagnóstico</a></h4>
-                            <div class="thread-meta">
-                                <span>Por: UsuarioAlegre</span>
-                                <span><i class="fas fa-comment"></i> 34 Respuestas</span>
-                                <span><i class="fas fa-eye"></i> 876 Vistas</span>
-                                <span>Última respuesta: hace 2 horas</span>
-                            </div>
-                        </div>
-                        <p class="thread-excerpt">Quería compartir cómo me he sentido y qué cosas pequeñas me han ayudado desde que recibí mi diagnóstico. ¿Alguien más se siente así?</p>
-                    </li>
-                    <li class="thread-item">
-                        <div class="thread-item-header">
-                            <h4><a href="#">Buscando consejos para explicar el TLP a mi familia</a></h4>
-                            <div class="thread-meta">
-                                <span>Por: GuerreroSilencioso</span>
-                                <span><i class="fas fa-comment"></i> 58 Respuestas</span>
-                                <span><i class="fas fa-eye"></i> 1.1k Vistas</span>
-                                <span>Última respuesta: hace 5 horas</span>
-                            </div>
-                        </div>
-                        <p class="thread-excerpt">Me cuesta mucho encontrar las palabras adecuadas para que mi familia entienda por lo que estoy pasando. ¿Alguna sugerencia o recurso?</p>
-                    </li>
-                    <li class="thread-item">
-                        <div class="thread-item-header">
-                            <h4><a href="#">Pequeñas victorias de la semana</a></h4>
-                            <div class="thread-meta">
-                                <span>Por: EstrellaFugaz</span>
-                                <span><i class="fas fa-comment"></i> 102 Respuestas</span>
-                                <span><i class="fas fa-eye"></i> 2.5k Vistas</span>
-                                <span>Última respuesta: hace 30 minutos</span>
-                            </div>
-                        </div>
-                        <p class="thread-excerpt">¡Un espacio para celebrar esos pequeños grandes logros que a veces pasan desapercibidos! ¿Cuál fue tu victoria esta semana?</p>
-                    </li>
-                    </ul>
+                    <!-- General threads will be loaded here dynamically -->
+                </ul>
             </section>
             
             <nav aria-label="Paginación de temas" class="pagination-nav">
                 <ul>
-                  <li>
-                    <a href="#">
-                      <span class="sr-only">Anterior</span>
-                      <i class="fas fa-chevron-left"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" aria-current="page">1</a>
-                  </li>
-                  <li>
-                    <a href="#">2</a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <span class="sr-only">Siguiente</span>
-                      <i class="fas fa-chevron-right"></i>
-                    </a>
-                  </li>
+                    <li>
+                        <a href="#">
+                            <span class="sr-only">Anterior</span>
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" aria-current="page">1</a>
+                    </li>
+                    <li>
+                        <a href="#">2</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="sr-only">Siguiente</span>
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
                 </ul>
-              </nav>
+            </nav>
 
         </div>
     </main>
 
+    <!-- Modal for Creating New Thread -->
     <div id="new-thread-modal" class="modal-overlay">
         <div class="modal-content">
             <button id="close-new-thread-modal-btn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
@@ -751,13 +761,64 @@
         </div>
     </div>
 
+    <!-- Modal for Rules and Policies -->
+    <div id="rules-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-rules-modal-btn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+            <h3>Guía de Normas y Buenas Prácticas del Foro</h3>
+            <div class="thread-detail-content">
+                <p>¡Bienvenido/a a la comunidad de Universo Borderline! Para asegurar un espacio seguro, respetuoso y de apoyo para todos, te pedimos que sigas estas sencillas normas:</p>
+                <ul>
+                    <li><strong>Sé respetuoso/a:</strong> Trata a los demás como te gustaría ser tratado/a. Evita cualquier forma de agresión, acoso o discurso de odio.</li>
+                    <li><strong>Confidencialidad:</strong> No compartas información personal de otros miembros sin su consentimiento. Recuerda que este es un espacio público.</li>
+                    <li><strong>Lenguaje adecuado:</strong> Mantén un lenguaje apropiado para todos los públicos. Evita el uso excesivo de malas palabras.</li>
+                    <li><strong>Apoyo mutuo:</strong> Este foro está diseñado para el apoyo entre pares. Ofrece tu comprensión y experiencia de forma constructiva.</li>
+                    <li><strong>No dar consejos médicos:</strong> No somos profesionales de la salud. Evita dar diagnósticos o consejos médicos. Si necesitas ayuda profesional, consulta a un especialista.</li>
+                    <li><strong>Temas sensibles:</strong> Si vas a discutir un tema sensible o que pueda ser un disparador para otros, por favor, avísalo al principio de tu publicación.</li>
+                    <li><strong>Promoción:</strong> No uses el foro para promocionar productos, servicios o enlaces externos sin la aprobación de los moderadores.</li>
+                    <li><strong>Sé paciente:</strong> La moderación lleva tiempo. Si ves algo que va en contra de las normas, repórtalo en lugar de responder directamente.</li>
+                </ul>
+                <p>¡Gracias por contribuir a una comunidad positiva y enriquecedora!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Thread Details and Comments -->
+    <div id="thread-detail-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button id="close-thread-detail-modal-btn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
+            <h3 id="thread-detail-title"></h3>
+            <div class="thread-detail-content">
+                <p id="thread-detail-main-content"></p>
+                <p class="thread-meta">
+                    <span>Autor: <span id="thread-detail-author"></span></span>
+                    <span>Creado: <span id="thread-detail-created-at"></span></span>
+                </p>
+            </div>
+
+            <div class="thread-detail-comments-section">
+                <h4>Comentarios</h4>
+                <ul id="comment-list" class="comment-list">
+                    <!-- Comments will be loaded here dynamically -->
+                    <li class="no-comments-message">No hay comentarios aún. ¡Sé el primero en dejar uno!</li>
+                </ul>
+
+                <div class="add-comment-section">
+                    <h4>Añadir un Comentario</h4>
+                    <textarea id="new-comment-content" placeholder="Escribe tu comentario aquí..." rows="3"></textarea>
+                    <button id="submit-comment-btn" class="submit-comment-btn">Comentar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Universo Borderline</h3>
                     <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <!-- Social links icons removed -->
                 </div>
                 
                 <div class="footer-column">
@@ -785,7 +846,6 @@
                     <div class="contact-info">
                         <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
                         <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
-                        <!-- Removed "Soporte: 24/7 para miembros premium" -->
                         <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
                         <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
                     </div>
@@ -799,135 +859,436 @@
         </div>
     </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
+    <script type="module">
+        // Import Firebase modules
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Global variables provided by the Canvas environment
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        // Initialize Firebase
+        let app;
+        let db;
+        let auth;
+        let userId = 'loading...'; // Default loading state for userId
+        let currentOpenThreadId = null; // To keep track of the thread currently open in the detail modal
+
+        // Function to display messages (replaces alert)
+        function showMessage(message, type = 'info') {
+            const messageBox = document.createElement('div');
+            messageBox.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background-color: ${type === 'error' ? '#f44336' : '#4CAF50'};
+                color: white;
+                padding: 15px;
+                border-radius: 5px;
+                z-index: 9999;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+                opacity: 0;
+                transition: opacity 0.5s ease-in-out;
+            `;
+            messageBox.textContent = message;
+            document.body.appendChild(messageBox);
+
+            setTimeout(() => {
+                messageBox.style.opacity = 1;
+            }, 100);
+
+            setTimeout(() => {
+                messageBox.style.opacity = 0;
+                messageBox.addEventListener('transitionend', () => messageBox.remove());
+            }, 3000);
+        }
+
+        document.addEventListener('DOMContentLoaded', async function() {
+            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
+
+            // Initialize Firebase App
+            try {
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+            } catch (error) {
+                console.error("Error initializing Firebase:", error);
+                showMessage("Error al inicializar la base de datos.", "error");
+                return;
+            }
+
+            // Authenticate user
+            onAuthStateChanged(auth, async (user) => {
+                if (!user) {
+                    try {
+                        // Sign in anonymously if no initial token is provided or user is not signed in
+                        if (initialAuthToken) {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                        } else {
+                            await signInAnonymously(auth);
+                        }
+                        userId = auth.currentUser.uid;
+                        document.getElementById('current-user-id').textContent = userId;
+                        console.log("Firebase authenticated. User ID:", userId);
+                        // Fetch threads after successful authentication
+                        setupThreadListener();
+                    } catch (error) {
+                        console.error("Error signing in to Firebase:", error);
+                        showMessage("Error al iniciar sesión en el foro.", "error");
+                        userId = 'Error de autenticación';
+                        document.getElementById('current-user-id').textContent = userId;
+                    }
+                } else {
+                    userId = user.uid;
+                    document.getElementById('current-user-id').textContent = userId;
+                    console.log("Firebase authenticated. User ID:", userId);
+                    // Fetch threads after successful authentication
+                    setupThreadListener();
+                }
+            });
+
+            // Star animation logic
             const starsContainer = document.getElementById('stars');
             if (starsContainer) {
                 const starsCount = 150;
                 for (let i = 0; i < starsCount; i++) {
                     const star = document.createElement('div');
                     star.classList.add('star');
-                    const size = Math.random() * 2.2 + 0.3;
+                    const size = Math.random() * 2.2 + 0.3; // Size between 0.3 and 2.5
                     star.style.width = `${size}px`;
                     star.style.height = `${size}px`;
                     star.style.left = `${Math.random() * 100}%`;
                     star.style.top = `${Math.random() * 100}%`;
-                    star.style.animationDelay = `${Math.random() * 6}s`; 
-                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
-                    if (Math.random() > 0.65) {
-                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
-                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
-                    } else {
-                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
-                    }
+                    star.style.animationDelay = `${Math.random() * 5}s`; // Random delay for twinkle effect
+                    star.style.animationDuration = `${Math.random() * 3 + 2}s`; // Random duration between 2s and 5s
                     starsContainer.appendChild(star);
                 }
             }
-            
-            const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html';
-            const navLinks = document.querySelectorAll('header nav a');
-            navLinks.forEach(link => {
-                link.classList.remove('active'); 
-                link.removeAttribute('aria-current');
-                const linkFilename = link.getAttribute('href').split('/').pop();
-                // Highlight "Foros" if on any forum-related subpage or foro.html itself
-                if (linkFilename === 'foro.html' && 
-                    (currentPageFilename.startsWith('foro_') || currentPageFilename === 'foro.html')) {
-                    link.classList.add('active');
-                    link.setAttribute('aria-current', 'page');
-                } else if (linkFilename === currentPageFilename) { // For other pages
-                    link.classList.add('active');
-                    link.setAttribute('aria-current', 'page');
+
+            // Header scroll effect
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
                 }
             });
-            
-            const header = document.getElementById('main-header');
-            if(header){
-                window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) {
-                        header.classList.add('scrolled');
-                    } else {
-                        header.classList.remove('scrolled');
-                    }
-                });
-            }
 
-            // Modal functionality
+            // Get modal elements
             const newThreadModal = document.getElementById('new-thread-modal');
-            const openModalBtn = document.getElementById('open-new-thread-modal-btn');
-            const closeModalBtn = document.getElementById('close-new-thread-modal-btn');
+            const openNewThreadBtn = document.getElementById('open-new-thread-modal-btn');
+            const closeNewThreadBtn = document.getElementById('close-new-thread-modal-btn');
             const newThreadForm = document.getElementById('new-thread-form');
+            
+            const rulesModal = document.getElementById('rules-modal');
+            const closeRulesModalBtn = document.getElementById('close-rules-modal-btn');
+
+            const threadDetailModal = document.getElementById('thread-detail-modal');
+            const closeThreadDetailModalBtn = document.getElementById('close-thread-detail-modal-btn');
+            const threadDetailTitle = document.getElementById('thread-detail-title');
+            const threadDetailMainContent = document.getElementById('thread-detail-main-content');
+            const threadDetailAuthor = document.getElementById('thread-detail-author');
+            const threadDetailCreatedAt = document.getElementById('thread-detail-created-at');
+            const commentListUl = document.getElementById('comment-list');
+            const newCommentContentInput = document.getElementById('new-comment-content');
+            const submitCommentBtn = document.getElementById('submit-comment-btn');
+
             const generalThreadListUl = document.getElementById('general-thread-list-ul');
+            const stickyThreadListUl = document.getElementById('sticky-thread-list-ul');
 
-            function openModal() {
-                if(newThreadModal) newThreadModal.classList.add('active');
-            }
 
-            function closeModal() {
-                if(newThreadModal) newThreadModal.classList.remove('active');
-            }
+            // Event Listeners for Modals
+            openNewThreadBtn.addEventListener('click', () => {
+                newThreadModal.classList.add('active');
+            });
+            closeNewThreadBtn.addEventListener('click', () => {
+                newThreadModal.classList.remove('active');
+            });
+            newThreadModal.addEventListener('click', (e) => {
+                if (e.target === newThreadModal) {
+                    newThreadModal.classList.remove('active');
+                }
+            });
 
-            if(openModalBtn) {
-                openModalBtn.addEventListener('click', openModal);
-            }
-            if(closeModalBtn) {
-                closeModalBtn.addEventListener('click', closeModal);
-            }
-            if(newThreadModal) {
-                newThreadModal.addEventListener('click', function(event) {
-                    if (event.target === newThreadModal) { // Close if overlay is clicked
-                        closeModal();
-                    }
+            closeRulesModalBtn.addEventListener('click', () => {
+                rulesModal.classList.remove('active');
+            });
+            rulesModal.addEventListener('click', (e) => {
+                if (e.target === rulesModal) {
+                    rulesModal.classList.remove('active');
+                }
+            });
+
+            closeThreadDetailModalBtn.addEventListener('click', () => {
+                threadDetailModal.classList.remove('active');
+                currentOpenThreadId = null; // Clear the current thread ID
+            });
+            threadDetailModal.addEventListener('click', (e) => {
+                if (e.target === threadDetailModal) {
+                    threadDetailModal.classList.remove('active');
+                    currentOpenThreadId = null; // Clear the current thread ID
+                }
+            });
+
+            // Function to render threads
+            function renderThreads(threads) {
+                // Clear existing threads
+                generalThreadListUl.innerHTML = '';
+                stickyThreadListUl.innerHTML = '';
+
+                // Sort threads by creation date (newest first for general, then stickies first)
+                threads.sort((a, b) => {
+                    if (a.isSticky && !b.isSticky) return -1;
+                    if (!a.isSticky && b.isSticky) return 1;
+                    return b.createdAt.toDate().getTime() - a.createdAt.toDate().getTime();
                 });
-            }
 
-            if(newThreadForm && generalThreadListUl) {
-                newThreadForm.addEventListener('submit', function(event) {
-                    event.preventDefault();
-                    const titleInput = document.getElementById('thread-title');
-                    const contentInput = document.getElementById('thread-content');
-                    const title = titleInput.value;
-                    const content = contentInput.value;
+                threads.forEach(thread => {
+                    const threadItem = document.createElement('li');
+                    threadItem.classList.add('thread-item');
+                    threadItem.dataset.threadId = thread.id; // Store thread ID
 
-                    if (title.trim() === '' || content.trim() === '') {
-                        console.log("El título y el contenido no pueden estar vacíos.");
-                        if(title.trim() === '') titleInput.style.borderColor = 'var(--accent-red)'; else titleInput.style.borderColor = 'var(--border-color)';
-                        if(content.trim() === '') contentInput.style.borderColor = 'var(--accent-red)'; else contentInput.style.borderColor = 'var(--border-color)';
-                        return;
+                    if (thread.isSticky) {
+                        threadItem.classList.add('sticky-thread');
                     }
-                    titleInput.style.borderColor = 'var(--border-color)'; 
-                    contentInput.style.borderColor = 'var(--border-color)'; 
 
+                    const lastReplyTime = thread.lastReplyAt ? new Date(thread.lastReplyAt.toDate()).toLocaleString() : 'N/A';
+                    const repliesCount = thread.replies !== undefined ? thread.replies : 0;
+                    const viewsCount = thread.views !== undefined ? thread.views : Math.floor(Math.random() * 1000) + 100; // Placeholder views
 
-                    const newThreadLi = document.createElement('li');
-                    newThreadLi.classList.add('thread-item');
-                    
-                    const sanitizedTitle = title.replace(/</g, "&lt;").replace(/>/g, "&gt;");
-                    const sanitizedContent = content.replace(/</g, "&lt;").replace(/>/g, "&gt;");
+                    // Limit content preview to 150 characters for the list view
+                    const excerpt = thread.content.length > 150 ? thread.content.substring(0, 150) + '...' : thread.content;
 
-
-                    newThreadLi.innerHTML = `
+                    threadItem.innerHTML = `
                         <div class="thread-item-header">
-                            <h4><a href="#">${sanitizedTitle}</a></h4>
+                            <h4><a href="#">${thread.isSticky ? '<i class="fas fa-thumbtack"></i>' : ''}${thread.title}</a></h4>
                             <div class="thread-meta">
-                                <span>Por: Tú</span>
-                                <span><i class="fas fa-comment"></i> 0 Respuestas</span>
-                                <span><i class="fas fa-eye"></i> 1 Vista</span>
-                                <span>Última respuesta: Recién publicado</span>
+                                <span>Por: ${thread.author || 'Anónimo'}</span>
+                                <span><i class="fas fa-comment"></i> ${repliesCount} Respuestas</span>
+                                <span><i class="fas fa-eye"></i> ${viewsCount} Vistas</span>
+                                <span>Última respuesta: ${lastReplyTime}</span>
                             </div>
                         </div>
-                        <p class="thread-excerpt">${sanitizedContent.substring(0, 150)}${sanitizedContent.length > 150 ? '...' : ''}</p>
+                        <p class="thread-excerpt">${excerpt}</p>
                     `;
-                    
-                    generalThreadListUl.prepend(newThreadLi); 
 
-                    newThreadForm.reset();
-                    closeModal();
+                    // Add click listener to open modal
+                    threadItem.addEventListener('click', (e) => {
+                        // Prevent opening thread detail if clicking on any link inside (e.g., author link)
+                        if (e.target.tagName === 'A' || e.target.tagName === 'I') {
+                            e.preventDefault();
+                            if (e.target.closest('.sticky-thread') && e.target.closest('h4 a')) {
+                                rulesModal.classList.add('active'); // Open rules modal if it's the rules sticky thread
+                            }
+                            return;
+                        }
+                        if (thread.isSticky) {
+                            rulesModal.classList.add('active'); // Open rules modal if it's a sticky thread
+                        } else {
+                            openThreadDetailModal(thread.id); // Open thread detail for general threads
+                        }
+                    });
+
+                    if (thread.isSticky) {
+                        stickyThreadListUl.appendChild(threadItem);
+                    } else {
+                        generalThreadListUl.appendChild(threadItem);
+                    }
                 });
             }
+
+            // Setup Firestore listener for threads
+            function setupThreadListener() {
+                if (!db || !userId || userId === 'loading...') {
+                    console.warn("Firestore no está listo o el usuario aún no ha autenticado. Reintentando en 1 segundo...");
+                    setTimeout(setupThreadListener, 1000); // Retry after 1 second
+                    return;
+                }
+
+                // Collection reference for public threads
+                const threadsCollectionRef = collection(db, `artifacts/${appId}/public/data/threads`);
+                const q = query(threadsCollectionRef);
+
+                onSnapshot(q, (snapshot) => {
+                    const threads = [];
+                    snapshot.forEach((doc) => {
+                        threads.push({ id: doc.id, ...doc.data() });
+                    });
+                    renderThreads(threads);
+                }, (error) => {
+                    console.error("Error al obtener hilos de Firestore:", error);
+                    showMessage("Error al cargar los temas del foro.", "error");
+                });
+            }
+
+            // Function to open thread detail modal and load data
+            async function openThreadDetailModal(threadId) {
+                currentOpenThreadId = threadId; // Set the currently open thread ID
+                threadDetailModal.classList.add('active');
+
+                try {
+                    const threadDocRef = doc(db, `artifacts/${appId}/public/data/threads`, threadId);
+                    const threadDoc = await getDoc(threadDocRef);
+
+                    if (threadDoc.exists()) {
+                        const threadData = threadDoc.data();
+                        threadDetailTitle.textContent = threadData.title;
+                        threadDetailMainContent.textContent = threadData.content;
+                        threadDetailAuthor.textContent = threadData.author || 'Anónimo';
+                        threadDetailCreatedAt.textContent = threadData.createdAt ? new Date(threadData.createdAt.toDate()).toLocaleString() : 'N/A';
+
+                        // Increment view count (optional, can be debounced or done on server)
+                        await updateDoc(threadDocRef, {
+                            views: (threadData.views || 0) + 1
+                        });
+
+                        // Set up listener for comments
+                        setupCommentListener(threadId);
+                    } else {
+                        showMessage("Tema no encontrado.", "error");
+                        threadDetailModal.classList.remove('active');
+                    }
+                } catch (error) {
+                    console.error("Error al cargar detalles del tema:", error);
+                    showMessage("Error al cargar los detalles del tema.", "error");
+                    threadDetailModal.classList.remove('active');
+                }
+            }
+
+            // Function to render comments
+            function renderComments(comments) {
+                commentListUl.innerHTML = ''; // Clear existing comments
+
+                if (comments.length === 0) {
+                    const noCommentsItem = document.createElement('li');
+                    noCommentsItem.classList.add('no-comments-message');
+                    noCommentsItem.textContent = 'No hay comentarios aún. ¡Sé el primero en dejar uno!';
+                    commentListUl.appendChild(noCommentsItem);
+                    return;
+                }
+
+                // Sort comments by creation date (oldest first)
+                comments.sort((a, b) => a.createdAt.toDate().getTime() - b.createdAt.toDate().getTime());
+
+                comments.forEach(comment => {
+                    const commentItem = document.createElement('li');
+                    commentItem.classList.add('comment-item');
+                    commentItem.innerHTML = `
+                        <p class="comment-meta">
+                            <strong>${comment.author || 'Anónimo'}</strong>
+                            <span> - ${comment.createdAt ? new Date(comment.createdAt.toDate()).toLocaleString() : 'N/A'}</span>
+                        </p>
+                        <p class="comment-text">${comment.content}</p>
+                    `;
+                    commentListUl.appendChild(commentItem);
+                });
+            }
+
+            // Setup Firestore listener for comments
+            function setupCommentListener(threadId) {
+                if (!db) return; // Ensure db is initialized
+
+                const commentsCollectionRef = collection(db, `artifacts/${appId}/public/data/threads/${threadId}/comments`);
+                const q = query(commentsCollectionRef);
+
+                onSnapshot(q, (snapshot) => {
+                    const comments = [];
+                    snapshot.forEach((doc) => {
+                        comments.push({ id: doc.id, ...doc.data() });
+                    });
+                    renderComments(comments);
+                }, (error) => {
+                    console.error("Error al obtener comentarios de Firestore:", error);
+                    showMessage("Error al cargar los comentarios.", "error");
+                });
+            }
+
+            // Handle new thread submission
+            newThreadForm.addEventListener('submit', async function(event) {
+                event.preventDefault();
+
+                if (!db || !userId || userId === 'loading...') {
+                    showMessage("Error: Autenticación no completa. Intenta nuevamente en un momento.", "error");
+                    return;
+                }
+
+                const title = document.getElementById('thread-title').value;
+                const content = document.getElementById('thread-content').value;
+
+                if (!title || !content) {
+                    showMessage("Por favor, rellena todos los campos.", "error");
+                    return;
+                }
+
+                try {
+                    // Add a new document to the 'threads' collection
+                    await addDoc(collection(db, `artifacts/${appId}/public/data/threads`), {
+                        title: title,
+                        content: content,
+                        author: userId, // Use the authenticated user's ID
+                        createdAt: serverTimestamp(), // Firestore timestamp
+                        lastReplyAt: serverTimestamp(),
+                        replies: 0,
+                        views: 0,
+                        isSticky: false // New threads are not sticky by default
+                    });
+                    showMessage("¡Tema publicado con éxito!");
+                    newThreadForm.reset();
+                    newThreadModal.classList.remove('active');
+                } catch (e) {
+                    console.error("Error al añadir documento: ", e);
+                    showMessage("Error al publicar el tema. Inténtalo de nuevo.", "error");
+                }
+            });
+
+            // Handle new comment submission
+            submitCommentBtn.addEventListener('click', async () => {
+                if (!db || !userId || userId === 'loading...') {
+                    showMessage("Error: Autenticación no completa. No se puede añadir comentario.", "error");
+                    return;
+                }
+                if (!currentOpenThreadId) {
+                    showMessage("Error: No hay ningún tema abierto para comentar.", "error");
+                    return;
+                }
+
+                const commentContent = newCommentContentInput.value.trim();
+                if (!commentContent) {
+                    showMessage("Por favor, escribe un comentario.", "error");
+                    return;
+                }
+
+                try {
+                    // Add the comment to the thread's sub-collection
+                    await addDoc(collection(db, `artifacts/${appId}/public/data/threads/${currentOpenThreadId}/comments`), {
+                        content: commentContent,
+                        author: userId, // Use the authenticated user's ID
+                        createdAt: serverTimestamp()
+                    });
+
+                    // Update the parent thread's replies count and lastReplyAt
+                    const threadDocRef = doc(db, `artifacts/${appId}/public/data/threads`, currentOpenThreadId);
+                    const threadDoc = await getDoc(threadDocRef);
+                    if (threadDoc.exists()) {
+                        const threadData = threadDoc.data();
+                        await updateDoc(threadDocRef, {
+                            replies: (threadData.replies || 0) + 1,
+                            lastReplyAt: serverTimestamp()
+                        });
+                    }
+                    
+                    showMessage("¡Comentario añadido con éxito!");
+                    newCommentContentInput.value = ''; // Clear the input
+                } catch (e) {
+                    console.error("Error al añadir comentario: ", e);
+                    showMessage("Error al añadir el comentario. Inténtalo de nuevo.", "error");
+                }
+            });
         });
     </script>
 </body>
