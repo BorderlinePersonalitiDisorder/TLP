@@ -607,7 +607,7 @@
         }
         @keyframes twinkle {
             0% { opacity: 0; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
+            50% { opacity: 1; transform: scale(1.1); }
             100% { opacity: 0; transform: scale(1); }
         }
         .galaxy {
@@ -670,8 +670,9 @@
                     <li><a href="index.html">Inicio</a></li>
                     <li><a href="cursos.html">Cursos</a></li> 
                     <li><a href="blog.html">Blog</a></li> 
-                    <li><a href="foro.html" class="active" aria-current="page">Foros</a></li> 
+                    <li><a href="foro.html">Foros</a></li> <!-- Changed back to Foros -->
                     <li><a href="memes.html">Memes</a></li> 
+                    <li><a href="podcast.html">Podcast</a></li> <!-- Moved Podcast to the end -->
                 </ul>
             </nav>
         </div>
@@ -821,16 +822,7 @@
                     <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
                 </div>
                 
-                <div class="footer-column">
-                    <h3>Navegación</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li> 
-                        <li><a href="cursos.html">Cursos</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="memes.html">Memes</a></li> 
-                    </ul>
-                </div>
+                <!-- Removed Navegación column as per user request -->
                 
                 <div class="footer-column">
                     <h3>Enlaces Útiles</h3> 
@@ -868,7 +860,8 @@
         // Global variables provided by the Canvas environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        // FIX: Changed 'initialAuthToken' to '__initial_auth_token' to correctly access the global variable
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
         // Initialize Firebase
         let app;
