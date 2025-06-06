@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Profundización en la Activación Conductual (AC) como técnica clave de la Terapia Cognitivo Conductual (TCC) para el manejo de la depresión y otros desafíos emocionales.">
-    <title>Activación Conductual en TCC - Universo Borderline</title>
+    <title>Activación Conductual en TCC - Guía Detallada - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-violet: #8A2BE2;
             --secondary-cyan: #00CED1;
-            --accent-magenta: #FF00FF; 
+            --accent-magenta: #FF00FF;
             --accent-green: #00FF7F;
             --accent-blue: #1E90FF;
             --accent-yellow: #FFD700;
@@ -27,7 +26,7 @@
 
             --primary-violet-rgb: 138, 43, 226;
             --accent-blue-rgb: 30, 144, 255;
-            --accent-magenta-rgb: 255, 0, 255; 
+            --accent-magenta-rgb: 255, 0, 255;
             --accent-yellow-rgb: 255, 215, 0;
             --accent-green-rgb: 0, 255, 127;
             --secondary-cyan-rgb: 0, 206, 209;
@@ -163,7 +162,7 @@
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
-            border-radius: 20px; /* Ensure ::before is also rounded */
+            border-radius: 20px;
         }
         
         nav a:hover::before, 
@@ -191,10 +190,10 @@
         }
 
         .page-header h2 {
-            font-family: 'Playfair Display', serif; 
+            font-family: 'Playfair Display', serif;
             font-size: 2.8rem; 
             font-weight: 700;
-            color: var(--accent-red); 
+            color: var(--accent-red); /* Component specific color */
             margin-bottom: 0.5rem;
             text-transform: none; 
             letter-spacing: 0.5px;
@@ -206,7 +205,6 @@
         .page-header h2 i {
             font-size: 2.5rem; 
         }
-
 
         .page-header p.subtitle {
             font-size: 1.2rem;
@@ -251,15 +249,7 @@
             border-left: 4px solid var(--accent-yellow); 
             padding-left: 15px; 
         }
-        .component-content-section h5 {
-            font-family: 'Raleway', sans-serif;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--secondary-cyan);
-            margin-top: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-
+        
         .component-content-section p, 
         .component-content-section li { 
             font-size: 1.1rem;
@@ -303,44 +293,6 @@
         .component-content-section em {
             color: var(--secondary-cyan); 
             font-style: italic;
-        }
-        .component-content-section blockquote {
-            border-left: 5px solid var(--accent-blue);
-            padding: 15px 25px;
-            margin: 2rem 0;
-            font-style: italic;
-            color: var(--text-color-medium);
-            background-color: rgba(var(--accent-blue-rgb), 0.08);
-            border-radius: 0 10px 10px 0;
-            font-size: 1.05rem;
-        }
-        .component-content-section blockquote p {
-            margin-bottom: 0;
-            text-align: left;
-        }
-        .example-box {
-            background-color: rgba(var(--accent-yellow-rgb), 0.05);
-            border: 1px dashed var(--accent-yellow);
-            padding: 20px;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-        }
-        .example-box h5 {
-            color: var(--accent-yellow);
-            margin-top: 0;
-            font-family: 'Raleway', sans-serif; 
-            font-weight: 700;
-        }
-        .keyword-link { 
-            color: var(--accent-yellow);
-            text-decoration: none;
-            font-weight: bold;
-            border-bottom: 1px dashed var(--accent-yellow);
-            transition: all 0.3s ease;
-        }
-        .keyword-link:hover {
-            color: var(--accent-green);
-            border-bottom-color: var(--accent-green);
         }
         
         .breadcrumb {
@@ -392,7 +344,7 @@
         }
 
         .back-btn {
-            background: linear-gradient(45deg, var(--accent-magenta), var(--primary-violet)); 
+            background: linear-gradient(45deg, var(--accent-magenta), var(--primary-violet));
             color: white; 
             box-shadow: 0 3px 10px rgba(var(--accent-magenta-rgb), 0.4);
         }
@@ -411,19 +363,6 @@
             background: linear-gradient(45deg, var(--accent-blue), var(--secondary-cyan)); 
             transform: translateY(-3px) scale(1.03);
             box-shadow: 0 5px 15px rgba(var(--accent-blue-rgb), 0.5); 
-        }
-        
-        .diagram-container {
-            text-align: center;
-            padding: 20px;
-            margin: 1.5rem 0;
-            border: 1px dashed var(--secondary-cyan);
-            border-radius: 8px;
-            background-color: rgba(var(--secondary-cyan-rgb), 0.05);
-        }
-        .diagram-container svg {
-            max-width: 100%;
-            height: auto;
         }
         
         footer { 
@@ -465,14 +404,14 @@
         .footer-links { list-style: none; padding-left:0; } 
         .footer-links li { margin-bottom: 12px; }
         .footer-links a { 
-            color: var(--text-color-medium); 
+            color: var(--text-color-light);
             text-decoration: none; 
             transition: all 0.3s ease; 
             display: inline-block; 
             padding: 4px 0; 
-            font-weight: 300; 
+            font-family: 'Comfortaa', sans-serif; 
         }
-        .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
+        .footer-links a:hover { color: var(--accent-yellow); transform: translateX(8px); }
         
         .contact-info { margin-top: 20px; }
         .contact-info p { 
@@ -482,10 +421,9 @@
             margin-bottom: 12px; 
             font-size: 1.05rem; 
             color: var(--text-color-medium); 
+            font-family: 'Comfortaa', sans-serif; 
         }
-        .contact-info i { color: var(--accent-blue); } 
-        
-        /* .social-links class is removed from the first footer column as per user request */
+        .contact-info i { color: var(--accent-blue); flex-shrink: 0; } 
         
         .copyright { 
             text-align: center; 
@@ -493,6 +431,7 @@
             border-top: 1px solid rgba(255, 255, 255, 0.07); 
             color: #a090b0; 
             font-size: 0.95rem; 
+            font-family: 'Comfortaa', sans-serif; 
         }
         .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
         .copyright a:hover { color: var(--text-color-light); }
@@ -529,12 +468,11 @@
             .component-content-section h4 {font-size: 1.3rem;} 
             .navigation-buttons-container { flex-direction: column; } 
             .nav-btn { width: 100%; max-width: 300px; } 
-
         }
         
         @media (max-width: 600px) {
             .main-page-content { padding-top: 130px; } 
-            .logo h1 { font-size: 1.6rem; }
+            .logo h1 { font-size: 1.5rem; }
             nav ul { gap: 5px; }
             nav a { font-size: 0.7rem; padding: 6px 7px; }
             .page-header h2 { font-size: 2rem; } 
@@ -545,7 +483,6 @@
             .component-content-section p,
             .component-content-section li {font-size: 1rem;} 
             .nav-btn { padding: 10px 20px; font-size: 0.9rem;}
-            .diagram-container svg { width: 100%; }
         }
     </style>
 </head>
@@ -555,17 +492,18 @@
     
     <header id="main-header">
         <div class="container header-container">
-            <a href="index.html" class="logo"> 
-                <i class="fas fa-brain"></i>
+            <a href="index.html" class="logo" aria-label="Universo Borderline Homepage"> 
+                <i class="fas fa-brain" aria-hidden="true"></i>
                 <h1>UNIVERSO BORDERLINE</h1> 
             </a>
-            <nav>
+            <nav aria-label="Navegación principal">
                 <ul>
                     <li><a href="index.html">Inicio</a></li>
-                    <li><a href="cursos.html" class="active">Cursos</a></li> 
+                    <li><a href="cursos.html" class="active" aria-current="page">Cursos</a></li> 
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
                     <li><a href="memes.html">Memes</a></li> 
+                    <li><a href="podcast.html">Podcast</a></li> 
                 </ul>
             </nav>
         </div>
@@ -583,300 +521,73 @@
             <div class="page-header">
                 <h2><i class="fas fa-running"></i> Activación Conductual en TCC</h2>
                 <p class="subtitle">
-                    Rompiendo la inercia: cómo la acción puede transformar tu estado de ánimo y bienestar. Una guía exhaustiva.
+                    Rompiendo el ciclo de la inactividad y la depresión a través de la acción consciente y significativa.
                 </p>
             </div>
 
             <section class="component-content-section">
-                <h3><i class="fas fa-rocket"></i> Poniendo la Vida en Movimiento: La Esencia de la AC</h3>
+                <h3><i class="fas fa-bolt"></i> Ponerse en Marcha: La Esencia de la Activación Conductual</h3>
                 <p>
-                    La <strong>Activación Conductual (AC)</strong> es una técnica terapéutica de gran poder y eficacia, originada y frecuentemente utilizada como un pilar fundamental dentro de la <strong>Terapia Cognitivo Conductual (TCC)</strong>. Aunque es especialmente reconocida por su efectividad en el tratamiento de la <em>depresión</em>, sus principios y estrategias son versátiles y se aplican con éxito a una amplia gama de dificultades psicológicas, incluyendo trastornos de ansiedad, problemas de regulación emocional y el manejo del estrés general.
+                    La <strong>Activación Conductual (AC)</strong> es una potente intervención psicoterapéutica, a menudo utilizada como un componente clave de la Terapia Cognitivo Conductual (TCC) o como un tratamiento independiente, especialmente eficaz para la depresión. Su premisa es elegantemente simple pero profundamente poderosa: <em>nuestras acciones y comportamientos tienen un impacto directo y significativo en cómo nos sentimos</em>. Cuando las personas experimentan depresión, es común que se retiren de las actividades que antes disfrutaban o que les daban un sentido de logro. Esta retirada y evitación, aunque comprensible como una respuesta al bajo estado de ánimo y la falta de energía, crea un círculo vicioso.
                 </p>
                 <p>
-                    El núcleo de la AC reside en una premisa simple pero profunda: <em>nuestros comportamientos y nuestro estado de ánimo están intrínsecamente e bidireccionalmente ligados</em>. Lo que hacemos —o, crucialmente, lo que dejamos de hacer— ejerce una influencia directa y significativa sobre cómo nos sentimos. Cuando una persona experimenta estados de ánimo negativos como la tristeza, la apatía o la ansiedad, es común una tendencia natural al retraimiento. Esto implica abandonar actividades que anteriormente resultaban placenteras, proporcionaban un sentido de logro o facilitaban la conexión social. Esta evitación y la consecuente pasividad no son inocuas; pueden desencadenar y perpetuar un <strong>círculo vicioso</strong>: la falta de experiencias positivas y gratificantes refuerza los sentimientos negativos, lo que a su vez conduce a una mayor inactividad y aislamiento.
+                    Este ciclo funciona así: te sientes deprimido, por lo que tienes menos energía y motivación para hacer cosas -> dejas de hacer actividades que te proporcionaban placer o un sentido de dominio -> tu vida se vuelve menos gratificante y tienes menos oportunidades de recibir refuerzo positivo del entorno -> te sientes aún más deprimido. La Activación Conductual busca romper este ciclo de raíz, centrándose en el cambio de comportamiento como motor principal del cambio emocional y cognitivo. En lugar de esperar a "sentirse mejor" para empezar a hacer cosas, la AC propone <strong>empezar a hacer cosas para empezar a sentirse mejor</strong>.
                 </p>
-                <p>
-                    La Activación Conductual interviene directamente para romper este ciclo debilitante. Su objetivo principal es incrementar de manera gradual y sistemática la participación de la persona en actividades que son <strong>reforzantes, placenteras, o que están alineadas con sus valores personales y metas vitales</strong>, incluso si en el momento inicial no existe el deseo o la motivación para llevarlas a cabo.
-                </p>
-                <div class="diagram-container">
-                    <svg viewBox="0 0 700 450" xmlns="http://www.w3.org/2000/svg" aria-labelledby="diagramTitle diagramDesc">
-                        <title id="diagramTitle">Diagrama del Ciclo de Activación Conductual</title>
-                        <desc id="diagramDesc">Ilustra cómo el estado de ánimo bajo lleva a la reducción de actividad, lo que reduce las experiencias positivas, empeorando el ánimo. La Activación Conductual interrumpe este ciclo.</desc>
-                        
-                        <defs>
-                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--secondary-cyan)" />
-                            </marker>
-                            <marker id="arrowhead-red" markerWidth="10" markerHeight="7" refX="0" refY="3.5" orient="auto">
-                                <polygon points="0 0, 10 3.5, 0 7" fill="var(--accent-red)" />
-                            </marker>
-                        </defs>
-
-                        <!-- Cycle Boxes -->
-                        <g id="cycle">
-                            <rect x="250" y="30" width="200" height="60" rx="10" fill="rgba(var(--primary-violet-rgb), 0.3)" stroke="var(--primary-violet)" stroke-width="2"/>
-                            <text x="350" y="65" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle">Estado de Ánimo Bajo</text>
-
-                            <rect x="480" y="150" width="200" height="60" rx="10" fill="rgba(var(--primary-violet-rgb), 0.3)" stroke="var(--primary-violet)" stroke-width="2"/>
-                            <text x="580" y="175" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Reducción de</text>
-                            <text x="580" y="195" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Actividad</text>
-
-                            <rect x="250" y="270" width="200" height="60" rx="10" fill="rgba(var(--primary-violet-rgb), 0.3)" stroke="var(--primary-violet)" stroke-width="2"/>
-                            <text x="350" y="295" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Menos Experiencias</text>
-                            <text x="350" y="315" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Positivas</text>
-
-                            <rect x="20" y="150" width="200" height="60" rx="10" fill="rgba(var(--primary-violet-rgb), 0.3)" stroke="var(--primary-violet)" stroke-width="2"/>
-                            <text x="120" y="175" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">Mayor Reducción</text>
-                            <text x="120" y="195" font-family="Comfortaa, sans-serif" font-size="16" fill="var(--text-color-light)" text-anchor="middle" dy="0">de Actividad</text>
-                        </g>
-
-                        <!-- Cycle Arrows -->
-                        <path d="M 350 90 Q 350 120, 480 160" stroke="var(--secondary-cyan)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 580 210 Q 480 240, 350 270" stroke="var(--secondary-cyan)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 350 330 Q 350 240, 220 200" stroke="var(--secondary-cyan)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        <path d="M 120 150 Q 200 120, 350 90" stroke="var(--secondary-cyan)" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
-                        
-                        <!-- Activation Conductual Intervention -->
-                        <g id="intervention">
-                            <rect x="225" y="370" width="250" height="60" rx="10" fill="rgba(var(--accent-red-rgb), 0.8)" stroke="var(--accent-red)" stroke-width="2.5"/>
-                            <text x="350" y="405" font-family="Fredoka One, cursive" font-size="18" fill="var(--text-color-light)" text-anchor="middle">ACTIVACIÓN CONDUCTUAL</text>
-                            
-                            <!-- Arrow from AC to break the cycle -->
-                            <line x1="350" y1="370" x2="350" y2="230" stroke="var(--accent-red)" stroke-width="3" stroke-dasharray="5,5" marker-end="url(#arrowhead-red)"/>
-                             <text x="360" y="250" font-family="Comfortaa, sans-serif" font-size="14" fill="var(--accent-red)" font-weight="bold">Interrumpe el ciclo</text>
-                        </g>
-                    </svg>
-                </div>
-
-
-                <h4><i class="fas fa-drafting-compass"></i> Principios Fundamentales de la Activación Conductual: Los Pilares del Cambio</h4>
-                <p>La AC se sustenta en varios principios clave que guían su aplicación:</p>
-                <ul>
-                    <li>
-                        <strong>La Acción Precede a la Motivación (y al Cambio de Ánimo):</strong> Este es quizás el principio más contraintuitivo y central de la AC. Desafía la creencia popular de que necesitamos <em>sentirnos</em> motivados o de mejor humor para actuar. La AC postula lo contrario: a menudo es la <em>acción</em> la que genera la motivación y provoca una mejora en el estado de ánimo. No se espera a "tener ganas"; se actúa primero, como un experimento conductual, para observar los efectos.
-                        <div class="example-box">
-                            <h5>Ejemplo Práctico:</h5>
-                            <p>Una persona deprimida puede no sentir ganas de salir a caminar. En lugar de esperar la motivación, la AC propondría programar una caminata corta (ej. 10 minutos) y luego evaluar cómo se sintió durante y después, independientemente de las ganas previas.</p>
-                        </div>
-                    </li>
-                    <li>
-                        <strong>Identificación de Actividades Valiosas y Reforzantes (TRAP vs. TRAC):</strong> Se trabaja colaborativamente con la persona para identificar qué actividades son verdaderamente importantes y significativas para ella (alineadas con sus <em>valores</em>) y cuáles tienen el potencial de ser placenteras (<em>reforzantes</em>). Se distingue entre actividades que son "TRAP" (Trampa: que parecen aliviar a corto plazo pero empeoran el ánimo a largo plazo, como quedarse en cama todo el día) y actividades "TRAC" (Trayectoria: que mueven hacia una vida más valiosa).
-                    </li>
-                    <li>
-                        <strong>Programación Estructurada y Monitoreo Detallado de Actividades:</strong> No basta con "intentar hacer más cosas". La AC implica planificar actividades específicas en un horario concreto (como si fueran citas importantes) y luego monitorear su realización. Este monitoreo incluye registrar no solo si se hizo la actividad, sino también el nivel de placer y/o logro experimentado (usualmente en una escala de 0 a 10) y el estado de ánimo antes y después. Esto proporciona datos objetivos sobre el impacto de la actividad.
-                    </li>
-                    <li>
-                        <strong>Enfoque Gradual y Jerarquizado (Paso a Paso):</strong> Para evitar la sobrecarga y el fracaso, se comienza con actividades que son relativamente fáciles y manejables. Se crea una <em>jerarquía de actividades</em>, desde las más sencillas hasta las más complejas o desafiantes. A medida que la persona gana confianza y experimenta los beneficios de las actividades más simples, se avanza gradualmente hacia las más difíciles.
-                    </li>
-                    <li>
-                        <strong>Reducción Activa de la Evitación Conductual:</strong> La evitación es un motor clave de la depresión y la ansiedad. La AC ayuda a identificar los patrones de evitación (qué situaciones, personas o actividades se están eludiendo) y a desarrollar estrategias para enfrentarlos gradualmente, utilizando las actividades programadas como medio.
-                    </li>
-                    <li>
-                        <strong>Énfasis en el Contexto y la Función del Comportamiento:</strong> La AC es idiográfica, es decir, se adapta a cada individuo. Se analiza cómo el entorno (físico, social) y las circunstancias vitales de una persona pueden estar influyendo en su comportamiento y estado de ánimo, y cómo ciertos comportamientos (o la ausencia de ellos) están "funcionando" para mantener el problema.
-                    </li>
-                    <li>
-                        <strong>Orientación Externa sobre Interna:</strong> En lugar de enfocarse excesivamente en cambiar pensamientos o sentimientos internos directamente (como en otras formas de TCC), la AC prioriza el cambio conductual observable. La premisa es que al cambiar lo que <em>hacemos</em>, nuestros pensamientos y sentimientos también comenzarán a cambiar como consecuencia natural.
-                    </li>
-                </ul>
-
-                <h4><i class="fas fa-cogs"></i> ¿Cómo Funciona la Activación Conductual en la Práctica? El Proceso Detallado</h4>
-                <p>
-                    El proceso terapéutico de la Activación Conductual es estructurado y colaborativo, implicando típicamente los siguientes pasos:
-                </p>
-                <ol>
-                    <li>
-                        <strong>Fase de Psicoeducación y Establecimiento del Modelo:</strong>
-                        <ul>
-                            <li>Se explica detalladamente el modelo de la AC: la relación entre el estado de ánimo, la actividad, la evitación y el refuerzo positivo. Se ayuda al paciente a entender cómo su inactividad o evitación actual puede estar contribuyendo a su malestar.</li>
-                            <li>Se presenta la lógica del tratamiento: "actuar de afuera hacia adentro" en lugar de esperar a sentirse mejor para actuar.</li>
-                            <li>Se fomenta la esperanza y se establece una alianza terapéutica sólida.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Monitoreo de Actividades Basales y Estado de Ánimo:</strong>
-                        <ul>
-                            <li>Se le pide al paciente que lleve un registro detallado de sus actividades diarias durante una semana (o un período determinado). Para cada bloque de tiempo, debe anotar qué hizo y cómo se sintió (ej. nivel de placer y logro, en una escala de 0-10).</li>
-                            <li>Este autorregistro ayuda a identificar patrones actuales de actividad e inactividad, la relación entre ciertas actividades y el estado de ánimo, y las actividades que se están evitando.</li>
-                            <li><strong>Ejemplo de Fila en un Registro de Actividades:</strong>
-                                <div class="example-box">
-                                    <p><strong>Hora:</strong> 10:00-11:00 | <strong>Actividad:</strong> Ver TV en la cama | <strong>Placer (0-10):</strong> 3 | <strong>Logro (0-10):</strong> 1 | <strong>Ánimo (0-10):</strong> 2</p>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Identificación de Valores Personales y Áreas Vitales:</strong>
-                        <ul>
-                            <li>Se explora qué es verdaderamente importante para la persona en diferentes áreas de su vida (ej. relaciones, trabajo/estudios, ocio, salud, crecimiento personal, espiritualidad). Los valores actúan como una brújula para seleccionar actividades significativas.</li>
-                            <li>Herramientas como el "Inventario de Valores" pueden ser útiles aquí.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Generación de una Lista Amplia de Actividades Potenciales (Menú de Actividades):</strong>
-                        <ul>
-                            <li>Basándose en los valores identificados, el monitoreo basal y las preferencias pasadas, se crea una lista exhaustiva de actividades que podrían ser placenteras, dar un sentido de logro, o estar alineadas con los valores.</li>
-                            <li>Se incluyen actividades de diferentes tipos: sociales, físicas, de ocio, de cuidado personal, productivas, creativas, etc.</li>
-                            <li>Se clasifican según la dificultad percibida y el potencial de refuerzo (placer/logro).</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Creación de Jerarquías de Activación y Programación Gradual:</strong>
-                        <ul>
-                            <li>Se seleccionan algunas actividades de la lista, comenzando por las más fáciles o las que tienen mayor probabilidad de éxito.</li>
-                            <li>Estas actividades se programan específicamente en la agenda semanal del paciente, detallando qué, cuándo, dónde y por cuánto tiempo.</li>
-                            <li>El objetivo es empezar pequeño y construir sobre los éxitos. Por ejemplo, si el valor es "conexión social" y la persona está muy aislada, una primera actividad podría ser "enviar un mensaje a un amigo" en lugar de "ir a una fiesta".</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Implementación y Monitoreo Continuo:</strong>
-                        <ul>
-                            <li>El paciente lleva a cabo las actividades programadas y continúa monitoreando su estado de ánimo, placer y logro.</li>
-                            <li>Se presta atención a los resultados, incluso si son modestos al principio.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Resolución de Problemas y Superación de Barreras:</strong>
-                        <ul>
-                            <li>Es común encontrar obstáculos (ej. falta de energía, pensamientos negativos, dificultades logísticas). El terapeuta y el paciente trabajan juntos para identificar estas barreras y desarrollar estrategias para superarlas.</li>
-                            <li>Se pueden usar técnicas de resolución de problemas, reestructuración cognitiva simple (para pensamientos que interfieren con la acción), o modificación de la actividad para hacerla más manejable.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Revisión del Progreso y Ajuste del Plan:</strong>
-                        <ul>
-                            <li>En cada sesión, se revisa el progreso, se celebran los éxitos (por pequeños que sean) y se ajusta el plan de activación según sea necesario, aumentando gradualmente la dificultad o variedad de las actividades.</li>
-                            <li>Se refuerza la conexión entre la actividad y la mejora del estado de ánimo.</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <strong>Prevención de Recaídas y Mantenimiento de los Logros:</strong>
-                        <ul>
-                            <li>Una vez que se ha logrado una mejora significativa, se trabaja en estrategias para mantener los niveles de actividad y prevenir recaídas, reconociendo las señales tempranas de un posible declive y teniendo un plan de acción.</li>
-                        </ul>
-                    </li>
-                </ol>
-                <blockquote>
-                    <p>"La Activación Conductual no es simplemente 'hacer cosas'; es un proceso estratégico y personalizado de reconectar con la vida de una manera que sea significativa y gratificante para el individuo."</p>
-                </blockquote>
+                 <blockquote>
+                     <p>La Activación Conductual se basa en la idea de que al cambiar lo que <em>hacemos</em>, podemos cambiar cómo nos <em>sentimos</em> y cómo <em>pensamos</em>.</p>
+                 </blockquote>
             </section>
 
             <section class="component-content-section">
-                <h3><i class="fas fa-puzzle-piece"></i> Aplicaciones Específicas de la Activación Conductual</h3>
-                <p>Si bien la AC es un tratamiento de primera línea para la depresión, su utilidad se extiende a otros problemas:</p>
-                <ul>
-                    <li><strong>Trastornos de Ansiedad:</strong> Ayuda a las personas a enfrentar gradualmente situaciones temidas (exposición conductual) y a participar en actividades que han estado evitando debido a la ansiedad, reduciendo así la evitación que mantiene el ciclo ansioso.</li>
-                    <li><strong>Trastorno Límite de la Personalidad (TLP):</strong> Puede ser útil para abordar la apatía, el vacío crónico y la impulsividad, ayudando a estructurar el día con actividades valiosas y a reducir comportamientos problemáticos que surgen de la inactividad o el malestar.</li>
-                    <li><strong>Manejo del Estrés General:</strong> Fomentar actividades placenteras y de autocuidado puede ser una estrategia efectiva para reducir el estrés y mejorar el bienestar general.</li>
-                    <li><strong>Procrastinación Crónica:</strong> Los principios de iniciar la acción, dividir tareas grandes en pasos pequeños y programar actividades son directamente aplicables.</li>
-                </ul>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-users"></i> Ejemplos Prácticos y Escenarios de Aplicación</h3>
+                <h3><i class="fas fa-tasks"></i> Componentes y Pasos Clave de la Activación Conductual</h3>
+                <p>La AC es un proceso estructurado y colaborativo que implica varios pasos:</p>
                 
+                <h4>1. Monitoreo de Actividades y Estado de Ánimo</h4>
+                <p>El primer paso es entender la relación actual entre lo que haces y cómo te sientes. Esto se logra mediante un registro diario:</p>
+                <ul>
+                    <li><strong>Registro por Horas:</strong> Se le pide al individuo que anote lo que hace hora por hora (o en bloques de tiempo) a lo largo del día.</li>
+                    <li><strong>Calificación del Estado de Ánimo:</strong> Junto a cada actividad, se califica el estado de ánimo en una escala (ej. de 0 a 10), así como el nivel de placer o disfrute y el nivel de importancia o dominio que se experimentó.</li>
+                    <li><strong>Identificación de Patrones:</strong> Al revisar el registro, tanto el terapeuta como el cliente pueden identificar patrones clave. Por ejemplo, pueden notar que el estado de ánimo es consistentemente bajo durante largos períodos de inactividad, o que ciertas actividades, incluso pequeñas, se correlacionan con una ligera mejora en el ánimo.</li>
+                </ul>
                 <div class="example-box">
-                    <h5>Escenario 1: Ana, con Depresión y Aislamiento Social</h5>
-                    <p><strong>Situación:</strong> Ana ha estado sintiéndose profundamente triste y sin energía durante meses. Ha dejado de ver a sus amigos y pasa la mayor parte del día en casa viendo televisión. Su valor principal identificado es la "amistad" y "conexión".</p>
-                    <p><strong>Plan de Activación Conductual (Primeros Pasos):</strong></p>
-                    <ol>
-                        <li><strong>Monitoreo:</strong> Ana registra sus actividades y ánimo durante 3 días. Se da cuenta de que su ánimo es más bajo cuando pasa mucho tiempo sola viendo TV.</li>
-                        <li><strong>Lista de Actividades (basada en valor "amistad"):</strong>
-                            <ul>
-                                <li>Enviar un mensaje de texto a una amiga (Fácil).</li>
-                                <li>Llamar a un familiar (Moderado).</li>
-                                <li>Proponer tomar un café con una amiga (Difícil).</li>
-                            </ul>
-                        </li>
-                        <li><strong>Programación:</strong>
-                            <ul>
-                                <li>Lunes 15:00: Enviar mensaje a Laura preguntando cómo está.</li>
-                                <li>Miércoles 11:00: Llamar a su hermana.</li>
-                            </ul>
-                        </li>
-                        <li><strong>Resultado Esperado (Hipótesis):</strong> Aunque no tenga ganas, conectar brevemente podría mejorar su ánimo o darle una pequeña sensación de logro.</li>
-                    </ol>
+                    <h5>Ejemplo de Registro:</h5>
+                    <p><strong>Hora:</strong> 2:00 PM - 4:00 PM | <strong>Actividad:</strong> Ver TV en el sofá | <strong>Estado de Ánimo (0-10):</strong> 3 | <strong>Placer (0-10):</strong> 2 | <strong>Dominio (0-10):</strong> 1</p>
+                    <p><strong>Hora:</strong> 4:00 PM - 4:15 PM | <strong>Actividad:</strong> Sacar la basura y regar una planta | <strong>Estado de Ánimo (0-10):</strong> 4 | <strong>Placer (0-10):</strong> 2 | <strong>Dominio (0-10):</strong> 5</p>
                 </div>
 
-                <div class="example-box">
-                    <h5>Escenario 2: Carlos, con Ansiedad Social que Evita Eventos</h5>
-                    <p><strong>Situación:</strong> Carlos siente una intensa ansiedad en situaciones sociales y ha empezado a rechazar todas las invitaciones a eventos, a pesar de que valora tener un círculo social.</p>
-                    <p><strong>Plan de Activación Conductual (Enfoque de Exposición Gradual):</strong></p>
-                    <ol>
-                        <li><strong>Valor:</strong> "Pertenencia social" y "disfrutar de compañía".</li>
-                        <li><strong>Jerarquía de Actividades (de menos a más ansiógenas):</strong>
-                            <ol type="a">
-                                <li>Ir a una tienda concurrida por 10 minutos.</li>
-                                <li>Aceptar una invitación a un café con un solo amigo cercano.</li>
-                                <li>Asistir a una reunión pequeña de trabajo (opcional).</li>
-                                <li>Ir a una fiesta de cumpleaños de un conocido por 1 hora.</li>
-                            </ol>
-                        </li>
-                        <li><strong>Programación:</strong> Carlos programa la actividad (a) para la próxima semana, con un plan de qué hará si la ansiedad aumenta (ej. técnicas de respiración, recordarse su valor).</li>
-                        <li><strong>Monitoreo:</strong> Registra su nivel de ansiedad antes, durante y después, y si logró el objetivo.</li>
-                    </ol>
+                <h4>2. Identificación de Valores y Metas</h4>
+                <p>La activación no se trata de "hacer por hacer". Para que sea significativa y sostenible, las actividades deben estar conectadas con los <strong>valores</strong> personales del individuo. Un valor es una dirección de vida, algo que es importante para nosotros (ej. ser un buen amigo, cuidar de la salud, ser creativo, aprender).</p>
+                <ul>
+                    <li><strong>Exploración de Dominios de la Vida:</strong> Se exploran diferentes áreas de la vida (relaciones, trabajo/educación, ocio, salud, espiritualidad) para identificar qué es verdaderamente importante para la persona.</li>
+                    <li><strong>Definición de Actividades Basadas en Valores:</strong> A partir de estos valores, se identifican actividades concretas que los reflejan. Si un valor es "la conexión social", una actividad podría ser "llamar a un amigo". Si un valor es "la creatividad", una actividad podría ser "dedicar 15 minutos a dibujar".</li>
+                </ul>
+
+                <h4>3. Programación de Actividades (El Plan de Acción)</h4>
+                <p>Este es el núcleo de la intervención. Basándose en los valores y los datos del monitoreo, el cliente y el terapeuta colaboran para programar actividades específicas en la agenda de la semana. Este proceso es cuidadoso y estratégico:</p>
+                <ul>
+                    <li><strong>Comenzar con Pasos Pequeños y Manejables:</strong> Es crucial que las primeras actividades sean fáciles de lograr para construir un sentido de autoeficacia. Si el objetivo es hacer ejercicio, no se empieza programando una hora de gimnasio cinco días a la semana; se empieza con una caminata de 10 minutos.</li>
+                    <li><strong>Jerarquía de Actividades:</strong> Se crea una lista de actividades potenciales y se ordenan de más fáciles a más difíciles. Se empieza por las más fáciles.</li>
+                    <li><strong>Equilibrio de Actividades:</strong> Se busca programar una mezcla de actividades que proporcionen <strong>placer</strong> (disfrute en el momento) y <strong>dominio</strong> (sentido de logro o competencia).</li>
+                    <li><strong>Hacerlo un Experimento:</strong> Se enmarca la actividad como un experimento: "No sabemos si te sentirás mejor, pero vamos a probarlo y ver qué pasa". Esto reduce la presión de tener que "disfrutarlo".</li>
+                </ul>
+
+                <h4>4. Abordar la Evitación y Resolver Problemas</h4>
+                <p>Es inevitable que surjan obstáculos y barreras para la activación. La AC se anticipa a esto:</p>
+                <ul>
+                    <li><strong>Identificar la Función de la Evitación:</strong> Se analiza qué función cumple el no hacer la actividad (ej. evitar sentimientos de ansiedad, miedo al fracaso, falta de energía, pensamientos de "no tiene sentido").</li>
+                    <li><strong>Resolución de Problemas:</strong> Se utilizan técnicas de resolución de problemas para abordar barreras prácticas (ej. falta de tiempo, recursos, etc.).</li>
+                    <li><strong>Aplicar Otras Habilidades de TCC:</strong> Si la barrera es un pensamiento ("No voy a disfrutarlo"), se puede usar la reestructuración cognitiva. Si es la ansiedad, se pueden usar técnicas de exposición gradual.</li>
+                </ul>
+                 <div class="example-box">
+                    <h5>Ejemplo de Planificación y Resolución de Problemas:</h5>
+                    <p><strong>Valor:</strong> Cuidar de mi salud.</p>
+                    <p><strong>Actividad Programada:</strong> Salir a caminar 15 minutos después del almuerzo el martes.</p>
+                    <p><strong>Posible Barrera/Pensamiento:</strong> "Estoy demasiado cansado, no tengo ganas."</p>
+                    <p><strong>Estrategia de Afrontamiento:</strong> "Voy a actuar de forma opuesta a mi impulso de quedarme quieto. Me pondré las zapatillas y saldré solo por 5 minutos. Si después de 5 minutos todavía me siento fatal, me permitiré volver. Lo trataré como un experimento."</p>
                 </div>
-            </section>
 
-             <section class="component-content-section">
-                <h3><i class="fas fa-exclamation-triangle"></i> Desafíos Comunes en la AC y Estrategias para Superarlos</h3>
-                <ul>
-                    <li><strong>Falta de Motivación Inicial:</strong> <em>Estrategia:</em> Recordar el principio "acción antes que motivación". Empezar con actividades muy pequeñas (regla de los 5 minutos). Enfocarse en el comportamiento, no en el sentimiento.</li>
-                    <li><strong>Sentirse Abrumado por la Lista de Actividades:</strong> <em>Estrategia:</em> Dividir las actividades en pasos aún más pequeños. Elegir solo 1-2 actividades para empezar. Usar la jerarquía.</li>
-                    <li><strong>Pensamientos Negativos ("No va a funcionar", "No soy capaz"):</strong> <em>Estrategia:</em> Reconocer los pensamientos sin debatirlos intensamente. Tratar la actividad como un "experimento" para ver qué pasa. Focalizarse en la acción.</li>
-                    <li><strong>Contratiempos y Días Malos:</strong> <em>Estrategia:</em> Normalizar que habrá días difíciles. No ver un contratiempo como un fracaso total. Retomar el plan lo antes posible, quizás con actividades más fáciles. Ser autocompasivo.</li>
-                    <li><strong>Dificultad para Experimentar Placer o Logro:</strong> <em>Estrategia:</em> Ajustar las expectativas. Al principio, el placer/logro puede ser sutil. Ampliar la definición de "logro" (ej. el simple hecho de haber intentado es un logro). Explorar diferentes tipos de actividades.</li>
-                </ul>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-tools"></i> Herramientas Útiles en la Activación Conductual (Conceptos)</h3>
-                <p>Aunque el terapeuta guía el proceso, ciertas herramientas estructuradas son comunes:</p>
-                <ul>
-                    <li><strong>Hoja de Monitoreo Diario de Actividades y Ánimo:</strong> Una tabla para registrar hora por hora las actividades realizadas, y calificar el placer y logro (0-10) y el estado de ánimo asociado.</li>
-                    <li><strong>Inventario de Valores Personales:</strong> Un cuestionario o ejercicio para ayudar a la persona a clarificar qué es lo más importante en su vida en diferentes dominios.</li>
-                    <li><strong>Jerarquía de Actividades de Activación:</strong> Una lista de actividades ordenadas de menor a mayor dificultad o evitación, que sirve como hoja de ruta.</li>
-                    <li><strong>Planificador Semanal de Actividades:</strong> Una agenda donde se programan concretamente las actividades a realizar durante la semana.</li>
-                </ul>
-                <p><em>Nota: Estos son conceptos de herramientas. Existen múltiples plantillas disponibles online o que un terapeuta puede proporcionar.</em></p>
-            </section>
-            
-            <section class="component-content-section">
-                <h3><i class="fas fa-link"></i> Integración de la AC con Otras Técnicas TCC</h3>
-                <p>La Activación Conductual raramente se usa en total aislamiento, especialmente dentro de un marco TCC más amplio:</p>
-                <ul>
-                    <li><strong>Reestructuración Cognitiva:</strong> Aunque la AC prioriza la acción, abordar pensamientos negativos persistentes que sabotean la activación puede ser necesario. Una vez que la persona está más activa, puede tener más energía y perspectiva para trabajar en sus patrones de pensamiento.</li>
-                    <li><strong>Entrenamiento en Habilidades de Afrontamiento:</strong> Habilidades para manejar la ansiedad (ej. respiración diafragmática, relajación muscular progresiva) pueden facilitar la realización de actividades evitadas.</li>
-                    <li><strong>Técnicas de Resolución de Problemas:</strong> Útiles para abordar obstáculos prácticos que impiden la activación.</li>
-                </ul>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-chart-line"></i> Beneficios a Largo Plazo y Mantenimiento de los Logros</h3>
-                <p>Los beneficios de la AC pueden ser duraderos si se mantienen los principios:</p>
-                <ul>
-                    <li><strong>Aumento Sostenido del Estado de Ánimo Positivo:</strong> Al mantener un nivel adecuado de actividad reforzante.</li>
-                    <li><strong>Mayor Resiliencia:</strong> Haber enfrentado y superado la inercia y la evitación fortalece la capacidad de afrontar futuros desafíos.</li>
-                    <li><strong>Mejora de la Autoestima y Autoeficacia:</strong> Ver que uno puede influir en su propio estado de ánimo a través de la acción.</li>
-                    <li><strong>Una Vida más Rica y Significativa:</strong> Al vivir de acuerdo con los propios valores.</li>
-                </ul>
-                <p><strong>Para el mantenimiento, es crucial:</strong> Continuar monitoreando (quizás menos intensivamente) el ánimo y la actividad, ser consciente de las señales tempranas de recaída (ej. aumento de la evitación), y tener un plan para reactivarse si es necesario.</p>
-            </section>
-
-            <section class="component-content-section">
-                <h3><i class="fas fa-user-md"></i> Consideraciones Importantes y Cuándo Buscar Ayuda Profesional</h3>
-                <p>
-                    Aunque los principios de la Activación Conductual pueden ser autoaplicados hasta cierto punto, es <strong>fundamental reconocer cuándo se necesita el apoyo de un profesional de la salud mental</strong>. Un terapeuta cualificado puede:
-                </p>
-                <ul>
-                    <li>Realizar una evaluación completa para un diagnóstico preciso.</li>
-                    <li>Adaptar el plan de AC a las necesidades individuales específicas.</li>
-                    <li>Ayudar a identificar y superar barreras complejas.</li>
-                    <li>Integrar la AC con otras intervenciones terapéuticas necesarias.</li>
-                    <li>Proporcionar apoyo y motivación experta durante todo el proceso.</li>
-                </ul>
-                <p>
-                    La AC es una herramienta poderosa, pero como cualquier intervención, su efectividad puede maximizarse con la guía adecuada, especialmente si el malestar es severo, persistente o coexiste con otras dificultades.
-                </p>
+                <h4>5. Reducción de la Rumiación</h4>
+                <p>La rumiación (darle vueltas a los pensamientos negativos) consume una gran cantidad de energía mental y a menudo impide la acción. La AC ayuda a reducir la rumiación al desviar la atención hacia actividades externas y el momento presente. La acción se convierte en un antídoto contra la rumiación.</p>
             </section>
             
             <div class="navigation-buttons-container">
@@ -892,23 +603,11 @@
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Universo Borderline</h3>
-                    <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <!-- Social links icons removed -->
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
                 </div>
                 
                 <div class="footer-column">
-                    <h3>Navegación</h3>
-                    <ul class="footer-links">
-                        <li><a href="index.html">Inicio</a></li> 
-                        <li><a href="cursos.html">Cursos</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="memes.html">Memes</a></li> 
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Enlaces Útiles</h3>
+                    <h3>Enlaces Útiles</h3> 
                     <ul class="footer-links">
                         <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
                         <li><a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" target="_blank" rel="noopener noreferrer">¿Qué es TCC?</a></li>
@@ -920,26 +619,26 @@
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p>
-                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
-                        <!-- Removed "Soporte: 24/7 para miembros premium" -->
-                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
-                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p>
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
                     </div>
                 </div>
             </div>
-            
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
-                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados.</p> 
+                <p><a href="privacidad.html">Privacidad</a> | <a href="terminos.html">Términos</a> | <a href="seguridad.html">Seguridad</a></p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
+            // Create animated stars
             const starsContainer = document.getElementById('stars');
             if (starsContainer) {
                 const starsCount = 150;
@@ -964,36 +663,34 @@
                 }
             }
             
+            // Active navigation link highlighting
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
             const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
                 link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
                 
-                // Highlight "Cursos" if on any course-related subpage or cursos.html itself
                 if (linkFilename === 'cursos.html' && 
                     (currentPageFilename === 'cursos.html' || 
                      currentPageFilename === 'dbt.html' || 
                      currentPageFilename === 'cbt.html' ||
-                     currentPageFilename === 'mindfulness_dbt.html' ||
-                     currentPageFilename === 'regulacion_emocional_dbt.html' ||
-                     currentPageFilename === 'tolerancia_malestar_dbt.html' ||
-                     currentPageFilename === 'efectividad_interpersonal_dbt.html' ||
-                     currentPageFilename === 'restructuracion_cognitiva_cbt.html' || 
-                     currentPageFilename === 'activacion_conductual_cbt.html' || 
-                     currentPageFilename === 'tecnicas_exposicion_cbt.html' ||
-                     currentPageFilename === 'resolucion_problemas_cbt.html'
+                     currentPageFilename.includes('_dbt') ||
+                     currentPageFilename.includes('_cbt') 
                     )) {
                     link.classList.add('active'); 
-                } else if (linkFilename === currentPageFilename) { // For other pages
+                    link.setAttribute('aria-current', 'page');
+                } else if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
+                    link.setAttribute('aria-current', 'page');
                 }
             });
             
+            // Header scroll effect
             const header = document.getElementById('main-header');
             if(header){
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) {
+                    if (window.scrollY > 40) { 
                         header.classList.add('scrolled');
                     } else {
                         header.classList.remove('scrolled');
@@ -1001,6 +698,7 @@
                 });
             }
             
+            // Intersection Observer for module content section animations
             const animatedSections = document.querySelectorAll('.component-content-section'); 
             if (animatedSections.length > 0) {
                  const observerOptions = {
@@ -1012,11 +710,10 @@
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
                             entry.target.classList.add('visible');
-                        } else {
-                            // entry.target.classList.remove('visible'); // Uncomment to re-animate on scroll up
                         }
                     });
                 }, observerOptions);
+
                 animatedSections.forEach(section => {
                     observer.observe(section);
                 });
