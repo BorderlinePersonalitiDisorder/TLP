@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seguridad - Universo Borderline</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-violet: #8A2BE2;
+            --secondary-cyan: #00CED1;
+            --accent-magenta: #FF00FF;
+            --accent-green: #00FF7F;
+            --accent-blue: #1E90FF;
+            --accent-yellow: #FFD700;
+            --accent-red: #FF4500;
+            
+            --text-color-light: #F0F0F0;
+            --text-color-medium: #A0A0A0;
+            
+            --card-bg: rgba(30, 30, 50, 0.92);
+            --border-color: rgba(138, 43, 226, 0.7);
+            --dark-bg: #0A0A20;
+
+            --primary-violet-rgb: 138, 43, 226;
+            --accent-blue-rgb: 30, 144, 255;
+            --accent-magenta-rgb: 255, 0, 255;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: var(--dark-bg);
+            color: var(--text-color-light);
+            line-height: 1.8;
+            font-family: 'Raleway', sans-serif;
+            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex; 
+            flex-direction: column; 
+            background-image: 
+                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
+            background-size: 400% 400%; 
+            animation: gradientBackground 20s ease infinite;
+        }
+        
+        @keyframes gradientBackground {
+            0% { background-position: 0% 50%; } 
+            50% { background-position: 100% 50%; } 
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            width: 100%; 
+            max-width: 1100px; 
+            margin: 0 auto; 
+            padding: 0 20px; 
+            position: relative; 
+            z-index: 1;
+        }
+        
+        header {
+            background: rgba(10, 10, 32, 0.85); 
+            backdrop-filter: blur(12px); 
+            color: white; 
+            padding: 1rem 0; 
+            position: fixed; 
+            top: 0; 
+            width: 100%;
+            z-index: 1000;
+            border-bottom: 2px solid var(--accent-magenta); 
+            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
+            transition: all 0.4s ease;
+        }
+        
+        header.scrolled {
+            background: rgba(10, 10, 32, 0.95);
+            padding: 0.7rem 0;
+        }
+        
+        .header-container { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+        }
+        
+        .logo { 
+            display: flex; 
+            align-items: center; 
+            gap: 15px; 
+            cursor: pointer;
+            transition: all 0.4s ease;
+            text-decoration: none; 
+        }
+        
+        .logo:hover {
+            transform: rotate(-5deg) scale(1.05);
+        }
+        
+        .logo h1 { 
+            font-family: 'Monoton', cursive; 
+            font-size: 1.9rem; 
+            font-weight: 400;
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-yellow), var(--accent-blue));
+            -webkit-background-clip: text; 
+            background-clip: text; 
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+        
+        .logo i { 
+            font-size: 2.2rem; 
+            color: var(--accent-green); 
+            animation: logoPulse 3s infinite alternate;
+        }
+        
+        @keyframes logoPulse {
+            0% { transform: scale(1); color: var(--accent-green); }
+            50% { transform: scale(1.1); color: var(--secondary-cyan); }
+            100% { transform: scale(1); color: var(--accent-blue); }
+        }
+        
+        nav ul { 
+            display: flex; 
+            list-style: none; 
+            gap: 10px; 
+        }
+        
+        nav a { 
+            color: var(--text-color-light); 
+            text-decoration: none; 
+            font-family: 'Comfortaa', sans-serif; 
+            font-size: 0.9rem; 
+            padding: 10px 15px; 
+            border-radius: 20px; 
+            transition: all 0.3s ease-out; 
+            position: relative;
+            background: transparent; 
+            border: 1px solid transparent; 
+        }
+        
+        nav a::before { 
+            content: ''; 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            width: 0%; 
+            height: 100%;
+            background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
+            opacity: 0.3; 
+            transition: width 0.4s ease; 
+            z-index: -1;
+            border-radius: 20px;
+        }
+        
+        nav a:hover::before, 
+        nav a.active::before { 
+            width: 100%; 
+        } 
+        
+        nav a:hover, 
+        nav a.active {
+            color: var(--accent-yellow); 
+            background-color: rgba(0, 255, 255, 0.1); 
+            border: 1px solid var(--accent-blue); 
+            transform: translateY(-3px); 
+        }
+
+        .main-page-content { 
+            padding: 100px 0 4rem 0; 
+            flex-grow: 1; 
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 2.5rem; 
+            padding-top: 2rem;
+        }
+
+        .page-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem; 
+            font-weight: 700;
+            color: var(--accent-red); 
+            margin-bottom: 0.75rem; 
+            text-shadow: 0 0 12px rgba(var(--accent-red-rgb),0.5); 
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .page-header h2 i {
+            font-size: 2.5rem; 
+        }
+        
+        .page-header p.subtitle {
+            font-size: 1.2rem; 
+            color: var(--text-color-medium);
+            max-width: 800px; 
+            margin: 0 auto 2.5rem auto; 
+            font-style: italic; 
+        }
+
+        .policy-content {
+            background: var(--card-bg);
+            padding: 35px;
+            border-radius: 15px;
+            border: 1px solid var(--border-color);
+            text-align: justify;
+        }
+
+        .policy-content h3 {
+            font-family: 'Fredoka One', cursive;
+            color: var(--accent-yellow);
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid var(--accent-blue);
+            padding-bottom: 8px;
+        }
+        .policy-content h3:first-of-type {
+            margin-top: 0;
+        }
+
+        .policy-content p, .policy-content li {
+            margin-bottom: 1rem;
+            font-size: 1.05rem;
+        }
+        
+        .policy-content ul {
+            list-style-position: inside;
+            padding-left: 10px;
+        }
+
+        .back-to-link-container {
+            text-align: center;
+            margin-top: 3rem; 
+            margin-bottom: 1rem; 
+        }
+        .back-to-btn {
+            display: inline-flex; 
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red)); 
+            color: var(--dark-bg); 
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Comfortaa', sans-serif;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(var(--accent-yellow-rgb), 0.3);
+        }
+        .back-to-btn:hover {
+            background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow)); 
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(var(--accent-red-rgb), 0.4); 
+        }
+
+        footer { 
+            background: rgba(10,10,32,0.97); 
+            color: white; 
+            padding: 4rem 0 2rem; 
+            position: relative; 
+            border-top: 2px solid var(--accent-blue); 
+            margin-top: auto; 
+        }
+        
+        .footer-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 40px; 
+            margin-bottom: 3rem; 
+        }
+        
+        .footer-column h3 { 
+            color: var(--accent-yellow); 
+            margin-bottom: 1.5rem; 
+            position: relative; 
+            padding-bottom: 10px; 
+            font-size: 1.4rem; 
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .footer-column h3::after { 
+            content: ''; 
+            position: absolute; 
+            bottom: 0; 
+            left: 0; 
+            width: 50px; 
+            height: 3.5px; 
+            background: var(--accent-blue); 
+            border-radius: 1.5px; 
+        }
+        
+        .contact-info p { 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            margin-bottom: 12px; 
+            font-size: 1.05rem; 
+            color: var(--text-color-medium); 
+        }
+        .contact-info i { color: var(--accent-blue); } 
+        
+        .copyright { 
+            text-align: center; 
+            padding-top: 2rem; 
+            border-top: 1px solid rgba(255, 255, 255, 0.07); 
+            color: #a090b0; 
+            font-size: 0.95rem; 
+        }
+        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
+        .copyright a:hover { color: var(--text-color-light); }
+        
+        @media (max-width: 900px) {
+            .header-container { flex-direction: column; gap: 12px; }
+            nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
+            .page-header h2 { font-size: 2.4rem; }
+        }
+        
+        @media (max-width: 600px) {
+            .main-page-content { padding-top: 130px; } 
+            .logo h1 { font-size: 1.6rem; } 
+            nav a { font-size: 0.7rem; padding: 6px 7px; }
+            .page-header h2 { font-size: 2rem; }
+            .page-header p.subtitle { font-size: 1rem; }
+            .policy-content { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <header id="main-header">
+        <div class="container header-container">
+            <a href="index.html" class="logo" aria-label="Universo Borderline Homepage"> 
+                <i class="fas fa-brain" aria-hidden="true"></i>
+                <h1>UNIVERSO BORDERLINE</h1> 
+            </a>
+            <nav aria-label="Navegación principal">
+                <ul>
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="blog.html">Blog</a></li> 
+                    <li><a href="foro.html">Foros</a></li> 
+                    <li><a href="memes.html">Memes</a></li> 
+                    <li><a href="podcast.html">Podcast</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-page-content">
+        <div class="container">
+            <div class="page-header">
+                <h2><i class="fas fa-shield-halved"></i> Nuestro Compromiso con la Seguridad</h2>
+                <p class="subtitle">
+                    Construyendo un espacio digital seguro y protegido para nuestra comunidad.
+                </p>
+            </div>
+
+            <section class="policy-content">
+                <h3>1. Protección de tu Cuenta</h3>
+                <p>La seguridad de tu cuenta es una responsabilidad compartida. Te recomendamos encarecidamente que utilices una contraseña fuerte y única para tu cuenta en Universo Borderline, que combine letras mayúsculas y minúsculas, números y símbolos. No compartas tu contraseña con nadie. Nuestro equipo nunca te solicitará tu contraseña.</p>
+                
+                <h3>2. Medidas Técnicas</h3>
+                <p>Implementamos una variedad de medidas de seguridad técnicas para proteger la integridad del Sitio y tus datos personales contra el acceso no autorizado, la alteración o la destrucción.</p>
+                <ul>
+                    <li><strong>Cifrado SSL:</strong> Todo el tráfico entre tu navegador y nuestros servidores está cifrado utilizando tecnología SSL (Secure Socket Layer), lo que garantiza que los datos que compartes estén protegidos.</li>
+                    <li><strong>Infraestructura Segura:</strong> Alojamos nuestro Sitio en servidores seguros que cuentan con firewalls y otras tecnologías avanzadas para prevenir intrusiones.</li>
+                    <li><strong>Actualizaciones y Monitoreo:</strong> Mantenemos nuestro software y sistemas actualizados con los últimos parches de seguridad y monitoreamos continuamente nuestros sistemas en busca de posibles vulnerabilidades o ataques.</li>
+                </ul>
+
+                <h3>3. Seguridad en la Comunidad (Foros)</h3>
+                <p>Contamos con un equipo de moderación activo en nuestros foros para hacer cumplir nuestras normas comunitarias y eliminar contenido inapropiado. Te animamos a utilizar las herramientas de reporte disponibles si encuentras alguna publicación o comportamiento que consideres que viola nuestras políticas o pone en riesgo a la comunidad.</p>
+                
+                <h3>4. Reporte de Vulnerabilidades</h3>
+                <p>Si crees haber descubierto una vulnerabilidad de seguridad en nuestro Sitio, te agradecemos que nos lo comuniques de forma responsable. Por favor, contáctanos directamente por correo electrónico con todos los detalles relevantes, y nos comprometemos a investigar el problema de manera oportuna.</p>
+            </section>
+
+            <div class="back-to-link-container">
+                <a href="index.html" class="back-to-btn"><i class="fas fa-home"></i> Volver al Inicio</a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>Universo Borderline</h3>
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT y CBT.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Contacto</h3>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2023-<span id="currentYear"></span> Universo Borderline. Todos los derechos reservados.</p> 
+                <p><a href="privacidad.html">Privacidad</a> | <a href="terminos.html">Términos</a> | <a href="seguridad.html">Seguridad</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            const header = document.getElementById('main-header');
+            if(header){
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 40) { 
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
