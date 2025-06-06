@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Universo Borderline - DBT, TLP y TCC Profundizado</title>
+    <title>Cursos - Universo Borderline</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Fredoka+One&family=Krona+One&family=Lobster&family=Major+Mono+Display&family=Monoton&family=Press+Start+2P&family=Caveat:wght@700&family=Sacramento&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -15,22 +15,21 @@
             --accent-blue: #1E90FF;
             --accent-yellow: #FFD700;
             --accent-red: #FF4500;
-            
+
             --text-color-light: #F0F0F0;
             --text-color-medium: #A0A0A0;
-            
+            --text-color-dark: #333333; 
+
             --card-bg: rgba(30, 30, 50, 0.92);
             --border-color: rgba(138, 43, 226, 0.7);
             --dark-bg: #0A0A20;
-
-            --primary-violet-rgb: 138, 43, 226;
-            --secondary-cyan-rgb: 0, 206, 209;
-            --accent-magenta-rgb: 255, 0, 255;
-            --accent-yellow-rgb: 255, 215, 0;
-            --accent-green-rgb: 0, 255, 127;
-            --accent-blue-rgb: 30, 144, 255;
+            --light-bg-article: #f0f4f8; 
         }
         
+        html {
+            scroll-behavior: smooth; 
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -41,15 +40,15 @@
             background: var(--dark-bg);
             color: var(--text-color-light);
             line-height: 1.8;
-            font-family: 'Playfair Display', serif; /* Base font */
+            font-family: 'Raleway', sans-serif;
             overflow-x: hidden;
             min-height: 100vh;
             display: flex; 
             flex-direction: column; 
             background-image: 
-                radial-gradient(circle at 20% 30%, rgba(var(--primary-violet-rgb), 0.1) 0%, transparent 20%),
-                radial-gradient(circle at 80% 70%, rgba(var(--accent-blue-rgb), 0.1) 0%, transparent 30%),
-                radial-gradient(circle at 10% 80%, rgba(var(--accent-magenta-rgb), 0.1) 0%, transparent 25%);
+                radial-gradient(circle at 20% 30%, rgba(138, 43, 226, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(30, 144, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 10% 80%, rgba(255, 0, 255, 0.1) 0%, transparent 25%);
             background-size: 400% 400%; 
             animation: gradientBackground 20s ease infinite;
         }
@@ -79,8 +78,10 @@
             width: 100%;
             z-index: 1000;
             border-bottom: 2px solid var(--accent-magenta); 
-            box-shadow: 0 0 15px rgba(var(--accent-magenta-rgb), 0.3);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
             transition: all 0.4s ease;
+            display: flex;
+            justify-content: center;
         }
         
         header.scrolled {
@@ -91,7 +92,8 @@
         .header-container { 
             display: flex; 
             justify-content: space-between; 
-            align-items: center; 
+            align-items: center;
+            width: 100%;
         }
         
         .logo { 
@@ -116,6 +118,7 @@
             background-clip: text; 
             -webkit-text-fill-color: transparent;
             letter-spacing: 2px; 
+            white-space: nowrap; /* Evita que el texto se divida en dos líneas */
         }
         
         .logo i { 
@@ -133,7 +136,8 @@
         nav ul { 
             display: flex; 
             list-style: none; 
-            gap: 10px; 
+            gap: 15px;
+            align-items: center;
         }
         
         nav a { 
@@ -146,21 +150,26 @@
             transition: all 0.3s ease-out; 
             position: relative;
             background: transparent; 
-            border: 1px solid transparent; 
+            border: 1px solid transparent;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 45px;
         }
         
         nav a::before { 
             content: ''; 
             position: absolute; 
-            top: 0; 
+            top: 50%; 
             left: 0; 
             width: 0%; 
             height: 100%;
+            transform: translateY(-50%);
             background: linear-gradient(90deg, transparent, var(--accent-magenta), var(--accent-blue), transparent);
             opacity: 0.3; 
             transition: width 0.4s ease; 
             z-index: -1;
-            border-radius: 20px;
+            border-radius: 20px; 
         }
         
         nav a:hover::before, 
@@ -177,297 +186,150 @@
         }
 
         .main-page-content { 
-            padding: 100px 0 2rem 0; 
+            padding: 100px 0 4rem 0; 
             flex-grow: 1; 
         }
         
-        .content-block-qs { 
-            background: var(--card-bg); 
-            padding: 35px; 
-            border-radius: 20px; 
-            margin-bottom: 2.5rem; 
-            border: 1px solid var(--border-color);
-            box-shadow: 0 0 25px rgba(var(--primary-violet-rgb), 0.25), 0 4px 12px rgba(0,0,0,0.4); 
-            backdrop-filter: blur(10px);
-            transform: translateY(40px);
-            opacity: 0;
-            transition: all 0.9s ease-out; 
-            border-top-right-radius: 40px;
-            border-bottom-left-radius: 40px;
-        }
-        
-        .content-block-qs.visible {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .content-block-qs h2 {
-            font-family: 'Fredoka One', cursive; 
-            font-size: 2.5rem; 
-            color: var(--accent-blue); 
-            text-align: center; 
-            margin-bottom: 2rem; 
-            text-transform: uppercase;
-            position: relative;
-            padding-bottom: 15px;
-            letter-spacing: 1px;
-        }
-        
-        .content-block-qs h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120px; 
-            height: 3px; 
-            background: linear-gradient(to right, transparent, var(--accent-blue), transparent);
-            border-radius: 2px;
-        }
-        
-        .content-block-qs h2 i.fa-brain, 
-        .content-block-qs h2 i.fa-compass,
-        .content-block-qs h2 i.fa-lightbulb,
-        .content-block-qs h2 i.fa-meteor { 
-            margin-right: 10px;
-        }
-
-        .content-block-qs h2 i.fa-brain {
-            color: var(--accent-magenta); 
-        }
-         .content-block-qs h2 i.fa-compass {
-            color: var(--accent-green); 
-        }
-        .content-block-qs h2 i.fa-lightbulb { 
-            color: var(--accent-yellow); 
-        }
-        .content-block-qs h2 i.fa-meteor { 
-            color: var(--secondary-cyan);
-        }
-        
-        .info-section p, .welcome-section p { 
-            font-size: 1.1rem; 
-            color: var(--text-color-light); 
-            margin-bottom: 20px; 
-            line-height: 1.9; 
-            text-align: justify; 
-        }
-
-        .welcome-section .welcome-text {
-            text-align: center; 
-            font-size: 1.15rem; 
-            color: var(--text-color-light); 
-            margin-bottom: 1.5rem;
-            font-family: 'Raleway', sans-serif; 
-            padding: 0 15px; 
-        }
-
-        .welcome-section .exploration-prompt {
-            font-size: 1.1rem;
-            color: var(--accent-yellow);
+        .page-header {
             text-align: center;
-            font-style: normal; 
-            margin-top: 1rem;
-            padding: 15px;
-            background: rgba(var(--accent-yellow-rgb), 0.07);
-            border-left: 4px solid var(--accent-yellow);
-            border-radius: 0 8px 8px 0;
-            font-family: 'Comfortaa', sans-serif;
-        }
-        
-        #apod-section { 
-            margin-top: 3rem; 
+            margin-bottom: 3rem; 
+            padding-top: 2rem; 
         }
 
-        .apod-title-container h2 { 
-            font-family: 'Fredoka One', cursive; 
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: 2px;
-            animation: titleShine 3s infinite alternate; 
-            text-align: center;
-        }
-
-        @keyframes titleShine { 
-            0% { 
-                text-shadow: 
-                    0 0 5px rgba(var(--accent-magenta-rgb), 0.6), 
-                    0 0 10px rgba(var(--accent-blue-rgb), 0.4),
-                    0 0 15px rgba(var(--secondary-cyan-rgb), 0.2);
-            }
-            50% { 
-                text-shadow: 
-                    0 0 8px rgba(var(--accent-magenta-rgb), 0.8), 
-                    0 0 15px rgba(var(--accent-blue-rgb), 0.6),
-                    0 0 22px rgba(var(--secondary-cyan-rgb), 0.4),
-                    0 0 30px rgba(var(--accent-green-rgb), 0.2);
-            }
-            100% { 
-                text-shadow: 
-                    0 0 5px rgba(var(--accent-magenta-rgb), 0.6), 
-                    0 0 10px rgba(var(--accent-blue-rgb), 0.4),
-                    0 0 15px rgba(var(--secondary-cyan-rgb), 0.2);
-            }
-        }
-
-        .apod-title-container p { 
-            font-size: 1.1rem;
-            line-height: 1.6;
-            color: var(--text-color-medium);
-            max-width: 600px;
-            margin: 0 auto 1.5rem auto; 
-            text-align: center;
-            font-family: 'Comfortaa', sans-serif; 
-        }
-        
-        .hero-apod-image-container { 
-            position: relative;
-            width: 100%;
-            height: 65vh; 
-            min-height: 400px;
-            overflow: hidden;
-            margin-bottom: 1.5rem; 
-            background-color: var(--dark-bg); 
-            border-radius: 10px; 
-        }
-        
-        .apod-background { 
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover; 
-            background-position: center;
-            background-repeat: no-repeat;
-            transition: background-image 1.2s ease-in-out; 
-        }
-        
-        .image-details-block { 
-            background: rgba(15, 15, 35, 0.8); 
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid rgba(var(--accent-blue-rgb), 0.4); 
-            box-shadow: 0 0 15px rgba(var(--accent-blue-rgb), 0.2);
-        }
-        
-        .apod-title-text { 
-            font-family: 'Lobster', cursive; 
-            font-size: 2rem; 
-            color: var(--accent-yellow);
-            margin-bottom: 0.6rem; 
-            animation: textPulse 2s infinite alternate; 
-            text-align: center;
-        }
-        
-        @keyframes textPulse { 
-            0% { transform: scale(1); }
-            100% { transform: scale(1.02); }
-        }
-        
-        .apod-date-text { 
-            font-family: 'Caveat', cursive; 
-            color: var(--accent-green);
-            font-size: 1.5rem; 
-            margin-bottom: 1.3rem; 
-            text-align: center;
-        }
-
-        .image-details-block .desc-title-img { 
-            font-family: 'Comfortaa', sans-serif; 
-            font-weight: 700;
-            color: var(--secondary-cyan); 
-            font-size: 1.3rem;
-            margin-top: 1rem;
-            margin-bottom: 0.8rem;
-            text-align: center;
-            border-bottom: 1px dashed var(--secondary-cyan);
-            padding-bottom: 0.5rem;
-        }
-        
-        .image-explanation { 
-            font-size: 1.05rem; 
-            line-height: 1.75;
-            padding: 12px;
-            background: rgba(0, 0, 0, 0.25);
-            border-radius: 8px;
-            border: 1px solid rgba(var(--secondary-cyan-rgb), 0.15);
-            box-shadow: inset 0 0 8px rgba(0,0,0,0.4);
-            max-height: 180px; 
-            overflow-y: auto; 
-            margin-bottom: 1.3rem; 
+        .page-header h2 {
             font-family: 'Playfair Display', serif; 
-        }
-        
-        .image-explanation::-webkit-scrollbar { width: 7px; }
-        .image-explanation::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.15); border-radius: 8px; }
-        .image-explanation::-webkit-scrollbar-thumb { background: var(--accent-blue); border-radius: 8px; }
-        
-        .download-button { 
-            display: block;
-            width: fit-content;
-            margin: 18px auto; 
-            background: linear-gradient(45deg, var(--accent-yellow), var(--accent-red));
-            color: var(--dark-bg);
-            padding: 10px 25px; 
-            border-radius: 40px;
-            text-decoration: none;
-            font-family: 'Fredoka One', cursive;
-            font-size: 1.05rem; 
-            transition: all 0.3s ease;
-            box-shadow: 0 3px 12px rgba(var(--accent-yellow-rgb), 0.45);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            text-align: center;
-        }
-        
-        .download-button:hover {
-            background: linear-gradient(45deg, var(--accent-red), var(--accent-yellow));
-            transform: translateY(-2px) scale(1.03);
-            box-shadow: 0 6px 18px rgba(255, 69, 0, 0.65);
-        }
-        
-        .apod-nav-footer { 
-            display: flex;
-            justify-content: center;
-            gap: 18px;
-            margin-top: 20px; 
+            font-size: 3rem; 
+            font-weight: 700; 
+            color: var(--secondary-cyan); 
+            margin-bottom: 0.5rem;
+            text-transform: none; 
+            letter-spacing: 0.5px; 
+            display: inline-flex; 
+            align-items: center;
+            gap: 15px; 
+            white-space: nowrap;
         }
 
-        .apod-nav-btn { 
-            background: rgba(10, 10, 32, 0.65);
+        .page-header h2 i {
+            font-size: 2.6rem; 
+            animation: subtleRotate 8s infinite linear;
+        }
+
+        @keyframes subtleRotate {
+            0% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(5deg) scale(1.05); }
+            50% { transform: rotate(0deg) scale(1.1); }
+            75% { transform: rotate(-5deg) scale(1.05); }
+            100% { transform: rotate(0deg) scale(1); }
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-color-medium);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem; 
+        }
+
+        .course-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--border-color);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.5); 
+        }
+
+        .course-thumbnail {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            transition: opacity 0.3s ease, transform 0.4s ease; 
+        }
+         .course-card:hover .course-thumbnail {
+            opacity: 0.85;
+            transform: scale(1.03); 
+        }
+
+
+        .course-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-content h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+            line-height: 1.4;
+            transition: color 0.3s ease, text-shadow 0.3s ease; 
+        }
+        .course-content h3:hover {
             color: var(--secondary-cyan);
-            border: 1.5px solid var(--accent-blue);
-            border-radius: 50%;
-            width: 50px; 
-            height: 50px; 
+            text-shadow: 0 0 8px var(--secondary-cyan);
+            font-family: 'Krona One', sans-serif;
+        }
+        
+        .course-meta {
+            font-size: 0.85rem;
+            color: var(--text-color-medium);
+            margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            justify-content: center;
-            font-size: 1.3rem; 
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 12px rgba(var(--accent-blue-rgb), 0.45);
-            animation: buttonFloat 3s infinite ease-in-out; 
+            gap: 15px;
+            flex-wrap: wrap; 
         }
-        
-        .apod-nav-btn:nth-child(1) { animation-delay: 0.15s; } 
-        .apod-nav-btn:nth-child(2) { animation-delay: 0.35s; }
-        
-        @keyframes buttonFloat { 
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-6px); } 
+
+        .course-meta i {
+            margin-right: 5px;
+            color: var(--accent-green);
+            transition: transform 0.3s ease; 
         }
-        
-        .apod-nav-btn:hover {
-            background: var(--accent-blue);
-            color: var(--dark-bg);
-            transform: translateY(-3px); 
-            box-shadow: 0 0 20px var(--accent-blue);
-            animation: none; 
+        .course-meta span:hover i { 
+            transform: scale(1.2) rotate(-10deg);
+        }
+
+        .course-description {
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem; 
+            flex-grow: 1;
+            color: var(--text-color-light);
+        }
+
+        .enroll-btn {
+            display: inline-block;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; 
+            text-align: center;
+            align-self: flex-start; 
+        }
+
+        .enroll-btn:hover {
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
+            transform: scale(1.05) translateY(-2px); 
+            box-shadow: 0 4px 15px rgba(255, 0, 255, 0.4); 
         }
         
         footer { 
@@ -515,11 +377,10 @@
             display: inline-block; 
             padding: 4px 0; 
             font-weight: 300; 
-            font-family: 'Comfortaa', sans-serif; 
         }
         .footer-links a:hover { color: var(--accent-blue); transform: translateX(8px); }
         
-        .contact-info { margin-top: 20px; } 
+        .contact-info { margin-top: 20px; }
         .contact-info p { 
             display: flex; 
             align-items: center; 
@@ -527,33 +388,8 @@
             margin-bottom: 12px; 
             font-size: 1.05rem; 
             color: var(--text-color-medium); 
-            font-family: 'Comfortaa', sans-serif; 
         }
-        .contact-info p a { 
-            color: var(--text-color-medium);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-        .contact-info p a:hover {
-            color: var(--accent-yellow);
-        }
-        .contact-info i { color: var(--accent-blue); width: 20px; text-align: center;} 
-        
-        .social-links { display: flex; gap: 15px; margin-top: 22px; } 
-        .social-links a { 
-            display: inline-flex; 
-            align-items: center; 
-            justify-content: center; 
-            width: 45px; 
-            height: 45px; 
-            background: rgba(255, 255, 255, 0.04); 
-            color: var(--accent-blue); 
-            border-radius: 50%; 
-            transition: all 0.4s ease; 
-            font-size: 1.2rem; 
-            border: 1px solid var(--accent-blue); 
-        }
-        .social-links a:hover { background: var(--accent-blue); color: var(--dark-bg); transform: translateY(-4px) rotate(12deg); }
+        .contact-info i { color: var(--accent-blue); } 
         
         .copyright { 
             text-align: center; 
@@ -561,81 +397,50 @@
             border-top: 1px solid rgba(255, 255, 255, 0.07); 
             color: #a090b0; 
             font-size: 0.95rem; 
-            font-family: 'Comfortaa', sans-serif; 
         }
         .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
         .copyright a:hover { color: var(--text-color-light); }
         
-        .stars {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            pointer-events: none; z-index: -2; 
-        }
-        .star {
-            position: absolute; width: 2px; height: 2px; background: white;
-            border-radius: 50%; opacity: 0; animation: twinkle 5s infinite; 
-        }
-        @keyframes twinkle { 
-            0% { opacity: 0; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.5); }
-            100% { opacity: 0; transform: scale(1); }
-        }
-        .galaxy { 
-            position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-            background: radial-gradient(circle at center, transparent 20%, rgba(var(--primary-violet-rgb), 0.1) 70%, transparent 100%);
-            z-index: -1; opacity: 0.3; animation: rotateGalaxy 120s infinite linear;
-        }
-        @keyframes rotateGalaxy { 
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        
         @media (max-width: 900px) {
             .header-container { flex-direction: column; gap: 12px; }
             nav ul { flex-wrap: wrap; justify-content: center; gap: 7px; }
-            nav a { font-size: 0.8rem; padding: 7px 10px; }
-            .content-block-qs h2 { font-size: 2.2rem; } 
-            .apod-title-container h2 { font-size: 2.2rem; }
-            .apod-title-text { font-size: 1.8rem; } 
+            nav a { font-size: 0.8rem; padding: 7px 10px; height: 40px; }
+            .page-header h2 { font-size: 2.6rem; } 
+            .page-header h2 i { font-size: 2.2rem; } 
+            .course-content h3 {font-size: 1.4rem;} 
         }
         
         @media (max-width: 600px) {
             .main-page-content { padding-top: 130px; } 
             .logo h1 { font-size: 1.6rem; } 
             nav ul { gap: 5px; }
-            nav a { font-size: 0.7rem; padding: 6px 7px; }
-            .content-block-qs { padding: 25px; }
-            .content-block-qs h2 { font-size: 1.9rem; } 
-            .welcome-section .welcome-text { font-size: 1.05rem; padding: 0 10px;} 
-            .welcome-section .exploration-prompt { font-size: 1rem; padding: 10px; } 
-            .apod-title-container p { font-size: 1rem; } 
-            .apod-title-container h2 { font-size: 1.8rem; }
-            .hero-apod-image-container { height: 55vh; min-height: 300px; }
-            .apod-title-text { font-size: 1.6rem; } 
-            .apod-date-text { font-size: 1.3rem; } 
-            .image-details-block .desc-title-img { font-size: 1.15rem; }
-            .image-explanation { font-size: 0.95rem; max-height: 150px; }
-            .download-button { padding: 9px 20px; font-size: 0.95rem; }
-            .apod-nav-btn { width: 42px; height: 42px; font-size: 1.15rem; }
+            nav a { font-size: 0.7rem; padding: 6px 7px; height: 35px; }
+            .page-header h2 { font-size: 2rem; } 
+            .page-header h2 i { font-size: 1.8rem; } 
+            .page-header p { font-size: 1rem; }
+            .course-grid { grid-template-columns: 1fr; }
+            .course-thumbnail { height: 180px; }
+            .course-content h3 {font-size: 1.3rem;} 
+            .course-description {font-size: 0.9rem;}
+            .enroll-btn { padding: 8px 16px; font-size: 0.9rem;}
         }
     </style>
 </head>
 <body>
-    <div class="stars" id="stars"></div>
-    <div class="galaxy"></div>
-    
     <header id="main-header">
         <div class="container header-container">
-            <a href="https://fundacionforo.com" target="_blank" rel="noopener noreferrer" class="logo" id="logo-link-external">
+            <a href="index.html" class="logo"> 
                 <i class="fas fa-brain"></i>
-                <h1>UNIVERSO BORDERLINE</h1>
+                <h1>UNIVERSO BORDERLINE</h1> 
             </a>
             <nav>
                 <ul>
-                    <li><a href="cursos.html">Cursos</a></li> 
+                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="cursos.html" class="active" aria-current="page">Cursos</a></li> 
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
                     <li><a href="memes.html">Memes</a></li> 
-                    <li><a href="podcast.html">Podcasts</a></li>
+                    <li><a href="podcast.html">Podcast</a></li>
                 </ul>
             </nav>
         </div>
@@ -643,47 +448,46 @@
 
     <main class="main-page-content">
         <div class="container">
-            <section id="welcome-section" class="content-block-qs welcome-section">
-                <h2><i class="fas fa-meteor"></i> Te Damos la Bienvenida a tu Universo</h2>
-                <p class="welcome-text">
-                    Bienvenido a Universo Borderline. Este es un espacio de psicoeducación y comunidad, enfocado en brindar información clara y recursos sobre el Trastorno Límite de la Personalidad (TLP), DBT y TCC.
+            <div class="page-header">
+                <h2><i class="fas fa-graduation-cap"></i> Cursos Disponibles</h2>
+                <p>
+                    Explora nuestras formaciones especializadas en DBT y CBT, diseñadas para brindar herramientas prácticas en manejo emocional y desarrollo mental.
                 </p>
-                <p class="exploration-prompt">
-                    Explora nuestras secciones para profundizar tu conocimiento, desarrollar habilidades y conectar con otros en un ambiente de respeto y comprensión.
-                </p>
-            </section>
+            </div>
 
-            <section id="apod-section" class="content-block-qs">
-                <div class="apod-title-container">
-                     <h2><i class="fas fa-rocket"></i> Inspiración Diaria del Cosmos</h2>
-                     <p>Descubre una imagen astronómica o astrofotografía inspiradora cada día.</p>
-                </div>
+            <div class="course-grid">
+                <!-- Card para curso DBT -->
+                <article class="course-card"> 
+                    <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=Curso+DBT" alt="Imagen representativa del curso DBT" class="course-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="course-content">
+                        <h3>Introducción a la DBT</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Inicio: 15 de Julio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Instructora: Lic. Paula Gómez</span>
+                        </div>
+                        <p class="course-description">
+                            Domina las habilidades fundamentales de la Terapia Dialéctico Conductual, incluyendo mindfulness, regulación emocional y efectividad interpersonal. 
+                        </p>
+                        <a href="dbt.html" class="enroll-btn">Más Información <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </article>
 
-                <div class="hero-apod-image-container">
-                    <div class="apod-background" id="apod-background-main"></div>
-                </div>
-                
-                <div class="image-details-block">
-                    <h3 id="apod-title-text-main" class="apod-title-text">Cargando título...</h3>
-                    <div id="apod-date-text-main" class="apod-date-text">Cargando fecha...</div>
-                    
-                    <h4 class="desc-title-img">Acerca de esta Imagen</h4>
-                    <div class="image-explanation" id="image-explanation-main">
-                        Cargando descripción...
-                    </div>
-                    <a href="#" id="apod-download-main" class="download-button" target="_blank" rel="noopener noreferrer">
-                        <i class="fas fa-download"></i> DESCARGAR IMAGEN EN HD
-                    </a>
-                    <div class="apod-nav-footer">
-                        <div class="apod-nav-btn" id="prev-apod-main">
-                            <i class="fas fa-chevron-left"></i>
+                <!-- Card para curso CBT -->
+                <article class="course-card"> 
+                    <img src="https://placehold.co/600x400/00CED1/0A0A20?text=Curso+CBT" alt="Imagen representativa del curso CBT" class="course-thumbnail" onerror="this.onerror=null;this.src='https://placehold.co/600x400/0A0A20/FFFFFF?text=Imagen+No+Disponible';">
+                    <div class="course-content">
+                        <h3>Fundamentos de la CBT</h3>
+                        <div class="course-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Inicio: 22 de Julio, 2025</span>
+                            <span><i class="fas fa-user-edit"></i> Instructor: Dr. Alejandro Ruiz</span>
                         </div>
-                        <div class="apod-nav-btn" id="next-apod-main">
-                            <i class="fas fa-chevron-right"></i>
-                        </div>
+                        <p class="course-description">
+                            Aprende las bases de la Terapia Cognitivo Conductual para identificar y reestructurar pensamientos disfuncionales, mejorando tu bienestar emocional.
+                        </p>
+                        <a href="cbt.html" class="enroll-btn">Más Información <i class="fas fa-arrow-right"></i></a>
                     </div>
-                </div>
-            </section>
+                </article>
+            </div>
         </div>
     </main>
 
@@ -691,260 +495,62 @@
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>Universo Borderline</h3>
-                    <p style="font-family: 'Comfortaa', sans-serif;">Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT.</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-tiktok"></i></a>
-                        <a href="#"><i class="fab fa-youtube"></i></a>
-                        <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i></a>
-                    </div>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Navegación</h3>
-                    <ul class="footer-links">
-                        <li><a href="cursos.html">Cursos</a></li> 
-                        <li><a href="blog.html">Blog</a></li> 
-                        <li><a href="foro.html">Foros</a></li> 
-                        <li><a href="memes.html">Memes</a></li> 
-                        <li><a href="podcast.html">Podcasts</a></li>
-                        <li><a href="politicas.html">Políticas y Términos</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Enlaces Útiles</h3>
-                    <ul class="footer-links">
-                        <li><a href="https://es.wikipedia.org/wiki/Terapia_dial%C3%A9ctico-conductual" target="_blank" rel="noopener noreferrer">¿Qué es DBT?</a></li> 
-                        <li><a href="https://es.wikipedia.org/wiki/Terapia_cognitivo-conductual" target="_blank" rel="noopener noreferrer">¿Qué es TCC?</a></li>
-                        <li><a href="https://es.wikipedia.org/wiki/Mindfulness" target="_blank" rel="noopener noreferrer">Mindfulness</a></li> 
-                        <li><a href="https://www.psychologytoday.com/es/terapia/terapia-dialectico-conductual" target="_blank" rel="noopener noreferrer">Encontrar Terapeutas</a></li>
-                        <li><a href="https://www.nimh.nih.gov/health/topics/borderline-personality-disorder" target="_blank" rel="noopener noreferrer">Info sobre TLP (NIMH)</a></li> 
-                    </ul>
+                    <h3>Universo Borderline</h3> 
+                    <p>Un enfoque creativo y visual para comprender y manejar el Trastorno Límite de la Personalidad, con un foco en DBT y CBT.</p>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com">itfrombit.w74@gmail.com</a></p>
+                        <p><i class="fas fa-envelope"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration: none;">itfrombit.w74@gmail.com</a></p> 
                         <p><i class="fas fa-user-tie"></i> Directora: Mayra Schwarzschild</p>
                         <p><i class="fas fa-map-marker-alt"></i> Comunidad Global</p>
-                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer">Únete a Discord</a></p>
+                        <p><i class="fab fa-discord"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration: none;">Únete a Discord</a></p> 
                     </div>
                 </div>
             </div>
             
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p>
-                <p><a href="politicas.html">Políticas y Términos</a> | <a href="#">Seguridad (Ejemplo)</a></p>
+                <p>© 2023-<span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT/CBT.</p> 
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            // Set current year in footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
             
-            const starsContainer = document.getElementById('stars');
-            if (starsContainer) { 
-                const starsCount = 150; 
-                for (let i = 0; i < starsCount; i++) {
-                    const star = document.createElement('div');
-                    star.classList.add('star');
-                    const size = Math.random() * 2.2 + 0.3;
-                    star.style.width = `${size}px`;
-                    star.style.height = `${size}px`;
-                    star.style.left = `${Math.random() * 100}%`;
-                    star.style.top = `${Math.random() * 100}%`;
-                    star.style.animationDelay = `${Math.random() * 6}s`; 
-                    star.style.animationDuration = `${2.5 + Math.random() * 6.5}s`;
-                    if (Math.random() > 0.65) {
-                        const colors = ['var(--primary-violet)', 'var(--secondary-cyan)', 'var(--accent-magenta)', 'var(--accent-green)'];
-                        star.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                        star.style.boxShadow = `0 0 ${Math.random() * 2.5 + 0.5}px ${star.style.backgroundColor}`;
-                    } else {
-                        star.style.boxShadow = `0 0 ${Math.random() * 1.5 + 0.3}px rgba(255,255,255,0.6)`;
-                    }
-                    starsContainer.appendChild(star);
-                }
-            }
-            
+            // Active navigation link highlighting
             const currentPageFilename = window.location.pathname.split('/').pop() || 'index.html'; 
-            const navLinks = document.querySelectorAll('header nav a'); 
+            const navLinks = document.querySelectorAll('header nav a');
             navLinks.forEach(link => {
+                link.classList.remove('active'); 
+                link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-                if (linkFilename === currentPageFilename && currentPageFilename !== 'index.html') { // Ensure index.html itself isn't marked active unless it's the only page.
+                if (linkFilename === currentPageFilename || (currentPageFilename === 'cursos.html' && linkFilename === 'cursos.html')) {
+                    navLinks.forEach(nl => {
+                          nl.classList.remove('active');
+                          nl.removeAttribute('aria-current');
+                    });
                     link.classList.add('active');
-                } else if (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html')) {
-                     // No active class for "Inicio" if it's the current page, to avoid redundancy or if you prefer no default active state on home.
-                     // If you want "Inicio" to be active on index.html, you'd add link.classList.add('active'); here.
-                     // For now, let's assume no specific active state for "Inicio" on the index page itself via this logic.
-                }
-                 else {
-                    link.classList.remove('active');
+                    link.setAttribute('aria-current', 'page');
                 }
             });
             
+            // Header scroll effect
             const header = document.getElementById('main-header');
-            if(header){ 
+            if(header){
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) { 
+                    if (window.scrollY > 40) {
                         header.classList.add('scrolled');
                     } else {
                         header.classList.remove('scrolled');
                     }
                 });
             }
-            
-            const contentBlocks = document.querySelectorAll('.content-block-qs'); 
-             const observerOptions = {
-                root: null, 
-                rootMargin: '0px',
-                threshold: 0.08 
-            };
-
-            const observer = new IntersectionObserver((entries, obs) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                        obs.unobserve(entry.target); 
-                    }
-                });
-            }, observerOptions);
-
-            contentBlocks.forEach(block => {
-                observer.observe(block);
-            });
-            
-            const apiKey = "FQFsse8Fnb3JvqPYnekskHSXtqeU2qLYXf86ZsKT"; 
-            const today = new Date();
-            let currentApodDate = new Date(today); 
-            
-            const apodBackground = document.getElementById('apod-background-main');
-            const apodTitleEl = document.getElementById('apod-title-text-main'); 
-            const apodDateEl = document.getElementById('apod-date-text-main'); 
-            const apodExplanation = document.getElementById('image-explanation-main');
-            const apodDownload = document.getElementById('apod-download-main');
-            const prevApodBtn = document.getElementById('prev-apod-main');
-            const nextApodBtn = document.getElementById('next-apod-main');
-
-            if (apodBackground && apodTitleEl && apodDateEl && apodExplanation && apodDownload && prevApodBtn && nextApodBtn) {
-                function formatDate(date) {
-                    const year = date.getFullYear();
-                    const month = String(date.getMonth() + 1).padStart(2, '0');
-                    const day = String(date.getDate()).padStart(2, '0');
-                    return `${year}-${month}-${day}`;
-                }
-                
-                function formatDateReadable(date) {
-                    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                    return date.toLocaleDateString('es-ES', options);
-                }
-                
-                function fetchDailyImage(dateToFetch, isFallbackAttempt = false) {
-                    const formattedDate = formatDate(dateToFetch);
-                    const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${formattedDate}`;
-                    
-                    apodBackground.style.backgroundImage = "linear-gradient(135deg, #0A0A20, #1a1a32)"; 
-                    apodTitleEl.textContent = "Consultando el cosmos...";
-                    apodDateEl.textContent = "Aguarde un momento...";
-                    apodExplanation.textContent = "Recuperando los secretos del universo...";
-                    apodDownload.style.display = 'none'; 
-                    
-                    fetch(apiUrl)
-                        .then(response => {
-                            if (!response.ok) {
-                                if (response.status === 404 && !isFallbackAttempt) {
-                                    console.warn(`APOD no encontrada para ${formatDate(dateToFetch)}. Intentando con el día anterior.`);
-                                    const prevDate = new Date(dateToFetch);
-                                    prevDate.setDate(prevDate.getDate() - 1);
-                                    fetchDailyImage(prevDate, true); 
-                                    return null; 
-                                }
-                                return response.json().then(errData => {
-                                     let message = 'No se pudo obtener la imagen para esta fecha.';
-                                     if (errData && errData.msg) {
-                                         message = errData.msg;
-                                     } else if (errData && errData.error && errData.error.message) { 
-                                         message = errData.error.message;
-                                     }
-                                    throw new Error(`Error ${response.status}: ${message}`);
-                                }).catch((jsonParseOrApiError) => { 
-                                    console.error("Fallo al parsear respuesta de error de API o estructura inesperada:", jsonParseOrApiError);
-                                    throw new Error(`Error ${response.status}: Problema al procesar la respuesta del servidor de imágenes.`);
-                                });
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            if (data === null) return; 
-
-                            if (data.media_type === 'image') {
-                                apodBackground.style.backgroundImage = `url(${data.hdurl || data.url})`;
-                                apodTitleEl.textContent = data.title;
-                                apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
-                                apodExplanation.textContent = data.explanation;
-                                apodDownload.href = data.hdurl || data.url;
-                                apodDownload.setAttribute('download', `Cosmos_${formattedDate}.jpg`);
-                                apodDownload.style.display = 'block'; 
-                            } else if (data.media_type === 'video') {
-                                apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Video+Cósmico+del+Día')`;
-                                apodTitleEl.textContent = data.title || "Video Cósmico del Día";
-                                apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
-                                apodExplanation.innerHTML = `${data.explanation}<br><br>El contenido de hoy es un video. <a href="${data.url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent-yellow);">Haz clic aquí para verlo en su fuente original</a>.`;
-                                apodDownload.style.display = 'none';
-                            } else {
-                                 apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Misterio+Cósmico')`;
-                                apodTitleEl.textContent = "Misterio Cósmico";
-                                apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`;
-                                apodExplanation.textContent = "El tipo de contenido para hoy no es una imagen o video estándar, o no está disponible en este momento.";
-                                apodDownload.style.display = 'none';
-                            }
-                            currentApodDate = new Date(dateToFetch); 
-                        })
-                        .catch(error => {
-                            console.error('Error al obtener la imagen cósmica:', error);
-                            apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FF0000?text=Fallo+en+la+Transmisión')`; 
-                            apodTitleEl.textContent = "Fallo en la Transmisión Cósmica";
-                            apodDateEl.textContent = `Fecha: ${formatDateReadable(dateToFetch)}`; 
-                            apodExplanation.textContent = error.message || "No pudimos conectar con el observatorio estelar para esta fecha. Intenta más tarde o selecciona otra coordenada temporal.";
-                            apodDownload.style.display = 'none';
-                        });
-                }
-                
-                fetchDailyImage(today); 
-                
-                prevApodBtn.addEventListener('click', () => {
-                    const prevDate = new Date(currentApodDate);
-                    prevDate.setDate(prevDate.getDate() - 1);
-                    fetchDailyImage(prevDate); 
-                });
-                
-                nextApodBtn.addEventListener('click', () => {
-                    const nextDate = new Date(currentApodDate);
-                    nextDate.setDate(nextDate.getDate() + 1);
-                    
-                    const todayForComparison = new Date();
-                    todayForComparison.setHours(0,0,0,0); 
-                    const tempNextDate = new Date(nextDate);
-                    tempNextDate.setHours(0,0,0,0); 
-
-                    if (tempNextDate <= todayForComparison) {
-                        fetchDailyImage(nextDate); 
-                    } else {
-                        apodTitleEl.textContent = "Viaje al Futuro No Disponible";
-                        apodDateEl.textContent = `Fecha: ${formatDateReadable(nextDate)}`;
-                        apodExplanation.textContent = "Las crónicas cósmicas para esta fecha futura aún no han sido escritas. Por favor, mantente en el presente o explora el pasado.";
-                        apodBackground.style.backgroundImage = `url('https://placehold.co/1200x800/0A0A20/FFFFFF?text=Coordenada+Temporal+Futura')`;
-                        apodDownload.style.display = 'none';
-                    }
-                });
-            } else {
-                console.warn("Algunos elementos para la sección APOD no fueron encontrados en el DOM. La funcionalidad APOD podría estar incompleta.");
-            }
-
         });
     </script>
 </body>
-</ht
+</html>
