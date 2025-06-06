@@ -314,7 +314,7 @@
 
         .navigation-buttons-container {
             display: flex;
-            justify-content: center; /* Changed */
+            justify-content: center; 
             align-items: center;
             flex-wrap: wrap; 
             gap: 1.5rem; 
@@ -335,7 +335,6 @@
             font-weight: bold;
             font-family: 'Comfortaa', sans-serif;
             transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-            /* flex-grow: 1; Removed */
             min-width: 220px; 
             text-align: center;
         }
@@ -401,6 +400,26 @@
             border-radius: 1.5px; 
         }
         
+        .footer-links { list-style: none; padding-left:0; } 
+        .footer-links li { margin-bottom: 12px; }
+        .footer-links a, .contact-info a, .copyright a { 
+            color: var(--text-color-light);
+            text-decoration: none; 
+            transition: all 0.3s ease; 
+        }
+        .footer-links a {
+            display: inline-block; 
+            padding: 4px 0; 
+            font-family: 'Comfortaa', sans-serif; 
+        }
+        .footer-links a:hover, .contact-info a:hover, .copyright a:hover { 
+            color: var(--accent-yellow); 
+        }
+        .footer-links a:hover {
+            transform: translateX(8px);
+        }
+        
+        .contact-info { margin-top: 20px; }
         .contact-info p { 
             display: flex; 
             align-items: center; 
@@ -420,8 +439,6 @@
             font-size: 0.95rem; 
             font-family: 'Comfortaa', sans-serif; 
         }
-        .copyright a { color: var(--accent-yellow); text-decoration: none; transition: all 0.3s ease; } 
-        .copyright a:hover { color: var(--text-color-light); }
         
         .stars {
             position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
@@ -597,10 +614,10 @@
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <div class="contact-info">
-                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com" style="color: var(--text-color-medium); text-decoration:none;">itfrombit.w74@gmail.com</a></p> 
+                        <p><i class="fas fa-envelope" aria-hidden="true"></i> <a href="mailto:itfrombit.w74@gmail.com">itfrombit.w74@gmail.com</a></p> 
                         <p><i class="fas fa-user-tie" aria-hidden="true"></i> Directora: Mayra Schwarzschild</p>
                         <p><i class="fas fa-map-marker-alt" aria-hidden="true"></i> Comunidad Global</p>
-                        <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer" style="color: var(--text-color-medium); text-decoration:none;">Únete a Discord</a></p> 
+                        <p><i class="fab fa-discord" aria-hidden="true"></i> <a href="https://discord.gg/92cYjcwZ" target="_blank" rel="noopener noreferrer">Únete a Discord</a></p> 
                     </div>
                 </div>
             </div>
