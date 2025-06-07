@@ -754,7 +754,7 @@
     <script type="module">
         // Importar módulos de Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js"; // Se eliminó signInWithCustomToken
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, getDoc, updateDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- Configuración y Variables Globales ---
@@ -769,7 +769,6 @@
             appId: "1:425960856740:web:b6098b7ff5eafb3f239a31",
             measurementId: "G-D501R9MNZ7"
         });
-        // initialAuthToken ya no es necesario, pero lo mantenemos si alguna parte del entorno lo requiere.
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
         let app, db, auth;
@@ -896,43 +895,71 @@
 
         async function initPersistence() {
             try {
-                // Intenta inicializar Firebase
                 if (firebaseConfigStr) {
                     const firebaseConfig = JSON.parse(firebaseConfigStr);
                     app = initializeApp(firebaseConfig);
                     db = getFirestore(app);
                     auth = getAuth(app);
 
-                    // Escuchar cambios en el estado de autenticación
-                    onAuthStateChanged(auth, async (user) => {
+                    // MANEJO ROBUSTO DE AUTENTICACIÓN INICIAL
+                    try {
+                        if (initialAuthToken && initialAuthToken !== '') {
+                            // Si el entorno proporciona un token personalizado, se intenta usar.
+                            await signInWithCustomToken(auth, initialAuthToken);
+                            console.log("Sesión iniciada con token personalizado del entorno.");
+                        } else {
+                            // Si no hay token personalizado o está vacío, se intenta sesión anónima.
+                            await signInAnonymously(auth);
+                            console.log("Sesión iniciada anónimamente (sin token personalizado).");
+                        }
+                    } catch (authError) {
+                        // Si la autenticación inicial falla (incluyendo custom-token-mismatch),
+                        // se intenta un fallback a autenticación anónima.
+                        console.warn("La autenticación inicial (token personalizado o anónima) falló. Intentando autenticación anónima como fallback:", authError);
+                        try {
+                            await signInAnonymously(auth);
+                            console.log("Fallback exitoso a autenticación anónima.");
+                            // La notificación de éxito se manejará en onAuthStateChanged para evitar duplicidad.
+                        } catch (anonError) {
+                            // Si la autenticación anónima también falla, se activa el modo local.
+                            console.error("La autenticación anónima de fallback también falló. Usando modo local:", anonError);
+                            showNotification(`Error de autenticación: ${anonError.message}. Usando modo local.`, "error");
+                            localMode = true;
+                            initLocalMode();
+                        }
+                    }
+
+                    // Escuchar cambios en el estado de autenticación (se ejecutará después de cualquier intento de inicio de sesión)
+                    onAuthStateChanged(auth, (user) => {
                         if (user) {
                             userId = user.uid;
                             userIdDisplay.textContent = userId;
-                            console.log("Firebase Auth Ready. User ID:", userId);
-                            showNotification("Conectado a Firebase como usuario anónimo.", "success");
-                            loadThreads(); // Cargar hilos una vez autenticado
+                            console.log("Firebase Auth State Changed. User ID:", userId);
+                            if (!localMode) { // Solo muestra éxito si no está ya en modo local por fallo anterior
+                                showNotification("Conectado a Firebase como usuario anónimo.", "success");
+                            }
+                            loadThreads(); // Cargar hilos una vez que la autenticación esté establecida
                         } else {
-                            // Siempre intenta iniciar sesión de forma anónima
-                            try {
-                                await signInAnonymously(auth); // Autenticación anónima
-                            } catch (error) {
-                                console.error("Error signing in anonymously:", error);
-                                showNotification(`Error de autenticación anónima: ${error.message}. Usando modo local.`, "error");
-                                localMode = true; // Fallback a modo local si la autenticación anónima falla
+                            // Esto se ejecuta si el usuario se cierra sesión o si la autenticación inicial falló
+                            // y no se pudo establecer un usuario.
+                            console.warn("Estado de autenticación cambiado: No hay usuario conectado.");
+                            if (!localMode) { // Evita re-entrar en modo local si ya se está en él
+                                showNotification("No autenticado. Usando modo local como precaución.", "info");
+                                localMode = true;
                                 initLocalMode();
                             }
                         }
                     });
                 } else {
                     // Si no hay configuración de Firebase, usar modo local
-                    console.warn("Firebase config not found. Falling back to local demo mode.");
+                    console.warn("Configuración de Firebase no encontrada. Volviendo al modo de demostración local.");
                     showNotification("Firebase no configurado. Usando modo de demostración local. Los datos no se guardarán permanentemente.", "info");
                     localMode = true;
                     initLocalMode();
                 }
             } catch (e) {
-                console.error("Error initializing Firebase:", e);
-                showNotification(`Error al inicializar Firebase: ${e.message}. Usando modo local.`, "error");
+                console.error("Error crítico durante la inicialización de Firebase:", e);
+                showNotification(`Error crítico al inicializar Firebase: ${e.message}. Usando modo local.`, "error");
                 localMode = true;
                 initLocalMode();
             }
@@ -942,7 +969,7 @@
             // Generar un ID de usuario local simulado
             userId = `local-user-${Math.random().toString(36).substring(2, 9)}`;
             userIdDisplay.textContent = userId;
-            console.log("Local Mode Ready. User ID:", userId);
+            console.log("Modo Local Listo. ID de Usuario:", userId);
             loadLocalThreads(); // Cargar hilos locales si los hay (o inicializar vacíos)
         }
 
@@ -999,11 +1026,11 @@
                     threads.sort((a, b) => (b.createdAt?.toMillis() || 0) - (a.createdAt?.toMillis() || 0));
                     displayThreads(threads);
                 }, (error) => {
-                    console.error("Error fetching threads from Firebase:", error);
+                    console.error("Error al obtener hilos de Firebase:", error);
                     showNotification(`Error al cargar temas: ${error.message}`, "error");
                 });
             } catch (error) {
-                console.error("Error setting up Firestore listener for threads:", error);
+                console.error("Error al configurar el listener de Firestore para hilos:", error);
                 showNotification(`Error al conectar con la base de datos: ${error.message}`, "error");
             }
         }
@@ -1069,7 +1096,7 @@
                     });
                     showNotification("Tema publicado con éxito.", "success");
                 } catch (e) {
-                    console.error("Error adding document: ", e);
+                    console.error("Error al añadir documento:", e);
                     showNotification(`Error al publicar tema: ${e.message}`, "error");
                 }
             }
@@ -1131,7 +1158,7 @@
                         comments.sort((a, b) => (a.createdAt?.toMillis() || 0) - (b.createdAt?.toMillis() || 0));
                         displayComments(comments);
                     }, (error) => {
-                        console.error("Error fetching comments from Firebase:", error);
+                        console.error("Error al obtener comentarios de Firebase:", error);
                         showNotification(`Error al cargar comentarios: ${error.message}`, "error");
                     });
 
@@ -1140,7 +1167,7 @@
                     showNotification("El tema solicitado no existe.", "error");
                 }
             } catch (error) { // Corrección aquí: Usar 'error' en lugar de 'e'
-                console.error("Error fetching thread details:", error);
+                console.error("Error al obtener detalles del hilo:", error);
                 showNotification(`Error al cargar detalles del tema: ${error.message}`, "error");
             }
         }
@@ -1228,7 +1255,7 @@
                     });
                     showNotification("Comentario publicado con éxito.", "success");
                 } catch (e) {
-                    console.error("Error adding comment: ", e);
+                    console.error("Error al añadir comentario:", e);
                     showNotification(`Error al publicar comentario: ${e.message}`, "error");
                 }
             }
