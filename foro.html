@@ -754,7 +754,8 @@
     <script type="module">
         // Importar módulos de Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        // Eliminamos signInWithCustomToken de la importación ya que no lo usaremos directamente
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js"; 
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, getDoc, updateDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- Configuración y Variables Globales ---
@@ -769,6 +770,7 @@
             appId: "1:425960856740:web:b6098b7ff5eafb3f239a31",
             measurementId: "G-D501R9MNZ7"
         });
+        // initialAuthToken ya no es necesario para la autenticación directa, pero se mantiene si el entorno lo requiere.
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
         let app, db, auth;
@@ -901,35 +903,19 @@
                     db = getFirestore(app);
                     auth = getAuth(app);
 
-                    // MANEJO ROBUSTO DE AUTENTICACIÓN INICIAL
+                    // Siempre intentamos la autenticación anónima para simplicidad y compatibilidad con reglas públicas.
                     try {
-                        if (initialAuthToken && initialAuthToken !== '') {
-                            // Si el entorno proporciona un token personalizado, se intenta usar.
-                            await signInWithCustomToken(auth, initialAuthToken);
-                            console.log("Sesión iniciada con token personalizado del entorno.");
-                        } else {
-                            // Si no hay token personalizado o está vacío, se intenta sesión anónima.
-                            await signInAnonymously(auth);
-                            console.log("Sesión iniciada anónimamente (sin token personalizado).");
-                        }
-                    } catch (authError) {
-                        // Si la autenticación inicial falla (incluyendo custom-token-mismatch),
-                        // se intenta un fallback a autenticación anónima.
-                        console.warn("La autenticación inicial (token personalizado o anónima) falló. Intentando autenticación anónima como fallback:", authError);
-                        try {
-                            await signInAnonymously(auth);
-                            console.log("Fallback exitoso a autenticación anónima.");
-                            // La notificación de éxito se manejará en onAuthStateChanged para evitar duplicidad.
-                        } catch (anonError) {
-                            // Si la autenticación anónima también falla, se activa el modo local.
-                            console.error("La autenticación anónima de fallback también falló. Usando modo local:", anonError);
-                            showNotification(`Error de autenticación: ${anonError.message}. Usando modo local.`, "error");
-                            localMode = true;
-                            initLocalMode();
-                        }
+                        await signInAnonymously(auth);
+                        console.log("Sesión iniciada anónimamente.");
+                    } catch (error) {
+                        // Si la autenticación anónima falla, activamos el modo local.
+                        console.error("Error al intentar iniciar sesión anónimamente. Usando modo local:", error);
+                        showNotification(`Error de autenticación: ${error.message}. Usando modo local.`, "error");
+                        localMode = true;
+                        initLocalMode();
                     }
 
-                    // Escuchar cambios en el estado de autenticación (se ejecutará después de cualquier intento de inicio de sesión)
+                    // Escuchar cambios en el estado de autenticación
                     onAuthStateChanged(auth, (user) => {
                         if (user) {
                             userId = user.uid;
