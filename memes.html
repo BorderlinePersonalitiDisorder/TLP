@@ -51,14 +51,14 @@
             overflow: hidden;
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out, opacity 0.5s ease-out;
-            opacity: 0;
+            opacity: 0; /* Tarjetas invisibles por defecto */
             transform: translateY(20px);
             display: flex;
             flex-direction: column;
             min-height: 180px; /* Ensure a minimum height for cards without images */
         }
         .meme-card.is-visible {
-            opacity: 1;
+            opacity: 1; /* Hacemos visibles las tarjetas */
             transform: translateY(0);
         }
         .meme-card:hover {
@@ -200,7 +200,7 @@
             nav ul { flex-wrap: wrap; justify-content: center; }
             .main-page-content-wrapper { padding-top: 120px; } /* Adjust for taller header on mobile */
         }
-         @media (max-width: 600px) {
+           @media (max-width: 600px) {
             .main-page-content-wrapper { padding-top: 150px; } /* Further adjust for mobile */
         }
 
@@ -313,7 +313,7 @@
             </a>
             <nav aria-label="Navegación principal">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
+                    <li><a href="inicio.html">Inicio</a></li>
                     <li><a href="cursos.html">Cursos</a></li> 
                     <li><a href="blog.html">Blog</a></li> 
                     <li><a href="foro.html">Foros</a></li> 
@@ -389,61 +389,7 @@
                 </div>
             </section>
 
-            <section id="facebook-memes" class="mb-12 md:mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
-                    Perlas de <span class="platform-title">Facebook</span> <i class="fab fa-facebook text-blue-600 ml-2"></i>
-                </h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                    <div class="meme-card">
-                        <!-- Image removed -->
-                        <div class="meme-card-content">
-                            <h3 class="text-xl mb-2 text-indigo-300">Café: Ayuda y Perjudica</h3>
-                            <p class="text-sm text-gray-400 mb-3">Fuente: "Psicólogos y Estudiantes de Psicología"</p>
-                            <div class="meme-card-buttons">
-                                <a href="https://www.facebook.com/search/top/?q=memes%20salud%20mental%20humor" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                    Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="meme-card">
-                        <!-- Image removed -->
-                        <div class="meme-card-content">
-                            <h3 class="text-xl mb-2 text-cyan-300">Adulting: La Dura Realidad</h3>
-                            <p class="text-sm text-gray-400 mb-3">Fuente: "Memes Psicología"</p>
-                            <div class="meme-card-buttons">
-                                <a href="https://www.facebook.com/search/top/?q=humor%20salud%20mental" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                    Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="meme-card">
-                            <!-- Image removed -->
-                        <div class="meme-card-content">
-                            <h3 class="text-xl mb-2 text-purple-300">Mis Planes vs. Mi Ansiedad</h3>
-                            <p class="text-sm text-gray-400 mb-3">Fuente: "Memes Psicología"</p>
-                            <div class="meme-card-buttons">
-                                <a href="https://www.facebook.com/search/top/?q=memes%20ansiedad" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-500 hover:bg-purple-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                    Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="meme-card">
-                        <!-- Image removed -->
-                        <div class="meme-card-content">
-                            <h3 class="text-xl mb-2 text-rose-300">Un Abrazo Virtual</h3>
-                            <p class="text-sm text-gray-400 mb-3">Fuente: "Salud Mental Positiva"</p>
-                            <div class="meme-card-buttons">
-                                <a href="https://www.facebook.com/search/top/?q=mensajes%20positivos%20salud%20mental" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-rose-500 hover:bg-rose-600 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
-                                    Buscar en Facebook <i class="fas fa-external-link-alt ml-1"></i>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <!-- Sección de Facebook eliminada -->
 
             <section id="pinterest-memes" class="mb-12 md:mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold mb-8 md:mb-10 text-center">
@@ -506,14 +452,14 @@
                     Postales de <span class="platform-title">Instagram</span> <i class="fab fa-instagram text-pink-500 ml-2"></i>
                 </h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 md:gap-8">
-                    <!-- Meme 1 -->
+                    <!-- Primera Tarjeta de Instagram REEMPLAZADA -->
                     <div class="meme-card">
                         <!-- Image removed -->
                         <div class="meme-card-content">
-                            <h3 class="text-xl mb-2 text-purple-400">Paz Mental: Prioridad</h3>
-                            <p class="text-sm text-gray-400 mb-3">Fuente: @PsicologaExistencial (Ejemplo)</p>
+                            <h3 class="text-xl mb-2 text-teal-300">Desafío Diario: Respirar</h3>
+                            <p class="text-sm text-gray-400 mb-3">Fuente: @RespirayFluye (Nuevo Ejemplo)</p>
                             <div class="meme-card-buttons">
-                                <a href="https://www.instagram.com/explore/tags/mentalhealthmemes/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-purple-600 hover:bg-purple-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
+                                <a href="https://www.instagram.com/explore/tags/mindfulness/" target="_blank" rel="noopener noreferrer" class="block w-full text-center bg-teal-600 hover:bg-teal-700 text-white font-semibold py-2.5 px-4 rounded-lg transition duration-150 ease-in-out text-sm">
                                     Explorar en Instagram <i class="fas fa-external-link-alt ml-1"></i>
                                 </a>
                             </div>
@@ -569,21 +515,19 @@
                 <ol class="text-gray-400 list-decimal list-inside inline-block text-left space-y-3 mb-8 text-sm sm:text-base">
                     <li>Encuentra la URL directa de un meme gracioso (que termine en .jpg, .png, .gif).</li>
                     <li>En el código HTML, busca una tarjeta (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;div class="meme-card"&gt;</code>).</li>
-                    <li>(Opcional) Si deseas añadir una imagen, descomenta o reinserta la etiqueta <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;img&gt;</code> y reemplaza el atributo <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">src</code> con la URL del meme.</li>
-                    <li>Actualiza el texto alternativo (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">alt</code>), el título (<code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;h3&gt;</code>), la fuente y el enlace del botón.</li>
-                    <li>Copia y pega la estructura de <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">meme-card</code> para añadir más risas.</li>
+                    <li>(Opcional) Si deseas añadir una imagen, descomenta o reinserta la etiqueta <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">&lt;img&gt;</code> y reemplaza el atributo <code class="bg-gray-700 px-1.5 py-0.5 rounded-md text-pink-400 text-xs">src</code> con la URL de tu imagen.</li>
+                    <li>Actualiza el título, la fuente y los enlaces con los de tu meme. ¡Guarda los cambios y disfruta!</li>
                 </ol>
-                <p class="text-gray-400 max-w-xl mx-auto text-xs italic">
-                    Recuerda: la disponibilidad de los enlaces directos a memes puede cambiar. Si un meme no carga, prueba con otro. ¡Diviértete curando tu galería!
-                </p>
+                <a href="#" class="inline-block bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-150 ease-in-out shadow-lg">
+                    ¡Manos a la Obra!
+                </a>
             </section>
 
         </main>
-    </div> <!-- End of main-page-content-wrapper -->
+    </div>
 
-    <!-- Standard Footer from other pages -->
     <footer class="standard-footer">
-        <div class="container mx-auto px-6"> <!-- Ensure container class is used for consistency -->
+        <div class="container mx-auto px-6">
             <div class="footer-grid">
                 <div class="footer-column">
                     <h3>Universo Borderline</h3>
@@ -611,46 +555,33 @@
             </div>
             
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
-                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados.</p> 
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a></p>
             </div>
         </div>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Set current year in footer
+            // Actualizar el año en el footer
             document.getElementById('currentYear').textContent = new Date().getFullYear();
 
-            // Header scroll effect (already present, ensuring it works)
-            const header = document.getElementById('main-header');
+            // Hacer visibles las tarjetas de memes con un pequeño retraso
+            const memeCards = document.querySelectorAll('.meme-card');
+            memeCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('is-visible');
+                }, index * 100); // Pequeño retraso para un efecto de aparición escalonado
+            });
+
+            // Efecto de Header al Scroll
             window.addEventListener('scroll', () => {
+                const header = document.getElementById('main-header');
                 if (window.scrollY > 50) {
                     header.classList.add('scrolled');
                 } else {
                     header.classList.remove('scrolled');
                 }
-            });
-
-            // Add animation to meme cards
-            const memeCards = document.querySelectorAll('.meme-card');
-            const observerOptions = {
-                root: null, // viewport
-                rootMargin: '0px',
-                threshold: 0.1 // 10% of element visible
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // Stop observing once visible
-                    }
-                });
-            }, observerOptions);
-
-            memeCards.forEach(card => {
-                observer.observe(card);
             });
         });
     </script>
