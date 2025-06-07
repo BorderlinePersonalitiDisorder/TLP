@@ -758,15 +758,20 @@
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, getDoc, updateDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- Configuración y Variables Globales ---
-        // Estas variables son proporcionadas por el entorno de Canvas.
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        const firebaseConfigStr = typeof __firebase_config !== 'undefined' ? __firebase_config : null;
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
         let app, db, auth;
         let userId = null;
         let currentOpenThreadId = null;
         let commentsUnsubscribe = null;
+
+        // --- Variables para el Modo Demo Local ---
+        let localMode = false;
+        let localThreads = [];
+        let localComments = {}; // { threadId: [comments] }
+        let nextLocalId = 0;
 
         // --- Referencias a Elementos del DOM ---
         const userIdDisplay = document.getElementById('current-user-id');
@@ -778,32 +783,57 @@
         const addCommentForm = document.getElementById('add-comment-form');
 
         /**
-         * Inicializa la aplicación del foro.
-         * Esta es la función principal que se ejecuta cuando el DOM está listo.
+         * Función principal que se ejecuta cuando el DOM está listo.
+         * Decide si ejecutar en modo Firebase o en modo demo local.
          */
         async function initializeForum() {
-            if (Object.keys(firebaseConfig).length === 0) {
-                console.error("Configuración de Firebase no encontrada.");
-                showMessage("Error crítico: No se pudo cargar la configuración del foro.", "error");
-                return;
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            setupEventListeners();
+            
+            if (firebaseConfigStr && Object.keys(JSON.parse(firebaseConfigStr)).length > 1) {
+                // Modo Firebase
+                try {
+                    const firebaseConfig = JSON.parse(firebaseConfigStr);
+                    app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+                    await setupAuthListener();
+                    loadThreads();
+                } catch (error) {
+                    console.error("Error inicializando Firebase:", error);
+                    showMessage("Error al conectar con el foro. Cambiando a modo demo.", "error");
+                    initializeLocalMode();
+                }
+            } else {
+                // Modo Demo Local
+                console.warn("Configuración de Firebase no encontrada. Ejecutando en modo de demostración local.");
+                showMessage("Modo de demostración activado. Los datos no se guardarán.", "info");
+                initializeLocalMode();
             }
-            try {
-                app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                await setupAuthListener();
-                setupEventListeners();
-                loadThreads();
-                document.getElementById('currentYear').textContent = new Date().getFullYear();
-            } catch (error) {
-                console.error("Error inicializando Firebase:", error);
-                showMessage("No se pudo conectar con el foro.", "error");
-            }
+        }
+        
+        /**
+         * Configura el modo de demostración con datos de ejemplo.
+         */
+        function initializeLocalMode() {
+            localMode = true;
+            userId = `local_user_${Math.random().toString(36).substring(2, 9)}`;
+            userIdDisplay.textContent = `${userId} (Modo Demo)`;
+            
+            const now = new Date();
+            localThreads = [
+                { id: `local_${nextLocalId++}`, title: 'Bienvenida al Modo de Demostración', content: 'Este es un hilo de ejemplo. ¡Intenta crear el tuyo o comentar aquí!', authorId: 'Admin', createdAt: now, commentCount: 1 },
+                { id: `local_${nextLocalId++}`, title: '¿Cómo funciona la Terapia Dialéctico Conductual (DBT)?', content: 'Me gustaría saber más sobre los principios básicos de la DBT. ¿Alguien puede explicarlo de forma sencilla?', authorId: 'usuario_curioso', createdAt: new Date(now.getTime() - 3600000), commentCount: 0 }
+            ];
+            localComments[localThreads[0].id] = [
+                { text: '¡Claro que sí! Este es un comentario de demostración.', authorId: 'Admin', createdAt: new Date(now.getTime() + 60000) }
+            ];
+            
+            renderLocalThreads();
         }
 
         /**
-         * Configura el listener de autenticación para manejar el estado del usuario.
-         * Utiliza el token proporcionado por el entorno o inicia sesión de forma anónima.
+         * Configura el listener de autenticación para Firebase.
          */
         function setupAuthListener() {
             return new Promise((resolve) => {
@@ -815,11 +845,11 @@
                     } else if (initialAuthToken) {
                         try {
                             await signInWithCustomToken(auth, initialAuthToken);
-                        } catch(e) {
+                        } catch (e) {
+                            console.error("Error con token personalizado, intentando anónimo", e);
                             await signInAnonymously(auth);
                         }
-                    } 
-                    else {
+                    } else {
                         await signInAnonymously(auth);
                     }
                 });
@@ -830,7 +860,6 @@
          * Asigna todos los event listeners a los elementos interactivos.
          */
         function setupEventListeners() {
-            // Modales
             document.getElementById('open-new-thread-modal-btn').addEventListener('click', () => toggleModal(newThreadModal, true));
             document.getElementById('close-new-thread-modal-btn').addEventListener('click', () => toggleModal(newThreadModal, false));
             
@@ -843,39 +872,45 @@
             document.querySelector('[data-thread-id="rules-thread"]').addEventListener('click', () => toggleModal(rulesModal, true));
             document.getElementById('close-rules-modal-btn').addEventListener('click', () => toggleModal(rulesModal, false));
             
-            // Formularios
             newThreadForm.addEventListener('submit', handleNewThreadSubmit);
             addCommentForm.addEventListener('submit', handleNewCommentSubmit);
         }
 
         /**
-         * Carga los hilos de discusión desde Firestore.
-         * Los ordena por fecha de creación del lado del cliente para evitar la necesidad de índices compuestos en Firestore.
+         * Carga y renderiza los hilos (desde Firestore o localmente).
          */
         function loadThreads() {
+            if (localMode) return renderLocalThreads();
+
             const threadsCollectionPath = `/artifacts/${appId}/public/data/threads`;
             const q = query(collection(db, threadsCollectionPath));
             
             onSnapshot(q, (querySnapshot) => {
                 const threads = [];
                 querySnapshot.forEach(doc => threads.push({ id: doc.id, ...doc.data() }));
-
-                // Ordenar en el cliente
                 threads.sort((a, b) => (b.createdAt?.toMillis() || 0) - (a.createdAt?.toMillis() || 0));
-
-                generalThreadListUl.innerHTML = '';
-                if (threads.length === 0) {
-                    generalThreadListUl.innerHTML = `<p class="text-center text-gray-400">Aún no hay temas. ¡Sé el primero en crear uno!</p>`;
-                    return;
-                }
-                threads.forEach(thread => {
-                    const threadElement = createThreadElement(thread, thread.id);
-                    generalThreadListUl.appendChild(threadElement);
-                });
+                renderThreads(threads);
             }, error => {
                 console.error("Error al cargar los temas:", error);
                 showMessage("Error al cargar los temas de discusión.", "error");
             });
+        }
+        
+        function renderThreads(threads) {
+            generalThreadListUl.innerHTML = '';
+            if (threads.length === 0) {
+                generalThreadListUl.innerHTML = `<p class="text-center text-gray-400">Aún no hay temas. ¡Sé el primero en crear uno!</p>`;
+                return;
+            }
+            threads.forEach(thread => {
+                const threadElement = createThreadElement(thread, thread.id);
+                generalThreadListUl.appendChild(threadElement);
+            });
+        }
+        
+        function renderLocalThreads() {
+            localThreads.sort((a, b) => b.createdAt.getTime() - a.createdAt.getTime());
+            renderThreads(localThreads);
         }
 
         /**
@@ -883,81 +918,91 @@
          */
         async function handleNewThreadSubmit(e) {
             e.preventDefault();
-            if (!userId) return showMessage("Debes estar autenticado para crear un tema.", "error");
+            if (!userId) return showMessage("No se pudo identificar al usuario.", "error");
             
             const title = e.target['thread-title'].value.trim();
             const content = e.target['thread-content'].value.trim();
+            if (!title || !content) return;
 
-            if (title && content) {
+            if (localMode) {
+                const newThread = { id: `local_${nextLocalId++}`, title, content, authorId: userId, createdAt: new Date(), commentCount: 0 };
+                localThreads.push(newThread);
+                renderLocalThreads();
+                showMessage("Tema creado en modo demo.", "success");
+            } else {
                 const threadsCollectionPath = `/artifacts/${appId}/public/data/threads`;
                 try {
-                    await addDoc(collection(db, threadsCollectionPath), {
-                        title, content,
-                        authorId: userId,
-                        createdAt: serverTimestamp(),
-                        commentCount: 0
-                    });
-                    toggleModal(newThreadModal, false);
-                    newThreadForm.reset();
+                    await addDoc(collection(db, threadsCollectionPath), { title, content, authorId: userId, createdAt: serverTimestamp(), commentCount: 0 });
                     showMessage("Tema creado con éxito.", "success");
                 } catch (error) {
                     console.error("Error al crear el tema:", error);
                     showMessage("No se pudo crear el tema.", "error");
                 }
             }
+            toggleModal(newThreadModal, false);
+            newThreadForm.reset();
         }
 
         /**
          * Abre el modal de detalles de un hilo y carga sus comentarios.
-         * @param {string} threadId - El ID del documento del hilo.
          */
         async function openThreadDetail(threadId) {
             currentOpenThreadId = threadId;
-            const threadDocPath = `/artifacts/${appId}/public/data/threads/${threadId}`;
-            const threadRef = doc(db, threadDocPath);
+            let threadData;
 
-            try {
-                const threadSnap = await getDoc(threadRef);
-                if (threadSnap.exists()) {
-                    const thread = threadSnap.data();
-                    document.getElementById('thread-detail-title').textContent = thread.title;
-                    document.getElementById('thread-detail-main-content').textContent = thread.content;
-                    document.getElementById('thread-detail-author').textContent = truncate(thread.authorId, 20);
-                    document.getElementById('thread-detail-created-at').textContent = thread.createdAt?.toDate().toLocaleString('es-ES') || '';
-                    
-                    loadComments(threadId);
-                    toggleModal(threadDetailModal, true);
-                }
-            } catch (error) {
-                console.error("Error al abrir el detalle del tema:", error);
-                showMessage("No se pudo cargar el tema.", "error");
+            if (localMode) {
+                threadData = localThreads.find(t => t.id === threadId);
+            } else {
+                const threadDocPath = `/artifacts/${appId}/public/data/threads/${threadId}`;
+                const threadSnap = await getDoc(doc(db, threadDocPath));
+                if (threadSnap.exists()) threadData = threadSnap.data();
+            }
+
+            if (threadData) {
+                document.getElementById('thread-detail-title').textContent = threadData.title;
+                document.getElementById('thread-detail-main-content').textContent = threadData.content;
+                document.getElementById('thread-detail-author').textContent = truncate(threadData.authorId, 20);
+                document.getElementById('thread-detail-created-at').textContent = (threadData.createdAt?.toDate ? threadData.createdAt.toDate() : threadData.createdAt).toLocaleString('es-ES');
+                loadComments(threadId);
+                toggleModal(threadDetailModal, true);
+            } else {
+                showMessage("No se pudo encontrar el tema.", "error");
             }
         }
-
+        
         /**
-         * Carga los comentarios de un hilo específico.
+         * Carga los comentarios de un hilo (desde Firestore o localmente).
          */
         function loadComments(threadId) {
-            const commentList = document.getElementById('comment-list');
+            if (localMode) return renderLocalComments(threadId);
+
             const commentsPath = `/artifacts/${appId}/public/data/threads/${threadId}/comments`;
             const q = query(collection(db, commentsPath));
-
             commentsUnsubscribe = onSnapshot(q, (snapshot) => {
                 const comments = [];
                 snapshot.forEach(doc => comments.push(doc.data()));
-                
                 comments.sort((a, b) => (a.createdAt?.toMillis() || 0) - (b.createdAt?.toMillis() || 0));
-
-                commentList.innerHTML = '';
-                if (comments.length === 0) {
-                    commentList.innerHTML = `<li class="no-comments-message">No hay comentarios aún.</li>`;
-                } else {
-                    comments.forEach(comment => {
-                        const commentEl = createCommentElement(comment);
-                        commentList.appendChild(commentEl);
-                    });
-                }
+                renderComments(comments);
             });
+        }
+        
+        function renderComments(comments) {
+            const commentList = document.getElementById('comment-list');
+            commentList.innerHTML = '';
+            if (comments.length === 0) {
+                commentList.innerHTML = `<li class="no-comments-message">No hay comentarios aún.</li>`;
+            } else {
+                comments.forEach(comment => {
+                    const commentEl = createCommentElement(comment);
+                    commentList.appendChild(commentEl);
+                });
+            }
+        }
+        
+        function renderLocalComments(threadId) {
+            const comments = localComments[threadId] || [];
+            comments.sort((a,b) => a.createdAt.getTime() - b.createdAt.getTime());
+            renderComments(comments);
         }
 
         /**
@@ -968,34 +1013,35 @@
             const content = e.target['new-comment-content'].value.trim();
             if (!content || !currentOpenThreadId || !userId) return showMessage("El comentario no puede estar vacío.", "error");
 
-            const commentsPath = `/artifacts/${appId}/public/data/threads/${currentOpenThreadId}/comments`;
-            try {
-                await addDoc(collection(db, commentsPath), {
-                    text: content,
-                    authorId: userId,
-                    createdAt: serverTimestamp()
-                });
-                
-                // Actualizar contador de comentarios
-                const threadRef = doc(db, `/artifacts/${appId}/public/data/threads/${currentOpenThreadId}`);
-                const threadSnap = await getDoc(threadRef);
-                const currentCount = threadSnap.data().commentCount || 0;
-                await updateDoc(threadRef, { commentCount: currentCount + 1 });
-
-                addCommentForm.reset();
-            } catch(error) {
-                console.error("Error al añadir comentario:", error);
-                showMessage("No se pudo publicar tu comentario.", "error");
+            if (localMode) {
+                if (!localComments[currentOpenThreadId]) localComments[currentOpenThreadId] = [];
+                localComments[currentOpenThreadId].push({ text: content, authorId: userId, createdAt: new Date() });
+                const thread = localThreads.find(t => t.id === currentOpenThreadId);
+                if (thread) thread.commentCount = (thread.commentCount || 0) + 1;
+                renderLocalComments(currentOpenThreadId);
+                renderLocalThreads();
+            } else {
+                const commentsPath = `/artifacts/${appId}/public/data/threads/${currentOpenThreadId}/comments`;
+                try {
+                    await addDoc(collection(db, commentsPath), { text: content, authorId: userId, createdAt: serverTimestamp() });
+                    const threadRef = doc(db, `/artifacts/${appId}/public/data/threads/${currentOpenThreadId}`);
+                    const threadSnap = await getDoc(threadRef);
+                    const currentCount = threadSnap.data().commentCount || 0;
+                    await updateDoc(threadRef, { commentCount: currentCount + 1 });
+                } catch (error) {
+                    console.error("Error al añadir comentario:", error);
+                    showMessage("No se pudo publicar tu comentario.", "error");
+                }
             }
+            addCommentForm.reset();
         }
 
         // --- Funciones de Creación de Elementos y Utilidades ---
-
         function createThreadElement(thread, id) {
             const li = document.createElement('li');
             li.className = 'thread-item';
             li.dataset.threadId = id;
-            const date = thread.createdAt?.toDate().toLocaleString('es-ES') || 'N/A';
+            const date = (thread.createdAt?.toDate ? thread.createdAt.toDate() : thread.createdAt).toLocaleString('es-ES') || 'N/A';
             li.innerHTML = `
                 <div class="thread-item-header">
                     <h4><a href="#">${escapeHTML(thread.title)}</a></h4>
@@ -1013,7 +1059,7 @@
         function createCommentElement(comment) {
             const li = document.createElement('li');
             li.className = 'comment-item';
-            const date = comment.createdAt?.toDate().toLocaleString('es-ES') || '';
+            const date = (comment.createdAt?.toDate ? comment.createdAt.toDate() : comment.createdAt).toLocaleString('es-ES') || '';
             li.innerHTML = `
                 <div class="comment-meta">Por: ${truncate(comment.authorId, 15)} - ${date}</div>
                 <p class="comment-text">${escapeHTML(comment.text)}</p>`;
@@ -1029,11 +1075,7 @@
             const notification = document.createElement('div');
             const colors = { info: '#1E90FF', success: '#00FF7F', error: '#FF4500' };
             notification.textContent = message;
-            notification.style.cssText = `
-                padding: 12px 20px; border-radius: 8px; margin-bottom: 10px;
-                background-color: ${colors[type]}; color: var(--dark-bg);
-                font-family: 'Poppins', sans-serif; font-weight: 600;
-                opacity: 0; transition: all 0.4s ease; transform: translateX(20px);`;
+            notification.style.cssText = `padding: 12px 20px; border-radius: 8px; margin-bottom: 10px; background-color: ${colors[type]}; color: var(--dark-bg); font-family: 'Poppins', sans-serif; font-weight: 600; opacity: 0; transition: all 0.4s ease; transform: translateX(20px);`;
             container.appendChild(notification);
             setTimeout(() => {
                 notification.style.opacity = '1';
@@ -1056,9 +1098,7 @@
             return str && str.length > maxLength ? str.substring(0, maxLength) + '...' : str;
         }
 
-        // Iniciar la aplicación
         document.addEventListener('DOMContentLoaded', initializeForum);
-
     </script>
 
 </body>
