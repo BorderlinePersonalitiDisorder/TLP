@@ -263,9 +263,9 @@
             align-items: center;
             justify-content: center;
             font-size: 3rem;
-            color: var(--text-color-medium);
+            color: var(--text-color-light); /* Changed for better contrast */
         }
-         .podcast-card:hover .podcast-thumbnail {
+           .podcast-card:hover .podcast-thumbnail {
             opacity: 0.85;
         }
 
@@ -283,7 +283,7 @@
             margin-bottom: 0.8rem;
             line-height: 1.4; /* Ajustado */
         }
-         .podcast-content h3:hover {
+           .podcast-content h3:hover {
             color: var(--secondary-cyan);
         }
         
@@ -292,7 +292,7 @@
             color: var(--text-color-medium);
             margin-bottom: 1rem;
         }
-         .podcast-meta i {
+           .podcast-meta i {
             margin-right: 6px; /* Aumentado */
             color: var(--accent-green);
         }
@@ -503,6 +503,50 @@
             </div>
 
             <div class="podcast-grid">
+                <!-- Podcast Card: TLP/DISOCIACIÓN -->
+                <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--secondary-cyan); color: var(--text-color-dark);">
+                        <i class="fas fa-puzzle-piece"></i> <!-- Icono representativo para disociación -->
+                    </div>
+                    <div class="podcast-content">
+                        <h3>TLP/DISOCIACIÓN</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Fecha a definir</span> | 
+                            <span><i class="fas fa-clock"></i> Duración a definir</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Explora la disociación en el contexto del TLP, comprendiendo sus manifestaciones y estrategias de manejo.
+                        </p>
+                        <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor no disponible.</span>
+                            <a href="https://creators.spotify.com/pod/show/el-borde/episodes/TLPDISOCIACIN-e33u3uq" target="_blank" rel="noopener noreferrer" class="listen-btn">Escuchar en Spotify</a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Podcast Card: TLP y consumo compulsivo -->
+                <article class="podcast-card"> 
+                    <div class="podcast-thumbnail" style="background-color: var(--primary-violet); color: var(--text-color-light);">
+                        <i class="fas fa-shopping-basket"></i> <!-- Icono representativo para consumo compulsivo -->
+                    </div>
+                    <div class="podcast-content">
+                        <h3>TLP y consumo compulsivo</h3>
+                        <p class="podcast-meta">
+                            <span><i class="fas fa-calendar-alt"></i> Fecha a definir</span> | 
+                            <span><i class="fas fa-clock"></i> Duración a definir</span>
+                        </p>
+                        <p class="podcast-excerpt">
+                            Analizamos la relación entre el Trastorno Límite de la Personalidad y los patrones de consumo compulsivo, ofreciendo comprensión y apoyo.
+                        </p>
+                        <div class="podcast-player-placeholder">
+                            <i class="fas fa-play-circle"></i>
+                            <span>Reproductor no disponible.</span>
+                            <a href="https://creators.spotify.com/pod/show/el-borde/episodes/TLPCONSUMO-COMPULSIVO-e33u46t" target="_blank" rel="noopener noreferrer" class="listen-btn">Escuchar en Spotify</a>
+                        </div>
+                    </div>
+                </article>
+
                 <!-- Podcast Card: ¿Qué narices es el TLP? -->
                 <article class="podcast-card"> 
                     <div class="podcast-thumbnail" style="background-color: var(--accent-red); color: var(--text-color-light);">
@@ -592,7 +636,7 @@
                 </article>
                 
             </div>
-             <div style="text-align: center; margin-top: 3rem;">
+               <div style="text-align: center; margin-top: 3rem;">
                 <a href="index.html" class="back-to-home-btn"><i class="fas fa-home"></i> Volver al Inicio</a>
             </div>
         </div>
@@ -687,7 +731,7 @@
                     link.setAttribute('aria-current', 'page');
                 }
                 // Special case for index.html if current page is root
-                 if (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html')) {
+                  if (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html')) {
                     // Ensure other links are not active if on index
                     if (linkFilename === '' || linkFilename === 'index.html') {
                         link.classList.add('active'); // Make "Inicio" active on index.html
