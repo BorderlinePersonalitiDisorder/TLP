@@ -982,7 +982,8 @@
 
             try {
                 // Consulta en tiempo real de hilos generales
-                const q = query(collection(db, `artifacts/${appId}/public/data/threads`));
+                // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
+                const q = query(collection(db, `artifacts/${appId}/public/data/forum_posts`));
                 onSnapshot(q, (snapshot) => {
                     const threads = [];
                     snapshot.forEach(doc => {
@@ -1052,9 +1053,10 @@
                 loadLocalThreads(); // Volver a renderizar la lista de hilos
                 showNotification("Tema creado localmente (no persistente).", "success");
             } else {
-                // Firebase: añadir a la colección 'threads'
+                // Firebase: añadir a la colección 'forum_posts'
+                // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
                 try {
-                    await addDoc(collection(db, `artifacts/${appId}/public/data/threads`), {
+                    await addDoc(collection(db, `artifacts/${appId}/public/data/forum_posts`), {
                         title: title,
                         content: content,
                         author: userId, // Usar el ID de usuario autenticado
@@ -1096,7 +1098,8 @@
             }
 
             try {
-                const threadRef = doc(db, `artifacts/${appId}/public/data/threads`, threadId);
+                // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
+                const threadRef = doc(db, `artifacts/${appId}/public/data/forum_posts`, threadId);
                 const threadSnap = await getDoc(threadRef);
 
                 if (threadSnap.exists()) {
@@ -1112,7 +1115,8 @@
                     }
 
                     // Suscribirse a los comentarios de este hilo en tiempo real
-                    const commentsCollectionRef = collection(db, `artifacts/${appId}/public/data/threads`, threadId, 'comments');
+                    // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
+                    const commentsCollectionRef = collection(db, `artifacts/${appId}/public/data/forum_posts`, threadId, 'comments');
                     commentsUnsubscribe = onSnapshot(query(commentsCollectionRef), (snapshot) => {
                         const comments = [];
                         snapshot.forEach(doc => {
@@ -1132,7 +1136,7 @@
                 }
             } catch (error) {
                 console.error("Error fetching thread details:", error);
-                showNotification(`Error al cargar detalles del tema: ${error.message}`, "error");
+                showNotification(`Error al cargar detalles del tema: ${e.message}`, "error");
             }
         }
 
@@ -1211,8 +1215,9 @@
                 showNotification("Comentario añadido localmente (no persistente).", "success");
             } else {
                 // Firebase: añadir a la subcolección 'comments' del tema actual
+                // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
                 try {
-                    await addDoc(collection(db, `artifacts/${appId}/public/data/threads`, currentOpenThreadId, 'comments'), {
+                    await addDoc(collection(db, `artifacts/${appId}/public/data/forum_posts`, currentOpenThreadId, 'comments'), {
                         content: commentContent,
                         author: userId,
                         createdAt: serverTimestamp()
