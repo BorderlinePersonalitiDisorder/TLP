@@ -853,7 +853,7 @@
             // Rules Modal (specific handling for the pre-defined rules thread)
             // It will be opened by clicking on the dedicated "Guía de Normas" sticky thread
             closeRulesModalBtn.addEventListener('click', () => {
-                rulesModal.classList.remove('active');
+                rulesModal.classList.remove('active'); // FIX: Changed from add to remove
             });
             rulesModal.addEventListener('click', (e) => {
                 if (e.target === rulesModal) {
@@ -1212,12 +1212,19 @@
 
             // Handle new comment submission
             submitCommentBtn.addEventListener('click', async () => {
+                console.log("Submit comment button clicked.");
+                console.log("db:", db);
+                console.log("userId:", userId);
+                console.log("currentOpenThreadId:", currentOpenThreadId);
+
                 if (!db || !userId || userId === 'loading...' || userId === 'Error de autenticación') {
                     showMessage("Error: Autenticación no completa. No se puede añadir comentario.", "error");
+                    console.error("Authentication or DB not ready:", { db, userId });
                     return;
                 }
                 if (!currentOpenThreadId) {
                     showMessage("Error: No hay ningún tema abierto para comentar.", "error");
+                    console.error("No current thread open for commenting.");
                     return;
                 }
 
