@@ -442,9 +442,11 @@
         // Global variables provided by the Canvas environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+        // FIX: Corregido el error de referencia en la asignación de initialAuthToken
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
         let app, db, auth, userId = null;
+        let authReady = false; // Flag to indicate if auth state has been checked
 
         // --- Utility function for showing modal messages ---
         const messageModal = document.getElementById('messageModal');
@@ -495,6 +497,7 @@
         // --- Firebase Initialization ---
         async function initializeFirebase() {
             try {
+                console.log("Initializing Firebase...");
                 // Check if firebaseConfig is empty, indicating a potential environment variable issue
                 if (Object.keys(firebaseConfig).length === 0 || !firebaseConfig.apiKey) {
                     console.error("Error: firebaseConfig está vacío o incompleto. Asegúrate de que las variables de entorno de Firebase se carguen correctamente en el entorno de Canvas.");
@@ -508,20 +511,38 @@
                 auth = getAuth(app);
                 db = getFirestore(app);
 
-                // Sign in anonymously if no custom token is provided
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                    console.log("Signed in with custom token.");
-                } else {
-                    // Try to sign in anonymously. This can fail if there's a network issue or Firebase config problem.
-                    await signInAnonymously(auth);
-                    console.log("Signed in anonymously.");
-                }
-
                 // Listen for authentication state changes
-                onAuthStateChanged(auth, (user) => {
+                // FIX: Asegurar que loadForumPosts se llama solo una vez que el estado de autenticación es definitivo.
+                onAuthStateChanged(auth, async (user) => {
+                    if (!authReady) { // Only run this block for the initial auth state check
+                        authReady = true; // Set flag to true after initial check
+                        console.log("onAuthStateChanged: Initial check completed.");
+                        if (initialAuthToken) {
+                            try {
+                                await signInWithCustomToken(auth, initialAuthToken);
+                                console.log("Signed in with custom token.");
+                            } catch (error) {
+                                console.error("Error signing in with custom token:", error);
+                                showMessage(`Error con token de autenticación: ${error.message}`, 5000);
+                                // Fallback to anonymous if custom token fails
+                                await signInAnonymously(auth);
+                                console.log("Signed in anonymously as fallback.");
+                            }
+                        } else {
+                            try {
+                                await signInAnonymously(auth);
+                                console.log("Signed in anonymously.");
+                            } catch (error) {
+                                console.error("Error signing in anonymously:", error);
+                                showMessage(`Error al iniciar sesión anónimamente: ${error.message}`, 5000);
+                            }
+                        }
+                    }
+
+                    // Handle user state after any sign-in attempt
                     if (user) {
                         userId = user.uid;
+                        console.log("User authenticated:", userId);
                         // Display user info and forum content
                         document.getElementById('auth-section').classList.add('hidden');
                         document.getElementById('forum-content').classList.remove('hidden');
@@ -530,6 +551,7 @@
                         loadForumPosts(); // Load posts after successful login
                     } else {
                         userId = null;
+                        console.log("User not authenticated.");
                         // Show authentication section and hide forum content
                         document.getElementById('auth-section').classList.remove('hidden');
                         document.getElementById('forum-content').classList.add('hidden');
@@ -539,9 +561,9 @@
                 });
 
             } catch (error) {
-                console.error("Error initializing Firebase:", error);
+                console.error("Error initializing Firebase (outer catch):", error);
                 const errorMessage = error.message || "No se pudo conectar a Firebase. Por favor, revisa tu conexión a internet o la configuración.";
-                showMessage(`Error al inicializar la base de datos: ${errorMessage}`, 5000); 
+                showMessage(`Error al inicializar la base de datos: ${errorMessage}`, 0); 
                 document.getElementById('auth-section').classList.remove('hidden'); // Show auth section even on error
                 document.getElementById('auth-header').textContent = 'Error de Conexión';
                 document.getElementById('auth-status').textContent = `No se pudo conectar a la base de datos. Inténtalo de nuevo. (${errorMessage})`;
@@ -557,7 +579,8 @@
                 return;
             }
             try {
-                await createUserWithEmailAndPassword(auth, email, password);
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                console.log("Registered user:", userCredential.user.uid);
                 showMessage("Registro exitoso. ¡Bienvenido!");
             } catch (error) {
                 console.error("Error al registrar:", error);
@@ -573,7 +596,8 @@
                 return;
             }
             try {
-                await signInWithEmailAndPassword(auth, email, password);
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                console.log("Logged in user:", userCredential.user.uid);
                 showMessage("Inicio de sesión exitoso. ¡Bienvenido de nuevo!");
             } catch (error) { 
                 console.error("Error al iniciar sesión:", error);
@@ -584,6 +608,7 @@
         async function handleLogout() {
             try {
                 await signOut(auth);
+                console.log("User logged out.");
                 showMessage("Sesión cerrada correctamente.");
             } catch (error) {
                 console.error("Error al cerrar sesión:", error);
@@ -610,11 +635,15 @@
             }
 
             try {
-                const forumCollectionRef = collection(db, `artifacts/${appId}/public/data/forum_posts`);
+                // FIX: Añadido logging para verificar el path de la colección
+                const collectionPath = `artifacts/${appId}/public/data/forum_posts`;
+                console.log("Attempting to add doc to collection:", collectionPath);
+                const forumCollectionRef = collection(db, collectionPath);
 
                 await addDoc(forumCollectionRef, {
                     authorId: userId,
-                    authorEmail: auth.currentUser.email || 'Anónimo', 
+                    // FIX: Asegurarse de que auth.currentUser existe antes de intentar acceder a su email
+                    authorEmail: auth.currentUser ? auth.currentUser.email : 'Anónimo', 
                     content: postContent,
                     timestamp: serverTimestamp() 
                 });
@@ -630,12 +659,16 @@
 
         function loadForumPosts() {
             const postsContainer = document.getElementById('posts-container');
+            // FIX: Asegurar que userId está disponible antes de intentar cargar posts
             if (!userId) {
                 postsContainer.innerHTML = '<p class="text-center text-gray-400">Inicia sesión para ver las publicaciones del foro.</p>';
                 return;
             }
-
-            const forumCollectionRef = collection(db, `artifacts/${appId}/public/data/forum_posts`);
+            
+            // FIX: Añadido logging para verificar el path de la colección al cargar
+            const collectionPath = `artifacts/${appId}/public/data/forum_posts`;
+            console.log("Attempting to load posts from collection:", collectionPath);
+            const forumCollectionRef = collection(db, collectionPath);
             const q = query(forumCollectionRef); 
 
             onSnapshot(q, (snapshot) => {
