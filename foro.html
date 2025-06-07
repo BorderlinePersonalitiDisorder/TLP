@@ -624,11 +624,9 @@
                     <li class="sticky-thread thread-item" data-thread-id="rules-thread">
                         <div class="thread-item-header">
                             <h4><a href="#"><i class="fas fa-thumbtack"></i> Guía de Normas y Buenas Prácticas del Foro</a></h4>
+                            <!-- Eliminado el div con la información de meta para este hilo estático -->
                             <div class="thread-meta">
                                 <span>Por: Moderación</span>
-                                <span><i class="fas fa-comment"></i> 0 Respuestas</span>
-                                <span><i class="fas fa-eye"></i> 0 Vistas</span>
-                                <span>Última respuesta: N/A</span>
                             </div>
                         </div>
                         <p class="thread-excerpt">Lee las normas de la comunidad para asegurar un espacio respetuoso y seguro para todos. Haz clic para ver.</p>
@@ -1104,7 +1102,7 @@
 
                         threadDetailAuthor.textContent = authorDisplayName;
 
-                        threadDetailCreatedAt.textContent = threadData.createdAt ? (threadData.createdAt.toDate ? new Date(threadData.createdAt.toDate()).toLocaleString() : new Date(threadData.createdAt).toLocaleString()) : 'N/A';
+                        threadDetailCreatedAt.textContent = threadData.createdAt ? (threadData.createdAt.toDate ? new Date(threadData.toDate()).toLocaleString() : new Date(threadData.createdAt).toLocaleString()) : 'N/A';
 
                         // Increment view count (optional, can be debounced or done on server)
                         await updateDoc(threadDocRef, {
