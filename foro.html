@@ -516,11 +516,11 @@
         .footer-links a { 
             color: var(--text-color-medium); 
             text-decoration: none; 
-            transition: all 0.3s ease; 
-            display: inline-block; 
-            padding: 3px 0; 
             font-family: 'Comfortaa', sans-serif; 
             font-size: 0.9rem; 
+            padding: 3px 0; 
+            transition: all 0.3s ease; 
+            display: inline-block; 
         }
         .footer-links a:hover { color: var(--accent-blue); transform: translateX(0px); } 
         
@@ -853,7 +853,7 @@
             // Rules Modal (specific handling for the pre-defined rules thread)
             // It will be opened by clicking on the dedicated "Guía de Normas" sticky thread
             closeRulesModalBtn.addEventListener('click', () => {
-                rulesModal.classList.remove('active'); // FIX: Changed from add to remove
+                rulesModal.classList.remove('active'); 
             });
             rulesModal.addEventListener('click', (e) => {
                 if (e.target === rulesModal) {
@@ -887,6 +887,12 @@
             // --- Firebase Initialization and Auth ---
             // Only initialize Firebase once, and store references globally
             if (!app) { // Check if app is already initialized
+                if (Object.keys(firebaseConfig).length === 0) {
+                    console.error("Error: La configuración de Firebase está vacía. Asegúrate de que __firebase_config esté definida.");
+                    showMessage("Error: La configuración de Firebase no está disponible. Las funciones del foro no funcionarán.", "error");
+                    document.getElementById('current-user-id').textContent = 'Configuración de Firebase no válida';
+                    return; // Stop execution if config is missing
+                }
                 try {
                     app = initializeApp(firebaseConfig);
                     db = getFirestore(app);
@@ -895,6 +901,7 @@
                 } catch (error) {
                     console.error("Error initializing Firebase:", error);
                     showMessage("Error al inicializar la base de datos.", "error");
+                    document.getElementById('current-user-id').textContent = 'Error de inicialización de Firebase';
                     return; // Critical error, stop execution
                 }
             }
@@ -916,10 +923,19 @@
                                 await signInAnonymously(auth);
                             }
                             // Ensure userId is set after successful anonymous sign-in too
-                            userId = auth.currentUser.uid; 
-                            document.getElementById('current-user-id').textContent = userId;
-                            console.log("Firebase authenticated. User ID:", userId);
-                            resolve(true); // Resolve the promise once user is authenticated
+                            if (auth.currentUser) { // Check if currentUser exists after sign-in attempt
+                                userId = auth.currentUser.uid; 
+                                document.getElementById('current-user-id').textContent = userId;
+                                console.log("Firebase authenticated. User ID:", userId);
+                                resolve(true); // Resolve the promise once user is authenticated
+                            } else {
+                                // This case should ideally not happen if signInAnonymously succeeds
+                                console.error("Firebase authentication failed after anonymous sign-in attempt.");
+                                showMessage("Error: No se pudo obtener el ID de usuario después de la autenticación.", "error");
+                                userId = 'Error de autenticación';
+                                document.getElementById('current-user-id').textContent = userId;
+                                resolve(false);
+                            }
                         } catch (error) {
                             console.error("Error signing in to Firebase:", error);
                             showMessage("Error al iniciar sesión en el foro.", "error");
