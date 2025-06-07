@@ -547,7 +547,7 @@
                 // Set up the persistent authentication state listener AFTER initial sign-in attempt
                 // This listener will then react to the user's state (whether signed in via token, anonymously, or existing session)
                 onAuthStateChanged(auth, (user) => {
-                    console.log("onAuthStateChanged triggered. Current user:", user ? user.uid : "null");
+                    console.log("onAuthStateChanged triggered. Current user object:", user); // Added log for user object
                     if (user) {
                         userId = user.uid;
                         document.getElementById('auth-section').classList.add('hidden');
