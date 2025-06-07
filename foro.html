@@ -760,6 +760,7 @@
 
         // Global variables provided by the Canvas environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        // FIX: Corrected initialAuthToken assignment to use __initial_auth_token instead of initialAuthToken
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
@@ -862,6 +863,17 @@
                 }
             });
 
+            // Add event listener for the static "Guía de Normas y Buenas Prácticas del Foro" sticky thread
+            const rulesThreadItem = document.querySelector('[data-thread-id="rules-thread"]');
+            if (rulesThreadItem) {
+                rulesThreadItem.addEventListener('click', (e) => {
+                    // Prevent default link behavior if clicking the <a> tag inside
+                    if (e.target.tagName === 'A' || e.target.tagName === 'I') {
+                        e.preventDefault();
+                    }
+                    rulesModal.classList.add('active');
+                });
+            }
 
             closeThreadDetailModalBtn.addEventListener('click', () => {
                 threadDetailModal.classList.remove('active');
