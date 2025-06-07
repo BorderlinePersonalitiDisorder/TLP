@@ -760,7 +760,6 @@
 
         // Global variables provided by the Canvas environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        // FIX: Corrected initialAuthToken assignment to use __initial_auth_token instead of initialAuthToken
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
@@ -770,7 +769,6 @@
         let auth;
         let userId = 'loading...'; // Default loading state for userId
         let currentOpenThreadId = null; // To keep track of the thread currently open in the detail modal
-        // FIX: Moved firestoreListenerUnsubscribe to window scope for better global accessibility
         window.firestoreListenerUnsubscribe = null; // To store the unsubscribe function for onSnapshot
 
         // Function to display messages (replaces alert)
@@ -887,14 +885,18 @@
             });
 
             // --- Firebase Initialization and Auth ---
-            try {
-                app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-            } catch (error) {
-                console.error("Error initializing Firebase:", error);
-                showMessage("Error al inicializar la base de datos.", "error");
-                return; // Critical error, stop execution
+            // Only initialize Firebase once, and store references globally
+            if (!app) { // Check if app is already initialized
+                try {
+                    app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
+                    console.log("Firebase initialized successfully.");
+                } catch (error) {
+                    console.error("Error initializing Firebase:", error);
+                    showMessage("Error al inicializar la base de datos.", "error");
+                    return; // Critical error, stop execution
+                }
             }
 
             // Use a Promise to ensure authentication is ready before proceeding
@@ -1041,8 +1043,7 @@
                 const threadsCollectionRef = collection(db, `artifacts/${appId}/public/data/threads`);
                 const q = query(threadsCollectionRef);
 
-                // FIX: Check if window.firestoreListenerUnsubscribe is a function before calling it
-                if (typeof window.firestoreListenerUnsubscribe === 'function') { 
+                if (window.firestoreListenerUnsubscribe && typeof window.firestoreListenerUnsubscribe === 'function') { 
                     window.firestoreListenerUnsubscribe(); // Unsubscribe from previous listener
                     console.log("Firestore: Unsubscribed from old threads listener.");
                 }
