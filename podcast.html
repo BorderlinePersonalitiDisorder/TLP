@@ -265,7 +265,7 @@
             font-size: 3rem;
             color: var(--text-color-light); /* Changed for better contrast */
         }
-           .podcast-card:hover .podcast-thumbnail {
+            .podcast-card:hover .podcast-thumbnail {
             opacity: 0.85;
         }
 
@@ -283,7 +283,7 @@
             margin-bottom: 0.8rem;
             line-height: 1.4; /* Ajustado */
         }
-           .podcast-content h3:hover {
+            .podcast-content h3:hover {
             color: var(--secondary-cyan);
         }
         
@@ -292,7 +292,7 @@
             color: var(--text-color-medium);
             margin-bottom: 1rem;
         }
-           .podcast-meta i {
+            .podcast-meta i {
             margin-right: 6px; /* Aumentado */
             color: var(--accent-green);
         }
@@ -520,7 +520,8 @@
                         <div class="podcast-player-placeholder">
                             <i class="fas fa-play-circle"></i>
                             <span>Reproductor no disponible.</span>
-                            <a href="https://creators.spotify.com/pod/show/el-borde/episodes/TLPDISOCIACIN-e33u3uq" target="_blank" rel="noopener noreferrer" class="listen-btn">Escuchar en Spotify</a>
+                            <!-- Enlace actualizado para Disociación -->
+                            <a href="https://open.spotify.com/episode/3ppd4XxySo4HF9O0F3II8A?si=7311e8f56a9645b1" target="_blank" rel="noopener noreferrer" class="listen-btn">Escuchar en Spotify</a>
                         </div>
                     </div>
                 </article>
@@ -542,7 +543,8 @@
                         <div class="podcast-player-placeholder">
                             <i class="fas fa-play-circle"></i>
                             <span>Reproductor no disponible.</span>
-                            <a href="https://creators.spotify.com/pod/show/el-borde/episodes/TLPCONSUMO-COMPULSIVO-e33u46t" target="_blank" rel="noopener noreferrer" class="listen-btn">Escuchar en Spotify</a>
+                            <!-- Enlace actualizado para Consumo Compulsivo -->
+                            <a href="https://open.spotify.com/episode/2wMTbEjGIT1k9auRzm0H8E?si=441419efeec44651" target="_blank" rel="noopener noreferrer" class="listen-btn">Escuchar en Spotify</a>
                         </div>
                     </div>
                 </article>
@@ -636,7 +638,7 @@
                 </article>
                 
             </div>
-               <div style="text-align: center; margin-top: 3rem;">
+                <div style="text-align: center; margin-top: 3rem;">
                 <a href="index.html" class="back-to-home-btn"><i class="fas fa-home"></i> Volver al Inicio</a>
             </div>
         </div>
@@ -725,28 +727,18 @@
                 link.classList.remove('active'); 
                 link.removeAttribute('aria-current');
                 const linkFilename = link.getAttribute('href').split('/').pop().split('#')[0];
-               // Check if the link's href matches the current page filename
+                // Check if the link's href matches the current page
                 if (linkFilename === currentPageFilename) {
                     link.classList.add('active');
                     link.setAttribute('aria-current', 'page');
                 }
-                // Special case for index.html if current page is root
-                  if (currentPageFilename === 'index.html' && (linkFilename === '' || linkFilename === 'index.html')) {
-                    // Ensure other links are not active if on index
-                    if (linkFilename === '' || linkFilename === 'index.html') {
-                        link.classList.add('active'); // Make "Inicio" active on index.html
-                        link.setAttribute('aria-current', 'page');
-                    } else {
-                        link.classList.remove('active');
-                        link.removeAttribute('aria-current');
-                    }
-                }
             });
             
+            // Header scroll effect
             const header = document.getElementById('main-header');
-            if(header){
+            if (header) {
                 window.addEventListener('scroll', () => {
-                    if (window.scrollY > 40) {
+                    if (window.scrollY > 50) {
                         header.classList.add('scrolled');
                     } else {
                         header.classList.remove('scrolled');
