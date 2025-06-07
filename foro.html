@@ -447,6 +447,7 @@
 
         let app, db, auth, userId = null;
         let authReady = false; // Flag to indicate if auth state has been checked
+        let firestoreListenerUnsubscribe = null; // To store the unsubscribe function for onSnapshot
 
         // --- Utility function for showing modal messages ---
         const messageModal = document.getElementById('messageModal');
@@ -497,76 +498,83 @@
         // --- Firebase Initialization ---
         async function initializeFirebase() {
             try {
-                console.log("Initializing Firebase...");
-                // Check if firebaseConfig is empty, indicating a potential environment variable issue
+                console.log("Firebase Initialization: Starting...");
+                console.log("Firebase Config:", firebaseConfig);
+                console.log("App ID from Canvas (__app_id):", appId);
+                console.log("Initial Auth Token from Canvas (__initial_auth_token):", initialAuthToken ? "present" : "not present");
+
                 if (Object.keys(firebaseConfig).length === 0 || !firebaseConfig.apiKey) {
                     console.error("Error: firebaseConfig está vacío o incompleto. Asegúrate de que las variables de entorno de Firebase se carguen correctamente en el entorno de Canvas.");
-                    showMessage("Error crítico: La configuración de Firebase no se ha cargado. Por favor, asegúrate de que tu proyecto en Canvas esté configurado correctamente con Firebase. Si el problema persiste, contacta a soporte.", 0); // Show indefinitely for critical error
-                    return; // Stop initialization
+                    showMessage("Error crítico: La configuración de Firebase no se ha cargado. Por favor, asegúrate de que tu proyecto en Canvas esté configurado correctamente con Firebase. Si el problema persiste, contacta a soporte.", 0);
+                    return;
                 }
 
-                // Initialize Firebase app
                 app = initializeApp(firebaseConfig);
-                // Get Auth and Firestore instances
                 auth = getAuth(app);
                 db = getFirestore(app);
 
-                // Listen for authentication state changes
-                // FIX: Asegurar que loadForumPosts se llama solo una vez que el estado de autenticación es definitivo.
-                onAuthStateChanged(auth, async (user) => {
-                    if (!authReady) { // Only run this block for the initial auth state check
-                        authReady = true; // Set flag to true after initial check
-                        console.log("onAuthStateChanged: Initial check completed.");
-                        if (initialAuthToken) {
-                            try {
-                                await signInWithCustomToken(auth, initialAuthToken);
-                                console.log("Signed in with custom token.");
-                            } catch (error) {
-                                console.error("Error signing in with custom token:", error);
-                                showMessage(`Error con token de autenticación: ${error.message}`, 5000);
-                                // Fallback to anonymous if custom token fails
-                                await signInAnonymously(auth);
-                                console.log("Signed in anonymously as fallback.");
-                            }
-                        } else {
+                // Only attempt initial sign-in once when the app starts
+                // It's crucial this runs *before* onAuthStateChanged starts reacting to existing sessions
+                if (!authReady) {
+                    authReady = true; // Mark as ready for initial auth attempt
+                    console.log("Firebase Auth: Performing initial sign-in attempt.");
+                    if (initialAuthToken) {
+                        try {
+                            await signInWithCustomToken(auth, initialAuthToken);
+                            console.log("Firebase Auth: Signed in with custom token successfully.");
+                        } catch (error) {
+                            console.error("Firebase Auth: Error signing in with custom token. Falling back to anonymous. Error:", error);
+                            showMessage(`Error con token de autenticación. Intentando inicio de sesión anónimo: ${error.message}`, 5000);
                             try {
                                 await signInAnonymously(auth);
-                                console.log("Signed in anonymously.");
-                            } catch (error) {
-                                console.error("Error signing in anonymously:", error);
-                                showMessage(`Error al iniciar sesión anónimamente: ${error.message}`, 5000);
+                                console.log("Firebase Auth: Signed in anonymously as fallback successfully.");
+                            } catch (anonError) {
+                                console.error("Firebase Auth: Error signing in anonymously after custom token failure. Error:", anonError);
+                                showMessage(`Error crítico de autenticación: No se pudo iniciar sesión anónimamente. ${anonError.message}`, 0);
                             }
                         }
+                    } else {
+                        try {
+                            await signInAnonymously(auth);
+                            console.log("Firebase Auth: Signed in anonymously successfully.");
+                        } catch (error) {
+                            console.error("Firebase Auth: Error signing in anonymously. Error:", error);
+                            showMessage(`Error crítico de autenticación: No se pudo iniciar sesión anónimamente. ${error.message}`, 0);
+                        }
                     }
-
-                    // Handle user state after any sign-in attempt
+                }
+                
+                // Set up the persistent authentication state listener AFTER initial sign-in attempt
+                // This listener will then react to the user's state (whether signed in via token, anonymously, or existing session)
+                onAuthStateChanged(auth, (user) => {
+                    console.log("onAuthStateChanged triggered. Current user:", user ? user.uid : "null");
                     if (user) {
                         userId = user.uid;
-                        console.log("User authenticated:", userId);
-                        // Display user info and forum content
                         document.getElementById('auth-section').classList.add('hidden');
                         document.getElementById('forum-content').classList.remove('hidden');
-                        document.getElementById('user-display-name').textContent = user.email || 'Usuario Anónimo';
+                        // Display user email if available, otherwise truncate user ID
+                        document.getElementById('user-display-name').textContent = user.email || `Usuario ${userId.substring(0, 8)}...`;
                         document.getElementById('user-display-id').textContent = userId;
-                        loadForumPosts(); // Load posts after successful login
+                        loadForumPosts();
                     } else {
                         userId = null;
-                        console.log("User not authenticated.");
-                        // Show authentication section and hide forum content
+                        console.log("onAuthStateChanged: User not authenticated. Showing auth section.");
                         document.getElementById('auth-section').classList.remove('hidden');
                         document.getElementById('forum-content').classList.add('hidden');
-                        document.getElementById('auth-header').textContent = 'Gestiona tu Cuenta'; // Updated header
-                        document.getElementById('auth-status').textContent = 'Por favor, usa los botones "Iniciar Sesión" o "Registrarse".'; // Updated status text
+                        document.getElementById('auth-header').textContent = 'Gestiona tu Cuenta';
+                        document.getElementById('auth-status').textContent = 'Por favor, usa los botones "Iniciar Sesión" o "Registrarse".';
+                        // Ensure posts are cleared if user logs out
+                        document.getElementById('posts-container').innerHTML = '<p class="text-center text-gray-400">Inicia sesión para ver las publicaciones del foro.</p>';
                     }
                 });
 
             } catch (error) {
-                console.error("Error initializing Firebase (outer catch):", error);
-                const errorMessage = error.message || "No se pudo conectar a Firebase. Por favor, revisa tu conexión a internet o la configuración.";
-                showMessage(`Error al inicializar la base de datos: ${errorMessage}`, 0); 
-                document.getElementById('auth-section').classList.remove('hidden'); // Show auth section even on error
-                document.getElementById('auth-header').textContent = 'Error de Conexión';
-                document.getElementById('auth-status').textContent = `No se pudo conectar a la base de datos. Inténtalo de nuevo. (${errorMessage})`;
+                console.error("Firebase Initialization: Top-level error during Firebase setup. Error:", error);
+                const errorMessage = error.message || "Un error inesperado ocurrió durante la inicialización de Firebase.";
+                showMessage(`Error fatal al inicializar Firebase: ${errorMessage}`, 0);
+                document.getElementById('auth-section').classList.remove('hidden');
+                document.getElementById('auth-header').textContent = 'Error de Configuración';
+                document.getElementById('auth-status').textContent = `No se pudo inicializar Firebase. (${errorMessage})`;
             }
         }
 
@@ -582,6 +590,7 @@
                 const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                 console.log("Registered user:", userCredential.user.uid);
                 showMessage("Registro exitoso. ¡Bienvenido!");
+                // No need to manually update UI here, onAuthStateChanged will handle it
             } catch (error) {
                 console.error("Error al registrar:", error);
                 showMessage(`Error al registrar: ${error.message}`);
@@ -599,6 +608,7 @@
                 const userCredential = await signInWithEmailAndPassword(auth, email, password);
                 console.log("Logged in user:", userCredential.user.uid);
                 showMessage("Inicio de sesión exitoso. ¡Bienvenido de nuevo!");
+                // No need to manually update UI here, onAuthStateChanged will handle it
             } catch (error) { 
                 console.error("Error al iniciar sesión:", error);
                 showMessage(`Error al iniciar sesión: ${error.message}`);
@@ -610,6 +620,7 @@
                 await signOut(auth);
                 console.log("User logged out.");
                 showMessage("Sesión cerrada correctamente.");
+                // No need to manually update UI here, onAuthStateChanged will handle it
             } catch (error) {
                 console.error("Error al cerrar sesión:", error);
                 showMessage(`Error al cerrar sesión: ${error.message}`);
@@ -662,16 +673,27 @@
             // FIX: Asegurar que userId está disponible antes de intentar cargar posts
             if (!userId) {
                 postsContainer.innerHTML = '<p class="text-center text-gray-400">Inicia sesión para ver las publicaciones del foro.</p>';
+                // Si había un listener activo, desuscribirlo para evitar duplicados.
+                if (firestoreListenerUnsubscribe) {
+                    firestoreListenerUnsubscribe();
+                    firestoreListenerUnsubscribe = null;
+                    console.log("Firestore: Unsubscribed from previous posts listener.");
+                }
                 return;
             }
             
-            // FIX: Añadido logging para verificar el path de la colección al cargar
+            // Desuscribirse del listener anterior si existe para prevenir duplicados.
+            if (firestoreListenerUnsubscribe) {
+                firestoreListenerUnsubscribe();
+                console.log("Firestore: Unsubscribed from old posts listener before creating a new one.");
+            }
+
             const collectionPath = `artifacts/${appId}/public/data/forum_posts`;
-            console.log("Attempting to load posts from collection:", collectionPath);
+            console.log(`Firestore: Attempting to set up listener for collection: ${collectionPath} with userId: ${userId}`);
             const forumCollectionRef = collection(db, collectionPath);
             const q = query(forumCollectionRef); 
 
-            onSnapshot(q, (snapshot) => {
+            firestoreListenerUnsubscribe = onSnapshot(q, (snapshot) => {
                 postsContainer.innerHTML = ''; 
                 const posts = [];
                 snapshot.forEach(doc => {
@@ -702,9 +724,14 @@
                     });
                 }
             }, (error) => {
-                console.error("Error loading forum posts:", error);
+                console.error("Firestore: Error loading forum posts in onSnapshot:", error);
                 postsContainer.innerHTML = `<p class="text-center text-red-400">Error al cargar publicaciones: ${error.message}</p>`;
                 showMessage(`Error al cargar publicaciones: ${error.message}`);
+                // Desuscribirse en caso de error para evitar errores continuos si es un problema persistente.
+                if (firestoreListenerUnsubscribe) {
+                    firestoreListenerUnsubscribe();
+                    firestoreListenerUnsubscribe = null;
+                }
             });
         }
 
