@@ -754,13 +754,23 @@
     <script type="module">
         // Importar módulos de Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js"; // Se eliminó signInWithCustomToken
         import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, getDoc, updateDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // --- Configuración y Variables Globales ---
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfigStr = typeof __firebase_config !== 'undefined' ? __firebase_config : null;
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        // Tu configuración de Firebase incrustada directamente como una cadena JSON
+        const firebaseConfigStr = JSON.stringify({
+            apiKey: "AIzaSyDeSfupOD-C82O65EUG6ty7YcSu8uvhj6Y",
+            authDomain: "universo-borderline.firebaseapp.com",
+            projectId: "universo-borderline",
+            storageBucket: "universo-borderline.firebasestorage.app",
+            messagingSenderId: "425960856740",
+            appId: "1:425960856740:web:b6098b7ff5eafb3f239a31",
+            measurementId: "G-D501R9MNZ7"
+        });
+        // initialAuthToken ya no es necesario, pero lo mantenemos si alguna parte del entorno lo requiere.
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
 
         let app, db, auth;
         let userId = null;
@@ -902,17 +912,13 @@
                             showNotification("Conectado a Firebase como usuario anónimo.", "success");
                             loadThreads(); // Cargar hilos una vez autenticado
                         } else {
-                            // Si no hay usuario, intentar iniciar sesión con token o de forma anónima
+                            // Siempre intenta iniciar sesión de forma anónima
                             try {
-                                if (initialAuthToken) {
-                                    await signInWithCustomToken(auth, initialAuthToken);
-                                } else {
-                                    await signInAnonymously(auth);
-                                }
+                                await signInAnonymously(auth); // Autenticación anónima
                             } catch (error) {
-                                console.error("Error signing in:", error);
-                                showNotification(`Error de autenticación: ${error.message}. Usando modo local.`, "error");
-                                localMode = true; // Fallback a modo local si la autenticación falla
+                                console.error("Error signing in anonymously:", error);
+                                showNotification(`Error de autenticación anónima: ${error.message}. Usando modo local.`, "error");
+                                localMode = true; // Fallback a modo local si la autenticación anónima falla
                                 initLocalMode();
                             }
                         }
@@ -982,7 +988,7 @@
 
             try {
                 // Consulta en tiempo real de hilos generales
-                // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
+                // Colección 'forum_posts' para coincidir con las reglas de Firebase
                 const q = query(collection(db, `artifacts/${appId}/public/data/forum_posts`));
                 onSnapshot(q, (snapshot) => {
                     const threads = [];
@@ -1054,7 +1060,6 @@
                 showNotification("Tema creado localmente (no persistente).", "success");
             } else {
                 // Firebase: añadir a la colección 'forum_posts'
-                // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
                 try {
                     await addDoc(collection(db, `artifacts/${appId}/public/data/forum_posts`), {
                         title: title,
@@ -1098,7 +1103,7 @@
             }
 
             try {
-                // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
+                // Colección 'forum_posts' para coincidir con las reglas de Firebase
                 const threadRef = doc(db, `artifacts/${appId}/public/data/forum_posts`, threadId);
                 const threadSnap = await getDoc(threadRef);
 
@@ -1115,7 +1120,7 @@
                     }
 
                     // Suscribirse a los comentarios de este hilo en tiempo real
-                    // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
+                    // Colección 'forum_posts' para coincidir con las reglas de Firebase
                     const commentsCollectionRef = collection(db, `artifacts/${appId}/public/data/forum_posts`, threadId, 'comments');
                     commentsUnsubscribe = onSnapshot(query(commentsCollectionRef), (snapshot) => {
                         const comments = [];
@@ -1134,9 +1139,9 @@
                 } else {
                     showNotification("El tema solicitado no existe.", "error");
                 }
-            } catch (error) {
+            } catch (error) { // Corrección aquí: Usar 'error' en lugar de 'e'
                 console.error("Error fetching thread details:", error);
-                showNotification(`Error al cargar detalles del tema: ${e.message}`, "error");
+                showNotification(`Error al cargar detalles del tema: ${error.message}`, "error");
             }
         }
 
@@ -1215,7 +1220,6 @@
                 showNotification("Comentario añadido localmente (no persistente).", "success");
             } else {
                 // Firebase: añadir a la subcolección 'comments' del tema actual
-                // CAMBIO: Colección 'threads' a 'forum_posts' para coincidir con las reglas de Firebase
                 try {
                     await addDoc(collection(db, `artifacts/${appId}/public/data/forum_posts`, currentOpenThreadId, 'comments'), {
                         content: commentContent,
