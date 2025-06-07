@@ -290,23 +290,95 @@
             color: var(--accent-green);
         }
 
+        /* Updated .read-more-btn styles */
         .read-more-btn {
-            display: inline-block;
+            display: inline-flex; /* Use flex for icon alignment */
+            align-items: center;
+            justify-content: center;
             background: linear-gradient(45deg, var(--accent-blue), var(--accent-magenta));
             color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 12px 25px; /* Slightly more padding */
+            border-radius: 30px; /* More rounded */
             text-decoration: none;
             font-weight: bold;
-            transition: background 0.3s ease, transform 0.3s ease;
+            transition: all 0.3s ease; /* Smooth transition for all properties */
             text-align: center;
             align-self: flex-start; /* Aligns button to the left within flex column */
             margin-top: 15px;
+            position: relative; /* For pseudo-elements like glow */
+            overflow: hidden; /* Ensures glow doesn't overflow */
+            border: 2px solid transparent; /* Initial transparent border */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2); /* Subtle initial shadow */
+            cursor: pointer; /* Indicate it's clickable */
         }
 
         .read-more-btn:hover {
-            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue));
-            transform: scale(1.05);
+            background: linear-gradient(45deg, var(--accent-magenta), var(--accent-blue)); /* Reverse gradient on hover */
+            transform: scale(1.08) translateY(-3px); /* Slightly larger and lift effect */
+            box-shadow: 0 8px 25px rgba(var(--accent-magenta-rgb), 0.6); /* More pronounced shadow */
+            border-color: var(--accent-yellow); /* Border color change on hover */
+        }
+
+        .read-more-btn i {
+            margin-left: 8px; /* Space between text and icon */
+            transition: transform 0.3s ease; /* Smooth transition for icon */
+        }
+
+        .read-more-btn:hover i {
+            transform: translateX(5px); /* Move icon slightly on hover */
+        }
+
+        .read-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(var(--accent-green-rgb), 0.3); /* Subtle glow color */
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.4s ease, height 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .read-more-btn:hover::before {
+            width: 200%;
+            height: 200%;
+            opacity: 1;
+        }
+
+        /* Styles for the full article content */
+        .full-article-content {
+            display: none; /* Hidden by default */
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed rgba(var(--primary-violet-rgb), 0.3);
+            font-size: 0.95rem;
+            color: var(--text-color-medium);
+            line-height: 1.7;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.7s ease-out, opacity 0.7s ease-out;
+            opacity: 0;
+        }
+
+        .full-article-content.expanded {
+            max-height: 800px; /* Adjust based on expected content length */
+            opacity: 1;
+            display: block; /* Make it visible for transition to work */
+        }
+
+        .full-article-content h4 {
+            color: var(--accent-cyan);
+            margin-bottom: 10px;
+            font-family: 'Krona One', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .full-article-content p {
+            margin-bottom: 1em;
         }
 
         /* Pagination Styles */
@@ -505,10 +577,7 @@
             </div>
 
             <div class="blog-grid">
-                <!-- Removed Mindfulness Practico card -->
-                <!-- Removed Validacion y Empatia card -->
-                <!-- Removed Mitos vs Realidad TLP card -->
-
+                <!-- Blog Post Card: TLP y Suicidio -->
                 <article class="blog-post-card">
                     <img src="https://placehold.co/600x400/FF4500/FFFFFF?text=TLP+y+Suicidio" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FF4500/FFFFFF?text=TLP+Suicidio';" alt="Imagen de TLP y Suicidio">
                     <div class="blog-post-content">
@@ -519,10 +588,20 @@
                             <span><i class="fas fa-calendar-alt"></i> 15 de Mayo, 2025</span>
                             <span><i class="fas fa-user-circle"></i> Dr. Daniel Paz</span>
                         </div>
-                        <a href="blog-post-suicidio-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                        <!-- Button now triggers content expansion -->
+                        <button class="read-more-btn" data-target="suicidio-tlp-full">Leer Más <i class="fas fa-arrow-right"></i></button>
+
+                        <!-- Full Article Content (initially hidden) -->
+                        <div id="suicidio-tlp-full" class="full-article-content">
+                            <h4>La Complejidad del Riesgo Suicida en TLP</h4>
+                            <p>El Trastorno Límite de la Personalidad (TLP) se caracteriza por una inestabilidad emocional, relaciones interpersonales caóticas, impulsividad y una profunda dificultad para regular las emociones. Dentro de este panorama, el riesgo de ideación e intentos suicidas es significativamente alto, siendo una de las mayores preocupaciones en el tratamiento de esta condición. Es crucial entender que estos comportamientos no son manipulativos, sino expresiones de un sufrimiento emocional intenso y una incapacidad para manejar el dolor psicológico.</p>
+                            <p>La desesperanza, la impulsividad y la disforia crónica (un estado de malestar emocional generalizado) son factores clave que contribuyen a la vulnerabilidad suicida en personas con TLP. La terapia dialéctico-conductual (DBT) es un tratamiento de primera línea que aborda específicamente estos desafíos, enseñando habilidades para la regulación emocional, la tolerancia al malestar, la efectividad interpersonal y el mindfulness. A través de la DBT, los individuos aprenden a construir una vida que valga la pena ser vivida, reduciendo la urgencia de los impulsos autodestructivos.</p>
+                            <p>Si tú o alguien que conoces está luchando con pensamientos suicidas, es vital buscar ayuda inmediatamente. Recursos como líneas de crisis, profesionales de la salud mental y grupos de apoyo pueden ofrecer un salvavidas y un camino hacia la recuperación. No estás solo en esto.</p>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Blog Post Card: TLP y Sexualidad -->
                 <article class="blog-post-card">
                     <img src="https://placehold.co/600x400/1E90FF/FFFFFF?text=TLP+y+Sexualidad" onerror="this.onerror=null;this.src='https://placehold.co/600x400/1E90FF/FFFFFF?text=TLP+Sexualidad';" alt="Imagen de TLP y Sexualidad">
                     <div class="blog-post-content">
@@ -533,10 +612,19 @@
                             <span><i class="fas fa-calendar-alt"></i> 10 de Mayo, 2025</span>
                             <span><i class="fas fa-user-circle"></i> Lic. Sofía Ramos</span>
                         </div>
-                        <a href="blog-post-sexualidad-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                        <button class="read-more-btn" data-target="sexualidad-tlp-full">Leer Más <i class="fas fa-arrow-right"></i></button>
+
+                        <!-- Full Article Content (initially hidden) -->
+                        <div id="sexualidad-tlp-full" class="full-article-content">
+                            <h4>Desafíos y Estrategias para una Sexualidad Saludable</h4>
+                            <p>La sexualidad en el contexto del Trastorno Límite de la Personalidad (TLP) puede ser un terreno complejo debido a la intensidad emocional, los problemas de identidad, el miedo al abandono y la impulsividad que caracterizan el trastorno. Las personas con TLP pueden experimentar una sexualidad que oscila entre la hipersexualidad y la evitación, la idealización y devaluación de parejas, o la búsqueda de intimidad para llenar un vacío emocional.</p>
+                            <p>Es común que se presenten dificultades en la comunicación de necesidades y límites, lo que puede llevar a relaciones sexuales insatisfactorias o incluso riesgosas. La Terapia Dialéctico-Conductual (DBT) ofrece herramientas valiosas para abordar estos desafíos. Las habilidades de regulación emocional y efectividad interpersonal son cruciales para establecer relaciones íntimas basadas en el respeto mutuo, la comunicación abierta y la autenticidad, en lugar de la impulsividad o el miedo.</p>
+                            <p>Promover una sexualidad saludable implica trabajar en la autoimagen, la autoaceptación y la capacidad de experimentar placer y conexión de manera consciente y segura. Esto a menudo requiere explorar traumas pasados y aprender a diferenciar la intimidad genuina de la búsqueda de validación o la evitación del dolor.</p>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Blog Post Card: El Vacío Crónico en el TLP -->
                 <article class="blog-post-card">
                     <img src="https://placehold.co/600x400/FFD700/8A2BE2?text=TLP+y+Vacio+Cronico" onerror="this.onerror=null;this.src='https://placehold.co/600x400/FFD700/8A2BE2?text=TLP+Vacio';" alt="Imagen de TLP y Vacío Crónico">
                     <div class="blog-post-content">
@@ -547,10 +635,19 @@
                             <span><i class="fas fa-calendar-alt"></i> 5 de Mayo, 2025</span>
                             <span><i class="fas fa-user-circle"></i> Equipo Universo Borderline</span>
                         </div>
-                        <a href="blog-post-vacio-cronico-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                        <button class="read-more-btn" data-target="vacio-cronico-tlp-full">Leer Más <i class="fas fa-arrow-right"></i></button>
+
+                        <!-- Full Article Content (initially hidden) -->
+                        <div id="vacio-cronico-tlp-full" class="full-article-content">
+                            <h4>Navegando y Superando la Sensación de Vacío</h4>
+                            <p>El vacío crónico es una de las características más distintivas y angustiantes del Trastorno Límite de la Personalidad (TLP). No es simplemente aburrimiento, sino una sensación persistente de falta de sentido, de no estar completo, que puede llevar a comportamientos impulsivos en un intento desesperado por llenar ese espacio interior. Esta sensación puede manifestarse como una falta de identidad, una desmotivación profunda o una incapacidad para conectar con las emociones.</p>
+                            <p>A menudo, este vacío se origina en experiencias tempranas de invalidación o trauma, donde el individuo no desarrolló un sentido sólido de sí mismo. En lugar de aprender a confiar en sus propias experiencias internas, aprendieron a buscar en el exterior algo que los completara. La Terapia Dialéctico-Conductual (DBT) aborda el vacío crónico a través de la construcción de una vida que valga la pena ser vivida. Esto incluye desarrollar un sentido de identidad, participar en actividades que generen maestría y placer, y establecer relaciones significativas.</p>
+                            <p>Las habilidades de mindfulness y regulación emocional son fundamentales para observar y tolerar el vacío sin recurrir a la autodestrucción o a comportamientos impulsivos. Poco a poco, al construir una vida más plena y auténtica, la sensación de vacío puede disminuir, dando lugar a un sentido de propósito y conexión interior.</p>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Blog Post Card: TLP y Disociación -->
                 <article class="blog-post-card">
                     <img src="https://placehold.co/600x400/00FF7F/0A0A20?text=TLP+y+Disociacion" onerror="this.onerror=null;this.src='https://placehold.co/600x400/00FF7F/0A0A20?text=TLP+Disociacion';" alt="Imagen de TLP y Disociación">
                     <div class="blog-post-content">
@@ -561,10 +658,19 @@
                             <span><i class="fas fa-calendar-alt"></i> 1 de Mayo, 2025</span>
                             <span><i class="fas fa-user-circle"></i> Dr. Alejandro Vega</span>
                         </div>
-                        <a href="blog-post-disociacion-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                        <button class="read-more-btn" data-target="disociacion-tlp-full">Leer Más <i class="fas fa-arrow-right"></i></button>
+
+                        <!-- Full Article Content (initially hidden) -->
+                        <div id="disociacion-tlp-full" class="full-article-content">
+                            <h4>Entendiendo la Disociación y su Manejo</h4>
+                            <p>La disociación es un mecanismo de defensa que a menudo se observa en personas con Trastorno Límite de la Personalidad (TLP), especialmente en aquellos con antecedentes de trauma. Se refiere a una desconexión de los pensamientos, los sentimientos, los recuerdos o la identidad. Puede manifestarse de diversas formas, desde sentirse "fuera del cuerpo" (despersonalización), sentir que el mundo no es real (desrealización), hasta amnesia disociativa o una confusión en la identidad.</p>
+                            <p>Estas experiencias pueden ser aterradoras y desorientadoras, y a menudo ocurren como una forma de escape cuando la emoción es demasiado intensa o abrumadora. Es vital validar que estas experiencias son reales y que la persona no está "inventando" sus síntomas. La Terapia Dialéctico-Conductual (DBT) enseña habilidades para la tolerancia al malestar, lo que permite a los individuos aprender a permanecer en el presente y a manejar las emociones intensas sin recurrir a la disociación como una estrategia de afrontamiento.</p>
+                            <p>Estrategias como la "distracción con autocalma" o "mejorar el momento" son útiles para anclarse en la realidad. Identificar los desencadenantes de la disociación y desarrollar un plan de seguridad para esos momentos es crucial. Con el tiempo y la práctica de las habilidades de DBT, es posible reducir la frecuencia y la intensidad de los episodios disociativos, aumentando la sensación de conexión y presencia.</p>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Blog Post Card: TLP y Consumo de Sustancias -->
                 <article class="blog-post-card">
                     <img src="https://placehold.co/600x400/8A2BE2/FFFFFF?text=TLP+y+Consumo" onerror="this.onerror=null;this.src='https://placehold.co/600x400/8A2BE2/FFFFFF?text=TLP+Consumo';" alt="Imagen de TLP y Consumo">
                     <div class="blog-post-content">
@@ -575,10 +681,19 @@
                             <span><i class="fas fa-calendar-alt"></i> 28 de Abril, 2025</span>
                             <span><i class="fas fa-user-circle"></i> Lic. Carolina Soto</span>
                         </div>
-                        <a href="blog-post-consumo-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                        <button class="read-more-btn" data-target="consumo-tlp-full">Leer Más <i class="fas fa-arrow-right"></i></button>
+
+                        <!-- Full Article Content (initially hidden) -->
+                        <div id="consumo-tlp-full" class="full-article-content">
+                            <h4>La Intersección de TLP y Adicción</h4>
+                            <p>La comorbilidad entre el Trastorno Límite de la Personalidad (TLP) y el Trastorno por Consumo de Sustancias (TCS) es muy común. Muchas personas con TLP recurren a las drogas o el alcohol como una forma de automedicación para hacer frente a la intensidad de sus emociones, el vacío crónico, la disociación o la impulsividad. Sin embargo, este ciclo a menudo empeora los síntomas del TLP y crea una doble lucha que dificulta la recuperación.</p>
+                            <p>El tratamiento efectivo para esta doble condición requiere un enfoque integrado que aborde ambos trastornos simultáneamente. La Terapia Dialéctico-Conductual (DBT) es particularmente eficaz en este contexto, ya que fue desarrollada originalmente para tratar a pacientes con TLP y conductas autodestructivas, incluyendo el abuso de sustancias. La DBT enseña habilidades de regulación emocional, tolerancia al malestar, efectividad interpersonal y mindfulness, que son cruciales para romper el ciclo de la adicción.</p>
+                            <p>Al aprender a identificar y manejar las emociones subyacentes que impulsan el consumo de sustancias, las personas pueden desarrollar estrategias de afrontamiento más saludables. La recuperación es un viaje, y la paciencia, la autocompasión y el apoyo continuo son fundamentales para superar estos desafíos interconectados.</p>
+                        </div>
                     </div>
                 </article>
 
+                <!-- Blog Post Card: TLP y Trastornos de la Conducta Alimentaria (TCA) -->
                 <article class="blog-post-card">
                     <img src="https://placehold.co/600x400/00CED1/FFFFFF?text=TLP+y+TCA" onerror="this.onerror=null;this.src='https://placehold.co/600x400/00CED1/FFFFFF?text=TLP+TCA';" alt="Imagen de TLP y TCA">
                     <div class="blog-post-content">
@@ -589,7 +704,15 @@
                             <span><i class="fas fa-calendar-alt"></i> 22 de Abril, 2025</span>
                             <span><i class="fas fa-user-circle"></i> Dra. Sofía Valiente</span>
                         </div>
-                        <a href="blog-post-tca-tlp.html" class="read-more-btn">Leer Más <i class="fas fa-arrow-right"></i></a>
+                        <button class="read-more-btn" data-target="tca-tlp-full">Leer Más <i class="fas fa-arrow-right"></i></button>
+
+                        <!-- Full Article Content (initially hidden) -->
+                        <div id="tca-tlp-full" class="full-article-content">
+                            <h4>Un Enfoque Integrador para el Bienestar</h4>
+                            <p>Existe una alta tasa de comorbilidad entre el Trastorno Límite de la Personalidad (TLP) y los Trastornos de la Conducta Alimentaria (TCA). Las dificultades en la regulación emocional, la impulsividad y la imagen corporal distorsionada, comunes en el TLP, a menudo se entrelazan con los patrones de alimentación disfuncionales (restricción, atracones, purgas) característicos de los TCA. La comida puede convertirse en un mecanismo de afrontamiento para las emociones abrumadoras o para ejercer control en un mundo que se siente caótico.</p>
+                            <p>El tratamiento de estas condiciones interconectadas requiere un enfoque comprensivo y dialéctico que aborde tanto los síntomas del TLP como los del TCA. La Terapia Dialéctico-Conductual (DBT) es una opción de tratamiento eficaz, ya que proporciona habilidades para la regulación emocional, la conciencia plena (mindfulness), la tolerancia al malestar y la efectividad interpersonal. Estas habilidades pueden ayudar a las personas a romper los ciclos de comportamientos alimentarios desadaptativos y a desarrollar una relación más saludable con la comida y su propio cuerpo.</p>
+                            <p>Es fundamental trabajar con profesionales que tengan experiencia en ambos trastornos para garantizar un plan de tratamiento coordinado y holístico. La recuperación es posible y comienza con la comprensión de la conexión entre el bienestar emocional y la relación con la comida.</p>
+                        </div>
                     </div>
                 </article>
 
@@ -719,6 +842,29 @@
                     }
                 });
             }
+
+            // JavaScript for "Leer Más" functionality
+            const readMoreButtons = document.querySelectorAll('.read-more-btn');
+
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const targetId = this.dataset.target;
+                    const fullContentDiv = document.getElementById(targetId);
+                    const arrowIcon = this.querySelector('i');
+
+                    if (fullContentDiv) {
+                        if (fullContentDiv.classList.contains('expanded')) {
+                            // Collapse content
+                            fullContentDiv.classList.remove('expanded');
+                            this.innerHTML = `Leer Más <i class="fas fa-arrow-right"></i>`;
+                        } else {
+                            // Expand content
+                            fullContentDiv.classList.add('expanded');
+                            this.innerHTML = `Leer Menos <i class="fas fa-arrow-up"></i>`; // Change text and icon
+                        }
+                    }
+                });
+            });
         });
     </script>
 </body>
