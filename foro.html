@@ -581,18 +581,18 @@
 
     <header id="main-header" class="standard-header">
         <div class="header-container">
-            <a href="index.html" class="logo" aria-label="Universo Borderline Homepage">
+            <a href="#" class="logo" aria-label="Universo Borderline Homepage">
                 <i class="fas fa-brain site-icon" aria-hidden="true"></i>
                 <h1 class="site-title">UNIVERSO BORDERLINE</h1>
             </a>
             <nav aria-label="Navegación principal">
                 <ul>
-                    <li><a href="index.html">Inicio</a></li>
-                    <li><a href="cursos.html">Cursos</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="foro.html" class="active" aria-current="page">Foros</a></li>
-                    <li><a href="memes.html">Memes</a></li>
-                    <li><a href="podcast.html">Podcast</a></li>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Cursos</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#" class="active" aria-current="page">Foros</a></li>
+                    <li><a href="#">Memes</a></li>
+                    <li><a href="#">Podcast</a></li>
                 </ul>
             </nav>
         </div>
@@ -624,7 +624,6 @@
                     <li class="sticky-thread thread-item" data-thread-id="rules-thread">
                         <div class="thread-item-header">
                             <h4><a href="#"><i class="fas fa-thumbtack"></i> Guía de Normas y Buenas Prácticas del Foro</a></h4>
-                            <!-- Eliminado el div con la información de meta para este hilo estático -->
                             <div class="thread-meta">
                                 <span>Por: Moderación</span>
                             </div>
@@ -668,10 +667,10 @@
                     <h3 id="thread-detail-title"></h3>
                     <div class="thread-detail-content">
                         <p id="thread-detail-main-content"></p>
-                        <p class="thread-meta">
+                        <div class="thread-meta mt-4">
                             <span>Autor: <span id="thread-detail-author"></span></span>
                             <span>Creado: <span id="thread-detail-created-at"></span></span>
-                        </p>
+                        </div>
                     </div>
 
                     <div class="thread-detail-comments-section">
@@ -681,16 +680,16 @@
                             <li class="no-comments-message">No hay comentarios aún. ¡Sé el primero en dejar uno!</li>
                         </ul>
 
-                        <div class="add-comment-section">
+                        <form id="add-comment-form" class="add-comment-section mt-4">
                             <h4>Añadir un Comentario</h4>
-                            <textarea id="new-comment-content" placeholder="Escribe tu comentario aquí..." rows="3" class="w-full"></textarea>
-                            <button id="submit-comment-btn" class="submit-comment-btn">Comentar</button>
-                        </div>
+                            <textarea id="new-comment-content" placeholder="Escribe tu comentario aquí..." rows="3" class="w-full" required></textarea>
+                            <button type="submit" id="submit-comment-btn" class="submit-comment-btn mt-2">Comentar</button>
+                        </form>
                     </div>
                 </div>
             </div>
 
-            <!-- Modal para Reglas y Políticas (se abre desde el hilo destacado de reglas) -->
+            <!-- Modal para Reglas y Políticas -->
             <div id="rules-modal" class="modal-overlay">
                 <div class="modal-content">
                     <button id="close-rules-modal-btn" class="modal-close-btn" aria-label="Cerrar modal">&times;</button>
@@ -744,541 +743,323 @@
             </div>
             
             <div class="copyright">
-                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados. Un viaje hacia la comprensión emocional y la DBT.</p> 
-                <p><a href="#">Privacidad</a> | <a href="#">Términos</a> | <a href="#">Seguridad</a></p>
+                <p>© 2023- <span id="currentYear"></span> Universo Borderline. Todos los derechos reservados.</p> 
+                <p><a href="#">Privacidad</a> | <a href="#">Términos</a></p>
             </div>
         </div>
     </footer>
+    
+    <div id="notification-area" style="position: fixed; top: 80px; right: 20px; z-index: 9999;"></div>
 
     <script type="module">
-        // Import Firebase modules
+        // Importar módulos de Firebase
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, getDoc, updateDoc } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, onSnapshot, query, serverTimestamp, doc, getDoc, updateDoc, getDocs } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // Global variables provided by the Canvas environment
+        // --- Configuración y Variables Globales ---
+        // Estas variables son proporcionadas por el entorno de Canvas.
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null; 
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
 
-        // Initialize Firebase variables
-        let app;
-        let db;
-        let auth;
-        let userId = 'loading...'; // Default loading state for userId
-        let currentOpenThreadId = null; // To keep track of the thread currently open in the detail modal
-        window.firestoreListenerUnsubscribe = null; // To store the unsubscribe function for onSnapshot
+        let app, db, auth;
+        let userId = null;
+        let currentOpenThreadId = null;
+        let commentsUnsubscribe = null;
 
-        // Function to display messages (replaces alert)
-        function showMessage(message, type = 'info') {
-            const messageBox = document.createElement('div');
-            messageBox.style.cssText = `
-                position: fixed;
-                top: 20px;
-                right: 20px;
-                background-color: ${type === 'error' ? '#f44336' : '#4CAF50'};
-                color: white;
-                padding: 15px;
-                border-radius: 5px;
-                z-index: 9999;
-                box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-                opacity: 0;
-                transition: opacity 0.5s ease-in-out;
-            `;
-            messageBox.textContent = message;
-            document.body.appendChild(messageBox);
+        // --- Referencias a Elementos del DOM ---
+        const userIdDisplay = document.getElementById('current-user-id');
+        const newThreadModal = document.getElementById('new-thread-modal');
+        const threadDetailModal = document.getElementById('thread-detail-modal');
+        const rulesModal = document.getElementById('rules-modal');
+        const newThreadForm = document.getElementById('new-thread-form');
+        const generalThreadListUl = document.getElementById('general-thread-list-ul');
+        const addCommentForm = document.getElementById('add-comment-form');
 
-            setTimeout(() => {
-                messageBox.style.opacity = 1;
-            }, 100);
-
-            setTimeout(() => {
-                messageBox.style.opacity = 0;
-                messageBox.addEventListener('transitionend', () => messageBox.remove());
-            }, 3000);
+        /**
+         * Inicializa la aplicación del foro.
+         * Esta es la función principal que se ejecuta cuando el DOM está listo.
+         */
+        async function initializeForum() {
+            if (Object.keys(firebaseConfig).length === 0) {
+                console.error("Configuración de Firebase no encontrada.");
+                showMessage("Error crítico: No se pudo cargar la configuración del foro.", "error");
+                return;
+            }
+            try {
+                app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                await setupAuthListener();
+                setupEventListeners();
+                loadThreads();
+                document.getElementById('currentYear').textContent = new Date().getFullYear();
+            } catch (error) {
+                console.error("Error inicializando Firebase:", error);
+                showMessage("No se pudo conectar con el foro.", "error");
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', async function() {
-            // Set current year in footer
-            document.getElementById('currentYear').textContent = new Date().getFullYear();
-            
-            // Header scroll effect
-            const header = document.getElementById('main-header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    header.classList.add('scrolled');
-                } else {
-                    header.classList.remove('scrolled');
-                }
-            });
-
-            // Get modal elements
-            const newThreadModal = document.getElementById('new-thread-modal');
-            const openNewThreadBtn = document.getElementById('open-new-thread-modal-btn');
-            const closeNewThreadBtn = document.getElementById('close-new-thread-modal-btn');
-            const newThreadForm = document.getElementById('new-thread-form');
-            
-            const rulesModal = document.getElementById('rules-modal');
-            const closeRulesModalBtn = document.getElementById('close-rules-modal-btn');
-
-            const threadDetailModal = document.getElementById('thread-detail-modal');
-            const closeThreadDetailModalBtn = document.getElementById('close-thread-detail-modal-btn');
-            const threadDetailTitle = document.getElementById('thread-detail-title');
-            const threadDetailMainContent = document.getElementById('thread-detail-main-content');
-            const threadDetailAuthor = document.getElementById('thread-detail-author');
-            const threadDetailCreatedAt = document.getElementById('thread-detail-created-at');
-            const commentListUl = document.getElementById('comment-list');
-            const newCommentContentInput = document.getElementById('new-comment-content');
-            const submitCommentBtn = document.getElementById('submit-comment-btn');
-
-            const generalThreadListUl = document.getElementById('general-thread-list-ul');
-            const stickyThreadListUl = document.getElementById('sticky-thread-list-ul');
-
-
-            // Event Listeners for Modals
-            openNewThreadBtn.addEventListener('click', () => {
-                newThreadModal.classList.add('active');
-            });
-            closeNewThreadBtn.addEventListener('click', () => {
-                newThreadModal.classList.remove('active');
-            });
-            newThreadModal.addEventListener('click', (e) => {
-                if (e.target === newThreadModal) {
-                    newThreadModal.classList.remove('active');
-                }
-            });
-
-            // Rules Modal (specific handling for the pre-defined rules thread)
-            // It will be opened by clicking on the dedicated "Guía de Normas" sticky thread
-            closeRulesModalBtn.addEventListener('click', () => {
-                rulesModal.classList.remove('active'); 
-            });
-            rulesModal.addEventListener('click', (e) => {
-                if (e.target === rulesModal) {
-                    rulesModal.classList.remove('active');
-                }
-            });
-
-            // Add event listener for the static "Guía de Normas y Buenas Prácticas del Foro" sticky thread
-            const rulesThreadItem = document.querySelector('[data-thread-id="rules-thread"]');
-            if (rulesThreadItem) {
-                rulesThreadItem.addEventListener('click', (e) => {
-                    // Prevent default link behavior if clicking the <a> tag inside
-                    if (e.target.tagName === 'A' || e.target.tagName === 'I') {
-                        e.preventDefault();
-                    }
-                    rulesModal.classList.add('active');
-                });
-            }
-
-            closeThreadDetailModalBtn.addEventListener('click', () => {
-                threadDetailModal.classList.remove('active');
-                currentOpenThreadId = null; // Clear the current thread ID
-            });
-            threadDetailModal.addEventListener('click', (e) => {
-                if (e.target === threadDetailModal) {
-                    threadDetailModal.classList.remove('active');
-                    currentOpenThreadId = null; // Clear the current thread ID
-                }
-            });
-
-            // --- Firebase Initialization and Auth ---
-            // Only initialize Firebase once, and store references globally
-            if (!app) { // Check if app is already initialized
-                if (Object.keys(firebaseConfig).length === 0) {
-                    console.error("Error: La configuración de Firebase está vacía. Asegúrate de que __firebase_config esté definida.");
-                    showMessage("Error: La configuración de Firebase no está disponible. Las funciones del foro no funcionarán.", "error");
-                    document.getElementById('current-user-id').textContent = 'Configuración de Firebase no válida';
-                    return; // Stop execution if config is missing
-                }
-                try {
-                    app = initializeApp(firebaseConfig);
-                    db = getFirestore(app);
-                    auth = getAuth(app);
-                    console.log("Firebase initialized successfully.");
-                } catch (error) {
-                    console.error("Error initializing Firebase:", error);
-                    showMessage("Error al inicializar la base de datos.", "error");
-                    document.getElementById('current-user-id').textContent = 'Error de inicialización de Firebase';
-                    return; // Critical error, stop execution
-                }
-            }
-
-            // Use a Promise to ensure authentication is ready before proceeding
-            const authReadyPromise = new Promise(resolve => {
+        /**
+         * Configura el listener de autenticación para manejar el estado del usuario.
+         * Utiliza el token proporcionado por el entorno o inicia sesión de forma anónima.
+         */
+        function setupAuthListener() {
+            return new Promise((resolve) => {
                 onAuthStateChanged(auth, async (user) => {
-                    console.log("onAuthStateChanged triggered. Current user object:", user); // Log user object
                     if (user) {
                         userId = user.uid;
-                        document.getElementById('current-user-id').textContent = userId;
-                        console.log("Firebase authenticated. User ID:", userId);
-                        resolve(true); // Resolve the promise once user is authenticated
-                    } else {
+                        userIdDisplay.textContent = userId;
+                        resolve(user);
+                    } else if (initialAuthToken) {
                         try {
-                            if (initialAuthToken) {
-                                await signInWithCustomToken(auth, initialAuthToken);
-                            } else {
-                                await signInAnonymously(auth);
-                            }
-                            // Ensure userId is set after successful anonymous sign-in too
-                            if (auth.currentUser) { // Check if currentUser exists after sign-in attempt
-                                userId = auth.currentUser.uid; 
-                                document.getElementById('current-user-id').textContent = userId;
-                                console.log("Firebase authenticated. User ID:", userId);
-                                resolve(true); // Resolve the promise once user is authenticated
-                            } else {
-                                // This case should ideally not happen if signInAnonymously succeeds
-                                console.error("Firebase authentication failed after anonymous sign-in attempt.");
-                                showMessage("Error: No se pudo obtener el ID de usuario después de la autenticación.", "error");
-                                userId = 'Error de autenticación';
-                                document.getElementById('current-user-id').textContent = userId;
-                                resolve(false);
-                            }
-                        } catch (error) {
-                            console.error("Error signing in to Firebase:", error);
-                            showMessage("Error al iniciar sesión en el foro.", "error");
-                            userId = 'Error de autenticación';
-                            document.getElementById('current-user-id').textContent = userId;
-                            resolve(false); // Resolve with false if authentication fails
+                            await signInWithCustomToken(auth, initialAuthToken);
+                        } catch(e) {
+                            await signInAnonymously(auth);
                         }
+                    } 
+                    else {
+                        await signInAnonymously(auth);
                     }
                 });
             });
+        }
+        
+        /**
+         * Asigna todos los event listeners a los elementos interactivos.
+         */
+        function setupEventListeners() {
+            // Modales
+            document.getElementById('open-new-thread-modal-btn').addEventListener('click', () => toggleModal(newThreadModal, true));
+            document.getElementById('close-new-thread-modal-btn').addEventListener('click', () => toggleModal(newThreadModal, false));
+            
+            document.getElementById('close-thread-detail-modal-btn').addEventListener('click', () => {
+                toggleModal(threadDetailModal, false);
+                if (commentsUnsubscribe) commentsUnsubscribe();
+                currentOpenThreadId = null;
+            });
 
-            // Wait for authentication to be ready
-            const authSuccess = await authReadyPromise;
-            if (!authSuccess) {
-                console.error("No se pudo autenticar en Firebase. Las funciones del foro pueden estar limitadas.");
-                return; // Stop if authentication failed
-            }
+            document.querySelector('[data-thread-id="rules-thread"]').addEventListener('click', () => toggleModal(rulesModal, true));
+            document.getElementById('close-rules-modal-btn').addEventListener('click', () => toggleModal(rulesModal, false));
+            
+            // Formularios
+            newThreadForm.addEventListener('submit', handleNewThreadSubmit);
+            addCommentForm.addEventListener('submit', handleNewCommentSubmit);
+        }
 
-            // Now that authentication is ready, setup Firestore listener for threads
-            setupThreadListener();
+        /**
+         * Carga los hilos de discusión desde Firestore.
+         * Los ordena por fecha de creación del lado del cliente para evitar la necesidad de índices compuestos en Firestore.
+         */
+        function loadThreads() {
+            const threadsCollectionPath = `/artifacts/${appId}/public/data/threads`;
+            const q = query(collection(db, threadsCollectionPath));
+            
+            onSnapshot(q, (querySnapshot) => {
+                const threads = [];
+                querySnapshot.forEach(doc => threads.push({ id: doc.id, ...doc.data() }));
 
-            // Function to render threads
-            function renderThreads(threads) {
-                // Clear existing threads, except for the static "rules" thread if it exists
-                const existingRulesThread = stickyThreadListUl.querySelector('[data-thread-id="rules-thread"]');
+                // Ordenar en el cliente
+                threads.sort((a, b) => (b.createdAt?.toMillis() || 0) - (a.createdAt?.toMillis() || 0));
+
                 generalThreadListUl.innerHTML = '';
-                stickyThreadListUl.innerHTML = ''; // Clear sticky list first
-
-                if (existingRulesThread) {
-                    stickyThreadListUl.appendChild(existingRulesThread); // Re-add the static rules thread
-                }
-
-                // Filter out the static rules thread from the dynamic list to avoid duplicates
-                const dynamicThreads = threads.filter(thread => thread.id !== 'rules-thread');
-
-
-                // Sort threads by creation date (newest first for general, then stickies first)
-                dynamicThreads.sort((a, b) => {
-                    if (a.isSticky && !b.isSticky) return -1;
-                    if (!a.isSticky && b.isSticky) return 1;
-                    // Handle cases where createdAt might be a Firebase Timestamp object
-                    const aTime = a.createdAt ? (a.createdAt.toDate ? a.createdAt.toDate().getTime() : a.createdAt.getTime()) : 0;
-                    const bTime = b.createdAt ? (b.createdAt.toDate ? b.createdAt.toDate().getTime() : b.createdAt.getTime()) : 0;
-                    return bTime - aTime;
-                });
-
-                dynamicThreads.forEach(thread => {
-                    const threadItem = document.createElement('li');
-                    threadItem.classList.add('thread-item');
-                    threadItem.dataset.threadId = thread.id; // Store thread ID
-
-                    if (thread.isSticky) {
-                        threadItem.classList.add('sticky-thread');
-                    }
-
-                    const lastReplyTime = thread.lastReplyAt ? (thread.lastReplyAt.toDate ? new Date(thread.lastReplyAt.toDate()).toLocaleString() : new Date(thread.lastReplyAt).toLocaleString()) : 'N/A';
-                    const repliesCount = thread.replies !== undefined ? thread.replies : 0;
-                    const viewsCount = thread.views !== undefined ? thread.views : 0; 
-
-                    // Limit content preview to 150 characters for the list view
-                    const excerpt = thread.content.length > 150 ? thread.content.substring(0, 150) + '...' : thread.content;
-                    const authorDisplayName = auth.currentUser && auth.currentUser.uid === thread.author ? (auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Tú') : thread.authorDisplayName || thread.author;
-
-
-                    threadItem.innerHTML = `
-                        <div class="thread-item-header">
-                            <h4><a href="#">${thread.isSticky ? '<i class="fas fa-thumbtack"></i>' : ''}${thread.title}</a></h4>
-                            <div class="thread-meta">
-                                <span>Por: ${authorDisplayName}</span>
-                                <span><i class="fas fa-comment"></i> ${repliesCount} Respuestas</span>
-                                <span><i class="fas fa-eye"></i> ${viewsCount} Vistas</span>
-                                <span>Última respuesta: ${lastReplyTime}</span>
-                            </div>
-                        </div>
-                        <p class="thread-excerpt">${excerpt}</p>
-                    `;
-
-                    // Add click listener to open modal
-                    threadItem.addEventListener('click', (e) => {
-                        // Prevent opening thread detail if clicking on any link inside (e.g., author link)
-                        if (e.target.tagName === 'A' || e.target.tagName === 'I') {
-                            e.preventDefault();
-                            // If the click is on the rules thread, open the rules modal
-                            if (thread.id === 'rules-thread') {
-                                rulesModal.classList.add('active');
-                            }
-                            return;
-                        }
-                        // Only open rules modal if specifically clicking on the rules sticky thread, otherwise open thread detail
-                        if (thread.id === 'rules-thread') {
-                            rulesModal.classList.add('active'); 
-                        } else {
-                            openThreadDetailModal(thread.id); // Open thread detail for general threads
-                        }
-                    });
-
-                    if (thread.isSticky) {
-                        // Ensure it's not the static rules thread before adding
-                        if (thread.id !== 'rules-thread') {
-                            stickyThreadListUl.appendChild(threadItem);
-                        }
-                    } else {
-                        generalThreadListUl.appendChild(threadItem);
-                    }
-                });
-
-                // If no general threads, show message
-                if (generalThreadListUl.children.length === 0) {
-                    generalThreadListUl.innerHTML = '<p class="text-center text-gray-400">Sé el primero en iniciar un tema de discusión.</p>';
-                }
-            }
-
-            // Setup Firestore listener for threads
-            function setupThreadListener() {
-                if (!db || !auth.currentUser || userId === 'loading...' || userId === 'Error de autenticación') {
-                    console.warn("Firestore o la autenticación del usuario no están listos. Reintentando la configuración del oyente de hilos en 1s...");
-                    setTimeout(setupThreadListener, 1000); 
+                if (threads.length === 0) {
+                    generalThreadListUl.innerHTML = `<p class="text-center text-gray-400">Aún no hay temas. ¡Sé el primero en crear uno!</p>`;
                     return;
                 }
-
-                const threadsCollectionRef = collection(db, `artifacts/${appId}/public/data/threads`);
-                const q = query(threadsCollectionRef);
-
-                if (window.firestoreListenerUnsubscribe && typeof window.firestoreListenerUnsubscribe === 'function') { 
-                    window.firestoreListenerUnsubscribe(); // Unsubscribe from previous listener
-                    console.log("Firestore: Unsubscribed from old threads listener.");
-                }
-
-                window.firestoreListenerUnsubscribe = onSnapshot(q, (snapshot) => {
-                    const threads = [];
-                    snapshot.forEach((doc) => {
-                        // Exclude the static rules thread from the dynamic data fetched by onSnapshot
-                        if (doc.id !== 'rules-thread') {
-                            threads.push({ id: doc.id, ...doc.data() });
-                        }
-                    });
-                    renderThreads(threads);
-                }, (error) => {
-                    console.error("Error al obtener hilos de Firestore:", error);
-                    showMessage(`Error al cargar los temas del foro: ${error.message}`, "error");
-                    // Unsubscribe on error to prevent continuous errors if it's a persistent issue.
-                    if (typeof window.firestoreListenerUnsubscribe === 'function') {
-                        window.firestoreListenerUnsubscribe();
-                        window.firestoreListenerUnsubscribe = null;
-                    }
+                threads.forEach(thread => {
+                    const threadElement = createThreadElement(thread, thread.id);
+                    generalThreadListUl.appendChild(threadElement);
                 });
-            }
+            }, error => {
+                console.error("Error al cargar los temas:", error);
+                showMessage("Error al cargar los temas de discusión.", "error");
+            });
+        }
 
-            // Function to open thread detail modal and load data
-            async function openThreadDetailModal(threadId) {
-                currentOpenThreadId = threadId; // Set the currently open thread ID
-                threadDetailModal.classList.add('active');
+        /**
+         * Maneja el envío del formulario para crear un nuevo hilo.
+         */
+        async function handleNewThreadSubmit(e) {
+            e.preventDefault();
+            if (!userId) return showMessage("Debes estar autenticado para crear un tema.", "error");
+            
+            const title = e.target['thread-title'].value.trim();
+            const content = e.target['thread-content'].value.trim();
 
+            if (title && content) {
+                const threadsCollectionPath = `/artifacts/${appId}/public/data/threads`;
                 try {
-                    const threadDocRef = doc(db, `artifacts/${appId}/public/data/threads`, threadId);
-                    const threadDoc = await getDoc(threadDocRef);
-
-                    if (threadDoc.exists()) {
-                        const threadData = threadDoc.data();
-                        threadDetailTitle.textContent = threadData.title;
-                        threadDetailMainContent.textContent = threadData.content;
-                        // Display author's email (first part) if available, otherwise User ID
-                        const authorDisplayName = auth.currentUser && auth.currentUser.uid === threadData.author ? 
-                            (auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Tú') : 
-                            threadData.authorDisplayName || threadData.author; // Added fallback to authorDisplayName
-
-                        threadDetailAuthor.textContent = authorDisplayName;
-
-                        threadDetailCreatedAt.textContent = threadData.createdAt ? (threadData.createdAt.toDate ? new Date(threadData.toDate()).toLocaleString() : new Date(threadData.createdAt).toLocaleString()) : 'N/A';
-
-                        // Increment view count (optional, can be debounced or done on server)
-                        await updateDoc(threadDocRef, {
-                            views: (threadData.views || 0) + 1
-                        });
-
-                        // Set up listener for comments
-                        setupCommentListener(threadId);
-                    } else {
-                        showMessage("Tema no encontrado.", "error");
-                        threadDetailModal.classList.remove('active');
-                    }
-                } catch (error) {
-                    console.error("Error al cargar detalles del tema:", error);
-                    showMessage(`Error al cargar los detalles del tema: ${error.message}`, "error");
-                    threadDetailModal.classList.remove('active');
-                }
-            }
-
-            // Function to render comments
-            function renderComments(comments) {
-                commentListUl.innerHTML = ''; // Clear existing comments
-
-                if (comments.length === 0) {
-                    const noCommentsItem = document.createElement('li');
-                    noCommentsItem.classList.add('no-comments-message');
-                    noCommentsItem.textContent = 'No hay comentarios aún. ¡Sé el primero en dejar uno!';
-                    commentListUl.appendChild(noCommentsItem);
-                    return;
-                }
-
-                // Sort comments by creation date (oldest first)
-                comments.sort((a, b) => {
-                    const aTime = a.createdAt ? (a.createdAt.toDate ? a.createdAt.toDate().getTime() : a.createdAt.getTime()) : 0;
-                    const bTime = b.createdAt ? (b.createdAt.toDate ? b.createdAt.toDate().getTime() : b.createdAt.getTime()) : 0;
-                    return aTime - bTime;
-                });
-
-                comments.forEach(comment => {
-                    const commentItem = document.createElement('li');
-                    commentItem.classList.add('comment-item');
-                    // Display author's email (first part) if available, otherwise User ID
-                    const authorDisplayName = auth.currentUser && auth.currentUser.uid === comment.author ? 
-                        (auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Tú') : 
-                        (comment.authorDisplayName || comment.author); // Fallback to comment's stored display name or raw ID
-                    
-                    commentItem.innerHTML = `
-                        <p class="comment-meta">
-                            <strong>${authorDisplayName}</strong>
-                            <span> - ${comment.createdAt ? (comment.createdAt.toDate ? new Date(comment.createdAt.toDate()).toLocaleString() : new Date(comment.createdAt).toLocaleString()) : 'N/A'}</span>
-                        </p>
-                        <p class="comment-text">${comment.content}</p>
-                    `;
-                    commentListUl.appendChild(commentItem);
-                });
-            }
-
-            // Setup Firestore listener for comments
-            function setupCommentListener(threadId) {
-                if (!db) {
-                    console.error("Firestore no está inicializado para comentarios.");
-                    return; 
-                }
-
-                const commentsCollectionRef = collection(db, `artifacts/${appId}/public/data/threads/${threadId}/comments`);
-                const q = query(commentsCollectionRef);
-
-                onSnapshot(q, (snapshot) => {
-                    const comments = [];
-                    snapshot.forEach((doc) => {
-                        comments.push({ id: doc.id, ...doc.data() });
+                    await addDoc(collection(db, threadsCollectionPath), {
+                        title, content,
+                        authorId: userId,
+                        createdAt: serverTimestamp(),
+                        commentCount: 0
                     });
-                    renderComments(comments);
-                }, (error) => {
-                    console.error("Error al obtener comentarios de Firestore:", error);
-                    showMessage(`Error al cargar los comentarios: ${error.message}`, "error");
-                });
-            }
-
-            // Handle new thread submission
-            newThreadForm.addEventListener('submit', async function(event) {
-                event.preventDefault();
-
-                if (!db || !userId || userId === 'loading...' || userId === 'Error de autenticación') {
-                    showMessage("Error: Autenticación no completa. Intenta nuevamente en un momento.", "error");
-                    return;
-                }
-
-                const title = document.getElementById('thread-title').value.trim();
-                const content = document.getElementById('thread-content').value.trim();
-
-                if (!title || !content) {
-                    showMessage("Por favor, rellena todos los campos para crear un tema.", "error");
-                    return;
-                }
-
-                try {
-                    // Display author's email (first part) if available, otherwise User ID
-                    const authorDisplayName = auth.currentUser && auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Anónimo';
-
-                    await addDoc(collection(db, `artifacts/${appId}/public/data/threads`), {
-                        title: title,
-                        content: content,
-                        author: userId, // Store the actual user ID
-                        authorDisplayName: authorDisplayName, // Store a display name
-                        createdAt: serverTimestamp(), // Firestore timestamp
-                        lastReplyAt: serverTimestamp(),
-                        replies: 0,
-                        views: 0,
-                        isSticky: false 
-                    });
-                    showMessage("¡Tema publicado con éxito!");
+                    toggleModal(newThreadModal, false);
                     newThreadForm.reset();
-                    newThreadModal.classList.remove('active');
+                    showMessage("Tema creado con éxito.", "success");
+                } catch (error) {
+                    console.error("Error al crear el tema:", error);
+                    showMessage("No se pudo crear el tema.", "error");
                 }
-                catch (e) {
-                    console.error("Error al añadir documento: ", e);
-                    showMessage(`Error al publicar el tema: ${e.message}`, "error");
-                }
-            });
+            }
+        }
 
-            // Handle new comment submission
-            submitCommentBtn.addEventListener('click', async () => {
-                console.log("Submit comment button clicked.");
-                console.log("db:", db);
-                console.log("userId:", userId);
-                console.log("currentOpenThreadId:", currentOpenThreadId);
+        /**
+         * Abre el modal de detalles de un hilo y carga sus comentarios.
+         * @param {string} threadId - El ID del documento del hilo.
+         */
+        async function openThreadDetail(threadId) {
+            currentOpenThreadId = threadId;
+            const threadDocPath = `/artifacts/${appId}/public/data/threads/${threadId}`;
+            const threadRef = doc(db, threadDocPath);
 
-                if (!db || !userId || userId === 'loading...' || userId === 'Error de autenticación') {
-                    showMessage("Error: Autenticación no completa. No se puede añadir comentario.", "error");
-                    console.error("Authentication or DB not ready:", { db, userId });
-                    return;
-                }
-                if (!currentOpenThreadId) {
-                    showMessage("Error: No hay ningún tema abierto para comentar.", "error");
-                    console.error("No current thread open for commenting.");
-                    return;
-                }
-
-                const commentContent = newCommentContentInput.value.trim();
-                if (!commentContent) {
-                    showMessage("Por favor, escribe un comentario.", "error");
-                    return;
-                }
-
-                try {
-                    // Display author's email (first part) if available, otherwise User ID
-                    const authorDisplayName = auth.currentUser && auth.currentUser.email ? auth.currentUser.email.split('@')[0] : 'Anónimo';
-
-                    // Add the comment to the thread's sub-collection
-                    await addDoc(collection(db, `artifacts/${appId}/public/data/threads/${currentOpenThreadId}/comments`), {
-                        content: commentContent,
-                        author: userId, 
-                        authorDisplayName: authorDisplayName, // Store a display name for the comment
-                        createdAt: serverTimestamp()
-                    });
-
-                    // Update the parent thread's replies count and lastReplyAt
-                    const threadDocRef = doc(db, `artifacts/${appId}/public/data/threads`, currentOpenThreadId);
-                    const threadDoc = await getDoc(threadDocRef);
-                    if (threadDoc.exists()) {
-                        const threadData = threadDoc.data();
-                        await updateDoc(threadDocRef, {
-                            replies: (threadData.replies || 0) + 1,
-                            lastReplyAt: serverTimestamp()
-                        });
-                    }
+            try {
+                const threadSnap = await getDoc(threadRef);
+                if (threadSnap.exists()) {
+                    const thread = threadSnap.data();
+                    document.getElementById('thread-detail-title').textContent = thread.title;
+                    document.getElementById('thread-detail-main-content').textContent = thread.content;
+                    document.getElementById('thread-detail-author').textContent = truncate(thread.authorId, 20);
+                    document.getElementById('thread-detail-created-at').textContent = thread.createdAt?.toDate().toLocaleString('es-ES') || '';
                     
-                    showMessage("¡Comentario añadido con éxito!");
-                    newCommentContentInput.value = ''; // Clear the input
-                } catch (e) {
-                    console.error("Error al añadir comentario: ", e);
-                    showMessage(`Error al añadir el comentario: ${e.message}`, "error");
+                    loadComments(threadId);
+                    toggleModal(threadDetailModal, true);
+                }
+            } catch (error) {
+                console.error("Error al abrir el detalle del tema:", error);
+                showMessage("No se pudo cargar el tema.", "error");
+            }
+        }
+
+        /**
+         * Carga los comentarios de un hilo específico.
+         */
+        function loadComments(threadId) {
+            const commentList = document.getElementById('comment-list');
+            const commentsPath = `/artifacts/${appId}/public/data/threads/${threadId}/comments`;
+            const q = query(collection(db, commentsPath));
+
+            commentsUnsubscribe = onSnapshot(q, (snapshot) => {
+                const comments = [];
+                snapshot.forEach(doc => comments.push(doc.data()));
+                
+                comments.sort((a, b) => (a.createdAt?.toMillis() || 0) - (b.createdAt?.toMillis() || 0));
+
+                commentList.innerHTML = '';
+                if (comments.length === 0) {
+                    commentList.innerHTML = `<li class="no-comments-message">No hay comentarios aún.</li>`;
+                } else {
+                    comments.forEach(comment => {
+                        const commentEl = createCommentElement(comment);
+                        commentList.appendChild(commentEl);
+                    });
                 }
             });
-        });
+        }
+
+        /**
+         * Maneja el envío del formulario para agregar un nuevo comentario.
+         */
+        async function handleNewCommentSubmit(e) {
+            e.preventDefault();
+            const content = e.target['new-comment-content'].value.trim();
+            if (!content || !currentOpenThreadId || !userId) return showMessage("El comentario no puede estar vacío.", "error");
+
+            const commentsPath = `/artifacts/${appId}/public/data/threads/${currentOpenThreadId}/comments`;
+            try {
+                await addDoc(collection(db, commentsPath), {
+                    text: content,
+                    authorId: userId,
+                    createdAt: serverTimestamp()
+                });
+                
+                // Actualizar contador de comentarios
+                const threadRef = doc(db, `/artifacts/${appId}/public/data/threads/${currentOpenThreadId}`);
+                const threadSnap = await getDoc(threadRef);
+                const currentCount = threadSnap.data().commentCount || 0;
+                await updateDoc(threadRef, { commentCount: currentCount + 1 });
+
+                addCommentForm.reset();
+            } catch(error) {
+                console.error("Error al añadir comentario:", error);
+                showMessage("No se pudo publicar tu comentario.", "error");
+            }
+        }
+
+        // --- Funciones de Creación de Elementos y Utilidades ---
+
+        function createThreadElement(thread, id) {
+            const li = document.createElement('li');
+            li.className = 'thread-item';
+            li.dataset.threadId = id;
+            const date = thread.createdAt?.toDate().toLocaleString('es-ES') || 'N/A';
+            li.innerHTML = `
+                <div class="thread-item-header">
+                    <h4><a href="#">${escapeHTML(thread.title)}</a></h4>
+                    <div class="thread-meta">
+                        <span><i class="fas fa-user"></i> ${truncate(thread.authorId)}</span>
+                        <span><i class="fas fa-clock"></i> ${date}</span>
+                        <span><i class="fas fa-comment"></i> ${thread.commentCount || 0}</span>
+                    </div>
+                </div>
+                <p class="thread-excerpt">${escapeHTML(truncate(thread.content, 150))}</p>`;
+            li.addEventListener('click', () => openThreadDetail(id));
+            return li;
+        }
+
+        function createCommentElement(comment) {
+            const li = document.createElement('li');
+            li.className = 'comment-item';
+            const date = comment.createdAt?.toDate().toLocaleString('es-ES') || '';
+            li.innerHTML = `
+                <div class="comment-meta">Por: ${truncate(comment.authorId, 15)} - ${date}</div>
+                <p class="comment-text">${escapeHTML(comment.text)}</p>`;
+            return li;
+        }
+
+        function toggleModal(modal, show) {
+            modal.classList.toggle('active', show);
+        }
+
+        function showMessage(message, type = 'info') {
+            const container = document.getElementById('notification-area');
+            const notification = document.createElement('div');
+            const colors = { info: '#1E90FF', success: '#00FF7F', error: '#FF4500' };
+            notification.textContent = message;
+            notification.style.cssText = `
+                padding: 12px 20px; border-radius: 8px; margin-bottom: 10px;
+                background-color: ${colors[type]}; color: var(--dark-bg);
+                font-family: 'Poppins', sans-serif; font-weight: 600;
+                opacity: 0; transition: all 0.4s ease; transform: translateX(20px);`;
+            container.appendChild(notification);
+            setTimeout(() => {
+                notification.style.opacity = '1';
+                notification.style.transform = 'translateX(0)';
+            }, 10);
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(20px)';
+                setTimeout(() => notification.remove(), 400);
+            }, 4000);
+        }
+
+        function escapeHTML(str) {
+            const p = document.createElement('p');
+            p.textContent = str;
+            return p.innerHTML;
+        }
+
+        function truncate(str, maxLength = 10) {
+            return str && str.length > maxLength ? str.substring(0, maxLength) + '...' : str;
+        }
+
+        // Iniciar la aplicación
+        document.addEventListener('DOMContentLoaded', initializeForum);
+
     </script>
+
 </body>
 </html>
